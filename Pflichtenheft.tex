@@ -1,0 +1,196 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{german}
+\usepackage[latin1]{inputenc}
+
+\begin{titlepage}
+
+\begin{center}
+\textbf{\textsc{\LARGE Pflichtenheft}}
+
+{\large \today}
+
+\vspace{6cm}
+\includegraphics{Bild}
+Hier Logo einfuegen
+
+\vspace{6cm}
+
+\begin{tabular}{|c|c|c|}\hline
+   Phase & Verantwortlicher & E-Mail \\ \hline\hline
+   Pflichtenheft & Alina  Meixl  &  alina@meixl.de \\ \hline
+   Entwurf & Viktoria Witka & witkaviktoria@freenet.de \\ \hline
+   Spezifikation & Daniel Riedl & dariedl14@yahoo.de \\ \hline
+   Implementation & Andreas Altenbuchner& a.andi007@gmail.com\\ \hline
+   Verifikation &Patrick Kubin & kubin@fim.uni-passau.de\\ \hline
+   Praesentation & w& w\\ \hline
+ \end{tabular}
+
+\end{center}
+
+\end{titlepage}
+
+\begin{document}
+
+\tableofcontents
+\newpage
+
+\section{Zielbestimmung}
+Ein Online-Multiplayer Kartenspiel.
+
+\subsection{Musskriterien}
+Es gibt einen Server der das Spiel verwaltet und Clients die spielen.
+\subsubsection{Server}
+\begin{itemize}
+	\item Clients koennen sich verbinden und eindeutigen Benutzernamen auswaehlen
+	\item Lobby mit der Moeglichkeit, Spiele zu erstellen und offenen Spielen beizutreten
+	\item Unterstuetzung mehrere parallel laufender Spiele
+	\item Regelauswertung mit Ueberpruefung erlaubter Aktionen, Punktezaehlung, Kartenausgabe
+	\item Unterstuetzung der Spiele Hearts und Wizard
+	\item Chat in der Lobby
+	\item Chat mit Mitspielern waehrend eines Spiels
+	\item Schutz vor Cheats (Mehrfachanmeldung?)
+\end{itemize}
+
+\subsubsection{Client}
+\begin{itemize}
+	\item GUI
+	\begin{itemize}
+		\item Darstellungsfenster, das mindestens bei der Aufloesung von 1024x768 Bildpunkten benutzt werden kann
+		\item Darstellung des laufenden Spiels (eigene Hand, verdeckte Hand der anderen Spieler, Ablage- und Aufnahmestapel, 			Punktestand, evtl. Zusatzinformationen)
+		\item Eingabemoeglichkeiten fuer erlaubte Aktionen waehrend des Spiels (Karte ablegen, Ansagen, etc.)
+		\item Die GUI muss den Benutzer sinnvoll unterstuetzen und benutzerfreundliche Eingabeelemente anbieten
+		\item Fluessige Darstellung
+		\item Unabhaengigkeit vom Regelwerk
+		\item Beim Start Auswahl des Servers und des Benutzernamens
+		\item Anzeige von offenen Spielen in der Lobby mit Moeglichkeit zum Erstellen und Beitreten
+		\item Chat in der Lobby und waehrend des Spiels
+	\end{itemize}
+	\item Modell
+	\begin{itemize}
+		\item Verwaltung der Verbindung mit dem Server
+		\item Verwaltung des aktuellen Spielzustands (soweit Client bekannt)
+		\item Vorab-Regelauswertung zur Unterstuetzung des Nutzers (ungueltige Spielaktionen sind nicht durchfuehrbar in der 					GUI)
+	\end{itemize}
+\end{itemize}
+
+\subsection{Wunschkriterien}
+\begin{itemize}
+	\item Weitere Regelwerke (Uno, Mau-Mau, Black Jack)
+	\item Scoresystem
+	\item Statistiken
+	\item Mehrsprachen
+	\item Veraenderbare GUI (Farben etc)
+\end{itemize}
+
+\subsection{Abgrenzungskriterien}
+\begin{itemize}
+	\item Beitreten eines bereits laufenden Spieles nicht moeglich.
+	\item keine Persistenz ueber mehrere Sessions, keine Registrierung
+	\item keine KI
+\end{itemize}
+
+\section{Produkteinsatz}
+\subsection{Anwendungsbereich}
+Internetspiel im Freundeskreis.
+\subsection{Zielgruppe}
+Personen, die gemeinsam ueber ein lokals Netzwerkoder das Internet spielen moechten. 
+\subsection{Betriebsbedingungen}
+Betriebsdauer ?
+
+\section{Produktumgebung}
+\subsection{Software}
+	\begin{itemize}
+		\item Client
+		\begin{itemize}
+			\item ...
+		\end{itemize}
+		\item Server
+		\begin{itemize}
+			\item ...	
+			\item ...
+		\end{itemize}
+	\end{itemize}
+
+\subsection{Hardware}
+\begin{itemize}
+		\item Client
+		\begin{itemize}
+			\item Internetfaehiger Rechner
+		\end{itemize}
+		\item Server
+		\begin{itemize}
+			\item Internetfaehiger Rechner	
+			\item Speicherplatz
+			\item Rechenleistung
+		\end{itemize}
+	\end{itemize}
+
+\subsection{Orgware}
+Internetverbindung.
+
+\section{Produktfunktionen}
+\subsection{Client}
+\begin{itemize}
+	\item GUI Darstellung
+	\item Chat
+	\item .....
+\end{itemize}
+
+\subsection{Server}
+\begin{itemize}
+	\item Spiel erstellen(Lobby)
+	\item Chat
+	\item Regelauswertung
+	\item .......
+\end{itemize}
+
+\section{Produktdaten}
+Benutzerdaten?
+Score?
+Statistik?
+
+\section{Produktleistungen}
+Benutzernamen, Server, Spiel erstellen, Kartenspiel waehlen. Chat in Lobby und Spiel. Spiel spielen.
+
+\section{Benutzungsoberflaeche}
+Hier Bild einfuegen.
+
+\section{Testszenarien}
+\begin{itemize}
+	\item Benutzername, Server aussuchen
+	\item Spiel erstellen (Lobby)
+	\item Spiel beitreten (Lobby)
+	\item mehrere Spiele parallel starten (Lobby)
+	\item Spiel spielen 
+\end{itemize}
+
+\section{Entwicklungsumgebung}
+\subsection{Software}
+\begin{itemize}
+	\item LaTeX
+	\item Eclipse 3.8
+	\item IBM Rational Software Architect 8.0
+	\item .....
+\end{itemize}
+
+\subsection{Hardware}
+\begin{itemize}
+	\item Rechner im CIP Pool	
+	\item Private Rechner
+\end{itemize}
+
+\subsection{Orgware}
+Keine.
+
+\section{Ergaenzung}
+.....
+\section{Glossar}
+\begin{itemize}
+	\item Client: ...
+	\item Server: ...
+	\item Regelwerk: ...
+	\item Lobby: ...
+	\item ...
+\end{itemize}
+\end{document}
