@@ -3,6 +3,7 @@
 \usepackage{german}
 \usepackage[latin1]{inputenc}
 
+\begin{document}
 \begin{titlepage}
 
 \begin{center}
@@ -30,7 +31,6 @@ Hier Logo einfuegen
 
 \end{titlepage}
 
-\begin{document}
 
 \tableofcontents
 \newpage
@@ -130,19 +130,40 @@ Betriebsdauer ?
 Internetverbindung.
 
 \section{Produktfunktionen}
-\subsection{Client}
+\subsection{Startseite}
 \begin{itemize}
-	\item GUI Darstellung
-	\item Chat
-	\item .....
+	\item /F040/ Auswahl vom gewuenschtem Server und Namen, danach Weiterleitung zur Lobby
 \end{itemize}
 
-\subsection{Server}
+\subsection{Lobby}
 \begin{itemize}
-	\item Spiel erstellen(Lobby)
-	\item Chat
-	\item Regelauswertung
-	\item .......
+	\item /F060/ Anzeige von eingeloggten Spieler
+	\item /F070/ Chatten mit anderen eingeloggten Spielern auf dem Server
+	\item /F080/ Anzeige offener Spiele mit Spielart und Spieleranzahl sowie die Option den Spielen beizutreten (Weiterleitung zum Wartefenster)
+	\item /F090/ Option ein eigenes Spiel zu erstellen(Weiterleitung zum Erstellungsfenster)
+	\item /F100W/ Moeglichkeit die Sprache zu aendern
+\end{itemize}
+
+\subsection{Erstellungsfenster}
+\begin{itemize}
+	\item /F120/ Auswahl vom Regelwerk, Namen des Spiels und bevorzugter Spielerzahl
+	\item /F130W/ Moeglichkeit eingeloggte Spieler einzuladen
+\end{itemize}
+
+\subsection{Wartefenster}
+\begin{itemize}
+	\item /F150/ Anzeigen des Spieltyps, der Spieler und Spielerzahl
+	\item /F160/ Ab Mindestanzahl der Spieler kann der Spielersteller des Spiel starten
+	\item /F170/ Wartefenster wird nur aufgeloest wenn der Spielersteller selbst das Spiel verlaesst
+\end{itemize}
+
+\subsection{Spiel}
+\begin{itemize}
+	\item /F190/ Anzeige des Spiels, der eigen Karten, der verdeckten Karten der Mitspieler sowie Ablage-und Aufnahmestapel
+	\item /F200/ Anzeige von Punktestand oder anderen Zusatzinformationen
+	\item /F210/ Eingabemöglichkeit für regelkonforme Aktionen
+	\item /F220/ Chatten mit anderen Mitspielern
+	\item /F230/ Wenn einer das Spiel verlaesst wird das Spiel beendet und die anderen Mitspieler werden zur Lobby zurueckgeleitet
 \end{itemize}
 
 \section{Produktdaten}
