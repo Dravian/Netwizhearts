@@ -42,32 +42,32 @@ public class StartWindow extends JFrame {
 		setTitle("Start");
 		setAlwaysOnTop(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 270, 155);
+		setBounds(100, 100, 253, 161);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblHostIp = new JLabel("Host IP");
-		lblHostIp.setBounds(10, 55, 35, 14);
+		JLabel lblHostIp = new JLabel("Host IP:");
+		lblHostIp.setBounds(25, 55, 66, 14);
 		contentPane.add(lblHostIp);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(94, 24, 86, 20);
+		textField_1.setBounds(113, 27, 104, 20);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
-		JLabel lblNickname = new JLabel("Nickname");
-		lblNickname.setBounds(10, 27, 45, 14);
+		JLabel lblNickname = new JLabel("Nickname:");
+		lblNickname.setBounds(25, 29, 78, 14);
 		contentPane.add(lblNickname);
 		
 		textField = new JTextField();
-		textField.setBounds(94, 52, 86, 20);
+		textField.setBounds(113, 53, 104, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		JButton btnConnect = new JButton("Connect");
-		btnConnect.setBounds(171, 83, 73, 23);
+		btnConnect.setBounds(113, 85, 104, 23);
 		contentPane.add(btnConnect);
 	}
 
