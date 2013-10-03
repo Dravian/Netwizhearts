@@ -133,6 +133,7 @@ Internetverbindung.
 \subsection{Startseite}
 \begin{itemize}
 	\item /F040/ Auswahl vom gewuenschtem Server und Namen, danach Weiterleitung zur Lobby
+	\item /F050W/ Auswahl der Sprache
 \end{itemize}
 
 \subsection{Lobby}
@@ -141,12 +142,12 @@ Internetverbindung.
 	\item /F070/ Chatten mit anderen eingeloggten Spielern auf dem Server
 	\item /F080/ Anzeige offener Spiele mit Spielart und Spieleranzahl sowie die Option den Spielen beizutreten (Weiterleitung zum Wartefenster)
 	\item /F090/ Option ein eigenes Spiel zu erstellen(Weiterleitung zum Erstellungsfenster)
-	\item /F100W/ Moeglichkeit die Sprache zu aendern
+	\item /F100/ Hilfe zu den Spielarten
 \end{itemize}
 
 \subsection{Erstellungsfenster}
 \begin{itemize}
-	\item /F120/ Auswahl vom Regelwerk, Namen des Spiels und bevorzugter Spielerzahl
+	\item /F120/ Auswahl vom Regelwerk und  Namen des Spiels 
 	\item /F130W/ Moeglichkeit eingeloggte Spieler einzuladen
 \end{itemize}
 
@@ -164,15 +165,72 @@ Internetverbindung.
 	\item /F210/ Eingabemöglichkeit für regelkonforme Aktionen
 	\item /F220/ Chatten mit anderen Mitspielern
 	\item /F230/ Wenn einer das Spiel verlaesst wird das Spiel beendet und die anderen Mitspieler werden zur Lobby zurueckgeleitet
+	\item /F240/ Hilfe zu dem Spiel
+	\item /F250/ Auswertung bei Ende des Spiels
 \end{itemize}
 
 \section{Produktdaten}
-Benutzerdaten?
-Score?
-Statistik?
+
+\begin{itemize}
+	\item /D010/ Lobbydaten
+	 \begin{itemize}
+	 	\item Spielerdaten
+	 	\begin{itemize}
+	 		\item Spielername(eindeutig)
+	 	\end{itemize}
+	 	\item Spieledaten
+	 	\begin{itemize}
+	 		\item Spielenamen(eindeutig)
+	 		\item Spieltyp
+	 		\item Anzahl an Spielern und maximale Anzahl an Spielern
+	 	\end{itemize}
+	 \end{itemize}
+	 \item /D020/ Erstellungsdaten
+	 \begin{itemize}
+	 	\item Spielleiter(eindeutig)
+	 	\item Spielernamen(eindeutig)
+	 	\item Spieleranzahl und maximale Spieleranzahl
+	 	\item Spieltyp
+	 	\item Mindestanzahl an Spielern erreicht
+	 \end{itemize}
+	 \item /D030/ Spieldaten
+	 \begin{itemize}
+	 	\item Spielname(eindeutig)
+	 	\item Spieltyp
+	 	\item Anzahl an Spielern
+	 	\item Kartenstapel
+	 	\begin{itemize}
+	 		\item Anzahl verbliebener Karten
+	 		\item Karten
+	 		\item Ausgabe von Karten
+	 	\end{itemize}
+	 	\item Zugreihenfolge
+	 	\item Spieler
+	 	\begin{itemize}
+	 		\item Name(eindeutig)
+	 		\item Kartenhand
+	 		\begin{itemize}
+	 			\item Karten
+	 			\item Anzahl
+	 			\item Spielbar
+	 		\end{itemize}	 
+	 		\item Bedenkzeit(X minuten)		
+	 	\end{itemize}
+	 	\item Punktestand und Siegbedingung
+	 \end{itemize}
+\end{itemize}
 
 \section{Produktleistungen}
-Benutzernamen, Server, Spiel erstellen, Kartenspiel waehlen. Chat in Lobby und Spiel. Spiel spielen.
+\begin{itemize}
+	\item /L040/ Einhaltung der Spielregeln gewaehrleisten
+	\item /L050/ Fehlermeldungen akkumuliert ausgeben
+	\item /L060/ Verwaltung mehrerer parallel laufender Spiele
+	\item /L070/ Chat und Spiel sollen fluessig laufen
+	\item /L080/ Einfache und hilfreiche Bedienbarkeit
+	\item /L090/ Schutz vor Cheats
+	\item /L100/ Verhinderung langer Wartezeiten
+	\item /L110W/ Mehrsprachigkeit unterstuetzen
+\end{itemize}
 
 \section{Benutzungsoberflaeche}
 Hier Bild einfuegen.
