@@ -3,6 +3,32 @@
 \usepackage{german}
 \usepackage[latin1]{inputenc}
 
+\usepackage[section,toc]{glossaries}\makeglossaries
+
+\newglossaryentry{Regelwerk}{name=Regelwerk,
+	plural = Regelwerke,
+	description={Regeln eines bestimmten Kartenspiels}
+}
+\newglossaryentry{Client}{name=Client,
+	plural = Clients,
+	description={Der Benutzer einer Applikation}
+}
+\newglossaryentry{Server}{name = Server,
+	description={Rechner,der Dienste zur verfuegung stellt}
+}
+\newglossaryentry{Lobby}{name = Lobby,
+	description={Ort, an dem Spieler ein Kartenspiel auswaehlen oder beitreten koennen}
+}
+\newglossaryentry{GUI}{name = GUI,
+	description={Graphische Oberflaeche}
+}
+\newglossaryentry{Spielleiter}{name = Spielleiter,
+	description={Derjenige, der in der Lobby ein neues Spiel erstellt}
+}
+\newglossaryentry{akkumuliert}{name = akkumuliert,
+	description={Gehaeuft, nicht einzeln}
+}
+
 \begin{document}
 \begin{titlepage}
 
@@ -39,48 +65,48 @@ Hier Logo einfuegen
 Ein Online-Multiplayer Kartenspiel.
 
 \subsection{Musskriterien}
-Es gibt einen Server der das Spiel verwaltet und Clients die spielen.
-\subsubsection{Server}
+Es gibt einen \gls{Server} der das Spiel verwaltet und \glspl{Client} die spielen.
+\subsubsection{\gls{Server}}
 \begin{itemize}
-	\item Clients koennen sich verbinden und eindeutigen Benutzernamen auswaehlen
-	\item Lobby mit der Moeglichkeit, Spiele zu erstellen und offenen Spielen beizutreten
+	\item \glspl{Client} koennen sich verbinden und eindeutigen Benutzernamen auswaehlen
+	\item \gls{Lobby} mit der Moeglichkeit, Spiele zu erstellen und offenen Spielen beizutreten
 	\item Unterstuetzung mehrere parallel laufender Spiele
 	\item Regelauswertung mit Ueberpruefung erlaubter Aktionen, Punktezaehlung, Kartenausgabe
 	\item Unterstuetzung der Spiele Hearts und Wizard
-	\item Chat in der Lobby
+	\item Chat in der \gls{Lobby}
 	\item Chat mit Mitspielern waehrend eines Spiels
 	\item Schutz vor Cheats (Mehrfachanmeldung?)
 \end{itemize}
 
-\subsubsection{Client}
+\subsubsection{\gls{Client}}
 \begin{itemize}
 	\item GUI
 	\begin{itemize}
 		\item Darstellungsfenster, das mindestens bei der Aufloesung von 1024x768 Bildpunkten benutzt werden kann
 		\item Darstellung des laufenden Spiels (eigene Hand, verdeckte Hand der anderen Spieler, Ablage- und Aufnahmestapel, 			Punktestand, evtl. Zusatzinformationen)
 		\item Eingabemoeglichkeiten fuer erlaubte Aktionen waehrend des Spiels (Karte ablegen, Ansagen, etc.)
-		\item Die GUI muss den Benutzer sinnvoll unterstuetzen und benutzerfreundliche Eingabeelemente anbieten
+		\item Die \gls{GUI} muss den Benutzer sinnvoll unterstuetzen und benutzerfreundliche Eingabeelemente anbieten
 		\item Fluessige Darstellung
-		\item Unabhaengigkeit vom Regelwerk
-		\item Beim Start Auswahl des Servers und des Benutzernamens
-		\item Anzeige von offenen Spielen in der Lobby mit Moeglichkeit zum Erstellen und Beitreten
-		\item Chat in der Lobby und waehrend des Spiels
+		\item Unabhaengigkeit vom \gls{Regelwerk}
+		\item Beim Start Auswahl des \gls{Server}s und des Benutzernamens
+		\item Anzeige von offenen Spielen in der \gls{Lobby} mit Moeglichkeit zum Erstellen und Beitreten
+		\item Chat in der \gls{Lobby} und waehrend des Spiels
 	\end{itemize}
 	\item Modell
 	\begin{itemize}
-		\item Verwaltung der Verbindung mit dem Server
-		\item Verwaltung des aktuellen Spielzustands (soweit Client bekannt)
-		\item Vorab-Regelauswertung zur Unterstuetzung des Nutzers (ungueltige Spielaktionen sind nicht durchfuehrbar in der 					GUI)
+		\item Verwaltung der Verbindung mit dem \gls{Server}
+		\item Verwaltung des aktuellen Spielzustands (soweit \gls{Client} bekannt)
+		\item Vorab-Regelauswertung zur Unterstuetzung des Nutzers (ungueltige Spielaktionen sind nicht durchfuehrbar in der 					\gls{GUI})
 	\end{itemize}
 \end{itemize}
 
 \subsection{Wunschkriterien}
 \begin{itemize}
-	\item Weitere Regelwerke (Uno, Mau-Mau, Black Jack)
+	\item Weitere \glspl{Regelwerk} (Uno, Mau-Mau, Black Jack)
 	\item Scoresystem
 	\item Statistiken
 	\item Mehrsprachen
-	\item Veraenderbare GUI (Farben etc)
+	\item Veraenderbare \gls{GUI} (Farben etc)
 \end{itemize}
 
 \subsection{Abgrenzungskriterien}
@@ -94,18 +120,18 @@ Es gibt einen Server der das Spiel verwaltet und Clients die spielen.
 \subsection{Anwendungsbereich}
 Internetspiel im Freundeskreis.
 \subsection{Zielgruppe}
-Personen, die gemeinsam ueber ein lokals Netzwerkoder das Internet spielen moechten. 
+Personen, die gemeinsam ueber ein lokales Netzwerkoder das Internet spielen moechten. 
 \subsection{Betriebsbedingungen}
 Betriebsdauer ?
 
 \section{Produktumgebung}
 \subsection{Software}
 	\begin{itemize}
-		\item Client
+		\item \gls{Client}
 		\begin{itemize}
 			\item ...
 		\end{itemize}
-		\item Server
+		\item \gls{Server}
 		\begin{itemize}
 			\item ...	
 			\item ...
@@ -114,7 +140,7 @@ Betriebsdauer ?
 
 \subsection{Hardware}
 \begin{itemize}
-		\item Client
+		\item \gls{Client}
 		\begin{itemize}
 			\item Internetfaehiger Rechner
 		\end{itemize}
@@ -132,14 +158,14 @@ Internetverbindung.
 \section{Produktfunktionen}
 \subsection{Startseite}
 \begin{itemize}
-	\item /F040/ Auswahl vom gewuenschtem Server und Namen, danach Weiterleitung zur Lobby
+	\item /F040/ Auswahl vom gewuenschtem \gls{Server} und Namen, danach Weiterleitung zur \gls{Lobby}
 	\item /F050W/ Auswahl der Sprache
 \end{itemize}
 
-\subsection{Lobby}
+\subsection{\gls{Lobby}}
 \begin{itemize}
 	\item /F060/ Anzeige von eingeloggten Spieler
-	\item /F070/ Chatten mit anderen eingeloggten Spielern auf dem Server
+	\item /F070/ Chatten mit anderen eingeloggten Spielern auf dem \gls{Server}
 	\item /F080/ Anzeige offener Spiele mit Spielart und Spieleranzahl sowie die Option den Spielen beizutreten (Weiterleitung zum Wartefenster)
 	\item /F090/ Option ein eigenes Spiel zu erstellen(Weiterleitung zum Erstellungsfenster)
 	\item /F100/ Hilfe zu den Spielarten
@@ -147,7 +173,7 @@ Internetverbindung.
 
 \subsection{Erstellungsfenster}
 \begin{itemize}
-	\item /F120/ Auswahl vom Regelwerk und  Namen des Spiels 
+	\item /F120/ Auswahl vom \gls{Regelwerk} und  Namen des Spiels 
 	\item /F130W/ Moeglichkeit eingeloggte Spieler einzuladen
 \end{itemize}
 
@@ -164,7 +190,7 @@ Internetverbindung.
 	\item /F200/ Anzeige von Punktestand oder anderen Zusatzinformationen
 	\item /F210/ Eingabemöglichkeit für regelkonforme Aktionen
 	\item /F220/ Chatten mit anderen Mitspielern
-	\item /F230/ Wenn einer das Spiel verlaesst wird das Spiel beendet und die anderen Mitspieler werden zur Lobby zurueckgeleitet
+	\item /F230/ Wenn einer das Spiel verlaesst wird das Spiel beendet und die anderen Mitspieler werden zur \gls{Lobby} zurueckgeleitet
 	\item /F240/ Hilfe zu dem Spiel
 	\item /F250/ Auswertung bei Ende des Spiels
 \end{itemize}
@@ -172,7 +198,7 @@ Internetverbindung.
 \section{Produktdaten}
 
 \begin{itemize}
-	\item /D010/ Lobbydaten
+	\item /D010/ \gls{Lobby}daten
 	 \begin{itemize}
 	 	\item Spielerdaten
 	 	\begin{itemize}
@@ -187,7 +213,7 @@ Internetverbindung.
 	 \end{itemize}
 	 \item /D020/ Erstellungsdaten
 	 \begin{itemize}
-	 	\item Spielleiter(eindeutig)
+	 	\item \gls{Spielleiter}(eindeutig)
 	 	\item Spielernamen(eindeutig)
 	 	\item Spieleranzahl und maximale Spieleranzahl
 	 	\item Spieltyp
@@ -223,7 +249,7 @@ Internetverbindung.
 \section{Produktleistungen}
 \begin{itemize}
 	\item /L040/ Einhaltung der Spielregeln gewaehrleisten
-	\item /L050/ Fehlermeldungen akkumuliert ausgeben
+	\item /L050/ Fehlermeldungen \gls{akkumuliert} ausgeben
 	\item /L060/ Verwaltung mehrerer parallel laufender Spiele
 	\item /L070/ Chat und Spiel sollen fluessig laufen
 	\item /L080/ Einfache und hilfreiche Bedienbarkeit
@@ -263,13 +289,7 @@ Hier Bild einfuegen.
 Keine.
 
 \section{Ergaenzung}
-.....
-\section{Glossar}
-\begin{itemize}
-	\item Client: ...
-	\item Server: ...
-	\item Regelwerk: ...
-	\item Lobby: ...
-	\item ...
-\end{itemize}
+..... 
+\newpage
+\printglossaries
 \end{document}

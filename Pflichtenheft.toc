@@ -1,7 +1,7 @@
 \contentsline {section}{\numberline {1}Zielbestimmung}{2}
 \contentsline {subsection}{\numberline {1.1}Musskriterien}{2}
-\contentsline {subsubsection}{\numberline {1.1.1}Server}{2}
-\contentsline {subsubsection}{\numberline {1.1.2}Client}{2}
+\contentsline {subsubsection}{\numberline {1.1.1}\gls {Server}}{2}
+\contentsline {subsubsection}{\numberline {1.1.2}\gls {Client}}{2}
 \contentsline {subsection}{\numberline {1.2}Wunschkriterien}{3}
 \contentsline {subsection}{\numberline {1.3}Abgrenzungskriterien}{3}
 \contentsline {section}{\numberline {2}Produkteinsatz}{3}
@@ -14,7 +14,7 @@
 \contentsline {subsection}{\numberline {3.3}Orgware}{4}
 \contentsline {section}{\numberline {4}Produktfunktionen}{4}
 \contentsline {subsection}{\numberline {4.1}Startseite}{4}
-\contentsline {subsection}{\numberline {4.2}Lobby}{4}
+\contentsline {subsection}{\numberline {4.2}\gls {Lobby}}{4}
 \contentsline {subsection}{\numberline {4.3}Erstellungsfenster}{5}
 \contentsline {subsection}{\numberline {4.4}Wartefenster}{5}
 \contentsline {subsection}{\numberline {4.5}Spiel}{5}
@@ -27,4 +27,4 @@
 \contentsline {subsection}{\numberline {9.2}Hardware}{7}
 \contentsline {subsection}{\numberline {9.3}Orgware}{7}
 \contentsline {section}{\numberline {10}Ergaenzung}{7}
-\contentsline {section}{\numberline {11}Glossar}{7}
+\contentsline {section}{Glossary}{8}
