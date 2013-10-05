@@ -62,13 +62,9 @@ public class ClientWindow extends JFrame {
 		scrollPane.setViewportView(txtrSpielerHfGl);
 		
 		textField = new JTextField();
-		textField.setBounds(10, 507, 655, 44);
+		textField.setBounds(10, 507, 764, 44);
 		contentPane.add(textField);
 		textField.setColumns(10);
-		
-		JButton btnNewButton = new JButton("SEND");
-		btnNewButton.setBounds(675, 507, 99, 44);
-		contentPane.add(btnNewButton);
 		
 		JPanel panel = new ImagePanel();
 		panel.setBounds(10, 11, 764, 370);
@@ -85,7 +81,7 @@ public class ClientWindow extends JFrame {
 
 	    public ImagePanel() {
 	       try {                
-	          image = ImageIO.read(new File(".\\src\\game.png"));
+	          image = ImageIO.read(new File("./src/game.png"));
 	       } catch (IOException ex) {
 	            // handle exception...
 	       }

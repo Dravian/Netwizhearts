@@ -11,6 +11,7 @@ import javax.swing.JList;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.AbstractListModel;
+import javax.swing.ListSelectionModel;
 
 public class LobbyWindow extends JFrame {
 
@@ -40,14 +41,16 @@ public class LobbyWindow extends JFrame {
 	 * Create the frame.
 	 */
 	public LobbyWindow() {
+		setTitle("Server Lobby");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 600, 400);
+		setBounds(100, 100, 596, 433);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JList list = new JList();
+		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		list.setModel(new AbstractListModel() {
 			String[] values = new String[] {"Player1", "Player2", "Player3", "Player4"};
 			public int getSize() {
@@ -77,7 +80,7 @@ public class LobbyWindow extends JFrame {
 				return values[index];
 			}
 		});
-		list_1.setBounds(292, 11, 282, 158);
+		list_1.setBounds(292, 11, 282, 191);
 		contentPane.add(list_1);
 		
 		JScrollPane scrollPane = new JScrollPane(txtrSpielerHelloSpieler);
@@ -85,20 +88,20 @@ public class LobbyWindow extends JFrame {
 		contentPane.add(scrollPane);
 		
 		textField = new JTextField();
-		textField.setBounds(10, 320, 480, 31);
+		textField.setBounds(10, 320, 564, 31);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JButton btnNewButton = new JButton("SEND");
-		btnNewButton.setBounds(492, 320, 82, 31);
-		contentPane.add(btnNewButton);
-		
 		JButton btnHostGame = new JButton("Host Game");
-		btnHostGame.setBounds(292, 179, 111, 23);
+		btnHostGame.setBounds(234, 363, 117, 25);
 		contentPane.add(btnHostGame);
 		
 		JButton btnJoinGame = new JButton("Join Game");
-		btnJoinGame.setBounds(463, 180, 111, 23);
+		btnJoinGame.setBounds(457, 363, 117, 25);
 		contentPane.add(btnJoinGame);
+		
+		JButton btnLeave = new JButton("Leave");
+		btnLeave.setBounds(10, 364, 117, 25);
+		contentPane.add(btnLeave);
 	}
 }
