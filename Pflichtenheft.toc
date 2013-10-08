@@ -16,15 +16,16 @@
 \contentsline {subsection}{\numberline {4.1}Startseite}{4}
 \contentsline {subsection}{\numberline {4.2}\gls {Lobby}}{4}
 \contentsline {subsection}{\numberline {4.3}Erstellungsfenster}{5}
-\contentsline {subsection}{\numberline {4.4}Wartefenster}{5}
-\contentsline {subsection}{\numberline {4.5}Spiel}{5}
+\contentsline {subsection}{\numberline {4.4}Passwortabfrage}{5}
+\contentsline {subsection}{\numberline {4.5}Wartefenster}{5}
+\contentsline {subsection}{\numberline {4.6}Spiel}{5}
 \contentsline {section}{\numberline {5}Produktdaten}{5}
 \contentsline {section}{\numberline {6}Produktleistungen}{6}
-\contentsline {section}{\numberline {7}Benutzungsoberflaeche}{6}
-\contentsline {section}{\numberline {8}Testszenarien}{7}
-\contentsline {section}{\numberline {9}Entwicklungsumgebung}{7}
-\contentsline {subsection}{\numberline {9.1}Software}{7}
-\contentsline {subsection}{\numberline {9.2}Hardware}{7}
-\contentsline {subsection}{\numberline {9.3}Orgware}{7}
-\contentsline {section}{\numberline {10}Ergaenzung}{7}
-\contentsline {section}{Glossary}{8}
+\contentsline {section}{\numberline {7}Benutzungsoberflaeche}{7}
+\contentsline {section}{\numberline {8}Testszenarien}{9}
+\contentsline {section}{\numberline {9}Entwicklungsumgebung}{10}
+\contentsline {subsection}{\numberline {9.1}Software}{10}
+\contentsline {subsection}{\numberline {9.2}Hardware}{10}
+\contentsline {subsection}{\numberline {9.3}Orgware}{10}
+\contentsline {section}{\numberline {10}Ergaenzung}{10}
+\contentsline {section}{Glossary}{11}
