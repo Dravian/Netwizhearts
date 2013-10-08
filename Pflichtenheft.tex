@@ -1,4 +1,5 @@
 \documentclass{article}
+\usepackage[pdfcreator={LaTeX}]{hyperref}
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc} 
 \usepackage[ngerman]{babel}
@@ -71,7 +72,7 @@ Es gibt einen \gls{Server} der das Spiel verwaltet und \glspl{Client} die spiele
 	\item \glspl{Client} können sich verbinden und eindeutigen Benutzernamen auswählen
 	\item \gls{Lobby} mit der Möglichkeit, Spiele zu erstellen und offenen Spielen beizutreten
 	\item Unterstützung mehrere parallel laufender Spiele
-	\item Regelauswertung mit Überpruefung erlaubter Aktionen, Punktezählung, Kartenausgabe
+	\item Regelauswertung mit Überprüfung erlaubter Aktionen, Punktezählung, Kartenausgabe
 	\item Unterstützung der Spiele Hearts und Wizard
 	\item Chat in der \gls{Lobby}
 	\item Chat mit Mitspielern während eines Spiels
@@ -174,14 +175,14 @@ Internetverbindung.
 \subsection{Erstellungsfenster}
 \begin{itemize}
 	\item /F120/ Auswahl vom \gls{Regelwerk} und  Namen des Spiels 
-	\item /F130W/ Möglichkeit eingeloggte Spieler einzuladen
+	\item /F130W/ Möglichkeit ein Passwort für das Spiel zu setzen
 \end{itemize}
 
 \subsection{Passwortabfrage}
 \begin{itemize}
-	\item /F140/ Abfragen des vom Host gewaehlten Passworts
-	\item /F142/ Zugang zum Wartefenster gewaehren
-	\item /F145/ Abbrechen und zur Lobby zurueckkehren
+	\item /F140/ Abfragen des vom Host gewählten Passworts
+	\item /F142/ Zugang zum Wartefenster gewähren
+	\item /F145/ Abbrechen und zur Lobby zurückkehren
 \end{itemize}
 
 \subsection{Wartefenster}
@@ -189,6 +190,7 @@ Internetverbindung.
 	\item /F150/ Anzeigen des Spieltyps, der Spieler und Spielerzahl
 	\item /F160/ Ab Mindestanzahl der Spieler kann der Spielersteller des Spiel starten
 	\item /F170/ Wartefenster wird nur aufgelöst wenn der Spielersteller selbst das Spiel verlässt
+	\item /F180/ Spielleiter kann unerwünschte Spieler entfernen
 \end{itemize}
 
 \subsection{Spiel}
