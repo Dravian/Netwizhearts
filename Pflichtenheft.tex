@@ -12,22 +12,23 @@
 }
 \newglossaryentry{Client}{name=Client,
 	plural = Clients,
-	description={Der Benutzer einer Applikation}
+	description={Ein Spieler (bzw. Computer des Spielers) der das Online-Kartenspiel nutzt.}
 }
 \newglossaryentry{Server}{name = Server,
-	description={Rechner,der Dienste zur Verfügung stellt}
+	description={Rechner, der das Online-Kartenspiel zur Verfügung stellt}
 }
 \newglossaryentry{Lobby}{name = Lobby,
 	description={Ort, an dem Spieler ein Kartenspiel auswählen oder beitreten können}
 }
-\newglossaryentry{GUI}{name = GUI,
-	description={Graphische Oberfläche}
-}
 \newglossaryentry{Spielleiter}{name = Spielleiter,
 	description={Derjenige, der in der Lobby ein neues Spiel erstellt}
 }
-\newglossaryentry{akkumuliert}{name = akkumuliert,
-	description={Gehäuft, nicht einzeln}
+\newglossaryentry{Erstellungsfenster}{name = Erstellungsfenster,
+	description={Fenster in welchem der Spielleiter das Spiel festlegt.}
+}
+\newglossaryentry{Wartefenster}{name = Wartefenster,
+	description={Fenster auf welchem man sich befindet, während man darauf wartet, 
+		dass die Mindestteilemerzahl erfüllt ist und das Spiel gestartet wird. }
 }
 
 \begin{document}
@@ -84,7 +85,7 @@ Es gibt einen \gls{Server} der das Spiel verwaltet und \glspl{Client} die spiele
 		\item Darstellungsfenster, das mindestens bei der Auflösung von 1024x768 Bildpunkten benutzt werden kann
 		\item Darstellung des laufenden Spiels (eigene Hand, verdeckte Hand der anderen Spieler, Ablage- und Aufnahmestapel, 			Punktestand, evtl. Zusatzinformationen)
 		\item Eingabemöglichkeiten für erlaubte Aktionen während des Spiels (Karte ablegen, Ansagen, etc.)
-		\item Die \gls{GUI} muss den Benutzer sinnvoll unterstützen und benutzerfreundliche Eingabeelemente anbieten
+		\item Die GUI muss den Benutzer sinnvoll unterstützen und benutzerfreundliche Eingabeelemente anbieten
 		\item Flüssige Darstellung
 		\item Unabhängigkeit vom \gls{Regelwerk}
 		\item Beim Start Auswahl des \gls{Server}s und des Benutzernamens
@@ -95,7 +96,7 @@ Es gibt einen \gls{Server} der das Spiel verwaltet und \glspl{Client} die spiele
 	\begin{itemize}
 		\item Verwaltung der Verbindung mit dem \gls{Server}
 		\item Verwaltung des aktuellen Spielzustands (soweit \gls{Client} bekannt)
-		\item Vorab-Regelauswertung zur Unterstützung des Nutzers (ungültige Spielaktionen sind nicht durchführbar in der 					\gls{GUI})
+		\item Vorab-Regelauswertung zur Unterstützung des Nutzers (ungültige Spielaktionen sind nicht durchführbar in der 					GUI)
 	\end{itemize}
 \end{itemize}
 
@@ -105,7 +106,7 @@ Es gibt einen \gls{Server} der das Spiel verwaltet und \glspl{Client} die spiele
 	\item Scoresystem
 	\item Statistiken
 	\item Mehrsprachen
-	\item Veränderbare \gls{GUI} (Farben etc)
+	\item Veränderbare GUI (Farben etc)
 \end{itemize}
 
 \subsection{Abgrenzungskriterien}
@@ -121,7 +122,7 @@ Internetspiel im Freundeskreis.
 \subsection{Zielgruppe}
 Personen, die gemeinsam über ein lokales Netzwerkoder das Internet spielen möchten. 
 \subsection{Betriebsbedingungen}
-Betriebsdauer ?
+Betriebsdauer 24/7
 
 \section{Produktumgebung}
 \subsection{Software}
@@ -165,8 +166,8 @@ Internetverbindung.
 \begin{itemize}
 	\item /F060/ Anzeige von eingeloggten Spieler
 	\item /F070/ Chatten mit anderen eingeloggten Spielern auf dem \gls{Server}
-	\item /F080/ Anzeige offener Spiele mit Spielart und Spieleranzahl sowie die Option den Spielen beizutreten (Weiterleitung zum Wartefenster)
-	\item /F090/ Option ein eigenes Spiel zu erstellen(Weiterleitung zum Erstellungsfenster)
+	\item /F080/ Anzeige offener Spiele mit Spielart und Spieleranzahl sowie die Option den Spielen beizutreten (Weiterleitung zum \gls{Wartefenster})
+	\item /F090/ Option ein eigenes Spiel zu erstellen(Weiterleitung zum \gls{Erstellungsfenster})
 	\item /F100/ Hilfe zu den Spielarten
 \end{itemize}
 
@@ -179,7 +180,7 @@ Internetverbindung.
 \subsection{Passwortabfrage}
 \begin{itemize}
 	\item /F140/ Abfragen des vom Host gewählten Passworts
-	\item /F142/ Zugang zum Wartefenster gewähren
+	\item /F142/ Zugang zum \gls{Wartefenster} gewähren
 	\item /F145/ Abbrechen und zur Lobby zurückkehren
 \end{itemize}
 
@@ -187,7 +188,7 @@ Internetverbindung.
 \begin{itemize}
 	\item /F150/ Anzeigen des Spieltyps, der Spieler und Spielerzahl
 	\item /F160/ Ab Mindestanzahl der Spieler kann der Spielersteller des Spiel starten
-	\item /F170/ Wartefenster wird nur aufgelöst wenn der Spielersteller selbst das Spiel verlässt
+	\item /F170/ \gls{Wartefenster} wird nur aufgelöst wenn der Spielersteller selbst das Spiel verlässt
 	\item /F180/ Spielleiter kann unerwünschte Spieler entfernen
 \end{itemize}
 
@@ -256,7 +257,7 @@ Internetverbindung.
 \section{Produktleistungen}
 \begin{itemize}
 	\item /L040/ Einhaltung der Spielregeln gewährleisten
-	\item /L050/ Fehlermeldungen \gls{akkumuliert} ausgeben
+	\item /L050/ Fehlermeldungen akkumuliert ausgeben
 	\item /L060/ Verwaltung mehrerer parallel laufender Spiele
 	\item /L070/ Chat und Spiel sollen flüssig laufen
 	\item /L080/ Einfache und hilfreiche Bedienbarkeit
@@ -269,9 +270,9 @@ Internetverbindung.
 \begin{itemize}
 	\item Startseite: \\ \includegraphics{GUI_images/Login}
 	\item Lobby: \\ \includegraphics[scale=0.7]{GUI_images/ServerLobby}
-	\item Erstellungsfenster: \\ 
+	\item \gls{Erstellungsfenster}: \\ 
 		\includegraphics[scale=0.8]{GUI_images/CreateGame}
-	\item Wartefenster: \\ \includegraphics[scale=0.7]{GUI_images/GameLobby}
+	\item \gls{Wartefenster}: \\ \includegraphics[scale=0.7]{GUI_images/GameLobby}
 	\item Passwortabfrage: \\ \includegraphics{GUI_images/PasswordRequest}
 	\item Spiel: \\ \includegraphics[scale=0.6]{GUI_images/GameClient}
 \end{itemize}
