@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.10.1)  10 OCT 2013 16:16
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.10.1)  10 OCT 2013 20:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -648,12 +648,6 @@ es Spiels (Karte
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\gls' on input line 161.
 
-
-Overfull \hbox (0.22945pt too wide) in paragraph at lines 164--165
-[]\OT1/cmr/m/n/10 /F070/ Einem Spiel beitreten. (Bei Pass-wort gesch[]utzten Sp
-iel Weitleitung
- []
-
 [4]
 Overfull \hbox (11.75064pt too wide) in paragraph at lines 173--174
 []\OT1/cmr/m/n/10 /F124/ Er-stel-lung ab-brechen und [][]Er-stel-lungs-fen-ster
@@ -665,14 +659,14 @@ Overfull \hbox (11.75064pt too wide) in paragraph at lines 173--174
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\gls' on input line 279.
 
-[7] <GUI_images/Login.png, id=263, 241.65282pt x 161.10187pt>
+[7] <GUI_images/Login.png, id=253, 241.65282pt x 161.10187pt>
 File: GUI_images/Login.png Graphic file (type png)
 
 <use GUI_images/Login.png>
 Package pdftex.def Info: GUI_images/Login.png used on input line 326.
 (pdftex.def)             Requested size: 241.65222pt x 161.10147pt.
 
-<GUI_images/ServerLobby.png, id=264, 496.10344pt x 376.40625pt>
+<GUI_images/ServerLobby.png, id=254, 496.10344pt x 376.40625pt>
 File: GUI_images/ServerLobby.png Graphic file (type png)
 
 <use GUI_images/ServerLobby.png>
@@ -684,21 +678,21 @@ Overfull \hbox (27.27007pt too wide) in paragraph at lines 327--328
  []
 
 [8 <./GUI_images/Login.png>]
-<GUI_images/CreateGame.png, id=270, 343.2825pt x 231.11343pt>
+<GUI_images/CreateGame.png, id=260, 343.2825pt x 231.11343pt>
 File: GUI_images/CreateGame.png Graphic file (type png)
 
 <use GUI_images/CreateGame.png>
 Package pdftex.def Info: GUI_images/CreateGame.png used on input line 329.
 (pdftex.def)             Requested size: 274.62636pt x 184.89099pt.
 
-<GUI_images/GameLobby.png, id=272, 347.79938pt x 330.48468pt>
+<GUI_images/GameLobby.png, id=262, 347.79938pt x 330.48468pt>
 File: GUI_images/GameLobby.png Graphic file (type png)
 
 <use GUI_images/GameLobby.png>
 Package pdftex.def Info: GUI_images/GameLobby.png used on input line 330.
 (pdftex.def)             Requested size: 243.4579pt x 231.33769pt.
  [9 <./GUI_images/ServerLobby.png> <./GUI_images/CreateGame.png>]
-<GUI_images/PasswordRequest.png, id=278, 278.54062pt x 173.14688pt>
+<GUI_images/PasswordRequest.png, id=267, 278.54062pt x 173.14688pt>
 File: GUI_images/PasswordRequest.png Graphic file (type png)
 
 <use GUI_images/PasswordRequest.png>
@@ -706,7 +700,7 @@ Package pdftex.def Info: GUI_images/PasswordRequest.png used on input line 331.
 
 (pdftex.def)             Requested size: 278.53993pt x 173.14645pt.
 
-<GUI_images/GameClient.png, id=279, 657.95813pt x 492.33937pt>
+<GUI_images/GameClient.png, id=268, 657.95813pt x 492.33937pt>
 File: GUI_images/GameClient.png Graphic file (type png)
 
 <use GUI_images/GameClient.png>
@@ -717,48 +711,104 @@ Overfull \hbox (74.77795pt too wide) in paragraph at lines 332--333
 [] 
  []
 
-[10 <./GUI_images/GameLobby.png> <./GUI_images/PasswordRequest.png>] [11 <./GUI
-_images/GameClient.png>] [12] (./Pflichtenheft.gls)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 366.
- [13]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 366.
+[10 <./GUI_images/GameLobby.png> <./GUI_images/PasswordRequest.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 337--340
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 337--340
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 341--350
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 341--350
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 341--350
+
+ []
+
+
+Overfull \hbox (5.97272pt too wide) in paragraph at lines 341--350
+\OT1/cmr/m/n/10 Eingabe ein-er falschen In-ter-ne-tadresse in /F040/ wird mit e
+ntsprechen-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 341--350
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 341--350
+
+ []
+
+[11 <./GUI_images/GameClient.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 350--352
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 356--359
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 356--359
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 360--362
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 363--364
+
+ []
+
+[12] [13] (./Pflichtenheft.gls)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 392.
+ [14]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 392.
  (./Pflichtenheft.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 366.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 366.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 392.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 392.
+Package rerunfilecheck Info: File `Pflichtenheft.out' has not changed.
+(rerunfilecheck)             Checksum: 5166BA1FE129215C20A905A984EA877E;1913.
 
-
-Package rerunfilecheck Warning: File `Pflichtenheft.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Pflichtenheft.out':
-(rerunfilecheck)             Before: 9F29670C94C65E8E3A56DE01975AFD76;2029
-(rerunfilecheck)             After:  797A26C256C1D55677BA6A4322C1C503;1972.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 366.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 392.
  ) 
 Here is how much of TeX's memory you used:
- 8027 strings out of 495059
- 118016 string characters out of 3182030
- 225232 words of memory out of 3000000
- 11029 multiletter control sequences out of 15000+200000
+ 8022 strings out of 495059
+ 117921 string characters out of 3182030
+ 224232 words of memory out of 3000000
+ 11025 multiletter control sequences out of 15000+200000
  5465 words of font info for 20 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  37i,7n,38p,1484b,643s stack positions out of 5000i,500n,10000p,200000b,50000s
-pdfTeX warning (dest): name{subsection.3.3} has been referenced but does not 
-exist, replaced by a fixed one
-
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Pflichtenheft.pdf (14 pages, 490680 bytes).
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on Pflichtenheft.pdf (15 pages, 492272 bytes).
 PDF statistics:
- 348 PDF objects out of 1000 (max. 8388607)
- 317 compressed objects within 4 object streams
- 58 named destinations out of 1000 (max. 500000)
- 311 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 342 PDF objects out of 1000 (max. 8388607)
+ 310 compressed objects within 4 object streams
+ 57 named destinations out of 1000 (max. 500000)
+ 295 words of extra memory for PDF output out of 10000 (max. 10000000)
 

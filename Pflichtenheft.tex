@@ -321,7 +321,7 @@ Dauerbetrieb der Software.
 	\item /L110W/ Mehrsprachigkeit unterstützen
 \end{itemize}
 
-\section{Benutzungeroberfläche}
+\section{Benutzeroberfläche}
 \begin{itemize}
 	\item Startseite: \\ \includegraphics{GUI_images/Login}
 	\item Lobby: \\ \includegraphics[scale=0.7]{GUI_images/ServerLobby}
@@ -334,7 +334,36 @@ Dauerbetrieb der Software.
 
 \section{Testszenarien}
 \begin{itemize}
-	\item Benutzername, Server aussuchen
+	\item Startseite: \\ \\
+		  Die folgenden Tests prüfen die Funktionalität der Startseite. \\
+		  Für diese Tests werden keine Vorraussetzungen benötigt. \\
+	\begin{itemize}
+		\item Tests für /F045/. \\
+			  Nach Eingabe von Benutzername und Serveradresse in /F040/. \\ \\
+			  Eingabe einer korrekten Serveradresse und freiem Benutzernamen in /F040/
+			  führt zum Verbindungsaufbau mit dem Server und anschließendem 
+			  wechsel in die Server Lobby. \\ \\
+			  Eingabe eines bereits verwendeten oder leeren Benutzernamens in /F040/
+			  wird mit entsprechendem Hinweis quittiert. Die Startseite wird weiterhin angezeigt. \\ \\
+			  Eingabe einer falschen Internetadresse in /F040/ wird mit entsprechendem Hinweis quittiert.
+			  Die Startseite wird weiterhin angezeigt. \\ \\
+		\item Test für /F050W/. \\ Im Dropdownmenü werden alle verfügbaren Sprachen angezeigt. \\ \\
+			  Nach Auswahl einer Sprache wird die Startseite neu erstellt und alle darauf folgenden Fenster und 						  Dialoge in der ausgewählten Sprache angezeigt. 
+			  
+			  
+	\end{itemize}
+
+	\item Server Lobby: \\ \\
+		  Die folgenden Tests prüfen die Funktionalität der Server Lobby. \\
+		  Um die Tests auf dieser Ebene durchführen zu können ist eine aktive Serververbindung nach dem Login 					  erforderlich. \\
+	\begin{itemize}
+		\item Nach dem erscheinen der Server Lobby ist der zuvor gewählte Benutzername in /L30/ zu sehen. \\
+			  Jeder weitere mit dem Server verbundene Client erscheint mit seinem eindeutigen Benutzernamen in /L30/.\\			  
+		
+		\item Tests für /F070/. \\
+			  
+	\end{itemize}
+	
 	\item Spiel erstellen (Lobby)
 	\item Spiel beitreten (Lobby)
 	\item Mehrere Spiele parallel starten (Lobby)
