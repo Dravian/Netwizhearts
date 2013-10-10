@@ -49,16 +49,6 @@ public class NewGameLobby extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblPlayers = new JLabel("Players:");
-		lblPlayers.setBounds(241, 12, 112, 23);
-		contentPane.add(lblPlayers);
-		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"3", "4", "5", "6"}));
-		comboBox.setSelectedIndex(0);
-		comboBox.setBounds(241, 43, 47, 24);
-		contentPane.add(comboBox);
-		
 		JList list = new JList();
 		list.setModel(new AbstractListModel() {
 			String[] values = new String[] {"Player1", "Player2", "Player3"};
@@ -82,7 +72,7 @@ public class NewGameLobby extends JFrame {
 		textField.setColumns(10);
 		
 		JButton btnNewButton_1 = new JButton("Remove Player");
-		btnNewButton_1.setBounds(241, 100, 138, 25);
+		btnNewButton_1.setBounds(235, 117, 138, 25);
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Leave");

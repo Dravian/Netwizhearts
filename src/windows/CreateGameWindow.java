@@ -27,6 +27,7 @@ public class CreateGameWindow extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JTextField textField;
 	private BufferedImage image;
+	private JTextField textField_1;
 
 	/**
 	 * Create the frame.
@@ -35,7 +36,7 @@ public class CreateGameWindow extends JFrame {
 	public CreateGameWindow() throws IOException {
 		setTitle("Game Creation");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 390, 260);
+		setBounds(100, 100, 390, 279);
 		getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Select Game");
@@ -48,7 +49,7 @@ public class CreateGameWindow extends JFrame {
 		getContentPane().add(comboBox);
 		
 		JCheckBox chckbxPassword = new JCheckBox("Set Password:");
-		chckbxPassword.setBounds(12, 120, 128, 23);
+		chckbxPassword.setBounds(12, 140, 128, 23);
 		getContentPane().add(chckbxPassword);
 		
 		JButton btnNewButton = new JButton("Leave");
@@ -56,11 +57,11 @@ public class CreateGameWindow extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnNewButton.setBounds(12, 195, 117, 25);
+		btnNewButton.setBounds(12, 215, 117, 25);
 		getContentPane().add(btnNewButton);
 		
 		textField = new JTextField();
-		textField.setBounds(12, 151, 188, 32);
+		textField.setBounds(12, 171, 188, 32);
 		getContentPane().add(textField);
 		textField.setColumns(10);
 
@@ -77,8 +78,17 @@ public class CreateGameWindow extends JFrame {
 		getContentPane().add(panel);
 		
 		JButton btnNewButton_1 = new JButton("Create");
-		btnNewButton_1.setBounds(257, 195, 117, 25);
+		btnNewButton_1.setBounds(257, 215, 117, 25);
 		getContentPane().add(btnNewButton_1);
+		
+		JLabel lblGameName = new JLabel("Game Name");
+		lblGameName.setBounds(12, 75, 95, 24);
+		getContentPane().add(lblGameName);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(12, 100, 188, 32);
+		getContentPane().add(textField_1);
+		textField_1.setColumns(10);
 	}
 
 	/**
