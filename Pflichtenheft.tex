@@ -120,21 +120,20 @@ Es gibt einen \gls{Server} der das Spiel verwaltet und \glspl{Client} die spiele
 \subsection{Anwendungsbereich}
 Internetspiel im Freundeskreis.
 \subsection{Zielgruppe}
-Personen, die gemeinsam über ein lokales Netzwerkoder das Internet spielen möchten. 
+Personen, die gemeinsam über ein lokales Netzwerk oder das Internet spielen möchten. 
 \subsection{Betriebsbedingungen}
-Betriebsdauer 24/7
+Dauerbetrieb der Software.
 
 \section{Produktumgebung}
 \subsection{Software}
 	\begin{itemize}
 		\item \gls{Client}
 		\begin{itemize}
-			\item ...
+			\item Betriebssystem Microsoft Windows, Mac OS X oder Linux mit aktueller Java Laufzeit.
 		\end{itemize}
 		\item \gls{Server}
 		\begin{itemize}
-			\item ...	
-			\item ...
+			\item Betriebssystem Microsoft Windows, Mac OS X oder Linux mit aktueller Java Laufzeit.
 		\end{itemize}
 	\end{itemize}
 
@@ -147,13 +146,9 @@ Betriebsdauer 24/7
 		\item Server
 		\begin{itemize}
 			\item Internetfähiger Rechner	
-			\item Speicherplatz
-			\item Rechenleistung
+			\item Mindestanforderungen des verwendeten Betriebssystems bezüglich Arbeitsspeicher und Rechenleistung 					      müssen erfüllt sein, können jedoch durch die Anzahl der gehosteten Spieler/Spiele steigen.
 		\end{itemize}
 	\end{itemize}
-
-\subsection{Orgware}
-Internetverbindung.
 
 \section{Produktfunktionen}
 \subsection{Startseite}
@@ -166,15 +161,15 @@ Internetverbindung.
 \subsection{\gls{Lobby}}
 \begin{itemize}
 	\item /F060/ Senden einer Nachricht an andere Spieler über den \gls{Server}
-	\item /F070/ Beitreten zu einem Spiel (Bei Passwort geschützten Spiel Weitleitung zur Passwortabfrage ansonsten Weiterleitung zum \gls{Wartefenster})
-	\item /F080/ Erstellen einer neuen Spiels (Weiterleitung zum \gls{Erstellungsfenster})
+	\item /F070/ Einem Spiel beitreten. (Bei Passwort geschützten Spiel Weiterleitung zur Passwortabfrage ansonsten Weiterleitung zum \gls{Wartefenster})
+	\item /F080/ Erstellen eines neuen Spiels (Weiterleitung zum \gls{Erstellungsfenster})
 	\item /F90/ Verlassen der \gls{Lobby} (Programmende)
 \end{itemize}
 
 \subsection{Erstellungsfenster}
 \begin{itemize}
 	\item /F120/ Auswahl des \gls{Regelwerk}s
-	\item /F122/ Eingabe eines Namen für das Spiel
+	\item /F122/ Eingabe eines Namen für das zu erstellende Spiel
 	\item /F124/ Erstellung abbrechen und \gls{Erstellungsfenster} verlassen (Zurückleitung zur Lobby)
 	\item /F126/ Erstellen eines neues Spiels (Weiterleitung zum Wartefenster)
 	\item /F128/ Hilfe zum Spiel(Wie?)
@@ -183,7 +178,7 @@ Internetverbindung.
 
 \subsection{Passwortabfrage}
 \begin{itemize}
-	\item /F140/ Eingabe eines Passworts
+	\item /F140/ Eingabe des Passworts.
 	\item /F142/ Einem Spiel beitreten mit Zugang zum \gls{Wartefenster}
 	\item /F145/ Abbrechen und zur \gls{Lobby} zurückkehren
 \end{itemize}
@@ -209,9 +204,9 @@ Internetverbindung.
 \begin{itemize}
 	\item Alle Spiele
 	\begin{itemize}
-		\item /F210/ Verlassen des Spiels (Folge: Verlassen des Spiels für alle anderen Spieler auch)
+		\item /F210/ Verlassen des Spiels (Folge: Alle Spieler kehren zur Serverlobby zurück)
 		\item /F220/ Nachricht senden an andere Spieler
-		\item /F230/ Karte spielen (Voraussetzung; Am Zug und Karte erlaubt zu spielen)
+		\item /F230/ Karte spielen (Voraussetzung: Am Zug und Karte erlaubt zu spielen)
 		\item /F240/ Hilfe zum Spiel (Wie?)
 	\end{itemize}
 	\item Herz
@@ -275,7 +270,6 @@ Internetverbindung.
 	 			\item Anzahl
 	 			\item Spielbar
 	 		\end{itemize}	 
-	 		\item Bedenkzeit(X minuten)		
 	 	\end{itemize}
 	 	\item Punktestand und Siegbedingung
 	 \end{itemize}
@@ -327,7 +321,7 @@ Internetverbindung.
 	\item /L110W/ Mehrsprachigkeit unterstützen
 \end{itemize}
 
-\section{Benutzungsoberfläche}
+\section{Benutzungeroberfläche}
 \begin{itemize}
 	\item Startseite: \\ \includegraphics{GUI_images/Login}
 	\item Lobby: \\ \includegraphics[scale=0.7]{GUI_images/ServerLobby}
@@ -351,9 +345,9 @@ Internetverbindung.
 \subsection{Software}
 \begin{itemize}
 	\item LaTeX
-	\item Eclipse 3.8
-	\item IBM Rational Software Architect 8.0
-	\item .....
+	\item Eclipse
+	\item IBM Rational Software Architect
+	\item Git
 \end{itemize}
 
 \subsection{Hardware}
@@ -361,9 +355,6 @@ Internetverbindung.
 	\item Rechner im CIP Pool	
 	\item Private Rechner
 \end{itemize}
-
-\subsection{Orgware}
-Keine.
 
 \section{Ergaenzung}
 ..... 

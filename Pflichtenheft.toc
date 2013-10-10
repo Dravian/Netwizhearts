@@ -12,7 +12,6 @@
 \contentsline {section}{\numberline {3}Produktumgebung}{4}{section.3}
 \contentsline {subsection}{\numberline {3.1}Software}{4}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}Hardware}{4}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}Orgware}{4}{subsection.3.3}
 \contentsline {section}{\numberline {4}Produktfunktionen}{4}{section.4}
 \contentsline {subsection}{\numberline {4.1}Startseite}{4}{subsection.4.1}
 \contentsline {subsection}{\numberline {4.2}\gls {Lobby}}{4}{subsection.4.2}
@@ -25,7 +24,7 @@
 \contentsline {subsection}{\numberline {6.1}\gls {Lobby}}{7}{subsection.6.1}
 \contentsline {subsection}{\numberline {6.2}Erstellungsfenster}{7}{subsection.6.2}
 \contentsline {subsection}{\numberline {6.3}Wartefenster}{7}{subsection.6.3}
-\contentsline {subsection}{\numberline {6.4}Spiel}{8}{subsection.6.4}
+\contentsline {subsection}{\numberline {6.4}Spiel}{7}{subsection.6.4}
 \contentsline {section}{\numberline {7}Benutzungsoberfl\IeC {\"a}che}{8}{section.7}
 \contentsline {section}{\numberline {8}Testszenarien}{11}{section.8}
 \contentsline {section}{\numberline {9}Entwicklungsumgebung}{11}{section.9}
