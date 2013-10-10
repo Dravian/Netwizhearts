@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.10.1)  9 OCT 2013 21:16
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.10.9)  10 OCT 2013 11:39
 entering extended mode
-**C:/Users/Viktoria/Documents/GitHub/sep13/Pflichtenheft.tex
-(C:/Users/Viktoria/Documents/GitHub/sep13/Pflichtenheft.tex
+**Pflichtenheft.tex
+(C:\Users\AlinaAdmin\Desktop\Pflichtenheft\Pflichtenheft.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -410,7 +410,7 @@ File: babel.def 2008/07/08 v3.8m Babel common definitions
 Package babel Info: Making " an active character on input line 92.
 ))
 ("C:\Program Files\MiKTeX 2.9\tex\latex\glossaries\base\glossaries.sty"
-Package: glossaries 2013/04/21 v3.05 (NLCT)
+Package: glossaries 2013/07/05 v3.07 (NLCT)
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty"
 Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
@@ -443,7 +443,7 @@ Package: etex 1998/03/26 v2.0 eTeX basic definition package (PEB)
 Package: xfor 2009/02/05 v1.05 (NLCT)
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\datatool\datatool-base.sty"
-Package: datatool-base 2013/01/15 v2.13 (NLCT)
+Package: datatool-base 2013/09/06 v2.18 (NLCT)
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
 Package: amsmath 2013/01/14 v2.14 AMS math features
@@ -508,7 +508,7 @@ Package: substr 2009/10/20 v1.2 Handle substrings
 \c@su@anzahl=\count114
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\datatool\datatool-fp.sty"
-Package: datatool-fp 2013/01/15 v2.13 (NLCT)
+Package: datatool-fp 2013/08/29 v2.17 (NLCT)
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\fp\fp.sty"
 Package: fp 1995/04/02
@@ -642,7 +642,7 @@ Package: glossary-tree 2012/09/21 v3.03 (NLCT)
 Package glossaries Info: Writing glossary file Pflichtenheft.glo on input line 
 7.
 
-(C:\Users\Viktoria\Documents\GitHub\sep13\Pflichtenheft.aux)
+No file Pflichtenheft.aux.
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
 LaTeX Font Info:    ... okay on input line 34.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
@@ -659,7 +659,6 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 34.
 LaTeX Font Info:    ... okay on input line 34.
 \AtBeginShipoutBox=\box33
 Package hyperref Info: Link coloring OFF on input line 34.
-
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -671,9 +670,6 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 34.
 LaTeX Info: Redefining \pageref on input line 34.
 LaTeX Info: Redefining \nameref on input line 34.
-
-(C:\Users\Viktoria\Documents\GitHub\sep13\Pflichtenheft.out)
-(C:\Users\Viktoria\Documents\GitHub\sep13\Pflichtenheft.out)
 \@outlinefile=\write5
 
 ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
@@ -698,7 +694,7 @@ Dictionary: glossaries-dictionary, Language: English
 LaTeX Font Warning: Font shape `OT1/cmr/bx/sc' undefined
 (Font)              using `OT1/cmr/bx/n' instead on input line 38.
 
-<Bild.pdf, id=127, 291.0875pt x 291.0875pt>
+<Bild.pdf, id=3, 291.0875pt x 291.0875pt>
 File: Bild.pdf Graphic file (type pdf)
  <use Bild.pdf>
 Package pdftex.def Info: Bild.pdf used on input line 43.
@@ -707,14 +703,8 @@ Package pdftex.def Info: Bild.pdf used on input line 43.
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Program Files/MiKTeX 2
 .9/tex/latex/IMTEKda/figures/Bild.pdf>]
-(C:\Users\Viktoria\Documents\GitHub\sep13\Pflichtenheft.toc)
 \tf@toc=\write6
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.69 \subsubsection
-                   {\gls{Server}} [1]
+
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\gls' on input line 69.
@@ -736,98 +726,14 @@ Overfull \hbox (0.97282pt too wide) in paragraph at lines 87--88
 des Spiels (Kar-
  []
 
-[2] [3]
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.95 	\item M
+             odell [1] [2]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\gls' on input line 165.
+(hyperref)                removing `\gls' on input line 166.
 
-[4] [5] <GUI_images/Login.png, id=234, 241.65282pt x 161.10187pt>
-File: GUI_images/Login.png Graphic file (type png)
-
-<use GUI_images/Login.png>
-Package pdftex.def Info: GUI_images/Login.png used on input line 271.
-(pdftex.def)             Requested size: 241.65222pt x 161.10147pt.
- [6]
-<GUI_images/ServerLobby.png, id=241, 496.10344pt x 376.40625pt>
-File: GUI_images/ServerLobby.png Graphic file (type png)
-
-<use GUI_images/ServerLobby.png>
-Package pdftex.def Info: GUI_images/ServerLobby.png used on input line 272.
-(pdftex.def)             Requested size: 347.27003pt x 263.48257pt.
-
-Overfull \hbox (27.27007pt too wide) in paragraph at lines 272--273
-[] 
- []
-
-<GUI_images/CreateGame.png, id=243, 343.2825pt x 231.11343pt>
-File: GUI_images/CreateGame.png Graphic file (type png)
-
-<use GUI_images/CreateGame.png>
-Package pdftex.def Info: GUI_images/CreateGame.png used on input line 274.
-(pdftex.def)             Requested size: 274.62636pt x 184.89099pt.
- [7 <C:/Users/Viktoria/Documents/GitHub/sep13/GUI_images/Login.png> <C:/Users/V
-iktoria/Documents/GitHub/sep13/GUI_images/ServerLobby.png>] <GUI_images/GameLob
-by.png, id=249, 347.79938pt x 330.48468pt>
-File: GUI_images/GameLobby.png Graphic file (type png)
-
-<use GUI_images/GameLobby.png>
-Package pdftex.def Info: GUI_images/GameLobby.png used on input line 275.
-(pdftex.def)             Requested size: 243.4579pt x 231.33769pt.
-
-<GUI_images/PasswordRequest.png, id=250, 278.54062pt x 173.14688pt>
-File: GUI_images/PasswordRequest.png Graphic file (type png)
-
-<use GUI_images/PasswordRequest.png>
-Package pdftex.def Info: GUI_images/PasswordRequest.png used on input line 276.
-
-(pdftex.def)             Requested size: 278.53993pt x 173.14645pt.
- [8 <C:/Users/Viktoria/Documents/GitHub/sep13/GUI_images/CreateGame.png> <C:/Us
-ers/Viktoria/Documents/GitHub/sep13/GUI_images/GameLobby.png>]
-<GUI_images/GameClient.png, id=255, 657.95813pt x 492.33937pt>
-File: GUI_images/GameClient.png Graphic file (type png)
-
-<use GUI_images/GameClient.png>
-Package pdftex.def Info: GUI_images/GameClient.png used on input line 277.
-(pdftex.def)             Requested size: 394.77792pt x 295.40588pt.
-
-Overfull \hbox (74.77795pt too wide) in paragraph at lines 277--278
-[] 
- []
-
-[9 <C:/Users/Viktoria/Documents/GitHub/sep13/GUI_images/PasswordRequest.png> <C
-:/Users/Viktoria/Documents/GitHub/sep13/GUI_images/GameClient.png>] [10]
-(C:\Users\Viktoria\Documents\GitHub\sep13\Pflichtenheft.gls)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 311.
- [11]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 311.
-
-(C:\Users\Viktoria\Documents\GitHub\sep13\Pflichtenheft.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 311.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 311.
-Package rerunfilecheck Info: File `Pflichtenheft.out' has not changed.
-(rerunfilecheck)             Checksum: A3415E8E8FD9802DA01E4DFCDB8F5516;1822.
-
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 311.
- ) 
-Here is how much of TeX's memory you used:
- 9712 strings out of 493921
- 138903 string characters out of 3147273
- 266799 words of memory out of 3000000
- 12786 multiletter control sequences out of 15000+200000
- 5919 words of font info for 22 fonts, out of 3000000 for 9000
- 841 hyphenation exceptions out of 8191
- 46i,7n,38p,1541b,651s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
-les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Pflichtenheft.pdf (12 pages, 521666 bytes).
-PDF statistics:
- 316 PDF objects out of 1000 (max. 8388607)
- 52 named destinations out of 1000 (max. 500000)
- 284 words of extra memory for PDF output out of 10000 (max. 10000000)
-
+[3] [4]
