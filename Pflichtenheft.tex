@@ -232,54 +232,106 @@ Dauerbetrieb der Software.
 \end{itemize}
 
 \section{Produktdaten}
-
 \begin{itemize}
-	\item /D010/ \gls{Lobby}daten
-	 \begin{itemize}
-	 	\item Spielerdaten
-	 	\begin{itemize}
-	 		\item Spielername(eindeutig)
-	 	\end{itemize}
-	 	\item Spieledaten
-	 	\begin{itemize}
-	 		\item Spielenamen(eindeutig)
-	 		\item Spieltyp
-	 		\item Anzahl an Spielern und maximale Anzahl an Spielern
-	 	\end{itemize}
-	 \end{itemize}
-	 \item /D020/ Erstellungsdaten
-	 \begin{itemize}
-	 	\item \gls{Spielleiter}(eindeutig)
-	 	\item Spielernamen(eindeutig)
-	 	\item Spieleranzahl und maximale Spieleranzahl
-	 	\item Spieltyp
-	 	\item Mindestanzahl an Spielern erreicht
-	 \end{itemize}
-	 \item /D030/ Spieldaten
-	 \begin{itemize}
-	 	\item Spielname(eindeutig)
-	 	\item Spieltyp
-	 	\item Anzahl an Spielern
-	 	\item Kartenstapel
-	 	\begin{itemize}
-	 		\item Anzahl verbliebener Karten
-	 		\item Karten
-	 		\item Ausgabe von Karten
-	 	\end{itemize}
-	 	\item Zugreihenfolge
-	 	\item Spieler
-	 	\begin{itemize}
-	 		\item Name(eindeutig)
-	 		\item Kartenhand
-	 		\begin{itemize}
-	 			\item Karten
-	 			\item Anzahl
-	 			\item Spielbar
-	 		\end{itemize}	 
-	 	\end{itemize}
-	 	\item Punktestand und Siegbedingung
-	 \end{itemize}
+	\item /D010/ Spielerdaten
+	\begin{itemize}
+		\item Spielername(eindeutig)
+		\item Server
+		\item Sprache
+	\end{itemize}
+		\item /D020/ Lobbydaten
+	\begin{itemize}
+		\item Spielernamen von /D010/
+		\item Spielenamen von /D030/
+		\item Chatinhalt
+	\end{itemize}
+	\item /D030/ Spieldaten
+
+	Allgemein:
+	\begin{itemize}
+		\item Spielname(eindeutig)
+		\item Spieleranzahl
+		\item Spielernamen von /D010/
+		\item Chatinhalt
+	\end{itemize}
+
+	Spielerstellung:
+	\begin{itemize}
+		\item Spielleiter
+		\item Passwort(optional)
+	\end{itemize}
+
+	Regelwerke:
+	\begin{itemize}
+		\item Hearts
+		\begin{itemize}
+			\item Kartenanzahl: 52
+			\item Karten:
+			\begin{itemize}
+				\item Farbe: Kreuz, Pik, Herz, König
+				\item Wertigkeit: 2-10,Bube,Dame,König,Ass
+				\item Punkte: Herz = 1 Punkt, Pik Dame = 13 Punkte, andere = 0 Punkte
+			\end{itemize}
+			\item Erlaubte Spieleranzahl: 4 Spieler
+			\item Spielerhand:
+			\begin{itemize}
+				\item Spielernamen von /D010/
+				\item Anzahl der Karten(Beginn Runde: 13)
+				\item Karten
+				\item Tauschreihenfolge (Beginn Runde)
+			\end{itemize}
+			\item Ablagestapel:
+			\begin{itemize}
+				\item Spieleröffnung mit Pik 2
+				\item Zugreihenfolge
+				\item Spielbare Karten
+				\item Stichvergabe an Spieler
+				\item Anzeigezeit (Wie lange Karten auf der GUI angezeigt werden bevor sie verschwinden)
+			\end{itemize}
+				\item Punktestand
+		\end{itemize}
+		
+		\item Wizard
+		\begin{itemize}
+			\item Kartenanzahl: 60
+			\item Karten
+
+			Reguläre Karten:
+			\begin{itemize}
+				\item Farbe: blau,rot,grün,gelb
+				\item Wertigkeit: 1-13
+			\end{itemize}
+
+			Sonderkarten:
+			\begin{itemize}
+				\item Zauberer: 4 Karten
+				\item Narr: 4 Karten
+			\end{itemize}
+
+		\end{itemize}
+			\item Spieleranzahl: 3-6
+			\item Runden:
+			\begin{itemize}
+				\item Anzahl 20,15,12,10 (Abhängig von Spieleranzahl)
+				\item Trumpffarbe
+				\item Stichvorhersagen
+			\end{itemize}
+			\item Spielerhand:
+			\begin{itemize}
+				\item Anzahl der Karten (Erste Runde 1, wird um jede Runde um 1 erhöht)
+				\item Karten
+			\end{itemize}
+			\item Ablagestapel:
+			\begin{itemize}
+				\item Zugreihenfolge
+				\item Spielbare Karten
+				\item Stichvergabe an Spieler
+				\item Anzeigezeit (Wie lange Karten auf der GUI angezeigt werden bevor sie verschwinden)
+			\end{itemize}
+			\item Punktestand
+		\end{itemize}
 \end{itemize}
+
 
 \section{Produktleistungen}
 \subsection{\gls{Lobby}}
