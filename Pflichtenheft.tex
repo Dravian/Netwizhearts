@@ -340,33 +340,30 @@ Dauerbetrieb der Software.
 
 \section{Testszenarien}
 \begin{itemize}
-	\item Startseite: \\ \\
-		  Die folgenden Tests prüfen die Funktionalität der Startseite. \\
-		  Für diese Tests werden keine Vorraussetzungen benötigt. \\
+	\item Startseite (keine Vorraussetzungen): \\
 	\begin{itemize}
-		\item Tests für /F045/. \\
-			  Nach Eingabe von Benutzername und Serveradresse in /F040/. \\ \\
-			  Eingabe einer korrekten Serveradresse und freiem Benutzernamen in /F040/
-			  führt zum Verbindungsaufbau mit dem Server und anschließendem 
-			  wechsel in die Server Lobby. \\ \\
-			  Eingabe eines bereits verwendeten oder leeren Benutzernamens in /F040/
-			  wird mit entsprechendem Hinweis quittiert. Die Startseite wird weiterhin angezeigt. \\ \\
-			  Eingabe einer falschen Internetadresse in /F040/ wird mit entsprechendem Hinweis quittiert.
-			  Die Startseite wird weiterhin angezeigt. \\ \\
-		\item Test für /F050W/. \\ Im Dropdownmenü werden alle verfügbaren Sprachen angezeigt. \\ \\
-			  Nach Auswahl einer Sprache wird die Startseite neu erstellt und alle darauf folgenden Fenster und 						  Dialoge in der ausgewählten Sprache angezeigt. 
+	
+		\item /T020/ \textit{Verbindungsaufbau mit Server:} Mr. Blue gibt den Nickname "MrBlue" und die Adresse des servers ein (/F040/). Er verbindet sich mit dem Server und gelangt die Lobby (/F045/). 
+		
+		\item /T030/ \textit{Auswahl der Sprache:} \\ Mr. Blue wählt im Dropdown-Menü die Sprache "English" aus. (/F050W/).
 			  
 			  
 	\end{itemize}
 
-	\item Server Lobby: \\ \\
-		  Die folgenden Tests prüfen die Funktionalität der Server Lobby. \\
-		  Um die Tests auf dieser Ebene durchführen zu können ist eine aktive Serververbindung nach dem Login 					  erforderlich. \\
+	\item Server Lobby (Vorraussetzungen: erfolgreicher Login, aktive Serververbindung): \\ \\
 	\begin{itemize}
-		\item Nach dem erscheinen der Server Lobby ist der zuvor gewählte Benutzername in /L30/ zu sehen. \\
-			  Jeder weitere mit dem Server verbundene Client erscheint mit seinem eindeutigen Benutzernamen in /L30/.\\			  
+	
+		\item /T040/ \textit{Spielerliste:} Der eigene Benutzername "MrFancyPants" und die Benutzernamen aller anderen verbundenen Clients werden sofort in der Spielerliste angezeigt (/L100/).
 		
-		\item Tests für /F070/. \\
+		\item /T050/ \textit{Serverliste:} Alle von Nutzern erstellten Spiele werden in der Spielliste angezeigt (/L110/).
+	
+		\item /T060/ \textit{Chatnachricht senden:} Mr. Blue gibt die Nachricht "Hallo Kartenwelt!" in das untere Textfeld ein und drückt die Entertaste (/F060/).
+		
+		\item /T070/ \textit{Chatdialog anzeigen:} Im oberen Textfeld wird die aktuellste Nachricht und alle bisher gesendeten Nachrichten angezeigt (/L115/).
+		
+		\item /T080/ \textit{Spiel erstellen:} Mr. Orange erstellt ein Spiel und gelangt ins Erstellungsfenster (/F080/).
+		
+		\item /T090/ \textit{Spiel beitreten:} Mr. Blue tritt dem bereits korrekt geöffneten und noch nicht vollen Spiel von Mr. Orange bei und gelangt ins Wartefenster (/F070/).
 			  
 	\end{itemize}
 	
