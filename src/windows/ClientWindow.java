@@ -2,6 +2,8 @@ package windows;
 
 import java.awt.EventQueue;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -10,10 +12,15 @@ import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.ImageIcon;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+
+import java.awt.Color;
 
 public class ClientWindow extends JFrame {
 
@@ -66,9 +73,25 @@ public class ClientWindow extends JFrame {
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JPanel panel = new ImagePanel();
-		panel.setBounds(10, 11, 764, 370);
+		JPanel panel0 = new ImagePanel();
+		panel0.setBounds(10, 11, 764, 370);
+		panel0.setOpaque(false);
+		contentPane.add(panel0);
+	/*	Image image = Toolkit.getDefaultToolkit().createImage("./src/game.png");
+		JLabel bild = new JLabel(new ImageIcon(image));
+		bild.setBounds(10, 11, 764, 370);
+		bild.setOpaque(false);
+		contentPane.add(bild); */
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.WHITE);
+		panel.setBounds(703, 317, 71, 63);
+		panel.setOpaque(true);
 		contentPane.add(panel);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setForeground(Color.RED);
+		panel.add(lblNewLabel);
 	}
 	
 	class ImagePanel extends JPanel{

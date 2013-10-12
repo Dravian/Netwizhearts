@@ -73,6 +73,7 @@ public class CreateGameWindow extends JFrame {
 			        g.drawImage(image, 0, 0, null);          
 			    }
 		};
+		panel.setToolTipText("Wizard is a trick-taking card game for 3 to 6 players.");
 
 		panel.setBounds(235, 12, 139, 171);
 		getContentPane().add(panel);
@@ -81,7 +82,7 @@ public class CreateGameWindow extends JFrame {
 		btnNewButton_1.setBounds(257, 215, 117, 25);
 		getContentPane().add(btnNewButton_1);
 		
-		JLabel lblGameName = new JLabel("Game Name");
+		JLabel lblGameName = new JLabel("Game Name:");
 		lblGameName.setBounds(12, 75, 95, 24);
 		getContentPane().add(lblGameName);
 		
