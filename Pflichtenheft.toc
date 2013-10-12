@@ -25,6 +25,7 @@
 \contentsline {subsection}{\numberline {6.2}Erstellungsfenster}{7}{subsection.6.2}
 \contentsline {subsection}{\numberline {6.3}Wartefenster}{7}{subsection.6.3}
 \contentsline {subsection}{\numberline {6.4}Spiel}{7}{subsection.6.4}
+\contentsline {subsection}{\numberline {6.5}Allgemein}{8}{subsection.6.5}
 \contentsline {section}{\numberline {7}Benutzeroberfl\IeC {\"a}che}{8}{section.7}
 \contentsline {section}{\numberline {8}Testszenarien}{11}{section.8}
 \contentsline {section}{\numberline {9}Entwicklungsumgebung}{12}{section.9}

@@ -153,8 +153,9 @@ Dauerbetrieb der Software.
 \section{Produktfunktionen}
 \subsection{Startseite}
 \begin{itemize}
-	\item /F040/ Auswahl vom gewünschtem \gls{Server} und Namen
-	\item /F045/ Weiterleitung zur \gls{Lobby}
+	\item /F040/ Auswahl vom gewünschtem \gls{Server} 
+	\item /F042/ Auswahl eines Spielernamens
+	\item /F045/ Connect mit Weiterleitung zur \gls{Lobby}
 	\item /F050W/ Auswahl der Sprache
 \end{itemize}
 
@@ -169,16 +170,15 @@ Dauerbetrieb der Software.
 \subsection{Erstellungsfenster}
 \begin{itemize}
 	\item /F120/ Auswahl des \gls{Regelwerk}s
-	\item /F122/ Eingabe eines Namen für das zu erstellende Spiel
+	\item /F122/ Eingabe eines Namens für das zu erstellende Spiel
 	\item /F124/ Erstellung abbrechen und \gls{Erstellungsfenster} verlassen (Zurückleitung zur Lobby)
 	\item /F126/ Erstellen eines neues Spiels (Weiterleitung zum Wartefenster)
-	\item /F128/ Hilfe zum Spiel(Wie?)
 	\item /F130W/ Möglichkeit ein Passwort für das Spiel zu setzen
 \end{itemize}
 
 \subsection{Passwortabfrage}
 \begin{itemize}
-	\item /F140/ Eingabe des Passworts.
+	\item /F140W/ Eingabe des Passworts.
 	\item /F142/ Einem Spiel beitreten mit Zugang zum \gls{Wartefenster}
 	\item /F145/ Abbrechen und zur \gls{Lobby} zurückkehren
 \end{itemize}
@@ -188,14 +188,14 @@ Dauerbetrieb der Software.
 	\item Spieler
 	\begin{itemize}
 		\item /F160/ Chat mit anderen Spielern im selben Spiel
-		\item /F170/ Zurückleitung zur Lobby
+		\item /F170/ Verlassen des Spiels (Zurückleitung zur Lobby)
 	\end{itemize}
 	\item Spielleiter
 	
 	Besitzt alle Funktionen des Spielers
 	\begin{itemize}
 		\item /F180/ Spieler entfernen
-		\item /F190/ Bei /F190/ Auflösung des Spiels
+		\item /F190/ Auflösung des Spiels durch Verlassen des Wartefensters
 		\item /F200/ Starten des Spiels (Voraussetzung: Mindestanzahl der Spieler erreicht)
 	\end{itemize}
 \end{itemize}
@@ -206,22 +206,17 @@ Dauerbetrieb der Software.
 	\begin{itemize}
 		\item /F210/ Verlassen des Spiels (Folge: Alle Spieler kehren zur Serverlobby zurück)
 		\item /F220/ Nachricht senden an andere Spieler
-		\item /F230/ Karte spielen (Voraussetzung: Am Zug und Karte erlaubt zu spielen)
-		\item /F240/ Hilfe zum Spiel (Wie?)
+		\item /F225/ Karte auswählen (Voraussetzung: Am Zug und Karte erlaubt zu spielen)
+		\item /F230/ Karte spielen (Voraussetzung: Karte ausgewählt)
 	\end{itemize}
 	\item Herz
 	\begin{itemize}
-		\item /F260/ Eingabe der gewünschten Stiche zu Beginn jeder Runde
+		\item /F260/ Auswahl der Karten, die weitergeschoben werden sollen.
 	\end{itemize}
 	\item Wizard
 	\begin{itemize}
 		\item /F360/ Auswahl der Trumpffarbe zu Beginn einer Runde (Voraussetzung: Aufdecken des Zauberers)
 		\item /F370/ Eingabe der gewünschten Stiche zu Beginn jeder Runde
-	\end{itemize}
-	\item Uno (Wunsch)
-	\begin{itemize}
-		\item /F380/ Ziehen vom Kartenstapel(Ist glaub ich Leistung da es immer automatisch passiert?)
-		\item /F390/ Farbwahl bei gespielter Farbauswahlkarte
 	\end{itemize}
 \end{itemize}
 
@@ -286,7 +281,7 @@ Dauerbetrieb der Software.
 \subsection{Erstellungsfenster}
 \begin{itemize}
 	\item /L120/ Anzeige eines Spiellogos
-	\item /L122/ Anzeige einer kurzen Spielbeschreibung --- !! nicht in der Skizze! trotzdem?
+	\item /L122/ Anzeige einer kurzen Spielbeschreibung (bei Mouseover über das Logo)
 \end{itemize}
 
 \subsection{Wartefenster}
@@ -294,8 +289,6 @@ Dauerbetrieb der Software.
 	\item /L150/ Anzeigen des Spieltyps
 	\item /L155/ Anzeigen der Mitspieler
 	\item /L158/ Anzeige des Chatdialoges
-	\item /L160/ Ab Mindestanzahl der Spieler kann der Spielersteller des Spiel starten ???
-	\item /L170/ \gls{Wartefenster} wird nur aufgelöst wenn der Spielersteller selbst das Spiel verlässt ???
 \end{itemize}
 
 \subsection{Spiel}
@@ -304,21 +297,23 @@ Dauerbetrieb der Software.
 	\item /L192/ Anzeige der verdeckten Karten der Mitspieler
 	\item /L194/ Anzeige des Ablagestapels
 	\item /L195/ Anzeige des Aufnahmestapels
-	\item /L195/ Anzeige der Anzahl der restlichen Karten für jeden Spieler
-	\item /L200/ Anzeige von Punktestand
+	\item /L195/ Anzeige der Anzahl der restlichen Karten für jeden Spieler bzw. Anzahl der vorhergesagten Stiche
+	\item /L200/ Anzeige des Punktestandes
 	\item /L250/ Anzeige einer Auswertung nach Beendigung einer Runde oder eines Spiels
 	\item /L260/ Anzeige des Chatdialoges
-
----------------------------
-	??????
-	\item /L040/ Einhaltung der Spielregeln gewährleisten
-	\item /L050/ Fehlermeldungen akkumuliert ausgeben
-	\item /L060/ Verwaltung mehrerer parallel laufender Spiele
-	\item /L070/ Chat und Spiel sollen flüssig laufen
-	\item /L080/ Einfache und hilfreiche Bedienbarkeit
-	\item /L090/ Schutz vor Cheats
-	\item /L100/ Verhinderung langer Wartezeiten
-	\item /L110W/ Mehrsprachigkeit unterstützen
+	\item /L270/ Nutzen des Chatdialoges zur Benachrichtigung der Spieler über Ergebnisse und Spielstand
+\end{itemize}
+	
+\subsection{Allgemein}
+\begin{itemize}
+	\item /L280/ Einhaltung der Spielregeln gewährleisten
+	\item /L290/ Fehlermeldungen akkumuliert ausgeben
+	\item /L300/ Verwaltung mehrerer parallel laufender Spiele
+	\item /L310/ Chat und Spiel sollen flüssig laufen
+	\item /L320/ Einfache und hilfreiche Bedienbarkeit
+	\item /L330/ Schutz vor Cheats
+	\item /L340/ Verhinderung langer Wartezeiten
+	\item /L350W/ Mehrsprachigkeit unterstützen
 \end{itemize}
 
 \section{Benutzeroberfläche}
