@@ -40,7 +40,7 @@
 {\large \today}
 
 \vspace{2cm}
-\includegraphics{Bild}
+\includegraphics{kartenspiel}
 
 \vspace{2cm}
 
@@ -159,8 +159,9 @@ Dauerbetrieb der Software.
 \section{Produktfunktionen}
 \subsection{Startseite}
 \begin{itemize}
-	\item /F040/ Auswahl vom gewünschtem \gls{Server} und Namen
-	\item /F045/ Weiterleitung zur \gls{Lobby}
+	\item /F040/ Auswahl vom gewünschtem \gls{Server} 
+	\item /F042/ Auswahl eines Spielernamens
+	\item /F045/ Connect mit Weiterleitung zur \gls{Lobby}
 	\item /F050W/ Auswahl der Sprache
 \end{itemize}
 
@@ -175,7 +176,7 @@ Dauerbetrieb der Software.
 \subsection{Erstellungsfenster}
 \begin{itemize}
 	\item /F120/ Auswahl des \gls{Regelwerk}s
-	\item /F122/ Eingabe eines Namen für das zu erstellende Spiel
+	\item /F122/ Eingabe eines Namens für das zu erstellende Spiel
 	\item /F124/ Erstellung abbrechen und \gls{Erstellungsfenster} verlassen (Zurückleitung zur Lobby)
 	\item /F126/ Erstellen eines neues Spiels (Weiterleitung zum Wartefenster)
 	\item /F128/ Hilfe zum Spiel(Wie?)
@@ -184,7 +185,7 @@ Dauerbetrieb der Software.
 
 \subsection{Passwortabfrage}
 \begin{itemize}
-	\item /F140/ Eingabe des Passworts.
+	\item /F140W/ Eingabe des Passworts.
 	\item /F142/ Einem Spiel beitreten mit Zugang zum \gls{Wartefenster}
 	\item /F145/ Abbrechen und zur \gls{Lobby} zurückkehren
 \end{itemize}
@@ -194,14 +195,14 @@ Dauerbetrieb der Software.
 	\item Spieler
 	\begin{itemize}
 		\item /F160/ Chat mit anderen Spielern im selben Spiel
-		\item /F170/ Zurückleitung zur Lobby
+		\item /F170/ Verlassen des Spiels (Zurückleitung zur Lobby)
 	\end{itemize}
 	\item Spielleiter
 	
 	Besitzt alle Funktionen des Spielers
 	\begin{itemize}
 		\item /F180/ Spieler entfernen
-		\item /F190/ Bei /F190/ Auflösung des Spiels
+		\item /F190/ Auflösung des Spiels durch Verlassen des Wartefensters
 		\item /F200/ Starten des Spiels (Voraussetzung: Mindestanzahl der Spieler erreicht)
 	\end{itemize}
 \end{itemize}
@@ -212,22 +213,17 @@ Dauerbetrieb der Software.
 	\begin{itemize}
 		\item /F210/ Verlassen des Spiels (Folge: Alle Spieler kehren zur Serverlobby zurück)
 		\item /F220/ Nachricht senden an andere Spieler
-		\item /F230/ Karte spielen (Voraussetzung: Am Zug und Karte erlaubt zu spielen)
-		\item /F240/ Hilfe zum Spiel (Wie?)
+		\item /F225/ Karte auswählen (Voraussetzung: Am Zug und Karte erlaubt zu spielen)
+		\item /F230/ Karte spielen (Voraussetzung: Karte ausgewählt)
 	\end{itemize}
 	\item Herz
 	\begin{itemize}
-		\item /F260/ Eingabe der gewünschten Stiche zu Beginn jeder Runde
+		\item /F260/ Auswahl der Karten, die weitergeschoben werden sollen.
 	\end{itemize}
 	\item Wizard
 	\begin{itemize}
 		\item /F360/ Auswahl der Trumpffarbe zu Beginn einer Runde (Voraussetzung: Aufdecken des Zauberers)
 		\item /F370/ Eingabe der gewünschten Stiche zu Beginn jeder Runde
-	\end{itemize}
-	\item Uno (Wunsch)
-	\begin{itemize}
-		\item /F380/ Ziehen vom Kartenstapel(Ist glaub ich Leistung da es immer automatisch passiert?)
-		\item /F390/ Farbwahl bei gespielter Farbauswahlkarte
 	\end{itemize}
 \end{itemize}
 
@@ -345,7 +341,7 @@ Dauerbetrieb der Software.
 \subsection{Erstellungsfenster}
 \begin{itemize}
 	\item /L120/ Anzeige eines Spiellogos
-	\item /L122/ Anzeige einer kurzen Spielbeschreibung --- !! nicht in der Skizze! trotzdem?
+	\item /L122/ Anzeige einer kurzen Spielbeschreibung (bei Mouseover über das Logo)
 \end{itemize}
 
 \subsection{Wartefenster}
@@ -363,21 +359,23 @@ Dauerbetrieb der Software.
 	\item /L192/ Anzeige der verdeckten Karten der Mitspieler
 	\item /L194/ Anzeige des Ablagestapels
 	\item /L195/ Anzeige des Aufnahmestapels
-	\item /L195/ Anzeige der Anzahl der restlichen Karten für jeden Spieler
-	\item /L200/ Anzeige von Punktestand
+	\item /L195/ Anzeige der Anzahl der restlichen Karten für jeden Spieler bzw. Anzahl der vorhergesagten Stiche
+	\item /L200/ Anzeige des Punktestandes
 	\item /L250/ Anzeige einer Auswertung nach Beendigung einer Runde oder eines Spiels
 	\item /L260/ Anzeige des Chatdialoges
-
----------------------------
-	??????
-	\item /L040/ Einhaltung der Spielregeln gewährleisten
-	\item /L050/ Fehlermeldungen akkumuliert ausgeben
-	\item /L060/ Verwaltung mehrerer parallel laufender Spiele
-	\item /L070/ Chat und Spiel sollen flüssig laufen
-	\item /L080/ Einfache und hilfreiche Bedienbarkeit
-	\item /L090/ Schutz vor Cheats
-	\item /L100/ Verhinderung langer Wartezeiten
-	\item /L110W/ Mehrsprachigkeit unterstützen
+	\item /L270/ Nutzen des Chatdialoges zur Benachrichtigung der Spieler über Ergebnisse und Spielstand
+\end{itemize}
+	
+\subsection{Allgemein}
+\begin{itemize}
+	\item /L280/ Einhaltung der Spielregeln gewährleisten
+	\item /L290/ Fehlermeldungen akkumuliert ausgeben
+	\item /L300/ Verwaltung mehrerer parallel laufender Spiele
+	\item /L310/ Chat und Spiel sollen flüssig laufen
+	\item /L320/ Einfache und hilfreiche Bedienbarkeit
+	\item /L330/ Schutz vor Cheats
+	\item /L340/ Verhinderung langer Wartezeiten
+	\item /L350W/ Mehrsprachigkeit unterstützen
 \end{itemize}
 
 \section{Benutzeroberfläche}
@@ -393,39 +391,67 @@ Dauerbetrieb der Software.
 
 \section{Testszenarien}
 \begin{itemize}
-	\item Startseite: \\ \\
-		  Die folgenden Tests prüfen die Funktionalität der Startseite. \\
-		  Für diese Tests werden keine Vorraussetzungen benötigt. \\
+	\item Startseite (keine Vorraussetzungen): \\
 	\begin{itemize}
-		\item Tests für /F045/. \\
-			  Nach Eingabe von Benutzername und Serveradresse in /F040/. \\ \\
-			  Eingabe einer korrekten Serveradresse und freiem Benutzernamen in /F040/
-			  führt zum Verbindungsaufbau mit dem Server und anschließendem 
-			  wechsel in die Server Lobby. \\ \\
-			  Eingabe eines bereits verwendeten oder leeren Benutzernamens in /F040/
-			  wird mit entsprechendem Hinweis quittiert. Die Startseite wird weiterhin angezeigt. \\ \\
-			  Eingabe einer falschen Internetadresse in /F040/ wird mit entsprechendem Hinweis quittiert.
-			  Die Startseite wird weiterhin angezeigt. \\ \\
-		\item Test für /F050W/. \\ Im Dropdownmenü werden alle verfügbaren Sprachen angezeigt. \\ \\
-			  Nach Auswahl einer Sprache wird die Startseite neu erstellt und alle darauf folgenden Fenster und 						  Dialoge in der ausgewählten Sprache angezeigt. 
+	
+		\item /T020/ \textit{Verbindungsaufbau mit Server:} Mr. Blue gibt den Nickname "MrBlue" und die Adresse des servers ein (/F040/). Er verbindet sich mit dem Server und gelangt die Lobby (/F045/). 
+		
+		\item /T030/ \textit{Auswahl der Sprache:} \\ Mr. Blue wählt im Dropdown-Menü die Sprache "English" aus. (/F050W/).
 			  
 			  
 	\end{itemize}
 
-	\item Server Lobby: \\ \\
-		  Die folgenden Tests prüfen die Funktionalität der Server Lobby. \\
-		  Um die Tests auf dieser Ebene durchführen zu können ist eine aktive Serververbindung nach dem Login 					  erforderlich. \\
+	\item Server Lobby (Vorraussetzungen: /T020/: \\ \\
 	\begin{itemize}
-		\item Nach dem erscheinen der Server Lobby ist der zuvor gewählte Benutzername in /L30/ zu sehen. \\
-			  Jeder weitere mit dem Server verbundene Client erscheint mit seinem eindeutigen Benutzernamen in /L30/.\\			  
+	
+		\item /T040/ \textit{Spielerliste:} Der eigene Benutzername "MrBlue" und die Benutzernamen aller anderen verbundenen Clients werden sofort in der Spielerliste angezeigt (/L100/).
 		
-		\item Tests für /F070/. \\
+		\item /T050/ \textit{Serverliste:} Alle von Nutzern erstellten Spiele werden in der Spielliste angezeigt (/L110/).
+	
+		\item /T060/ \textit{Chatnachricht senden:} Mr. Blue gibt die Nachricht "Hallo Kartenwelt!" in das untere Textfeld ein und drückt die Entertaste (/F060/).
+		
+		\item /T070/ \textit{Chatdialog anzeigen:} Im oberen Textfeld wird die aktuellste Nachricht und alle bisher gesendeten Nachrichten angezeigt (/L115/).
+		
+		\item /T080/ \textit{Spiel erstellen:} Mr. White erstellt ein Spiel und gelangt ins Erstellungsfenster (/F080/).
+		
+		\item /T085/ \textit{Mehrere Spiele erstellen (Vorrausetzung: /T080/, /T110/):} Mr Pink erstellt ein weiteres Spiel und gelangt ins Erstellungsfenster (/F080/).
+		
+		\item /T090/ \textit{Spiel beitreten:} Mr. Blue tritt dem bereits korrekt geöffneten und noch nicht vollen Spiel von Mr. White bei und gelangt ins Wartefenster (/F070/). Die Lobby bleibt geöffnet.
+		
+		\item /T095/ \textit{Passwortabfrage:} Das Spiel von Mr. White is passwortgeschützt. Mr. Blue gibt "youshouldtip" in das zugehörige Textfeld ein (/F140/) und drückt den 'Join'-Knopf, wodurch er zum Wartefenster weitergeleitet wird (/F142/). 
+		
+		\item /T097/ \textit{Passwortabfrage(Abbruch):} Das Spiel von Mr. White ist passwortgeschützt. Mr. Blue kennt das Passwort nicht, also drückt er den 'Cancel'-Knopf und gelangt zurück in die Lobby (/F145/).
 			  
 	\end{itemize}
 	
-	\item Spiel erstellen (Lobby)
-	\item Spiel beitreten (Lobby)
-	\item Mehrere Spiele parallel starten (Lobby)
+	\item Erstellungsfenster (Vorraussetzung: /T080/): 
+	
+	\begin{itemize}
+	
+		\item /T100/ \textit{Regelwerk auswählen:} Mr. White wählt 'Wizard' als Regelwerk aus (/F120/) und schaut sich dessen Logo an (/L120/), sowie eine kurze Beschreibung des Spiels, die erscheint, wenn er mit der Maus über das Logo fährt (/L122/)
+		
+		\item /T110/ \textit{Spiel erstellen:} Mr. White gibt "NewHeist" als Spielname ein (/F122/) und legt die Spielerzahl auf '4' fest (/F???/). Er setzt einen Haken bei 'Passwort' und gibt "youshouldtip" als Passwort ein (/F130W/). Er drückt auf den 'Create'-Knopf, erstellt somit ein Spiel und wird zum Wartefenster weitergeleitet (/F126/).
+		
+		\item /T120/ \textit{Erstellung abbrechen:} Mr. White sieht, dass Mr. Pink schon in einem anderen Spiel ist und entschließt sich die Erstellung abzubrechen. Er drückt den 'Cancel'-Knopf und gelangt zurück in die Lobby (/F124/).
+	
+	\end{itemize}
+	
+	\item Wartefenster (Vorraussetzung: /T110/, /T090/)
+	
+	\begin{itemize}
+		
+		\item /T130/ \textit{Chat:} Mr. Pink und Mr. White befinden sich im Wartefenster des Spiels. Mr. Pink schreibt die Chatnachricht "Hello Mr. White" und sie wird bei beidem im Chat angezeigt (/F160/).
+		
+		\item /T170/ \textit{Verlassen:} Mr. Brown ist gerade dem Spiel beigetreten und verlässt es sofort wieder. Er gelangt zurück in die Lobby (/T170/).
+		
+		\item /T180/ \textit{Spieler entfernen:} Mr. Blue tritt dem Spiel bei. Mr. Pink hat das Spiel erstellt. Er ist somit Spielleiter und entschließt sich dazu Mr. Blue aus dem Spiel zu werfen (/F180/). 
+		
+		\item /T190/ \textit{Spiel starten:} Mr. Brown und Mr. Orange treten dem Spiel bei. Es sind nun genug Spieler vorhanden und der 'Start'-Knopf ist nicht mehr ausgegraut, deshalb entschließt sich Mr. Pink dazu, das Spiel zu starten (/F200/).
+		
+		\item /T200/ \textit{Spiel auflösen:} Es dauert Mr. Pink zu lange, bis genug Spieler zusammenkommen, also verlässt er das Wartefenster. Da er der Spielleiter war wird das Spiel aufgelöst und alle Spieler gelangen zurück zur Lobby (/F190/).
+		 
+	\end{itemize}
+	
 	\item Spiel spielen 
 \end{itemize}
 
