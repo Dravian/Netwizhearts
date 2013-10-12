@@ -350,10 +350,10 @@ Dauerbetrieb der Software.
 			  
 	\end{itemize}
 
-	\item Server Lobby (Vorraussetzungen: erfolgreicher Login, aktive Serververbindung): \\ \\
+	\item Server Lobby (Vorraussetzungen: /T020/: \\ \\
 	\begin{itemize}
 	
-		\item /T040/ \textit{Spielerliste:} Der eigene Benutzername "MrFancyPants" und die Benutzernamen aller anderen verbundenen Clients werden sofort in der Spielerliste angezeigt (/L100/).
+		\item /T040/ \textit{Spielerliste:} Der eigene Benutzername "MrBlue" und die Benutzernamen aller anderen verbundenen Clients werden sofort in der Spielerliste angezeigt (/L100/).
 		
 		\item /T050/ \textit{Serverliste:} Alle von Nutzern erstellten Spiele werden in der Spielliste angezeigt (/L110/).
 	
@@ -361,15 +361,46 @@ Dauerbetrieb der Software.
 		
 		\item /T070/ \textit{Chatdialog anzeigen:} Im oberen Textfeld wird die aktuellste Nachricht und alle bisher gesendeten Nachrichten angezeigt (/L115/).
 		
-		\item /T080/ \textit{Spiel erstellen:} Mr. Orange erstellt ein Spiel und gelangt ins Erstellungsfenster (/F080/).
+		\item /T080/ \textit{Spiel erstellen:} Mr. White erstellt ein Spiel und gelangt ins Erstellungsfenster (/F080/).
 		
-		\item /T090/ \textit{Spiel beitreten:} Mr. Blue tritt dem bereits korrekt geöffneten und noch nicht vollen Spiel von Mr. Orange bei und gelangt ins Wartefenster (/F070/).
+		\item /T085/ \textit{Mehrere Spiele erstellen (Vorrausetzung: /T080/, /T110/):} Mr Pink erstellt ein weiteres Spiel und gelangt ins Erstellungsfenster (/F080/).
+		
+		\item /T090/ \textit{Spiel beitreten:} Mr. Blue tritt dem bereits korrekt geöffneten und noch nicht vollen Spiel von Mr. White bei und gelangt ins Wartefenster (/F070/). Die Lobby bleibt geöffnet.
+		
+		\item /T095/ \textit{Passwortabfrage:} Das Spiel von Mr. White is passwortgeschützt. Mr. Blue gibt "youshouldtip" in das zugehörige Textfeld ein (/F140/) und drückt den 'Join'-Knopf, wodurch er zum Wartefenster weitergeleitet wird (/F142/). 
+		
+		\item /T097/ \textit{Passwortabfrage(Abbruch):} Das Spiel von Mr. White ist passwortgeschützt. Mr. Blue kennt das Passwort nicht, also drückt er den 'Cancel'-Knopf und gelangt zurück in die Lobby (/F145/).
 			  
 	\end{itemize}
 	
-	\item Spiel erstellen (Lobby)
-	\item Spiel beitreten (Lobby)
-	\item Mehrere Spiele parallel starten (Lobby)
+	\item Erstellungsfenster (Vorraussetzung: /T080/): 
+	
+	\begin{itemize}
+	
+		\item /T100/ \textit{Regelwerk auswählen:} Mr. White wählt 'Wizard' als Regelwerk aus (/F120/) und schaut sich dessen Logo an (/L120/), sowie eine kurze Beschreibung des Spiels, die erscheint, wenn er mit der Maus über das Logo fährt (/L122/)
+		
+		\item /T110/ \textit{Spiel erstellen:} Mr. White gibt "NewHeist" als Spielname ein (/F122/) und legt die Spielerzahl auf '4' fest (/F???/). Er setzt einen Haken bei 'Passwort' und gibt "youshouldtip" als Passwort ein (/F130W/). Er drückt auf den 'Create'-Knopf, erstellt somit ein Spiel und wird zum Wartefenster weitergeleitet (/F126/).
+		
+		\item /T120/ \textit{Erstellung abbrechen:} Mr. White sieht, dass Mr. Pink schon in einem anderen Spiel ist und entschließt sich die Erstellung abzubrechen. Er drückt den 'Cancel'-Knopf und gelangt zurück in die Lobby (/F124/).
+	
+	\end{itemize}
+	
+	\item Wartefenster (Vorraussetzung: /T110/, /T090/)
+	
+	\begin{itemize}
+		
+		\item /T130/ \textit{Chat:} Mr. Pink und Mr. White befinden sich im Wartefenster des Spiels. Mr. Pink schreibt die Chatnachricht "Hello Mr. White" und sie wird bei beidem im Chat angezeigt (/F160/).
+		
+		\item /T170/ \textit{Verlassen:} Mr. Brown ist gerade dem Spiel beigetreten und verlässt es sofort wieder. Er gelangt zurück in die Lobby (/T170/).
+		
+		\item /T180/ \textit{Spieler entfernen:} Mr. Blue tritt dem Spiel bei. Mr. Pink hat das Spiel erstellt. Er ist somit Spielleiter und entschließt sich dazu Mr. Blue aus dem Spiel zu werfen (/F180/). 
+		
+		\item /T190/ \textit{Spiel starten:} Mr. Brown und Mr. Orange treten dem Spiel bei. Es sind nun genug Spieler vorhanden und der 'Start'-Knopf ist nicht mehr ausgegraut, deshalb entschließt sich Mr. Pink dazu, das Spiel zu starten (/F200/).
+		
+		\item /T200/ \textit{Spiel auflösen:} Es dauert Mr. Pink zu lange, bis genug Spieler zusammenkommen, also verlässt er das Wartefenster. Da er der Spielleiter war wird das Spiel aufgelöst und alle Spieler gelangen zurück zur Lobby (/F190/).
+		 
+	\end{itemize}
+	
 	\item Spiel spielen 
 \end{itemize}
 
