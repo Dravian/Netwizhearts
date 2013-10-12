@@ -228,7 +228,7 @@ Dauerbetrieb der Software.
 \end{itemize}
 
 \section{Produktdaten}
-\subsection{Regelwerke}
+\subsection{\gls{Regelwerk}e}
 \subsubsection{/D010/ Hearts}	
 \begin{itemize}
 	\item Kartenstapel
@@ -240,9 +240,18 @@ Dauerbetrieb der Software.
 			\item Wertigkeit: 2-10,Bube,Dame,König,Ass
 			\item Punkte: Herz = 1 Punkt, Pik Dame = 13 Punkte, andere = 0 Punkte
 		\end{itemize}	
-		\item Kartenverteilung pro Runde: 13  				
+		\item Kartenverteilung pro Runde: 13 Karten				
 	\end{itemize}
 	\item Erlaubte Spieleranzahl: 4 Spieler		
+	\item Spieler /D010/
+	\begin{itemize}
+		\item Karten
+		\item Punktestand (Bei 100 Punkte Spielende)
+		\item Pik 2 Regel (Muss bei Besitz gespielt werden)
+		\item Status (Am Zug, Wartend)
+	\end{itemize}
+	\item Runden
+	\item Tauschreihenfolge	
 	\item Ablagestapel:
 	\begin{itemize}
 		\item Zugreihenfolge
@@ -250,12 +259,7 @@ Dauerbetrieb der Software.
 		\item Stichvergabe an Spieler
 		\item Anzeigedauer der Karten
 	\end{itemize}
-	\item Auswertung
-	\begin{itemize}
-		\item Punktestand
-		\item Platzierungen der Spieler
-		\item Spielende
-	\end{itemize}
+	\item Platzierung der Spieler
 \end{itemize}
 	
 \subsubsection{/D020/ Wizard}
@@ -263,7 +267,7 @@ Dauerbetrieb der Software.
 	\item Kartenstapel
 	\begin{itemize}
 		\item Kartenanzahl: 60
-		\item Karten:
+		\item Karten
 		\begin{itemize}
 			\item Reguläre Karten
 			\begin{itemize}
@@ -275,27 +279,63 @@ Dauerbetrieb der Software.
 				\item Zauberer: 4 Karten
 				\item Narr: 4 Karten
 			\end{itemize}			
-		\end{itemize}		
-		\item Spieleranzahl: 3-6
-		\item Runden:
-		\begin{itemize}
-			\item Anzahl 20,15,12,10 (Abhängig von Spieleranzahl)
-			\item Trumpffarbe
-			\item Stichvorhersagen
-		\end{itemize}
-		\item Ablagestapel:
-		\begin{itemize}
-			\item Zugreihenfolge
-			\item Spielbare Karten
-			\item Stichvergabe an Spieler
-			\item Anzeigedauer der Karten
-		\end{itemize}
-		\item Auswertung
-		\begin{itemize}
-			\item Punktestand
-			\item Platzierung der Spieler
 		\end{itemize}	
+		\item Kartenverteilung pro Runde: 1 plus eine für jede weitere Runde
 	\end{itemize}
+	\item Spieleranzahl: 3-6
+	\item Spieler /D010/
+	\begin{itemize}
+		\item Karten
+		\item Stiche
+		\item Stichvorhersage
+		\item Status (Am Zug, Wartend)
+	\end{itemize}
+	\item Runden
+	\begin{itemize}
+		\item Anzahl: 20,15,12,10 (Abhängig von Spieleranzahl)
+		\item Trumpffarbe
+		\item Anfangsspieler
+		\item Spielende bei letzter Runde
+	\end{itemize}
+	\item Ablagestapel
+	\begin{itemize}
+		\item Zugreihenfolge
+		\item Spielbare Karten
+		\item Stichvergabe an Spieler
+		\item Anzeigedauer der Karten
+	\end{itemize}
+	\item Platzierung der Spieler
+\end{itemize}
+
+\subsection{Andere Daten}
+\subsubsection{/D030/ Spieler}
+\begin{itemize}
+	\item Spielername(eindeutig)
+	\item Server
+	\item Sprache
+	\item Status(\gls{Lobby}, Spiel)
+\end{itemize}	
+
+\subsubsection{/D040/ Spiel}
+\begin{itemize}
+	\item Spielname(eindeutig)
+	\item Spieler /D030/
+	\begin{itemize}
+		\item \gls{Spielleiter}
+		\item Andere Spieler
+	\end{itemize}
+	\item Spieleranzahl
+	\item Regelwerk /D010/ oder /D020/
+	\item Chatinhalt
+	\item Status(Erstellung,Laufend,Ende)
+	\item Passwort(optional)
+\end{itemize}
+
+\subsubsection{/D050/ \gls{Lobby}}
+\begin{itemize}
+	\item Spieler /D010/ (Status = \gls{Lobby})
+	\item Spiele /D040/ (Status = Erstellung)
+	\item Chatinhalt
 \end{itemize}
 
 \subsection{Andere Daten}
