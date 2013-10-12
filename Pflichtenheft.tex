@@ -377,13 +377,29 @@ Dauerbetrieb der Software.
 
 \section{Benutzeroberfläche}
 \begin{itemize}
-	\item Startseite: \\ \includegraphics{GUI_images/Login}
-	\item Lobby: \\ \includegraphics[scale=0.7]{GUI_images/ServerLobby}
-	\item \gls{Erstellungsfenster}: \\ 
-		\includegraphics[scale=0.8]{GUI_images/CreateGame}
-	\item \gls{Wartefenster}: \\ \includegraphics[scale=0.7]{GUI_images/GameLobby}
-	\item Passwortabfrage: \\ \includegraphics{GUI_images/PasswordRequest}
-	\item Spiel: \\ \includegraphics[scale=0.6]{GUI_images/GameClient}
+	\item Startseite:  Auf dieser Seite kann sich der Spieler einen Benutzernamen aussuchen und sich mit dem Server verbinden.\\ 				\ \\
+		\makebox[\textwidth]{\includegraphics{GUI_images/Login}}
+		\ \\
+	\item \gls{Lobby}: In der \gls{Lobby} konnen Spieler mit den unteren Buttons ein neues Spiel erstellen,  einem offenem Spiel 					beitreten oder die \gls{Lobby} verlassen. In der linken Spalte sind die Spieler zu sehen, die sich gerade in der 					\gls{Lobby} befinden (wobei für jeden Spieler eine Statusmeldung angezeigt wird). In der rechten Spalte sieht 					man die offenen Spiele, mit momentaner Spielerzahl und und Spieltyp. Im unteren Teil der Lobby ist der Chat.\\
+		\ \\
+		\makebox[\textwidth]{\includegraphics[scale=0.7]{GUI_images/ServerLobby}}
+		\newpage
+	\item \gls{Erstellungsfenster}: Im \gls{Erstellungsfenster} kann der \gls{Spielleiter} ein neues Spiel erstellen. Dabei muss er ein 			\gls{Regelwerk} aussuchen, und kann wahlweise dem Spiel einen Namen geben und das Passwort setzen. \\
+		\ \\
+		\makebox[\textwidth]{\includegraphics[scale=0.8]{GUI_images/CreateGame}}
+		\ \\
+	\item \gls{Wartefenster}: Im \gls{Wartefenster} befinden sich die Personen, die einem offenem Spiel beigetreten sind. Sobald 					die Midestspielerzahl erreicht ist kann ein neues Spiel gestartet werden. Für das Wartefenster ist ein eigener 					Chat verfügbar. Man kann das Wartefenster auch mit einem der unteren Buttons verlassen. \\
+		\ \\
+		\makebox[\textwidth]{\includegraphics[scale=0.7]{GUI_images/GameLobby}}
+		\ \\
+	\item Passwortabfrage: Bevor die Spieler einem offenen Spiel beitreten können, müssen sie das Passwort, dass der 						\gls{Spielleiter} festgelegt hat, in das Textfeld eingeben.\\
+		\ \\
+		\makebox[\textwidth]{\includegraphics{GUI_images/PasswordRequest}}
+		\ \\
+	\item Spiel: Im Spielfeld wird die eigene Hand offen, und die der anderen Spieler verdeckt angezeigt. Je nach Spiel gibt es 					einen allgemeinen Ablagestapel in der Mitte des Spielfeldes oder individuelle Ablagestapel vor der Hand des 					jeweiligen Spielers. Der Zähler für Punktestand, gemachte Stiche, übrige Karten etc. befindet sich neben  der 					Hand des jeweiligen Spielers. Für die Gegenspieler wird zusätzlich der Name über der Hand angezeigt.\\
+			Im unteren bereich gibt es ein Chatfenster für die Mitspieler.\\
+		\ \\
+		\makebox[\textwidth]{\includegraphics[scale=0.6]{GUI_images/GameClient}}
 \end{itemize}
 
 \section{Testszenarien}
