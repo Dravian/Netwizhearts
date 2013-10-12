@@ -379,6 +379,8 @@ Dauerbetrieb der Software.
 	
 		\item /T100/ \textit{Regelwerk auswählen:} Mr. White wählt 'Wizard' als Regelwerk aus (/F120/) und schaut sich dessen Logo an (/L120/), sowie eine kurze Beschreibung des Spiels, die erscheint, wenn er mit der Maus über das Logo fährt (/L122/)
 		
+		\item /T105/ \textit{Regelwerk auswählen:} Mr. White wählt 'Hearts' als Regelwerk aus (/F120/) und schaut sich dessen Logo an (/L120/), sowie eine kurze Beschreibung des Spiels, die erscheint, wenn er mit der Maus über das Logo fährt (/L122/)
+		
 		\item /T110/ \textit{Spiel erstellen:} Mr. White gibt "NewHeist" als Spielname ein (/F122/) und legt die Spielerzahl auf '4' fest (/F???/). Er setzt einen Haken bei 'Passwort' und gibt "youshouldtip" als Passwort ein (/F130W/). Er drückt auf den 'Create'-Knopf, erstellt somit ein Spiel und wird zum Wartefenster weitergeleitet (/F126/).
 		
 		\item /T120/ \textit{Erstellung abbrechen:} Mr. White sieht, dass Mr. Pink schon in einem anderen Spiel ist und entschließt sich die Erstellung abzubrechen. Er drückt den 'Cancel'-Knopf und gelangt zurück in die Lobby (/F124/).
@@ -400,8 +402,28 @@ Dauerbetrieb der Software.
 		\item /T200/ \textit{Spiel auflösen:} Es dauert Mr. Pink zu lange, bis genug Spieler zusammenkommen, also verlässt er das Wartefenster. Da er der Spielleiter war wird das Spiel aufgelöst und alle Spieler gelangen zurück zur Lobby (/F190/).
 		 
 	\end{itemize}
+
+	\item Spielfenster (Vorraussetzung: /T190/)
 	
-	\item Spiel spielen 
+	\begin{itemize}
+	
+		\item /T210/ (Vorraussetzung: /T100/) \textit{Spielbeginn:} Mr. Pink, Mr. White, Mr. Brown und Mr. Orange befinden sich im Spielfenster. Jeder sieht seine, ihm vom Server ausgeteilten Karten (/L190/) und die verdeckten Karten seiner Mitspieler (/L192/).  
+		
+		\item /T220/ (Vorraussetzung: /T210/) \texit{Rundenbeginn:} Server dreht die oberste Karte auf dem Aufnahmestapel automatisch um und sagt dadurch die Trumpffarbe an. Im Chat erscheint eine Spielnachricht des Servers (/L270/).
+	
+		\item /T230/ (Vorraussetzung: /T220/) \textit{Rundenbeginn:} Es wird einer der 4 Zauberer aufgedeckt und Mr. Brown wird vom Server ausgewählt die Trumpffarbe anzusagen (/F360/). Über den Spielchat erhalten alle Spieler auskunft über den Vorgang (/L270/) und sehen die angesagte Farbe.
+		
+		\item /T240/ (Vorraussetzung: /T220/ oder /T230/) \textit{Rundenbeginn:} Nachdem die Trumpffarbe angesagt wurde erscheint ein Fenster indem jeder Spieler die Anzahl seiner Stiche tippen kann. Mr. Brown glaubt 4 Stiche machen zu können und gibt die Zahl ein (/F370/). Auch die anderen Spieler geben ihre Tipps ab.
+		
+		\item /T250/ (Vorraussetzung: /T240/) \textit{Zug:} Mr. White ist am Zug und wählt die Karte die er spielen möchte per Klick aus (/F225/). Er entschließt sich jedoch eine andere zu spielen und wählt eine andere Karte durch Klick auf die Karte aus (/F225/) worauf die erste gewählte Karte abgewählt wird. Durch einen weiter Klick auf seine neu ausgewählte Karte spielt er diese aus (/F230/). Er sieht seine Karte auf dem Ablagestapel erscheinen (/L194/).
+		
+		\item /T260/ \textit{Rundenende:} Mr. Pink spielt die letzte Karte der Runde. Er konnte seine Anzahl an Stichen nicht erreichen. Es erscheint eine kurze Zusammenfassung, wie viele Stiche er gemacht hat und erhält seinen Punkestand angezeigt.
+		
+		\item /T270/ (Vorraussetzung (/T190/) \textit{Spielabbruch:} Es läuft für Mr. Pink nicht sonderlich gut und er entschließt sich es gut sein zu lassen, weshalb er das Spiel durch einen Klick auf "schließen" beendet und sich anschließend in der ServerLobby wiederfindet (/F210/). Mr. White, Mr. Brown und Mr. Orange werden über das Verlassen des Spielers "Mr. Pink" im Chat informiert (/L270/) und werden ebenfalls in die ServerLobby zurückgeworfen.
+	
+		\item /T300/ \textit{Chat:} Mr. Pink, Mr. White, Mr. Brown und Mr. Orange befinden sich im Spielfenster. Mr. Orange schreibt die Chatnachricht "Hallo zusammen!" (/F220/) und sie wird bei allen im Chat angezeigt (/L260/).
+		
+	\end{itemize}
 \end{itemize}
 
 \section{Entwicklungsumgebung}
