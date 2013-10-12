@@ -232,104 +232,105 @@ Dauerbetrieb der Software.
 \end{itemize}
 
 \section{Produktdaten}
+\subsection{Regelwerke}
+\subsubsection{/D010/ Hearts}	
 \begin{itemize}
-	\item /D010/ Spielerdaten
+	\item Kartenstapel
 	\begin{itemize}
-		\item Spielername(eindeutig)
-		\item Server
-		\item Sprache
-	\end{itemize}
-		\item /D020/ Lobbydaten
-	\begin{itemize}
-		\item Spielernamen von /D010/
-		\item Spielenamen von /D030/
-		\item Chatinhalt
-	\end{itemize}
-	\item /D030/ Spieldaten
-
-	Allgemein:
-	\begin{itemize}
-		\item Spielname(eindeutig)
-		\item Spieleranzahl
-		\item Spielernamen von /D010/
-		\item Chatinhalt
-	\end{itemize}
-
-	Spielerstellung:
-	\begin{itemize}
-		\item Spielleiter
-		\item Passwort(optional)
-	\end{itemize}
-
-	Regelwerke:
-	\begin{itemize}
-		\item Hearts
+		\item Kartenanzahl: 52
+		\item Karten:
 		\begin{itemize}
-			\item Kartenanzahl: 52
-			\item Karten:
-			\begin{itemize}
-				\item Farbe: Kreuz, Pik, Herz, König
-				\item Wertigkeit: 2-10,Bube,Dame,König,Ass
-				\item Punkte: Herz = 1 Punkt, Pik Dame = 13 Punkte, andere = 0 Punkte
-			\end{itemize}
-			\item Erlaubte Spieleranzahl: 4 Spieler
-			\item Spielerhand:
-			\begin{itemize}
-				\item Spielernamen von /D010/
-				\item Anzahl der Karten(Beginn Runde: 13)
-				\item Karten
-				\item Tauschreihenfolge (Beginn Runde)
-			\end{itemize}
-			\item Ablagestapel:
-			\begin{itemize}
-				\item Spieleröffnung mit Pik 2
-				\item Zugreihenfolge
-				\item Spielbare Karten
-				\item Stichvergabe an Spieler
-				\item Anzeigezeit (Wie lange Karten auf der GUI angezeigt werden bevor sie verschwinden)
-			\end{itemize}
-				\item Punktestand
-		\end{itemize}
-		
-		\item Wizard
+			\item Farbe: Kreuz, Pik, Herz, König
+			\item Wertigkeit: 2-10,Bube,Dame,König,Ass
+			\item Punkte: Herz = 1 Punkt, Pik Dame = 13 Punkte, andere = 0 Punkte
+		\end{itemize}	
+		\item Kartenverteilung pro Runde: 13  				
+	\end{itemize}
+	\item Erlaubte Spieleranzahl: 4 Spieler		
+	\item Ablagestapel:
+	\begin{itemize}
+		\item Zugreihenfolge
+		\item Spielbare Karten
+		\item Stichvergabe an Spieler
+		\item Anzeigedauer der Karten
+	\end{itemize}
+	\item Auswertung
+	\begin{itemize}
+		\item Punktestand
+		\item Platzierungen der Spieler
+		\item Spielende
+	\end{itemize}
+\end{itemize}
+	
+\subsubsection{/D020/ Wizard}
+\begin{itemize}
+	\item Kartenstapel
+	\begin{itemize}
+		\item Kartenanzahl: 60
+		\item Karten:
 		\begin{itemize}
-			\item Kartenanzahl: 60
-			\item Karten
-
-			Reguläre Karten:
+			\item Reguläre Karten
 			\begin{itemize}
 				\item Farbe: blau,rot,grün,gelb
-				\item Wertigkeit: 1-13
+				\item Wertigkeit: 1-13	
 			\end{itemize}
-
-			Sonderkarten:
+			\item Sonderkarten
 			\begin{itemize}
 				\item Zauberer: 4 Karten
 				\item Narr: 4 Karten
-			\end{itemize}
-
+			\end{itemize}			
+		\end{itemize}		
+		\item Spieleranzahl: 3-6
+		\item Runden:
+		\begin{itemize}
+			\item Anzahl 20,15,12,10 (Abhängig von Spieleranzahl)
+			\item Trumpffarbe
+			\item Stichvorhersagen
 		\end{itemize}
-			\item Spieleranzahl: 3-6
-			\item Runden:
-			\begin{itemize}
-				\item Anzahl 20,15,12,10 (Abhängig von Spieleranzahl)
-				\item Trumpffarbe
-				\item Stichvorhersagen
-			\end{itemize}
-			\item Spielerhand:
-			\begin{itemize}
-				\item Anzahl der Karten (Erste Runde 1, wird um jede Runde um 1 erhöht)
-				\item Karten
-			\end{itemize}
-			\item Ablagestapel:
-			\begin{itemize}
-				\item Zugreihenfolge
-				\item Spielbare Karten
-				\item Stichvergabe an Spieler
-				\item Anzeigezeit (Wie lange Karten auf der GUI angezeigt werden bevor sie verschwinden)
-			\end{itemize}
+		\item Ablagestapel:
+		\begin{itemize}
+			\item Zugreihenfolge
+			\item Spielbare Karten
+			\item Stichvergabe an Spieler
+			\item Anzeigedauer der Karten
+		\end{itemize}
+		\item Auswertung
+		\begin{itemize}
 			\item Punktestand
-		\end{itemize}
+			\item Platzierung der Spieler
+		\end{itemize}	
+	\end{itemize}
+\end{itemize}
+
+\subsection{Andere Daten}
+\subsubsection{/D030/ Spieler}
+\begin{itemize}
+	\item Spielername(eindeutig)
+	\item Server
+	\item Sprache
+	\item Status(Lobby, Spiel)
+\end{itemize}	
+
+\subsubsection{/D040/ Spiel}
+\begin{itemize}
+	\item Spielname(eindeutig)
+	\item Spieler /D030/
+	\begin{itemize}
+		\item Spielleiter
+		\item Andere Spieler
+	\end{itemize}
+	\item Spieleranzahl
+	\item Regelwerk /D010/ oder /D020/
+	\item Chatinhalt
+	\item Status(Erstellung,Laufend,Ende)
+	\item Passwort(optional)
+\end{itemize}
+
+\subsubsection{/D050/ Lobby}
+\begin{itemize}
+	\item Spieler /D010/ (Status = Lobby)
+	\item Spiele /D040/ (Status = Erstellung)
+	\item Chatinhalt
 \end{itemize}
 
 
