@@ -31,8 +31,11 @@
 \glossaryentry{Wartefenster?\glossaryentryfield{Wartefenster}{\glsnamefont{Wartefenster}}{Fenster auf welchem man sich befindet, während man darauf wartet, dass die Mindestteilemerzahl erfüllt ist und das Spiel gestartet wird. }{\relax }|setentrycounter[]{page}\glsnumberformat}{5}
 \glossaryentry{Lobby?\glossaryentryfield{Lobby}{\glsnamefont{Lobby}}{Ort, an dem Spieler ein Kartenspiel auswählen oder beitreten können}{\relax }|setentrycounter[]{page}\glsnumberformat}{5}
 \glossaryentry{Lobby?\glossaryentryfield{Lobby}{\glsnamefont{Lobby}}{Ort, an dem Spieler ein Kartenspiel auswählen oder beitreten können}{\relax }|setentrycounter[]{page}\glsnumberformat}{7}
+<<<<<<< HEAD
+=======
 \glossaryentry{Spielleiter?\glossaryentryfield{Spielleiter}{\glsnamefont{Spielleiter}}{Derjenige, der in der Lobby ein neues Spiel erstellt}{\relax }|setentrycounter[]{page}\glsnumberformat}{7}
 \glossaryentry{Lobby?\glossaryentryfield{Lobby}{\glsnamefont{Lobby}}{Ort, an dem Spieler ein Kartenspiel auswählen oder beitreten können}{\relax }|setentrycounter[]{page}\glsnumberformat}{7}
 \glossaryentry{Wartefenster?\glossaryentryfield{Wartefenster}{\glsnamefont{Wartefenster}}{Fenster auf welchem man sich befindet, während man darauf wartet, dass die Mindestteilemerzahl erfüllt ist und das Spiel gestartet wird. }{\relax }|setentrycounter[]{page}\glsnumberformat}{8}
+>>>>>>> master
 \glossaryentry{Erstellungsfenster?\glossaryentryfield{Erstellungsfenster}{\glsnamefont{Erstellungsfenster}}{Fenster in welchem der Spielleiter das Spiel festlegt.}{\relax }|setentrycounter[]{page}\glsnumberformat}{9}
 \glossaryentry{Wartefenster?\glossaryentryfield{Wartefenster}{\glsnamefont{Wartefenster}}{Fenster auf welchem man sich befindet, während man darauf wartet, dass die Mindestteilemerzahl erfüllt ist und das Spiel gestartet wird. }{\relax }|setentrycounter[]{page}\glsnumberformat}{10}
