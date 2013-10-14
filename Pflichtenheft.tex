@@ -60,6 +60,7 @@
 
 
 \tableofcontents
+\newpage
 
 \section{Zielbestimmung}
 Ein Online-Multiplayer Kartenspiel.
@@ -72,11 +73,12 @@ Es gibt einen \gls{Server} der das Spiel verwaltet und \glspl{Client} die spiele
 		Der Benutzername muss Eindeutig sein, ansonsten wird eine Warnmeldung ausgegeben.
 	\item Es gibt eine \gls{Lobby} in der ein Spieler die Möglichkeit hat, Spiele zu erstellen und offenen Spielen beizutreten.
 	\item Es gibt einen Chat in der \gls{Lobby}.
-	\item Mehrere parallel laufender Spiele auf einem Server werden ünterstützt.
+	\item Mehrere parallel laufender Spiele auf einem Server werden unterstützt.
 	\item Regelauswertung mit Überprüfung erlaubter Aktionen, Punktezählung und  Kartenausgabe.
 	\item Die Spiele Hearts und Wizard sind verfügbar.	
 	\item Chat mit Mitspielern während eines Spiels ist möglich.
-	\item Schutz vor Cheats (Mehrfachanmeldung?)
+	\item Schutz vor Cheats. Da der Server die Kartenverteilung verwaltet, wird es dem Client nicht ermöglicht, die Hand 
+		eines Mitspielers zu sehen.
 \end{itemize}
 
 \subsubsection{\gls{Client}}
@@ -86,12 +88,12 @@ Es gibt einen \gls{Server} der das Spiel verwaltet und \glspl{Client} die spiele
 		\item Darstellungsfenster, das mindestens bei der Auflösung von 1024x768 Bildpunkten benutzt werden kann.
 		\item Darstellung des laufenden Spiels. Es wird die eigene Hand offen und die Hände der anderen Spieler verdeckt 					angezeigt. Je nach Spiel gibt es einen allgemeinen Ablagestapel in der Mitte des Spielfeldes oder individuelle 					Ablagestapel vor der Hand des jeweiligen Spielers. Der Zähler für Punktestand, gemachte Stiche, übrige Karten 					etc. befindet sich neben  der Hand des jeweiligen Spielers. Für die Gegenspieler wird zusätzlich der Name über 					der Hand angezeigt.)
 		\item Eine Karte wird durch einmaliges Anklicken ausgewählt und durch ein Zweites anklicken abgelegt. Es gibt ein extra 					Fenster um die zu verschiebenden Karten bei Hearts bzw. die Stichansage bei Wizard auszufüren.
-		\item Die GUI muss den Benutzer sinnvoll unterstützen und benutzerfreundliche Eingabeelemente anbieten.
-		\item Die Darstellung und das Spiel müssen flüssig laufen.
-		\item Die GUI darf nicht vom \gls{Regelwerk} abhängen.
+		\item Die GUI unterstützt den Benutzer sinnvoll  und bietet benutzerfreundliche Eingabeelemente an.
+		\item Die Darstellung und das Spiel laufen flüssig.
+		\item Die GUI hängt nicht vom \gls{Regelwerk} ab.
 		\item Beim Start kann der Spieler einen eindeutigen Benutzernamens auswohlen und die IP des \gls{Server}s angeben
 		\item In der \gls{Lobby} werden offene Spiele angezeigt und es gibt die Möglichkeit ein neues Spiel zu erstellen oder 					einem Existierenden beizutreten.
-		\item Chat in der \gls{Lobby} und während des Spiels ist möglich
+		\item Chat ist in der \gls{Lobby} und während des Spiels ist möglich
 	\end{itemize}
 	\item Modell
 	\begin{itemize}
@@ -103,7 +105,6 @@ Es gibt einen \gls{Server} der das Spiel verwaltet und \glspl{Client} die spiele
 
 \subsection{Wunschkriterien}
 \begin{itemize}
-	\item Weitere \glspl{Regelwerk} (Uno, Mau-Mau, Black Jack)
 	\item Statistiken, die nach dem Spiel angezeigt werden. Sie zeigen die Plazierung pro Runde.
 	\item Mehrere Sprachen werden unterstützt (Deutsch, Englisch, evtl. Bayrisch)
 	\item Anpassung der GUI durch Spieler ist möglich (Änderung von Hintergrundbild, Kartenrückseite)
@@ -394,7 +395,7 @@ Dauerbetrieb der Software.
 		\ \\
 		\makebox[\textwidth]{\includegraphics[scale=0.7]{GUI_images/ServerLobby}}
 		\newpage
-	\item \gls{Erstellungsfenster}: Im \gls{Erstellungsfenster} kann der \gls{Spielleiter} ein neues Spiel erstellen. Dabei muss er ein 			\gls{Regelwerk} aussuchen, und kann wahlweise dem Spiel einen Namen geben und das Passwort setzen. \\
+	\item \gls{Erstellungsfenster}: Im \gls{Erstellungsfenster} kann der \gls{Spielleiter} ein neues Spiel erstellen. Dabei muss er ein 			\gls{Regelwerk} aussuchen, und kann wahlweise dem Spiel einen Namen geben und das Passwort setzen. Fährt 					der \gls{Spielleiter} mit der Maus über das Bild, wird ein kurzer beschreibender Text zu dem jeweiligen Spiel 					gezeigt.\\
 		\ \\
 		\makebox[\textwidth]{\includegraphics[scale=0.8]{GUI_images/CreateGame}}
 		\ \\
@@ -407,7 +408,7 @@ Dauerbetrieb der Software.
 		\makebox[\textwidth]{\includegraphics{GUI_images/PasswordRequest}}
 		\ \\
 	\item Spiel: Im Spielfeld wird die eigene Hand offen, und die der anderen Spieler verdeckt angezeigt. Je nach Spiel gibt es 					einen allgemeinen Ablagestapel in der Mitte des Spielfeldes oder individuelle Ablagestapel vor der Hand des 					jeweiligen Spielers. Der Zähler für Punktestand, gemachte Stiche, übrige Karten etc. befindet sich neben  der 					Hand des jeweiligen Spielers. Für die Gegenspieler wird zusätzlich der Name über der Hand angezeigt.\\
-			Im unteren bereich gibt es ein Chatfenster für die Mitspieler.\\
+			Im unteren bereich gibt es ein Chatfenster für die Mitspieler. Oben links soll man über einen mit 'Einstellungen' 					beschrifteten Knopf die Hintergrundbilder anpassen können.\\
 		\ \\
 		\makebox[\textwidth]{\includegraphics[scale=0.6]{GUI_images/GameClient}}
 \end{itemize}
@@ -487,31 +488,49 @@ Dauerbetrieb der Software.
 		 
 	\end{itemize}
 
-	\item Spielfenster (Vorraussetzung: /T190/)
+	\item Spielfenster Allgemein(Voraussetzung: /T190/)
 	
 	\begin{itemize}
 	
-		\item /T210/ (Vorraussetzung: /T100/) \textit{Spielbeginn:} Mr. Pink, Mr. White, Mr. Brown und Mr. Orange befinden sich im Spielfenster. Jeder sieht seine, ihm vom Server ausgeteilten Karten (/L190/) und die verdeckten Karten seiner Mitspieler (/L192/).  
+		\item /T210/ (Voraussetzung: /T100/) \textit{Spielbeginn:} Mr. Pink, Mr. White, Mr. Brown und Mr. Orange befinden sich im Spielfenster. Der Server teilt die Karten aus. Jeder sieht seine, ihm vom Server ausgeteilten Karten (/L190/) und die verdeckten Karten seiner Mitspieler (/L192/).  
+
+		\item /T220/ (Voraussetzung: /T210/) \textit{Zug:} Mr. Pink ist nicht am Zug, jedoch versucht er dennoch eine Karte zu spielen, was mit einem entsprechendem Dialog  unterbunden wird.
 		
-		\item /T220/ (Vorraussetzung: /T210/) \textit{Rundenbeginn:} Der Server dreht die oberste Karte auf dem Aufnahmestapel (/L195/) automatisch um und sagt dadurch die Trumpffarbe (ausgenommen einen Zauberer) an. Im Chat erscheint eine Spielnachricht des Servers (/L270/).
+		\item /T220/ (Vorraussetzung: /T210/) \texit{Rundenbeginn:} Der Server dreht die oberste Karte auf dem Aufnahmestapel (/L195/) automatisch um und sagt dadurch die Trumpffarbe (ausgenommen einen Zauberer) an. Im Chat erscheint eine Spielnachricht des Servers (/L270/).
 	
-		\item /T230/ (Vorraussetzung: /T220/) \textit{Rundenbeginn:} Es wird einer der 4 Zauberer aufgedeckt und Mr. Brown wird vom Server ausgewählt die Trumpffarbe anzusagen. Mr. Brown wählt die Trumpffarbe. (/F360/) Über den Spielchat erhalten alle Spieler auskunft über den Vorgang (/L270/) und sehen die angesagte Farbe.
+		\item /T270/ \textit{Spielende:} Mr. Orange spielt die letzte Karte des Spiels. Das Spiel ist zu Ende und der Server bestimmt den Gewinner. Mr. Orange bekommt eine Zusammenfassung angezeigt die ihn als Sieger erklärt und seine Punkte anzeigt(/L250/). Alle anderen Spieler erhalten ebenfalls eine Zusammenstellung ihrer Leistung (/L250/).
 		
-		\item /T240/ (Vorraussetzung: /T220/ oder /T230/) \textit{Rundenbeginn:} Nachdem die Trumpffarbe angesagt wurde erscheint ein Fenster indem jeder Spieler die Anzahl seiner Stiche tippen kann. Mr. Brown glaubt 4 Stiche machen zu können und gibt die Zahl ein (/F370/). Auch die anderen Spieler geben ihre Tipps ab und sehen wie viele Karten die anderen auf der Hand haben und ihre prognostizierten Stiche (/L196/).
-		
-		\item /T250/ (Vorraussetzung: /T240/) \textit{Zug:} Mr. White ist am Zug und wählt die Karte die er spielen möchte per Klick aus (/F225/). Er entschließt sich jedoch eine andere zu spielen und wählt diese andere Karte durch Klick aus (/F225/) worauf die erste gewählte Karte abgewählt wird. Durch einen weiteren Klick auf seine neu ausgewählte Karte spielt er diese aus (/F230/). Er sieht seine Karte auf dem Ablagestapel erscheinen (/L194/).
-Mr. White hat den Stich gemacht und sieht seinen Punktestand (/L200/).
-		
-		\item /T260/ \textit{Rundenende:} Mr. Pink spielt die letzte Karte der Runde. Er konnte seine Anzahl an Stichen nicht erreichen. Es erscheint eine kurze Zusammenfassung, wie viele Stiche er gemacht hat, wie viele er getippt hat und erhält seinen Punkestand angezeigt (/L250/).
-		
-		\item /T270/ \textit{Spielende:} Mr. Orange spielt die letzte Karte des Spiels. Das Spiel ist zu Ende und der Server bestimmt den Gewinner. Mr. Orange bekommt eine Zusammenfassung angezeigt die ihn als Sieger erklärt und seine Punkte anzeigt(/L250/). Alle anderen Spieler erhalten ebenfalls eineZusammenstellung ihrer Leistung (/L250/).
-		
-		\item /T280/ (Vorraussetzung /T190/) \textit{Spielabbruch:} Es läuft für Mr. Pink nicht sonderlich gut und er entschließt sich es gut sein zu lassen, weshalb er das Spiel durch einen Klick auf "schließen" beendet und sich anschließend in der ServerLobby wiederfindet (/F210/). Mr. White, Mr. Brown und Mr. Orange werden über das Verlassen des Spielers "Mr. Pink" im Chat informiert (/L270/) und werden ebenfalls in die ServerLobby zurückgeworfen.
-		
-		\item /T290/ (Vorraussetzung /T105/) \textit{Spielbeginn Hearts:} Mr. Pink, Mr. White, Mr. Orange und Mr. Brown befinden sich im Spielfenster. Das Spiel beginnt und ein Fenster erscheint bei allen Spielern indem 3 Karten ausgewählt werden müssen. Mr. White wählt 3 Karten aus und bestätigt seine Auswahl (/F260/). Nachdem Mr. Orange ebenfalls 3 Karten zur Weitergabe ausgewählt hat erhält diese Mr. White. Mr Pink erhält die 3 Karten von Mr. White und  Mr Orange erhält die Karten von Mr. Pink.
+		\item /T280/ (Voraussetzung /T190/) \textit{Spielabbruch:} Es läuft für Mr. Pink nicht sonderlich gut und er entschließt sich, es sein zu lassen, weshalb er das Spiel durch einen Klick auf "schließen" beendet und sich anschließend in der ServerLobby wiederfindet (/F210/). Mr. White, Mr. Brown und Mr. Orange werden über das Verlassen des Spielers "Mr. Pink" im Chat informiert (/L270/) und werden ebenfalls in die ServerLobby zurückgeworfen.
 	
 		\item /T300/ \textit{Chat:} Mr. Pink, Mr. White, Mr. Brown und Mr. Orange befinden sich im Spielfenster. Mr. Orange schreibt die Chatnachricht "Hallo zusammen!" (/F220/) und sie wird bei allen im Chat angezeigt (/L260/).
+	
+		\item /T310/ \textit{Chat:} Mr. Pink, Mr. White, Mr. Brown und Mr. Orange befinden sich im Spielfenster. Mr. Orange versucht eine leere Nachricht im Chatfenster abzusetzen, die Nachricht wird nicht gesendet und erscheint auch nicht in seinem Chat.
+			
+	\end{itemize}
+	
+	\item Spielfenster Wizard
+	
+	\begin{itemize}
+
+		\item /T230/ (Voraussetzung: /T220/) \textit{Rundenbeginn:} Nach längerem Spiel wird einer der 4 Zauberer vom Server beim Kartengeben aufgedeckt und da Mr. Pink an der Reihe ist, erscheint ein Auswahlfenster. Mr. Pink wählt die Trumpffarbe. (/F360/) Über den Spielchat erhalten alle Spieler Auskunft über den Vorgang (/L270/) und sehen die angesagte Farbe.
+	
+		\item /T240/ (Voraussetzung: /T220/ oder /T230/) \textit{Rundenbeginn:} Nachdem eine Trumpffarbe angesagt wurde erscheint ein Fenster indem jeder Spieler die Anzahl seiner Stiche tippen kann. Mr. Brown glaubt 4 Stiche machen zu können und gibt die Zahl ein (/F370/). Auch die anderen Spieler geben ihre Tipps ab und sehen wie viele Karten die anderen auf der Hand haben und deren prognostizierten Stiche (/L196/).
+
+		\item /T220/ (Voraussetzung: /T210/) \textit{Rundenbeginn:} Der Server gibt die Karten und dreht die oberste Karte auf dem Aufnahmestapel (/L195/) automatisch um und sagt dadurch die Trumpffarbe (ausgenommen einen Zauberer) an. Im Chat erscheint eine Spielnachricht des Servers (/L270/).
 		
+				\item /T260/ \textit{Rundenende:} Mr. Pink spielt die letzte Karte der Runde. Es erscheint eine kurze Zusammenfassung, wie viele Stiche er gemacht hat, wie viele er getippt hat und erhält seinen aktuellen Punkestand sowie den der anderen Mitspieler in einem separatem Fenster angezeigt (/L250/).
+					
+	\end{itemize}
+	
+	\item Spielfenster Hearts
+	
+	\begin{itemize}
+	
+		\item /T290/ (Voraussetzung /T105/) \textit{Spielbeginn Hearts:} Mr. Pink, Mr. White, Mr. Orange und Mr. Brown befinden sich im Spielfenster. Das Spiel beginnt und ein Fenster erscheint bei allen Spielern indem 3 Karten ausgewählt werden müssen. Mr. White wählt 3 Karten aus und bestätigt seine Auswahl (/F260/). Nachdem Mr. Orange ebenfalls 3 Karten zur Weitergabe ausgewählt hat erhält diese Mr. White. Mr Pink erhält die 3 Karten von Mr. White und  Mr Orange erhält die Karten von Mr. Pink.
+
+		\item /T290/ (Voraussetzung /T105/) \textit{Spielbeginn Hearts:} Mr. Pink, Mr. White, Mr. Orange und Mr. Brown befinden sich im Spielfenster. Das Spiel beginnt und ein Fenster erscheint bei allen Spielern indem 3 Karten ausgewählt werden müssen. Mr. White nur 2 Karten aus und bestätigt seine Auswahl (/F260/). Es erscheint ein Dialog der ihn auffordert 3 Karten auszuwählen.
+
+		\item /T300/ (Vorausetzung /T210/) \textit{Zug:} Mr. Pink versucht eine Farbe zuzugeben, die sich von der Gespielten unterscheidet. Das Spiel erkennt den Regelverstoß und zeigt dies über einen Dialog an.
 	\end{itemize}
 \end{itemize}
 
