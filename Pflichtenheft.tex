@@ -483,7 +483,7 @@ Dauerbetrieb der Software.
 	
 		\item /T210/ (Vorraussetzung: /T100/) \textit{Spielbeginn:} Mr. Pink, Mr. White, Mr. Brown und Mr. Orange befinden sich im Spielfenster. Jeder sieht seine, ihm vom Server ausgeteilten Karten (/L190/) und die verdeckten Karten seiner Mitspieler (/L192/).  
 		
-		\item /T220/ (Vorraussetzung: /T210/) \texit{Rundenbeginn:} Der Server dreht die oberste Karte auf dem Aufnahmestapel (/L195/) automatisch um und sagt dadurch die Trumpffarbe (ausgenommen einen Zauberer) an. Im Chat erscheint eine Spielnachricht des Servers (/L270/).
+		\item /T220/ (Vorraussetzung: /T210/) \textit{Rundenbeginn:} Der Server dreht die oberste Karte auf dem Aufnahmestapel (/L195/) automatisch um und sagt dadurch die Trumpffarbe (ausgenommen einen Zauberer) an. Im Chat erscheint eine Spielnachricht des Servers (/L270/).
 	
 		\item /T230/ (Vorraussetzung: /T220/) \textit{Rundenbeginn:} Es wird einer der 4 Zauberer aufgedeckt und Mr. Brown wird vom Server ausgewählt die Trumpffarbe anzusagen. Mr. Brown wählt die Trumpffarbe. (/F360/) Über den Spielchat erhalten alle Spieler auskunft über den Vorgang (/L270/) und sehen die angesagte Farbe.
 		
@@ -522,6 +522,57 @@ Mr. White hat den Stich gemacht und sieht seinen Punktestand (/L200/).
 
 \section{Ergaenzung}
 ..... 
+
+\section{Qualitätsbestimmung}
+\begin{tabular}{|c|c|c|c|c|}
+\hline 
+Kriterium & Sehr Wichtig & Wichtig & Weniger Wichtig & Unwichtig \\ 
+\hline 
+Benutzerfreundlichkeit & X &  &  &  \\ 
+\hline 
+Effizienz &  & X &  &  \\ 
+\hline 
+Erweiterbarkeit & X &  &  &  \\ 
+\hline 
+Korrektheit & X &  &  &  \\ 
+\hline 
+Sicherheit &  &  & X &  \\ 
+\hline 
+Stabilität &  & X &  &  \\ 
+\hline 
+Übertragbarkeit &  &  &  & X \\ 
+\hline 
+\end{tabular} 
+
+\begin{itemize}
+\item Benutzerfreundlichkeit:
+
+Das Interface sollte intuitiv bedienbar sein und ohne weitere Hilfe für den Benutzer nachvollziehbar sein, daher ist Benutzerfreundlichkeit ein sehr wichtiges Kriterium. 
+
+\item Effizienz
+
+Da die Anwendung keine allzu großen Berechnungen durchführen sollte, ist die Effizienz des Programms zwar wichtig aber hat nicht die höchste Priorität.
+
+\item Erweiterbarkeit
+
+Im den Muss-Kriterien wird explizit darauf hingewiesen dass es ohne großen Aufwand möglich sein sollte weitere Regelwerke hinzuzufügen, daher ist Erweiterbarkeit ein Muss
+
+\item Korrektheit
+
+Um die Fairness in einem Spiel aufrecht zu erhalten, sollten keine Fehler auftauchen die gegen die Regeln des Spiels verstoßen. Das Spiel muss seine eigenen Regeln auch einhalten!
+
+\item Sicherheit
+
+Da dies ein eher kleines Programm ist deren Zielgruppe auch nicht groß ist, werden auch keine größeren Sicherheitsmaßnahmen vorgenommen.
+
+\item Stabilität
+
+Ein instabiles Programm in denen es vielfach zu Spielabstürzen oder anderen lästigen Fehlern kommt, wäre für den Benutzer sehr ärgerlich und würde den Spielspass sehr eindämpfen. Es ist daher wichtig dass das Programm robust läuft.
+
+\item Übertragbarkeit
+
+Die Übertragbarkeit der Anwendung ist durch die Verwendung von Java gegeben
+\end{itemize}
 \newpage
 \printglossaries
 \end{document}
