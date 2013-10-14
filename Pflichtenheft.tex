@@ -478,31 +478,49 @@ Dauerbetrieb der Software.
 		 
 	\end{itemize}
 
-	\item Spielfenster (Vorraussetzung: /T190/)
+	\item Spielfenster Allgemein(Voraussetzung: /T190/)
 	
 	\begin{itemize}
 	
-		\item /T210/ (Vorraussetzung: /T100/) \textit{Spielbeginn:} Mr. Pink, Mr. White, Mr. Brown und Mr. Orange befinden sich im Spielfenster. Jeder sieht seine, ihm vom Server ausgeteilten Karten (/L190/) und die verdeckten Karten seiner Mitspieler (/L192/).  
+		\item /T210/ (Voraussetzung: /T100/) \textit{Spielbeginn:} Mr. Pink, Mr. White, Mr. Brown und Mr. Orange befinden sich im Spielfenster. Der Server teilt die Karten aus. Jeder sieht seine, ihm vom Server ausgeteilten Karten (/L190/) und die verdeckten Karten seiner Mitspieler (/L192/).  
+
+		\item /T220/ (Voraussetzung: /T210/) \textit{Zug:} Mr. Pink ist nicht am Zug, jedoch versucht er dennoch eine Karte zu spielen, was mit einem entsprechendem Dialog  unterbunden wird.
 		
-		\item /T220/ (Vorraussetzung: /T210/) \texit{Rundenbeginn:} Der Server dreht die oberste Karte auf dem Aufnahmestapel (/L195/) automatisch um und sagt dadurch die Trumpffarbe (ausgenommen einen Zauberer) an. Im Chat erscheint eine Spielnachricht des Servers (/L270/).
+		\item /T210/ (Voraussetzung: /T240/) \textit{Zug:} Mr. White ist am Zug und wählt die Karte, welche er spielen möchte per Klick aus (/F225/). Er entschließt sich jedoch eine andere zu spielen und wählt diese andere Karte durch Klick aus (/F225/) worauf die erste gewählte Karte abgewählt wird. Durch einen weiteren Klick auf seine neu ausgewählte Karte spielt er diese aus (/F230/). Er sieht seine Karte auf dem Ablagestapel erscheinen (/L194/).
 	
-		\item /T230/ (Vorraussetzung: /T220/) \textit{Rundenbeginn:} Es wird einer der 4 Zauberer aufgedeckt und Mr. Brown wird vom Server ausgewählt die Trumpffarbe anzusagen. Mr. Brown wählt die Trumpffarbe. (/F360/) Über den Spielchat erhalten alle Spieler auskunft über den Vorgang (/L270/) und sehen die angesagte Farbe.
+		\item /T270/ \textit{Spielende:} Mr. Orange spielt die letzte Karte des Spiels. Das Spiel ist zu Ende und der Server bestimmt den Gewinner. Mr. Orange bekommt eine Zusammenfassung angezeigt die ihn als Sieger erklärt und seine Punkte anzeigt(/L250/). Alle anderen Spieler erhalten ebenfalls eine Zusammenstellung ihrer Leistung (/L250/).
 		
-		\item /T240/ (Vorraussetzung: /T220/ oder /T230/) \textit{Rundenbeginn:} Nachdem die Trumpffarbe angesagt wurde erscheint ein Fenster indem jeder Spieler die Anzahl seiner Stiche tippen kann. Mr. Brown glaubt 4 Stiche machen zu können und gibt die Zahl ein (/F370/). Auch die anderen Spieler geben ihre Tipps ab und sehen wie viele Karten die anderen auf der Hand haben und ihre prognostizierten Stiche (/L196/).
-		
-		\item /T250/ (Vorraussetzung: /T240/) \textit{Zug:} Mr. White ist am Zug und wählt die Karte die er spielen möchte per Klick aus (/F225/). Er entschließt sich jedoch eine andere zu spielen und wählt diese andere Karte durch Klick aus (/F225/) worauf die erste gewählte Karte abgewählt wird. Durch einen weiteren Klick auf seine neu ausgewählte Karte spielt er diese aus (/F230/). Er sieht seine Karte auf dem Ablagestapel erscheinen (/L194/).
-Mr. White hat den Stich gemacht und sieht seinen Punktestand (/L200/).
-		
-		\item /T260/ \textit{Rundenende:} Mr. Pink spielt die letzte Karte der Runde. Er konnte seine Anzahl an Stichen nicht erreichen. Es erscheint eine kurze Zusammenfassung, wie viele Stiche er gemacht hat, wie viele er getippt hat und erhält seinen Punkestand angezeigt (/L250/).
-		
-		\item /T270/ \textit{Spielende:} Mr. Orange spielt die letzte Karte des Spiels. Das Spiel ist zu Ende und der Server bestimmt den Gewinner. Mr. Orange bekommt eine Zusammenfassung angezeigt die ihn als Sieger erklärt und seine Punkte anzeigt(/L250/). Alle anderen Spieler erhalten ebenfalls eineZusammenstellung ihrer Leistung (/L250/).
-		
-		\item /T280/ (Vorraussetzung /T190/) \textit{Spielabbruch:} Es läuft für Mr. Pink nicht sonderlich gut und er entschließt sich es gut sein zu lassen, weshalb er das Spiel durch einen Klick auf "schließen" beendet und sich anschließend in der ServerLobby wiederfindet (/F210/). Mr. White, Mr. Brown und Mr. Orange werden über das Verlassen des Spielers "Mr. Pink" im Chat informiert (/L270/) und werden ebenfalls in die ServerLobby zurückgeworfen.
-		
-		\item /T290/ (Vorraussetzung /T105/) \textit{Spielbeginn Hearts:} Mr. Pink, Mr. White, Mr. Orange und Mr. Brown befinden sich im Spielfenster. Das Spiel beginnt und ein Fenster erscheint bei allen Spielern indem 3 Karten ausgewählt werden müssen. Mr. White wählt 3 Karten aus und bestätigt seine Auswahl (/F260/). Nachdem Mr. Orange ebenfalls 3 Karten zur Weitergabe ausgewählt hat erhält diese Mr. White. Mr Pink erhält die 3 Karten von Mr. White und  Mr Orange erhält die Karten von Mr. Pink.
+		\item /T280/ (Voraussetzung /T190/) \textit{Spielabbruch:} Es läuft für Mr. Pink nicht sonderlich gut und er entschließt sich, es sein zu lassen, weshalb er das Spiel durch einen Klick auf "schließen" beendet und sich anschließend in der ServerLobby wiederfindet (/F210/). Mr. White, Mr. Brown und Mr. Orange werden über das Verlassen des Spielers "Mr. Pink" im Chat informiert (/L270/) und werden ebenfalls in die ServerLobby zurückgeworfen.
 	
 		\item /T300/ \textit{Chat:} Mr. Pink, Mr. White, Mr. Brown und Mr. Orange befinden sich im Spielfenster. Mr. Orange schreibt die Chatnachricht "Hallo zusammen!" (/F220/) und sie wird bei allen im Chat angezeigt (/L260/).
+	
+		\item /T310/ \textit{Chat:} Mr. Pink, Mr. White, Mr. Brown und Mr. Orange befinden sich im Spielfenster. Mr. Orange versucht eine leere Nachricht im Chatfenster abzusetzen, die Nachricht wird nicht gesendet und erscheint auch nicht in seinem Chat.
+			
+	\end{itemize}
+	
+	\item Spielfenster Wizard
+	
+	\begin{itemize}
+
+		\item /T230/ (Voraussetzung: /T220/) \textit{Rundenbeginn:} Nach längerem Spiel wird einer der 4 Zauberer vom Server beim Kartengeben aufgedeckt und da Mr. Pink an der Reihe ist, erscheint ein Auswahlfenster. Mr. Pink wählt die Trumpffarbe. (/F360/) Über den Spielchat erhalten alle Spieler Auskunft über den Vorgang (/L270/) und sehen die angesagte Farbe.
+	
+		\item /T240/ (Voraussetzung: /T220/ oder /T230/) \textit{Rundenbeginn:} Nachdem eine Trumpffarbe angesagt wurde erscheint ein Fenster indem jeder Spieler die Anzahl seiner Stiche tippen kann. Mr. Brown glaubt 4 Stiche machen zu können und gibt die Zahl ein (/F370/). Auch die anderen Spieler geben ihre Tipps ab und sehen wie viele Karten die anderen auf der Hand haben und deren prognostizierten Stiche (/L196/).
+
+		\item /T220/ (Voraussetzung: /T210/) \textit{Rundenbeginn:} Der Server gibt die Karten und dreht die oberste Karte auf dem Aufnahmestapel (/L195/) automatisch um und sagt dadurch die Trumpffarbe (ausgenommen einen Zauberer) an. Im Chat erscheint eine Spielnachricht des Servers (/L270/).
 		
+				\item /T260/ \textit{Rundenende:} Mr. Pink spielt die letzte Karte der Runde. Es erscheint eine kurze Zusammenfassung, wie viele Stiche er gemacht hat, wie viele er getippt hat und erhält seinen aktuellen Punkestand sowie den der anderen Mitspieler in einem separatem Fenster angezeigt (/L250/).
+					
+	\end{itemize}
+	
+	\item Spielfenster Hearts
+	
+	\begin{itemize}
+	
+		\item /T290/ (Voraussetzung /T105/) \textit{Spielbeginn Hearts:} Mr. Pink, Mr. White, Mr. Orange und Mr. Brown befinden sich im Spielfenster. Das Spiel beginnt und ein Fenster erscheint bei allen Spielern indem 3 Karten ausgewählt werden müssen. Mr. White wählt 3 Karten aus und bestätigt seine Auswahl (/F260/). Nachdem Mr. Orange ebenfalls 3 Karten zur Weitergabe ausgewählt hat erhält diese Mr. White. Mr Pink erhält die 3 Karten von Mr. White und  Mr Orange erhält die Karten von Mr. Pink.
+
+		\item /T290/ (Voraussetzung /T105/) \textit{Spielbeginn Hearts:} Mr. Pink, Mr. White, Mr. Orange und Mr. Brown befinden sich im Spielfenster. Das Spiel beginnt und ein Fenster erscheint bei allen Spielern indem 3 Karten ausgewählt werden müssen. Mr. White nur 2 Karten aus und bestätigt seine Auswahl (/F260/). Es erscheint ein Dialog der ihn auffordert 3 Karten auszuwählen.
+
+		\item /T300/ (Vorausetzung /T210/) \textit{Zug:} Mr. Pink versucht eine Farbe zuzugeben, die sich von der Gespielten unterscheidet. Das Spiel erkennt den Regelverstoß und zeigt dies über einen Dialog an.
 	\end{itemize}
 \end{itemize}
 
