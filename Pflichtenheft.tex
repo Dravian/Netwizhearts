@@ -12,10 +12,11 @@
 }
 \newglossaryentry{Client}{name=Client,
 	plural = Clients,
-	description={Ein Spieler (bzw. Computer des Spielers) der das Online-Kartenspiel nutzt.}
+	description={Das Programm, das der Spieler auf seinem Rechner ausführt, um ein Online-Kartespiel zu spielen}
 }
 \newglossaryentry{Server}{name = Server,
-	description={Rechner, der das Online-Kartenspiel zur Verfügung stellt}
+	description={Der zentral ausgeführte Teil der Software, der die Kommunikation und Interaktion mit den Clients verwaltet
+		 sowie erstellte Spiele verwaltet und die Einhaltung der Regeln in diesen gewährleistet}
 }
 \newglossaryentry{Lobby}{name = Lobby,
 	description={Ort, an dem Spieler ein Kartenspiel auswählen oder beitreten können}
@@ -24,11 +25,11 @@
 	description={Derjenige, der in der Lobby ein neues Spiel erstellt}
 }
 \newglossaryentry{Erstellungsfenster}{name = Erstellungsfenster,
-	description={Fenster in welchem der Spielleiter das Spiel festlegt.}
+	description={Fenster in welchem der Spielleiter das Spiel festlegt}
 }
 \newglossaryentry{Wartefenster}{name = Wartefenster,
 	description={Fenster auf welchem man sich befindet, während man darauf wartet, 
-		dass die Mindestteilemerzahl erfüllt ist und das Spiel gestartet wird. }
+		dass die Mindestteilemerzahl erfüllt ist und das Spiel gestartet wird}
 }
 
 \begin{document}
@@ -67,21 +68,21 @@
 \newpage
 
 \section{Zielbestimmung}
-Bei NET-WizHearts handelt es sich um ein Mulitplayer-Online-Kartenspielsystem. Ziel des Produkts ist es eine Basis für mehrere Kartenspiele zu schaffen. So können Spieler mit nur einem einzigen Programm über das lokale Netzwerk oder das Internet miteinander verschiedene \glspl{Regelwerk} spielen. Zusätzlich wird den Spielern die Möglichkeit geboten über Chat zu kommunizieren. Zu Beginn werden bereits Hearts und Wizard als Regelwerke zur Verfügung gestellt.
+Bei NET-WizHearts handelt es sich um ein Mulitplayer-Online-Kartenspielsystem. Ziel des Produkts ist es eine Basis für mehrere Kartenspiele zu schaffen. So können Spieler mit nur einem einzigen Programm über das lokale Netzwerk oder das Internet miteinander verschiedene \glspl{Regelwerk} spielen. Zusätzlich wird den Spielern die Möglichkeit geboten über Chat zu kommunizieren. Zu Beginn werden bereits Hearts und Wizard als \glspl{Regelwerk} zur Verfügung gestellt.
 
 \subsection{Musskriterien}
 Es gibt einen \gls{Server}, der das Spiel verwaltet, und \glspl{Client}, die spielen.
 \subsubsection{\gls{Server}}
 \begin{itemize}
-	\item \glspl{Client} können einen Benutzernamen auswählen und sich anschließend mit dem Server verbinden.
+	\item \glspl{Client} können einen Benutzernamen auswählen und sich anschließend mit dem \gls{Server} verbinden.
 		Der Benutzername muss Eindeutig sein, ansonsten wird eine Warnmeldung ausgegeben.
 	\item Es gibt eine \gls{Lobby} in der ein Spieler die Möglichkeit hat, Spiele zu erstellen und offenen Spielen beizutreten.
 	\item Es gibt einen Chat in der \gls{Lobby}.
-	\item Mehrere parallel laufende Spiele auf einem Server werden unterstützt.
-	\item Regelauswertung mit Überprüfung erlaubter Aktionen, Punktezählung und  Kartenausgabe durch den Server.
+	\item Mehrere parallel laufende Spiele auf einem \gls{Server} werden unterstützt.
+	\item Regelauswertung mit Überprüfung erlaubter Aktionen, Punktezählung und  Kartenausgabe durch den \gls{Server}.
 	\item Die Spiele Hearts und Wizard sind verfügbar.	
 	\item Chat mit Mitspielern während eines Spiels ist möglich.
-	\item Schutz vor Cheats. Da der Server die Kartenverteilung und die Regelauswertung verwaltet, wird es dem Client nicht ermöglicht, die Hand eines Mitspielers zu sehen oder die Regeln zu manipulieren.
+	\item Schutz vor Cheats. Da der \gls{Server} die Kartenverteilung und die Regelauswertung verwaltet, wird es dem 					\glspl{Client} nicht ermöglicht, die Hand eines Mitspielers zu sehen oder die Regeln zu manipulieren.
 \end{itemize}
 
 \subsubsection{\gls{Client}}
@@ -155,7 +156,7 @@ Dauerbetrieb der Software.
 		\begin{itemize}
 			\item Internetfähiger Rechner
 		\end{itemize}
-		\item Server
+		\item \gls{Server}
 		\begin{itemize}
 			\item Internetfähiger Rechner	
 			\item Mindestanforderungen des verwendeten Betriebssystems bezüglich Arbeitsspeicher und Rechenleistung 					      müssen erfüllt sein, können jedoch durch die Anzahl der gehosteten Spieler/Spiele steigen.
@@ -183,7 +184,7 @@ Dauerbetrieb der Software.
 \begin{itemize}
 	\item /F120/ Auswahl des \gls{Regelwerk}s
 	\item /F122W/ Eingabe eines Namens für das zu erstellende Spiel (Ansonsten wird als Name 'BENUTZERNAME's Spiel' gewählt)
-	\item /F124/ Erstellung abbrechen und \gls{Erstellungsfenster} verlassen (Zurückleitung zur Lobby)
+	\item /F124/ Erstellung abbrechen und \gls{Erstellungsfenster} verlassen (Zurückleitung zur \gls{Lobby})
 	\item /F126/ Erstellen eines neues Spiels (Weiterleitung zum \gls{Wartefenster})
 	\item /F130W/ Möglichkeit ein Passwort für das Spiel zu setzen
 \end{itemize}
@@ -202,12 +203,12 @@ Dauerbetrieb der Software.
 		\item /F160/ Chat mit anderen Spielern im selben Spiel
 		\item /F170/ Verlassen des Spiels (Zurückleitung zur \gls{Lobby})
 	\end{itemize}
-	\item Spielleiter
+	\item \gls{Spielleiter}
 	
 	Besitzt alle Funktionen des Spielers
 	\begin{itemize}
 		\item /F180/ Spieler entfernen
-		\item /F190/ Auflösung des Spiels durch Verlassen des Wartefensters (Zurückleitung zur \gls{Lobby})
+		\item /F190/ Auflösung des Spiels durch Verlassen des \gls{Wartefenster}s (Zurückleitung zur \gls{Lobby})
 		\item /F200/ Starten des Spiels (Voraussetzung: Mindestanzahl der Spieler erreicht)
 	\end{itemize}
 \end{itemize}
@@ -216,7 +217,7 @@ Dauerbetrieb der Software.
 \begin{itemize}
 	\item Alle Spiele
 	\begin{itemize}
-		\item /F210/ Verlassen des Spiels (Zurückleiten aller Spieler zur Lobby)
+		\item /F210/ Verlassen des Spiels (Zurückleiten aller Spieler zur \gls{Lobby})
 		\item /F220/ Nachricht senden an andere Spieler
 		\item /F225/ Karte auswählen (Voraussetzung: Spieler am Zug und Karte darf gespielt werden)
 		\item /F230/ Karte spielen (Voraussetzung: Karte ausgewählt)
@@ -332,7 +333,7 @@ Dauerbetrieb der Software.
 		\item Andere Spieler
 	\end{itemize}
 	\item Spieleranzahl
-	\item Regelwerk /D010/ oder /D020/
+	\item \gls{Regelwerk} /D010/ oder /D020/
 	\item Chatinhalt
 	\item Status(Erstellung, Laufend, Ende)
 	\item Passwort(optional)
@@ -353,13 +354,13 @@ Dauerbetrieb der Software.
 	\item /L115/ Anzeige des Chatdialoges		
 \end{itemize}
 
-\subsection{Erstellungsfenster}
+\subsection{\gls{Erstellungsfenster}}
 \begin{itemize}
 	\item /L120/ Anzeige eines Spiellogos
 	\item /L122/ Anzeige einer kurzen Spielbeschreibung (bei Mouseover über das Logo)
 \end{itemize}
 
-\subsection{Wartefenster}
+\subsection{\gls{Wartefenster}}
 \begin{itemize}
 	\item /L150/ Anzeigen des Spieltyps
 	\item /L155/ Anzeigen der Mitspieler
@@ -381,10 +382,11 @@ Dauerbetrieb der Software.
 	\item /L280/ Einhaltung der Spielregeln gewährleisten
 \end{itemize}
 
-\subsection{Server}
+\subsection{\gls{Server}}
 \begin{itemize}
 \item /L300/ Verwaltung mehrerer parallel laufender Spiele
-\item /L330/ Schutz vor Cheats: Regelauswertung durch Server, Handkarten aller Spieler nur dem Server bekannt (Client kennt nur eigene Handkarten)
+\item /L330/ Schutz vor Cheats: Regelauswertung durch Server, Handkarten aller Spieler nur dem \gls{Server} bekannt 
+		(\gls{Client} kennt nur eigene Handkarten)
 \end{itemize}
 	
 \subsection{Allgemein}
@@ -398,10 +400,10 @@ Dauerbetrieb der Software.
 
 \section{Benutzeroberfläche}
 \begin{itemize}
-	\item Startseite:  Auf dieser Seite kann sich der Spieler einen Benutzernamen aussuchen und sich mit dem Server verbinden. Außerdem legt er die Sprache für das gesamte Programm fest.\\ 				\ \\
+	\item Startseite:  Auf dieser Seite kann sich der Spieler einen Benutzernamen aussuchen und sich mit dem \gls{Server} verbinden. Außerdem legt er die Sprache für das gesamte Programm fest.\\ 				\ \\
 		\makebox[\textwidth]{\includegraphics{GUI_images/Login}}
 		\ \\
-	\item \gls{Lobby}: In der \gls{Lobby} können Spieler mit den unteren Buttons ein neues Spiel erstellen,  einem offenem Spiel 					beitreten oder die \gls{Lobby} verlassen. In der linken Spalte sind die Spieler zu sehen, die sich gerade in der 					\gls{Lobby} befinden. In der rechten Spalte sieht 					man die offenen Spiele, mit momentaner Spielerzahl und und Spieltyp. Im unteren Teil der Lobby ist der Chat.\\
+	\item \gls{Lobby}: In der \gls{Lobby} können Spieler mit den unteren Buttons ein neues Spiel erstellen,  einem offenem Spiel 					beitreten oder die \gls{Lobby} verlassen. In der linken Spalte sind die Spieler zu sehen, die sich gerade in der 					\gls{Lobby} befinden. In der rechten Spalte sieht 					man die offenen Spiele, mit momentaner Spielerzahl und und Spieltyp. Im unteren Teil der \gls{Lobby} ist der Chat.\\
 		\ \\
 		\makebox[\textwidth]{\includegraphics[scale=0.7]{GUI_images/ServerLobby}}
 		\newpage
@@ -428,78 +430,78 @@ Dauerbetrieb der Software.
 	\item Startseite (keine Vorraussetzungen): \\
 	\begin{itemize}
 	
-		\item /T020/ \textit{Verbindungsaufbau mit Server:} Mr. Blue gibt den Nickname 'MrBlue' und die Adresse des Servers ein (/F040/). Er verbindet sich mit dem Server und gelangt die Lobby (/F045/). 
+		\item /T020/ \textit{Verbindungsaufbau mit \gls{Server}:} Mr. Blue gibt den Nickname 'MrBlue' und die Adresse des \gls{Server}s ein (/F040/). Er verbindet sich mit dem \gls{Server} und gelangt die \gls{Lobby} (/F045/). 
 		
 		\item /T025/ \textit{Falsche Eingabe (Name):} Mr. Blue gibt keinen Namen ein, es kommt zu einer Fehlermeldung (/L290/ 'Kein Name angegeben').
 		
-		\item /T027/ \textit{Falsche Eingabe (Name):} Nachdem Mr. Blue schon auf dem Server eingeloggt ist, versucht nun Mr. Bleau sich mit dem Nickname 'MrBlue' einzuloggen. Es wird eine Fehlermeldung angezeigt (/L290/ 'Name wird bereits verwendet').
+		\item /T027/ \textit{Falsche Eingabe (Name):} Nachdem Mr. Blue schon auf dem \gls{Server} eingeloggt ist, versucht nun Mr. Bleau sich mit dem Nickname 'MrBlue' einzuloggen. Es wird eine Fehlermeldung angezeigt (/L290/ 'Name wird bereits verwendet').
 		
-		\item /T029/ \textit{Falsche Eingabe (IP):} Mr. Blue vertippt sich beim Eingeben der Serveradresse. Beim Loginversuch wird ein Fehler ausgegeben (/L290/ 'Server konnte nicht gefunden werden').
+		\item /T029/ \textit{Falsche Eingabe (IP):} Mr. Blue vertippt sich beim Eingeben der \gls{Server}radresse. Beim Loginversuch wird ein Fehler ausgegeben (/L290/ '\gls{Server} konnte nicht gefunden werden').
 		
 		\item /T030/ \textit{Auswahl der Sprache:} Mr. Blue wählt im Dropdown-Menü die Sprache 'English' aus (/F050W/), das Login-Fenster wird neu erstellt und es und alle folgenden Fenster sind nun in englischer Sprache.
 	\end{itemize}
 	
-		\item /T035/ \textit{Beenden und wieder Einloggen:} Mr. Blue ist mit dem Namen 'MrBlue' eingeloggt. Er beendet das Spiel und der Nickname wird wieder freigegeben (/L380/). Er startet das Spiel noch einmal und loggt sich wieder mit 'Mrblue' ein (/F045/)
+		\item /T035/ \textit{Beenden und wieder Einloggen:} Mr. Blue ist mit dem Namen 'MrBlue' eingeloggt. Er beendet das Spiel und der Nickname wird wieder freigegeben (/L380/). Er startet das Spiel noch einmal und loggt sich wieder mit 'MrBlue' ein (/F045/)
 
 	\item \gls{Lobby} (Vorraussetzungen: /T020/: \\ \\
 	\begin{itemize}
 	
-		\item /T040/ \textit{Spielerliste:} Der eigene Benutzername 'MrBlue' und die Benutzernamen aller anderen verbundenen Clients werden sofort in der Spielerliste angezeigt (/L100/).
+		\item /T040/ \textit{Spielerliste:} Der eigene Benutzername 'MrBlue' und die Benutzernamen aller anderen verbundenen \gls{Client}s werden sofort in der Spielerliste angezeigt (/L100/).
 		
-		\item /T050/ \textit{Serverliste:} Alle von Nutzern erstellten Spiele werden in der Spielliste angezeigt (/L110/).
+		\item /T050/ \textit{\gls{Server}liste:} Alle von Nutzern erstellten Spiele werden in der Spielliste angezeigt (/L110/).
 	
-		\item /T060/ \textit{Chatnachricht senden:} Mr. Blue gibt die Nachricht 'Hallo Kartenwelt!' in das untere Textfeld ein und drückt die Entertaste (/F060/). Im oberen Textfeld wird die aktuellste Nachricht und alle bisher gesendeten Nachrichten angezeigt (/L115/). Mr. Pink ist auch in der Lobby, sieht die Nachricht von Mr. Blue (/L115/) und sendet die Nachricht 'Hallo MrBlue' (/F060/). Diese erscheint ebenfalls im Chat aller Spieler(/L115/).
+		\item /T060/ \textit{Chatnachricht senden:} Mr. Blue gibt die Nachricht 'Hallo Kartenwelt!' in das untere Textfeld ein und drückt die Entertaste (/F060/). Im oberen Textfeld wird die aktuellste Nachricht und alle bisher gesendeten Nachrichten angezeigt (/L115/). Mr. Pink ist auch in der \gls{Lobby}, sieht die Nachricht von Mr. Blue (/L115/) und sendet die Nachricht 'Hallo MrBlue' (/F060/). Diese erscheint ebenfalls im Chat aller Spieler(/L115/).
 		
-		\item /T080/ \textit{Spiel erstellen:} Mr. White erstellt ein Spiel und gelangt ins Erstellungsfenster (/F080/).
+		\item /T080/ \textit{Spiel erstellen:} Mr. White erstellt ein Spiel und gelangt ins \gls{Erstellungsfenster} (/F080/).
 		
-		\item /T085/ \textit{Mehrere Spiele erstellen (Vorrausetzung: /T080/, /T110/):} Mr Pink erstellt ein weiteres Spiel und gelangt ins Erstellungsfenster (/F080/). Für alle eingeloggten Spieler sind nun beide Spiele sichtbar.
+		\item /T085/ \textit{Mehrere Spiele erstellen (Vorrausetzung: /T080/, /T110/):} Mr Pink erstellt ein weiteres Spiel und gelangt ins \gls{Erstellungsfenster} (/F080/). Für alle eingeloggten Spieler sind nun beide Spiele sichtbar.
 		
-		\item /T090/ \textit{Spiel beitreten:} Mr. Blue tritt dem bereits korrekt geöffneten und noch nicht vollen Spiel von Mr. White bei und gelangt ins Wartefenster (/F070/).
+		\item /T090/ \textit{Spiel beitreten:} Mr. Blue tritt dem bereits korrekt geöffneten und noch nicht vollen Spiel von Mr. White bei und gelangt ins \gls{Wartefenster} (/F070/).
 		
 		\item /T092/ \textit{Fehler bei Spiel beitreten:} Mr. Brown hat kein Spiel aus der Liste ausgewählt. Er drückt den 'Join'-Knopf und es wird eine Fehlermeldung angezeigt (/L290/ 'Kein Spiel ausgewählt').
 		
-		\item /T095/ \textit{Passwortabfrage:} Das Spiel von Mr. White ist passwortgeschützt. Mr. Blue gibt 'youshouldtip' in das zugehörige Textfeld ein (/F140/) und drückt den 'Join'-Knopf, wodurch er zum Wartefenster weitergeleitet wird (/F142/). 
+		\item /T095/ \textit{Passwortabfrage:} Das Spiel von Mr. White ist passwortgeschützt. Mr. Blue gibt 'youshouldtip' in das zugehörige Textfeld ein (/F140/) und drückt den 'Join'-Knopf, wodurch er zum \gls{Wartefenster} weitergeleitet wird (/F142/). 
 		
 		
-		\item /T097/ \textit{Passwortabfrage(Abbruch):} Das Spiel von Mr. White ist passwortgeschützt. Mr. Blue kennt das Passwort nicht. Er gibt 'damn' in das Textfeld ein und drückt den 'Join'-Knopf. Eine Fehlermeldung erscheint (/L290/ 'Falsches Passwort') und er bleibt in der Passwortabfrage. Er den 'Cancel'-Knopf und gelangt zurück in die Lobby (/F145/).
+		\item /T097/ \textit{Passwortabfrage(Abbruch):} Das Spiel von Mr. White ist passwortgeschützt. Mr. Blue kennt das Passwort nicht. Er gibt 'damn' in das Textfeld ein und drückt den 'Join'-Knopf. Eine Fehlermeldung erscheint (/L290/ 'Falsches Passwort') und er bleibt in der Passwortabfrage. Er den 'Cancel'-Knopf und gelangt zurück in die \gls{Lobby} (/F145/).
 			  
 	\end{itemize}
-	
+	\ \\
 	\item Erstellungsfenster (Vorraussetzung: /T080/): 
 	
 	\begin{itemize}
 	
-		\item /T100/ \textit{Regelwerk auswählen:} Mr. White wählt 'Wizard' als Regelwerk aus (/F120/) und schaut sich dessen Logo an (/L120/), sowie eine kurze Beschreibung des Spiels, die erscheint, wenn er mit der Maus über das Logo fährt (/L122/).
+		\item /T100/ \textit{\gls{Regelwerk} auswählen:} Mr. White wählt 'Wizard' als \gls{Regelwerk} aus (/F120/) und schaut sich dessen Logo an (/L120/), sowie eine kurze Beschreibung des Spiels, die erscheint, wenn er mit der Maus über das Logo fährt (/L122/).
 		
-		\item /T105/ \textit{Regelwerk auswählen:} Mr. White wählt 'Hearts' als Regelwerk aus (/F120/) und schaut sich dessen Logo an (/L120/), sowie eine kurze Beschreibung des Spiels, die erscheint, wenn er mit der Maus über das Logo fährt (/L122/).
+		\item /T105/ \textit{\gls{Regelwerk} auswählen:} Mr. White wählt 'Hearts' als \gls{Regelwerk} aus (/F120/) und schaut sich dessen Logo an (/L120/), sowie eine kurze Beschreibung des Spiels, die erscheint, wenn er mit der Maus über das Logo fährt (/L122/).
 		
-		\item /T110/ \textit{Spiel erstellen:} Mr. White gibt 'NewHeist' als Spielname ein (/F122/). Er setzt einen Haken bei 'Passwort' und gibt 'youshouldtip' als Passwort ein (/F130W/). Er drückt auf den 'Create'-Knopf, erstellt somit ein Spiel und wird zum Wartefenster weitergeleitet (/F126/).
+		\item /T110/ \textit{Spiel erstellen:} Mr. White gibt 'NewHeist' als Spielname ein (/F122/). Er setzt einen Haken bei 'Passwort' und gibt 'youshouldtip' als Passwort ein (/F130W/). Er drückt auf den 'Create'-Knopf, erstellt somit ein Spiel und wird zum \gls{Wartefenster} weitergeleitet (/F126/).
 		
 		\item /T115/ \textit{Spiel erstellen:} Mr. White gibt keinen Spielnamen an. Bei drücken des 'Create'-Knopfes wird ein Spiel mit dem Namen 'MrWhite`s Spiel' erstellt.
 		
 		\item /T117/ \textit{Fehler bei Spiel erstellen:} Mr. White gibt 'NewHeist' als Spielname ein (/F122/). Er setzt einen Haken bei 'Passwort', aber vergisst ein Passwort einzugeben. Bei drücken des 'Create'-Knopfes wird eine Fehlermeldung angezeigt (/L290/ 'Kein Passwort gewählt').
 		
-		\item /T120/ \textit{Erstellung abbrechen:} Mr. White erfährt, dass Mr. Pink schon in einem anderen Spiel ist und entschließt sich die Erstellung abzubrechen. Er drückt den 'Cancel'-Knopf und gelangt zurück in die Lobby (/F124/).
+		\item /T120/ \textit{Erstellung abbrechen:} Mr. White erfährt, dass Mr. Pink schon in einem anderen Spiel ist und entschließt sich die Erstellung abzubrechen. Er drückt den 'Cancel'-Knopf und gelangt zurück in die \gls{Lobby} (/F124/).
 	
 	\end{itemize}
 	
-	\item Wartefenster (Vorraussetzung: /T110/, /T090/)
+	\item \gls{Wartefenster} (Vorraussetzung: /T110/, /T090/)
 	
 	\begin{itemize}
 		
-		\item /T130/ \textit{Chat:} Mr. Pink und Mr. White befinden sich im Wartefenster des Spiels. Mr. Pink schreibt die Chatnachricht 'Hello Mr. White' und sie wird bei beidem im Chat angezeigt (/F160/).
+		\item /T130/ \textit{Chat:} Mr. Pink und Mr. White befinden sich im \gls{Wartefenster} des Spiels. Mr. Pink schreibt die Chatnachricht 'Hello Mr. White' und sie wird bei beidem im Chat angezeigt (/F160/).
 		
-		\item /T170/ \textit{Verlassen:} Mr. Brown ist gerade dem Spiel beigetreten und verlässt es sofort wieder. Im Chat wird 'MrBrown ist dem Spiel beigetreten' angezeigt (/L270/). Er gelangt zurück in die Lobby (/T170/). Mr. White und Mr. Pink sehen den Namen 'MrBrown' kurz in der Spielerliste, bevor er wieder verschwindet.
+		\item /T170/ \textit{Verlassen:} Mr. Brown ist gerade dem Spiel beigetreten und verlässt es sofort wieder. Im Chat wird 'MrBrown ist dem Spiel beigetreten' angezeigt (/L270/). Er gelangt zurück in die \gls{Lobby} (/T170/). Mr. White und Mr. Pink sehen den Namen 'MrBrown' kurz in der Spielerliste, bevor er wieder verschwindet.
 		
-		\item /T180/ \textit{Spieler entfernen:} Mr. Blue tritt dem Spiel bei. Mr. Pink hat das Spiel erstellt. Er ist somit Spielleiter und entschließt sich dazu Mr. Blue aus dem Spiel zu werfen (/F180/). Nach Drücken des 'Remove Player'-Knopfes gelangt Mr. Blue wieder in die Lobby. Mr. Blue erhält die Nachricht 'Sie wurden vom Spiel entfernt'. Im Chat wird angezeigt 'MrPink hat MrBlue vom Spiel entfernt'(/L270/).
+		\item /T180/ \textit{Spieler entfernen:} Mr. Blue tritt dem Spiel bei. Mr. Pink hat das Spiel erstellt. Er ist somit \gls{Spielleiter} und entschließt sich dazu Mr. Blue aus dem Spiel zu werfen (/F180/). Nach Drücken des 'Remove Player'-Knopfes gelangt Mr. Blue wieder in die \gls{Lobby}. Mr. Blue erhält die Nachricht 'Sie wurden vom Spiel entfernt'. Im Chat wird angezeigt 'MrPink hat MrBlue vom Spiel entfernt'(/L270/).
 		
-		\item /T182/ \textit{Fehler bei Spieler enntfernen:} Mr. Pink is Spielleiter. Er drückt den 'Remove Player'-Knopf, hat aber keinen Spieler ausgewählt. Es wird eine Fehlermeldung angezeigt (/L290/ 'Kein Spieler ausgewählt').
+		\item /T182/ \textit{Fehler bei Spieler enntfernen:} Mr. Pink ist \gls{Spielleiter}. Er drückt den 'Remove Player'-Knopf, hat aber keinen Spieler ausgewählt. Es wird eine Fehlermeldung angezeigt (/L290/ 'Kein Spieler ausgewählt').
 		
-		\item /T185/ \textit{Fehler bei Starten des Spiels:} Mr. White ist allein im Wartefenster. Er drückt auf den 'Start'-Knopf und es wird eine Fehlermeldung angezeigt (/L290/ 'Nicht genügend Spieler').
+		\item /T185/ \textit{Fehler bei Starten des Spiels:} Mr. White ist allein im \gls{Wartefenster}. Er drückt auf den 'Start'-Knopf und es wird eine Fehlermeldung angezeigt (/L290/ 'Nicht genügend Spieler').
 		
-		\item /T190/ \textit{Spiel starten:} Mr. Brown und Mr. Orange treten dem Spiel bei. Es sind nun genug Spieler vorhanden, deshalb entschließt sich Mr. Pink dazu, das Spiel zu starten (/F200/). Alle Spieler gelangen ins Spielfenster, das Wartefenster wird geschlossen.
+		\item /T190/ \textit{Spiel starten:} Mr. Brown und Mr. Orange treten dem Spiel bei. Es sind nun genug Spieler vorhanden, deshalb entschließt sich Mr. Pink dazu, das Spiel zu starten (/F200/). Alle Spieler gelangen ins Spielfenster, das \gls{Wartefenster} wird geschlossen.
 		
-		\item /T200/ \textit{Spiel auflösen:} Es dauert Mr. Pink zu lange, bis genug Spieler zusammenkommen, also verlässt er das Wartefenster. Da er der Spielleiter war, wird das Spiel aufgelöst und alle Spieler gelangen zurück zur Lobby (/F190/).
+		\item /T200/ \textit{Spiel auflösen:} Es dauert Mr. Pink zu lange, bis genug Spieler zusammenkommen, also verlässt er das \gls{Wartefenster}. Da er der \gls{Spielleiter} war, wird das Spiel aufgelöst und alle Spieler gelangen zurück zur \gls{Lobby} (/F190/).
 		 
 	\end{itemize}
 
@@ -507,15 +509,15 @@ Dauerbetrieb der Software.
 	
 	\begin{itemize}
 	
-		\item /T210/ \textit{Spielbeginn (Voraussetzung: /T100/):} Mr. Pink, Mr. White, Mr. Brown und Mr. Orange befinden sich im Spielfenster. Der Server teilt die Karten aus. Jeder sieht seine, ihm vom Server ausgeteilten Karten (/L190/) und die verdeckten Karten seiner Mitspieler (/L192/).  
+		\item /T210/ \textit{Spielbeginn (Voraussetzung: /T100/):} Mr. Pink, Mr. White, Mr. Brown und Mr. Orange befinden sich im Spielfenster. Der \gls{Server} teilt die Karten aus. Jeder sieht seine, ihm vom \gls{Server} ausgeteilten Karten (/L190/) und die verdeckten Karten seiner Mitspieler (/L192/).  
 
 		\item /T220/ \textit{Zug: (Voraussetzung: /T210/)} Mr. Pink ist nicht am Zug, jedoch versucht er dennoch eine Karte zu spielen, was mit einem entsprechendem Dialog  unterbunden wird (/L290/).
 		
 		\item /T240/ \textit{Hintergrund ändern:} Mr. Pink klickt im Dropdown-Menü auf 'Einstellungen'. Ein Dialog mit eine Pfadabfrage öffnet sich. Mr. Pink gibt die Datei './neuerHintergrund.png' im Pfad an. Der Hintergrund des Spielfelds zeigt diese Bild an.
 		
-		\item /T270/ \textit{Spielende:} Mr. Orange spielt die letzte Karte des Spiels. Das Spiel ist zu Ende und der Server bestimmt den Gewinner. Mr. Orange bekommt eine Zusammenfassung angezeigt, die ihn als Sieger erklärt und seine Punkte anzeigt(/L250/). Alle anderen Spieler erhalten ebenfalls eine Zusammenstellung ihrer Leistung (/L250/).
+		\item /T270/ \textit{Spielende:} Mr. Orange spielt die letzte Karte des Spiels. Das Spiel ist zu Ende und der \gls{Server} bestimmt den Gewinner. Mr. Orange bekommt eine Zusammenfassung angezeigt, die ihn als Sieger erklärt und seine Punkte anzeigt(/L250/). Alle anderen Spieler erhalten ebenfalls eine Zusammenstellung ihrer Leistung (/L250/).
 		
-		\item /T280/ \textit{Spielabbruch: (Voraussetzung /T190/)} Es läuft für Mr. Pink nicht sonderlich gut und er entschließt sich, es sein zu lassen, weshalb er das Spiel durch einen Klick auf 'schließen' beendet und sich anschließend in der Lobby wiederfindet (/F210/). Mr. White, Mr. Brown und Mr. Orange werden über das Verlassen des Spielers 'Mr. Pink' durch eine Fehlermeldung informiert (/L290/) und werden ebenfalls in die Lobby zurückgeworfen.
+		\item /T280/ \textit{Spielabbruch: (Voraussetzung /T190/)} Es läuft für Mr. Pink nicht sonderlich gut und er entschließt sich, es sein zu lassen, weshalb er das Spiel durch einen Klick auf 'schließen' beendet und sich anschließend in der \gls{Lobby} wiederfindet (/F210/). Mr. White, Mr. Brown und Mr. Orange werden über das Verlassen des Spielers 'Mr. Pink' durch eine Fehlermeldung informiert (/L290/) und werden ebenfalls in die \gls{Lobby} zurückgeworfen.
 	
 		\item /T300/ \textit{Chat:} Mr. Pink, Mr. White, Mr. Brown und Mr. Orange befinden sich im Spielfenster. Mr. Orange schreibt die Chatnachricht 'Hallo zusammen!' (/F220/) und sie wird bei allen im Chat angezeigt (/L260/).
 	
@@ -529,15 +531,15 @@ Dauerbetrieb der Software.
 	
 	\begin{itemize}
 	
-		\item /T228/ \textit{Rundenbeginn: (Vorraussetzung: /T210/)} Der Server dreht die oberste Karte auf dem Aufnahmestapel (/L195/) automatisch um und sagt dadurch die Trumpffarbe (ausgenommen einen Zauberer) an. Im Chat erscheint eine Spielnachricht des Servers (/L270/).
+		\item /T228/ \textit{Rundenbeginn: (Vorraussetzung: /T210/)} Der \gls{Server} dreht die oberste Karte auf dem Aufnahmestapel (/L195/) automatisch um und sagt dadurch die Trumpffarbe (ausgenommen einen Zauberer) an. Im Chat erscheint eine Spielnachricht des \gls{Server}s (/L270/).
 
-		\item /T230/ \textit{Stiche ansagen: (Voraussetzung: /T228/)} Nach längerem Spiel wird einer der 4 Zauberer vom Server beim Kartengeben aufgedeckt und da Mr. Pink an der Reihe ist, erscheint ein Auswahlfenster. Mr. Pink wählt die Trumpffarbe. (/F360/) Über den Spielchat erhalten alle Spieler Auskunft über den Vorgang (/L270/) und sehen die angesagte Farbe.
+		\item /T230/ \textit{Stiche ansagen: (Voraussetzung: /T228/)} Nach längerem Spiel wird einer der 4 Zauberer vom \gls{Server} beim Kartengeben aufgedeckt und da Mr. Pink an der Reihe ist, erscheint ein Auswahlfenster. Mr. Pink wählt die Trumpffarbe. (/F360/) Über den Spielchat erhalten alle Spieler Auskunft über den Vorgang (/L270/) und sehen die angesagte Farbe.
 	
 		\item /T240/ \textit{Stiche ansagen: (Voraussetzung: /T228/ oder /T230/)} Nachdem eine Trumpffarbe angesagt wurde erscheint ein Fenster, indem jeder Spieler die Anzahl seiner Stiche tippen kann. Mr. Brown glaubt 4 Stiche machen zu können und gibt die Zahl ein (/F370/). Auch die anderen Spieler geben ihre Tipps ab und sehen die prognostizierten Stiche der anderen.(/L196/).
 		
 		\item /T245/ \textit{Stiche ansagen:(Voraussetzung: /T228/ oder /T230/)} Nachdem eine Trumpffarbe angesagt wurde erscheint ein Fenster, indem jeder Spieler die Anzahl seiner Stiche tippen kann. Mr. Orange gibt 'zehn' in das Feld ein. Es wird eine Fehlermeldung angezeigt (/L290/ 'Bitte geben sie eine Zahl ein').
 
-		\item /T250/ \textit{Rundenbeginn: (Voraussetzung: /T210/)} Der Server gibt die Karten und dreht die oberste Karte auf dem Aufnahmestapel (/L195/) automatisch um und sagt dadurch die Trumpffarbe (ausgenommen einen Zauberer) an. Im Chat erscheint eine Spielnachricht des Servers (/L270/).
+		\item /T250/ \textit{Rundenbeginn: (Voraussetzung: /T210/)} Der Server gibt die Karten und dreht die oberste Karte auf dem Aufnahmestapel (/L195/) automatisch um und sagt dadurch die Trumpffarbe (ausgenommen einen Zauberer) an. Im Chat erscheint eine Spielnachricht des \gls{Server}s (/L270/).
 		
 				\item /T260/ \textit{Rundenende:} Mr. Pink spielt die letzte Karte der Runde. Es erscheint eine kurze Zusammenfassung, wie viele Stiche er gemacht hat, wie viele er getippt hat und erhält seinen aktuellen Punkestand sowie den der anderen Mitspieler in einem separatem Fenster angezeigt (/L250/).
 					
@@ -583,7 +585,7 @@ Da die Anwendung keine allzu großen Berechnungen durchführen sollte, ist die P
 
 \item Erweiterbarkeit/Evolution
 
-Im den Muss-Kriterien wird explizit darauf hingewiesen, dass es ohne großen Aufwand möglich sein sollte weitere Regelwerke hinzuzufügen. Dies wird gewährleistet, indem neue GUI-Elemente (z.B. Abfragen, Anzeigen), die vom Regelwerk benötigt werden, modular hinzugefügt werden können.
+Im den Muss-Kriterien wird explizit darauf hingewiesen, dass es ohne großen Aufwand möglich sein sollte weitere \glspl{Regelwerk} hinzuzufügen. Dies wird gewährleistet, indem neue GUI-Elemente (z.B. Abfragen, Anzeigen), die vom \gls{Regelwerk} benötigt werden, modular hinzugefügt werden können.
 
 \item Korrektheit
 
@@ -591,7 +593,7 @@ Um die Fairness in einem Spiel aufrecht zu erhalten, sollten keine Fehler auftau
 
 \item Sicherheit
 
-Da dies ein eher kleines Programm ist deren Zielgruppe auch nicht groß ist, werden auch keine größeren Sicherheitsmaßnahmen vorgenommen. Korrekte Einhaltung der Regeln wird vom Server gewährleistet.
+Da dies ein eher kleines Programm ist deren Zielgruppe auch nicht groß ist, werden auch keine größeren Sicherheitsmaßnahmen vorgenommen. Korrekte Einhaltung der Regeln wird vom \gls{Server} gewährleistet.
 
 \item Stabilität
 

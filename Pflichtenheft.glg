@@ -1,7 +1,7 @@
 This is makeindex, version 2.15 [MiKTeX 2.9 64-bit] (kpathsea + Thai support).
 Scanning style file C:/Users/Viktoria/Documents/GitHub/sep13/Pflichtenheft.ist.............................done (29 attributes redefined, 0 ignored).
-Scanning input file Pflichtenheft.glo....done (34 entries accepted, 0 rejected).
-Sorting entries....done (182 comparisons).
-Generating output file Pflichtenheft.gls....done (26 lines written, 0 warnings).
+Scanning input file Pflichtenheft.glo....done (131 entries accepted, 0 rejected).
+Sorting entries....done (1016 comparisons).
+Generating output file Pflichtenheft.gls....done (54 lines written, 0 warnings).
 Output written in Pflichtenheft.gls.
 Transcript written in Pflichtenheft.glg.
