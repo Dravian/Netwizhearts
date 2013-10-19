@@ -1,0 +1,201 @@
+\documentclass{article}
+\usepackage[pdfcreator={LaTeX}]{hyperref}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc} 
+\usepackage[ngerman]{babel}
+
+
+\usepackage{tikz}
+\usetikzlibrary{arrows,shadows}
+\usepackage{pgf-umlsd}
+
+
+\begin{document}
+\begin{titlepage}
+
+\begin{center}
+\textbf{\textsc{\LARGE Entwurf}}
+
+{\large \today}
+
+\vspace{2cm}
+\includegraphics{kartenspiel}
+\ \\
+\ \\
+
+\textbf{\textsc{\LARGE NET-WizHearts}}
+\vspace{2cm}
+
+\begin{tabular}{|c|c|c|}\hline
+   Phase & Verantwortlicher & E-Mail \\ \hline\hline
+   Pflichtenheft & Alina  Meixl  &  alina@meixl.de \\ \hline
+   Entwurf & Viktoria Witka & witkaviktoria@freenet.de \\ \hline
+   Spezifikation & Daniel Riedl & dariedl14@yahoo.de \\ \hline
+   Implementation & Andreas Altenbuchner& a.andi007@gmail.com\\ \hline
+   Verifikation &Patrick Kubin & kubin@fim.uni-passau.de\\ \hline
+   Präsentation & w& w\\ \hline
+ \end{tabular}
+
+\end{center}
+
+\end{titlepage}
+
+
+\tableofcontents
+\newpage
+
+\section{Einleitung}
+-----Achtung Kopie -------
+In diesem Dokument wird der konzeptionelle Entwurf des Online Multiplayer Kartenspiels NET-WizHearts dargestellt.\\
+\ \\
+Es wird eine erste Übersicht über die verschiedenen Komponenten des MVC-
+Modells, das der Anwendung zugrunde liegt, gegeben. Dies geschieht durch eine
+Angabe der Klassenstruktur, der Benutzersichten in Form von Beschreibungen
+der einzelnen JSP-Seiten mit deren prinzipieller Verlinkung sowie der Zuteilung
+der auftretenden Funktionen zu einzelnen Servlets. Einzelne Funktionsaufrufe
+werden beispielhaft zu Illustrationszwecken in Sequenzdiagrammen dargestellt.\\
+\ \\
+Durch das Verwenden des MVC Design Patterns wird eine Unabhängigkeit der View-Schicht 
+vom restlichen System erzielt, so dass die graphisch Oberfläche - wie gefordert - ohne Anpassung 
+der Modell- und Controllerschicht auch für andere Regelwerke einsetzbar ist.\\
+\  \\
+WEITERES
+\ \\
+\section{Architektur-Diagramm}
+Client-Server \\
+Schichtendiagramm? \\
+\ \\ 
+\section{Klassendiagramm}
+\ \\
+\section{Klassenbeschreibung}
+Wichtigste Methoden zu den Klassen.
+	\subsection{Server}
+		Startklasse \\
+		Clients annehmen \\
+		Benuternamen verwalten \\
+		Regelwerke verwalten \\
+		Spielstand verwalten \\
+		Chatnachrichten weiterleiten(Spiel, Lobby, Wartefenster) \\
+	\subsection{Client}
+	\subsubsection{Model}
+		Startklasse \\
+		Serververbindung(F040)\\
+		Benutzername prüfen, speichern(F040)\\
+		Spracheinstellungen(F050W) \\
+		Regeln überprüfen(erlaubte züge, welcher Spieler ist dran etc.)\\
+		Spielstand verwalten \\
+		Punktestand verwalten\\
+		Chatnachrichten senden und empfangen(Spiel, Lobby, Wartefenster) \\
+		Lobby	verwalten (Spiel erstellen, beitreten, löschen, verlassen)\\	
+		Erstellungsfenster verwalten (Passwort, regelwerk, spielname)\\
+		Wartefenster(Spieler löschen,verlassen)
+		Passwortabfrage(vergleich)\\
+	\subsubsection{Controller}
+	\subsubsection{View}
+		\begin{itemize}
+			\item{Fenster vor dem Spiel}: Startseite, Lobby, Wartefenster, 
+			\item{Nur für Spielleiter sichtbare Fenster}: Erstellungsfenster
+			\item{Nur für normale Spieler sichtbare Fenster}: Passwortabfrage
+			\item{Fenster während dem Spiel}: Spiel, Scoreanzeige
+			\item{Bestätigungs, Warnungsfenster?}: Beim Verlassen, Löschen etc.
+		\end{itemize}
+
+
+\section{Sequenzdiagramme}
+	\subsection{Spielstart}
+		Mr. Blue, Mr. White und Mr.Pink befinden sich in der Lobby. \\
+		Mr. Blue klickt auf 'New Game' und wird ins Erstellungsfenster geschickt. \\
+		Er nimmt die nötigen Einstellungen vor(z.B Wizard auswahlen, Name setzen, Passwort) und druckt auf 'Create'. Er wird ins  Wartefenster weitergeleitet.\\
+		Mr. Pink und Mr. White wählen Mr. Blues spiel in der Lobby aus und drücken auf 'Join'. Sie werden an die Passwortabfrage geschickt.\\
+		Sie geben das Passwort ein und werden ans Wartefenster geschickt.\\
+		Die Midestanzahl von drei ist erreicht. Mr. Blue drückt auf 'Start Game'.\\
+		Mr. Blue, Mr. Pink und Mr. White werden ins Spiel geschickt. Das Spiel startet.\\
+
+\begin{sequencediagram}
+\newthread[white]{b}{Mr.B}
+\newinst[0.5]{w}{Mr. W}
+\newinst[0.5]{p}{Mr. P}
+\newinst[0.5]{l}{Lobby}
+\newinst[0.5]{e}{Erst.F}
+\newinst[0.5]{g}{WarteF.}
+\newinst[0.5]{s}{Spiel}
+
+\begin{call}{b}{newGame()}{l}{}	
+	\begin{call}{l}{goToCreateGame()}{e}{}
+	\mess{l}{Bverschwindet}{l}		
+	\end{call}	
+\end{call}
+\begin{call}{b}{selectGame()}{e}{}
+		\end{call}
+		\begin{call}{b}{selectName()}{e}{}
+		\end{call}
+		\begin{call}{b}{Create()}{e}{}
+			\begin{call}{e}{goToGameLobby()}{g}{}	
+			\end{call}	
+		\end{call}
+
+\begin{call}{w}{klickOpenGame()}{l}{}
+	\end{call}
+\begin{call}{w}{joinGame()}{l}{}	
+	\begin{call}{w}{goToGameLobby()}{g}{}
+	\mess{l}{Wverschwindet}{l}		
+	\end{call}	
+\end{call}
+
+\begin{call}{p}{klickOpenGame()}{l}{}
+	\end{call}
+\begin{call}{p}{joinGame()}{l}{}	
+	\begin{call}{p}{goToGameLobby()}{g}{}
+	\mess{l}{Pverschwindet}{l}		
+	\end{call}	
+\end{call}
+
+\begin{call}{b}{startGame()}{g}{}
+	\begin{call}{g}{goToGame()}{s}{}
+	\end{call}
+\end{call}
+
+ 
+
+\end{sequencediagram}
+			
+	\subsection{Spielzug}
+		Aufgabe: Ein Spieler ist im Spiel Wizard an der Reihe und spielt eine Karte aus.
+		Das Diagramm endet sobald der Spielzug auf allen Clients sichtbar
+		geworden ist und der nächste Spieler seinen Zug machen kann.\\
+		\ \\
+		Mr. Blue, Mr. White und Mr.Pink sind im Spiel Wizard. \\
+		Mr. Blue ist an der Reihe, wahlt eine Karte durch einmaliges anklicken aus und spielt sie durch ein weiteres anklicken.\\
+		Der Zug wird auf Regelkonformität überprüft.\\
+		Er ist nicht regelwidrig, also wird die gepielte Karte über den Server verschickt und bei Mr. Blue, Mr. Pink und Mr. White auf dem 	Ablagestapel angezeigt. \\
+		(Es wird uberpruft, ob die Runde zuende ist.)\\
+		Der nächste Spieler ist am Zug \\
+
+\begin{sequencediagram}
+\newthread[white]{b}{Mr.B}
+\newinst[0.5]{g}{Mr.Bs Game}
+\newinst[0.5]{w}{Mr. Ws Game}
+\newinst[0.5]{p}{Mr. Ps Game}
+\newinst[0.5]{m}{Model}
+\newinst[0.5]{s}{Server}
+
+\begin{call}{b}{klickCard()}{g}{}
+\end{call}
+\begin{call}{b}{playCard()}{g}{}
+	\begin{call}{g}{checkRules()}{m}{}
+	\end{call}
+	\begin{call}{g}{play()}{s}{}
+		\begin{call}{s}{showPlayedCard()}{w}{}
+		\end{call}
+		\begin{call}{s}{showPlayedCard()}{p}{}
+		\end{call}
+	\end{call}
+	\begin{call}{g}{checkRules()}{m}{}
+	\end{call}
+\begin{call}{m}{nextPlayer()}{w}{}
+	\end{call}
+\end{call}
+
+\end{sequencediagram}
+		
+\end{document}
