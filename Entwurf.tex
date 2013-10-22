@@ -60,12 +60,27 @@ vom restlichen System erzielt, so dass die graphisch Oberfläche - wie gefordert
 der Modell- und Controllerschicht auch für andere Regelwerke einsetzbar ist.\\
 \  \\
 WEITERES
-\ \\
+
+
 \section{Architektur-Diagramm}
-Client-Server \\
-Schichtendiagramm? \\
-\ \\ 
+Client-Server Diagramm. Client hat MVC Architektur.
+\  \\
+\includegraphics[height=15cm]{ArchitekturDiagramm}
+\newpage
 \section{Klassendiagramm}
+\subsection{Packages}
+\includegraphics[width=\textwidth]{Packages}
+\subsection{Server}
+\includegraphics[width=\textwidth]{Server}
+\subsection{ChatServer}
+\includegraphics[width=5cm]{ChatServer}
+\subsection{Client}
+\includegraphics[width=\textwidth]{Client}
+\subsection{ClientView}
+\includegraphics[width=\textwidth]{ClientView}
+\subsection{Ruleset}
+\includegraphics[width=\textwidth]{Ruleset}
+
 \ \\
 \section{Klassenbeschreibung}
 Wichtigste Klassen und ihr Verwendungszweck.
@@ -120,60 +135,115 @@ Wichtigste Klassen und ihr Verwendungszweck.
 	\subsection{Spielstart}
 		Mr. Blue, Mr. White und Mr.Pink befinden sich in der Lobby. \\
 		Mr. Blue klickt auf 'New Game' und wird ins Erstellungsfenster geschickt. \\
-		Er nimmt die nötigen Einstellungen vor(z.B Wizard auswahlen, Name setzen, Passwort) und druckt auf 'Create'. Er wird ins  Wartefenster weitergeleitet.\\
+		Er nimmt die nötigen Einstellungen vor(z.B Wizard auswahlen, Name setzen) und druckt auf 'Create'. Er wird ins  Wartefenster weitergeleitet.\\
 		Mr. Pink und Mr. White wählen Mr. Blues spiel in der Lobby aus und drücken auf 'Join'. Sie werden an die Passwortabfrage geschickt.\\
 		Sie geben das Passwort ein und werden ans Wartefenster geschickt.\\
-		Die Midestanzahl von drei ist erreicht. Mr. Blue drückt auf 'Start Game'.\\
+		Die Mindestanzahl von drei ist erreicht. Mr. Blue drückt auf 'Start Game'.\\
 		Mr. Blue, Mr. Pink und Mr. White werden ins Spiel geschickt. Das Spiel startet.\\
 
+
+\newpage
+\setlength{\hoffset}{-30mm}
+\setlength{\topmargin}{-3.0cm}
 \begin{sequencediagram}
-\newthread[white]{b}{Mr.B}
-\newinst[0.5]{w}{Mr. W}
-\newinst[0.5]{p}{Mr. P}
-\newinst[0.5]{l}{Lobby}
-\newinst[0.5]{e}{Erst.F}
-\newinst[0.5]{g}{WarteF.}
-\newinst[0.5]{s}{Spiel}
 
-\begin{call}{b}{newGame()}{l}{}	
-	\begin{call}{l}{goToCreateGame()}{e}{}
-	\mess{l}{Bverschwindet}{l}		
+\newthread[white]{b}{B}
+\newinst[0.1]{w}{W}
+\newinst[0.1]{p}{P}
+\newinst[0.1]{l}{Lobby}
+\newinst[0.1]{e}{CreateG.}
+\newinst[0.1]{g}{GLobby}
+\newinst[0.1]{a}{Game}
+\newinst[0.1]{c}{CModel}
+\newinst[0.1]{s}{Server}
+\newinst[0.1]{gs}{GServer}
+
+\mess{b}{klicknewGame}{l}	
+\begin{call}{l}{newGame()}{c}{}
+	\begin{call}{c}{close()---Lobby Mr.Blue}{l}{}	
 	\end{call}	
-\end{call}
-\begin{call}{b}{selectGame()}{e}{}
-		\end{call}
-		\begin{call}{b}{selectName()}{e}{}
-		\end{call}
-		\begin{call}{b}{Create()}{e}{}
-			\begin{call}{e}{goToGameLobby()}{g}{}	
-			\end{call}	
-		\end{call}
-
-\begin{call}{w}{klickOpenGame()}{l}{}
+	\mess{c}{toCrGameMrBlue}{s}	
+	\mess{s}{removePlayerMrBlue}{c}			
+	\begin{call}{c}{removePlayer(Mr.Blue)}{l}{}	
 	\end{call}
-\begin{call}{w}{joinGame()}{l}{}	
-	\begin{call}{w}{goToGameLobby()}{g}{}
-	\mess{l}{Wverschwindet}{l}		
-	\end{call}	
-\end{call}
-
-\begin{call}{p}{klickOpenGame()}{l}{}
+	\begin{call}{c}{open()--- Mr.Blue}{e}{}
+		\mess{b}{RulesetWizard,Name,Create}{e}
+		\begin{call}{e}{openGame()}{c}{}	
+		\end{call}		
 	\end{call}
-\begin{call}{p}{joinGame()}{l}{}	
-	\begin{call}{p}{goToGameLobby()}{g}{}
-	\mess{l}{Pverschwindet}{l}		
-	\end{call}	
-\end{call}
-
-\begin{call}{b}{startGame()}{g}{}
-	\begin{call}{g}{goToGame()}{s}{}
+	\begin{call}{c}{close()}{e}{}	
 	\end{call}
-\end{call}
-
- 
+	\begin{call}{c}{open()--- Mr.Blue}{g}{}
+			\mess{c}{newGameMrBlue}{s}
+			\begin{call}{s}{newGameServer(Mr.Blue,Wizard, 'MrBluesGame')}{gs}{}				
+				\mess{s}{openedGameMrBlue}{c}
+				\begin{call}{c}{addOpenedGame(Mr.BluesGame, Wizard)}{l}{}
+					\mess{b}{Hier 2te Seite}{l}
+				\end{call}
+			\end{call}
+		\end{call}	
+\end{call}	
 
 \end{sequencediagram}
-			
+\newpage
+\setlength{\hoffset}{0mm}
+\setlength{\topmargin}{0cm}
+	
+\newpage
+\setlength{\hoffset}{-30mm}
+\setlength{\topmargin}{-3.0cm}
+\begin{sequencediagram}
+
+\newthread[white]{b}{B}
+\newinst[0.1]{w}{W}
+\newinst[0.1]{p}{P}
+\newinst[0.1]{l}{Lobby}
+\newinst[0.1]{e}{CreateG.}
+\newinst[0.1]{g}{GLobby}
+\newinst[0.1]{a}{Game}
+\newinst[0.1]{c}{CModel}
+\newinst[0.1]{s}{Server}
+\newinst[0.1]{gs}{GServer}
+\mess{w}{klickOpenGameMrBluesGame}{l}
+	\begin{call}{l}{joinGame(MrWhite)}{c}{}
+		\begin{call}{c}{close()---Lobby Mr.White}{l}{}	
+		\end{call}	
+		\mess{c}{WjoinMrBlue}{s}	
+		\begin{call}{s}{addToPlayer(Mr.White)}{gs}{}	
+		\end{call}
+		\mess{s}{removePlayerMrWhite}{c}
+		\begin{call}{c}{removePlayer(Mr.White)}{l}{}	
+		\end{call}
+		\begin{call}{c}{join()--- Mr.White}{g}{}
+		\end{call}
+	\end{call}
+\mess{p}{klickOpenGameMrBluesGame}{l}
+	\begin{call}{l}{joinGame(MrPink)}{c}{}
+		\begin{call}{c}{close()---Lobby Mr.Pink}{l}{}	
+		\end{call}	
+		\mess{c}{WjoinMrBlue}{s}	
+		\begin{call}{s}{addToPlayer(Mr.Pink)}{gs}{}	
+		\end{call}
+		\mess{s}{removePlayerMrPink}{c}
+		\begin{call}{c}{removePlayer(Mr.Pink)}{l}{}	
+		\end{call}
+		\begin{call}{c}{join()--- Mr.Pink}{g}{}
+		\end{call}
+	\end{call}
+	\mess{b}{startGame}{g}
+	\begin{call}{g}{goToGame()}{c}{}
+	\end{call}
+	\begin{call}{c}{close()}{g}{}	
+	\end{call}
+	\begin{call}{c}{open()}{a}{}
+	\end{call}
+
+\end{sequencediagram}
+\newpage
+\setlength{\hoffset}{0mm}
+\setlength{\topmargin}{0cm}
+
+
 	\subsection{Spielzug}
 		Aufgabe: Ein Spieler ist im Spiel Wizard an der Reihe und spielt eine Karte aus.
 		Das Diagramm endet sobald der Spielzug auf allen Clients sichtbar
@@ -183,34 +253,51 @@ Wichtigste Klassen und ihr Verwendungszweck.
 		Mr. Blue ist an der Reihe, wahlt eine Karte durch einmaliges anklicken aus und spielt sie durch ein weiteres anklicken.\\
 		Der Zug wird auf Regelkonformität überprüft.\\
 		Er ist nicht regelwidrig, also wird die gepielte Karte über den Server verschickt und bei Mr. Blue, Mr. Pink und Mr. White auf dem 	Ablagestapel angezeigt. \\
-		(Es wird uberpruft, ob die Runde zuende ist.)\\
+		Es wird überpruft, wer als nächstes dran ist.\\
 		Der nächste Spieler ist am Zug \\
 
+\newpage
+\setlength{\hoffset}{-30mm}
+\setlength{\topmargin}{-3.0cm}
 \begin{sequencediagram}
 \newthread[white]{b}{Mr.B}
-\newinst[0.5]{g}{Mr.Bs Game}
-\newinst[0.5]{w}{Mr. Ws Game}
-\newinst[0.5]{p}{Mr. Ps Game}
-\newinst[0.5]{m}{Model}
-\newinst[0.5]{s}{Server}
+\newinst[0.3]{g}{Bs Game}
+\newinst[0.3]{w}{Ws Game}
+\newinst[0.3]{p}{Mr. Ps Game}
+\newinst[0.3]{c}{ClientCon.}
+\newinst[0.3]{m}{ClientMod}
+\newinst[0.3]{rc}{RWClient}
+\newinst[0.3]{gs}{GServer}
+\newinst[0.3]{rs}{RWServer}
 
-\begin{call}{b}{klickCard()}{g}{}
-\end{call}
-\begin{call}{b}{playCard()}{g}{}
-	\begin{call}{g}{checkRules()}{m}{}
-	\end{call}
-	\begin{call}{g}{play()}{s}{}
-		\begin{call}{s}{showPlayedCard()}{w}{}
-		\end{call}
-		\begin{call}{s}{showPlayedCard()}{p}{}
+\mess{b}{klickCardTwice}{g}
+\begin{call}{g}{playCard()}{c}{}
+	\begin{call}{c}{checkRulesLocal(Card)}{m}{true}
+		\begin{call}{m}{checkRulesLocal(Card)}{rc}{true}
 		\end{call}
 	\end{call}
-	\begin{call}{g}{checkRules()}{m}{}
+	\begin{call}{m}{checkRulesGlobal(Card)}{gs}{true}
+		\begin{call}{gs}{checkRulesGlobal(Card)}{rs}{true}
+		\end{call}
 	\end{call}
-\begin{call}{m}{nextPlayer()}{w}{}
+
+	\begin{call}{gs}{playedCard(Card)}{m}{}
+		\begin{call}{m}{update()}{g}{}
+		\end{call}
+		\begin{call}{m}{update()}{w}{}
+		\end{call}
+		\begin{call}{m}{update()}{p}{}
+		\end{call}
+	\end{call}
+
+	\begin{call}{m}{checkNextPlayer()}{m}{}
+	\end{call}
+	\begin{call}{m}{notifyNextPlayer()}{w}{}
 	\end{call}
 \end{call}
 
 \end{sequencediagram}
-		
+\newpage
+\setlength{\hoffset}{0mm}
+\setlength{\topmargin}{0cm}			
 \end{document}
