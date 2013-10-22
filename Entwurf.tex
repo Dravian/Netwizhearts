@@ -68,14 +68,24 @@ Schichtendiagramm? \\
 \section{Klassendiagramm}
 \ \\
 \section{Klassenbeschreibung}
-Wichtigste Methoden zu den Klassen.
+Wichtigste Klassen und ihr Verwendungszweck.
 	\subsection{Server}
-		Startklasse \\
-		Clients annehmen \\
-		Benuternamen verwalten \\
-		Regelwerke verwalten \\
-		Spielstand verwalten \\
-		Chatnachrichten weiterleiten(Spiel, Lobby, Wartefenster) \\
+		\subsubsection{Server}
+			\textbf{Server} erstellt neue Spiele und ist sowohl für die Verwaltung aller Spiele, als auch der Spieler und dem Chatroom in der Lobby, zuständig. \\
+			\textbf{Serverthread} verwaltet die einzelnen Threads vom Server. \\
+			\textbf{GameServer} verwaltet ein Spiel, ihre Spieler, sowie den Chatroom im Spiel und überprüft die Einhaltung der Regeln in jedem Zustand. \\
+			\textbf{Gamestate} repräsentiert einen bestimmten  Spielzustand welches vom Regelwerk ausgewertet werden kann.\\
+			\textbf{Player} repräsentiert einen Client, enthält den Namen des Clients und verwaltet die Ein- und Ausgänge seiner Socketverbindung. \\
+		\subsubsection{Chatserver}
+			\textbf{Chatserver} verwaltet die Kommunikation zwischen Spielern in einem Chatroom, bei einem Spiel werden auch Ereignisse ausgegeben. \\
+			\textbf{ChatServerThread} verwaltet die einzelnen Threads vom Chatserver.
+	\subsection{Ruleset}
+		\textbf{Ruleset} ist eine abstrakte Klasse welches zu einem Spiel die Regeln und den Ablauf bestimmt. Außerdem überprüft es ob jeder neuer Spielzustand regelkonform ist. \\
+		\textbf{Hearts} erstellt das Regelwerk zum Spiel Hearts. \\
+		\textbf{Wizard} erstellt das Regelwerk zum Spiel Wizard. \\
+		\textbf{Card} ist eine abstrakte Klasse und repräsentiert eine Karte. Jede Karte besitzt als Attribute einen Wert und eine Farbe. \\
+		\textbf{HeartsCard} repräsentiert eine Karte aus dem Spiel Hearts. \\
+		\textbf{Wizard} repräsentiert eine Karte aus dem Spiel Wizard.
 	\subsection{Client}
 	\subsubsection{Model}
 		Startklasse \\
