@@ -85,25 +85,59 @@ Client-Server Diagramm. Der Client hat MVC Architektur.
 
 \subsection{Client}
 \includegraphics[width=\textwidth]{Client}
-\textbf{MessageListenerThread} wird vom ClientModel instanziert und hält die TCP-Verbindung zum Server. Der Thread tauscht ComObjekte mit dem Server aus und greift über die receiveMessage() Methode auf das ClientModel zu.
-		\textbf{ClientModel} ist die Schnittstelle zwischen dem MessageListenerThread, dem Ruleset und der View. Das Model prüft Nachrichten und leitet Kommandos aufgrund ihrer Klasse an das Regelwerk oder die GUI weiter. Mit receiveMessage() kann der Klasse ein ComObjekt übergeben werden. Über sendMessage() können Kommandos vom Regelwerk oder der GUI an den Server gesendet werden.
+\textbf{ClientMain}: Dies ist die Hauptklasse des Clients, die beim Starten des Programmes ausgeführt wird. Sie erzeugt ein neues ClientController Objekt.\\
+
+\textbf{ClientController}: Diese Klasse ist für die Kommunikaton zwischen dem ClientModel und dem ClientController zuständig.\\
+Sobald der ClientController von der ClientMain Klasse erzeugt wird, erzeugt dieser wiederum das ClientModel und die ClientView, wobei zunächst nur die Login Klasse sichtbar ist. Der ClientController enthält alle ActionListener der View und leitet durch diese Benutzereingaben an das ClientModel weiter.\\
+
+\textbf{ClientModel} [erbt von Observable]: Das ClientModel ist die Schnittstelle zwischen dem MessageListenerThread, dem Ruleset und der View.\\ 
+Das Model prüft Nachrichten, welche es vom MessageListenerThread über die Methode receiveMessage() bekommt .Je nach 'command' des übergebenen ComObjects leitet es das ComObject an das Regelwerk weiter, oder benachrichtigt die View über entsprechende Veränderungen, indem sie ViewComObjects über notify()  an die entsprechenden Observer schickt. Über sendMessage() können Kommandos vom Regelwerk oder der View, über den MessageListenerThreat an den Server gesendet werden.\\
+
+\textbf{MessageListenerThread} [implementiert Runnable]: Der MessageListenerThreat wird vom ClientModel instanziert und hält die TCP-Verbindung zum Server. \\
+Der Thread verschickt einersets ComObjekte, welche von Ruleset oder vom ClientModel erstellt wurden, an den Server. Andererseits nimmt er neue Nachrichten vom Server an und leitet sie an das ClientModel weiter, durch Aufruf von dessen receiveMessage() Methode.\\
+
+\textbf{ViewComObjects}: Diese Klasse stellt spezielle Objekte dar, welche bei der Kommunikation zwischen ClientModel und ClientView benötigt werden. Sie werden über notify() an die entsprechenden Observer geschickt, welche je nach 'command?' die passende Aktion ausführen.
 
 \subsection{ClientView}
 \includegraphics[width=\textwidth]{ClientView}
-\textbf{Language} ist ein Enumerator, der von Komponenten der View zur Darstellung unterschiedlicher Sprachen verwendet wird (/L350W/). \\
-			\textbf{Login} repräsentiert den initialen Dialog, indem der Benutzer seinen Namen (/F042/) und die Adresse des Servers (/F040/) eingeben kann. Außerdem ist über den Login die Auswahl der Sprache möglich (/F050W/). Über den Login wird ebenfalls die Verbindung zum Server hergestellt (/F045/).\\
-			\textbf{Lobby} erzeugt die Ansicht der ServerLobby. Es können offene Spiele (/L110/) und Spieler (/L100/) betrachtet, sowie Chatnachrichten gesendet (/F060/) und empfangen werden (/L115/). Über Leave verlässt der Spieler das Spiel (/F090/). Über Host Game (/F080/) wird der Spieler zum CreateGame Fenster weiter geleitet und mit Join Game (/F070/) kann einem bereits erstellten Spiel beigetreten werden. \\
-			\textbf{CreateGame} bietet alle Komponenten um ein Regelwerk zu wählen (/F120/), einen Spielnamen festzulegen (/F122/) und das Spiel durch ein Passwort zu schützen (/F130W/). In der Spielerstellung wird ein Titelbild des ausgewählten Spiels und eine kurze Beschreibung angezeigt (/L120/, /L122/). Über Leave kehrt der Spieler in die Lobby zurück (/F124/) und mit Create wird das Spiel erstellt (/F126/).\\
-			\textbf{Password} ermöglicht die Eingabe eines Passwortes (/F140W/) um einem geschlossenem Spiel beizutreten (/F142/) oder per Leave wieder in die Lobby zurückzukehren (/F145/). \\
-			\textbf{GameLobby} modelliert das Wartefenster, in dem beigetretene Spieler (/L155/) auf den Start des Spieles durch den Spielleiter warten (/F200/). Der Spielleiter kann Spieler mit dem Remove Player Button entfernen (/F180/). Über Leave kehren die Spieler in die Lobby zurück (/F170/, /F190/). Der spielinterne Chat ist ab hier verfügbar (/F160/, /L158/). \\
-			\textbf{Game} ist der allgemeine Teil des Spielfensters, der den Spielchat beherbergt (/F220/, /L260/). Schließen beendet das Spiel und der Spieler wird in die Lobby zurückgeleitet (F210/). Alle Spielfenster zeigen die eigenen Karten (/L190/), sowie zum Ausspielen anwählbare Karten (/F225/, /F230/), die Anzahl der Karten der Mitspieler (/L192/) und den Ablagestapel (/L194/). Nach jeder Runde wird der Punktestand  aktualisiert (/L200/).\\
-			\textbf{PanelWizard} ist die für das Spiel Wizards angepasste Teilkomponente des Spielfensters.  \\
-			\textbf{PanelHearts} ist die für das Spiel Hearts angepasste Teilkomponente des Spielfensters. \\
-			\textbf{Warning} gibt Fehlermeldungen und Hinweise aus (/L290/). \\
-			\textbf{ChooseColour} ermöglicht es Spielern in einer Partie Wizards die Trumpffarbe auszuwählen (/F360/). \\
-			\textbf{InputNumber} erstellt ein Fenster, über das man zu Beginn einer Runde Wizards seine Stiche tippen kann (/F370/). \\
-			\textbf{ChooseCards} erzeugt ein Fenster zu Beginn einer Partie Hearts, über welches Karten zu anderen Spielern weitergereicht werden muss (/F260/). \\
-			\textbf{ScoreWindow} zeigt den Punktestand nach einem Spiel oder einer Runde an (/L250/).\\
+\textbf{Language} [Enumerator]: Language wird zur Darstellung der Sprachen Deutsch, Englisch und Bayerisch  in der View verwendet (/L350W/). \\
+
+\textbf{Login} [implementiert Observer]: Das Login-Fenster repräsentiert den initialen Dialog zwischen Benutzer und Client.\\
+In diesem Fenster kann der Benutzer seinen Namen (/F042/) und die Adresse des Servers (/F040/) eingeben. Außerdem ist über den Login die Auswahl der Sprache möglich (/F050W/). Über den Login-Button wird die Verbindung zum Server hergestellt (/F045/).\\
+
+\textbf{Lobby} [implementiert Observer]: Dieses Fenster erzeugt die Ansicht der ServerLobby auf der Client Seite, in der die Spieler neue Spiele erzeugen oder offenen beitreten können.\\
+In der Lobby werden die Benutzernamen der sich in der Lobby befindlichen Spieler(/L100/) , sowie die  offene Spiele (/L110/) angezeigt. In der Lobby konnen Chatnachrichten gesendet (/F060/) und empfangen werden (/L115/). Über Leave verlässt der Spieler das Spiel (/F090/). Über Host Game (/F080/) wird der Spieler zum CreateGame Fenster weiter geleitet und mit Join Game (/F070/) kann einem bereits erstellten Spiel beigetreten werden. \\
+
+\textbf{CreateGame} [implementiert Observer]: Das Fenster CreateGame dient dem Benutzer zur Erstellung eines neuen Spieles.\\
+Es bietet alle Komponenten um ein Regelwerk zu wählen (/F120/), einen Spielnamen festzulegen (/F122/) und das Spiel durch ein Passwort zu schützen (/F130W/). In der Spielerstellung wird ein Titelbild des ausgewählten Spiels und eine kurze Beschreibung angezeigt (/L120/, /L122/). Über Leave kehrt der Spieler in die Lobby zurück (/F124/) und mit Create wird das Spiel erstellt (/F126/).\\
+
+\textbf{Password [implementiert Observer]}: Dieses Fenster ermöglicht die Eingabe eines Passwortes (/F140W/) um einem Passwortgeschütztem Spiel beizutreten (/F142/) oder per Leave wieder in die Lobby zurückzukehren (/F145/). \\
+
+\textbf{GameLobby} [implementiert Observer]: Die GameLobby modelliert das Wartefenster, in dem beigetretene Spieler (/L155/) auf den Start des Spieles durch den Spielleiter warten (/F200/).\\
+ Der Spielleiter kann Spieler mit dem Remove Player Button entfernen (/F180/). Über Leave kehren die Spieler in die Lobby zurück (/F170/, /F190/). Der spielinterne Chat ist ab hier verfügbar (/F160/, /L158/). \\
+
+\textbf{Game} [implementiert Observer]: Game ist das Fenster, in welchem das eigentliche Spiel abläuft.\\
+Das Game-Fenster beherbergt  der den Spielchat (/F220/, /L260/) und enthält ein GamePanel. Das GamePanel zeigt die eigenen Karten (/L190/), sowie zum Ausspielen anwählbare Karten (/F225/, /F230/), die Anzahl der Karten der Mitspieler (/L192/) und den Ablagestapel (/L194/). Nach jeder Runde wird der Punktestand  aktualisiert (/L200/). Schließen beendet das Spiel und der Spieler wird in die Lobby zurückgeleitet (F210/).\\
+
+\textbf{GamePanel}: Das Panel ist die Komponente des Game-Fensters, welche das eigentliche Spiel darstellt.\\
+Es besteht aus veschiedenen Panelobjekten, welche je nach Regelwerk auf das Spielfeld gezeichnet werden.
+\textbf{OwnHand}: Stellt die Karten dar, die der Spieler auf der Hand hat. (?Zusatzlich gibt es zwei Label für den eigenen Punktestand und die zusätzlichen Angaben, wie z.B. die Stiche in Wizard?)\\
+\textbf{OtherPlayer}: Zeigt die Informationen über die anderen Spieler, also den Namen, ein Symbol für die verdeckte Hand und das Label für zusätzliche Angaben. (?Ablagestapel?)\\
+\textbf{DiscardPile}: Stellt einen Ablagestapel dar.\\
+\textbf{DrawDeck}: Stellt einen Aufnahmestapel dar. Bei Wizard wird dort die Trumpffarbe angezeigt.\\
+
+\textbf{Warning} [implementiert Observer]: Das Warning-Fenster zeigt dem Benutzer Fehlermeldungen bzw. Hinweise an (/L290/), (?welche vom ClientModel übergeben wurden?). \\
+
+\textbf{ChooseColour} [implementiert Observer]: Dieses Fenster ermöglicht es Spielern eine Trumpffarbe auszuwählen (/F360/). \\
+
+\textbf{InputNumber} [implementiert Observer]: In diesem Fenster, kann der Benutzer eine Zahl eingeben, um z.B zu Beginn einer Runde Wizards seine Stiche zu schätzen (/F370/). \\
+
+\textbf{ChooseCards} [implementiert Observer]: In dieses Fenster wählt der Benutzer zu Beginn einer Partie Hearts, welche Karten er zu anderen Spielern weiterreichen wird (/F260/). \\
+
+\textbf{ScoreWindow} [implementiert Observer]: Dieses Fenster zeigt den momentanen Punktestand nach jeder Runde und den Gesamtpunktestand am Ende des Spieles an (/L250/).\\
+
+\textbf{Observer}[Interface]: Stellt das Observer-Pattern der View dar.\\
+ Die GUIs nutzen die update() Methode, sobald im ClientModel notify() aufgerufen wird, um Veränderungen durchzuführen.
 
 \subsection{Ruleset}
 \includegraphics[width=\textwidth]{Ruleset}
