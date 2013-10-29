@@ -141,24 +141,30 @@ Es besteht aus veschiedenen Panelobjekten, welche je nach Regelwerk auf das Spie
 
 \subsection{Ruleset}
 \includegraphics[width=\textwidth]{Ruleset}
-		\textbf{Ruleset}[Abstrakt][implementiert Runnable]: Das Ruleset  ist für den Ablauf und die Einhaltung der Regeln eines Spiels zuständig(/L280/). Das Ruleset wird im GameServer instanziert und verwaltet die Zustände des GameStates im Server. Mit der Methode isValidMove() wird eine Eingabe eines Clients auf Regelkonformität überprüft und dann im GameServer  das GameState verändert. Über resolveMessage() kann eine GameServerinstanz ein ComObjekt vom Player an das Ruleset weiterleiten. Die Methoden runGame() und calculateOutcome() starten das Spiel bzw. ermitteln den Gewinner und Punktestand eines Spiels. \\ \\
+		\textbf{Ruleset}[Abstrakt][implementiert Runnable]: Das Ruleset  ist für den Ablauf und die Einhaltung der Regeln eines Spiels zuständig(/L280/). Das Ruleset wird im GameServer instanziert und verwaltet die Zustände des GameStates im Server. Mit der Methode isValidMove() wird eine Eingabe eines Clients auf Regelkonformität überprüft und dann im GameServer  das GameState verändert. Über resolveMessage() kann eine GameServerinstanz ein ComObjekt vom Player an das Ruleset weiterleiten. Die Methoden init(), runGame() und calculateOutcome() starten das Spiel bzw. ermitteln den Gewinner und Punktestand eines Spiels. \\ \\
 		
-		\textbf{Hearts} [erbt von Ruleset]  Diese Klasse erstellt das Regelwerk zum Spiel Hearts und erbt von der Klasse Ruleset. Sie enthält zudem weitere Methoden, welche für das Spiel Hearts spezifisch benötigt werden, wie die Regelung zum Tausch von Karten und die Berechnung der Stichpunkten. \\ \\
+		\textbf{Hearts} [erbt von Ruleset]  Diese Klasse erstellt das Regelwerk zum Spiel Hearts. Sie enthält zudem weitere Methoden, welche für das Spiel Hearts spezifisch benötigt werden, wie die Regelung zum Tausch von Karten und die Berechnung der Stichpunkten. \\ \\
 		
-		\textbf{Wizard} [erbt von Ruleset] Diese Klasse erstellt das Regelwerk zum Spiel Wizard und erbt von der Klasse Ruleset. Sie enthält zudem weitere Methoden, welche für das Spiel Wizard spezifisch benötigt werden, wie das Bestimmen einer Trumpffarbe und die Bestimmung der Rundenanzahl. \\ \\
+		\textbf{Wizard} [erbt von Ruleset] Diese Klasse erstellt das Regelwerk zum Spiel Wizard. Sie enthält zudem weitere Methoden, welche für das Spiel Wizard spezifisch benötigt werden, wie das Bestimmen einer Trumpffarbe und die Bestimmung der Rundenanzahl. \\ \\
 		
 		\textbf{ClientRuleSet}  Das ClientModel wird als vorab Regelauswertung im Clientpaket verwendet. Es enthält die isValidMove() Methode wie im RuleSet um im Client einen Zug in seinem PlayerState auf Gültigkeit zu prüfen, bevor ein Update an den Server geschickt wird. \\ \\
 		
-		\textbf{GameState} Das GameState modelliert einen aktuellen Spielzustand, es wird vom GameServer instanziert und vom RuleSet bearbeitet. Es enthält die einzelnen PlayerStates, sowie Informationen zum Ablage-, Aufnahmestapel, Rundenanzahl und OtherData. \\ \\
+		\textbf{GameState} Das GameState modelliert einen aktuellen Spielzustand, es wird vom GameServer instanziert und vom RuleSet bearbeitet. Es enthält die einzelnen PlayerStates, sowie Informationen zum Ablage-, Aufnahmestapel, Rundenanzahl, OtherData, den momentanen aktiven Spieler sowie GamePhase. \\ \\
 		
-		\textbf{PlayerState} repräsentiert den Spielzustand eines Spielers, dessen Namen, Handkarten, Ablagestapel und Otherdata. Auch hält die Klasse die dazugehörigen getter Methoden bereit. PlayerState wird von Instanzen des GameStates und ClientModel verwendet. \\ \\
+		\textbf{GamePhase}[Enumerator] Die GamePhase modelliert die verschiedenen Zustände des Spiels im GameState. \\ \\
+		
+		\textbf{PlayerState} repräsentiert den Spielzustand eines Spielers, und wird von GameState instanziert. Sie enthält vom Spieler seinen Namen, seine Handkarten, die gespielte Karten und Otherdata. . \\ \\
+		
+		\textbf{GameClientUpdate} Das GameClientUpdate wird vom RuleSet über den GameServer an den Client geschickt und enthält alle Änderungen des GameState die für den Client relevant sind. Das wären sein Spielhand, der Ablagestapel sowie die Otherdata  von alle Spieler. \\ \\
 		
 		\textbf{OtherData}[Abstrakt] OtherData speichert zu einem Spiel zusätzliche Informationen, wie die Namen und Anzahl der Karten aller Spieler. \\ \\
 		\textbf{HeartsData} [erbt von OtherData] HeartsData speichert den Punktestand der Spieler. \\ \\
 		
-		\textbf{WizardData} [erbt von OtherData] WizardData speichert die Trumpffarbe, sowie die vorausgesagten und gemachten Stiche der Spieler. \\ \\
+		\textbf{WizData} [erbt von OtherData] WizData speichert die Trumpffarbe, sowie die vorausgesagten und gemachten Stiche der Spieler. \\ \\
 		\textbf{Card} [Abstrakt] Diese Klasse modelliert eine Spielkarte. Jede Karte besitzt als Attribute einen Wert und eine Farbe. \\ \\
+		
 		\textbf{HeartsCard} [erbt von Card]  HeartsData modelliert eine Karte aus dem Spiel Hearts. \\ \\
+		
 		\textbf{WizardCard} [erbt von Card] WizardData modelliert eine Karte aus dem Spiel Wizard. \\ \\
 \subsection{ComObjects}
 \includegraphics[width=\textwidth]{ComDiagram}
