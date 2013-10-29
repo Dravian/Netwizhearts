@@ -72,7 +72,7 @@ Client-Server Diagramm. Der Client hat MVC Architektur.
 \includegraphics[width=\textwidth]{Packages}
 
 \subsection{Server}
-\includegraphics[width=\textwidth]{Server}
+\includegraphics[width=\textwidth]{Entwurf_ServerDiagram}
 \textbf{ServerMain}: Diese Klasse startet den Server und ist für die Konfiguration und Wartung des Servers verantwortlich. \\
 
 \textbf{Server} [interface]: Ist ein Interface das von den Klassen LobbyServer und GameServer implementiert wird. Es wird von den Klassen Player und Ruleset verwendet um Nachrichten und Befehle in Form von ComObjekten zu versenden. \\
@@ -88,7 +88,7 @@ Client-Server Diagramm. Der Client hat MVC Architektur.
 \textbf{GameServerRepresentation} [implementiert Serializable]: Ist eine Klasse die Informationen über den Zustand eines Spielservers bereithält. Sie wird dem ComObjekt ComLobbyUpdateGameList angehängt um die Spielliste in der GameLobby zu aktualisieren.
 
 \subsection{Client}
-\includegraphics[width=\textwidth]{Client}
+\includegraphics[width=\textwidth]{Entwurf_ClientDiagram}
 \textbf{ClientMain}: Dies ist die Hauptklasse des Clients, die beim Starten des Programmes ausgeführt wird. Sie erzeugt ein neues ClientController Objekt.\\
 
 \textbf{Language} [Enumerator]: Language wird zur representation der Sprachen Deutsch, Englisch und Bayerisch im Client verwendet (/L350W/). \\
@@ -117,7 +117,7 @@ Der Thread nimmt neue Nachrichten vom Server an und leitet sie an das ClientMode
 \textbf{HeartsID} [Enumerator]: Repräsentationen der Hearts Karten auf View-Ebene
 
 \subsection{ClientView}
-\includegraphics[width=\textwidth]{ClientView}
+\includegraphics[width=\textwidth]{Entwurf_ViewDiagram}
 \textbf{MVMessages} [interface]:  Ist ein Interface, das von Lobby, GameLobby und Game implementiert wird. Es gibt eine Methode zur Verarbeitung von MVMessages vor. \\
 
 \textbf{Login} [implementiert Observer]: Das Login-Fenster repräsentiert den initialen Dialog zwischen Benutzer und Client.
@@ -162,7 +162,7 @@ Dazu gehören die eigenen Karten (/L190/), eventuell ausgewählte Karten (/F225/
 
 
 \subsection{Ruleset}
-\includegraphics[width=\textwidth]{Ruleset}
+\includegraphics[width=\textwidth]{Entwurf_RulesetDiagram}
 
 \textbf{Ruleset} [Interface] Gibt die Methoden isValidMove() und resolveMessage() vor.
 
@@ -199,7 +199,7 @@ Dazu gehören die eigenen Karten (/L190/), eventuell ausgewählte Karten (/F225/
 \textbf{WizardCard} [erbt von Card] WizardData modelliert eine Karte aus dem Spiel Wizard. \\ \\
 
 \subsection{ComObjects}
-\includegraphics[width=\textwidth]{ComDiagram}
+\includegraphics[width=\textwidth]{Entwurf_ComDiagram_1}
 \textbf{ComObject} [implementiert Serializable]: Die Klasse ComObjekt ist eine Klasse, die ein Objekt darstellt, das zur Kommunikation genutzt werden kann. Sie enthält ein 'command', welches übermittelt, was passieren soll. Spezielle ComObjekt Klassen erben von dieser grundlegenden Klasse.\\
 
 \textbf{ComInitLobby} [erbt von ComObjekt] Diese Klasse ist ein spezielles Kommunikations-Objekt. Sie synchronisiert den Client mit der Lobby, wenn er sich mit dem Server verbindet oder nach einem Spiel in die Lobby zurückkehrt. Dazu enthält sie sowohl die playerList, als auch die gameList.\\
@@ -246,13 +246,17 @@ Dazu gehören die eigenen Karten (/L190/), eventuell ausgewählte Karten (/F225/
 		Mr. Blue, Mr. White und Mr. Pink befinden sich in der Lobby. \\
 		Mr. Blue klickt auf 'New Game' und wird ins Erstellungsfenster geschickt. \\
 		Er nimmt die nötigen Einstellungen vor (z.B. Wizard auswählen, Name setzen) und drückt auf 'Create'. Er wird ins Wartefenster weitergeleitet.\\
-		Mr. Pink und Mr. White wählen Mr. Blues Spiel in der Lobby aus und drücken auf 'Join'. Sie werden an die Passwortabfrage geschickt.\\
-		Sie geben das Passwort ein und werden ans Wartefenster geschickt.\\
+		Mr. Pink und Mr. White wählen Mr. Blues Spiel in der Lobby aus und drücken auf 'Join'.\\
+		Sie werden ans Wartefenster geschickt.\\
 		Die Mindestanzahl von drei ist erreicht. Mr. Blue drückt auf 'Start Game'.\\
 		Mr. Blue, Mr. Pink und Mr. White werden ins Spiel geschickt. Das Spiel startet.\\
-
-\includegraphics[width=\textwidth]{Entwurf_CreateGame}
-
+\newpage
+\addtolength{\oddsidemargin}{-4cm}
+\addtolength{\topmargin}{-4cm}
+\includegraphics[width=18cm, height = 26cm]{Entwurf_CreateGame2}
+\newpage
+\addtolength{\oddsidemargin}{4cm}
+\addtolength{\topmargin}{4cm}
 \subsection{Spielzug}
 		Aufgabe: Ein Spieler ist im Spiel Wizard an der Reihe und spielt eine Karte aus.
 		Das Diagramm endet, sobald der Spielzug auf allen Clients sichtbar
@@ -264,7 +268,15 @@ Dazu gehören die eigenen Karten (/L190/), eventuell ausgewählte Karten (/F225/
 		Er ist nicht regelwidrig, also wird die gepielte Karte über den Server verschickt und bei Mr. Blue, Mr. Pink und Mr. White auf dem Ablagestapel angezeigt. \\
 		Es wird überprüft, wer als nächstes dran ist.\\
 		Der nächste Spieler ist am Zug. \\
-
-\includegraphics[width=\textwidth]{Entwurf_PlayCard}
+\newpage
+\addtolength{\oddsidemargin}{-4cm}
+\addtolength{\topmargin}{-4cm}
+\includegraphics[width=18cm, height = 26cm]{Entwurf_PlayCard2}\\
+\newpage
+\addtolength{\oddsidemargin}{3cm}
+\includegraphics[width=14cm, height = 26cm]{Entwurf_PlayCard2_2}\\
+\newpage
+\addtolength{\oddsidemargin}{1cm}
+\includegraphics[width=12cm, height = 26cm]{Entwurf_PlayCard2_3}\\
 		
 \end{document}
