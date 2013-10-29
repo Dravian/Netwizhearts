@@ -74,114 +74,171 @@ Client-Server Diagramm. Der Client hat MVC Architektur.
 \subsection{Server}
 \includegraphics[width=\textwidth]{Server}
 \textbf{ServerMain}: Diese Klasse startet den Server und ist für die Konfiguration und Wartung des Servers verantwortlich. \\
-		\textbf{Server} [interface]: Ist ein Interface das von den Klassen LobbyServer und GameServer implementiert wird. Es wird von den Klassen Player und Ruleset verwendet um Nachrichten und Befehle in Form von ComObjekten zu versenden. \\
-		\textbf{LobbyServer} [implementiert Server]: Diese Klasse ist für die Verwaltung der Spiellobby auf dem Server verantwortlich. Sie erstellt neue Spiele (/F126/) und verwaltet laufende Spiele (/L110/). Auch wird der Chatverkehr über sie an die verbundenen Spieler weitergeleitet. Die LobbyServer-Klasse implementiert das Server Interface um ComObjekte von Player erhalten zu können. Sie leitet Nachrichten in Form von ComObjekten an die verbundenen Spieler weiter. \\
-		\textbf{ClientListenerThread} [erbt von Thread]: Diese Klasse ist für das Zustandekommen von Clientverbindungen zuständig. Der ClientListenerThread wird von der Klasse LobbyServer instanziert und nach dessen Start wartet der Thread auf eingehende Clientverbindungen, stellt diese her und übergibt sie an Instanzen der Klasse Player, welche er ebenfalls instanziert. \\
-		\textbf{GameServer} [implementiert Server]: Diese Klasse verwaltet ein Spiel ab dessen Erstellung bis zu seinem Ende. Sie leistet die Bereitstellung des Chatrooms im Spiel und verwaltet die Kommunikation zwischen den Clients während eines Spieles. Die GameServer-Klasse implementiert das Server Interface um Nachrichten von Player und Ruleset erhalten zu können. Der GameServer tauscht Nachrichten zwischen Ruleset und Player aus um so den Spielablauf zu koordinieren.\\
-		\textbf{Player} [erbt von Thread]: Die Player Klasse wird zum Versenden von Java Serializable Objects verwendet. Sie verwaltet für die Dauer einer Serververbindung den Socket zum Client. \\
-		\textbf{GameServerRepresentation}: Ist eine Klasse die Informationen über den Zustand eines Spielservers bereithält. Sie wird dem ComObjekt ComLobbyUpdateGameList angehängt um Clients in der GameLobby aktualisieren zu können.
+
+\textbf{Server} [interface]: Ist ein Interface das von den Klassen LobbyServer und GameServer implementiert wird. Es wird von den Klassen Player und Ruleset verwendet um Nachrichten und Befehle in Form von ComObjekten zu versenden. \\
+		
+\textbf{LobbyServer} [implementiert Server]: Diese Klasse ist für die Verwaltung der Spiellobby auf dem Server verantwortlich. Sie erstellt neue Spiele (/F126/) und verwaltet laufende Spiele (/L110/). Auch wird der Chatverkehr über sie an die verbundenen Spieler weitergeleitet. Die LobbyServer-Klasse implementiert das Server Interface um ComObjekte von Player erhalten zu können. Sie leitet Nachrichten in Form von ComObjekten an die verbundenen Spieler weiter. \\
+
+\textbf{ClientListenerThread} [erbt von Thread]: Diese Klasse ist für das Zustandekommen von Clientverbindungen zuständig. Der ClientListenerThread wird von der Klasse LobbyServer instanziert und nach dessen Start wartet der Thread auf eingehende Clientverbindungen, stellt diese her und übergibt sie an Instanzen der Klasse Player, welche er ebenfalls instanziert. Der Player wird dann dem LobbyServer übergeben. \\
+
+\textbf{GameServer} [implementiert Server]: Diese Klasse verwaltet ein Spiel ab dessen Erstellung bis zu seinem Ende. Sie leistet die Bereitstellung des Chatrooms im Spiel und verwaltet die Kommunikation zwischen den Clients während eines Spieles. Die GameServer-Klasse implementiert das Server Interface um Nachrichten von Player und Ruleset erhalten zu können. Der GameServer tauscht Nachrichten zwischen Ruleset und Player aus um so den Spielablauf zu koordinieren.\\
+
+\textbf{Player} [erbt von Thread]: Die Player Klasse wird zum Versenden von Java Serializable Objects verwendet. Sie verwaltet für die Dauer einer Serververbindung den Socket zum Client. \\
+
+\textbf{GameServerRepresentation} [implementiert Serializable]: Ist eine Klasse die Informationen über den Zustand eines Spielservers bereithält. Sie wird dem ComObjekt ComLobbyUpdateGameList angehängt um die Spielliste in der GameLobby zu aktualisieren.
 
 \subsection{Client}
 \includegraphics[width=\textwidth]{Client}
 \textbf{ClientMain}: Dies ist die Hauptklasse des Clients, die beim Starten des Programmes ausgeführt wird. Sie erzeugt ein neues ClientController Objekt.\\
 
-\textbf{ClientController}: Diese Klasse ist für die Kommunikaton zwischen dem ClientModel und dem ClientController zuständig.\\
-Sobald der ClientController von der ClientMain Klasse erzeugt wird, erzeugt dieser wiederum das ClientModel und die ClientView, wobei zunächst nur die Login Klasse sichtbar ist. Der ClientController enthält alle ActionListener der View und leitet durch diese Benutzereingaben an das ClientModel weiter.\\
+\textbf{Language} [Enumerator]: Language wird zur representation der Sprachen Deutsch, Englisch und Bayerisch im Client verwendet (/L350W/). \\
 
-\textbf{ClientModel} [erbt von Observable]: Das ClientModel ist die Schnittstelle zwischen dem MessageListenerThread, dem Ruleset und der View.\\ 
-Das Model prüft Nachrichten, welche es vom MessageListenerThread über die Methode receiveMessage() bekommt .Je nach 'command' des übergebenen ComObjects leitet es das ComObject an das Regelwerk weiter, oder benachrichtigt die View über entsprechende Veränderungen, indem sie ViewComObjects über notify()  an die entsprechenden Observer schickt. Über sendMessage() können Kommandos vom Regelwerk oder der View, über den MessageListenerThreat an den Server gesendet werden.\\
+\textbf{ClientController}: Der ClientController enthält alle ActionListener der View und leitet durch diese Benutzereingaben an das ClientModel weiter.\\
+Sobald der ClientController von der ClientMain Klasse erzeugt wird, erzeugt dieser wiederum das ClientModel und die ClientView, wobei zunächst nur das Login Fenster sichtbar ist. \\
+
+\textbf{ClientModel} [erbt von Observable]: Das ClientModel ist die Schnittstelle zwischen dem MessageListenerThread, dem ClientRuleset und der View.\\ 
+Das Model prüft Nachrichten, welche es vom MessageListenerThread über die Methode receiveMessage() bekommt. RulesetMessages werden an das Regelwerk weitergeleitet. Weiterhin informiert es die View über Veränderungen, indem sie MVMessages über notify() an die entsprechenden Observer schickt. Über sendMessage() können Kommandos vom Regelwerk oder der View, in Form von ComObjects, über den MessageListenerThreat an den Server gesendet werden.\\
 
 \textbf{MessageListenerThread} [implementiert Runnable]: Der MessageListenerThreat wird vom ClientModel instanziert und hält die TCP-Verbindung zum Server. \\
-Der Thread verschickt einersets ComObjekte, welche von Ruleset oder vom ClientModel erstellt wurden, an den Server. Andererseits nimmt er neue Nachrichten vom Server an und leitet sie an das ClientModel weiter, durch Aufruf von dessen receiveMessage() Methode.\\
+Der Thread nimmt neue Nachrichten vom Server an und leitet sie an das ClientModel weiter, durch Aufruf von dessen receiveMessage() Methode.\\
 
-\textbf{ViewComObjects}: Diese Klasse stellt spezielle Objekte dar, welche bei der Kommunikation zwischen ClientModel und ClientView benötigt werden. Sie werden über notify() an die entsprechenden Observer geschickt, welche je nach 'command?' die passende Aktion ausführen.
+\textbf{Window} [Enumerator]: Definiert die View-Klasse, für die die Nachricht bestimmt ist. \\
+
+\textbf{MVMessage}: Diese Klasse stellt spezielle Objekte dar, welche bei der Kommunikation zwischen ClientModel und ClientView benötigt werden. Sie werden über notify() an die entsprechenden, über 'window' definierten, Observer geschickt, welche die passende Aktion ausführen. \\
+
+\textbf{MVGameLobby} [erbt von MVMessage]: Nachricht, mit welcher die Spielerliste der GameLobby aktualisiert wird.
+
+\textbf{MVLobby} [erbt von MVMessage]: Nachricht mit welcher die Spielerliste und Spielliste der Lobby aktualisiert wird.
+
+\textbf{MVGame} [erbt von MVMessage]: Nachricht mit welcher das GamePanel des Game-Fensters aktualisiert wird.
+
+\textbf{WizID} [Enumerator]: Repräsentationen der Wizard Karten auf View-Ebene
+
+\textbf{HeartsID} [Enumerator]: Repräsentationen der Hearts Karten auf View-Ebene
 
 \subsection{ClientView}
 \includegraphics[width=\textwidth]{ClientView}
-\textbf{Language} [Enumerator]: Language wird zur Darstellung der Sprachen Deutsch, Englisch und Bayerisch  in der View vtiert Runnable]: Das Ruleset  ist für den Ablauf und die Einhaltung der Regeln eines Spiels zuständig(/L280/). Das Ruleset wird im GameServer instanziert und verwaltet die Zustände des GameStates im Server. Mit der Methode isValidMove() wird eine Eingabe eines Clients auf Regelkonformität überprüft und dann im GameServer  das GameState verändert. Über resolveMessage() kann eine GameServerinstanz ein ComObjekt vom Player anerwendet (/L350W/). \\
+\textbf{MVMessages} [interface]:  Ist ein Interface, das von Lobby, GameLobby und Game implementiert wird. Es gibt eine Methode zur Verarbeitung von MVMessages vor. \\
 
-\textbf{Login} [implementiert Observer]: Das Login-Fenster repräsentiert den initialen Dialog zwischen Benutzer und Client.tiert Runnable]: Das Ruleset  ist für den Ablauf und die Einhaltung der Regeln eines Spiels zuständig(/L280/). Das Ruleset wird im GameServer instanziert und verwaltet die Zustände des GameStates im Server. Mit der Methode isValidMove() wird eine Eingabe eines Clients auf Regelkonformität überprüft und dann im GameServer  das GameState verändert. Über resolveMessage() kann eine GameServerinstanz ein ComObjekt vom Player an\\
+\textbf{Login} [implementiert Observer]: Das Login-Fenster repräsentiert den initialen Dialog zwischen Benutzer und Client.
 In diesem Fenster kann der Benutzer seinen Namen (/F042/) und die Adresse des Servers (/F040/) eingeben. Außerdem ist über den Login die Auswahl der Sprache möglich (/F050W/). Über den Login-Button wird die Verbindung zum Server hergestellt (/F045/).\\
 
-\textbf{Lobby} [implementiert Observer]: Dieses Fenster erzeugt die Ansicht der ServerLobby auf der Client Seite, in der die Spieler neue Spiele erzeugen oder offenen beitreten können.\\
-In der Lobby werden die Benutzernamen der sich in der Lobby befindlichen Spieler(/L100/) , sowie die  offene Spiele (/L110/) angezeigt. In der Lobby konnen Chatnachrichten gesendet (/F060/) und empfangen werden (/L115/). Über Leave verlässt der Spieler das Spiel (/F090/). Über Host Game (/F080/) wird der Spieler zum CreateGame Fenster weiter geleitet und mit Join Game (/F070/) kann einem bereits erstellten Spiel beigetreten werden. \\
+\textbf{Lobby} [implementiert Observer, MVMessage]: Diese Klasse erzeugt die Ansicht der ServerLobby auf der Client Seite, in der die Spieler neue Spiele erstellen oder offenen beitreten können.\\
+In der Lobby werden die Benutzernamen der sich in der Lobby befindenden Spieler(/L100/), sowie offene Spiele (/L110/) angezeigt. In der Lobby können Chatnachrichten gesendet (/F060/) und empfangen werden (/L115/). Über 'Leave' verlässt der Spieler das Spiel (/F090/). Über 'Host Game' (/F080/) wird der Spieler zum CreateGame Fenster weiter geleitet und mit 'Join Game' (/F070/) kann einem bereits erstellten Spiel beigetreten werden. \\
 
 \textbf{CreateGame}: Das Fenster CreateGame dient dem Benutzer zur Erstellung eines neuen Spieles.\\
-Es bietet alle Komponenten um ein Regelwerk zu wählen (/F120/), einen Spielnamen festzulegen (/F122/) und das Spiel durch ein Passwort zu schützen (/F130W/). In der Spielerstellung wird ein Titelbild des ausgewählten Spiels und eine kurze Beschreibung angezeigt (/L120/, /L122/). Über Leave kehrt der Spieler in die Lobby zurück (/F124/) und mit Create wird das Spiel erstellt (/F126/).\\
+Es bietet alle Komponenten um ein Regelwerk zu wählen (/F120/), einen Spielnamen festzulegen (/F122/) und das Spiel durch ein Passwort zu schützen (/F130W/). In der Spielerstellung wird ein Titelbild des ausgewählten Spiels und eine kurze Beschreibung angezeigt (/L120/, /L122/). Über 'Leave' kehrt der Spieler in die Lobby zurück (/F124/) und mit 'Create' wird das Spiel erstellt (/F126/).\\
 
-\textbf{Password [implementiert Observer]}: Dieses Fenster ermöglicht die Eingabe eines Passwortes (/F140W/) um einem Passwortgeschütztem Spiel beizutreten (/F142/) oder per Leave wieder in die Lobby zurückzukehren (/F145/). \\
+\textbf{Password [implementiert Observer]}: Dieses Fenster ermöglicht die Eingabe eines Passwortes (/F140W/) um einem Passwortgeschütztem Spiel beizutreten (/F142/) oder per 'Leave' wieder in die Lobby zurückzukehren (/F145/). \\
 
-\textbf{GameLobby} [implementiert Observer]: Die GameLobby modelliert das Wartefenster, in dem beigetretene Spieler (/L155/) auf den Start des Spieles durch den Spielleiter warten (/F200/).\\
+\textbf{GameLobby} [implementiert Observer, MVMessage]: Die GameLobby modelliert das Wartefenster, in dem beigetretene Spieler (/L155/) auf den Start des Spieles durch den Spielleiter warten (/F200/).\\
  Der Spielleiter kann Spieler mit dem Remove Player Button entfernen (/F180/). Über Leave kehren die Spieler in die Lobby zurück (/F170/, /F190/). Der spielinterne Chat ist ab hier verfügbar (/F160/, /L158/). \\
 
-\textbf{Game} [implementiert Observer]: Game ist das Fenster, in welchem das eigentliche Spiel abläuft.\\
-Das Game-Fenster beherbergt  der den Spielchat (/F220/, /L260/) und enthält ein GamePanel. Das GamePanel zeigt die eigenen Karten (/L190/), sowie zum Ausspielen anwählbare Karten (/F225/, /F230/), die Anzahl der Karten der Mitspieler (/L192/) und den Ablagestapel (/L194/). Nach jeder Runde wird der Punktestand  aktualisiert (/L200/). Schließen beendet das Spiel und der Spieler wird in die Lobby zurückgeleitet (F210/).\\
+\textbf{Game} [implementiert Observer, MVMessages]: Im Game Fenster läuft das Spiel ab.\\
+Es enthält den Spielchat (/F220/, /L260/) und ein GamePanel. Außerdem können über ein Dropdown-Menü Änderungen an Hintergrundbild und Kartenhintergründen vorgenommen werden(/F240).\\
+Schließen beendet das Spiel und der Spieler wird in die Lobby zurückgeleitet (/F210/).\\
 
 \textbf{GamePanel}: Das Panel ist die Komponente des Game-Fensters, welche das eigentliche Spiel darstellt.\\
-Es besteht aus veschiedenen Panelobjekten, welche je nach Regelwerk auf das Spielfeld gezeichnet werden.
-\textbf{OwnHand}: Stellt die Karten dar, die der Spieler auf der Hand hat. (?Zusatzlich gibt es zwei Label für den eigenen Punktestand und die zusätzlichen Angaben, wie z.B. die Stiche in Wizard?)\\
-\textbf{OtherPlayer}: Zeigt die Informationen über die anderen Spieler, also den Namen, ein Symbol für die verdeckte Hand und das Label für zusätzliche Angaben. (?Ablagestapel?)\\
-\textbf{DiscardPile}: Stellt einen Ablagestapel dar.\\
-\textbf{DrawDeck}: Stellt einen Aufnahmestapel dar. Bei Wizard wird dort die Trumpffarbe angezeigt.\\
+Es besteht aus veschiedenen Panelobjekten, welche je nach Regelwerk auf das Spielfeld gezeichnet werden. \\
+Dazu gehören die eigenen Karten (/L190/), eventuell ausgewählte Karten (/F225/, /F230/), ein Textfeld z.B. zur Anzeige der Anzahl der restlichen Karten der Mitspieler (/L192/) und den Ablagestapel (/L194/). Nach jeder Runde wird der Punktestand  aktualisiert (/L200/). \\
 
-\textbf{Warning} [implementiert Observer]: Das Warning-Fenster zeigt dem Benutzer Fehlermeldungen bzw. Hinweise an (/L290/), (?welche vom ClientModel übergeben wurden?). \\
+\textbf{OwnHand}: Stellt die Karten dar, die der Spieler auf der Hand hat. Der Spieler kann eine Karte durch Anklicken auswählen (/F225/) und durch einen zweiten Klick ausspielen (/F230/).\\
 
-\textbf{ChooseColour}: Dieses Fenster ermöglicht es Spielern eine Trumpffarbe auszuwählen (/F360/). \\
+\textbf{OtherPlayer}: Zeigt die Informationen über die anderen Spieler, also den Namen, ein Symbol für die verdeckte Hand und das Label für zusätzliche Angaben an(/L198/). \\
 
-\textbf{InputNumber}: In diesem Fenster, kann der Benutzer eine Zahl eingeben, um z.B zu Beginn einer Runde Wizards seine Stiche zu schätzen (/F370/). \\
+\textbf{DiscardPile}: Stellt einen Ablagestapel dar, dieser kann sowohl für jeden Spieler einzeln oder für alle Spieler gemeinsam in der Mitte des Spielfeldes angezeigt werden.\\
 
-\textbf{ChooseCards}: In dieses Fenster wählt der Benutzer zu Beginn einer Partie Hearts, welche Karten er zu anderen Spielern weiterreichen wird (/F260/). \\
+\textbf{DrawDeck}: Stellt einen Aufnahmestapel dar. \\
 
-\textbf{ScoreWindow} [implementiert Observer]: Dieses Fenster zeigt den momentanen Punktestand nach jeder Runde und den Gesamtpunktestand am Ende des Spieles an (/L250/).\\
+\textbf{Warning} [implementiert Observer]: Das Warning-Fenster zeigt dem Benutzer Fehlermeldungen bzw. Hinweise an (/L290/), welche vom ClientModel übergeben wurden. Es wird nur im Fehlerfall angezeigt. \\
+
+\textbf{ChooseItem}: Dieses Fenster ermöglicht es dem Spieler aus einer Liste von Items eines auszuwählen, wie beispielsweise die Trumpffarbe (/F360/). \\
+
+\textbf{InputNumber}: In diesem Fenster, kann der Benutzer eine Zahl eingeben (/F370/). \\
+
+\textbf{ChooseCards}: In diesem Fenster muss der Benutzer eine vorbestimmte Menge Karten auswählen (/F260/). \\
+
+\textbf{ScoreWindow}: Dieses Fenster zeigt den momentanen Punktestand nach jeder Runde und den Gesamtpunktestand am Ende des Spieles an (/L250/).\\
 
 
 \subsection{Ruleset}
 \includegraphics[width=\textwidth]{Ruleset}
-		\textbf{Ruleset}[Abstrakt][implementiert Runnable]: Das Ruleset  ist für den Ablauf und die Einhaltung der Regeln eines Spiels zuständig(/L280/). Das Ruleset wird im GameServer instanziert und verwaltet die Zustände des GameStates im Server. Mit der Methode isValidMove() wird eine Eingabe eines Clients auf Regelkonformität überprüft und dann im GameServer  das GameState verändert. Über resolveMessage() kann eine GameServerinstanz ein ComObjekt vom Player an das Ruleset weiterleiten. Die Methoden init(), runGame() und calculateOutcome() starten das Spiel bzw. ermitteln den Gewinner und Punktestand eines Spiels. \\ \\
+
+\textbf{Ruleset} [Interface] Gibt die Methoden isValidMove() und resolveMessage() vor.
+
+\textbf{ServerRuleset}[implementiert Runnable, Ruleset]: Das ServerRuleset  ist für den Ablauf und die Einhaltung der Regeln eines Spiels zuständig(/L280/). Das ServerRuleset wird im GameServer instanziert und verwaltet die Zustände des GameStates im Server. Mit der Methode isValidMove() wird eine Eingabe eines Clients auf Regelkonformität überprüft und dann im GameServer  das GameState verändert. Über resolveMessage() kann eine GameServerinstanz eine RulesetMessage vom Player an das Ruleset weiterleiten. \\ \\
 		
-		\textbf{Hearts} [erbt von Ruleset]  Diese Klasse erstellt das Regelwerk zum Spiel Hearts. Sie enthält zudem weitere Methoden, welche für das Spiel Hearts spezifisch benötigt werden, wie die Regelung zum Tausch von Karten und die Berechnung der Stichpunkten. \\ \\
+\textbf{Hearts} [erbt von ServerRuleset]  Diese Klasse erstellt das Regelwerk zum Spiel Hearts. Sie enthält zudem weitere Methoden, welche für das Spiel Hearts spezifisch benötigt werden, wie die Regelung zum Tausch von Karten und die Berechnung der Stichpunkten. \\ \\
 		
-		\textbf{Wizard} [erbt von Ruleset] Diese Klasse erstellt das Regelwerk zum Spiel Wizard. Sie enthält zudem weitere Methoden, welche für das Spiel Wizard spezifisch benötigt werden, wie das Bestimmen einer Trumpffarbe und die Bestimmung der Rundenanzahl. \\ \\
+\textbf{Wizard} [erbt von ServerRuleset] Diese Klasse erstellt das Regelwerk zum Spiel Wizard. Sie enthält zudem weitere Methoden, welche für das Spiel Wizard spezifisch benötigt werden, wie das Bestimmen einer Trumpffarbe und die Bestimmung der Rundenanzahl. \\ \\
 		
-		\textbf{ClientRuleSet}  Das ClientModel wird als vorab Regelauswertung im Clientpaket verwendet. Es enthält die isValidMove() Methode wie im RuleSet um im Client einen Zug in seinem PlayerState auf Gültigkeit zu prüfen, bevor ein Update an den Server geschickt wird. \\ \\
+\textbf{ClientRuleset} [implementiert Ruleset]:  Das ClientRuleset wird zur Regelvorauswertung im Client verwendet. Dazu benutzt es die isValidMove() Methode. Desweiteren kann es vom ClientModel erhaltene RulesetMessages mit der resolveMessage() Methode behandeln.  \\
+
+\textbf{ClientWizard} [erbt von ClientRuleset]: Diese Klasse bildet das Regelwerk für den Client bei einer Partie Wizard. \\
+
+\textbf{ClientHearts} [erbt von ClientRuleset]: Diese Klasse bildet das Regelwerk für den Client bei einer Partie Hearts. \\
 		
-		\textbf{GameState} Das GameState modelliert einen aktuellen Spielzustand, es wird vom GameServer instanziert und vom RuleSet bearbeitet. Es enthält die einzelnen PlayerStates, sowie Informationen zum Ablage-, Aufnahmestapel, Rundenanzahl, OtherData, den momentanen aktiven Spieler sowie GamePhase. \\ \\
+\textbf{GameState} Das GameState modelliert einen aktuellen Spielzustand, es wird vom GameServer instanziert und vom RuleSet bearbeitet. Es enthält die einzelnen PlayerStates, sowie Informationen zum Ablage-, Aufnahmestapel, Rundenanzahl, den momentanen aktiven Spieler sowie GamePhase. \\ \\
 		
-		\textbf{GamePhase}[Enumerator] Die GamePhase modelliert die verschiedenen Zustände des Spiels im GameState. \\ \\
+\textbf{GamePhase}[Enumerator] Die GamePhase modelliert die verschiedenen Zustände des Spiels im GameState. \\ \\
 		
-		\textbf{PlayerState} repräsentiert den Spielzustand eines Spielers, und wird von GameState instanziert. Sie enthält vom Spieler seinen Namen, seine Handkarten, die gespielte Karten und Otherdata. . \\ \\
+\textbf{PlayerState} [implementier Serializable] Repräsentiert den Spielzustand eines Spielers, und wird unter anderem im GameState gespeichert. Sie enthält den Namen des Spielers, seine Handkarten und OtherData. \\ \\
 		
-		\textbf{GameClientUpdate} Das GameClientUpdate wird vom RuleSet über den GameServer an den Client geschickt und enthält alle Änderungen des GameState die für den Client relevant sind. Das wären sein Spielhand, der Ablagestapel sowie die Otherdata  von alle Spieler. \\ \\
+\textbf{GameClientUpdate} Das GameClientUpdate wird vom RuleSet über den GameServer an den Client geschickt und enthält alle Änderungen des GameState die für den Client relevant sind. Das wären sein Spielhand, der Ablagestapel sowie die Otherdata  von alle Spieler. \\ \\
 		
-		\textbf{OtherData}[Abstrakt] OtherData speichert zu einem Spiel zusätzliche Informationen, wie die Namen und Anzahl der Karten aller Spieler. \\ \\
-		\textbf{HeartsData} [erbt von OtherData] HeartsData speichert den Punktestand der Spieler. \\ \\
+\textbf{OtherData}[Abstrakt] [implementiert Serializable] OtherData speichert zu einem Spiel zusätzliche Informationen. \\ \\
 		
-		\textbf{WizData} [erbt von OtherData] WizData speichert die Trumpffarbe, sowie die vorausgesagten und gemachten Stiche der Spieler. \\ \\
-		\textbf{Card} [Abstrakt] Diese Klasse modelliert eine Spielkarte. Jede Karte besitzt als Attribute einen Wert und eine Farbe. \\ \\
+\textbf{HeartsData} [erbt von OtherData] HeartsData speichert den Punktestand der Spieler. \\ \\
 		
-		\textbf{HeartsCard} [erbt von Card]  HeartsData modelliert eine Karte aus dem Spiel Hearts. \\ \\
+\textbf{WizData} [erbt von OtherData] WizData speichert die Trumpffarbe, sowie die vorausgesagten und gemachten Stiche der Spieler. \\ \\
 		
-		\textbf{WizardCard} [erbt von Card] WizardData modelliert eine Karte aus dem Spiel Wizard. \\ \\
+\textbf{Card} [Abstrakt] [implementiert Serializable] Diese Klasse modelliert eine Spielkarte. Jede Karte besitzt als Attribute einen Wert und eine Farbe. \\ \\
+		
+\textbf{HeartsCard} [erbt von Card]  HeartsData modelliert eine Karte aus dem Spiel Hearts. \\ \\
+		
+\textbf{WizardCard} [erbt von Card] WizardData modelliert eine Karte aus dem Spiel Wizard. \\ \\
+
 \subsection{ComObjects}
 \includegraphics[width=\textwidth]{ComDiagram}
-\textbf{ComObject} Die Klasse ComObjekt ist eine Klasse, die ein Objekt darstellt, das zur Kommunikation genutzt werden kann. Sie enthält ein command, welches übermittelt, was passieren soll. Spezielle ComObjekt Klassen erben von dieser grundlegenden Klasse.\\
-		\textbf{ComInitLobby} [erbt von ComObjekt] Diese Klasse ist ein spezielles Kommunikations-Objekt. Sie synchronisiert den Client mit der Lobby, wenn er sich mit dem Server verbindet oder nach einem Spiel in die Lobby zurückkehrt. Dazu enthält sie sowohl die playerList, als auch die gameList.\\
-		\textbf{ComUpdatePlayerList} [erbt von ComObjekt] Diese Klasse ist ein spezielles Kommunikations-Objekt. Sie sendet eine Nachricht zum Update der Playerliste in der Lobby und Spiellobby. Dazu enthält sie den Player und ein removeFlag.\\
-		\textbf{ComLogin} [erbt von ComObjekt] Diese Klasse ist ein spezielles Kommunikations-Objekt. Sie ist eine Nachricht, die beim Login an den Server gesendet wird. Dazu enthält sie den Namen des Spieler, des sich einloggen möchte.\\
-		\textbf{ComLobbyUpdateGameList} [erbt von ComObjekt] Diese Klasse ist ein spezielles Kommunikations-Objekt. Sie aktualisiert die Gameliste in der Lobby. Dazu enthält sie den GameServer und ein RemoveFlag.\\
-		\textbf{ComInitGameLobby} [erbt von ComObjekt] Diese Klasse ist ein spezielles Kommunikations-Objekt. Sie liefert die Liste der Spieler, die sich bereits beim Betreten der Spiellobby darin befinden. \\
-		\textbf{ComChatMessage}[erbt von ComObjekt] Diese Klasse ist ein spezielles Kommunikations-Objekt.Sie liefert eine Chatnachricht in Form eines Strings.\\
-		\textbf{RoundEnd} [erbt von ComObjekt] Diese Klasse ist ein spezielles Kommunikations-Objekt. Sie enthält die Nachricht, dass eine Runde beendet wurde, der eine Auswertung folgen soll. \\
-		\textbf{ComRuleset} [erbt von ComObjekt] Diese Klasse ist ein spezielles Kommunikations-Objekt. Sie ist die grundlegende Nachricht eines Regelwerkaufrufes und enthält eine verfeinerte Nachricht mit weiteren Informationen, die RulesetMessage. \\
-		\textbf{RulesetMessage} Diese Klasse ist eine Verfeinerung der ComRuleset Klasse. Sie enthält einen Nachrichtentyp und vererbt an alle Nachrichten für das Regelwerk.\\
-		\textbf{MsgCard} [erbt von RulesetMessage] Diese Klasse ist eine Verfeinerung der ComRuleset Klasse. Sie beinhaltet die ausgespielte Karte eines Spielers.\\
-		\textbf{MsgNumber} [erbt von RulesetMessage] Diese Klasse ist eine Verfeinerung der ComRuleset Klasse. Sie gibt eine Nummer zurück, welche beispielsweise für die Stichansage in Wizard verwendet werden kann.\\
-		\textbf{MsgSelection} [erbt von RulesetMessage]Diese Klasse ist eine Verfeinerung der ComRuleset Klasse. Sie gibt eine Farbe zurück, welche beispielsweise für die Ansage der Trumpfarbe in Wizard verwendet werden kann.\\
-		\textbf{MsgMultiCards} [erbt von RulesetMessage] Diese Klasse ist eine Verfeinerung der ComRuleset Klasse. Sie liefert mehrere Karten zum Tausch für das Regelwerk Hearts. \\
-		\textbf{MsgUserInputRequest} [erbt von RulesetMessage] Diese Klasse ist eine Verfeinerung der ComRuleset Klasse. Sie wird dem Client gesendet, um den aktuellen Zug anzusagen.\\ ??? Um dem Regelwerk den Playerstatus zu übermitteln?? \\
-		\textbf{GameUpdate} [erbt von RulesetMessage] Diese Klasse ist eine Verfeinerung der ComRuleset Klasse. Sie sendet den Aufruf, das Spiel zu updaten, nachdem eine Änderung passiert ist.
-		\textbf{enum commands} Enumerator, der ComObjekte ihre Kommandos zuweist. \\
-		\textbf{enum types} Enumerator zur eindeutigen Identifizierung von Regelwerknachrichten.
+\textbf{ComObject} [implementiert Serializable]: Die Klasse ComObjekt ist eine Klasse, die ein Objekt darstellt, das zur Kommunikation genutzt werden kann. Sie enthält ein 'command', welches übermittelt, was passieren soll. Spezielle ComObjekt Klassen erben von dieser grundlegenden Klasse.\\
+
+\textbf{ComInitLobby} [erbt von ComObjekt] Diese Klasse ist ein spezielles Kommunikations-Objekt. Sie synchronisiert den Client mit der Lobby, wenn er sich mit dem Server verbindet oder nach einem Spiel in die Lobby zurückkehrt. Dazu enthält sie sowohl die playerList, als auch die gameList.\\
+
+\textbf{ComUpdatePlayerList} [erbt von ComObjekt] Diese Klasse ist ein spezielles Kommunikations-Objekt. Sie sendet eine Nachricht zum Update der Playerliste in der Lobby und Spiellobby. Dazu enthält sie den Player und ein removeFlag.\\
+		
+\textbf{ComLogin} [erbt von ComObjekt] Diese Klasse ist ein spezielles Kommunikations-Objekt. Sie ist eine Nachricht, die beim Login an den Server gesendet wird. Dazu enthält sie den Namen des Spieler, des sich einloggen möchte.\\
+		
+\textbf{ComLobbyUpdateGameList} [erbt von ComObjekt] Diese Klasse ist ein spezielles Kommunikations-Objekt. Sie aktualisiert die Gameliste in der Lobby. Dazu enthält sie den GameServer und ein RemoveFlag.\\
+		
+\textbf{ComInitGameLobby} [erbt von ComObjekt] Diese Klasse ist ein spezielles Kommunikations-Objekt. Sie liefert die Liste der Spieler, die sich bereits beim Betreten der Spiellobby darin befinden. \\
+
+\textbf{ComJoinRequest} [erbt von ComObjekt] Diese Klasse ist ein spezielles Kommunikations-Objekt. Sie ist eine Nachricht, die an den Server gesendet wird, wenn der Spieler einem bestimmten Spiel beitreten will. Dazu enthält es den Namen des Spiels als String. \\
+		
+\textbf{ComChatMessage}[erbt von ComObjekt] Diese Klasse ist ein spezielles Kommunikations-Objekt. Sie enthält eine Chatnachricht in Form eines Strings.\\
+
+\textbf{ComKickPlayer} [erbt von ComObjekt] Diese Klasse ist ein spezielles Kommunikations-Objekt. Sie ist eine Nachricht an den Server, die angibt einen Spieler vom Spiel zu entfernent. Dazu enthält es einene String der den Namen des Spielers enthält. \\
+		
+\textbf{ComRuleset} [erbt von ComObjekt] Diese Klasse ist ein spezielles Kommunikations-Objekt. Sie ist die grundlegende Nachricht eines Regelwerkaufrufes und enthält eine verfeinerte Nachricht mit weiteren Informationen, die RulesetMessage. \\
+		
+\textbf{RulesetMessage} [implementiert Serializable] Diese Klasse ist eine Verfeinerung der ComRuleset Klasse. Sie enthält einen Nachrichtentyp und vererbt an alle Nachrichten für das Regelwerk.\\
+		
+\textbf{MsgCard} [erbt von RulesetMessage] Diese Klasse ist eine Verfeinerung der ComRuleset Klasse. Sie beinhaltet die ausgespielte Karte eines Spielers.\\
+		
+\textbf{MsgNumber} [erbt von RulesetMessage] Diese Klasse ist eine Verfeinerung der ComRuleset Klasse. Sie enthält eine Zahl.\\
+		
+\textbf{MsgSelection} [erbt von RulesetMessage]Diese Klasse ist eine Verfeinerung der ComRuleset Klasse. Sie enthält die Wahl eines Items in Form eines Strings.\\
+		
+\textbf{MsgMultiCards} [erbt von RulesetMessage] Diese Klasse ist eine Verfeinerung der ComRuleset Klasse. Sie liefert mehrere Karten zum Tausch für das Regelwerk Hearts. \\
+		
+\textbf{MsgUser} [erbt von RulesetMessage] Diese Klasse ist eine Verfeinerung der ComRuleset Klasse. Sie wird dem Client gesendet, um eine Nutzereingabe anzufordern und/oder um dem ClientRuleset den aktuellen Spielzustand in Form eines GameClientUpdate zu übermitteln. \\
+
+\textbf{MsgGameEnd} [erbt von RulesetMessage] Diese Klasse ist eine Verfeinerung der ComRuleset Klasse. Sie signalisiert dem ClientRuleset, dass das Spiel zu Ende ist.
+		
+\textbf{GameClientUpdate} [implementiert Serializable] Diese Klasse ist eine Verfeinerung der ComRuleset Klasse. Sie sendet den Aufruf, das Spiel zu updaten, nachdem eine Änderung passiert ist. \\
+		
+\textbf{enum commands} Enumerator, der ComObjekte ihre Kommandos zuweist. \\
+		
+\textbf{enum types} Enumerator zur eindeutigen Identifizierung von Regelwerknachrichten.
 \ \\
 
 \section{Sequenzdiagramme}
