@@ -4,10 +4,27 @@
 package Ruleset;
 
 /** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author m4nkey
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+ * Die zusätzlichen Informationen eines Spielers
  */
 public abstract class OtherData {
+	/**
+	 * Der Name des Spielers dem die Daten gehören
+	 */
+	private String name;
+	
+	/**
+	 * Erzeugt die zusätzlichen Daten eines Spielers
+	 * @param name Der Name des Spielers dem die Daten gehören
+	 */
+	OtherData(String name) {
+		this.name = name;
+	}
+	
+	/**
+	 * Holt den Namen des Spielers
+	 * @return name Der Name des Spielers
+	 */
+	public String getname() {
+		return this.name;
+	}
 }
