@@ -4,7 +4,7 @@
 package Ruleset;
 
 /** 
- * Repräsentiert eine Wizardkarte
+ * Modelliert eine Wizardkarte
  */
 public class WizardCard extends Card {
 	/** 

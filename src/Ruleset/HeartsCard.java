@@ -4,7 +4,7 @@
 package Ruleset;
 
 /** 
- * Repräsentiert eine Heartskarte
+ * Modelliert eine Heartskarte.
  */
 public class HeartsCard extends Card {
 	/** 

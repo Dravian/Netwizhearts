@@ -1,6 +1,6 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.9.25)  5 NOV 2013 20:15
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.9.25)  5 NOV 2013 23:47
 entering extended mode
-**refman
+**refman.tex
 (C:\Users\Laptop\Desktop\Doxygen\latex\refman.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
@@ -1048,22 +1048,22 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 2.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <7> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 70.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 73.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 6.29996pt on input line 70.
+(Font)              scaled to size 6.29996pt on input line 73.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 70.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 73.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 70.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 73.
  [2]
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <12> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 77.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 97.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 10.79993pt on input line 77.
+(Font)              scaled to size 10.79993pt on input line 97.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 77.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 97.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 77.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 97.
 )
 \tf@toc=\write5
 Package hyperref Info: Option `pageanchor' set `true' on input line 128.
@@ -1071,8 +1071,8 @@ Package hyperref Info: Option `pageanchor' set `true' on input line 128.
 (C:\Users\Laptop\Desktop\Doxygen\latex\hierarchy.tex
 LaTeX Font Info:    Font shape `T1/phv/bc/n' will be
 (Font)              scaled to size 10.79993pt on input line 1.
-)
-(C:\Users\Laptop\Desktop\Doxygen\latex\annotated.tex [1]
+ [1])
+(C:\Users\Laptop\Desktop\Doxygen\latex\annotated.tex
 
 ! Package inputenc Error: Keyboard character used is undefined
 (inputenc)                in inputencoding `utf8'.
@@ -1081,9 +1081,24 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.5 ...lwerk auf Clientseite }{\pageref{a00003}}{}
+l.4 ...i einer Partie Hearts }{\pageref{a00002}}{}
                                                   
-? 
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
+
+
+! Package inputenc Error: Keyboard character used is undefined
+(inputenc)                in inputencoding `utf8'.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 ...i einer Partie Wizard }{\pageref{a00004}}{}
+                                                  
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
+
 
 ! Package inputenc Error: Unicode char \u8:äse not set up for use with LaTeX.
 
@@ -1093,27 +1108,75 @@ Type  H <return>  for immediate help.
                                                   
 l.7 ...die Farbe einer Karte }{\pageref{a00005}}{}
                                                   
-? 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
 
-! Package inputenc Error: Unicode char \u8:änk not set up for use with LaTeX.
 
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.8 ...r Sicht eines Clients }{\pageref{a00006}}{}
-                                                  
-? 
-
-! Package inputenc Error: Unicode char \u8:äse not set up for use with LaTeX.
+! Package inputenc Error: Keyboard character used is undefined
+(inputenc)                in inputencoding `utf8'.
 
 See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.11 ...ert eine Heartskarte }{\pageref{a00009}}{}
+l.8 ... Client relevant sind }{\pageref{a00006}}{}
                                                   
-? 
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
+
+
+! Package inputenc Error: Unicode char \u8:ält not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.8 ... Client relevant sind }{\pageref{a00006}}{}
+                                                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! Package inputenc Error: Unicode char \u8:Än not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.8 ... Client relevant sind }{\pageref{a00006}}{}
+                                                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! Package inputenc Error: Keyboard character used is undefined
+(inputenc)                in inputencoding `utf8'.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.8 ... Client relevant sind }{\pageref{a00006}}{}
+                                                  
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
+
+
+! Package inputenc Error: Unicode char \u8:änd not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.9 ...{a00008}{Game\-State} }{\pageref{a00007}}{}
+                                                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
 
 ! Package inputenc Error: Unicode char \u8:ätz not set up for use with LaTeX.
 
@@ -1123,7 +1186,10 @@ Type  H <return>  for immediate help.
                                                   
 l.12 ...ers zum Spiel Hearts }{\pageref{a00010}}{}
                                                   
-? 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
 
 ! Package inputenc Error: Unicode char \u8:ätz not set up for use with LaTeX.
 
@@ -1133,7 +1199,23 @@ Type  H <return>  for immediate help.
                                                   
 l.14 ...ionen eines Spielers }{\pageref{a00012}}{}
                                                   
-? 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! Package inputenc Error: Unicode char \u8:äse not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.15 ...\-State} gespeichert }{\pageref{a00013}}{}
+                                                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
 
 ! Package inputenc Error: Keyboard character used is undefined
 (inputenc)                in inputencoding `utf8'.
@@ -1142,19 +1224,25 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.18 ...werk auf Serverseite }{\pageref{a00016}}{}
+l.18 ...zuständig (/\-L280/) }{\pageref{a00016}}{}
                                                   
-? 
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
 
-! Package inputenc Error: Unicode char \u8:äse not set up for use with LaTeX.
+
+! Package inputenc Error: Unicode char \u8:änd not set up for use with LaTeX.
 
 See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.20 ...ert eine Wizardkarte }{\pageref{a00018}}{}
+l.18 ...zuständig (/\-L280/) }{\pageref{a00016}}{}
                                                   
-? 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+[2]
 
 ! Package inputenc Error: Unicode char \u8:ätz not set up for use with LaTeX.
 
@@ -1164,9 +1252,12 @@ Type  H <return>  for immediate help.
                                                   
 l.21 ...ers zum Spiel Wizard }{\pageref{a00019}}{}
                                                   
-? 
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00001.tex [2]
-<a00001.pdf, id=309, 501.875pt x 152.57pt>
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+) (C:\Users\Laptop\Desktop\Doxygen\latex\a00001.tex
+<a00001.pdf, id=347, 501.875pt x 152.57pt>
 File: a00001.pdf Graphic file (type pdf)
  <use a00001.pdf>
 Package pdftex.def Info: a00001.pdf used on input line 7.
@@ -1191,19 +1282,19 @@ Underfull \hbox (badness 10000) detected at line 48
  []
 
 ) (C:\Users\Laptop\Desktop\Doxygen\latex\a00002.tex
-<a00002.pdf, id=313, 501.875pt x 291.0875pt>
+<a00002.pdf, id=351, 501.875pt x 291.0875pt>
 File: a00002.pdf Graphic file (type pdf)
  <use a00002.pdf>
 Package pdftex.def Info: a00002.pdf used on input line 7.
 (pdftex.def)             Requested size: 98.10645pt x 56.9055pt.
- [3 <C:/Users/Laptop/Desktop/Doxygen/latex/a00001.pdf> <C:/Users/Laptop/Desktop
-/Doxygen/latex/a00002.pdf>]
+ [3 <C:/Users/Laptop/Desktop/Doxygen/latex/a00001.pdf>]
 LaTeX Font Info:    Font shape `T1/phv/bc/it' in size <10> not available
 (Font)              Font shape `T1/phv/bc/sl' tried instead on input line 24.
 LaTeX Font Info:    Font shape `T1/phv/bc/sl' will be
 (Font)              scaled to size 8.99994pt on input line 24.
 LaTeX Font Info:    Try loading font information for T1+pcr on input line 24.
- ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\t1pcr.fd"
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\t1pcr.fd"
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
 
@@ -1219,7 +1310,10 @@ Type  H <return>  for immediate help.
                                                   
 l.27 Üb
        erprüft ob ein gemachter Zug zu dem Spiel Hearts gütlig ist.
-? 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
 
 ! Package inputenc Error: Keyboard character used is undefined
 (inputenc)                in inputencoding `utf8'.
@@ -1230,7 +1324,9 @@ Type  H <return>  for immediate help.
                                                   
 l.27 Überprü
             ft ob ein gemachter Zug zu dem Spiel Hearts gütlig ist.
-? 
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
+
 
 ! Package inputenc Error: Keyboard character used is undefined
 (inputenc)                in inputencoding `utf8'.
@@ -1241,7 +1337,9 @@ Type  H <return>  for immediate help.
                                                   
 l.27 ...b ein gemachter Zug zu dem Spiel Hearts gü
                                                   tlig ist.
-? 
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
+
 
 Underfull \hbox (badness 10000) detected at line 29
 [][][]
@@ -1257,25 +1355,42 @@ Type  H <return>  for immediate help.
                                                   
 l.30 is\-Valid true falls Zug gü
                                 ltig, false wenn nicht
-? 
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
+
 ) (C:\Users\Laptop\Desktop\Doxygen\latex\a00003.tex
-<a00003.pdf, id=334, 501.875pt x 145.54375pt>
+<a00003.pdf, id=372, 501.875pt x 145.54375pt>
 File: a00003.pdf Graphic file (type pdf)
  <use a00003.pdf>
 Package pdftex.def Info: a00003.pdf used on input line 7.
 (pdftex.def)             Requested size: 196.22057pt x 56.9055pt.
-)
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00004.tex
-<a00004.pdf, id=335, 501.875pt x 291.0875pt>
+ [4 <C:/Users/Laptop/Desktop/Doxygen/latex/a00002.pdf> <C:/Users/Laptop/Desktop
+/Doxygen/latex/a00003.pdf>]
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 42.
+LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
+(Font)              scaled to size 8.99994pt on input line 42.
+
+
+! Package inputenc Error: Unicode char \u8:ähl not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.102 ...dem Spieler verlangt eine Farbe auszuwähl
+                                                  en.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+) (C:\Users\Laptop\Desktop\Doxygen\latex\a00004.tex
+<a00004.pdf, id=403, 501.875pt x 291.0875pt>
 File: a00004.pdf Graphic file (type pdf)
  <use a00004.pdf>
 Package pdftex.def Info: a00004.pdf used on input line 7.
 (pdftex.def)             Requested size: 98.10645pt x 56.9055pt.
 
-Underfull \hbox (badness 10000) detected at line 18
-[][][]
- []
-
 
 ! Package inputenc Error: Keyboard character used is undefined
 (inputenc)                in inputencoding `utf8'.
@@ -1284,9 +1399,11 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.33 Prü
+l.27 Prü
         ft ob ein gemachter Zug zum Spiel Wizard gültig ist.
-? 
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
+
 
 ! Package inputenc Error: Keyboard character used is undefined
 (inputenc)                in inputencoding `utf8'.
@@ -1295,11 +1412,13 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.33 ...t ob ein gemachter Zug zum Spiel Wizard gü
+l.27 ...t ob ein gemachter Zug zum Spiel Wizard gü
                                                   ltig ist.
-? 
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
 
-Underfull \hbox (badness 10000) detected at line 35
+[5 <C:/Users/Laptop/Desktop/Doxygen/latex/a00004.pdf>]
+Underfull \hbox (badness 10000) detected at line 29
 [][][]
  []
 
@@ -1311,13 +1430,43 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.36 is\-Valid true falls Zug gü
+l.30 is\-Valid true falls Zug gü
                                 ltig, false wenn nicht
-? 
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
+
 ) (C:\Users\Laptop\Desktop\Doxygen\latex\a00005.tex)
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00006.tex [4 <C:/Users/Laptop/Desktop/D
-oxygen/latex/a00003.pdf> <C:/Users/Laptop/Desktop/Doxygen/latex/a00004.pdf>]
-Underfull \hbox (badness 10000) detected at line 29
+(C:\Users\Laptop\Desktop\Doxygen\latex\a00006.tex
+
+! Package inputenc Error: Unicode char \u8:äre not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 Das wäre
+             n seine Spielhand, der Ablagestapel sowie die Otherdata von all...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! Package inputenc Error: Unicode char \u8:ält not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 ...ata von allen Spielern. Bei Wizard enthält
+                                                   es auch die momentane Tru...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Underfull \hbox (badness 10000) detected at line 32
 [][][]
  []
 
@@ -1328,61 +1477,75 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.41 Holt die zusätz
+l.44 Holt die zusätz
                     lichen Spieldaten des Client.
-? 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
 
-Underfull \hbox (badness 10000) detected at line 43
+
+Underfull \hbox (badness 10000) detected at line 46
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 57
+Underfull \hbox (badness 10000) detected at line 60
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 71
+Underfull \hbox (badness 10000) detected at line 74
 [][][]
  []
 
 ) (C:\Users\Laptop\Desktop\Doxygen\latex\a00007.tex)
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00008.tex [5]
-Underfull \hbox (badness 10000) detected at line 37
+(C:\Users\Laptop\Desktop\Doxygen\latex\a00008.tex [6]
+
+! Package inputenc Error: Unicode char \u8:ält not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.26 Es enthält
+                die einzelnen Player\-States, sowie Informationen zum Ablage...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Underfull \hbox (badness 10000) detected at line 40
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 51
+Underfull \hbox (badness 10000) detected at line 54
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 65
+Underfull \hbox (badness 10000) detected at line 68
 [][][]
  []
 
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 81.
-LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 8.99994pt on input line 81.
-
-Underfull \hbox (badness 10000) detected at line 84
+[7]
+Underfull \hbox (badness 10000) detected at line 87
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 98
+Underfull \hbox (badness 10000) detected at line 101
 [][][]
  []
 
-[6]) (C:\Users\Laptop\Desktop\Doxygen\latex\a00009.tex
-<a00009.pdf, id=414, 501.875pt x 309.155pt>
+) (C:\Users\Laptop\Desktop\Doxygen\latex\a00009.tex
+<a00009.pdf, id=477, 501.875pt x 309.155pt>
 File: a00009.pdf Graphic file (type pdf)
  <use a00009.pdf>
 Package pdftex.def Info: a00009.pdf used on input line 7.
 (pdftex.def)             Requested size: 92.37828pt x 56.9055pt.
-
+ [8 <C:/Users/Laptop/Desktop/Doxygen/latex/a00009.pdf>]
 Underfull \hbox (badness 10000) detected at line 31
 [][][]
  []
@@ -1393,13 +1556,12 @@ Underfull \hbox (badness 10000) detected at line 45
  []
 
 ) (C:\Users\Laptop\Desktop\Doxygen\latex\a00010.tex
-<a00010.pdf, id=418, 501.875pt x 314.17375pt>
+<a00010.pdf, id=496, 501.875pt x 314.17375pt>
 File: a00010.pdf Graphic file (type pdf)
  <use a00010.pdf>
 Package pdftex.def Info: a00010.pdf used on input line 7.
 (pdftex.def)             Requested size: 90.90028pt x 56.9055pt.
- [7 <C:/Users/Laptop/Desktop/Doxygen/latex/a00009.pdf> <C:/Users/Laptop/Desktop
-/Doxygen/latex/a00010.pdf>]
+
 Underfull \hbox (badness 10000) detected at line 31
 [][][]
  []
@@ -1411,121 +1573,94 @@ Underfull \hbox (badness 10000) detected at line 45
 
 ) (C:\Users\Laptop\Desktop\Doxygen\latex\a00011.tex)
 (C:\Users\Laptop\Desktop\Doxygen\latex\a00012.tex
-<a00012.pdf, id=437, 501.875pt x 157.58875pt>
+<a00012.pdf, id=499, 501.875pt x 157.58875pt>
 File: a00012.pdf Graphic file (type pdf)
  <use a00012.pdf>
 Package pdftex.def Info: a00012.pdf used on input line 7.
 (pdftex.def)             Requested size: 181.22623pt x 56.9055pt.
-
+ [9 <C:/Users/Laptop/Desktop/Doxygen/latex/a00010.pdf>]
 Underfull \hbox (badness 10000) detected at line 29
 [][][]
  []
 
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00013.tex [8 <C:/Users/Laptop/Desktop
-/Doxygen/latex/a00012.pdf>]
-Underfull \hbox (badness 10000) detected at line 47
-[][][]
- []
+) (C:\Users\Laptop\Desktop\Doxygen\latex\a00013.tex
 
-
-Underfull \hbox (badness 10000) detected at line 61
-[][][]
- []
-
-
-! Package inputenc Error: Unicode char \u8:ätz not set up for use with LaTeX.
+! Package inputenc Error: Unicode char \u8:ält not set up for use with LaTeX.
 
 See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.73 Holt die zusätz
-                    lichen Informationen des Spielers.
-? 
+l.20 Sie enthält
+                 den Namen des Spielers, seine Handkarten und \hyperlink{a00...
 
-Underfull \hbox (badness 10000) detected at line 75
-[][][]
- []
-
-
-! Package inputenc Error: Unicode char \u8:ätz not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.76 own\-Hand Die zusätz
-                         lichen Informationen des Spielers
-? 
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00014.tex)
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00015.tex
-<a00015.pdf, id=465, 501.875pt x 277.035pt>
-File: a00015.pdf Graphic file (type pdf)
- <use a00015.pdf>
-Package pdftex.def Info: a00015.pdf used on input line 7.
-(pdftex.def)             Requested size: 103.08414pt x 56.9055pt.
- [9 <C:/Users/Laptop/Desktop/Doxygen/latex/a00015.pdf>]
-
-! Package inputenc Error: Keyboard character used is undefined
-(inputenc)                in inputencoding `utf8'.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.27 Prü
-        ft ob ein gemachter Zug in einem Hearts Spiel gültig ist.
-? 
-
-! Package inputenc Error: Keyboard character used is undefined
-(inputenc)                in inputencoding `utf8'.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.27 ...ein gemachter Zug in einem Hearts Spiel gü
-                                                  ltig ist.
-? 
-
-Underfull \hbox (badness 10000) detected at line 29
-[][][]
- []
-
-
-! Package inputenc Error: Keyboard character used is undefined
-(inputenc)                in inputencoding `utf8'.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.30 is\-Valid true falls Zug gü
-                                ltig, false wenn nicht
-? 
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00016.tex
-<a00016.pdf, id=485, 501.875pt x 138.5175pt>
-File: a00016.pdf Graphic file (type pdf)
- <use a00016.pdf>
-Package pdftex.def Info: a00016.pdf used on input line 7.
-(pdftex.def)             Requested size: 206.17595pt x 56.9055pt.
-
-Underfull \hbox (badness 10000) detected at line 31
-[][][]
- []
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
 
 
 Underfull \hbox (badness 10000) detected at line 50
 [][][]
  []
 
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00017.tex
-<a00017.pdf, id=490, 501.875pt x 277.035pt>
-File: a00017.pdf Graphic file (type pdf)
- <use a00017.pdf>
-Package pdftex.def Info: a00017.pdf used on input line 7.
+[10 <C:/Users/Laptop/Desktop/Doxygen/latex/a00012.pdf>]
+Underfull \hbox (badness 10000) detected at line 64
+[][][]
+ []
+
+
+! Package inputenc Error: Unicode char \u8:ätz not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.76 Holt die zusätz
+                    lichen Informationen des Spielers.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Underfull \hbox (badness 10000) detected at line 78
+[][][]
+ []
+
+
+! Package inputenc Error: Unicode char \u8:ätz not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.79 own\-Hand Die zusätz
+                         lichen Informationen des Spielers
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+) (C:\Users\Laptop\Desktop\Doxygen\latex\a00014.tex)
+(C:\Users\Laptop\Desktop\Doxygen\latex\a00015.tex
+<a00015.pdf, id=542, 501.875pt x 277.035pt>
+File: a00015.pdf Graphic file (type pdf)
+ <use a00015.pdf>
+Package pdftex.def Info: a00015.pdf used on input line 7.
 (pdftex.def)             Requested size: 103.08414pt x 56.9055pt.
- [10 <C:/Users/Laptop/Desktop/Doxygen/latex/a00016.pdf>]
+
+
+! Package inputenc Error: Unicode char \u8:ält not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.20 Sie enthält
+                 zudem weitere Methoden, welche für das Spiel Hearts spezifi...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
 
 ! Package inputenc Error: Keyboard character used is undefined
 (inputenc)                in inputencoding `utf8'.
@@ -1534,9 +1669,12 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.27 Prü
-        ft ob ein gemachter Zug in einem Wizard Spiel gültig ist.
-? 
+l.20 Sie enthält zudem weitere Methoden, welche fü
+                                                  r das Spiel Hearts spezifi...
+
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
+
 
 ! Package inputenc Error: Keyboard character used is undefined
 (inputenc)                in inputencoding `utf8'.
@@ -1545,11 +1683,40 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.27 ...ein gemachter Zug in einem Wizard Spiel gü
+l.20 ...elche für das Spiel Hearts spezifisch benö
+                                                  tigt werden, wie die Regel...
+
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
+
+
+! Package inputenc Error: Keyboard character used is undefined
+(inputenc)                in inputencoding `utf8'.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.32 Prü
+        ft ob ein gemachter Zug in einem Hearts Spiel gültig ist.
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
+
+
+! Package inputenc Error: Keyboard character used is undefined
+(inputenc)                in inputencoding `utf8'.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.32 ...ein gemachter Zug in einem Hearts Spiel gü
                                                   ltig ist.
-? 
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
 
-Underfull \hbox (badness 10000) detected at line 29
+
+Underfull \hbox (badness 10000) detected at line 34
 [][][]
  []
 
@@ -1561,24 +1728,263 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.30 is\-Valid true falls Zug gü
+l.35 is\-Valid true falls Zug gü
                                 ltig, false wenn nicht
-? 
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
+
+[11 <C:/Users/Laptop/Desktop/Doxygen/latex/a00015.pdf>]
+Underfull \hbox (badness 10000) detected at line 57
+[][][]
+ []
+
+) (C:\Users\Laptop\Desktop\Doxygen\latex\a00016.tex
+<a00016.pdf, id=563, 501.875pt x 138.5175pt>
+File: a00016.pdf Graphic file (type pdf)
+ <use a00016.pdf>
+Package pdftex.def Info: a00016.pdf used on input line 7.
+(pdftex.def)             Requested size: 206.17595pt x 56.9055pt.
+
+
+! Package inputenc Error: Unicode char \u8:änd not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.30 ...rver instanziert und verwaltet die Zuständ
+                                                  e des Game\-States im Serv...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! Package inputenc Error: Unicode char \u8:ätü not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.30 ...ngabe eines Clients auf Regelkonformität ü
+                                                  berprüft und dann im Game\...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! Package inputenc Error: Keyboard character used is undefined
+(inputenc)                in inputencoding `utf8'.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.30 ...eines Clients auf Regelkonformität überprü
+                                                  ft und dann im Game\-Serve...
+
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
+
+
+! Package inputenc Error: Unicode char \u8:änd not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.30 ...das \hyperlink{a00008}{Game\-State} veränd
+                                                  ert. Über \hyperlink{a0001...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! Package inputenc Error: Unicode char \u8:Üb not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.30 ...perlink{a00008}{Game\-State} verändert. Üb
+                                                  er \hyperlink{a00016_afcfb...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Underfull \hbox (badness 10000) detected at line 44
+[][][]
+ []
+
+[12 <C:/Users/Laptop/Desktop/Doxygen/latex/a00016.pdf>]
+Underfull \hbox (badness 10000) detected at line 63
+[][][]
+ []
+
+
+! Package inputenc Error: Keyboard character used is undefined
+(inputenc)                in inputencoding `utf8'.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.95 ...ge dass mehrere Karten von einem Spieler ü
+                                                  bergeben wurden.
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
+
+
+! Package inputenc Error: Unicode char \u8:ähl not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.133 ...age dass ein Spieler eine Farbe ausgewähl
+                                                  t hat.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Underfull \hbox (badness 10000) detected at line 158
+[][][]
+ []
+
+) (C:\Users\Laptop\Desktop\Doxygen\latex\a00017.tex
+<a00017.pdf, id=595, 501.875pt x 277.035pt>
+File: a00017.pdf Graphic file (type pdf)
+ <use a00017.pdf>
+Package pdftex.def Info: a00017.pdf used on input line 7.
+(pdftex.def)             Requested size: 103.08414pt x 56.9055pt.
+ [13]
+
+! Package inputenc Error: Unicode char \u8:ält not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.22 Sie enthält
+                 zudem weitere Methoden, welche für das Spiel Wizard spezifi...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! Package inputenc Error: Keyboard character used is undefined
+(inputenc)                in inputencoding `utf8'.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.22 Sie enthält zudem weitere Methoden, welche fü
+                                                  r das Spiel Wizard spezifi...
+
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
+
+
+! Package inputenc Error: Keyboard character used is undefined
+(inputenc)                in inputencoding `utf8'.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.22 ...elche für das Spiel Wizard spezifisch benö
+                                                  tigt werden, wie das Besti...
+
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
+
+
+! Package inputenc Error: Keyboard character used is undefined
+(inputenc)                in inputencoding `utf8'.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.34 Prü
+        ft ob ein gemachter Zug in einem Wizard Spiel gültig ist.
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
+
+
+! Package inputenc Error: Keyboard character used is undefined
+(inputenc)                in inputencoding `utf8'.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.34 ...ein gemachter Zug in einem Wizard Spiel gü
+                                                  ltig ist.
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
+
+
+Underfull \hbox (badness 10000) detected at line 36
+[][][]
+ []
+
+
+! Package inputenc Error: Keyboard character used is undefined
+(inputenc)                in inputencoding `utf8'.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.37 is\-Valid true falls Zug gü
+                                ltig, false wenn nicht
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
+
+
+Underfull \hbox (badness 10000) detected at line 59
+[][][]
+ []
+
+
+! Package inputenc Error: Unicode char \u8:ähl not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.71 ...pieler die Aufforderung eine Farbe zu wähl
+                                                  en.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Underfull \hbox (badness 10000) detected at line 78
+[][][]
+ []
+
 ) (C:\Users\Laptop\Desktop\Doxygen\latex\a00018.tex
-<a00018.pdf, id=510, 501.875pt x 305.14pt>
+<a00018.pdf, id=610, 501.875pt x 305.14pt>
 File: a00018.pdf Graphic file (type pdf)
  <use a00018.pdf>
 Package pdftex.def Info: a00018.pdf used on input line 7.
 (pdftex.def)             Requested size: 93.58824pt x 56.9055pt.
-)
+ [14 <C:/Users/Laptop/Desktop/Doxygen/latex/a00017.pdf>])
 (C:\Users\Laptop\Desktop\Doxygen\latex\a00019.tex
-<a00019.pdf, id=511, 501.875pt x 327.2225pt>
+<a00019.pdf, id=625, 501.875pt x 327.2225pt>
 File: a00019.pdf Graphic file (type pdf)
  <use a00019.pdf>
 Package pdftex.def Info: a00019.pdf used on input line 7.
 (pdftex.def)             Requested size: 87.27806pt x 56.9055pt.
- [11 <C:/Users/Laptop/Desktop/Doxygen/latex/a00017.pdf> <C:/Users/Laptop/Deskto
-p/Doxygen/latex/a00018.pdf> <C:/Users/Laptop/Desktop/Doxygen/latex/a00019.pdf>]
 
 
 ! Package inputenc Error: Keyboard character used is undefined
@@ -1590,7 +1996,9 @@ Type  H <return>  for immediate help.
                                                   
 l.35 ... gespeichert und die gemachten Stiche zurü
                                                   ckgesetzt.
-? 
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
+
 
 Underfull \hbox (badness 10000) detected at line 53
 [][][]
@@ -1601,15 +2009,16 @@ Underfull \hbox (badness 10000) detected at line 67
 [][][]
  []
 
-
+[15 <C:/Users/Laptop/Desktop/Doxygen/latex/a00018.pdf> <C:/Users/Laptop/Desktop
+/Doxygen/latex/a00019.pdf>]
 Underfull \hbox (badness 10000) detected at line 81
 [][][]
  []
 
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00020.tex) [12]
-(C:\Users\Laptop\Desktop\Doxygen\latex\refman.ind [13
+) (C:\Users\Laptop\Desktop\Doxygen\latex\a00020.tex) [16]
+(C:\Users\Laptop\Desktop\Doxygen\latex\refman.ind [17
 
-] [14
+] [18
 
 ])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 164.
@@ -1619,7 +2028,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 164.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 164.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 164.
 Package rerunfilecheck Info: File `refman.out' has not changed.
-(rerunfilecheck)             Checksum: A2D96B810FDEC310D9CDD4081DD96B20;9087.
+(rerunfilecheck)             Checksum: D009119CBF56003CE4EEB0E219AE18FF;10545.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -1627,13 +2036,13 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 164.
  ) 
 Here is how much of TeX's memory you used:
- 12718 strings out of 493921
- 179083 string characters out of 3144873
- 259714 words of memory out of 3000000
- 15599 multiletter control sequences out of 15000+200000
+ 12793 strings out of 493921
+ 180832 string characters out of 3144873
+ 260483 words of memory out of 3000000
+ 15637 multiletter control sequences out of 15000+200000
  77199 words of font info for 131 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 48i,15n,43p,303b,482s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 48i,15n,43p,567b,497s stack positions out of 5000i,500n,10000p,200000b,50000s
 pdfTeX warning (dest): name{a00016_aa49663b89f89b9f7b3685f0b96560f69} has bee
 n referenced but does not exist, replaced by a fixed one
 
@@ -1648,9 +2057,9 @@ les (x86)/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files (x86)
 ts/type1/urw/helvetic/uhvbo8ac.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/typ
 e1/urw/helvetic/uhvr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/h
 elvetic/uhvro8a.pfb>
-Output written on refman.pdf (16 pages, 191515 bytes).
+Output written on refman.pdf (20 pages, 221132 bytes).
 PDF statistics:
- 709 PDF objects out of 1000 (max. 8388607)
- 164 named destinations out of 1000 (max. 500000)
- 389 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 838 PDF objects out of 1000 (max. 8388607)
+ 202 named destinations out of 1000 (max. 500000)
+ 445 words of extra memory for PDF output out of 10000 (max. 10000000)
 

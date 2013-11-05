@@ -4,7 +4,7 @@
 package Ruleset;
 
 /** 
- * Erstellt das Regelwerk zum Spiel Hearts auf Clientseite
+ * Diese Klasse bildet das Regelwerk für den Client bei einer Partie Hearts. 
  */
 public class ClientHearts extends ClientRuleset {
 	
