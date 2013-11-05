@@ -11,7 +11,7 @@ import static Server.Player.*;
  * @author m4nkey
  * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
  */
-public class ClientListenerThread {
+public class ClientListenerThread implements Runnable {
 	/** 
 	 * <!-- begin-UML-doc -->
 	 * <!-- end-UML-doc -->

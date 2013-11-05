@@ -15,5 +15,11 @@ public class ComCreateGameRequest extends ComObject {
 	 * <!-- end-UML-doc -->
 	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
 	 */
-	private Object game;
+	private Object name;
+	
+	private Object ruleset;
+	
+	private Object hasPassword;
+	
+	private Object password;
 }

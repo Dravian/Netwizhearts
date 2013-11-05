@@ -9,8 +9,8 @@ import static Client.View.InputNumber.*;
 import static Client.View.ChooseItem.*;
 import static Client.View.ChooseCards.*;
 import static Client.View.ScoreWindow.*;
-import static WizID.*;
-import static HeartsID.*;
+import static Ruleset.HeartsID.*;
+import static Ruleset.WizID.*;
 
 /** 
  * <!-- begin-UML-doc -->
