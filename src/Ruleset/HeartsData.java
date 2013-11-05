@@ -4,46 +4,41 @@
 package Ruleset;
 
 /** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author m4nkey
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+ * Die zusätzlichen Informationen eines Spielers zum Spiel Hearts
  */
 public class HeartsData extends OtherData {
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
-	private Object completePoints;
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
-	private Object currentPoints;
 
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Der Punktestand eines Spielers im gesamten Spiel
 	 */
-	public void getCompletePoints() {
-		// begin-user-code
-		// TODO Auto-generated method stub
+	private int completePoints;
+	
+	/** 
+	 * Der Punktestand eines Spielers in der momentanen Runde
+	 */
+	private int currentPoints;
 
-		// end-user-code
+	/**
+	 * Erstellt die zusätzlichen Informatione eines Spielers zum Spiel Hearts
+	 * @param name Der Name des Spielers
+	 */
+	HeartsData(String name) {
+		super(name);
+	}
+	
+	/** 
+	 * Holt den gesamten Punktestand eines Spielers
+	 * @return Der Gesamtpunktstand eines Spielers
+	 */
+	public int getCompletePoints() {
+		return this.completePoints;
 	}
 
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Holt den momentanen Punktestand eines Spielers
+	 * @return Der momentane Punktestand eines Spielers
 	 */
-	public void getCurrentPoints() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	public int getCurrentPoints() {
+		return this.currentPoints;
 	}
 }

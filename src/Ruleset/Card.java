@@ -4,52 +4,42 @@
 package Ruleset;
 
 /** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author m4nkey
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+ * Diese Klasse modelliert eine Spielkarte. Jede Karte besitzt als Attribute einen Wert und eine Farbe.
  */
 public class Card {
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Repräsentiert den logischen Wert den die Spielkarte hat.
 	 */
-	protected Object value;
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	private int value;
+	
+	/**
+	 * Repräsentiert die Farbe der Karte
 	 */
-	protected Object id;
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	private Colour colour;
+	
+	/**
+	 * Erzeugt eine Karte
+	 * @param value Der logische Wert der Karte
+	 * @param colour Die Farbe der Karte
 	 */
-	protected Object colour;
-
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
-	public void getColour() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	Card(int value, Colour colour) {
+		this.value = value;
+		this.colour = colour;
 	}
 
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Holt den logischen Wert der Karte
+	 * @return Der logische Wert der Karte
 	 */
-	public void getName() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	public int getValue() {
+		return this.value;
+	}
+	
+	/** 
+	 * Holt die Farbe der Karte
+	 * @return Die Farbe der Karte
+	 */
+	public Colour getColour() {
+		return this.colour;
 	}
 }

@@ -7,85 +7,69 @@ import java.util.Set;
 import Server.GameServer;
 
 /** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author m4nkey
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+ * Die abstrakte Klasse für das Regelwerk auf Serverseite
  */
-public class ServerRuleset {
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+public abstract class ServerRuleset {
+	/**
+	 * Der GameServer auf den gespielt wird
 	 */
-	private Set<Card> cardSet;
+	private GameServer server;
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Die Karten die es im Spiel gibt
+	 */
+	private Set<Card> cardDeck;
+	
+	/** 
+	 * Den momentane Spielzustand
 	 */
 	private GameState gameState;
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Der GameServer auf dem gespielt wird
 	 */
 	private GameServer gameServer;
 
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
-	public void getCurrentPlayer() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
-	public void getPlayerState() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
-	public void isValidMove() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Erstellt ein Spiel und einen GameState
 	 */
 	protected void initGame() {
 		// begin-user-code
 		// TODO Auto-generated method stub
-
+	
 		// end-user-code
 	}
 
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Started das Spiel
 	 */
 	protected void runGame() {
+		// begin-user-code
+		// TODO Auto-generated method stub
+	
+		// end-user-code
+	}
+
+	/** 
+	 * Setzt den Spieler der am Nächsten am Zug ist, im Gamestate
+	 */
+	protected void setCurrentPlayer(PlayerState player) {
+		this.gameState.setCurrentPlayer(player);
+	}
+
+	/**
+	 * Holt den Spieler der gerade am Zug ist
+	 * @return currentPlayer Der Spielzustand des Spielers der grad am Zug ist
+	 */
+	public PlayerState getCurrentPlayer() {
+		PlayerState currentPlayer = gameState.getCurrentPlayer();
+		return currentPlayer;
+	}
+
+	/** 
+	 * Holt den Spielerzustand eines Spielers
+	 * @param name Der Name des Spielers
+	 * @return playerState Spielzustand eines Spielers
+	 */
+	public PlayerState getPlayerState(String name) {
 		// begin-user-code
 		// TODO Auto-generated method stub
 
@@ -93,9 +77,7 @@ public class ServerRuleset {
 	}
 
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Verarbeitet eine RulesetMessage
 	 */
 	public void resolveMessage() {
 		// begin-user-code
@@ -105,26 +87,12 @@ public class ServerRuleset {
 	}
 
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Prüft ob ein gemachter Zug in einem Spiel gültig war
 	 */
-	protected void calculateOutcome() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
+	public abstract boolean isValidMove(Card card);
 
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Berechnet das Ergebnis von der Berechnung eines Befehls
 	 */
-	protected void setCurrentPlayer() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
+	public abstract void calculateOutcome();
 }

@@ -6,70 +6,93 @@ package Ruleset;
 import java.util.Set;
 
 /** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author m4nkey
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+ * Der momentane Spielzustand beschränkt aus der Sicht eines Clients
  */
 public class GameClientUpdate {
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Der Spielerzustand vom Client
 	 */
 	private PlayerState playerState;
+	
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
-	private Set<Card> ownHand;
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Die gespielten Karten auf dem Ablagestapel
 	 */
 	private Set<Card> playedCards;
+	
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Die Spieldaten der anderen Spieler
 	 */
-	private Set<OtherData> otherData;
-
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	private Set<OtherData> otherPlayerData;
+	
+	/**
+	 * Die Trumpffarbe des Spiels, diese wird nur beim Spiel Wizard verwendet
 	 */
-	public void getOwnHand() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	private Card trumpCard;
+	
+	/**
+	 * Erstellt ein GameClientUpdate
+	 * @param playerState
+	 * @param playedCards
+	 * @param otherPlayerData
+	 */
+	GameClientUpdate(PlayerState playerState, Set<Card> playedCards, Set<OtherData> otherPlayerData) {
+		this.playerState = playerState;
+		this.playedCards = playedCards;
+		this.otherPlayerData = otherPlayerData;
+	}
+	
+	/**
+	 * Erstellt ein GameClientUpdate mit der Trumpfkarte
+	 * @param playerState
+	 * @param playedCards
+	 * @param otherPlayerData
+	 * @param trumpCard
+	 */
+	GameClientUpdate(PlayerState playerState, Set<Card> playedCards, Set<OtherData> otherPlayerData, Card trumpCard) {
+		this.playerState = playerState;
+		this.playedCards = playedCards;
+		this.otherPlayerData = otherPlayerData;
+		this.trumpCard = trumpCard;
 	}
 
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Holt die Karten die der Client auf der Hand hat
+	 * @return ownHand Die Hand des Clients
 	 */
-	public void getPlayedCards() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	public Set<Card> getOwnHand() {
+		Set<Card> ownHand = playerState.getHand();
+		return ownHand;
 	}
 
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Holt die gespielten Karten auf dem Ablagestapel
+	 * @return playedCards Die gespielten Karten
 	 */
-	public void getOtherData() {
-		// begin-user-code
-		// TODO Auto-generated method stub
+	public Set<Card> getPlayedCards() {
+		return playedCards;
+	}
 
-		// end-user-code
+	/**
+	 * Holt die zusätzlichen Spieldaten des Client
+	 * @return ownData Die Spieldaten des Clients
+	 */
+	public OtherData getOwnData() {
+		OtherData ownData = playerState.getOtherData();
+		return ownData;
+	}
+	
+	/** 
+	 * Holt die Spieldaten der anderen Spieler
+	 * @return otherPlayerData Die Spieldaten der anderen Spieler
+	 */
+	public Set<OtherData> getOtherPlayerData() {
+		return otherPlayerData;
+	}
+	
+	/**
+	 * Holt die aufgedeckte Trumpfkarte
+	 */
+	public Card getTrumpCard() {
+		return trumpCard;
 	}
 }
