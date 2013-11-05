@@ -1,5 +1,7 @@
 package Ruleset;
 
+import ComObjects.MsgMultipleCardsRequest;
+
 /**
  * Diese Klasse erstellt das Regelwerk zum Spiel Hearts. Sie enthält zudem weitere Methoden, 
  * welche für das Spiel Hearts spezifisch benötigt werden, wie die Regelung zum Tausch von Karten 
@@ -22,6 +24,15 @@ public class ServerHearts extends ServerRuleset {
 	public void calculateOutcome() {
 		// TODO Automatisch erstellter Methoden-Stub
 
+	}
+	
+	/**
+	 * Schickt einem Spieler die Aufforderung Karten zu geben
+	 * @param name Name des Spielers
+	 * @return new MsgMultipleCardsRequest() Eine Nachricht an den Spieler
+	 */
+	public MsgMultipleCardsRequest sendMultiCardRequest(String name) {
+		return new MsgMultipleCardsRequest();
 	}
 
 }

@@ -5,16 +5,16 @@
 		\hyperpage{10}
   \item {announce\discretionary {-}{}{}Tricks}
     \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Wiz\discretionary {-}{}{}Data}, 
-		\hyperpage{14}
+		\hyperpage{15}
 
   \indexspace
 
   \item {get\discretionary {-}{}{}Achieved\discretionary {-}{}{}Tricks}
     \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Wiz\discretionary {-}{}{}Data}, 
-		\hyperpage{14}
+		\hyperpage{15}
   \item {get\discretionary {-}{}{}Announced\discretionary {-}{}{}Tricks}
     \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Wiz\discretionary {-}{}{}Data}, 
-		\hyperpage{14}
+		\hyperpage{15}
   \item {get\discretionary {-}{}{}Cards\discretionary {-}{}{}Left\discretionary {-}{}{}In\discretionary {-}{}{}Deck}
     \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}State}, 
 		\hyperpage{7}
@@ -89,7 +89,7 @@
     \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Hearts}, 
 		\hyperpage{11}
     \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Wizard}, 
-		\hyperpage{13}
+		\hyperpage{14}
 
   \indexspace
 
@@ -106,7 +106,7 @@
     \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Ruleset}, 
 		\hyperpage{4, 5}
     \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Ruleset}, 
-		\hyperpage{12, 13}
+		\hyperpage{13}
   \item {Ruleset.\discretionary {-}{}{}Card}, \hyperpage{3}
   \item {Ruleset.\discretionary {-}{}{}Client\discretionary {-}{}{}Hearts}, 
 		\hyperpage{4}
@@ -140,11 +140,11 @@
   \item {Ruleset.\discretionary {-}{}{}Server\discretionary {-}{}{}Wizard}, 
 		\hyperpage{13}
   \item {Ruleset.\discretionary {-}{}{}Wiz\discretionary {-}{}{}Data}, 
-		\hyperpage{14}
-  \item {Ruleset.\discretionary {-}{}{}Wiz\discretionary {-}{}{}I\discretionary {-}{}{}D}, 
 		\hyperpage{15}
+  \item {Ruleset.\discretionary {-}{}{}Wiz\discretionary {-}{}{}I\discretionary {-}{}{}D}, 
+		\hyperpage{16}
   \item {Ruleset.\discretionary {-}{}{}Wizard\discretionary {-}{}{}Card}, 
-		\hyperpage{14}
+		\hyperpage{15}
   \item {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Card}
     \subitem {get\discretionary {-}{}{}Colour}, \hyperpage{3}
     \subitem {get\discretionary {-}{}{}Value}, \hyperpage{3}
@@ -201,32 +201,52 @@
   \item {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Hearts}
     \subitem {is\discretionary {-}{}{}Valid\discretionary {-}{}{}Move}, 
 		\hyperpage{11}
+    \subitem {send\discretionary {-}{}{}Multi\discretionary {-}{}{}Card\discretionary {-}{}{}Request}, 
+		\hyperpage{11}
   \item {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Ruleset}
     \subitem {get\discretionary {-}{}{}Current\discretionary {-}{}{}Player}, 
 		\hyperpage{12}
     \subitem {get\discretionary {-}{}{}Player\discretionary {-}{}{}State}, 
 		\hyperpage{12}
-    \subitem {resolve\discretionary {-}{}{}Message}, \hyperpage{12, 13}
+    \subitem {resolve\discretionary {-}{}{}Message}, \hyperpage{13}
+    \subitem {send\discretionary {-}{}{}Card\discretionary {-}{}{}Request}, 
+		\hyperpage{13}
   \item {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Wizard}
     \subitem {is\discretionary {-}{}{}Valid\discretionary {-}{}{}Move}, 
-		\hyperpage{13}
+		\hyperpage{14}
+    \subitem {send\discretionary {-}{}{}Number\discretionary {-}{}{}Request}, 
+		\hyperpage{14}
+    \subitem {send\discretionary {-}{}{}Selection\discretionary {-}{}{}Request}, 
+		\hyperpage{14}
   \item {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Wiz\discretionary {-}{}{}Data}
-    \subitem {announce\discretionary {-}{}{}Tricks}, \hyperpage{14}
+    \subitem {announce\discretionary {-}{}{}Tricks}, \hyperpage{15}
     \subitem {get\discretionary {-}{}{}Achieved\discretionary {-}{}{}Tricks}, 
-		\hyperpage{14}
+		\hyperpage{15}
     \subitem {get\discretionary {-}{}{}Announced\discretionary {-}{}{}Tricks}, 
-		\hyperpage{14}
+		\hyperpage{15}
     \subitem {get\discretionary {-}{}{}Points}, \hyperpage{15}
-    \subitem {set\discretionary {-}{}{}Points}, \hyperpage{15}
+    \subitem {set\discretionary {-}{}{}Points}, \hyperpage{16}
 
   \indexspace
 
+  \item {send\discretionary {-}{}{}Card\discretionary {-}{}{}Request}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{13}
+  \item {send\discretionary {-}{}{}Multi\discretionary {-}{}{}Card\discretionary {-}{}{}Request}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Hearts}, 
+		\hyperpage{11}
+  \item {send\discretionary {-}{}{}Number\discretionary {-}{}{}Request}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Wizard}, 
+		\hyperpage{14}
+  \item {send\discretionary {-}{}{}Selection\discretionary {-}{}{}Request}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Wizard}, 
+		\hyperpage{14}
   \item {set\discretionary {-}{}{}Current\discretionary {-}{}{}Player}
     \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}State}, 
 		\hyperpage{8}
   \item {set\discretionary {-}{}{}Points}
     \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Wiz\discretionary {-}{}{}Data}, 
-		\hyperpage{15}
+		\hyperpage{16}
   \item {set\discretionary {-}{}{}Trump\discretionary {-}{}{}Card}
     \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}State}, 
 		\hyperpage{8}

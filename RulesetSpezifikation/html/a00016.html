@@ -77,6 +77,8 @@ Klassendiagramm f√ºr Ruleset.ServerRuleset:</div>
 <tr class="separator:a9f1a95cc9488d8a9519ce69718f91322"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ada2667ea093481a58f253f43ff6cc49f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00016.html#ada2667ea093481a58f253f43ff6cc49f">resolveMessage</a> (MsgSelection msgSelection, String name)</td></tr>
 <tr class="separator:ada2667ea093481a58f253f43ff6cc49f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03936d0652a15f647fb42651e475b950"><td class="memItemLeft" align="right" valign="top">MsgCardRequest&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00016.html#a03936d0652a15f647fb42651e475b950">sendCardRequest</a> (String name)</td></tr>
+<tr class="separator:a03936d0652a15f647fb42651e475b950"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Ausf√ºhrliche Beschreibung</h2>
 <div class="textblock"><p>Das <a class="el" href="a00016.html" title="Das ServerRuleset ist eine akstrakte Klasse und f¸r den Ablauf und die Einhaltung der Regeln eines Spiel...">ServerRuleset</a> wird im GameServer instanziert und verwaltet die Zust‰nde des GameStates im Server. Mit der Methode <a class="el" href="a00016.html#aa49663b89f89b9f7b3685f0b96560f69" title="Pr¸ft ob ein gemachter Zug in einem Spiel g¸ltig war. ">isValidMove()</a> wird eine Eingabe eines Clients auf Regelkonformit‰t ¸berpr¸ft und dann im GameServer das <a class="el" href="a00008.html" title="Das GameState modelliert einen aktuellen Spielzustand, es wird vom GameServer instanziert und vom Rul...">GameState</a> ver‰ndert. ‹ber <a class="el" href="a00016.html#afcfbddd7397a6043913b5e742934d2c2" title="Verarbeitet die RulesetMessage dass eine Karte vom Spieler gespielt. ">resolveMessage()</a> kann eine GameServerinstanz eine RulesetMessage vom Player an das Ruleset weiterleiten. </p>
@@ -264,10 +266,35 @@ Klassendiagramm f√ºr Ruleset.ServerRuleset:</div>
 
 </div>
 </div>
+<a class="anchor" id="a03936d0652a15f647fb42651e475b950"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MsgCardRequest Ruleset.ServerRuleset.sendCardRequest </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Schickt einem Spieler die Aufforderung eine Karte zu spielen. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>Name des Spielers </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>R√ºckgabe</dt><dd>new MsgCardRequest() Eine Nachricht an den Spieler </dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Erzeugt am Die Nov 5 2013 23:16:02 f√ºr &lt;sep13&gt; von &#160;<a href="http://www.doxygen.org/index.html">
+Erzeugt am Die Nov 5 2013 23:44:54 f√ºr &lt;sep13&gt; von &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

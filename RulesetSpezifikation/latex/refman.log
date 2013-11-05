@@ -1,6 +1,6 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.9.25)  5 NOV 2013 23:21
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.9.25)  5 NOV 2013 23:47
 entering extended mode
-**refman
+**refman.tex
 (C:\Users\Laptop\Desktop\Doxygen\latex\refman.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
@@ -1048,22 +1048,22 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 2.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <7> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 72.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 73.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 6.29996pt on input line 72.
+(Font)              scaled to size 6.29996pt on input line 73.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 72.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 73.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 72.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 73.
  [2]
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <12> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 93.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 97.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 10.79993pt on input line 93.
+(Font)              scaled to size 10.79993pt on input line 97.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 93.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 97.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 93.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 97.
 )
 \tf@toc=\write5
 Package hyperref Info: Option `pageanchor' set `true' on input line 128.
@@ -1083,8 +1083,9 @@ Type  H <return>  for immediate help.
                                                   
 l.4 ...i einer Partie Hearts }{\pageref{a00002}}{}
                                                   
-? R
-OK, entering \nonstopmode...
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
+
 
 ! Package inputenc Error: Keyboard character used is undefined
 (inputenc)                in inputencoding `utf8'.
@@ -1653,7 +1654,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.18 Sie enthält
+l.20 Sie enthält
                  zudem weitere Methoden, welche für das Spiel Hearts spezifi...
 
 Your command was ignored.
@@ -1668,7 +1669,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.18 Sie enthält zudem weitere Methoden, welche fü
+l.20 Sie enthält zudem weitere Methoden, welche fü
                                                   r das Spiel Hearts spezifi...
 
 You need to provide a definition with \DeclareInputText 
@@ -1682,7 +1683,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.18 ...elche für das Spiel Hearts spezifisch benö
+l.20 ...elche für das Spiel Hearts spezifisch benö
                                                   tigt werden, wie die Regel...
 
 You need to provide a definition with \DeclareInputText 
@@ -1696,7 +1697,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.30 Prü
+l.32 Prü
         ft ob ein gemachter Zug in einem Hearts Spiel gültig ist.
 You need to provide a definition with \DeclareInputText 
 or \DeclareInputMath before using this key.
@@ -1709,13 +1710,13 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.30 ...ein gemachter Zug in einem Hearts Spiel gü
+l.32 ...ein gemachter Zug in einem Hearts Spiel gü
                                                   ltig ist.
 You need to provide a definition with \DeclareInputText 
 or \DeclareInputMath before using this key.
 
 
-Underfull \hbox (badness 10000) detected at line 32
+Underfull \hbox (badness 10000) detected at line 34
 [][][]
  []
 
@@ -1727,16 +1728,20 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.33 is\-Valid true falls Zug gü
+l.35 is\-Valid true falls Zug gü
                                 ltig, false wenn nicht
 You need to provide a definition with \DeclareInputText 
 or \DeclareInputMath before using this key.
 
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00016.tex [11 <C:/Users/Laptop/Deskto
-p/Doxygen/latex/a00015.pdf>] <a00016.pdf, id=561, 501.875pt x 138.5175pt>
-File: a00016.pdf Graphic file (type pdf)
+[11 <C:/Users/Laptop/Desktop/Doxygen/latex/a00015.pdf>]
+Underfull \hbox (badness 10000) detected at line 57
+[][][]
+ []
 
-<use a00016.pdf>
+) (C:\Users\Laptop\Desktop\Doxygen\latex\a00016.tex
+<a00016.pdf, id=563, 501.875pt x 138.5175pt>
+File: a00016.pdf Graphic file (type pdf)
+ <use a00016.pdf>
 Package pdftex.def Info: a00016.pdf used on input line 7.
 (pdftex.def)             Requested size: 206.17595pt x 56.9055pt.
 
@@ -1747,7 +1752,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.28 ...rver instanziert und verwaltet die Zuständ
+l.30 ...rver instanziert und verwaltet die Zuständ
                                                   e des Game\-States im Serv...
 
 Your command was ignored.
@@ -1761,7 +1766,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.28 ...ngabe eines Clients auf Regelkonformität ü
+l.30 ...ngabe eines Clients auf Regelkonformität ü
                                                   berprüft und dann im Game\...
 
 Your command was ignored.
@@ -1776,7 +1781,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.28 ...eines Clients auf Regelkonformität überprü
+l.30 ...eines Clients auf Regelkonformität überprü
                                                   ft und dann im Game\-Serve...
 
 You need to provide a definition with \DeclareInputText 
@@ -1789,7 +1794,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.28 ...das \hyperlink{a00008}{Game\-State} veränd
+l.30 ...das \hyperlink{a00008}{Game\-State} veränd
                                                   ert. Über \hyperlink{a0001...
 
 Your command was ignored.
@@ -1803,7 +1808,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.28 ...perlink{a00008}{Game\-State} verändert. Üb
+l.30 ...perlink{a00008}{Game\-State} verändert. Üb
                                                   er \hyperlink{a00016_afcfb...
 
 Your command was ignored.
@@ -1811,16 +1816,15 @@ Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Underfull \hbox (badness 10000) detected at line 42
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 61
+Underfull \hbox (badness 10000) detected at line 44
 [][][]
  []
 
 [12 <C:/Users/Laptop/Desktop/Doxygen/latex/a00016.pdf>]
+Underfull \hbox (badness 10000) detected at line 63
+[][][]
+ []
+
 
 ! Package inputenc Error: Keyboard character used is undefined
 (inputenc)                in inputencoding `utf8'.
@@ -1829,7 +1833,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.93 ...ge dass mehrere Karten von einem Spieler ü
+l.95 ...ge dass mehrere Karten von einem Spieler ü
                                                   bergeben wurden.
 You need to provide a definition with \DeclareInputText 
 or \DeclareInputMath before using this key.
@@ -1841,19 +1845,24 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.131 ...age dass ein Spieler eine Farbe ausgewähl
+l.133 ...age dass ein Spieler eine Farbe ausgewähl
                                                   t hat.
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
+
+Underfull \hbox (badness 10000) detected at line 158
+[][][]
+ []
+
 ) (C:\Users\Laptop\Desktop\Doxygen\latex\a00017.tex
-<a00017.pdf, id=591, 501.875pt x 277.035pt>
+<a00017.pdf, id=595, 501.875pt x 277.035pt>
 File: a00017.pdf Graphic file (type pdf)
  <use a00017.pdf>
 Package pdftex.def Info: a00017.pdf used on input line 7.
 (pdftex.def)             Requested size: 103.08414pt x 56.9055pt.
-
+ [13]
 
 ! Package inputenc Error: Unicode char \u8:ält not set up for use with LaTeX.
 
@@ -1861,7 +1870,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.18 Sie enthält
+l.22 Sie enthält
                  zudem weitere Methoden, welche für das Spiel Wizard spezifi...
 
 Your command was ignored.
@@ -1876,7 +1885,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.18 Sie enthält zudem weitere Methoden, welche fü
+l.22 Sie enthält zudem weitere Methoden, welche fü
                                                   r das Spiel Wizard spezifi...
 
 You need to provide a definition with \DeclareInputText 
@@ -1890,7 +1899,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.18 ...elche für das Spiel Wizard spezifisch benö
+l.22 ...elche für das Spiel Wizard spezifisch benö
                                                   tigt werden, wie das Besti...
 
 You need to provide a definition with \DeclareInputText 
@@ -1904,7 +1913,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.30 Prü
+l.34 Prü
         ft ob ein gemachter Zug in einem Wizard Spiel gültig ist.
 You need to provide a definition with \DeclareInputText 
 or \DeclareInputMath before using this key.
@@ -1917,13 +1926,13 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.30 ...ein gemachter Zug in einem Wizard Spiel gü
+l.34 ...ein gemachter Zug in einem Wizard Spiel gü
                                                   ltig ist.
 You need to provide a definition with \DeclareInputText 
 or \DeclareInputMath before using this key.
 
-[13 <C:/Users/Laptop/Desktop/Doxygen/latex/a00017.pdf>]
-Underfull \hbox (badness 10000) detected at line 32
+
+Underfull \hbox (badness 10000) detected at line 36
 [][][]
  []
 
@@ -1935,20 +1944,43 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.33 is\-Valid true falls Zug gü
+l.37 is\-Valid true falls Zug gü
                                 ltig, false wenn nicht
 You need to provide a definition with \DeclareInputText 
 or \DeclareInputMath before using this key.
 
+
+Underfull \hbox (badness 10000) detected at line 59
+[][][]
+ []
+
+
+! Package inputenc Error: Unicode char \u8:ähl not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.71 ...pieler die Aufforderung eine Farbe zu wähl
+                                                  en.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Underfull \hbox (badness 10000) detected at line 78
+[][][]
+ []
+
 ) (C:\Users\Laptop\Desktop\Doxygen\latex\a00018.tex
-<a00018.pdf, id=608, 501.875pt x 305.14pt>
+<a00018.pdf, id=610, 501.875pt x 305.14pt>
 File: a00018.pdf Graphic file (type pdf)
  <use a00018.pdf>
 Package pdftex.def Info: a00018.pdf used on input line 7.
 (pdftex.def)             Requested size: 93.58824pt x 56.9055pt.
-)
+ [14 <C:/Users/Laptop/Desktop/Doxygen/latex/a00017.pdf>])
 (C:\Users\Laptop\Desktop\Doxygen\latex\a00019.tex
-<a00019.pdf, id=609, 501.875pt x 327.2225pt>
+<a00019.pdf, id=625, 501.875pt x 327.2225pt>
 File: a00019.pdf Graphic file (type pdf)
  <use a00019.pdf>
 Package pdftex.def Info: a00019.pdf used on input line 7.
@@ -1972,21 +2004,21 @@ Underfull \hbox (badness 10000) detected at line 53
 [][][]
  []
 
-[14 <C:/Users/Laptop/Desktop/Doxygen/latex/a00018.pdf> <C:/Users/Laptop/Desktop
-/Doxygen/latex/a00019.pdf>]
+
 Underfull \hbox (badness 10000) detected at line 67
 [][][]
  []
 
-
+[15 <C:/Users/Laptop/Desktop/Doxygen/latex/a00018.pdf> <C:/Users/Laptop/Desktop
+/Doxygen/latex/a00019.pdf>]
 Underfull \hbox (badness 10000) detected at line 81
 [][][]
  []
 
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00020.tex) [15]
-(C:\Users\Laptop\Desktop\Doxygen\latex\refman.ind [16
+) (C:\Users\Laptop\Desktop\Doxygen\latex\a00020.tex) [16]
+(C:\Users\Laptop\Desktop\Doxygen\latex\refman.ind [17
 
-] [17
+] [18
 
 ])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 164.
@@ -2004,13 +2036,13 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 164.
  ) 
 Here is how much of TeX's memory you used:
- 12776 strings out of 493921
- 180393 string characters out of 3144873
- 260230 words of memory out of 3000000
- 15629 multiletter control sequences out of 15000+200000
+ 12793 strings out of 493921
+ 180832 string characters out of 3144873
+ 260483 words of memory out of 3000000
+ 15637 multiletter control sequences out of 15000+200000
  77199 words of font info for 131 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 48i,15n,43p,563b,497s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 48i,15n,43p,567b,497s stack positions out of 5000i,500n,10000p,200000b,50000s
 pdfTeX warning (dest): name{a00016_aa49663b89f89b9f7b3685f0b96560f69} has bee
 n referenced but does not exist, replaced by a fixed one
 
@@ -2025,9 +2057,9 @@ les (x86)/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files (x86)
 ts/type1/urw/helvetic/uhvbo8ac.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/typ
 e1/urw/helvetic/uhvr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/h
 elvetic/uhvro8a.pfb>
-Output written on refman.pdf (19 pages, 216224 bytes).
+Output written on refman.pdf (20 pages, 221132 bytes).
 PDF statistics:
- 815 PDF objects out of 1000 (max. 8388607)
- 193 named destinations out of 1000 (max. 500000)
+ 838 PDF objects out of 1000 (max. 8388607)
+ 202 named destinations out of 1000 (max. 500000)
  445 words of extra memory for PDF output out of 10000 (max. 10000000)
 

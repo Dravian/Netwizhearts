@@ -7,6 +7,7 @@ import java.util.Set;
 import Server.GameServer;
 import ComObjects.MsgCard;
 import ComObjects.MsgMultiCards;
+import ComObjects.MsgMultipleCardsRequest;
 import ComObjects.MsgNumber;
 /** 
  * Das ServerRuleset ist eine akstrakte Klasse und für den Ablauf und die Einhaltung der Regeln eines Spiels zuständig (/L280/). 
@@ -115,6 +116,15 @@ public abstract class ServerRuleset {
 	 */
 	public void resolveMessage(MsgSelection msgSelection, String name){
 		
+	}
+	
+	/**
+	 * Schickt einem Spieler die Aufforderung eine Karte zu spielen
+	 * @param name Name des Spielers
+	 * @return new MsgCardRequest() Eine Nachricht an den Spieler
+	 */
+	public MsgCardRequest sendCardRequest(String name) {
+		return new MsgCardRequest();
 	}
 	
 	/** 

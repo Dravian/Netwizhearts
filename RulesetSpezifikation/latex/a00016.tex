@@ -21,6 +21,8 @@ void \hyperlink{a00016_ac639a8d99c0e2243f9f3fe565a315c51}{resolve\-Message} (Msg
 void \hyperlink{a00016_a9f1a95cc9488d8a9519ce69718f91322}{resolve\-Message} (Msg\-Number msg\-Number, String name)
 \item 
 void \hyperlink{a00016_ada2667ea093481a58f253f43ff6cc49f}{resolve\-Message} (Msg\-Selection msg\-Selection, String name)
+\item 
+Msg\-Card\-Request \hyperlink{a00016_a03936d0652a15f647fb42651e475b950}{send\-Card\-Request} (String name)
 \end{DoxyCompactItemize}
 
 
@@ -137,3 +139,22 @@ Verarbeitet die Ruleset\-Message dass ein Spieler eine Farbe ausgewählt hat.
 {\em name} & \\
 \hline
 \end{DoxyParams}
+\hypertarget{a00016_a03936d0652a15f647fb42651e475b950}{\index{Ruleset\-::\-Server\-Ruleset@{Ruleset\-::\-Server\-Ruleset}!send\-Card\-Request@{send\-Card\-Request}}
+\index{send\-Card\-Request@{send\-Card\-Request}!Ruleset::ServerRuleset@{Ruleset\-::\-Server\-Ruleset}}
+\paragraph[{send\-Card\-Request}]{\setlength{\rightskip}{0pt plus 5cm}Msg\-Card\-Request Ruleset.\-Server\-Ruleset.\-send\-Card\-Request (
+\begin{DoxyParamCaption}
+\item[{String}]{name}
+\end{DoxyParamCaption}
+)}}\label{a00016_a03936d0652a15f647fb42651e475b950}
+
+
+Schickt einem Spieler die Aufforderung eine Karte zu spielen. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em name} & Name des Spielers \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{RÃ¼ckgabe}
+new Msg\-Card\-Request() Eine Nachricht an den Spieler 
+\end{DoxyReturn}
