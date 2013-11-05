@@ -3,81 +3,75 @@
  */
 package Server;
 
+import java.util.Iterator;
 import java.util.Set;
 
 import ComObjects.*;
 
-/** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author m4nkey
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+/**
+ * Ist ein abstrakte Klasse, von der die Klassen LobbyServer und
+ * GameServer erben. Es stellt Methoden zur Nachrichtenversendung und
+ * -verarbeitung bereit, sowie zur Verwaltung von Playern
+ * @author Viktoria
+ *
  */
 public abstract class Server {
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	/**
+	 * Ein Set an Spielern, welche momentan vom Server verwaltet werden
 	 */
-	private Set<Player> playerSet;
+	protected Set<Player> playerSet;
 
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	
+	/**
+	 * Diese Methode dient zur Verarbeitung von eingehenden ComObjects 
+	 * @param player ist der Player von dem die Nachricht kommt
+	 * @param com ist das ComObjekt vom Client verschickt wurde
 	 */
-	public void receiveMessage(Player p, ComObject c) {
+	public void receiveMessage(Player player, ComObject com) {
 		// begin-user-code
 		// TODO Auto-generated method stub
 
 		// end-user-code
 	}
 
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	/**
+	 * Diese Methode wird genutzt, um ein ComObject an einen einzigen
+	 * Client zu verschicken.
+	 * @param player ist der Player, der die Nachricht an seinen Client 
+	 * verschicken soll
+	 * @param c ist das ComObject, dass verschickt werden soll
 	 */
-	public void sendToPlayer() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	public void sendToPlayer(Player player, ComObject com) {
+		player.send(com);
 	}
 
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	/**
+	 * Diese Methode fügt einen Player dem Set an Playern hinzu, welche der
+	 * Server verwaltet.
+	 * @param player ist der Player, der hinzugefoügt wird
 	 */
-	public void addPlayer() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	public void addPlayer(Player player) {
+		playerSet.add(player);
 	}
 
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	/**
+	 * Diese Methode entfernt einen Player aus dem Set an Playern, welche der
+	 * Server verwaltet.
+	 * @param player ist der Player, der entfernt wird
 	 */
-	public void removePlayer() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	public void removePlayer(Player player) {
+		playerSet.remove(player);
 	}
 
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	/**
+	 * Diese Methode wird genutzt, um ein ComObject an alle Clients,
+	 * die vom Server verwaltet werden zu schicken.
+	 * @param com ist das ComObject, dass verschickt werden soll
 	 */
-	public void broadcast() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	public void broadcast(ComObject com) {
+		Iterator<Player> i= playerSet.iterator();
+		if(i.hasNext()){
+			i.next().send(com);
+		}
 	}
 }
