@@ -3,17 +3,43 @@
  */
 package Client.View;
 
+import Ruleset.HeartsID;
+
 /** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
+ * HeartsCard ist die View-seitige Repräsentation einer Hearts-Karte. 
+ * Sie wird verwendet um einzelne Karten auf das Spielfeld zu zeichnen.
+ * Dazu enthält sie die Pfadangabe zu dem Ordner, in dem die Bilder der
+ * Karten gespeichert sind, und eine ID, um das genaue Bild zu spezifizieren.
+ * 
  * @author m4nkey
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
  */
 public class HeartsCard extends Card {
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	
+	private static final long serialVersionUID = 2461630198563677934L;
+
+	private HeartsID cardID;
+	
+	private static String path = ".src/heartscards/"; //TODO
+	
+	
+	/**
+	 * Erstellt eine neue Hearts Karte für die Anzeige und zeichnet das Bild, 
+	 * das durch id spezifiziert ist.
+	 * 
+	 * @param id HeartsID der Karte
 	 */
-	private Object HeartsID;
+	public HeartsCard(HeartsID id) {
+		super(path + id.toString());
+		cardID = id;
+	}
+
+
+	/**
+	 * Gibt die HeartsID der Karte zurück
+	 * 
+	 * @return HeartsID der Karte
+	 */
+	public HeartsID getCardID() {
+		return cardID;
+	}
 }

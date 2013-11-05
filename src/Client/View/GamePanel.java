@@ -3,15 +3,29 @@
  */
 package Client.View;
 
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.Set;
 
+import javax.imageio.ImageIO;
+import javax.swing.JPanel;
+
 /** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
+ * Das Panel ist die Komponente des Game-Fensters, 
+ * welche das eigentliche Spiel darstellt. Es besteht aus veschiedenen Panelobjekten, 
+ * welche je nach Regelwerk auf das Spielfeld gezeichnet werden. 
+ * Dazu gehören die eigenen Karten, eventuell ausgewählte Karten, 
+ * ein Textfeld z.B. zur Anzeige der Anzahl der restlichen Karten der Mitspieler 
+ * und den Ablagestapel (/L194/). Nach jeder Runde wird der Punktestand  aktualisiert.
+ * 
  * @author m4nkey
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
  */
-public class GamePanel {
+public class GamePanel extends JPanel{
+	
+	private static final long serialVersionUID = -1041218552426155968L;
+	
 	/** 
 	 * <!-- begin-UML-doc -->
 	 * <!-- end-UML-doc -->
@@ -42,4 +56,23 @@ public class GamePanel {
 	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
 	 */
 	private DiscardPile discardPile;
+	
+	private BufferedImage background;
+	
+	/**
+	 * Erstellt das GamePanel
+	 */
+	public GamePanel() {
+	       try {                
+	          background = ImageIO.read(new File("./src/game.png"));
+	       } catch (IOException ex) {
+	            // handle exception...
+	       }
+	    }
+	@Override
+	public void paintComponent(Graphics g) {
+        //super.paintComponent(g);
+        g.drawImage(background, 0, 0, null); // see javadoc for more info on the parameters 
+        super.paintComponent(g);
+    }
 }
