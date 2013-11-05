@@ -58,8 +58,8 @@ Klassendiagramm fÃ¼r Ruleset.ServerRuleset:</div>
  <div class="center">
   <img src="a00016.png" usemap="#Ruleset.ServerRuleset_map" alt=""/>
   <map id="Ruleset.ServerRuleset_map" name="Ruleset.ServerRuleset_map">
-<area href="a00015.html" alt="Ruleset.ServerHearts" shape="rect" coords="0,56,137,80"/>
-<area href="a00017.html" alt="Ruleset.ServerWizard" shape="rect" coords="147,56,284,80"/>
+<area href="a00015.html" title="Diese Klasse erstellt das Regelwerk zum Spiel Hearts. " alt="Ruleset.ServerHearts" shape="rect" coords="0,56,137,80"/>
+<area href="a00017.html" title="Diese Klasse erstellt das Regelwerk zum Spiel Wizard. " alt="Ruleset.ServerWizard" shape="rect" coords="147,56,284,80"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -69,8 +69,18 @@ Klassendiagramm fÃ¼r Ruleset.ServerRuleset:</div>
 <tr class="separator:a473a55c851bbda707b25948c39334a8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a5e3a0fa28ba2bd563224d875f5835c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00013.html">PlayerState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00016.html#a4a5e3a0fa28ba2bd563224d875f5835c">getPlayerState</a> (String name)</td></tr>
 <tr class="separator:a4a5e3a0fa28ba2bd563224d875f5835c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcfbddd7397a6043913b5e742934d2c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00016.html#afcfbddd7397a6043913b5e742934d2c2">resolveMessage</a> (MsgCard msgCard, String name)</td></tr>
+<tr class="separator:afcfbddd7397a6043913b5e742934d2c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac639a8d99c0e2243f9f3fe565a315c51"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00016.html#ac639a8d99c0e2243f9f3fe565a315c51">resolveMessage</a> (MsgMultiCards msgMultiCard, String name)</td></tr>
+<tr class="separator:ac639a8d99c0e2243f9f3fe565a315c51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f1a95cc9488d8a9519ce69718f91322"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00016.html#a9f1a95cc9488d8a9519ce69718f91322">resolveMessage</a> (MsgNumber msgNumber, String name)</td></tr>
+<tr class="separator:a9f1a95cc9488d8a9519ce69718f91322"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada2667ea093481a58f253f43ff6cc49f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00016.html#ada2667ea093481a58f253f43ff6cc49f">resolveMessage</a> (MsgSelection msgSelection, String name)</td></tr>
+<tr class="separator:ada2667ea093481a58f253f43ff6cc49f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Dokumentation der Elementfunktionen</h2>
+<a name="details" id="details"></a><h2 class="groupheader">AusfÃ¼hrliche Beschreibung</h2>
+<div class="textblock"><p>Das <a class="el" href="a00016.html" title="Das ServerRuleset ist eine akstrakte Klasse und für den Ablauf und die Einhaltung der Regeln eines Spiel...">ServerRuleset</a> wird im GameServer instanziert und verwaltet die Zustände des GameStates im Server. Mit der Methode <a class="el" href="a00016.html#aa49663b89f89b9f7b3685f0b96560f69" title="Prüft ob ein gemachter Zug in einem Spiel gültig war. ">isValidMove()</a> wird eine Eingabe eines Clients auf Regelkonformität überprüft und dann im GameServer das <a class="el" href="a00008.html" title="Das GameState modelliert einen aktuellen Spielzustand, es wird vom GameServer instanziert und vom Rul...">GameState</a> verändert. Über <a class="el" href="a00016.html#afcfbddd7397a6043913b5e742934d2c2" title="Verarbeitet die RulesetMessage dass eine Karte vom Spieler gespielt. ">resolveMessage()</a> kann eine GameServerinstanz eine RulesetMessage vom Player an das Ruleset weiterleiten. </p>
+</div><h2 class="groupheader">Dokumentation der Elementfunktionen</h2>
 <a class="anchor" id="a473a55c851bbda707b25948c39334a8a"></a>
 <div class="memitem">
 <div class="memproto">
@@ -114,10 +124,150 @@ Klassendiagramm fÃ¼r Ruleset.ServerRuleset:</div>
 
 </div>
 </div>
+<a class="anchor" id="afcfbddd7397a6043913b5e742934d2c2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ruleset.ServerRuleset.resolveMessage </td>
+          <td>(</td>
+          <td class="paramtype">MsgCard&#160;</td>
+          <td class="paramname"><em>msgCard</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Verarbeitet die RulesetMessage dass eine Karte vom Spieler gespielt. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msgCard</td><td>Die Nachricht vom Client welche Karte gespielt wurde </td></tr>
+    <tr><td class="paramname">name</td><td>Der Name des Spielers </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ac639a8d99c0e2243f9f3fe565a315c51"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ruleset.ServerRuleset.resolveMessage </td>
+          <td>(</td>
+          <td class="paramtype">MsgMultiCards&#160;</td>
+          <td class="paramname"><em>msgMultiCard</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Verarbeitet die RulesetMessage dass mehrere Karten von einem Spieler übergeben wurden. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msgMultiCard</td><td>Die Nachricht vom Client </td></tr>
+    <tr><td class="paramname">name</td><td>Der Name des Spielers </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a9f1a95cc9488d8a9519ce69718f91322"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ruleset.ServerRuleset.resolveMessage </td>
+          <td>(</td>
+          <td class="paramtype">MsgNumber&#160;</td>
+          <td class="paramname"><em>msgNumber</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Verarbeitet die RulesetMessage dass ein Spieler eine Stichangabe gemacht hat. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msgNumber</td><td>Die Nachricht vom Client </td></tr>
+    <tr><td class="paramname">name</td><td>Der Name des Spielers </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ada2667ea093481a58f253f43ff6cc49f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ruleset.ServerRuleset.resolveMessage </td>
+          <td>(</td>
+          <td class="paramtype">MsgSelection&#160;</td>
+          <td class="paramname"><em>msgSelection</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Verarbeitet die RulesetMessage dass ein Spieler eine Farbe ausgewählt hat. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msgSelection</td><td>Die Nachricht vom Client </td></tr>
+    <tr><td class="paramname">name</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Erzeugt am Die Nov 5 2013 20:07:26 fÃ¼r &lt;sep13&gt; von &#160;<a href="http://www.doxygen.org/index.html">
+Erzeugt am Die Nov 5 2013 23:16:02 fÃ¼r &lt;sep13&gt; von &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

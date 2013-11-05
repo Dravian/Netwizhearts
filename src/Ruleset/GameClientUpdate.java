@@ -6,7 +6,10 @@ package Ruleset;
 import java.util.Set;
 
 /** 
- * Der momentane Spielzustand beschränkt aus der Sicht eines Clients
+ * Das GameClientUpdate wird vom RuleSet über den GameServer an den Client geschickt 
+ * und enthält alle Änderungen des GameState, die für den Client relevant sind. 
+ * Das wären seine Spielhand, der Ablagestapel sowie die Otherdata von allen Spielern.
+ * Bei Wizard enthält es auch die momentane Trumpfkarte.
  */
 public class GameClientUpdate {
 	/** 
@@ -30,7 +33,7 @@ public class GameClientUpdate {
 	private Card trumpCard;
 	
 	/**
-	 * Erstellt ein GameClientUpdate
+	 * Erstellt ein GameClientUpdate zum Spiel Hearts
 	 * @param playerState
 	 * @param playedCards
 	 * @param otherPlayerData
@@ -42,7 +45,7 @@ public class GameClientUpdate {
 	}
 	
 	/**
-	 * Erstellt ein GameClientUpdate mit der Trumpfkarte
+	 * Erstellt ein GameClientUpdate zum Spiel Wizard
 	 * @param playerState
 	 * @param playedCards
 	 * @param otherPlayerData

@@ -4,7 +4,7 @@
 package Ruleset;
 
 /** 
- * Die zusätzlichen Informationen eines Spielers
+ * OtherData ist abstract und speichert die zusätzlichen Informationen eines Spielers.
  */
 public abstract class OtherData {
 	/**

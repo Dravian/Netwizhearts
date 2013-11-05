@@ -4,9 +4,16 @@
 package Ruleset;
 
 import Client.ClientModel;
+import ComObjects.MsgClientUpdate;
+import ComObjects.MsgCardRequest;
+import ComObjects.MsgMultipleCardsRequest;
+import ComObjects.MsgNumberRequest;
+import ComObjects.MsgSelectionRequest;
 
 /** 
- * Die abstrakte Klasse für das Regelwerk auf Clientseite
+ * ClientRuleset ist eine abstrakte Klasse und wird zur Regelvorauswertung im Client verwendet. 
+ * Dazu benutzt es die isValidMove() Methode. Des Weiteren kann es vom ClientModel 
+ * erhaltene RulesetMessages mit der resolveMessage() Methode behandeln.
  */
 public abstract class ClientRuleset {
 	/** 
@@ -20,15 +27,43 @@ public abstract class ClientRuleset {
 	private GameClientUpdate gameState;
 
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Verarbeitet die RulesetMessage dass der Server ein Spielupdate an den Client schickt
+	 * @param clientUpdate Die Nachricht vom Server
 	 */
-	public void resolveMessage() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	public void resolveMessage(MsgClientUpdate clientUpdate) {
+		this.gameState = clientUpdate.getGameUpdate();
+	}
+	
+	/**
+	 * Verarbeitet die RulesetMessage dass der Server von dem Spieler verlangt eine Karte zu spielen
+	 * @param msgCardRequest Die Nachricht vom Server
+	 */
+	public void resolveMessage(MsgCardRequest msgCardRequest) {
+		
+	}
+	
+	/**
+	 * Verarbeitet die RulesetMessage dass der Server von dem Spieler verlangt mehrere Karten anzugeben
+	 * @param msgMultiCardsRequest Die Nachricht vom Server
+	 */
+	public void resolveMessage(MsgMultipleCardsRequest msgMultiCardsRequest) {
+		
+	}
+	
+	/**
+	 * Verarbeitet die RulesetMessage dass der Server von dem Spieler verlangt eine Stichanzahl anzugeben
+	 * @param msgNumber Die Nachricht vom Server
+	 */
+	public void resolveMessage(MsgNumberRequest msgNumber) {
+		
+	}
+	
+	/**
+	 * Verarbeitet die RulesetMessage dass der Server von dem Spieler verlangt eine Farbe auszuwählen
+	 * @param msgSelection Die Nachricht vom Server
+	 */
+	public void resolveMessage(MsgSelectionRequest msgSelection) {
+		
 	}
 	
 	/** 

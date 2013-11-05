@@ -6,7 +6,9 @@ package Ruleset;
 import java.util.Set;
 
 /** 
- * Beschreibt den Spielzustand eines Spieles gerade
+ * Das GameState modelliert einen aktuellen Spielzustand, es wird vom GameServer instanziert 
+ * und vom RuleSet bearbeitet. Es enthält die einzelnen PlayerStates, sowie Informationen 
+ * zum Ablage-, Aufnahmestapel, Rundenanzahl, den momentan aktiven Spieler sowie GamePhase.
  */
 public class GameState {
 	/** 

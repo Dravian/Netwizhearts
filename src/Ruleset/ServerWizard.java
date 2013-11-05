@@ -1,5 +1,10 @@
 package Ruleset;
 
+/**
+ * Diese Klasse erstellt das Regelwerk zum Spiel Wizard. Sie enthält zudem weitere Methoden,
+ * welche für das Spiel Wizard spezifisch benötigt werden, wie das Bestimmen einer Trumpffarbe 
+ * und die Bestimmung der Rundenanzahl.
+ */
 public class ServerWizard extends ServerRuleset {
 
 	/**

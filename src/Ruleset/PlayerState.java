@@ -6,7 +6,8 @@ package Ruleset;
 import java.util.Set;
 
 /** 
- * Modelliert den Zustand eines Spielers
+ * Repräsentiert den Spielzustand eines Spielers, und wird unter anderem 
+ * im GameState gespeichert. Sie enthält den Namen des Spielers, seine Handkarten und OtherData.
  */
 public class PlayerState {
 	/** 
