@@ -10,7 +10,7 @@ public class ComLoginRequest extends ComObject {
 	private String playerName;
 
     /**
-     * Dieser Konstruktor erzeugt eine neue ComLoginRequest-Nachricht.
+     * Dies ist der Kontruktor für eine neue ComLoginRequest-Nachricht.
      * @param name ist der Name des Spielers, des sich einloggen möchte.
      */
     public ComLoginRequest(String name) {

@@ -17,7 +17,7 @@ public class ComInitLobby extends ComObject {
 	private Set<GameServerRepresentation> gameList;
 
     /**
-     * Dieser Konstruktor erstellt eine neue ComInitLobby-Nachricht.
+     * Dies ist der Kontruktor für eine neue ComInitLobby-Nachricht.
      * @param playerList    ist die Liste der Spieler, die sich in der
      *                      Lobby befinden.
      * @param gameList      ist die Liste der Spiele, die existieren

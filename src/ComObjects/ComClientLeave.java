@@ -10,8 +10,7 @@ package ComObjects;
 public class ComClientLeave extends ComObject {
 
     /**
-     * Dieser Konstruktor erstellt eine neue
-     * ComClientLeave-Nachricht.
+     * Dieser Konstruktor erstellt eine neue ComClientLeave-Nachricht.
      */
     public ComClientLeave() {
     }

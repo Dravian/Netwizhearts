@@ -9,7 +9,7 @@ public class MsgNumber extends RulesetMessage {
 	private int number;
 
     /**
-     * Der Konstruktor erstellt eine neue MsgNumber-Nachricht.
+     * Dies ist der Kontruktor für eine neue MsgNumber-Nachricht.
      * @param number ist eine Eingabe eines Spielers
      */
 	public MsgNumber(int number) {
