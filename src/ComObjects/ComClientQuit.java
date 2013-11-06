@@ -1,13 +1,14 @@
-/**
- * 
- */
 package ComObjects;
 
 /** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author m4nkey
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+ *  Diese Klasse ist ein spezielles Kommunikations-Objekt.
+ *  Die Nachricht wird verschickt, wenn der Spieler ein Fenster schließt.
  */
 public class ComClientQuit extends ComObject {
+
+    /**
+     * Dieser Konstruktor erstellt eine neue ComCLientQuit-Nachricht.
+     */
+    public ComClientQuit() {
+    }
 }

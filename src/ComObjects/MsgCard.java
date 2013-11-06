@@ -1,33 +1,30 @@
-/**
- * 
- */
 package ComObjects;
 
 import Ruleset.Card;
 
 /** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author m4nkey
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+ * Diese Klasse ist eine Verfeinerung der RulesetMessage-Klasse.
+ * Sie beinhaltet die ausgespielte Karte eines Spielers.
  */
 public class MsgCard extends RulesetMessage {
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
+
 	private Card card;
 
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
-	public void getCard() {
-		// begin-user-code
-		// TODO Auto-generated method stub
+    /**
+     * Der Kontruktor erstellt eine neue MsgCard-Nachricht.
+     * Diese enthält die Information, welche Karte von einem
+     * Spieler gespielt wurde.
+     * @param card ist die Karte.
+     */
+    public MsgCard(Card card) {
+        this.card = card;
+    }
 
-		// end-user-code
-	}
+    /**
+     * Diese Methode gibt die ausgespielte Karte des Spielers zurück.
+     * @return die Karte.
+     */
+    public Card getCard() {
+        return card;
+    }
 }
