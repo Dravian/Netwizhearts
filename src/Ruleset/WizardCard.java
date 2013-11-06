@@ -4,16 +4,31 @@
 package Ruleset;
 
 /** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author m4nkey
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+ * Modelliert eine Wizardkarte
  */
 public class WizardCard extends Card {
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 *Die eindeutige ID der Karte
 	 */
 	private WizID id;
+	
+	/**
+	 * Erstellt eine Wizardkarte
+	 * @param value Der Wert der Karte
+	 * @param colour Die Farbe der Karte
+	 */
+	WizardCard(int value, Colour colour) {
+		super(value, colour);
+		setID(value,colour);
+	}
+	
+	/**
+	 * Bestimmt die id der Karte aus seinem Wert und seiner Farbe 
+	 * @param value Der Wert der Karte
+	 * @param colour Die Farbe der Karte
+	 */
+	private void setID(int value, Colour colour) {
+		
+	}
+	
 }

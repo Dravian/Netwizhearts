@@ -3,7 +3,6 @@
  */
 package Client.View;
 
-import static Client.View.Language.*;
 
 /** 
  * <!-- begin-UML-doc -->
@@ -12,10 +11,6 @@ import static Client.View.Language.*;
  * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
  */
 public class ChooseCards {
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
+	
 	private Object playerHandPanel;
 }

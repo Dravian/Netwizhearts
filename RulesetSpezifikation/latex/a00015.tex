@@ -1,0 +1,59 @@
+\hypertarget{a00015}{\subsection{Ruleset.\-Server\-Hearts Klassenreferenz}
+\label{a00015}\index{Ruleset.\-Server\-Hearts@{Ruleset.\-Server\-Hearts}}
+}
+Klassendiagramm fÃ¼r Ruleset.\-Server\-Hearts\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{a00015}
+\end{center}
+\end{figure}
+\subsubsection*{Ã–ffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+boolean \hyperlink{a00015_a2367581a215fa5a847dd3736af3eb5ee}{is\-Valid\-Move} (\hyperlink{a00001}{Card} card)
+\item 
+Msg\-Multiple\-Cards\-Request \hyperlink{a00015_af36f1ff80f2efaa53d53a3c6991e2938}{send\-Multi\-Card\-Request} (String name)
+\end{DoxyCompactItemize}
+
+
+\subsubsection{AusfÃ¼hrliche Beschreibung}
+Sie enthält zudem weitere Methoden, welche für das Spiel Hearts spezifisch benötigt werden, wie die Regelung zum Tausch von Karten und die Berechnung der Stichpunkten. 
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00015_a2367581a215fa5a847dd3736af3eb5ee}{\index{Ruleset\-::\-Server\-Hearts@{Ruleset\-::\-Server\-Hearts}!is\-Valid\-Move@{is\-Valid\-Move}}
+\index{is\-Valid\-Move@{is\-Valid\-Move}!Ruleset::ServerHearts@{Ruleset\-::\-Server\-Hearts}}
+\paragraph[{is\-Valid\-Move}]{\setlength{\rightskip}{0pt plus 5cm}boolean Ruleset.\-Server\-Hearts.\-is\-Valid\-Move (
+\begin{DoxyParamCaption}
+\item[{{\bf Card}}]{card}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{a00015_a2367581a215fa5a847dd3736af3eb5ee}
+
+
+Prüft ob ein gemachter Zug in einem Hearts Spiel gültig ist. 
+
+\begin{DoxyReturn}{RÃ¼ckgabe}
+is\-Valid true falls Zug gültig, false wenn nicht 
+\end{DoxyReturn}
+
+
+Implementiert \hyperlink{a00016_aa49663b89f89b9f7b3685f0b96560f69}{Ruleset.\-Server\-Ruleset}.
+
+\hypertarget{a00015_af36f1ff80f2efaa53d53a3c6991e2938}{\index{Ruleset\-::\-Server\-Hearts@{Ruleset\-::\-Server\-Hearts}!send\-Multi\-Card\-Request@{send\-Multi\-Card\-Request}}
+\index{send\-Multi\-Card\-Request@{send\-Multi\-Card\-Request}!Ruleset::ServerHearts@{Ruleset\-::\-Server\-Hearts}}
+\paragraph[{send\-Multi\-Card\-Request}]{\setlength{\rightskip}{0pt plus 5cm}Msg\-Multiple\-Cards\-Request Ruleset.\-Server\-Hearts.\-send\-Multi\-Card\-Request (
+\begin{DoxyParamCaption}
+\item[{String}]{name}
+\end{DoxyParamCaption}
+)}}\label{a00015_af36f1ff80f2efaa53d53a3c6991e2938}
+
+
+Schickt einem Spieler die Aufforderung Karten zu geben. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em name} & Name des Spielers \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{RÃ¼ckgabe}
+new Msg\-Multiple\-Cards\-Request() Eine Nachricht an den Spieler 
+\end{DoxyReturn}

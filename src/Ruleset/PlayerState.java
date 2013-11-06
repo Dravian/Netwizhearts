@@ -6,52 +6,61 @@ package Ruleset;
 import java.util.Set;
 
 /** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author m4nkey
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+ * Repräsentiert den Spielzustand eines Spielers, und wird unter anderem 
+ * im GameState gespeichert. Sie enthält den Namen des Spielers, seine Handkarten und OtherData.
  */
 public class PlayerState {
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Der Name des Spielers
 	 */
-	private Object name;
+	private String name;
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Seine aktuelle Kartenhand
 	 */
 	private Set<Card> ownHand;
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Seine zusätzlichen Daten
 	 */
 	private OtherData otherData;
 
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Holt den namen eines Spielers
+	 * @return name Der Name des Spielers
 	 */
-	public void getName() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	public String getName() {
+		return this.name;
 	}
 
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Holt die Kartenhand des Spielers
+	 * @return ownHand Die Kartenhand des Spielers
 	 */
-	public void getHand() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	public Set<Card> getHand() {
+		return this.ownHand;
 	}
+	
+	/** 
+	 * Holt die zusätzlichen Informationen des Spielers
+	 * @return ownHand Die zusätzlichen Informationen des Spielers
+	 */
+	public OtherData getOtherData() {
+		return this.otherData;
+	}
+	
+	/**
+	 * Gibt dem Spieler eine Karte 
+	 * @param card Die Karte die dem Spieler gegeben wird
+	 */
+	public void addCard(Card card){
+		this.ownHand.add(card);
+	}
+	
+	/**
+	 * Entfernt eine Karte aus der Hand des Spielers 
+	 * @param card
+	 */
+	public void removeCard(Card card) {
+		ownHand.remove(card);
+	}
+	
 }

@@ -6,77 +6,73 @@ package Ruleset;
 import java.util.Set;
 
 /** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author m4nkey
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+ * Das GameState modelliert einen aktuellen Spielzustand, es wird vom GameServer instanziert 
+ * und vom RuleSet bearbeitet. Es enthält die einzelnen PlayerStates, sowie Informationen 
+ * zum Ablage-, Aufnahmestapel, Rundenanzahl, den momentan aktiven Spieler sowie GamePhase.
  */
 public class GameState {
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Die Spieler die im Spiel sind
 	 */
-	private Set<PlayerState> playerStates;
+	private Set<PlayerState> players;
+	
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Der Spieler der gerade am Zug ist
 	 */
-	private Object currentPlayer;
+	private PlayerState currentPlayer;
+	
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Die momentane Spielrunde
 	 */
-	private Object roundNumber;
+	private int roundNumber;
+	
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Die Karten die gespielt wurden
 	 */
 	private Set<Card> playedCards;
+	
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Die Karten die noch im Aufnahmestapel sind
 	 */
 	private Set<Card> cardsLeftInDeck;
+	
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Die momentane Spielphase
 	 */
 	private GamePhase gamePhase;
-
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	
+	/**
+	 * Die Trumpffarbe im Spiel, diese wird nur im Spiel Wizard verwendet
 	 */
-	public void getCurrentPlayer() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	private Card trumpCard;
+	
+	/**
+	 * Setzt einen neuen Spieler als currentPlayer
+	 * @param player Der neue currentPlayer
+	 */
+	public void setCurrentPlayer(PlayerState player) {
+		this.currentPlayer = player;	
 	}
 
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Holt den Spieler der momentan am Zug ist
+	 * @return currentPlayer Der Spielzustand des Spielers der grad am Zug ist
 	 */
-	public void getCardsLeft() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	public PlayerState getCurrentPlayer() {
+		return currentPlayer;
 	}
 
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Holt die Karten die noch im Aufnahmestapel sind
+	 * @return cardsLeftInDeck Holt die Karten die noch im Aufnahmestapel sind
+	 */
+	public Set<Card> getCardsLeftInDeck() {
+		return this.cardsLeftInDeck;
+	}
+
+	/** 
+	 *Holt die gespielten Karten im Ablagestapel
+	 *@return playedCards Die gespielten Karten
 	 */
 	public void getPlayedCards() {
 		// begin-user-code
@@ -86,14 +82,36 @@ public class GameState {
 	}
 
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Holt einen bestimmten Spieler
+	 * @param name Der Name des Spielers
+	 * @return player Der Spielzustand des Spielers
 	 */
-	public void getPlayerState() {
-		// begin-user-code
-		// TODO Auto-generated method stub
+	public PlayerState getPlayer(String name) {
+		
+	}
+	
+	/**
+	 * Setzt die Trumpfkarte
+	 * @param trumpCard Die Trumpfkarte
+	 */
+	public void setTrumpCard(Card trumpCard){
+		this.trumpCard = trumpCard;
+	}
 
-		// end-user-code
+	/**
+	 * Holt die momentane Trumpfkarte im Spiel
+	 * @return trumpCard Die momentane Trumpfkarte
+	 */
+	public Card getTrumpCard(){
+		return trumpCard;
+	}
+	
+	/**
+	 * Entfernt eine Karte aus der Hand des currentPlayer und legt sie auf dem Ablagestapel
+	 * @param card Die gespielte Karte
+	 */
+	public void playCard(Card card) {
+		currentPlayer.removeCard(card);
+		playedCards.add(card);
 	}
 }

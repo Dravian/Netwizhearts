@@ -1,0 +1,96 @@
+\hypertarget{a00013}{\subsection{Ruleset.\-Player\-State Klassenreferenz}
+\label{a00013}\index{Ruleset.\-Player\-State@{Ruleset.\-Player\-State}}
+}
+\subsubsection*{√ñffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+String \hyperlink{a00013_a20076c230bb4bfa3404b53bead5194d7}{get\-Name} ()
+\item 
+Set$<$ \hyperlink{a00001}{Card} $>$ \hyperlink{a00013_ad95ba05e06f70d0ff6f774c3ae1b72b1}{get\-Hand} ()
+\item 
+\hyperlink{a00012}{Other\-Data} \hyperlink{a00013_ad913d4462ff4019b1d85ba534a27250e}{get\-Other\-Data} ()
+\item 
+void \hyperlink{a00013_a613eaeb717801aca760df6776d34d228}{add\-Card} (\hyperlink{a00001}{Card} card)
+\item 
+void \hyperlink{a00013_a38c66bb85292eaedd970cb1c6bc38dca}{remove\-Card} (\hyperlink{a00001}{Card} card)
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausf√ºhrliche Beschreibung}
+Sie enth‰lt den Namen des Spielers, seine Handkarten und \hyperlink{a00012}{Other\-Data}. 
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00013_a613eaeb717801aca760df6776d34d228}{\index{Ruleset\-::\-Player\-State@{Ruleset\-::\-Player\-State}!add\-Card@{add\-Card}}
+\index{add\-Card@{add\-Card}!Ruleset::PlayerState@{Ruleset\-::\-Player\-State}}
+\paragraph[{add\-Card}]{\setlength{\rightskip}{0pt plus 5cm}void Ruleset.\-Player\-State.\-add\-Card (
+\begin{DoxyParamCaption}
+\item[{{\bf Card}}]{card}
+\end{DoxyParamCaption}
+)}}\label{a00013_a613eaeb717801aca760df6776d34d228}
+
+
+Gibt dem Spieler eine Karte. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em card} & Die Karte die dem Spieler gegeben wird \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00013_ad95ba05e06f70d0ff6f774c3ae1b72b1}{\index{Ruleset\-::\-Player\-State@{Ruleset\-::\-Player\-State}!get\-Hand@{get\-Hand}}
+\index{get\-Hand@{get\-Hand}!Ruleset::PlayerState@{Ruleset\-::\-Player\-State}}
+\paragraph[{get\-Hand}]{\setlength{\rightskip}{0pt plus 5cm}Set$<${\bf Card}$>$ Ruleset.\-Player\-State.\-get\-Hand (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00013_ad95ba05e06f70d0ff6f774c3ae1b72b1}
+
+
+Holt die Kartenhand des Spielers. 
+
+\begin{DoxyReturn}{R√ºckgabe}
+own\-Hand Die Kartenhand des Spielers 
+\end{DoxyReturn}
+\hypertarget{a00013_a20076c230bb4bfa3404b53bead5194d7}{\index{Ruleset\-::\-Player\-State@{Ruleset\-::\-Player\-State}!get\-Name@{get\-Name}}
+\index{get\-Name@{get\-Name}!Ruleset::PlayerState@{Ruleset\-::\-Player\-State}}
+\paragraph[{get\-Name}]{\setlength{\rightskip}{0pt plus 5cm}String Ruleset.\-Player\-State.\-get\-Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00013_a20076c230bb4bfa3404b53bead5194d7}
+
+
+Holt den namen eines Spielers. 
+
+\begin{DoxyReturn}{R√ºckgabe}
+name Der Name des Spielers 
+\end{DoxyReturn}
+\hypertarget{a00013_ad913d4462ff4019b1d85ba534a27250e}{\index{Ruleset\-::\-Player\-State@{Ruleset\-::\-Player\-State}!get\-Other\-Data@{get\-Other\-Data}}
+\index{get\-Other\-Data@{get\-Other\-Data}!Ruleset::PlayerState@{Ruleset\-::\-Player\-State}}
+\paragraph[{get\-Other\-Data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Other\-Data} Ruleset.\-Player\-State.\-get\-Other\-Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00013_ad913d4462ff4019b1d85ba534a27250e}
+
+
+Holt die zus‰tzlichen Informationen des Spielers. 
+
+\begin{DoxyReturn}{R√ºckgabe}
+own\-Hand Die zus‰tzlichen Informationen des Spielers 
+\end{DoxyReturn}
+\hypertarget{a00013_a38c66bb85292eaedd970cb1c6bc38dca}{\index{Ruleset\-::\-Player\-State@{Ruleset\-::\-Player\-State}!remove\-Card@{remove\-Card}}
+\index{remove\-Card@{remove\-Card}!Ruleset::PlayerState@{Ruleset\-::\-Player\-State}}
+\paragraph[{remove\-Card}]{\setlength{\rightskip}{0pt plus 5cm}void Ruleset.\-Player\-State.\-remove\-Card (
+\begin{DoxyParamCaption}
+\item[{{\bf Card}}]{card}
+\end{DoxyParamCaption}
+)}}\label{a00013_a38c66bb85292eaedd970cb1c6bc38dca}
+
+
+Entfernt eine Karte aus der Hand des Spielers. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em card} & \\
+\hline
+\end{DoxyParams}

@@ -3,19 +3,13 @@
  */
 package Client.View;
 
-import static Client.View.Language.*;
 
 /** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
+ * Dieses Fenster ermöglicht es dem Spieler aus einer Liste von Items eines auszuwählen.
+ * 
  * @author m4nkey
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
  */
 public class ChooseItem {
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
+	
 	private Object itemComboBox;
 }
