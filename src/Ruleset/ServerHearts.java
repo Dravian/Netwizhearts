@@ -23,7 +23,7 @@ public class ServerHearts extends ServerRuleset {
 	 */
 	protected void calculateOutcome() {
 		// TODO Automatisch erstellter Methoden-Stub
-
+		
 	}
 
 	/**

@@ -3,7 +3,7 @@
  */
 package Ruleset;
 
-import java.util.Set;
+import java.util.ArrayList;
 import Server.GameServer;
 import ComObjects.MsgCard;
 import ComObjects.MsgMultiCards;
@@ -23,20 +23,16 @@ public abstract class ServerRuleset {
 	/**
 	 * Der GameServer auf den gespielt wird
 	 */
-	private GameServer server;
+	protected GameServer server;
 	/** 
 	 * Die Karten die es im Spiel gibt
 	 */
-	private Set<Card> cardDeck;
+	protected ArrayList<Card> cardDeck;
 	
 	/** 
 	 * Den momentane Spielzustand
 	 */
-	private GameState gameState;
-	/** 
-	 * Der GameServer auf dem gespielt wird
-	 */
-	private GameServer gameServer;
+	protected GameState gameState;
 
 	/** 
 	 * Erstellt ein Spiel und einen GameState
