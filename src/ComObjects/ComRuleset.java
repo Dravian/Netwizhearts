@@ -11,7 +11,7 @@ public class ComRuleset extends ComObject {
 	private RulesetMessage rulesetMessage;
 
     /**
-     * Dieser Konstruktor erstellt eine neue ComResult-Nachricht.
+     * Dies ist der Kontruktor für eine neue ComResult-Nachricht.
      * @param rulesetMessage ist eine Nachricht, die ans Ruleset
      *                       gesendet werden soll.
      */

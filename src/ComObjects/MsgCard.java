@@ -11,7 +11,7 @@ public class MsgCard extends RulesetMessage {
 	private Card card;
 
     /**
-     * Der Kontruktor erstellt eine neue MsgCard-Nachricht.
+     * Dies ist der Kontruktor für eine neue MsgCard-Nachricht.
      * Diese enthält die Information, welche Karte von einem
      * Spieler gespielt wurde.
      * @param card ist die Karte.

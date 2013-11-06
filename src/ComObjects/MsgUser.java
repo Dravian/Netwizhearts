@@ -4,19 +4,18 @@ import Ruleset.GameClientUpdate;
 
 /** 
  *  Diese Klasse ist eine Verfeinerung der RulesetMessage-Klasse.
- *  Sie wird dem Client gesendet, um eine Nutzereingabe anzufordern
- *  und/oder um dem ClientRuleset den aktuellen Spielzustand in Form
- *  eines GameClientUpdate zu übermitteln.
+ *  Sie wird dem Client gesendet, um dem ClientRuleset den aktuellen
+ *  Spielzustand in Form eines GameClientUpdate zu übermitteln.
  */
 public class MsgUser extends RulesetMessage {
 
 	private GameClientUpdate gameClientUpdate;
 
     /**
-     * Dieser Konstruktor erstellt eine neue MsgUser-Nachricht.
+     * Dies ist der Konstruktor einer neuen MsgUser-Nachricht.
      * @param gameClientUpdate ist der aktuelle Spielstand.
      */
-	public MsgUser(GameClientUpdate gameClientUpdate) {
+    public MsgUser(GameClientUpdate gameClientUpdate) {
         this.gameClientUpdate = gameClientUpdate;
     }
 

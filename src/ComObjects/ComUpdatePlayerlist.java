@@ -12,7 +12,7 @@ public class ComUpdatePlayerlist extends ComObject {
 	private boolean removeFlag;
 
     /**
-     * Dieser Konstruktor erstellt eine neue ComUpdatePlayerlist-Nachricht.
+     * Dies ist der Kontruktor für eine neue ComUpdatePlayerlist-Nachricht.
      * Diese beinhaltet den Namen des Spielers und die Angabe ob er gelöscht
      * werden soll.
      * @param playerName ist der Name der Spielers.

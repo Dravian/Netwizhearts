@@ -9,25 +9,14 @@ import Ruleset.Card;
  */
 public class MsgMultiCards extends RulesetMessage {
 
-	private int count;
 	private Set<Card> cardList;
 
     /**
-     * Dieser Konstruktor erstellt eine neue MsgMultiCards-Nachricht.
-     * @param count gibt an, wie viele Karten ausgewählt wurden. ??
+     * Dies ist der Kontruktor für eine neue MsgMultiCards-Nachricht.
      * @param cardList ist die Liste der ausgewählten Karten.
      */
-    public MsgMultiCards(int count, Set cardList) {
-        this.count = count;
+    public MsgMultiCards(Set cardList) {
         this.cardList = cardList;
-    }
-
-    /**
-     * Gibt die Anzahl der gewählten Karten zurück. ??
-     * @return die Anzahl der Karten.
-     */
-    public int getCount() {
-        return count;
     }
 
     /**
