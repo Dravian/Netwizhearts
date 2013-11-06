@@ -6,6 +6,8 @@ package Client;
 import static Client.View.Warning.*;
 import Ruleset.ClientRuleset;
 import Client.View.Language;
+import ComObjects.ComLoginRequest;
+
 import java.io.IOException;
 import java.net.Socket;
 import java.net.SocketException;
@@ -91,9 +93,10 @@ public class ClientModel extends Observable{
 	/**
 	 * Diese Methode wird von der View aufgerufen um eine neue Chatnachricht
 	 * abzuholen.
+	 * @return String die Chatnachricht.
 	 */
 	public String getChatMessage(){
-
+		return null;
 	}
 	
 	/**
@@ -250,7 +253,7 @@ class MessageListenerThread extends Thread{
 	 * @return boolean Zeigt an ob der Login erfolgreich war.
 	 */
 	protected boolean loginUser(final ComLoginRequest request){
-		
+		return false;
 	}
 	
 	/**
