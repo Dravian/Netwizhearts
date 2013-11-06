@@ -3,19 +3,25 @@
  */
 package Client;
 
-import static Client.View.Warning.*;
 import Ruleset.ClientRuleset;
 import Client.View.Language;
-import ComObjects.ComLoginRequest;
-
+import ComObjects.ComBeenKicked;
+import ComObjects.ComChatMessage;
+import ComObjects.ComInitGameLobby;
+import ComObjects.ComInitLobby;
+import ComObjects.ComLobbyUpdateGamelist;
+import ComObjects.ComObject;
+import ComObjects.ComRuleset;
+import ComObjects.ComServerAcknowledgement;
+import ComObjects.ComUpdatePlayerlist;
 import java.io.IOException;
 import java.net.Socket;
-import java.net.SocketException;
-import java.net.UnknownHostException;
 import java.util.Observable;
 
 /** 
- * Implementiert das Client Model 
+ * Implementiert das Client Model.
+ * Das Model bedient den Server durch den ListenerThread
+ * und leitet Daten an das Regelwerk und View weiter.
  */
 public class ClientModel extends Observable{
 	/** 
@@ -54,40 +60,84 @@ public class ClientModel extends Observable{
 	 * Überladene Methode die ComObjekte von der inneren Klasse
 	 * messageListenerThread übergeben bekommt und auswertet.
 	 */
-	private void receiveMessage() {
+	private void receiveMessage(ComChatMessage msg) {
+		
+	}
+	
+	/** 
+	 * Überladene Methode die ComObjekte von der inneren Klasse
+	 * messageListenerThread übergeben bekommt und auswertet.
+	 */
+	private void receiveMessage(ComInitLobby msg) {
+		
+	}
+	
+	/** 
+	 * Überladene Methode die ComObjekte von der inneren Klasse
+	 * messageListenerThread übergeben bekommt und auswertet.
+	 */
+	private void receiveMessage(ComInitGameLobby msg) {
+		
+	}
+	
+	/** 
+	 * Überladene Methode die ComObjekte von der inneren Klasse
+	 * messageListenerThread übergeben bekommt und auswertet.
+	 */
+	private void receiveMessage(ComRuleset msg) {
+		
+	}
+	
+	/** 
+	 * Überladene Methode die ComObjekte von der inneren Klasse
+	 * messageListenerThread übergeben bekommt und auswertet.
+	 */
+	private void receiveMessage(ComServerAcknowledgement msg) {
+		
+	}
+	
+	/** 
+	 * Überladene Methode die ComObjekte von der inneren Klasse
+	 * messageListenerThread übergeben bekommt und auswertet.
+	 */
+	private void receiveMessage(ComBeenKicked msg) {
 		
 	}
 	
 	/**
 	 * Diese Methode wird von der View beim betreten der Spiellobby aufgerufen
 	 * und liefert eine Liste von Spielern in der Spiellobby.
+	 * @return ComInitGameLobby Voller Datensatz für die Spiellobby.
 	 */
-	public void getGameLobbyInit(){
-		
+	public ComInitGameLobby getGameLobbyInit(){
+		return null;
 	}
 	
 	/**
 	 * Diese Methode wird von der View beim betreten der Serverlobby aufgerufen
 	 * und liefert eine Liste von Spielern und Spielen in der Serverlobby.
+	 * @return ComInitLobby Voller Datensatz für die ServerLobby.
 	 */
-	public void getServerLobbyInit(){
-		
+	public ComInitLobby getServerLobbyInit(){
+		return null;
 	}
 	
 	/**
 	 * Diese Methode wird von der View aufgerufen und aktualisiert einzelne
 	 * kommende und abgehende Spieler in den Listen der View.
+	 * @return ComLobbyUpdateGamelist
 	 */
-	public void getServerLobbyGamelistUpdate(){
-		
+	public ComLobbyUpdateGamelist getServerLobbyGamelistUpdate(){
+		return null;
 	}
 	
 	/**
 	 * Diese Methode wird von der View aufgerufen um die Liste der Spieler
 	 * zu aktualisieren.
+	 * @return ComUpdatePlayerlist Update für die aktuelle Spielerliste.
 	 */
-	public void getPlayerlistUpdate(){
-		
+	public ComUpdatePlayerlist getPlayerlistUpdate(){
+		return null;
 	}
 	
 	/**
@@ -95,15 +145,16 @@ public class ClientModel extends Observable{
 	 * abzuholen.
 	 * @return String die Chatnachricht.
 	 */
-	public String getChatMessage(){
+	public ComChatMessage getChatMessage(){
 		return null;
 	}
 	
 	/**
 	 * Gibt der View die gespielte Karte eines anderen Spielers zurück.
+	 * @return enum CardID. Die Id der Karte
 	 */
-	public void getPlayedCard(){
-		
+	public CardID getPlayedCard(){
+		return null;
 	}
 	
 	/**
@@ -123,36 +174,12 @@ public class ClientModel extends Observable{
 	}
 
 	/** 
-	 * Wird vom Regelwerk aufgerufen und
-	 * kontaktiert die Observer um das InputNumber Fenster der View zu öffnen.
-	 */
-	private void openInputNumber() {
-		
-	}
-
-	/** 
-	 * Wird vom Regelwerk aufgerufen und
-	 * kontaktiert die Observer um das ScoreWindow der View zu öffnen.
-	 */
-	private void openScoreWindow() {
-
-	}
-
-	/** 
 	 * Wird vom Controller aufgerufen um einen Spieler
 	 * aus der Spiellobby zu entfernen.
 	 * @param name des Spielerst welcher enfernt werden soll.
 	 */
 	public void kickPlayer(final String name) {
 	
-	}
-
-	/** 
-	 * Wird vom Regelwerk aufgerufen und kontaktiert die Observer
-	 * des Models um das openChooseCards Fenster zu öffnen.
-	 */
-	private void openChooseCards() {
-		
 	}
 
 	/** 
@@ -167,7 +194,7 @@ public class ClientModel extends Observable{
 	 * Hilfsmethode des Models um erstellte Nachrichten an den Netzwerkthread weiter
 	 * zuleiten.
 	 */
-	private void sendMessage() {
+	private void sendMessage(ComObject object) {
 		
 	}
 
@@ -181,15 +208,8 @@ public class ClientModel extends Observable{
 	}
 
 	/** 
-	 * Wird vom Regelwerk aufgerufen und kontaktiert die Observer
-	 * um das openChooseColour Fenster der View zu öffnen.
-	 */
-	private void openChooseColour() {
-		
-	}
-
-	/** 
-	 * Der ClientController ruft diese Methode auf um ein bereits erstelltes Spiel zu starten.
+	 * Der ClientController ruft diese Methode auf,
+	 * um ein bereits erstelltes Spiel zu starten.
 	 */
 	public void startGame() {
 	
@@ -206,15 +226,17 @@ public class ClientModel extends Observable{
 
 	/** 
 	 * Wird vom ClientConroller aufgerufen um eine Karte auszuspielen.
+	 * @param id Die id der gespielten Karte um sie einer logischen Karte
+	 * zuordnen zu können.
 	 */
-	public void makeMove() {
-		
+	public void makeMove(CardID id) {
 	}
 
 	/** 
 	 * Hilfsmethode die alle verbundenen Observer der GUI kontaktiert.
+	 * @param note Enum der die Art des Aufrufes bestimmt.
 	 */
-	private void informView() {
+	private void informView(ViewNotification note) {
 		
 	}
 	
@@ -248,16 +270,8 @@ class MessageListenerThread extends Thread{
 	}
 	
 	/**
-	 * Hilfsmethode um den Benutzerlogin durchzuführen.
-	 * @param request Die Loginnachricht welche den Benutzernamen enthält.
-	 * @return boolean Zeigt an ob der Login erfolgreich war.
-	 */
-	protected boolean loginUser(final ComLoginRequest request){
-		return false;
-	}
-	
-	/**
-	 * Hilfsmethode die eine bestehende Verbindung abbaut.
+	 * Hilfsmethode die eine bestehende Verbindung abbaut
+	 * und deren Ressourcen freigibt.
 	 */
 	protected void closeConnection() {
 		
