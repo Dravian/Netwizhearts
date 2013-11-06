@@ -29,6 +29,14 @@ public class HeartsCard extends Card {
 	}
 	
 	/**
+	 * Erstellt eine Heartskarte aufgrund seiner HeartsID
+	 * @param id Die HeartsID
+	 */
+	HeartsCard(HeartsID id) {
+		super(id);
+	}
+	
+	/**
 	 * Bestimmt die id der Karte aus seinem Wert und seiner Farbe 
 	 * @param value Der Wert der Karte
 	 * @param colour Die Farbe der Karte

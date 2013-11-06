@@ -7,6 +7,7 @@ package Server;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 
+
 import ComObjects.ComObject;
 
 /**
@@ -41,7 +42,7 @@ public class Player implements Runnable{
 	 * @param input ist der ObjectInput vom entsprechenden Client
 	 */
 	public Player(Server lobbyServer, ObjectOutput output, ObjectInput input){
-		
+
 	}
 	
 	/**
@@ -68,15 +69,17 @@ public class Player implements Runnable{
 	}
 
 	/**
-	 * Diese Methode wechselt beim Player den Server an den der Server comObjects
-	 * weiterleiten soll
+	 * Diese Methode wechselt beim Player den Server an den er comObjects
+	 * weiterleiten soll. Dabei wird er aus dem playerSet des alten Servers
+	 * entfernt und in das playerSet des neuen Players eingefugt. 
+	 * Danach wird vom neuen Server ein ComUpdatePlayerlist Objekt mit broadcast 
+	 * an alle Clients, die vom Server verwaltet werden, verschickt.
 	 * @param newServer ist der neue Server
 	 */
 	public void changeServer(Server newServer) {
 		// begin-user-code
 		// TODO Auto-generated method stub
-
-		// end-user-code
+		// end-user-code	
 	}
 	
 	/**

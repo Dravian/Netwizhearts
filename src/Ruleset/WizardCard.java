@@ -23,6 +23,14 @@ public class WizardCard extends Card {
 	}
 	
 	/**
+	 * Erstellt eine Wizardkarte aufgrund seiner WizardID
+	 * @param id Die WizardID
+	 */
+	WizardCard(WizID id) {
+		super(id);
+	}
+	
+	/**
 	 * Bestimmt die id der Karte aus seinem Wert und seiner Farbe 
 	 * @param value Der Wert der Karte
 	 * @param colour Die Farbe der Karte

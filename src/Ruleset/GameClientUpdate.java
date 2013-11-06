@@ -3,7 +3,8 @@
  */
 package Ruleset;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.Map;
 
 /** 
  * Das GameClientUpdate wird vom RuleSet über den GameServer an den Client geschickt 
@@ -20,12 +21,17 @@ public class GameClientUpdate {
 	/** 
 	 * Die gespielten Karten auf dem Ablagestapel
 	 */
-	private Set<Card> playedCards;
+	private Map<String,Card> discardPile;
 	
 	/** 
 	 * Die Spieldaten der anderen Spieler
 	 */
-	private Set<OtherData> otherPlayerData;
+	private ArrayList<OtherData> otherPlayerData;
+	
+	/**
+	 * Der Spieler der grad am Zug ist
+	 */
+	private PlayerState currentPlayer;
 	
 	/**
 	 * Die Trumpffarbe des Spiels, diese wird nur beim Spiel Wizard verwendet
@@ -34,27 +40,34 @@ public class GameClientUpdate {
 	
 	/**
 	 * Erstellt ein GameClientUpdate zum Spiel Hearts
-	 * @param playerState
-	 * @param playedCards
-	 * @param otherPlayerData
+	 * @param playerState Der Spielerzustand des Client
+	 * @param discardPile Die gespielten Karten
+	 * @param otherPlayerData Die Daten der anderen Spieler
+	 * @param currentPlayer Der momentan aktive Spieler
 	 */
-	GameClientUpdate(PlayerState playerState, Set<Card> playedCards, Set<OtherData> otherPlayerData) {
+	GameClientUpdate(PlayerState playerState, Map<String,Card> discardPile, 
+			ArrayList<OtherData> otherPlayerData, PlayerState currentPlayer) {
 		this.playerState = playerState;
-		this.playedCards = playedCards;
+		this.discardPile = discardPile;
 		this.otherPlayerData = otherPlayerData;
+		this.currentPlayer = currentPlayer;
 	}
 	
 	/**
 	 * Erstellt ein GameClientUpdate zum Spiel Wizard
-	 * @param playerState
-	 * @param playedCards
-	 * @param otherPlayerData
-	 * @param trumpCard
+	 * @param playerState Der Spielerzustand des Client
+	 * @param discardPile Der Ablagestapel
+	 * @param otherPlayerData Die Daten der anderen Spieler
+	 * @param currentPlayer Der momentan aktive Spieler
+	 * @param trumpCard Die Trumpffarbe
 	 */
-	GameClientUpdate(PlayerState playerState, Set<Card> playedCards, Set<OtherData> otherPlayerData, Card trumpCard) {
+	GameClientUpdate(PlayerState playerState, Map<String,Card> discardPile,
+			ArrayList<OtherData> otherPlayerData,  PlayerState currentPlayer,
+			Card trumpCard) {
 		this.playerState = playerState;
-		this.playedCards = playedCards;
+		this.discardPile = discardPile;
 		this.otherPlayerData = otherPlayerData;
+		this.currentPlayer = currentPlayer;
 		this.trumpCard = trumpCard;
 	}
 
@@ -62,17 +75,17 @@ public class GameClientUpdate {
 	 * Holt die Karten die der Client auf der Hand hat
 	 * @return ownHand Die Hand des Clients
 	 */
-	public Set<Card> getOwnHand() {
-		Set<Card> ownHand = playerState.getHand();
+	public ArrayList<Card> getOwnHand() {
+		ArrayList<Card> ownHand = playerState.getHand();
 		return ownHand;
 	}
 
 	/** 
 	 * Holt die gespielten Karten auf dem Ablagestapel
-	 * @return playedCards Die gespielten Karten
+	 * @return discardPile Die gespielten Karten
 	 */
-	public Set<Card> getPlayedCards() {
-		return playedCards;
+	public Map<String, Card> getPlayedCards() {
+		return discardPile;
 	}
 
 	/**
@@ -88,7 +101,7 @@ public class GameClientUpdate {
 	 * Holt die Spieldaten der anderen Spieler
 	 * @return otherPlayerData Die Spieldaten der anderen Spieler
 	 */
-	public Set<OtherData> getOtherPlayerData() {
+	public ArrayList<OtherData> getOtherPlayerData() {
 		return otherPlayerData;
 	}
 	

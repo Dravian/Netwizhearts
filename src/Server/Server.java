@@ -6,6 +6,8 @@ package Server;
 import java.util.Iterator;
 import java.util.Set;
 
+import javax.activation.CommandObject;
+
 import ComObjects.*;
 
 /**
@@ -36,13 +38,17 @@ public abstract class Server {
 
 	/**
 	 * Diese Methode wird genutzt, um ein ComObject an einen einzigen
-	 * Client zu verschicken.
-	 * @param player ist der Player, der die Nachricht an seinen Client 
+	 * Client zu verschicken. Der Player der die Nachricht verschicken soll
+	 * wird Anhand des übergebenen Benutzernamens identifiziert.
+	 * @param name ist der Name des Clients, an den der Player die Nachricht  
 	 * verschicken soll
 	 * @param c ist das ComObject, dass verschickt werden soll
 	 */
-	public void sendToPlayer(Player player, ComObject com) {
-		player.send(com);
+	public synchronized void sendToPlayer(String name, ComObject com) {
+		// begin-user-code
+				// TODO Auto-generated method stub
+
+				// end-user-code
 	}
 
 	/**
@@ -50,7 +56,7 @@ public abstract class Server {
 	 * Server verwaltet.
 	 * @param player ist der Player, der hinzugefoügt wird
 	 */
-	public void addPlayer(Player player) {
+	public synchronized void  addPlayer(Player player) {
 		playerSet.add(player);
 	}
 
@@ -59,19 +65,17 @@ public abstract class Server {
 	 * Server verwaltet.
 	 * @param player ist der Player, der entfernt wird
 	 */
-	public void removePlayer(Player player) {
+	public synchronized void removePlayer(Player player) {
 		playerSet.remove(player);
 	}
 
 	/**
 	 * Diese Methode wird genutzt, um ein ComObject an alle Clients,
-	 * die vom Server verwaltet werden zu schicken.
+	 * die vom Server verwaltet werden, zu schicken.
 	 * @param com ist das ComObject, dass verschickt werden soll
 	 */
-	public void broadcast(ComObject com) {
-		Iterator<Player> i= playerSet.iterator();
-		if(i.hasNext()){
-			i.next().send(com);
-		}
+	public synchronized void broadcast(ComObject com) {
+		
 	}
+
 }

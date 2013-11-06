@@ -50,8 +50,9 @@ public class LobbyServer extends Server {
 	}
 	/**
 	 * Diese Klasse ist für das Zustandekommen von Clientverbindungen zuständig. 
-	 * Der Thread auf eingehende Clientverbindungen, stellt diese her und instanziiert für jede Verbindung
-	 * eine Klasse Player. Dieser wird dann dem LobbyServer übergeben.
+	 * Der Thread auf eingehende Clientverbindungen, stellt diese her und 
+	 * instanziiert für jede Verbindung eine Klasse Player. 
+	 * Dieser wird dann dem LobbyServer übergeben.
 	 * @author Viktoria
 	 *
 	 */
@@ -113,8 +114,7 @@ public class LobbyServer extends Server {
 	}
 	
 	/**
-	 * Diese Methode wird vom abstrakten Server vererbt.
-	 * Sie ist dafür zuständig eine Chatnachricht an alle Clients im
+	 * Diese Methode ist dafür zuständig eine Chatnachricht an alle Clients im
 	 * Spiel zu verschicken. Dafür wird die ComChatMessage mit broadcast
 	 * an alle Spieler im playerSet verteilt.
 	 * @param player ist der Threat der die Nachricht erhalten hat
@@ -124,42 +124,65 @@ public class LobbyServer extends Server {
 
 	}
 	/**
-	 * Diese Methode wird vom abstrakten Server vererbt.
-	 * Die Verbindung wird geschlossen, der Player wird aus dem playerSet (bzw. noNames Set) entfernt, 
-	 * der Name des Players wird aus dem Set names entfernt.
+	 * Diese Methode schließt die Verbindung, der Player wird aus dem playerSet 
+	 * (bzw. noNames Set) entfernt, der Name des Players wird aus dem Set names entfernt.
 	 * War der Spieler im playerSet, wird ein ComUpdatePlayerlist mit broadcast an alle 
 	 * Clients verschickt.
 	 * @param player ist der Threat der die Nachricht erhalten hat
-	 * @param quit ist das ComObject, welches angibt, dass der Spieler das Spiel vollständig verlässt
+	 * @param quit ist das ComObject, welches angibt, dass der Spieler das 
+	 * Spiel vollständig verlässt
 	 */
 	public void receiveMessage(Player player, ComClientQuit quit){
 
 	}
+	
 	/**
-	 * Diese Methode wird vom abstrakten Server vererbt.
-	 * Sie fügt einen Player dem entsprechenden GameServer hinzu
+	 * Diese Methode erstellt einen neuen GameServer fügt ihm den  Player hinzu.
+	 * Durch broadcast wird sowohl im LobbyServer als auch im GameServer ein 
+	 * ComUpdatePlayerlist verschickt.
+	 * Zusätzlich wird dem Client mit sendToPlayer ein ComInitGameLobby geschickt.
+	 * @param player ist der Threat der die Nachricht erhalten hat
+	 * @param create ist das ComObject, welches angibt, dass der Player 
+	 * ein neues Spiel erstellt hat
+	 */
+	public void receiveMessage(Player player, ComCreateGameRequest create){
+
+	}
+	
+	/**
+	 * Diese Methode fügt einen Player dem entsprechenden GameServer hinzu.
 	 * Falls das Passwort nicht leer ist wird geprüft, ob es mit dem Passwort
-	 * des Spieles übereinstimmt, wenn nicht, wird ein ComWarning an den Client geschickt.
-	 * Ansonsten wird und der Player dem, durch Namen des Spielleiters identifizierten, Gameserver übergeben.
-	 * (Er wird in dessen playerSet eingefugt und aus dem des LobbyServerd gelöscht.)
-	 * Durch broadcast wird sowohl im LobbyServer als auch im GameServer ein ComUpdatePlayerlist verschickt.
+	 * des Spieles übereinstimmt, wenn nicht, wird ein ComWarning an den Client 
+	 * geschickt.
+	 * Ansonsten wird und der Player dem, durch Namen des Spielleiters identifizierten,
+	 * durch Aufruf von changeServer Gameserver übergeben.
+	 * Durch broadcast wird sowohl im LobbyServer als auch im GameServer ein 
+	 * ComUpdatePlayerlist verschickt.
 	 * Zusätzlich wird dem joinendenClient mit sendToPlayer ein ComInitGameLobby geschickt.
 	 * @param player ist der Threat der die Nachricht erhalten hat
-	 * @param joinist das ComObject, welches angibt, dass der Player einem Spiel beitreten will
+	 * @param join ist das ComObject, welches angibt, dass der Player einem Spiel beitreten will
 	 */
 	public void receiveMessage(Player player, ComJoinRequest join){
 
 	}
 	/**
-	 * Diese Methode wird vom abstrakten Server vererbt.
-	 * Es wird überprüft, ob der Name im Set names vorhanden ist, falls ja, wird ein ComWarning
-	 * an den Client geschickt, falls nein, wird im Player setName aufgerufen.
+	 * Diese Methode überprüft, ob der Name im Set names vorhanden ist, falls ja, wird ein 
+	 * ComWarning an den Client geschickt, falls nein, wird im Player setName aufgerufen.
 	 * Der Player wird aus dem noNames Set entfernt und in das playerSet eingefügt.
-	 * Der Name wird in das Set names eingefügt. Dem Client wird ein ComServerAcknowledgement geschickt.
+	 * Der Name wird in das Set names eingefügt. Dem Client wird ein 
+	 * ComServerAcknowledgement geschickt.
 	 * @param player ist der Threat der die Nachricht erhalten hat
 	 * @param login ist das ComObject, dass den Benutzernamen des Clients enthält
 	 */
 	public void receiveMessage(Player player, ComLoginRequest login){
 
+	}
+	
+	/**
+	 * Baut ein neues ComInitLobby Objekt und gibt es zurück.
+	 * @return Gibt das ComInitLobby Objekt zurück
+	 */
+	public ComInitLobby initLobby(){
+		return null;
 	}
 }
