@@ -27,23 +27,13 @@ public class ServerWizard extends ServerRuleset {
 		// TODO Automatisch erstellter Methoden-Stub
 
 	}
-	
+
 	/**
-	 * Schickt einem Spieler die Aufforderung eine Stichanzahl anzugeben
-	 * @param name Name des Spielers
-	 * @return new MsgNumberRequest() Eine Nachricht an den Spieler
+	 * Erstellt die Karten zum Spiel Wizard
 	 */
-	public MsgNumberRequest sendNumberRequest(String name) {
-		return new MsgNumberRequest();
-	}
-	
-	/**
-	 * Schickt einem Spieler die Aufforderung eine Farbe zu wählen
-	 * @param name Name des Spielers
-	 * @return new MsgSelectionRequest() Eine Nachricht an den Spieler
-	 */
-	public MsgSelectionRequest sendSelectionRequest(String name) {
-		return new MsgSelectionRequest();
+	protected void createCardDeck() {
+		// TODO Automatisch erstellter Methoden-Stub
+		
 	}
 
 }

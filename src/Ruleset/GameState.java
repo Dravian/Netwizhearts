@@ -3,7 +3,8 @@
  */
 package Ruleset;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.Map;
 
 /** 
  * Das GameState modelliert einen aktuellen Spielzustand, es wird vom GameServer instanziert 
@@ -14,7 +15,7 @@ public class GameState {
 	/** 
 	 * Die Spieler die im Spiel sind
 	 */
-	private Set<PlayerState> players;
+	private ArrayList<PlayerState> players;
 	
 	/** 
 	 * Der Spieler der gerade am Zug ist
@@ -29,12 +30,12 @@ public class GameState {
 	/** 
 	 * Die Karten die gespielt wurden
 	 */
-	private Set<Card> playedCards;
+	private Map<String,Card> discardPile;
 	
 	/** 
 	 * Die Karten die noch im Aufnahmestapel sind
 	 */
-	private Set<Card> cardsLeftInDeck;
+	private ArrayList<Card> cardsLeftInDeck;
 	
 	/** 
 	 * Die momentane Spielphase
@@ -66,28 +67,26 @@ public class GameState {
 	 * Holt die Karten die noch im Aufnahmestapel sind
 	 * @return cardsLeftInDeck Holt die Karten die noch im Aufnahmestapel sind
 	 */
-	public Set<Card> getCardsLeftInDeck() {
+	public ArrayList<Card> getCardsLeftInDeck() {
 		return this.cardsLeftInDeck;
 	}
 
 	/** 
 	 *Holt die gespielten Karten im Ablagestapel
-	 *@return playedCards Die gespielten Karten
+	 * @return 
+	 *@return discardPile Die gespielten Karten
 	 */
-	public void getPlayedCards() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	public Map<String,Card> getPlayedCards() {
+		return discardPile;
 	}
-
+	
 	/** 
 	 * Holt einen bestimmten Spieler
 	 * @param name Der Name des Spielers
 	 * @return player Der Spielzustand des Spielers
 	 */
 	public PlayerState getPlayer(String name) {
-		
+		return new PlayerState();
 	}
 	
 	/**
@@ -107,11 +106,27 @@ public class GameState {
 	}
 	
 	/**
+	 * Holt die Anzahl der gespielten Karten 
+	 * @return Die Anzahl der gespielten Karten
+	 */
+	public int getNumberOfPlayedCards() {
+		return discardPile.size();
+	}
+	
+	/**
 	 * Entfernt eine Karte aus der Hand des currentPlayer und legt sie auf dem Ablagestapel
 	 * @param card Die gespielte Karte
+	 * @return isInHand Gibt true zurück wenn die gespielte Karte auf der Hand vom
+	 * Spieler liegt und false sonst
 	 */
-	public void playCard(Card card) {
-		currentPlayer.removeCard(card);
-		playedCards.add(card);
+	public boolean playCard(Card card) {
+		boolean isInHand;
+		isInHand = currentPlayer.removeCard(card);
+		
+		if(isInHand == true) {
+			discardPile.put(currentPlayer.getName(), card);
+		} 
+		
+		return isInHand;
 	}
 }

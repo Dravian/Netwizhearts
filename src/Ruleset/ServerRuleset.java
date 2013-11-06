@@ -9,6 +9,9 @@ import ComObjects.MsgCard;
 import ComObjects.MsgMultiCards;
 import ComObjects.MsgMultipleCardsRequest;
 import ComObjects.MsgNumber;
+import ComObjects.MsgNumberRequest;
+import ComObjects.MsgSelection;
+import ComObjects.RulesetMessage;
 /** 
  * Das ServerRuleset ist eine akstrakte Klasse und für den Ablauf und die Einhaltung der Regeln eines Spiels zuständig (/L280/). 
  * Das ServerRuleset wird im GameServer instanziert und verwaltet die Zustände des GameStates im Server. 
@@ -54,6 +57,11 @@ public abstract class ServerRuleset {
 	
 		// end-user-code
 	}
+	
+	/**
+	 * Erstellt die Karten
+	 */
+	protected abstract void createCardDeck();
 
 	/** 
 	 * Setzt den Spieler der am Nächsten am Zug ist, im Gamestate
@@ -66,7 +74,7 @@ public abstract class ServerRuleset {
 	 * Holt den Spieler der gerade am Zug ist
 	 * @return currentPlayer Der Spielzustand des Spielers der grad am Zug ist
 	 */
-	public PlayerState getCurrentPlayer() {
+	protected PlayerState getCurrentPlayer() {
 		PlayerState currentPlayer = gameState.getCurrentPlayer();
 		return currentPlayer;
 	}
@@ -76,13 +84,26 @@ public abstract class ServerRuleset {
 	 * @param name Der Name des Spielers
 	 * @return playerState Spielzustand eines Spielers
 	 */
-	public PlayerState getPlayerState(String name) {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	protected PlayerState getPlayerState(String name) {
+		return new PlayerState();
 	}
-
+	
+	/**
+	 * Schickt eine Nachricht an einen Spieler
+	 * @param message Die Nachricht vom Typ RulesetMessage
+	 * @param name Der Name vom Spieler
+	 */
+	protected void send(RulesetMessage message, String name) {
+		
+	}
+	
+	/**
+	 * Schickt eine Nachricht an alle Spieler
+	 * @param message Die Nachricht
+	 */
+	protected void broadcast(RulesetMessage message) {
+		
+	}
 	/** 
 	 * Verarbeitet die RulesetMessage dass eine Karte vom Spieler gespielt
 	 * @param msgCard Die Nachricht vom Client welche Karte gespielt wurde
@@ -112,28 +133,21 @@ public abstract class ServerRuleset {
 	/**
 	 * Verarbeitet die RulesetMessage dass ein Spieler eine Farbe ausgewählt hat
 	 * @param msgSelection Die Nachricht vom Client
-	 * @param name
+	 * @param name Der Name des Spielers
 	 */
 	public void resolveMessage(MsgSelection msgSelection, String name){
 		
 	}
 	
-	/**
-	 * Schickt einem Spieler die Aufforderung eine Karte zu spielen
-	 * @param name Name des Spielers
-	 * @return new MsgCardRequest() Eine Nachricht an den Spieler
-	 */
-	public MsgCardRequest sendCardRequest(String name) {
-		return new MsgCardRequest();
-	}
-	
 	/** 
 	 * Prüft ob ein gemachter Zug in einem Spiel gültig war
 	 */
-	public abstract boolean isValidMove(Card card);
+	protected abstract boolean isValidMove(Card card);
 
 	/** 
 	 * Berechnet das Ergebnis von der Berechnung eines Befehls
 	 */
-	public abstract void calculateOutcome();
+	protected abstract void calculateOutcome();
+
+	
 }

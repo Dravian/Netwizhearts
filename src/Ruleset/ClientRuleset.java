@@ -4,11 +4,13 @@
 package Ruleset;
 
 import Client.ClientModel;
-import ComObjects.MsgClientUpdate;
+import ComObjects.MsgCard;
 import ComObjects.MsgCardRequest;
 import ComObjects.MsgMultipleCardsRequest;
 import ComObjects.MsgNumberRequest;
 import ComObjects.MsgSelectionRequest;
+import ComObjects.MsgUser;
+import ComObjects.RulesetMessage;
 
 /** 
  * ClientRuleset ist eine abstrakte Klasse und wird zur Regelvorauswertung im Client verwendet. 
@@ -30,9 +32,10 @@ public abstract class ClientRuleset {
 	 * Verarbeitet die RulesetMessage dass der Server ein Spielupdate an den Client schickt
 	 * @param clientUpdate Die Nachricht vom Server
 	 */
-	public void resolveMessage(MsgClientUpdate clientUpdate) {
-		this.gameState = clientUpdate.getGameUpdate();
+	public void resolveMessage(MsgUser clientUpdate) {
+		this.gameState = clientUpdate.getGameClientUpdate();
 	}
+	
 	
 	/**
 	 * Verarbeitet die RulesetMessage dass der Server von dem Spieler verlangt eine Karte zu spielen
@@ -63,6 +66,14 @@ public abstract class ClientRuleset {
 	 * @param msgSelection Die Nachricht vom Server
 	 */
 	public void resolveMessage(MsgSelectionRequest msgSelection) {
+		
+	}
+	
+	/**
+	 * Schickt eine Nachricht übers Model an den Server
+	 * @param message Die Nachricht
+	 */
+	protected void send(RulesetMessage message) {
 		
 	}
 	
