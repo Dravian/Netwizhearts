@@ -1,14 +1,10 @@
-/**
- * 
- */
 package ComObjects;
 
-/** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author m4nkey
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+import java.io.Serializable;
+
+/**
+ * Diese Klasse ist eine Verfeinerung der ComRuleset-Klasse.
+ * Sie enthält einen Nachrichtentyp und vererbt an alle Nachrichten für das Regelwerk.
  */
-public abstract class RulesetMessage {
-	
+public abstract class RulesetMessage implements Serializable {
 }

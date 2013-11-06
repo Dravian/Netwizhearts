@@ -1,13 +1,15 @@
-/**
- * 
- */
 package ComObjects;
 
 /** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author m4nkey
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+ * Diese Klasse ist ein spezielles Kommunikations-Objekt.
+ * Sie wird versendet, wenn ein Spiel gestartet werden soll.
  */
 public class ComStartGame extends ComObject {
+
+    /**
+     * Dieser Konstruktor erzeugt eine neue ComStartGame-Nachricht.
+     */
+    public ComStartGame() {
+
+    }
 }

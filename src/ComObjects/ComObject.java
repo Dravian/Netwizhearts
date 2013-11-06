@@ -4,10 +4,12 @@
 package ComObjects;
 
 /** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author m4nkey
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+ * Die Klasse ComObject ist eine Klasse, die ein Objekt darstellt,
+ * das zur Kommunikation genutzt werden kann. Spezielle ComObject Klassen
+ * erben von dieser grundlegenden Klasse.
  */
-public abstract class ComObject {
+
+import java.io.Serializable;
+
+public abstract class ComObject implements Serializable {
 }

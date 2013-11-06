@@ -1,49 +1,42 @@
-/**
- * 
- */
 package ComObjects;
 
 /** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author m4nkey
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+ *  Diese Klasse ist ein spezielles Kommunikations-Objekt.
+ *  Sie sendet eine Nachricht zum Update der Playerliste
+ *  in der Lobby und Spiellobby. Dazu enthält sie den Player
+ *  und ein removeFlag.
  */
 public class ComUpdatePlayerlist extends ComObject {
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
-	private Object playerName;
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
-	private Object removeFlag;
 
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
-	public void wasRemoved() {
-		// begin-user-code
-		// TODO Auto-generated method stub
+	private String playerName;
+	private boolean removeFlag;
 
-		// end-user-code
-	}
+    /**
+     * Dieser Konstruktor erstellt eine neue ComUpdatePlayerlist-Nachricht.
+     * Diese beinhaltet den Namen des Spielers und die Angabe ob er gelöscht
+     * werden soll.
+     * @param playerName ist der Name der Spielers.
+     * @param removeFlag zeigt, ob der Spieler gelöscht werden soll.
+     */
+    public ComUpdatePlayerlist(String playerName, boolean removeFlag) {
+        this.playerName = playerName;
+        this.removeFlag = removeFlag;
+    }
 
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
-	public void getPlayer() {
-		// begin-user-code
-		// TODO Auto-generated method stub
+    /**
+     * Diese Methode gibt den Namen des Spielers zurück.
+     * @return den Spielernamen.
+     */
+    public String getPlayerName() {
+        return playerName;
+    }
 
-		// end-user-code
-	}
+    /**
+     * Diese Methode gibt zurück, ob der Spieler aus der Liste gelöscht
+     * werden soll oder nicht.
+     * @return ob der Spieler gelöscht werden soll.
+     */
+    public boolean isRemoveFlag() {
+        return removeFlag;
+    }
 }
