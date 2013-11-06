@@ -44,8 +44,8 @@ public class GameServerRepresentation {
 	private boolean hasPassword;
 	
 	/**
-	 * Der Konstruktor der Klasse GameServerRepresentation initialisiert die Attribute mit den
-	 * vom GameServer übergebenen Werten.
+	 * Der Konstruktor der Klasse GameServerRepresentation initialisiert die 
+	 * Attribute mit den vom GameServer übergebenen Werten.
 	 * @param gameMaster der Name des Spielleiters
 	 * @param gameName der Name des Spiels
 	 * @param max Maximal mögliche Anzahl teilnehmender Spieler
@@ -53,7 +53,8 @@ public class GameServerRepresentation {
 	 * @param type Welches Ruleset verwendet wird
 	 * @param password ob das Spiel ein Passwort hat
 	 */
-	public GameServerRepresentation(String gameMaster, String gameName, int max, int current, RulesetType type, boolean password){
+	public GameServerRepresentation(String gameMaster, String gameName, int max, 
+			int current, RulesetType type, boolean password){
 		
 	}
 	

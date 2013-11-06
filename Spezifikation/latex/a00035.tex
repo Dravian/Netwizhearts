@@ -1,0 +1,67 @@
+\hypertarget{a00035}{\subsection{Client.\-View.\-Create\-Game Klassenreferenz}
+\label{a00035}\index{Client.\-View.\-Create\-Game@{Client.\-View.\-Create\-Game}}
+}
+Klassendiagramm fÃ¼r Client.\-View.\-Create\-Game\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{a00035}
+\end{center}
+\end{figure}
+\subsubsection*{Ã–ffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00035_af35c00524077f6cda2d0c0397ce032a5}{Create\-Game} ()  throws I\-O\-Exception 
+\item 
+void \hyperlink{a00035_a0c95e9377fb0c48543c65d7c39c26fc1}{update} (Observable o, Object arg)
+\end{DoxyCompactItemize}
+
+
+\subsubsection{AusfÃ¼hrliche Beschreibung}
+Es bietet alle Komponenten, um ein Regelwerk zu wählen, einen Spielnamen festzulegen und das Spiel durch ein Passwort zu schützen. In der Spielerstellung wird ein Titelbild des ausgewählten Spiels und eine kurze Beschreibung angezeigt. Über 'Leave' kehrt der Spieler in die \hyperlink{a00053}{Lobby} zurück und mit 'Create' wird das Spiel erstellt.
+
+\begin{DoxyAuthor}{Autor}
+M4nkey 
+\end{DoxyAuthor}
+
+
+\subsubsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{a00035_af35c00524077f6cda2d0c0397ce032a5}{\index{Client\-::\-View\-::\-Create\-Game@{Client\-::\-View\-::\-Create\-Game}!Create\-Game@{Create\-Game}}
+\index{Create\-Game@{Create\-Game}!Client::View::CreateGame@{Client\-::\-View\-::\-Create\-Game}}
+\paragraph[{Create\-Game}]{\setlength{\rightskip}{0pt plus 5cm}Client.\-View.\-Create\-Game.\-Create\-Game (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) throws I\-O\-Exception}}\label{a00035_af35c00524077f6cda2d0c0397ce032a5}
+
+
+Erstellt das \hyperlink{a00035}{Create\-Game} Fenster. 
+
+
+\begin{DoxyExceptions}{Ausnahmebehandlung}
+{\em I\-O\-Exception} & \\
+\hline
+\end{DoxyExceptions}
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00035_a0c95e9377fb0c48543c65d7c39c26fc1}{\index{Client\-::\-View\-::\-Create\-Game@{Client\-::\-View\-::\-Create\-Game}!update@{update}}
+\index{update@{update}!Client::View::CreateGame@{Client\-::\-View\-::\-Create\-Game}}
+\paragraph[{update}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\-View.\-Create\-Game.\-update (
+\begin{DoxyParamCaption}
+\item[{Observable}]{o, }
+\item[{Object}]{arg}
+\end{DoxyParamCaption}
+)}}\label{a00035_a0c95e9377fb0c48543c65d7c39c26fc1}
+
+
+Wird durch notify() im \hyperlink{a00013}{Client\-Model} aufgerufen. 
+
+Je nach dem in arg übergebenen Befehl wird ein Update des Fensters ausgeführt oder eine Fehlermeldung angezeigt.
+
+
+\begin{DoxyParams}{Parameter}
+{\em o} & erwartet ein Objekt von der Klasse \hyperlink{a00013}{Client\-Model} \\
+\hline
+{\em arg} & erwartet\-: window\-Change\-Acknowledged, window\-Change\-Denied \\
+\hline
+\end{DoxyParams}

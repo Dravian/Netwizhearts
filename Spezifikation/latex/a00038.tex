@@ -1,0 +1,67 @@
+\hypertarget{a00038}{\subsection{Client.\-View.\-Game Klassenreferenz}
+\label{a00038}\index{Client.\-View.\-Game@{Client.\-View.\-Game}}
+}
+Klassendiagramm fÃ¼r Client.\-View.\-Game\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{a00038}
+\end{center}
+\end{figure}
+\subsubsection*{Ã–ffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00038_afe6d788e3d6d0c2b8f052d966bf6cea1}{Game} ()  throws I\-O\-Exception 
+\item 
+void \hyperlink{a00038_af04de16e7780bba7e3acab2554390b80}{update} (Observable o, Object arg)
+\end{DoxyCompactItemize}
+
+
+\subsubsection{AusfÃ¼hrliche Beschreibung}
+Außerdem können über ein Dropdown-\/\-Menü Änderungen an Hintergrundbild und Kartenhintergründen vorgenommen werden. Schließen beendet das Spiel und der Spieler wird in die \hyperlink{a00053}{Lobby} zurückgeleitet.
+
+\begin{DoxyAuthor}{Autor}
+M4nkey 
+\end{DoxyAuthor}
+
+
+\subsubsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{a00038_afe6d788e3d6d0c2b8f052d966bf6cea1}{\index{Client\-::\-View\-::\-Game@{Client\-::\-View\-::\-Game}!Game@{Game}}
+\index{Game@{Game}!Client::View::Game@{Client\-::\-View\-::\-Game}}
+\paragraph[{Game}]{\setlength{\rightskip}{0pt plus 5cm}Client.\-View.\-Game.\-Game (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) throws I\-O\-Exception}}\label{a00038_afe6d788e3d6d0c2b8f052d966bf6cea1}
+
+
+Erstellt das \hyperlink{a00038}{Game} Fenster. 
+
+
+\begin{DoxyExceptions}{Ausnahmebehandlung}
+{\em I\-O\-Exception} & \\
+\hline
+\end{DoxyExceptions}
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00038_af04de16e7780bba7e3acab2554390b80}{\index{Client\-::\-View\-::\-Game@{Client\-::\-View\-::\-Game}!update@{update}}
+\index{update@{update}!Client::View::Game@{Client\-::\-View\-::\-Game}}
+\paragraph[{update}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\-View.\-Game.\-update (
+\begin{DoxyParamCaption}
+\item[{Observable}]{o, }
+\item[{Object}]{arg}
+\end{DoxyParamCaption}
+)}}\label{a00038_af04de16e7780bba7e3acab2554390b80}
+
+
+Wird durch notify() im \hyperlink{a00013}{Client\-Model} aufgerufen. 
+
+Je nach dem in arg übergebenen Befehl wird ein Update des Fensters ausgeführt oder eine Fehlermeldung angezeigt.
+
+
+\begin{DoxyParams}{Parameter}
+{\em o} & erwartet ein Objekt von der Klasse \hyperlink{a00013}{Client\-Model} \\
+\hline
+{\em arg} & erwartet\-: chat\-Message, played\-Cards\-Update, other\-Data\-Update \\
+\hline
+\end{DoxyParams}

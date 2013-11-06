@@ -1,0 +1,118 @@
+\hypertarget{a00073}{\subsection{Server.\-Player Klassenreferenz}
+\label{a00073}\index{Server.\-Player@{Server.\-Player}}
+}
+Klassendiagramm fÃ¼r Server.\-Player\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{a00073}
+\end{center}
+\end{figure}
+\subsubsection*{Ã–ffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00073_a858dba9ba878ab25863cad6e9b8bdbff}{Player} (\hyperlink{a00078}{Server} lobby\-Server, Object\-Output output, Object\-Input input)
+\item 
+void \hyperlink{a00073_aca6ecf908dbe1a01f04bf5d475c5e93d}{send} (\hyperlink{a00029}{Com\-Object} com)
+\item 
+void \hyperlink{a00073_a5d9f6a57cee2f22836f1ee65bf1be59c}{change\-Server} (\hyperlink{a00078}{Server} new\-Server)
+\item 
+String \hyperlink{a00073_ad23368a715fffac93891826bc9ec9034}{get\-Name} ()
+\item 
+void \hyperlink{a00073_a2ec69db14218d0d1b2ce9a2a1129b0d4}{set\-Name} (String new\-Name)
+\end{DoxyCompactItemize}
+
+
+\subsubsection{AusfÃ¼hrliche Beschreibung}
+Sie verwaltet für die Dauer einer Serververbindung die Verbindung zum Client \begin{DoxyAuthor}{Autor}
+Viktoria 
+\end{DoxyAuthor}
+
+
+\subsubsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{a00073_a858dba9ba878ab25863cad6e9b8bdbff}{\index{Server\-::\-Player@{Server\-::\-Player}!Player@{Player}}
+\index{Player@{Player}!Server::Player@{Server\-::\-Player}}
+\paragraph[{Player}]{\setlength{\rightskip}{0pt plus 5cm}Server.\-Player.\-Player (
+\begin{DoxyParamCaption}
+\item[{{\bf Server}}]{lobby\-Server, }
+\item[{Object\-Output}]{output, }
+\item[{Object\-Input}]{input}
+\end{DoxyParamCaption}
+)}}\label{a00073_a858dba9ba878ab25863cad6e9b8bdbff}
+
+
+Konstruktor des Players, in ihm werden die Attribute server, com\-Out und Com\-In mit vom Client\-Listerer\-Thret übergebenen werten Instanziiert. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em lobby\-Server} & ist der \hyperlink{a00054}{Lobby\-Server}, der zu Beginn den \hyperlink{a00073}{Player} verwaltet. \\
+\hline
+{\em output} & ist der Object\-Output an den entsprechenden Client \\
+\hline
+{\em input} & ist der Object\-Input vom entsprechenden Client \\
+\hline
+\end{DoxyParams}
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00073_a5d9f6a57cee2f22836f1ee65bf1be59c}{\index{Server\-::\-Player@{Server\-::\-Player}!change\-Server@{change\-Server}}
+\index{change\-Server@{change\-Server}!Server::Player@{Server\-::\-Player}}
+\paragraph[{change\-Server}]{\setlength{\rightskip}{0pt plus 5cm}void Server.\-Player.\-change\-Server (
+\begin{DoxyParamCaption}
+\item[{{\bf Server}}]{new\-Server}
+\end{DoxyParamCaption}
+)}}\label{a00073_a5d9f6a57cee2f22836f1ee65bf1be59c}
+
+
+Diese Methode wechselt beim \hyperlink{a00073}{Player} den \hyperlink{a00078}{Server} an den er com\-Objects weiterleiten soll. 
+
+Dabei wird er aus dem player\-Set des alten Servers entfernt und in das player\-Set des neuen Players eingefugt. Danach wird vom neuen \hyperlink{a00078}{Server} ein Com\-Update\-Playerlist Objekt mit broadcast an alle Clients, die vom \hyperlink{a00078}{Server} verwaltet werden, verschickt. 
+\begin{DoxyParams}{Parameter}
+{\em new\-Server} & ist der neue \hyperlink{a00078}{Server} \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00073_ad23368a715fffac93891826bc9ec9034}{\index{Server\-::\-Player@{Server\-::\-Player}!get\-Name@{get\-Name}}
+\index{get\-Name@{get\-Name}!Server::Player@{Server\-::\-Player}}
+\paragraph[{get\-Name}]{\setlength{\rightskip}{0pt plus 5cm}String Server.\-Player.\-get\-Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00073_ad23368a715fffac93891826bc9ec9034}
+
+
+Getter-\/\-Methode für den Benutzernamen. 
+
+\begin{DoxyReturn}{RÃ¼ckgabe}
+gibt den Benutzernamen des Spielers zurück 
+\end{DoxyReturn}
+\hypertarget{a00073_aca6ecf908dbe1a01f04bf5d475c5e93d}{\index{Server\-::\-Player@{Server\-::\-Player}!send@{send}}
+\index{send@{send}!Server::Player@{Server\-::\-Player}}
+\paragraph[{send}]{\setlength{\rightskip}{0pt plus 5cm}void Server.\-Player.\-send (
+\begin{DoxyParamCaption}
+\item[{{\bf Com\-Object}}]{com}
+\end{DoxyParamCaption}
+)}}\label{a00073_aca6ecf908dbe1a01f04bf5d475c5e93d}
+
+
+Diese Methode schickt ein Com\-Objekt an den Client. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em com} & ist das Com\-Object das verschickt wird \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00073_a2ec69db14218d0d1b2ce9a2a1129b0d4}{\index{Server\-::\-Player@{Server\-::\-Player}!set\-Name@{set\-Name}}
+\index{set\-Name@{set\-Name}!Server::Player@{Server\-::\-Player}}
+\paragraph[{set\-Name}]{\setlength{\rightskip}{0pt plus 5cm}void Server.\-Player.\-set\-Name (
+\begin{DoxyParamCaption}
+\item[{String}]{new\-Name}
+\end{DoxyParamCaption}
+)}}\label{a00073_a2ec69db14218d0d1b2ce9a2a1129b0d4}
+
+
+Setter-\/\-Methode für den Benutzernamen. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em new\-Name} & ist der neue Name \\
+\hline
+\end{DoxyParams}

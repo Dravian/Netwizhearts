@@ -3,7 +3,7 @@
  */
 package Ruleset;
 
-import java.util.Set;
+import java.util.ArrayList;
 
 /** 
  * Repräsentiert den Spielzustand eines Spielers, und wird unter anderem 
@@ -17,7 +17,7 @@ public class PlayerState {
 	/** 
 	 * Seine aktuelle Kartenhand
 	 */
-	private Set<Card> ownHand;
+	private ArrayList<Card> ownHand;
 	/** 
 	 * Seine zusätzlichen Daten
 	 */
@@ -35,7 +35,7 @@ public class PlayerState {
 	 * Holt die Kartenhand des Spielers
 	 * @return ownHand Die Kartenhand des Spielers
 	 */
-	public Set<Card> getHand() {
+	public ArrayList<Card> getHand() {
 		return this.ownHand;
 	}
 	
@@ -58,9 +58,11 @@ public class PlayerState {
 	/**
 	 * Entfernt eine Karte aus der Hand des Spielers 
 	 * @param card
+	 * @return ownHand.remove(card) Gibt true zurück wenn die Karte in der Hand ist
+	 * 								und false sonst
 	 */
-	public void removeCard(Card card) {
-		ownHand.remove(card);
+	public boolean removeCard(Card card) {
+		 return ownHand.remove(card);
 	}
 	
 }
