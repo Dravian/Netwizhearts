@@ -13,6 +13,10 @@ public class ClientMain {
 	 */
 	private ClientController clientController;
 	
+	/**
+	 * 
+	 * @param args
+	 */
 	public static void main(final String[] args){
 	}
 }

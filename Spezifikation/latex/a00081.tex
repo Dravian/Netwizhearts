@@ -1,0 +1,181 @@
+\hypertarget{a00081}{\subsection{Ruleset.\-Server\-Ruleset Klassenreferenz}
+\label{a00081}\index{Ruleset.\-Server\-Ruleset@{Ruleset.\-Server\-Ruleset}}
+}
+Klassendiagramm fÃ¼r Ruleset.\-Server\-Ruleset\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{a00081}
+\end{center}
+\end{figure}
+\subsubsection*{Ã–ffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{a00081_afcfbddd7397a6043913b5e742934d2c2}{resolve\-Message} (\hyperlink{a00057}{Msg\-Card} msg\-Card, String name)
+\item 
+void \hyperlink{a00081_ac639a8d99c0e2243f9f3fe565a315c51}{resolve\-Message} (\hyperlink{a00060}{Msg\-Multi\-Cards} msg\-Multi\-Card, String name)
+\item 
+void \hyperlink{a00081_a9f1a95cc9488d8a9519ce69718f91322}{resolve\-Message} (\hyperlink{a00063}{Msg\-Number} msg\-Number, String name)
+\item 
+void \hyperlink{a00081_ada2667ea093481a58f253f43ff6cc49f}{resolve\-Message} (\hyperlink{a00065}{Msg\-Selection} msg\-Selection, String name)
+\end{DoxyCompactItemize}
+\subsubsection*{GeschÃ¼tzte Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00074}{Player\-State} \hyperlink{a00081_a473a55c851bbda707b25948c39334a8a}{get\-Current\-Player} ()
+\item 
+\hyperlink{a00074}{Player\-State} \hyperlink{a00081_a4a5e3a0fa28ba2bd563224d875f5835c}{get\-Player\-State} (String name)
+\item 
+void \hyperlink{a00081_a563cbc52a93a127c608319b42bb97ec8}{send} (\hyperlink{a00075}{Ruleset\-Message} message, String name)
+\item 
+void \hyperlink{a00081_a58456d8d291bc054fe3c97a8239f98a1}{broadcast} (\hyperlink{a00075}{Ruleset\-Message} message)
+\end{DoxyCompactItemize}
+
+
+\subsubsection{AusfÃ¼hrliche Beschreibung}
+Das \hyperlink{a00081}{Server\-Ruleset} wird im Game\-Server instanziert und verwaltet die Zustände des Game\-States im Server. Mit der Methode \hyperlink{a00081_aa49663b89f89b9f7b3685f0b96560f69}{is\-Valid\-Move()} wird eine Eingabe eines Clients auf Regelkonformität überprüft und dann im Game\-Server das \hyperlink{a00045}{Game\-State} verändert. Über \hyperlink{a00081_afcfbddd7397a6043913b5e742934d2c2}{resolve\-Message()} kann eine Game\-Serverinstanz eine Ruleset\-Message vom Player an das Ruleset weiterleiten. 
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00081_a58456d8d291bc054fe3c97a8239f98a1}{\index{Ruleset\-::\-Server\-Ruleset@{Ruleset\-::\-Server\-Ruleset}!broadcast@{broadcast}}
+\index{broadcast@{broadcast}!Ruleset::ServerRuleset@{Ruleset\-::\-Server\-Ruleset}}
+\paragraph[{broadcast}]{\setlength{\rightskip}{0pt plus 5cm}void Ruleset.\-Server\-Ruleset.\-broadcast (
+\begin{DoxyParamCaption}
+\item[{{\bf Ruleset\-Message}}]{message}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{a00081_a58456d8d291bc054fe3c97a8239f98a1}
+
+
+Schickt eine Nachricht an alle Spieler. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em message} & Die Nachricht \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00081_a473a55c851bbda707b25948c39334a8a}{\index{Ruleset\-::\-Server\-Ruleset@{Ruleset\-::\-Server\-Ruleset}!get\-Current\-Player@{get\-Current\-Player}}
+\index{get\-Current\-Player@{get\-Current\-Player}!Ruleset::ServerRuleset@{Ruleset\-::\-Server\-Ruleset}}
+\paragraph[{get\-Current\-Player}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Player\-State} Ruleset.\-Server\-Ruleset.\-get\-Current\-Player (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{a00081_a473a55c851bbda707b25948c39334a8a}
+
+
+Holt den Spieler der gerade am Zug ist. 
+
+\begin{DoxyReturn}{RÃ¼ckgabe}
+current\-Player Der Spielzustand des Spielers der grad am Zug ist 
+\end{DoxyReturn}
+\hypertarget{a00081_a4a5e3a0fa28ba2bd563224d875f5835c}{\index{Ruleset\-::\-Server\-Ruleset@{Ruleset\-::\-Server\-Ruleset}!get\-Player\-State@{get\-Player\-State}}
+\index{get\-Player\-State@{get\-Player\-State}!Ruleset::ServerRuleset@{Ruleset\-::\-Server\-Ruleset}}
+\paragraph[{get\-Player\-State}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Player\-State} Ruleset.\-Server\-Ruleset.\-get\-Player\-State (
+\begin{DoxyParamCaption}
+\item[{String}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{a00081_a4a5e3a0fa28ba2bd563224d875f5835c}
+
+
+Holt den Spielerzustand eines Spielers. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em name} & Der Name des Spielers \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{RÃ¼ckgabe}
+player\-State Spielzustand eines Spielers 
+\end{DoxyReturn}
+\hypertarget{a00081_afcfbddd7397a6043913b5e742934d2c2}{\index{Ruleset\-::\-Server\-Ruleset@{Ruleset\-::\-Server\-Ruleset}!resolve\-Message@{resolve\-Message}}
+\index{resolve\-Message@{resolve\-Message}!Ruleset::ServerRuleset@{Ruleset\-::\-Server\-Ruleset}}
+\paragraph[{resolve\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void Ruleset.\-Server\-Ruleset.\-resolve\-Message (
+\begin{DoxyParamCaption}
+\item[{{\bf Msg\-Card}}]{msg\-Card, }
+\item[{String}]{name}
+\end{DoxyParamCaption}
+)}}\label{a00081_afcfbddd7397a6043913b5e742934d2c2}
+
+
+Verarbeitet die Ruleset\-Message dass eine Karte vom Spieler gespielt. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em msg\-Card} & Die Nachricht vom Client welche Karte gespielt wurde \\
+\hline
+{\em name} & Der Name des Spielers \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00081_ac639a8d99c0e2243f9f3fe565a315c51}{\index{Ruleset\-::\-Server\-Ruleset@{Ruleset\-::\-Server\-Ruleset}!resolve\-Message@{resolve\-Message}}
+\index{resolve\-Message@{resolve\-Message}!Ruleset::ServerRuleset@{Ruleset\-::\-Server\-Ruleset}}
+\paragraph[{resolve\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void Ruleset.\-Server\-Ruleset.\-resolve\-Message (
+\begin{DoxyParamCaption}
+\item[{{\bf Msg\-Multi\-Cards}}]{msg\-Multi\-Card, }
+\item[{String}]{name}
+\end{DoxyParamCaption}
+)}}\label{a00081_ac639a8d99c0e2243f9f3fe565a315c51}
+
+
+Verarbeitet die Ruleset\-Message dass mehrere Karten von einem Spieler übergeben wurden. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em msg\-Multi\-Card} & Die Nachricht vom Client \\
+\hline
+{\em name} & Der Name des Spielers \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00081_a9f1a95cc9488d8a9519ce69718f91322}{\index{Ruleset\-::\-Server\-Ruleset@{Ruleset\-::\-Server\-Ruleset}!resolve\-Message@{resolve\-Message}}
+\index{resolve\-Message@{resolve\-Message}!Ruleset::ServerRuleset@{Ruleset\-::\-Server\-Ruleset}}
+\paragraph[{resolve\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void Ruleset.\-Server\-Ruleset.\-resolve\-Message (
+\begin{DoxyParamCaption}
+\item[{{\bf Msg\-Number}}]{msg\-Number, }
+\item[{String}]{name}
+\end{DoxyParamCaption}
+)}}\label{a00081_a9f1a95cc9488d8a9519ce69718f91322}
+
+
+Verarbeitet die Ruleset\-Message dass ein Spieler eine Stichangabe gemacht hat. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em msg\-Number} & Die Nachricht vom Client \\
+\hline
+{\em name} & Der Name des Spielers \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00081_ada2667ea093481a58f253f43ff6cc49f}{\index{Ruleset\-::\-Server\-Ruleset@{Ruleset\-::\-Server\-Ruleset}!resolve\-Message@{resolve\-Message}}
+\index{resolve\-Message@{resolve\-Message}!Ruleset::ServerRuleset@{Ruleset\-::\-Server\-Ruleset}}
+\paragraph[{resolve\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void Ruleset.\-Server\-Ruleset.\-resolve\-Message (
+\begin{DoxyParamCaption}
+\item[{{\bf Msg\-Selection}}]{msg\-Selection, }
+\item[{String}]{name}
+\end{DoxyParamCaption}
+)}}\label{a00081_ada2667ea093481a58f253f43ff6cc49f}
+
+
+Verarbeitet die Ruleset\-Message dass ein Spieler eine Farbe ausgewählt hat. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em msg\-Selection} & Die Nachricht vom Client \\
+\hline
+{\em name} & Der Name des Spielers \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00081_a563cbc52a93a127c608319b42bb97ec8}{\index{Ruleset\-::\-Server\-Ruleset@{Ruleset\-::\-Server\-Ruleset}!send@{send}}
+\index{send@{send}!Ruleset::ServerRuleset@{Ruleset\-::\-Server\-Ruleset}}
+\paragraph[{send}]{\setlength{\rightskip}{0pt plus 5cm}void Ruleset.\-Server\-Ruleset.\-send (
+\begin{DoxyParamCaption}
+\item[{{\bf Ruleset\-Message}}]{message, }
+\item[{String}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{a00081_a563cbc52a93a127c608319b42bb97ec8}
+
+
+Schickt eine Nachricht an einen Spieler. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em message} & Die Nachricht vom Typ Ruleset\-Message \\
+\hline
+{\em name} & Der Name vom Spieler \\
+\hline
+\end{DoxyParams}

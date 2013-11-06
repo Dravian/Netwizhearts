@@ -1,0 +1,76 @@
+\hypertarget{a00039}{\subsection{Ruleset.\-Game\-Client\-Update Klassenreferenz}
+\label{a00039}\index{Ruleset.\-Game\-Client\-Update@{Ruleset.\-Game\-Client\-Update}}
+}
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+Array\-List$<$ \hyperlink{a00002}{Card} $>$ \hyperlink{a00039_a5169a0c2be5742c06b2a3b4723a345f4}{get\-Own\-Hand} ()
+\item 
+Map$<$ String, \hyperlink{a00002}{Card} $>$ \hyperlink{a00039_afdcfef45bd551867214d77414821d7e1}{get\-Played\-Cards} ()
+\item 
+\hyperlink{a00069}{Other\-Data} \hyperlink{a00039_a8c5d5e302f02decc32bfeaf896d13012}{get\-Own\-Data} ()
+\item 
+Array\-List$<$ \hyperlink{a00069}{Other\-Data} $>$ \hyperlink{a00039_a0662f7c0d8f8cdbb9916bf424aea1e18}{get\-Other\-Player\-Data} ()
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Das w�ren seine Spielhand, der Ablagestapel sowie die Otherdata von allen Spielern. Bei Wizard enth�lt es auch die momentane Trumpfkarte. 
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00039_a0662f7c0d8f8cdbb9916bf424aea1e18}{\index{Ruleset\-::\-Game\-Client\-Update@{Ruleset\-::\-Game\-Client\-Update}!get\-Other\-Player\-Data@{get\-Other\-Player\-Data}}
+\index{get\-Other\-Player\-Data@{get\-Other\-Player\-Data}!Ruleset::GameClientUpdate@{Ruleset\-::\-Game\-Client\-Update}}
+\paragraph[{get\-Other\-Player\-Data}]{\setlength{\rightskip}{0pt plus 5cm}Array\-List$<${\bf Other\-Data}$>$ Ruleset.\-Game\-Client\-Update.\-get\-Other\-Player\-Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00039_a0662f7c0d8f8cdbb9916bf424aea1e18}
+
+
+Holt die Spieldaten der anderen Spieler. 
+
+\begin{DoxyReturn}{Rückgabe}
+other\-Player\-Data Die Spieldaten der anderen Spieler 
+\end{DoxyReturn}
+\hypertarget{a00039_a8c5d5e302f02decc32bfeaf896d13012}{\index{Ruleset\-::\-Game\-Client\-Update@{Ruleset\-::\-Game\-Client\-Update}!get\-Own\-Data@{get\-Own\-Data}}
+\index{get\-Own\-Data@{get\-Own\-Data}!Ruleset::GameClientUpdate@{Ruleset\-::\-Game\-Client\-Update}}
+\paragraph[{get\-Own\-Data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Other\-Data} Ruleset.\-Game\-Client\-Update.\-get\-Own\-Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00039_a8c5d5e302f02decc32bfeaf896d13012}
+
+
+Holt die zus�tzlichen Spieldaten des Client. 
+
+\begin{DoxyReturn}{Rückgabe}
+own\-Data Die Spieldaten des Clients 
+\end{DoxyReturn}
+\hypertarget{a00039_a5169a0c2be5742c06b2a3b4723a345f4}{\index{Ruleset\-::\-Game\-Client\-Update@{Ruleset\-::\-Game\-Client\-Update}!get\-Own\-Hand@{get\-Own\-Hand}}
+\index{get\-Own\-Hand@{get\-Own\-Hand}!Ruleset::GameClientUpdate@{Ruleset\-::\-Game\-Client\-Update}}
+\paragraph[{get\-Own\-Hand}]{\setlength{\rightskip}{0pt plus 5cm}Array\-List$<${\bf Card}$>$ Ruleset.\-Game\-Client\-Update.\-get\-Own\-Hand (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00039_a5169a0c2be5742c06b2a3b4723a345f4}
+
+
+Holt die Karten die der Client auf der Hand hat. 
+
+\begin{DoxyReturn}{Rückgabe}
+own\-Hand Die Hand des Clients 
+\end{DoxyReturn}
+\hypertarget{a00039_afdcfef45bd551867214d77414821d7e1}{\index{Ruleset\-::\-Game\-Client\-Update@{Ruleset\-::\-Game\-Client\-Update}!get\-Played\-Cards@{get\-Played\-Cards}}
+\index{get\-Played\-Cards@{get\-Played\-Cards}!Ruleset::GameClientUpdate@{Ruleset\-::\-Game\-Client\-Update}}
+\paragraph[{get\-Played\-Cards}]{\setlength{\rightskip}{0pt plus 5cm}Map$<$String, {\bf Card}$>$ Ruleset.\-Game\-Client\-Update.\-get\-Played\-Cards (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00039_afdcfef45bd551867214d77414821d7e1}
+
+
+Holt die gespielten Karten auf dem Ablagestapel. 
+
+\begin{DoxyReturn}{Rückgabe}
+discard\-Pile Die gespielten Karten 
+\end{DoxyReturn}

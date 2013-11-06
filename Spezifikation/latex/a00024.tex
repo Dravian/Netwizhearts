@@ -1,0 +1,74 @@
+\hypertarget{a00024}{\subsection{Com\-Objects.\-Com\-Init\-Lobby Klassenreferenz}
+\label{a00024}\index{Com\-Objects.\-Com\-Init\-Lobby@{Com\-Objects.\-Com\-Init\-Lobby}}
+}
+Klassendiagramm für Com\-Objects.\-Com\-Init\-Lobby\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{a00024}
+\end{center}
+\end{figure}
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00024_a6dd7844ead6be6ad10308dada6dfb77c}{Com\-Init\-Lobby} (List player\-List, Set game\-List)
+\item 
+List \hyperlink{a00024_afbb8f13abe20cdd44a14bf2174f89b65}{get\-Player\-List} ()
+\item 
+Set$<$ \hyperlink{a00044}{Game\-Server\-Representation} $>$ \hyperlink{a00024_a2fa7410dcaccbf82e10daab9650fe3b3}{get\-Game\-List} ()
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Sie synchronisiert den Client mit der Lobby, wenn er sich mit dem Server verbindet oder nach einem Spiel in die Lobby zurückkehrt. Dazu enthält sie sowohl die player\-List, als auch die game\-List. 
+
+\subsubsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{a00024_a6dd7844ead6be6ad10308dada6dfb77c}{\index{Com\-Objects\-::\-Com\-Init\-Lobby@{Com\-Objects\-::\-Com\-Init\-Lobby}!Com\-Init\-Lobby@{Com\-Init\-Lobby}}
+\index{Com\-Init\-Lobby@{Com\-Init\-Lobby}!ComObjects::ComInitLobby@{Com\-Objects\-::\-Com\-Init\-Lobby}}
+\paragraph[{Com\-Init\-Lobby}]{\setlength{\rightskip}{0pt plus 5cm}Com\-Objects.\-Com\-Init\-Lobby.\-Com\-Init\-Lobby (
+\begin{DoxyParamCaption}
+\item[{List}]{player\-List, }
+\item[{Set}]{game\-List}
+\end{DoxyParamCaption}
+)}}\label{a00024_a6dd7844ead6be6ad10308dada6dfb77c}
+
+
+Dies ist der Kontruktor für eine neue Com\-Init\-Lobby-\/\-Nachricht. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em player\-List} & ist die Liste der Spieler, die sich in der Lobby befinden. \\
+\hline
+{\em game\-List} & ist die Liste der Spiele, die existieren und in der Lobby angezeigt werden. \\
+\hline
+\end{DoxyParams}
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00024_a2fa7410dcaccbf82e10daab9650fe3b3}{\index{Com\-Objects\-::\-Com\-Init\-Lobby@{Com\-Objects\-::\-Com\-Init\-Lobby}!get\-Game\-List@{get\-Game\-List}}
+\index{get\-Game\-List@{get\-Game\-List}!ComObjects::ComInitLobby@{Com\-Objects\-::\-Com\-Init\-Lobby}}
+\paragraph[{get\-Game\-List}]{\setlength{\rightskip}{0pt plus 5cm}Set$<${\bf Game\-Server\-Representation}$>$ Com\-Objects.\-Com\-Init\-Lobby.\-get\-Game\-List (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00024_a2fa7410dcaccbf82e10daab9650fe3b3}
+
+
+Diese Methode liefert eine Liste aller Spiele, die erstellt wurden, damit sie in der Lobby angezeigt werden können. 
+
+\begin{DoxyReturn}{Rückgabe}
+die Liste der Spiele. 
+\end{DoxyReturn}
+\hypertarget{a00024_afbb8f13abe20cdd44a14bf2174f89b65}{\index{Com\-Objects\-::\-Com\-Init\-Lobby@{Com\-Objects\-::\-Com\-Init\-Lobby}!get\-Player\-List@{get\-Player\-List}}
+\index{get\-Player\-List@{get\-Player\-List}!ComObjects::ComInitLobby@{Com\-Objects\-::\-Com\-Init\-Lobby}}
+\paragraph[{get\-Player\-List}]{\setlength{\rightskip}{0pt plus 5cm}List Com\-Objects.\-Com\-Init\-Lobby.\-get\-Player\-List (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00024_afbb8f13abe20cdd44a14bf2174f89b65}
+
+
+Die Methode liefert die Liste aller Spieler, die in der Lobby sind. 
+
+\begin{DoxyReturn}{Rückgabe}
+die Liste der Spieler. 
+\end{DoxyReturn}

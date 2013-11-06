@@ -1,5 +1,9 @@
 package Client;
 
+/**
+ * 
+ * 
+ */
 public enum CardID {
 
 	ID1,

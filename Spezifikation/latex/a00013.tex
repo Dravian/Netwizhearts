@@ -1,0 +1,231 @@
+\hypertarget{a00013}{\subsection{Client.\-Client\-Model Klassenreferenz}
+\label{a00013}\index{Client.\-Client\-Model@{Client.\-Client\-Model}}
+}
+Klassendiagramm fÃ¼r Client.\-Client\-Model\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{a00013}
+\end{center}
+\end{figure}
+\subsubsection*{Klassen}
+\begin{DoxyCompactItemize}
+\item 
+class {\bfseries Message\-Listener\-Thread}
+\end{DoxyCompactItemize}
+\subsubsection*{Ã–ffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00023}{Com\-Init\-Game\-Lobby} \hyperlink{a00013_a35476459f18487356f614c194a0f0a3e}{get\-Game\-Lobby\-Init} ()
+\item 
+\hyperlink{a00024}{Com\-Init\-Lobby} \hyperlink{a00013_a01e99796149434a311e1a2dd2ed57314}{get\-Server\-Lobby\-Init} ()
+\item 
+\hyperlink{a00027}{Com\-Lobby\-Update\-Gamelist} \hyperlink{a00013_ab314b846413ebad25fbc5ee0e89d9445}{get\-Server\-Lobby\-Gamelist\-Update} ()
+\item 
+\hyperlink{a00033}{Com\-Update\-Playerlist} \hyperlink{a00013_ab26f2c07556d4d9ddc74fddd3daad96d}{get\-Playerlist\-Update} ()
+\item 
+\hyperlink{a00019}{Com\-Chat\-Message} \hyperlink{a00013_ab01edcf46c3e240c5f36786e6459416e}{get\-Chat\-Message} ()
+\item 
+\hyperlink{a00005}{Card\-I\-D} \hyperlink{a00013_af8e8f554274458f916b5474f6f0b3a49}{get\-Played\-Card} ()
+\item 
+void \hyperlink{a00013_adf1f7819be59c43089611c4c9743308f}{set\-Language} (final \hyperlink{a00052}{Language} language)
+\item 
+\hyperlink{a00052}{Language} \hyperlink{a00013_a4fbbd91f3ce02f00ec1e00ee75a794b9}{get\-Language} ()
+\item 
+void \hyperlink{a00013_a3eccc4b5010311983355bb656f320397}{kick\-Player} (final String name)
+\item 
+void \hyperlink{a00013_a522b10a6dc6395519601d16036515740}{join\-Game} (final String name)
+\item 
+void \hyperlink{a00013_a07940a8aa4d3af05a2ca60a5e6ca482d}{make\-Move} (\hyperlink{a00005}{Card\-I\-D} id)
+\item 
+void \hyperlink{a00013_ae42c1c11992b0efcbc6ed833463e18ab}{create\-Connection} (final String username, final String server\-Adress, final int port)
+\end{DoxyCompactItemize}
+
+
+\subsubsection{AusfÃ¼hrliche Beschreibung}
+Das Model bedient den Server durch den Listener\-Thread und leitet Daten an das Regelwerk und View weiter. 
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00013_ae42c1c11992b0efcbc6ed833463e18ab}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!create\-Connection@{create\-Connection}}
+\index{create\-Connection@{create\-Connection}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{create\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\-Client\-Model.\-create\-Connection (
+\begin{DoxyParamCaption}
+\item[{final String}]{username, }
+\item[{final String}]{server\-Adress, }
+\item[{final int}]{port}
+\end{DoxyParamCaption}
+)}}\label{a00013_ae42c1c11992b0efcbc6ed833463e18ab}
+
+
+Erstellt den \hyperlink{a00056}{Message\-Listener\-Thread} und führt den Benutzerlogin durch. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em username} & String der eindeutige Benutzername der für den Login verwendet wird. \\
+\hline
+{\em server\-Adress} & String die Adresse des spielservers. \\
+\hline
+{\em port} & Integer der Port des Spielservers. \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00013_ab01edcf46c3e240c5f36786e6459416e}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!get\-Chat\-Message@{get\-Chat\-Message}}
+\index{get\-Chat\-Message@{get\-Chat\-Message}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{get\-Chat\-Message}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Com\-Chat\-Message} Client.\-Client\-Model.\-get\-Chat\-Message (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00013_ab01edcf46c3e240c5f36786e6459416e}
+
+
+Diese Methode wird von der View aufgerufen um eine neue Chatnachricht abzuholen. 
+
+\begin{DoxyReturn}{RÃ¼ckgabe}
+String die Chatnachricht. 
+\end{DoxyReturn}
+\hypertarget{a00013_a35476459f18487356f614c194a0f0a3e}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!get\-Game\-Lobby\-Init@{get\-Game\-Lobby\-Init}}
+\index{get\-Game\-Lobby\-Init@{get\-Game\-Lobby\-Init}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{get\-Game\-Lobby\-Init}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Com\-Init\-Game\-Lobby} Client.\-Client\-Model.\-get\-Game\-Lobby\-Init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00013_a35476459f18487356f614c194a0f0a3e}
+
+
+Diese Methode wird von der View beim betreten der Spiellobby aufgerufen und liefert eine Liste von Spielern in der Spiellobby. 
+
+\begin{DoxyReturn}{RÃ¼ckgabe}
+Com\-Init\-Game\-Lobby Voller Datensatz für die Spiellobby. 
+\end{DoxyReturn}
+\hypertarget{a00013_a4fbbd91f3ce02f00ec1e00ee75a794b9}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!get\-Language@{get\-Language}}
+\index{get\-Language@{get\-Language}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{get\-Language}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Language} Client.\-Client\-Model.\-get\-Language (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00013_a4fbbd91f3ce02f00ec1e00ee75a794b9}
+
+
+Liefert die Sprache der G\-U\-I. 
+
+\begin{DoxyReturn}{RÃ¼ckgabe}
+language Enumerator der die Spielsprache anzeigt. 
+\end{DoxyReturn}
+\hypertarget{a00013_af8e8f554274458f916b5474f6f0b3a49}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!get\-Played\-Card@{get\-Played\-Card}}
+\index{get\-Played\-Card@{get\-Played\-Card}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{get\-Played\-Card}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Card\-I\-D} Client.\-Client\-Model.\-get\-Played\-Card (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00013_af8e8f554274458f916b5474f6f0b3a49}
+
+
+Gibt der View die gespielte Karte eines anderen Spielers zurück. 
+
+\begin{DoxyReturn}{RÃ¼ckgabe}
+enum \hyperlink{a00005}{Card\-I\-D}. Die Id der Karte 
+\end{DoxyReturn}
+\hypertarget{a00013_ab26f2c07556d4d9ddc74fddd3daad96d}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!get\-Playerlist\-Update@{get\-Playerlist\-Update}}
+\index{get\-Playerlist\-Update@{get\-Playerlist\-Update}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{get\-Playerlist\-Update}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Com\-Update\-Playerlist} Client.\-Client\-Model.\-get\-Playerlist\-Update (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00013_ab26f2c07556d4d9ddc74fddd3daad96d}
+
+
+Diese Methode wird von der View aufgerufen um die Liste der Spieler zu aktualisieren. 
+
+\begin{DoxyReturn}{RÃ¼ckgabe}
+Com\-Update\-Playerlist Update für die aktuelle Spielerliste. 
+\end{DoxyReturn}
+\hypertarget{a00013_ab314b846413ebad25fbc5ee0e89d9445}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!get\-Server\-Lobby\-Gamelist\-Update@{get\-Server\-Lobby\-Gamelist\-Update}}
+\index{get\-Server\-Lobby\-Gamelist\-Update@{get\-Server\-Lobby\-Gamelist\-Update}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{get\-Server\-Lobby\-Gamelist\-Update}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Com\-Lobby\-Update\-Gamelist} Client.\-Client\-Model.\-get\-Server\-Lobby\-Gamelist\-Update (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00013_ab314b846413ebad25fbc5ee0e89d9445}
+
+
+Diese Methode wird von der View aufgerufen und aktualisiert einzelne kommende und abgehende Spieler in den Listen der View. 
+
+\begin{DoxyReturn}{RÃ¼ckgabe}
+Com\-Lobby\-Update\-Gamelist 
+\end{DoxyReturn}
+\hypertarget{a00013_a01e99796149434a311e1a2dd2ed57314}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!get\-Server\-Lobby\-Init@{get\-Server\-Lobby\-Init}}
+\index{get\-Server\-Lobby\-Init@{get\-Server\-Lobby\-Init}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{get\-Server\-Lobby\-Init}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Com\-Init\-Lobby} Client.\-Client\-Model.\-get\-Server\-Lobby\-Init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00013_a01e99796149434a311e1a2dd2ed57314}
+
+
+Diese Methode wird von der View beim betreten der Serverlobby aufgerufen und liefert eine Liste von Spielern und Spielen in der Serverlobby. 
+
+\begin{DoxyReturn}{RÃ¼ckgabe}
+Com\-Init\-Lobby Voller Datensatz für die Server\-Lobby. 
+\end{DoxyReturn}
+\hypertarget{a00013_a522b10a6dc6395519601d16036515740}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!join\-Game@{join\-Game}}
+\index{join\-Game@{join\-Game}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{join\-Game}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\-Client\-Model.\-join\-Game (
+\begin{DoxyParamCaption}
+\item[{final String}]{name}
+\end{DoxyParamCaption}
+)}}\label{a00013_a522b10a6dc6395519601d16036515740}
+
+
+Diese Methode wird von dem \hyperlink{a00008}{Client\-Controller} aufgerufen um einem bereits erstelltem Spiel beizutreten. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em name} & String Der Name des Spiels. \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00013_a3eccc4b5010311983355bb656f320397}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!kick\-Player@{kick\-Player}}
+\index{kick\-Player@{kick\-Player}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{kick\-Player}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\-Client\-Model.\-kick\-Player (
+\begin{DoxyParamCaption}
+\item[{final String}]{name}
+\end{DoxyParamCaption}
+)}}\label{a00013_a3eccc4b5010311983355bb656f320397}
+
+
+Wird vom Controller aufgerufen um einen Spieler aus der Spiellobby zu entfernen. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em name} & des Spielerst welcher enfernt werden soll. \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00013_a07940a8aa4d3af05a2ca60a5e6ca482d}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!make\-Move@{make\-Move}}
+\index{make\-Move@{make\-Move}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{make\-Move}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\-Client\-Model.\-make\-Move (
+\begin{DoxyParamCaption}
+\item[{{\bf Card\-I\-D}}]{id}
+\end{DoxyParamCaption}
+)}}\label{a00013_a07940a8aa4d3af05a2ca60a5e6ca482d}
+
+
+Wird vom Client\-Conroller aufgerufen um eine Karte auszuspielen. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em id} & Die id der gespielten Karte um sie einer logischen Karte zuordnen zu können. \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00013_adf1f7819be59c43089611c4c9743308f}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!set\-Language@{set\-Language}}
+\index{set\-Language@{set\-Language}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{set\-Language}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\-Client\-Model.\-set\-Language (
+\begin{DoxyParamCaption}
+\item[{final {\bf Language}}]{language}
+\end{DoxyParamCaption}
+)}}\label{a00013_adf1f7819be59c43089611c4c9743308f}
+
+
+Setzt die Sprache der G\-U\-I. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em language} & Enumerator der die Spielsprache anzeigt. \\
+\hline
+\end{DoxyParams}

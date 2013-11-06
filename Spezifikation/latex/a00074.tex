@@ -1,0 +1,99 @@
+\hypertarget{a00074}{\subsection{Ruleset.\-Player\-State Klassenreferenz}
+\label{a00074}\index{Ruleset.\-Player\-State@{Ruleset.\-Player\-State}}
+}
+\subsubsection*{Ã–ffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+String \hyperlink{a00074_a20076c230bb4bfa3404b53bead5194d7}{get\-Name} ()
+\item 
+Array\-List$<$ \hyperlink{a00002}{Card} $>$ \hyperlink{a00074_a51f5e669f6c38b2810d833010a8fc6d0}{get\-Hand} ()
+\item 
+\hyperlink{a00069}{Other\-Data} \hyperlink{a00074_ad913d4462ff4019b1d85ba534a27250e}{get\-Other\-Data} ()
+\item 
+void \hyperlink{a00074_a613eaeb717801aca760df6776d34d228}{add\-Card} (\hyperlink{a00002}{Card} card)
+\item 
+boolean \hyperlink{a00074_ac8c5ede3e4788f8efd3527c16a7a696d}{remove\-Card} (\hyperlink{a00002}{Card} card)
+\end{DoxyCompactItemize}
+
+
+\subsubsection{AusfÃ¼hrliche Beschreibung}
+Sie enthält den Namen des Spielers, seine Handkarten und \hyperlink{a00069}{Other\-Data}. 
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00074_a613eaeb717801aca760df6776d34d228}{\index{Ruleset\-::\-Player\-State@{Ruleset\-::\-Player\-State}!add\-Card@{add\-Card}}
+\index{add\-Card@{add\-Card}!Ruleset::PlayerState@{Ruleset\-::\-Player\-State}}
+\paragraph[{add\-Card}]{\setlength{\rightskip}{0pt plus 5cm}void Ruleset.\-Player\-State.\-add\-Card (
+\begin{DoxyParamCaption}
+\item[{{\bf Card}}]{card}
+\end{DoxyParamCaption}
+)}}\label{a00074_a613eaeb717801aca760df6776d34d228}
+
+
+Gibt dem Spieler eine Karte. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em card} & Die Karte die dem Spieler gegeben wird \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00074_a51f5e669f6c38b2810d833010a8fc6d0}{\index{Ruleset\-::\-Player\-State@{Ruleset\-::\-Player\-State}!get\-Hand@{get\-Hand}}
+\index{get\-Hand@{get\-Hand}!Ruleset::PlayerState@{Ruleset\-::\-Player\-State}}
+\paragraph[{get\-Hand}]{\setlength{\rightskip}{0pt plus 5cm}Array\-List$<${\bf Card}$>$ Ruleset.\-Player\-State.\-get\-Hand (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00074_a51f5e669f6c38b2810d833010a8fc6d0}
+
+
+Holt die Kartenhand des Spielers. 
+
+\begin{DoxyReturn}{RÃ¼ckgabe}
+own\-Hand Die Kartenhand des Spielers 
+\end{DoxyReturn}
+\hypertarget{a00074_a20076c230bb4bfa3404b53bead5194d7}{\index{Ruleset\-::\-Player\-State@{Ruleset\-::\-Player\-State}!get\-Name@{get\-Name}}
+\index{get\-Name@{get\-Name}!Ruleset::PlayerState@{Ruleset\-::\-Player\-State}}
+\paragraph[{get\-Name}]{\setlength{\rightskip}{0pt plus 5cm}String Ruleset.\-Player\-State.\-get\-Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00074_a20076c230bb4bfa3404b53bead5194d7}
+
+
+Holt den namen eines Spielers. 
+
+\begin{DoxyReturn}{RÃ¼ckgabe}
+name Der Name des Spielers 
+\end{DoxyReturn}
+\hypertarget{a00074_ad913d4462ff4019b1d85ba534a27250e}{\index{Ruleset\-::\-Player\-State@{Ruleset\-::\-Player\-State}!get\-Other\-Data@{get\-Other\-Data}}
+\index{get\-Other\-Data@{get\-Other\-Data}!Ruleset::PlayerState@{Ruleset\-::\-Player\-State}}
+\paragraph[{get\-Other\-Data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Other\-Data} Ruleset.\-Player\-State.\-get\-Other\-Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00074_ad913d4462ff4019b1d85ba534a27250e}
+
+
+Holt die zusätzlichen Informationen des Spielers. 
+
+\begin{DoxyReturn}{RÃ¼ckgabe}
+own\-Hand Die zusätzlichen Informationen des Spielers 
+\end{DoxyReturn}
+\hypertarget{a00074_ac8c5ede3e4788f8efd3527c16a7a696d}{\index{Ruleset\-::\-Player\-State@{Ruleset\-::\-Player\-State}!remove\-Card@{remove\-Card}}
+\index{remove\-Card@{remove\-Card}!Ruleset::PlayerState@{Ruleset\-::\-Player\-State}}
+\paragraph[{remove\-Card}]{\setlength{\rightskip}{0pt plus 5cm}boolean Ruleset.\-Player\-State.\-remove\-Card (
+\begin{DoxyParamCaption}
+\item[{{\bf Card}}]{card}
+\end{DoxyParamCaption}
+)}}\label{a00074_ac8c5ede3e4788f8efd3527c16a7a696d}
+
+
+Entfernt eine Karte aus der Hand des Spielers. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em card} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{RÃ¼ckgabe}
+own\-Hand.\-remove(card) Gibt true zurück wenn die Karte in der Hand ist und false sonst 
+\end{DoxyReturn}

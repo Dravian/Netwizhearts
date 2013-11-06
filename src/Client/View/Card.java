@@ -11,8 +11,6 @@ import javax.swing.JLabel;
  * Sie wird verwendet um einzelne Karten auf das Spielfeld zu zeichnen.
  * Dazu enthält sie die Pfadangabe zu dem Ordner, in dem die Bilder der
  * Karten gespeichert sind, und eine ID, um das genaue Bild zu spezifizieren.
- * 
- * @author m4nkey
  */
 public class Card extends JLabel{
 

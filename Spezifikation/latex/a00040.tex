@@ -1,0 +1,46 @@
+\hypertarget{a00040}{\subsection{Client.\-View.\-Game\-Lobby Klassenreferenz}
+\label{a00040}\index{Client.\-View.\-Game\-Lobby@{Client.\-View.\-Game\-Lobby}}
+}
+Klassendiagramm fÃ¼r Client.\-View.\-Game\-Lobby\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{a00040}
+\end{center}
+\end{figure}
+\subsubsection*{Ã–ffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{a00040_aa1fcf1af96de43cd7cf9f572bdca4aa9}{update} (Observable o, Object arg)
+\end{DoxyCompactItemize}
+
+
+\subsubsection{AusfÃ¼hrliche Beschreibung}
+Der Spielleiter kann Spieler mit dem Remove Player Button entfernen. Über Leave kehren die Spieler in die \hyperlink{a00053}{Lobby} zurück. Der spielinterne Chat ist ab hier verfügbar.
+
+\begin{DoxyAuthor}{Autor}
+M4nkey 
+\end{DoxyAuthor}
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00040_aa1fcf1af96de43cd7cf9f572bdca4aa9}{\index{Client\-::\-View\-::\-Game\-Lobby@{Client\-::\-View\-::\-Game\-Lobby}!update@{update}}
+\index{update@{update}!Client::View::GameLobby@{Client\-::\-View\-::\-Game\-Lobby}}
+\paragraph[{update}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\-View.\-Game\-Lobby.\-update (
+\begin{DoxyParamCaption}
+\item[{Observable}]{o, }
+\item[{Object}]{arg}
+\end{DoxyParamCaption}
+)}}\label{a00040_aa1fcf1af96de43cd7cf9f572bdca4aa9}
+
+
+Wird durch notify() im \hyperlink{a00013}{Client\-Model} aufgerufen. 
+
+Je nach dem in arg übergebenen Befehl wird ein Update des Fensters ausgeführt oder eine Fehlermeldung angezeigt.
+
+
+\begin{DoxyParams}{Parameter}
+{\em o} & erwartet ein Objekt von der Klasse \hyperlink{a00013}{Client\-Model} \\
+\hline
+{\em arg} & erwartet\-: window\-Change\-Acknowledged, window\-Change\-Denied, player\-List\-Update, window\-Change\-Forced, chat\-Message \\
+\hline
+\end{DoxyParams}
