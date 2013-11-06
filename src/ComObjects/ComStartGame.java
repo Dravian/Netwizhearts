@@ -7,7 +7,7 @@ package ComObjects;
 public class ComStartGame extends ComObject {
 
     /**
-     * Dieser Konstruktor erzeugt eine neue ComStartGame-Nachricht.
+     * Dies ist der Kontruktor für eine neue ComStartGame-Nachricht.
      */
     public ComStartGame() {
 

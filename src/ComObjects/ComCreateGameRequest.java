@@ -16,7 +16,7 @@ public class ComCreateGameRequest extends ComObject {
     private String password;
 
     /**
-     * Dieser Konstruktor erstellt eine neue ComCreateGameRequest-Nachricht.
+     * Dies ist der Kontruktor für eine neue ComCreateGameRequest-Nachricht.
      * @param name          ist der Name des Spiels.
      * @param ruleset       ist die der Spieltyp, der erstellt werden soll.
      * @param hasPassword   sagt, ob ein Passwort gesetzt wurde.

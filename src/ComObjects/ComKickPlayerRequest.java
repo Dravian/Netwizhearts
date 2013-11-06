@@ -15,7 +15,7 @@ public class ComKickPlayerRequest extends ComObject {
 
 
     /**
-     * Dieser Konstruktor erstellt eine neue ComKickPlayerRequest-Nachricht.
+     * Dies ist der Kontruktor für eine neue ComKickPlayerRequest-Nachricht.
      * Diese enthält den Namen des Spielers, der aus den Spiel gelöscht werden soll.
      * @param playerName ist der Name des Spielers.
      */

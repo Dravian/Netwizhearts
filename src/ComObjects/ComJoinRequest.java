@@ -16,7 +16,7 @@ public class ComJoinRequest extends ComObject {
 	private String gameMasterName;
 
     /**
-     * Dieser Konstruktor erstellt eine neue ConJoinRequest-Nachricht.
+     * Dies ist der Kontruktor für eine neue ConJoinRequest-Nachricht.
      * Ein Spiel kann durch den eindeutigen Namen der Spielleiters
      * identifiziert werden.
      * @param gameMasterName ist der Name der Spielleiters.

@@ -13,7 +13,7 @@ public class ComLobbyUpdateGamelist extends ComObject {
 	private GameServerRepresentation gameServer;
 
     /**
-     * Dieser Konstruktor erstellt eine neue ComLobbyUpdateGamelist-Nachricht.
+     * Dies ist der Kontruktor für eine neue ComLobbyUpdateGamelist-Nachricht.
      * @param removeFlag zeigt an, ob das Spiel gelöscht werden soll.
      * @param gameServer ist das Spiel.
      */
