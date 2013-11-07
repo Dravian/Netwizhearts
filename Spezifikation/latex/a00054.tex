@@ -30,7 +30,7 @@ Com\-Init\-Lobby \hyperlink{a00054_a8f3543587bb516bbfa3cc5f3b087e3ac}{init\-Lobb
 
 
 \subsubsection{AusfÃ¼hrliche Beschreibung}
-Sie erstellt neue Spiele und verwaltet laufende Spiele. Auch wird der Chatverkehr über sie an die verbundenen Spieler weitergeleitet. Die Lobby\-Server-\/\-Klasse erbt Methoden zur Kommunikation vom \hyperlink{a00078}{Server}. \begin{DoxyAuthor}{Autor}
+Sie erstellt neue Spiele und verwaltet laufende Spiele. Auch wird der Chatverkehr Ã¼ber sie an die verbundenen Spieler weitergeleitet. Die Lobby\-Server-\/\-Klasse erbt Methoden zur Kommunikation vom \hyperlink{a00078}{Server}. \begin{DoxyAuthor}{Autor}
 Viktoria 
 \end{DoxyAuthor}
 
@@ -45,10 +45,10 @@ Viktoria
 )}}\label{a00054_a8f3543587bb516bbfa3cc5f3b087e3ac}
 
 
-Baut ein neues Com\-Init\-Lobby Objekt und gibt es zurück. 
+Baut ein neues Com\-Init\-Lobby Objekt und gibt es zurÃ¼ck. 
 
 \begin{DoxyReturn}{RÃ¼ckgabe}
-Gibt das Com\-Init\-Lobby Objekt zurück 
+Gibt das Com\-Init\-Lobby Objekt zurÃ¼ck 
 \end{DoxyReturn}
 \hypertarget{a00054_ad240485402c357285d02709a08525d90}{\index{Server\-::\-Lobby\-Server@{Server\-::\-Lobby\-Server}!receive\-Message@{receive\-Message}}
 \index{receive\-Message@{receive\-Message}!Server::LobbyServer@{Server\-::\-Lobby\-Server}}
@@ -60,13 +60,13 @@ Gibt das Com\-Init\-Lobby Objekt zurück
 )}}\label{a00054_ad240485402c357285d02709a08525d90}
 
 
-Diese Methode ist dafür zuständig eine Chatnachricht an alle Clients im Spiel zu verschicken. 
+Diese Methode ist dafÃ¼r zustÃ¤ndig eine Chatnachricht an alle Clients im Spiel zu verschicken. 
 
-Dafür wird die Com\-Chat\-Message mit broadcast an alle Spieler im player\-Set verteilt. 
+DafÃ¼r wird die Com\-Chat\-Message mit broadcast an alle Spieler im player\-Set verteilt. 
 \begin{DoxyParams}{Parameter}
 {\em player} & ist der Threat der die Nachricht erhalten hat \\
 \hline
-{\em chat} & ist das Com\-Object, das die Chatnachricht enthält \\
+{\em chat} & ist das Com\-Object, das die Chatnachricht enthÃ¤lt \\
 \hline
 \end{DoxyParams}
 \hypertarget{a00054_a545d275e96d490093936496ef0c425d0}{\index{Server\-::\-Lobby\-Server@{Server\-::\-Lobby\-Server}!receive\-Message@{receive\-Message}}
@@ -79,13 +79,13 @@ Dafür wird die Com\-Chat\-Message mit broadcast an alle Spieler im player\-Set v
 )}}\label{a00054_a545d275e96d490093936496ef0c425d0}
 
 
-Diese Methode schließt die Verbindung, der \hyperlink{a00073}{Player} wird aus dem player\-Set (bzw. 
+Diese Methode schlieÃŸt die Verbindung, der \hyperlink{a00073}{Player} wird aus dem player\-Set (bzw. 
 
 no\-Names Set) entfernt, der Name des Players wird aus dem Set names entfernt. War der Spieler im player\-Set, wird ein Com\-Update\-Playerlist mit broadcast an alle Clients verschickt. 
 \begin{DoxyParams}{Parameter}
 {\em player} & ist der Threat der die Nachricht erhalten hat \\
 \hline
-{\em quit} & ist das Com\-Object, welches angibt, dass der Spieler das Spiel vollständig verlässt \\
+{\em quit} & ist das Com\-Object, welches angibt, dass der Spieler das Spiel vollstÃ¤ndig verlÃ¤sst \\
 \hline
 \end{DoxyParams}
 \hypertarget{a00054_a9c388e6df37f5c8263a4e3b54eb228ef}{\index{Server\-::\-Lobby\-Server@{Server\-::\-Lobby\-Server}!receive\-Message@{receive\-Message}}
@@ -98,9 +98,9 @@ no\-Names Set) entfernt, der Name des Players wird aus dem Set names entfernt. W
 )}}\label{a00054_a9c388e6df37f5c8263a4e3b54eb228ef}
 
 
-Diese Methode erstellt einen neuen \hyperlink{a00043}{Game\-Server} fügt ihm den \hyperlink{a00073}{Player} hinzu. 
+Diese Methode erstellt einen neuen \hyperlink{a00043}{Game\-Server} fÃ¼gt ihm den \hyperlink{a00073}{Player} hinzu. 
 
-Durch broadcast wird sowohl im \hyperlink{a00054}{Lobby\-Server} als auch im \hyperlink{a00043}{Game\-Server} ein Com\-Update\-Playerlist verschickt. Zusätzlich wird dem Client mit send\-To\-Player ein Com\-Init\-Game\-Lobby geschickt. 
+Durch broadcast wird sowohl im \hyperlink{a00054}{Lobby\-Server} als auch im \hyperlink{a00043}{Game\-Server} ein Com\-Update\-Playerlist verschickt. ZusÃ¤tzlich wird dem Client mit send\-To\-Player ein Com\-Init\-Game\-Lobby geschickt. 
 \begin{DoxyParams}{Parameter}
 {\em player} & ist der Threat der die Nachricht erhalten hat \\
 \hline
@@ -117,9 +117,9 @@ Durch broadcast wird sowohl im \hyperlink{a00054}{Lobby\-Server} als auch im \hy
 )}}\label{a00054_aa636ef5ce845b8749bac73dabc5d8e74}
 
 
-Diese Methode fügt einen \hyperlink{a00073}{Player} dem entsprechenden \hyperlink{a00043}{Game\-Server} hinzu. 
+Diese Methode fÃ¼gt einen \hyperlink{a00073}{Player} dem entsprechenden \hyperlink{a00043}{Game\-Server} hinzu. 
 
-Falls das Passwort nicht leer ist wird geprüft, ob es mit dem Passwort des Spieles übereinstimmt, wenn nicht, wird ein Com\-Warning an den Client geschickt. Ansonsten wird und der \hyperlink{a00073}{Player} dem, durch Namen des Spielleiters identifizierten, durch Aufruf von change\-Server Gameserver übergeben. Durch broadcast wird sowohl im \hyperlink{a00054}{Lobby\-Server} als auch im \hyperlink{a00043}{Game\-Server} ein Com\-Update\-Playerlist verschickt. Zusätzlich wird dem joinenden\-Client mit send\-To\-Player ein Com\-Init\-Game\-Lobby geschickt. 
+Falls das Passwort nicht leer ist wird geprÃ¼ft, ob es mit dem Passwort des Spieles Ã¼bereinstimmt, wenn nicht, wird ein Com\-Warning an den Client geschickt. Ansonsten wird und der \hyperlink{a00073}{Player} dem, durch Namen des Spielleiters identifizierten, durch Aufruf von change\-Server Gameserver Ã¼bergeben. Durch broadcast wird sowohl im \hyperlink{a00054}{Lobby\-Server} als auch im \hyperlink{a00043}{Game\-Server} ein Com\-Update\-Playerlist verschickt. ZusÃ¤tzlich wird dem joinenden\-Client mit send\-To\-Player ein Com\-Init\-Game\-Lobby geschickt. 
 \begin{DoxyParams}{Parameter}
 {\em player} & ist der Threat der die Nachricht erhalten hat \\
 \hline
@@ -136,12 +136,12 @@ Falls das Passwort nicht leer ist wird geprüft, ob es mit dem Passwort des Spiel
 )}}\label{a00054_ac7ea664a020d82bb65372524a4fbeafb}
 
 
-Diese Methode überprüft, ob der Name im Set names vorhanden ist, falls ja, wird ein Com\-Warning an den Client geschickt, falls nein, wird im \hyperlink{a00073}{Player} set\-Name aufgerufen. 
+Diese Methode Ã¼berprÃ¼ft, ob der Name im Set names vorhanden ist, falls ja, wird ein Com\-Warning an den Client geschickt, falls nein, wird im \hyperlink{a00073}{Player} set\-Name aufgerufen. 
 
-Der \hyperlink{a00073}{Player} wird aus dem no\-Names Set entfernt und in das player\-Set eingefügt. Der Name wird in das Set names eingefügt. Dem Client wird ein Com\-Server\-Acknowledgement geschickt. 
+Der \hyperlink{a00073}{Player} wird aus dem no\-Names Set entfernt und in das player\-Set eingefÃ¼gt. Der Name wird in das Set names eingefÃ¼gt. Dem Client wird ein Com\-Server\-Acknowledgement geschickt. 
 \begin{DoxyParams}{Parameter}
 {\em player} & ist der Threat der die Nachricht erhalten hat \\
 \hline
-{\em login} & ist das Com\-Object, dass den Benutzernamen des Clients enthält \\
+{\em login} & ist das Com\-Object, dass den Benutzernamen des Clients enthÃ¤lt \\
 \hline
 \end{DoxyParams}
