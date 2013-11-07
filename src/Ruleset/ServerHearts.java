@@ -8,19 +8,23 @@ import ComObjects.MsgMultipleCardsRequest;
  * und die Berechnung der Stichpunkten.
  */
 public class ServerHearts extends ServerRuleset {
-
+	private final static int MIN_PLAYERS = 4;
+	private final static int MAX_PLAYERS = 4;
+	
 	/**
-	 * Prüft ob ein gemachter Zug in einem Hearts Spiel gültig ist
-	 * @return isValid true falls Zug gültig, false wenn nicht
+	 * Erstellt das Regelwerk zum Spiel Hearts
 	 */
-	protected boolean isValidMove(Card card) {
+	public ServerHearts() {
+		super(RulesetType.Hearts, MIN_PLAYERS, MAX_PLAYERS);
+	}
+	
+	@Override
+	protected boolean isValidMove(Card card, String name) {
 		boolean isValid = false;
 		return isValid;
 	}
 
-	/** 
-	 * Berechnet das Ergebnis von der Berechnung eines Befehls in Hearts
-	 */
+	@Override
 	protected void calculateOutcome() {
 		// TODO Automatisch erstellter Methoden-Stub
 		

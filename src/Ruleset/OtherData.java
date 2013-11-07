@@ -16,7 +16,7 @@ public abstract class OtherData {
 	 * Erzeugt die zusätzlichen Daten eines Spielers
 	 * @param name Der Name des Spielers dem die Daten gehören
 	 */
-	OtherData(String name) {
+	public OtherData(String name) {
 		this.name = name;
 	}
 	

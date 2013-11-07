@@ -1,42 +1,25 @@
-/**
- * 
- */
 package Ruleset;
 
-/** 
- * Modelliert eine Wizardkarte
+/**
+ * Modelliert eine Heartskarte
  */
-public class WizardCard extends Card {
-	/** 
-	 *Die eindeutige ID der Karte
-	 */
-	private WizID id;
+public enum WizardCard implements Card{
+	NarrBlau(2,Colour.BLUE),ZauberRot(14,Colour.RED);
+	private final int value;
+	private final Colour colour;
 	
-	/**
-	 * Erstellt eine Wizardkarte
-	 * @param value Der Wert der Karte
-	 * @param colour Die Farbe der Karte
-	 */
-	WizardCard(int value, Colour colour) {
-		super(value, colour);
-		setID(value,colour);
+	private WizardCard(int value, Colour colour) {
+		this.value = value;
+		this.colour = colour;
 	}
 	
-	/**
-	 * Erstellt eine Wizardkarte aufgrund seiner WizardID
-	 * @param id Die WizardID
-	 */
-	WizardCard(WizID id) {
-		super(id);
+	@Override
+	public int getValue() {
+		return value;
 	}
-	
-	/**
-	 * Bestimmt die id der Karte aus seinem Wert und seiner Farbe 
-	 * @param value Der Wert der Karte
-	 * @param colour Die Farbe der Karte
-	 */
-	private void setID(int value, Colour colour) {
-		
+
+	@Override
+	public Colour getColour() {
+		return colour;
 	}
-	
 }
