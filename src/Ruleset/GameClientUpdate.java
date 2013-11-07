@@ -3,7 +3,7 @@
  */
 package Ruleset;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /** 
@@ -26,7 +26,7 @@ public class GameClientUpdate {
 	/** 
 	 * Die Spieldaten der anderen Spieler
 	 */
-	private ArrayList<OtherData> otherPlayerData;
+	private List<OtherData> otherPlayerData;
 	
 	/**
 	 * Der Spieler der grad am Zug ist
@@ -46,7 +46,7 @@ public class GameClientUpdate {
 	 * @param currentPlayer Der momentan aktive Spieler
 	 */
 	GameClientUpdate(PlayerState playerState, Map<String,Card> discardPile, 
-			ArrayList<OtherData> otherPlayerData, PlayerState currentPlayer) {
+			List<OtherData> otherPlayerData, PlayerState currentPlayer) {
 		this.playerState = playerState;
 		this.discardPile = discardPile;
 		this.otherPlayerData = otherPlayerData;
@@ -62,7 +62,7 @@ public class GameClientUpdate {
 	 * @param trumpCard Die Trumpffarbe
 	 */
 	GameClientUpdate(PlayerState playerState, Map<String,Card> discardPile,
-			ArrayList<OtherData> otherPlayerData,  PlayerState currentPlayer,
+			List<OtherData> otherPlayerData,  PlayerState currentPlayer,
 			Card trumpCard) {
 		this.playerState = playerState;
 		this.discardPile = discardPile;
@@ -75,8 +75,8 @@ public class GameClientUpdate {
 	 * Holt die Karten die der Client auf der Hand hat
 	 * @return ownHand Die Hand des Clients
 	 */
-	public ArrayList<Card> getOwnHand() {
-		ArrayList<Card> ownHand = playerState.getHand();
+	public List<Card> getOwnHand() {
+		List<Card> ownHand = playerState.getHand();
 		return ownHand;
 	}
 
@@ -101,7 +101,7 @@ public class GameClientUpdate {
 	 * Holt die Spieldaten der anderen Spieler
 	 * @return otherPlayerData Die Spieldaten der anderen Spieler
 	 */
-	public ArrayList<OtherData> getOtherPlayerData() {
+	public List<OtherData> getOtherPlayerData() {
 		return otherPlayerData;
 	}
 	

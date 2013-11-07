@@ -4,6 +4,7 @@
 package Ruleset;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /** 
  * Repräsentiert den Spielzustand eines Spielers, und wird unter anderem 
@@ -17,11 +18,30 @@ public class PlayerState {
 	/** 
 	 * Seine aktuelle Kartenhand
 	 */
-	private ArrayList<Card> ownHand;
+	private List<Card> ownHand;
 	/** 
 	 * Seine zusätzlichen Daten
 	 */
 	private OtherData otherData;
+	
+	/**
+	 * Erstellt einen PlayerState 
+	 * @param name Der Name des Spielers
+	 * @param ruleset Der Typ des Spiels
+	 */
+	public PlayerState(String name,RulesetType ruleset) {
+		this.name = name;
+		
+		this.ownHand = new ArrayList<Card>();
+		switch(ruleset) {
+		case Wizard: this.otherData = new WizData(name);
+					 break;
+		case Hearts: this.otherData = new HeartsData(name);
+					 break;
+		default:
+				break;
+		}
+	}
 
 	/** 
 	 * Holt den namen eines Spielers
@@ -35,7 +55,7 @@ public class PlayerState {
 	 * Holt die Kartenhand des Spielers
 	 * @return ownHand Die Kartenhand des Spielers
 	 */
-	public ArrayList<Card> getHand() {
+	public List<Card> getHand() {
 		return this.ownHand;
 	}
 	

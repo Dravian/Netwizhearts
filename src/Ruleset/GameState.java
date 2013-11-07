@@ -4,6 +4,8 @@
 package Ruleset;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /** 
@@ -15,13 +17,23 @@ public class GameState {
 	/** 
 	 * Die Spieler die im Spiel sind
 	 */
-	private ArrayList<PlayerState> players;
+	private List<PlayerState> players;
+	
+	/**
+	 * Der Regelwerktyp vom Spiel
+	 */
+	private RulesetType ruleset;
+	
+	/**
+	 * Der Spieler der als erste die Karte spielt
+	 */
+	private PlayerState firstPlayer;
 	
 	/** 
 	 * Der Spieler der gerade am Zug ist
 	 */
 	private PlayerState currentPlayer;
-	
+
 	/** 
 	 * Die momentane Spielrunde
 	 */
@@ -35,7 +47,7 @@ public class GameState {
 	/** 
 	 * Die Karten die noch im Aufnahmestapel sind
 	 */
-	private ArrayList<Card> cardsLeftInDeck;
+	private List<Card> deck;
 	
 	/** 
 	 * Die momentane Spielphase
@@ -48,11 +60,62 @@ public class GameState {
 	private Card trumpCard;
 	
 	/**
+	 * Erstellt eine GameStateklasse
+	 * @param ruleset Der Regelwerktyp des Spiels
+	 * @param deck Das Kartendeck im Spiel
+	 */
+	public GameState(RulesetType ruleset, List<Card> deck) {
+		this.ruleset = ruleset;
+		players = new ArrayList<PlayerState>();
+		discardPile = new HashMap<String,Card>();
+		this.deck = deck;
+		gamePhase = GamePhase.Start;
+		
+	}
+	
+	/**
+	 * Fügt den Spieler ins Spiel hinein
+	 * @param name
+	 */
+	public void addPlayerToGame(String name) {
+		PlayerState player = new PlayerState(name,ruleset);
+		players.add(player);
+	}
+	
+	/**
+	 * Setzt einen neuen Spieler als firstPlayer
+	 * @param player Der neue firstPlayer
+	 */
+	public boolean setFirstPlayer(PlayerState player) {
+		if(firstPlayer == player) {
+			this.firstPlayer = player;	
+			return true;
+		} else {
+			return false;
+		}
+		
+	}
+
+	/** 
+	 * Holt den Spieler als erster am Zug war
+	 * @return firstPlayer Der Spielzustand des Spielers der als erster am Zug war
+	 */
+	public PlayerState getFirstPlayer() {
+		return firstPlayer;
+	}
+	
+	/**
 	 * Setzt einen neuen Spieler als currentPlayer
 	 * @param player Der neue currentPlayer
 	 */
-	public void setCurrentPlayer(PlayerState player) {
-		this.currentPlayer = player;	
+	public boolean setCurrentPlayer(PlayerState player) {
+		if(currentPlayer == player) {
+			this.currentPlayer = player;	
+			return true;
+		} else {
+			return false;
+		}
+		
 	}
 
 	/** 
@@ -65,10 +128,10 @@ public class GameState {
 
 	/** 
 	 * Holt die Karten die noch im Aufnahmestapel sind
-	 * @return cardsLeftInDeck Holt die Karten die noch im Aufnahmestapel sind
+	 * @return deck Holt die Karten die noch im Aufnahmestapel sind
 	 */
-	public ArrayList<Card> getCardsLeftInDeck() {
-		return this.cardsLeftInDeck;
+	public List<Card> getCardsLeftInDeck() {
+		return this.deck;
 	}
 
 	/** 
@@ -85,8 +148,13 @@ public class GameState {
 	 * @param name Der Name des Spielers
 	 * @return player Der Spielzustand des Spielers
 	 */
-	public PlayerState getPlayer(String name) {
-		return new PlayerState();
+	public PlayerState getPlayerState(String name) {
+		for(PlayerState p : players) {
+			if(p.getName().equals(name)) {
+				return p;
+			} 
+		}
+		return null;
 	}
 	
 	/**
@@ -111,6 +179,20 @@ public class GameState {
 	 */
 	public int getNumberOfPlayedCards() {
 		return discardPile.size();
+	}
+	
+	/**
+	 * Holt die Karten eines Spielers
+	 * @param name Der Name vom Spieler 
+	 * @return Karten
+	 */
+	public List<Card> getPlayerCards(String name) {
+		for(PlayerState p : players) {
+			if(p.getName().equals(name)) {
+				return p.getHand();
+			}
+		}
+		return null;
 	}
 	
 	/**

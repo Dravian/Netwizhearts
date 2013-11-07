@@ -4,6 +4,8 @@
 package Ruleset;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import Server.GameServer;
 import ComObjects.MsgCard;
 import ComObjects.MsgMultiCards;
@@ -23,17 +25,62 @@ public abstract class ServerRuleset {
 	/**
 	 * Der GameServer auf den gespielt wird
 	 */
-	protected GameServer server;
-	/** 
-	 * Die Karten die es im Spiel gibt
-	 */
-	protected ArrayList<Card> cardDeck;
+	private GameServer server;
 	
 	/** 
 	 * Den momentane Spielzustand
 	 */
-	protected GameState gameState;
-
+	private GameState gameState;
+	
+	/**
+	 * Der Spieltyp
+	 */
+	private final RulesetType RULESET;
+	
+	/**
+	 * Die Mindestanzahl an Spielern
+	 */
+	private final int MIN_PLAYERS;
+	
+	/**
+	 * Die Maximale Anzahl an Spielern
+	 */
+	private final int MAX_PLAYERS;
+	
+	/**
+	 * Erstellt ein ServerRuleset
+	 * @param ruleset Der Spieltyp
+	 */
+	public ServerRuleset(RulesetType ruleset, int min, int max) {
+		RULESET = ruleset;
+		MIN_PLAYERS = min;
+		MAX_PLAYERS = max;
+	}
+	
+	/**
+	 * Gibt den Typ des Regelwerks zurück
+	 * @return Der Typ vom Regelwerk
+	 */
+	public RulesetType getRulesetType() {
+		return RULESET;
+	}
+	
+	/**
+	 * Gibt die Mindestanzahl an Spielern zurück für dieses Spiel
+	 * @return Die Mindestanzahl an Spielern
+	 */
+	public int getMinPlayers() {
+		return MIN_PLAYERS;
+	}
+	
+	/**
+	 * Gibt die Maximale anzahl an Spielern zurück
+	 * @return Die maximale Anzahl an Spielern
+	 */
+	public int getMaxPlayers() {
+		return MAX_PLAYERS;
+	}
+	
 	/** 
 	 * Erstellt ein Spiel und einen GameState
 	 */
@@ -42,6 +89,24 @@ public abstract class ServerRuleset {
 		// TODO Auto-generated method stub
 	
 		// end-user-code
+	}
+	
+	private List<Card> createDeck() {
+		List<Card> deck = new ArrayList<Card>();
+		switch(RULESET) {
+		case Wizard: 
+			for(WizardCard wiz : WizardCard.values()) {
+				deck.add(wiz);
+			}
+			break;
+		case Hearts:
+			for(HeartsCard hearts : HeartsCard.values()) {
+				deck.add(hearts);
+			}
+			break;
+		default:
+		}
+		return deck;
 	}
 
 	/** 
@@ -54,16 +119,29 @@ public abstract class ServerRuleset {
 		// end-user-code
 	}
 	
-	/**
-	 * Erstellt die Karten
+	/** 
+	 * Setzt den Spieler der als Erster am Zug ist, im Gamestate
+	 * @return false wenn der selbe Spieler nochmal als firstPlayer gesetzt wird
 	 */
-	protected abstract void createCardDeck();
+	protected boolean setFirstPlayer(PlayerState player) {
+		return setFirstPlayer(player);
+	}
 
+	/**
+	 * Holt den Spieler der als erster am Zug war
+	 * @return firstPlayer Der Spielzustand des Spielers der als erster am Zug war
+	 */
+	protected PlayerState getFirstPlayer() {
+		PlayerState firstPlayer = gameState.getFirstPlayer();
+		return firstPlayer;
+	}
+	
 	/** 
 	 * Setzt den Spieler der am Nächsten am Zug ist, im Gamestate
+	 * @return false wenn der selbe Spieler nochmal als currentPlayer gesetzt wird
 	 */
-	protected void setCurrentPlayer(PlayerState player) {
-		this.gameState.setCurrentPlayer(player);
+	protected boolean setCurrentPlayer(PlayerState player) {
+		return setCurrentPlayer(player);
 	}
 
 	/**
@@ -74,6 +152,15 @@ public abstract class ServerRuleset {
 		PlayerState currentPlayer = gameState.getCurrentPlayer();
 		return currentPlayer;
 	}
+	
+	
+	/**
+	 * Fügt einen Spieler ins Spiel ein
+	 * @param name Der name vom Spieler
+	 */
+	public void addPlayerToGame(String name) {
+		gameState.addPlayerToGame(name);
+	}
 
 	/** 
 	 * Holt den Spielerzustand eines Spielers
@@ -81,9 +168,17 @@ public abstract class ServerRuleset {
 	 * @return playerState Spielzustand eines Spielers
 	 */
 	protected PlayerState getPlayerState(String name) {
-		return new PlayerState();
+		return gameState.getPlayerState(name);
 	}
 	
+	/**
+	 * Holt die Spielkarten eines Spielers
+	 * @param name Der Name eines Spielers
+	 * @return Die Spielkarten des Spielers
+	 */
+	protected List<Card> getPlayerCards(String name) {
+		return gameState.getPlayerCards(name);
+	}
 	/**
 	 * Schickt eine Nachricht an einen Spieler
 	 * @param message Die Nachricht vom Typ RulesetMessage
@@ -134,11 +229,15 @@ public abstract class ServerRuleset {
 	public void resolveMessage(MsgSelection msgSelection, String name){
 		
 	}
-	
+
 	/** 
-	 * Prüft ob ein gemachter Zug in einem Spiel gültig war
+	 * Prüft ob ein gemachter Zug in einem Spiel gültig war, wenn nicht wird an
+	 * den Spieler erneut eine MsgCardRequest
+	 * @param card Die Karte die gespielt wurde
+	 * @param name Der Name des Spielers
+	 * @return true falls Zug gültig und false wenn nicht
 	 */
-	protected abstract boolean isValidMove(Card card);
+	protected abstract boolean isValidMove(Card card, String name);
 
 	/** 
 	 * Berechnet das Ergebnis von der Berechnung eines Befehls

@@ -10,22 +10,32 @@ import ComObjects.MsgSelectionRequest;
  * und die Bestimmung der Rundenanzahl.
  */
 public class ServerWizard extends ServerRuleset {
-
+	private static final int MIN_PLAYERS = 3;
+	private static final int MAX_PLAYERS = 6;
+	
 	/**
-	 * Prüft ob ein gemachter Zug in einem Wizard Spiel gültig ist
-	 * @return isValid true falls Zug gültig, false wenn nicht
+	 * Erstellt das Regelwerk zum Spiel Wizard
 	 */
-	protected boolean isValidMove(Card card) {
+	public ServerWizard() {
+		super(RulesetType.Wizard, MIN_PLAYERS, MAX_PLAYERS);
+	}
+
+	@Override
+	protected boolean isValidMove(Card card, String name) {
 		boolean isValid = false;
 		return isValid;
 	}
 
-	/** 
-	 * Berechnet das Ergebnis von der Berechnung eines Befehls in Wizard
-	 */
+	@Override
 	protected void calculateOutcome() {
 		// TODO Automatisch erstellter Methoden-Stub
 
+	}
+	
+	/**
+	 * Erstellt ein neues GameState
+	 */
+	protected void createNewGameState() {
 	}
 
 	/**
