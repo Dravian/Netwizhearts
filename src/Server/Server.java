@@ -3,6 +3,7 @@
  */
 package Server;
 
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -39,16 +40,21 @@ public abstract class Server {
 	/**
 	 * Diese Methode wird genutzt, um ein ComObject an einen einzigen
 	 * Client zu verschicken. Der Player der die Nachricht verschicken soll
-	 * wird Anhand des übergebenen Benutzernamens identifiziert.
+	 * wird Anhand des übergebenen Benutzernamens identifiziert. Ist der Name
+	 * oder das ComObject leer wird nichts verschickt.
 	 * @param name ist der Name des Clients, an den der Player die Nachricht  
 	 * verschicken soll
 	 * @param c ist das ComObject, dass verschickt werden soll
+	 * @throws IOException wenn der Output nicht funktioniert
 	 */
-	public synchronized void sendToPlayer(String name, ComObject com) {
-		// begin-user-code
-				// TODO Auto-generated method stub
-
-				// end-user-code
+	public synchronized void sendToPlayer(String name, ComObject com) throws IOException {
+		if(name != null || com != null){
+				for (Player player : playerSet) {
+					if(player.getName() == name){
+						player.send(com);
+					}		
+				}
+		}
 	}
 
 	/**
@@ -71,11 +77,17 @@ public abstract class Server {
 
 	/**
 	 * Diese Methode wird genutzt, um ein ComObject an alle Clients,
-	 * die vom Server verwaltet werden, zu schicken.
+	 * die vom Server verwaltet werden, zu schicken. Ist das ComObject
+	 * leer, passiert nichts.
 	 * @param com ist das ComObject, dass verschickt werden soll
+	 * @throws IOException wenn der Output nicht funktioniert
 	 */
-	public synchronized void broadcast(ComObject com) {
-		
+	public synchronized void broadcast(ComObject com) throws IOException {
+		if(com != null){
+			for (Player player : playerSet) {
+				player.send(com);
+			}
+		}
 	}
 
 }
