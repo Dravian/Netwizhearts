@@ -37,9 +37,10 @@ public class CreateGame extends JFrame implements Observer {
 	
 	private static final long serialVersionUID = -2893031560688870723L;
 	
-	private JTextField textField;
+	private JTextField nameField;
 	private BufferedImage image;
-	private JTextField textField_1;
+	private JTextField passwordField;
+	private JPanel imagePanel;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -72,6 +73,7 @@ public class CreateGame extends JFrame implements Observer {
 		JComboBox<String> comboBox = new JComboBox<String>();
 		comboBox.setBounds(12, 39, 188, 24);
 		comboBox.addItem("Wizard");
+		comboBox.addItem("Hearts");
 		getContentPane().add(comboBox);
 		
 		JCheckBox chckbxPassword = new JCheckBox("Set Password:");
@@ -86,23 +88,23 @@ public class CreateGame extends JFrame implements Observer {
 		btnNewButton.setBounds(12, 215, 117, 25);
 		getContentPane().add(btnNewButton);
 		
-		textField = new JTextField();
-		textField.setBounds(12, 171, 188, 32);
-		getContentPane().add(textField);
-		textField.setColumns(10);
+		nameField = new JTextField();
+		nameField.setBounds(12, 171, 188, 32);
+		getContentPane().add(nameField);
+		nameField.setColumns(10);
 
 	    image = ImageIO.read(new File("src/wizard.jpg"));
 		
-		JPanel panel = new JPanel() {
+		JPanel imagePanel = new JPanel() {
 			protected void paintComponent(Graphics g) {
 			        super.paintComponent(g);
 			        g.drawImage(image, 0, 0, null);          
 			    }
 		};
-		panel.setToolTipText("Wizard is a trick-taking card game for 3 to 6 players.");
+		imagePanel.setToolTipText("Wizard is a trick-taking card game for 3 to 6 players.");
 
-		panel.setBounds(235, 12, 139, 171);
-		getContentPane().add(panel);
+		imagePanel.setBounds(235, 12, 139, 171);
+		getContentPane().add(imagePanel);
 		
 		JButton btnNewButton_1 = new JButton("Create");
 		btnNewButton_1.setBounds(257, 215, 117, 25);
@@ -112,15 +114,15 @@ public class CreateGame extends JFrame implements Observer {
 		lblGameName.setBounds(12, 75, 95, 24);
 		getContentPane().add(lblGameName);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(12, 100, 188, 32);
-		getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		passwordField = new JTextField();
+		passwordField.setBounds(12, 100, 188, 32);
+		getContentPane().add(passwordField);
+		passwordField.setColumns(10);
 	}
 
 	/**
 	 * Wird durch notify() im ClientModel aufgerufen. Je nach dem in arg
-	 * übergebenen Befehl wird ein Update des Fensters ausgeführt 
+	 * übergebenen ViewNotification-Befehl wird ein Update des Fensters ausgeführt 
 	 * oder eine Fehlermeldung angezeigt.
 	 * 
 	 * @param o erwartet ein Objekt von der Klasse ClientModel

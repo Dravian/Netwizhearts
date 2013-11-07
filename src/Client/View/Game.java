@@ -23,6 +23,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+import Client.ViewNotification;
+
 import java.awt.Color;
 
 /**
@@ -114,7 +116,7 @@ public class Game extends JFrame implements Observer{
 
 	/**
 	 * Wird durch notify() im ClientModel aufgerufen. Je nach dem in arg
-	 * übergebenen Befehl wird ein Update des Fensters ausgeführt 
+	 * übergebenen ViewNotification-Befehl wird ein Update des Fensters ausgeführt 
 	 * oder eine Fehlermeldung angezeigt.
 	 * 
 	 * @param o erwartet ein Objekt von der Klasse ClientModel
@@ -123,6 +125,17 @@ public class Game extends JFrame implements Observer{
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
+		
+	}
+	
+	/**
+	 * Wird durch notify() im ClientModel aufgerufen, wenn
+	 * eine Chatnachricht übergeben wird.
+	 * 
+	 * @param o erwartet ein Objekt von der Klasse ClientModel
+	 * @param arg erwartet eine Chatnachricht in String-Form
+	 */
+	public void update(Observable o, String arg) {
 		
 	}
 }

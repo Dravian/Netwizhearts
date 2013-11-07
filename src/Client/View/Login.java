@@ -4,6 +4,8 @@
 package Client.View;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemListener;
 import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
@@ -32,6 +34,11 @@ public class Login extends JFrame implements Observer{
 	private JTextField nameField;
 	private JTextField serverField;
 	private JComboBox<Language> languageComboBox;
+	private JButton btnConnect;
+	private Language lang;
+	private JLabel lblNickname;
+	private JLabel lblHostIp;
+	private JLabel lblLanguage;
 
 
 	
@@ -52,51 +59,109 @@ public class Login extends JFrame implements Observer{
 	 * Erstellt das Login Fenster
 	 */
 	public Login() {
-		setTitle("Login");
+		lang = Language.English;
 		setAlwaysOnTop(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 280, 169);
+		setBounds(100, 100, 314, 169);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblHostIp = new JLabel("Host IP:");
-		lblHostIp.setBounds(13, 71, 79, 23);
+		lblHostIp = new JLabel("Host IP:");
+		lblHostIp.setBounds(13, 71, 110, 23);
 		contentPane.add(lblHostIp);
 		
 		serverField = new JTextField();
-		serverField.setBounds(109, 45, 155, 20);
+		serverField.setBounds(133, 44, 155, 20);
 		contentPane.add(serverField);
 		serverField.setColumns(10);
 		
-		JLabel lblNickname = new JLabel("Nickname:");
-		lblNickname.setBounds(13, 43, 79, 23);
+		lblNickname = new JLabel("Nickname:");
+		lblNickname.setBounds(13, 43, 110, 23);
 		contentPane.add(lblNickname);
 		
 		nameField = new JTextField();
-		nameField.setBounds(109, 73, 155, 20); 
+		nameField.setBounds(133, 72, 155, 20); 
 		contentPane.add(nameField);
 		nameField.setColumns(10);
 		
-		JButton btnConnect = new JButton("Connect");
-		btnConnect.setBounds(109, 105, 104, 23);
+		btnConnect = new JButton("Connect");
+		btnConnect.setBounds(108, 103, 104, 23);
 		contentPane.add(btnConnect);
 		
-		JLabel lblNewLabel = new JLabel("Language:");
-		lblNewLabel.setBounds(13, 8, 79, 23);
-		contentPane.add(lblNewLabel);
+		lblLanguage = new JLabel("Language:");
+		lblLanguage.setBounds(13, 8, 121, 23);
+		contentPane.add(lblLanguage);
 		
-		languageComboBox = new JComboBox<Language>(new Language[] {Language.German, Language.Bavarian, Language.English});
-		//comboBox.setModel(new DefaultComboBoxModel(new String[] {"English", "Deutsch", "Boarisch"}));
+		languageComboBox = new JComboBox<Language>(new Language[] {Language.English, Language.German, Language.Bavarian});
+		//languageComboBox.setModel(new DefaultComboBoxModel(new String[] {"English", "Deutsch", "Boarisch"}));
 		languageComboBox.setSelectedIndex(0);
-		languageComboBox.setBounds(109, 7, 104, 24);
+		languageComboBox.setBounds(133, 7, 104, 24);
 		contentPane.add(languageComboBox);
+		
+		this.updateLanguage();
 	}
+	
+	/**
+	 * Fügt einen Listener für den 'Connect' Button des Login Fensters hinzu
+	 * 
+	 * @param a ein ActionListener
+	 */
+	public void addConnectButtonListener(ActionListener a) {
+		btnConnect.addActionListener(a);
+	}
+	
+	/**
+	 * Fügt einen Listener für die Sprachauswahl des Login Fensters hinzu
+	 * 
+	 * @param i ein ItemListener
+	 */
+	public void addLanguageSelectionListener(ItemListener i) {
+		languageComboBox.addItemListener(i);
+	}
+	
+	/**
+	 * Ändert die Sprache des Fensters
+	 * 
+	 * @param l Sprache in Form des Language-Enums
+	 */
+	public void setLanguage(Language l) {
+		lang = l;
+		updateLanguage();
+	}
+	
+	private void updateLanguage() {
+		switch (lang) {
+		case German: 
+			btnConnect.setText("Verbinden");
+			this.setTitle("Anmelden");
+			lblNickname.setText("Spitzname:");
+			lblHostIp.setText("Host IP:");
+			lblLanguage.setText("Sprache");
+			break;
+		case English:
+			btnConnect.setText("Connect");
+			this.setTitle("Login");
+			lblNickname.setText("Nickname:");
+			lblHostIp.setText("Host IP:");
+			lblLanguage.setText("Language");
+			break;
+		case Bavarian:
+			btnConnect.setText("Dua zua");
+			this.setTitle("Nam eigem und weidadrucka");
+			lblNickname.setText("Spidsnam:");
+			lblHostIp.setText("So a Nummer:");
+			lblLanguage.setText("Gschmatz");
+			break;
+		}
+		
+	}
+	
 
 	/**
 	 * Wird durch notify() im ClientModel aufgerufen. Je nach dem in arg
-	 * übergebenen Befehl wird ein Update des Fensters ausgeführt 
+	 * übergebenen ViewNotification-Befehl wird ein Update des Fensters ausgeführt 
 	 * oder eine Fehlermeldung angezeigt.
 	 * 
 	 * @param o erwartet ein Objekt von der Klasse ClientModel

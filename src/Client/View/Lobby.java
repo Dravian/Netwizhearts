@@ -1,6 +1,8 @@
 package Client.View;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -33,7 +35,15 @@ public class Lobby extends JFrame implements Observer{
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField messageField;
+	private JList playerList;
+	private JList gameList;
+	private JScrollPane scrollPane;
+	private JButton btnHostGame;
+	private JButton btnJoinGame;
+	private JButton btnLeave;
+	private JTextArea chatlog;
+	private Language lang;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -60,9 +70,9 @@ public class Lobby extends JFrame implements Observer{
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JList list = new JList();
-		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		list.setModel(new AbstractListModel() {
+		playerList = new JList(); //TODO
+		playerList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); 
+		playerList.setModel(new AbstractListModel() {
 			String[] values = new String[] {"Player1", "Player2", "Player3", "Player4"};
 			public int getSize() {
 				return values.length;
@@ -71,18 +81,18 @@ public class Lobby extends JFrame implements Observer{
 				return values[index];
 			}
 		});
-		list.setBounds(10, 11, 272, 191);
-		contentPane.add(list);
+		playerList.setBounds(10, 11, 272, 191);
+		contentPane.add(playerList);
 		
-		JTextArea txtrSpielerHelloSpieler = new JTextArea();
-		txtrSpielerHelloSpieler.setLineWrap(true);
-		txtrSpielerHelloSpieler.setEditable(false);
-		txtrSpielerHelloSpieler.setText("Spieler2: hello\r\nSpieler1: hi\r\nSpieler3: morning!\r\nSpieler2: wanna play a game of hearts?");
-		txtrSpielerHelloSpieler.setBounds(10, 213, 564, 94);
-		txtrSpielerHelloSpieler.setRows(5);
+		chatlog = new JTextArea();
+		chatlog.setLineWrap(true);
+		chatlog.setEditable(false);
+		chatlog.setText("Spieler2: hello\r\nSpieler1: hi\r\nSpieler3: morning!\r\nSpieler2: wanna play a game of hearts?");
+		chatlog.setBounds(10, 213, 564, 94);
+		chatlog.setRows(5);
 		
-		JList list_1 = new JList();
-		list_1.setModel(new AbstractListModel() {
+		gameList = new JList(); //TODO
+		gameList.setModel(new AbstractListModel() {
 			String[] values = new String[] {"Server1   (3/4)", "Server2   (2/6)"};
 			public int getSize() {
 				return values.length;
@@ -91,34 +101,83 @@ public class Lobby extends JFrame implements Observer{
 				return values[index];
 			}
 		});
-		list_1.setBounds(292, 11, 282, 191);
-		contentPane.add(list_1);
+		gameList.setBounds(292, 11, 282, 191);
+		contentPane.add(gameList);
 		
-		JScrollPane scrollPane = new JScrollPane(txtrSpielerHelloSpieler);
+		scrollPane = new JScrollPane(chatlog);
 		scrollPane.setBounds(10, 213, 564, 96);
 		contentPane.add(scrollPane);
 		
-		textField = new JTextField();
-		textField.setBounds(10, 320, 564, 31);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		messageField = new JTextField();
+		messageField.setBounds(10, 320, 564, 31);
+		contentPane.add(messageField);
+		messageField.setColumns(10);
 		
-		JButton btnHostGame = new JButton("Host Game");
+		btnHostGame = new JButton("Host Game");
 		btnHostGame.setBounds(234, 363, 117, 25);
 		contentPane.add(btnHostGame);
 		
-		JButton btnJoinGame = new JButton("Join Game");
+		btnJoinGame = new JButton("Join Game");
 		btnJoinGame.setBounds(457, 363, 117, 25);
 		contentPane.add(btnJoinGame);
 		
-		JButton btnLeave = new JButton("Leave");
+		btnLeave = new JButton("Leave");
 		btnLeave.setBounds(10, 364, 117, 25);
 		contentPane.add(btnLeave);
+	}
+	
+	/**
+	 * Fügt einen ActionListener für den 'Join' Button hinzu
+	 * 
+	 * @param a ein ActionListener
+	 */
+	public void addJoinButtonListener(ActionListener a) {
+		btnJoinGame.addActionListener(a);
+	}
+	
+	/**
+	 * Fügt einen ActionListener für den 'Host' Button hinzu
+	 * 
+	 * @param a ein ActionListener
+	 */
+	public void addHostButtonListener(ActionListener a) {
+		btnHostGame.addActionListener(a);
+	}
+	
+	/**
+	 * Fügt einen ActionListener für den 'Leave' Button hinzu
+	 * 
+	 * @param a ein ActionListener
+	 */
+	public void addLeaveButtonListener(ActionListener a) {
+		btnLeave.addActionListener(a);
+	}
+	
+	/**
+	 * Fügt einen KeyListener für das Nachricht-Senden-Feld der Lobby hinzu
+	 * @param k
+	 */
+	public void addChatMessageListener(KeyListener k) {
+		messageField.addKeyListener(k);
+	}
+	
+	/**
+	 * Ändert die Sprache des Fensters
+	 * 
+	 * @param l Sprache in Form des Language-Enums
+	 */
+	public void setLanguage(Language l) {
+		lang = l;
+		updateLanguage();
+	}
+	
+	private void updateLanguage() {
+		//TODO
 	}
 
 	/**
 	 * Wird durch notify() im ClientModel aufgerufen. Je nach dem in arg
-	 * übergebenen Befehl wird ein Update des Fensters ausgeführt 
+	 * übergebenen ViewNotification-Befehl wird ein Update des Fensters ausgeführt 
 	 * oder eine Fehlermeldung angezeigt.
 	 * 
 	 * @param o erwartet ein Objekt von der Klasse ClientModel
