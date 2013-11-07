@@ -114,13 +114,32 @@
 \hypersetup{pageanchor=false}
 \pagenumbering{roman}
 \begin{titlepage}
-\vspace*{7cm}
-\begin{center}%
-{\Large N\-E\-T-\/\-Wiz\-Hearts }\\
-\vspace*{1cm}
-{\large Erzeugt von Doxygen 1.8.5}\\
-\vspace*{0.5cm}
-{\small Mit Nov 6 2013 18:42:17}\\
+\vspace*{3cm}
+\begin{center}
+\textbf{\textsc{\LARGE Spezifikation}}
+
+{\large \today}
+
+\vspace{2cm}
+\includegraphics{kartenspiel}
+\ \\
+\ \\
+
+\textbf{\textsc{\LARGE NET-WizHearts}}
+\vspace{2cm}
+
+\begin{tabular}{|c|c|c|}\hline
+   Phase & Verantwortlicher & E-Mail \\ \hline\hline
+   Pflichtenheft & Alina Meixl &  alina@meixl.de \\ \hline
+   Entwurf & Viktoria Witka & witkaviktoria@freenet.de \\ \hline
+   Spezifikation & Daniel Riedl & dariedl14@yahoo.de \\ \hline
+   Implementation & Andreas Altenbuchner& a.andi007@gmail.com\\ \hline
+   Verifikation & Patrick Kubin & kubin@fim.uni-passau.de\\ \hline
+   Präsentation & w& w\\ \hline
+ \end{tabular}
+\vspace{2cm}
+\\
+{\large Teilweise erzeugt von Doxygen 1.8.5}\\
 \end{center}
 \end{titlepage}
 \tableofcontents
@@ -128,10 +147,37 @@
 \hypersetup{pageanchor=true}
 
 %--- Begin generated contents ---
+\section{Systemarchitektur}
+\includegraphics[width=\textwidth]{ArchitekturDiagramm}
+\newpage
+
+\section{Klassendiagramm}
+
+\subsection{Packages}
+\includegraphics[width=\textwidth]{Packages}
+\newpage
+
+\section{Änderungen am Entwurf}
+\subsection{ComObjects}
+\subsection{Server}
+\subsubsection{Server-Interface}
+\subsection{Client-Model}
+\subsubsection{MVMessages}
+
+
+löschen von Interfaces??
+\newpage
+
+\section{JUnit-Tests}
+
+\section{Exceptions}
+
 \section{Hierarchie-\/\-Verzeichnis}
 \input{hierarchy}
+
 \section{Klassen-\/\-Verzeichnis}
 \input{annotated}
+
 \section{Klassen-\/\-Dokumentation}
 \input{a00001}
 \input{a00002}

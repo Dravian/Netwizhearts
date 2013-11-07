@@ -33,7 +33,7 @@ Com\-Init\-Game\-Lobby \hyperlink{a00043_a4e2b83f3466ec6c9cbe0a24a30587333}{init
 
 
 \subsubsection{AusfÃ¼hrliche Beschreibung}
-Sie verwaltet die Kommunikation zwischen den Clients während eines Spieles. Die Game\-Server-\/\-Klasse erbt Methoden zur Kommunikation vom \hyperlink{a00078}{Server}. Der \hyperlink{a00043}{Game\-Server} tauscht Nachrichten zwischen Ruleset und \hyperlink{a00073}{Player} aus, um so den Spielablauf zu koordinieren. \begin{DoxyAuthor}{Autor}
+Sie verwaltet die Kommunikation zwischen den Clients wÃ¤hrend eines Spieles. Die Game\-Server-\/\-Klasse erbt Methoden zur Kommunikation vom \hyperlink{a00078}{Server}. Der \hyperlink{a00043}{Game\-Server} tauscht Nachrichten zwischen Ruleset und \hyperlink{a00073}{Player} aus, um so den Spielablauf zu koordinieren. \begin{DoxyAuthor}{Autor}
 Viktoria 
 \end{DoxyAuthor}
 
@@ -55,7 +55,7 @@ Viktoria
 
 Konstruktor des Game\-Servers. 
 
-Setzt die Attribute lobby\-Server, name, password, has\-Pasword und ruleset\-Type auf die übergebenen Werte. Setzt den game\-Master\-Name auf den Namen des game\-Master und fügt den game\-Master dem Set an Spielern hinzu. Bestimmt mithilfe des Enums Ruleset\-Type das Ruleset und erstellt es. Setzt current\-Players auf eins und max\-Players je nach Ruleset. 
+Setzt die Attribute lobby\-Server, name, password, has\-Pasword und ruleset\-Type auf die Ã¼bergebenen Werte. Setzt den game\-Master\-Name auf den Namen des game\-Master und fÃ¼gt den game\-Master dem Set an Spielern hinzu. Bestimmt mithilfe des Enums Ruleset\-Type das Ruleset und erstellt es. Setzt current\-Players auf eins und max\-Players je nach Ruleset. 
 \begin{DoxyParams}{Parameter}
 {\em server} & ist der \hyperlink{a00054}{Lobby\-Server} der den \hyperlink{a00043}{Game\-Server} erstellt hat. \\
 \hline
@@ -84,9 +84,9 @@ Setzt die Attribute lobby\-Server, name, password, has\-Pasword und ruleset\-Typ
 
 Diese Methode wird vom abstrakten \hyperlink{a00078}{Server} vererbt. 
 
-Zusätzlich wird die Zahl der current\-Players um eins Erhöht. 
+ZusÃ¤tzlich wird die Zahl der current\-Players um eins ErhÃ¶ht. 
 \begin{DoxyParams}{Parameter}
-{\em player} & ist der \hyperlink{a00073}{Player}, der hinzugefoügt wird \\
+{\em player} & ist der \hyperlink{a00073}{Player}, der hinzugefÃ¼gt wird \\
 \hline
 \end{DoxyParams}
 \hypertarget{a00043_a4e2b83f3466ec6c9cbe0a24a30587333}{\index{Server\-::\-Game\-Server@{Server\-::\-Game\-Server}!init\-Lobby@{init\-Lobby}}
@@ -98,10 +98,10 @@ Zusätzlich wird die Zahl der current\-Players um eins Erhöht.
 )}}\label{a00043_a4e2b83f3466ec6c9cbe0a24a30587333}
 
 
-Baut ein neues Com\-Init\-Game\-Lobby Objekt und gibt es zurück. 
+Baut ein neues Com\-Init\-Game\-Lobby Objekt und gibt es zurÃ¼ck. 
 
 \begin{DoxyReturn}{RÃ¼ckgabe}
-Gibt das Com\-Init\-Game\-Lobby Objekt zurück 
+Gibt das Com\-Init\-Game\-Lobby Objekt zurÃ¼ck 
 \end{DoxyReturn}
 \hypertarget{a00043_aae9201e5827933e23b078bc7eaf2aee3}{\index{Server\-::\-Game\-Server@{Server\-::\-Game\-Server}!receive\-Message@{receive\-Message}}
 \index{receive\-Message@{receive\-Message}!Server::GameServer@{Server\-::\-Game\-Server}}
@@ -113,9 +113,9 @@ Gibt das Com\-Init\-Game\-Lobby Objekt zurück
 )}}\label{a00043_aae9201e5827933e23b078bc7eaf2aee3}
 
 
-Diese Methode ist dafur zuständig zu ermitteln, was passiert wenn ein Spieler aus der Game\-Lobby geworfen wird. 
+Diese Methode ist dafur zustÃ¤ndig zu ermitteln, was passiert wenn ein Spieler aus der Game\-Lobby geworfen wird. 
 
-Der \hyperlink{a00073}{Player} wird durch Aufruf von change\-Server an die Lobby zurückgegeben. An diesen Spieler wird ein Com\-Warning und ein Com\-Init\-Lobby geschickt. Danach wird ein Com\-Update\-Playerlist Objekt mit broadcast an alle Client im Spiel verschickt. 
+Der \hyperlink{a00073}{Player} wird durch Aufruf von change\-Server an die Lobby zurÃ¼ckgegeben. An diesen Spieler wird ein Com\-Warning und ein Com\-Init\-Lobby geschickt. Danach wird ein Com\-Update\-Playerlist Objekt mit broadcast an alle Client im Spiel verschickt. 
 \begin{DoxyParams}{Parameter}
 {\em player} & ist der Threat der die Nachricht erhalten hat \\
 \hline
@@ -132,13 +132,13 @@ Der \hyperlink{a00073}{Player} wird durch Aufruf von change\-Server an die Lobby
 )}}\label{a00043_a7112c8a4b95e71c42a207b844f447305}
 
 
-Diese Methode ist dafur zuständig eine Chatnachricht an alle Clients im Spiel zu verschicken. 
+Diese Methode ist dafur zustÃ¤ndig eine Chatnachricht an alle Clients im Spiel zu verschicken. 
 
-Dafür wird die Com\-Chat\-Message mit broadcast an alle Spieler im player\-Set verteilt. 
+DafÃ¼r wird die Com\-Chat\-Message mit broadcast an alle Spieler im player\-Set verteilt. 
 \begin{DoxyParams}{Parameter}
 {\em player} & ist der Threat der die Nachricht erhalten hat \\
 \hline
-{\em chat} & ist das Com\-Object, das die Chatnachricht enthält \\
+{\em chat} & ist das Com\-Object, das die Chatnachricht enthÃ¤lt \\
 \hline
 \end{DoxyParams}
 \hypertarget{a00043_a9fd05e79a3ae006b056cb27199ee7aeb}{\index{Server\-::\-Game\-Server@{Server\-::\-Game\-Server}!receive\-Message@{receive\-Message}}
@@ -151,13 +151,13 @@ Dafür wird die Com\-Chat\-Message mit broadcast an alle Spieler im player\-Set v
 )}}\label{a00043_a9fd05e79a3ae006b056cb27199ee7aeb}
 
 
-Diese Methode gibt einen \hyperlink{a00073}{Player}, der die Game\-Lobby verlassen will, durch Aufruf von change\-Server an die Server\-Lobby zurück und schickt ihm ein Com\-Init\-Lobby. 
+Diese Methode gibt einen \hyperlink{a00073}{Player}, der die Game\-Lobby verlassen will, durch Aufruf von change\-Server an die Server\-Lobby zurÃ¼ck und schickt ihm ein Com\-Init\-Lobby. 
 
 Danach wird ein Com\-Update\-Playerlist Objekt mit broadcast an alle Clients im Spiel verschickt. 
 \begin{DoxyParams}{Parameter}
 {\em player} & ist der Threat der die Nachricht erhalten hat \\
 \hline
-{\em leave} & ist das Com\-Object, welches angibt, dass der Spieler in die Lobby zurückkehrt \\
+{\em leave} & ist das Com\-Object, welches angibt, dass der Spieler in die Lobby zurÃ¼ckkehrt \\
 \hline
 \end{DoxyParams}
 \hypertarget{a00043_af3affa434fc5afd574d4fa74060ac9c7}{\index{Server\-::\-Game\-Server@{Server\-::\-Game\-Server}!receive\-Message@{receive\-Message}}
@@ -170,13 +170,13 @@ Danach wird ein Com\-Update\-Playerlist Objekt mit broadcast an alle Clients im 
 )}}\label{a00043_af3affa434fc5afd574d4fa74060ac9c7}
 
 
-Diese Methode behandelt den Fall, dass ein Spieler das laufende Spiel verlässt. 
+Diese Methode behandelt den Fall, dass ein Spieler das laufende Spiel verlÃ¤sst. 
 
-Sie gibt einen \hyperlink{a00073}{Player}, der das Spiel verlassen will, Aufruf von change\-Server an die Server\-Lobby zurück und schickt ihm ein Com\-Init\-Lobby. Alle Spieler, die sich im Spiel befinden bekommen ein Com\-Warning und ein Com\-Init\-Lobby und werden durch Aufruf von change\-Server an die Lobby zurückgegeben. Das Spiel wird aufgelöst. 
+Sie gibt einen \hyperlink{a00073}{Player}, der das Spiel verlassen will, Aufruf von change\-Server an die Server\-Lobby zurÃ¼ck und schickt ihm ein Com\-Init\-Lobby. Alle Spieler, die sich im Spiel befinden bekommen ein Com\-Warning und ein Com\-Init\-Lobby und werden durch Aufruf von change\-Server an die Lobby zurÃ¼ckgegeben. Das Spiel wird aufgelÃ¶st. 
 \begin{DoxyParams}{Parameter}
 {\em player} & ist der Threat der die Nachricht erhalten hat \\
 \hline
-{\em quit} & ist das Com\-Object, welches angibt, dass der Spieler das Spiel verlässt \\
+{\em quit} & ist das Com\-Object, welches angibt, dass der Spieler das Spiel verlÃ¤sst \\
 \hline
 \end{DoxyParams}
 \hypertarget{a00043_accca048ccec6323df6d3262f96d98723}{\index{Server\-::\-Game\-Server@{Server\-::\-Game\-Server}!receive\-Message@{receive\-Message}}
@@ -228,7 +228,7 @@ Diese Methode gibt das erhaltene Com\-Ruleset durch einen Aufruf von resolve\-Me
 
 Diese Methode wird vom abstrakten \hyperlink{a00078}{Server} vererbt. 
 
-Zusätzlich wird die Zahl der current\-Players um eins Verringert. 
+ZusÃ¤tzlich wird die Zahl der current\-Players um eins Verringert. 
 \begin{DoxyParams}{Parameter}
 {\em player} & ist der \hyperlink{a00073}{Player}, der entfernt wird \\
 \hline
