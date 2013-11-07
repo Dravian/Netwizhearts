@@ -4,6 +4,7 @@
 package Server;
 
 
+import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 
@@ -42,26 +43,30 @@ public class Player implements Runnable{
 	 * @param input ist der ObjectInput vom entsprechenden Client
 	 */
 	public Player(Server lobbyServer, ObjectOutput output, ObjectInput input){
-
+		server = lobbyServer;
+		comOut = output;
+		comIn = input;
 	}
 	
 	/**
 	 * Die run-Methode des Threat nimmt eingehende Nachrichten des Client
-	 * entgegen und übergibt diese an den Server durch aufruf der Methode 
+	 * entgegen und übergibt diese an den Server durch Aufruf der Methode 
 	 * resolveMessage()
+	 * Fängt eine IOException ab.
 	 */
-	public void run() {
+	public void run(){
 		// begin-user-code
 		// TODO Auto-generated method stub
-
 		// end-user-code
 	}
 
 	/**
 	 * Diese Methode schickt ein ComObjekt an den Client
 	 * @param com ist das ComObject das verschickt wird
+	 * @throws IOException wenn der Output nicht funktioniert
 	 */
-	public void send(ComObject com) {
+	public void send(ComObject com) throws IOException{
+		comOut.writeObject(com);
 		// begin-user-code
 		// TODO Auto-generated method stub
 

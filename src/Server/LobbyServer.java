@@ -60,6 +60,7 @@ public class LobbyServer extends Server {
 		/**
 		 * Die run-Methode nimmt Clientverbinungen an, erstellt einen neuen Player 
 		 * und fügt ihn in das noNames-Set ein
+		 * Fängt eine IOException ab.
 		 */
 		public void run() {
 			// begin-user-code
