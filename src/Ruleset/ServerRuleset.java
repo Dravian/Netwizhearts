@@ -4,6 +4,7 @@
 package Ruleset;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import Server.GameServer;
@@ -89,14 +90,12 @@ public abstract class ServerRuleset {
 		// TODO Auto-generated method stub
 	
 		// end-user-code
-	}
-	
-	/**
+	}/**
 	 * Erzeugt ein Kartendeck
 	 * @return Gibt ein Kartendeck zurück
 	 */
 	private List<Card> createDeck() {
-		List<Card> deck = new ArrayList<Card>();
+		List<Card> deck = new LinkedList<Card>();
 		switch(RULESET) {
 		case Wizard: 
 			for(WizardCard wiz : WizardCard.values()) {

@@ -3,9 +3,11 @@
  */
 package Ruleset;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 
 /** 
@@ -66,7 +68,7 @@ public class GameState {
 	 */
 	public GameState(RulesetType ruleset, List<Card> deck) {
 		this.ruleset = ruleset;
-		players = new ArrayList<PlayerState>();
+		players = new LinkedList<PlayerState>();
 		discardPile = new HashMap<String,Card>();
 		this.deck = deck;
 		gamePhase = GamePhase.Start;
@@ -74,7 +76,7 @@ public class GameState {
 	}
 	
 	/**
-	 * Fï¿½gt den Spieler ins Spiel hinein, falls er nicht schon im Spiel ist
+	 * Fügt den Spieler ins Spiel hinein, falls er nicht schon im Spiel ist
 	 * @param name
 	 */
 	public boolean addPlayerToGame(String name) {
@@ -104,7 +106,7 @@ public class GameState {
 	}
 
 	/** 
-	 * Holt den Spieler als erster am Zug war
+	 * Holt den Spieler der als erster am Zug war
 	 * @return firstPlayer Der Spielzustand des Spielers der als erster am Zug war
 	 */
 	public PlayerState getFirstPlayer() {
@@ -143,7 +145,6 @@ public class GameState {
 
 	/** 
 	 *Holt die gespielten Karten im Ablagestapel
-	 * @return 
 	 *@return discardPile Die gespielten Karten
 	 */
 	public Map<String,Card> getPlayedCards() {
@@ -180,6 +181,14 @@ public class GameState {
 		return trumpCard;
 	}
 	
+	public int getRoundNumber() {
+		return roundNumber;
+	}
+	
+	private void newRound() {
+		roundNumber++;
+	}
+	
 	/**
 	 * Holt die Anzahl der gespielten Karten 
 	 * @return Die Anzahl der gespielten Karten
@@ -203,23 +212,41 @@ public class GameState {
 	}
 	
 	public void shuffleDeck() {
-		
+		Collections.shuffle(deck);
 	}
 	
 	/**
-	 * Deals a number of cards from the top of the deck
-	 * @param name Name of the Player who gets the cards
-	 * @param number The number of cards
-	 * @return True if a player has no cards, false if he does
+	 * Verteilt eine bestimmte Anzahl an Karten an die Spieler
+	 * @param number Die Anzahl an Karten
+	 * @return True falls ein Spieler keine Karten hat
 	 */
-	public boolean dealCards(String name, int number) {
-		return false;	
+	public boolean dealCards(int number) {
+		for(PlayerState player : players) {
+			if(!player.getHand().isEmpty()) {
+				return false;
+			}
+		}
+		
+		for(PlayerState player : players) {
+			for(int i = 0; i < number; i++) {
+				player.addCard(((LinkedList<Card>) deck).pop());
+			}
+		}
+		return true;
 	}
 	
 	/**
-	 * Gives one specific card of the deck to a Player
-	 * @param name The name of the Player
-	 * @return true if the card is in the deck
+	 * Setzt den nächsten Spieler
+	 */
+	public void nextPlayer() {
+		ListIterator i = players.listIterator(players.indexOf(currentPlayer));
+		currentPlayer = (PlayerState)i.next();
+    }
+	
+	/**
+	 * Gibt eine bestimmte Karte einem Spieler
+	 * @param name Der Name des Spielers
+	 * @return true falls die Karte im Stapel ist, false wenn nicht
 	 */
 	public boolean giveACard(String name, Card card) {
 		return false;	
@@ -228,7 +255,7 @@ public class GameState {
 	/**
 	 * Entfernt eine Karte aus der Hand des currentPlayer und legt sie auf dem Ablagestapel
 	 * @param card Die gespielte Karte
-	 * @return isInHand Gibt true zurï¿½ck wenn die gespielte Karte auf der Hand vom
+	 * @return isInHand Gibt true zurück wenn die gespielte Karte auf der Hand vom
 	 * Spieler liegt und false sonst
 	 */
 	public boolean playCard(Card card) {

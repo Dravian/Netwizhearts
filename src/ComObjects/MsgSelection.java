@@ -4,17 +4,17 @@ import Ruleset.Colour;
 
 /**
  * Diese Klasse ist eine Verfeinerung der RulesetMessage-Klasse.
- * Diese Nachricht enthÃ¤lt Information Ã¼ber eine Auswahl, die der
- * Spieler getroffen hat. Die WahlmÃ¶glichkeiten werden durch Integer
- * reprÃ¤sentiert.
+ * Diese Nachricht enthält Information über eine Auswahl, die der
+ * Spieler getroffen hat. Die Wahlmöglichkeiten werden durch Integer
+ * repräsentiert.
  */
 public class MsgSelection extends RulesetMessage {
 
 	private int selection;
 
     /**
-     * Dies ist der Kontruktor fÃ¼r eine neue MsgSelection-Nachricht.
-     * @param selection ist die getroffene Auswahl, reprÃ¤sentiert
+     * Dies ist der Kontruktor für eine neue MsgSelection-Nachricht.
+     * @param selection ist die getroffene Auswahl, repräsentiert
      *                  durch einen Integer.
      */
 	public MsgSelection(int selection) {
@@ -22,7 +22,7 @@ public class MsgSelection extends RulesetMessage {
     }
 
     /**
-     * Diese Methode gibt die Auswahl des Spieler zurÃ¼ck, die er
+     * Diese Methode gibt die Auswahl des Spieler zurück, die er
      * gemacht hat.
      * @return die Auswahl.
      */

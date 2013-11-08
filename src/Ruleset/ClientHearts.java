@@ -9,7 +9,7 @@ package Ruleset;
 public class ClientHearts extends ClientRuleset {
 	
 	/**
-	 * Überprüft ob ein gemachter Zug zu dem Spiel Hearts gütlig ist
+	 * Überprüft ob ein gemachter Zug zu dem Spiel Hearts gültig ist
 	 * @return isValid true falls Zug gültig, false wenn nicht
 	 */
 	public boolean isValidMove(Card card) {

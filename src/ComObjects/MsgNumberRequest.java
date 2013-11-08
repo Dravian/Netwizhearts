@@ -6,7 +6,7 @@ package ComObjects;
 public class MsgNumberRequest extends RulesetMessage {
 
     /**
-     * Dies ist der Kontruktor fÃ¼r eine neue MsgNumberRequest-Nachricht.
+     * Dies ist der Kontruktor für eine neue MsgNumberRequest-Nachricht.
      */
     public MsgNumberRequest() {
     }
