@@ -3,6 +3,8 @@
  */
 package Ruleset;
 
+import java.util.List;
+
 import Client.ClientModel;
 import ComObjects.MsgCard;
 import ComObjects.MsgCardRequest;
@@ -28,6 +30,37 @@ public abstract class ClientRuleset {
 	 */
 	private GameClientUpdate gameState;
 
+	public List<Card> getOwnHand() {
+		return gameState.getOwnHand();
+	}
+	
+	public OtherData getOwnData() {
+		return gameState.getOwnData();
+	}
+		
+	/** 
+	 * Holt die Spieldaten der anderen Spieler
+	 * @return otherPlayerData Die Spieldaten der anderen Spieler
+	 */
+	public List<OtherData> getOtherPlayerData() {
+		return gameState.getOtherPlayerData();
+	}
+	
+	/**
+	 * Gibt den Spieler der momentan am Zug ist zurück
+	 * @return Der momentane Spieler
+	 */
+	public PlayerState getCurrentPlayer() {
+		return gameState.getCurrentPlayer();
+	}
+	
+	/**
+	 * Holt die aufgedeckte Trumpfkarte
+	 */
+	public Card getTrumpCard() {
+		return gameState.getTrumpCard();
+	}
+	
 	/** 
 	 * Verarbeitet die RulesetMessage dass der Server ein Spielupdate an den Client schickt
 	 * @param clientUpdate Die Nachricht vom Server

@@ -74,12 +74,18 @@ public class GameState {
 	}
 	
 	/**
-	 * Fügt den Spieler ins Spiel hinein
+	 * Fügt den Spieler ins Spiel hinein, falls er nicht schon im Spiel ist
 	 * @param name
 	 */
-	public void addPlayerToGame(String name) {
+	public boolean addPlayerToGame(String name) {
 		PlayerState player = new PlayerState(name,ruleset);
-		players.add(player);
+		
+		if(players.contains(player)) {
+			return false;
+		} else {
+			players.add(player);
+			return true;
+		}
 	}
 	
 	/**
@@ -87,8 +93,9 @@ public class GameState {
 	 * @param player Der neue firstPlayer
 	 */
 	public boolean setFirstPlayer(PlayerState player) {
-		if(firstPlayer == player) {
+		if(firstPlayer != player) {
 			this.firstPlayer = player;	
+			this.currentPlayer = player;
 			return true;
 		} else {
 			return false;
@@ -193,6 +200,29 @@ public class GameState {
 			}
 		}
 		return null;
+	}
+	
+	public void shuffleDeck() {
+		
+	}
+	
+	/**
+	 * Deals a number of cards from the top of the deck
+	 * @param name Name of the Player who gets the cards
+	 * @param number The number of cards
+	 * @return True if a player has no cards, false if he does
+	 */
+	public boolean dealCards(String name, int number) {
+		return false;	
+	}
+	
+	/**
+	 * Gives one specific card of the deck to a Player
+	 * @param name The name of the Player
+	 * @return true if the card is in the deck
+	 */
+	public boolean giveACard(String name, Card card) {
+		return false;	
 	}
 	
 	/**
