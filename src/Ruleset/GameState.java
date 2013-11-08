@@ -10,7 +10,7 @@ import java.util.Map;
 
 /** 
  * Das GameState modelliert einen aktuellen Spielzustand, es wird vom GameServer instanziert 
- * und vom RuleSet bearbeitet. Es enthält die einzelnen PlayerStates, sowie Informationen 
+ * und vom RuleSet bearbeitet. Es enthï¿½lt die einzelnen PlayerStates, sowie Informationen 
  * zum Ablage-, Aufnahmestapel, Rundenanzahl, den momentan aktiven Spieler sowie GamePhase.
  */
 public class GameState {
@@ -74,7 +74,7 @@ public class GameState {
 	}
 	
 	/**
-	 * Fügt den Spieler ins Spiel hinein, falls er nicht schon im Spiel ist
+	 * Fï¿½gt den Spieler ins Spiel hinein, falls er nicht schon im Spiel ist
 	 * @param name
 	 */
 	public boolean addPlayerToGame(String name) {
@@ -228,7 +228,7 @@ public class GameState {
 	/**
 	 * Entfernt eine Karte aus der Hand des currentPlayer und legt sie auf dem Ablagestapel
 	 * @param card Die gespielte Karte
-	 * @return isInHand Gibt true zurück wenn die gespielte Karte auf der Hand vom
+	 * @return isInHand Gibt true zurï¿½ck wenn die gespielte Karte auf der Hand vom
 	 * Spieler liegt und false sonst
 	 */
 	public boolean playCard(Card card) {
