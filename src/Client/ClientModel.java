@@ -4,6 +4,7 @@
 package Client;
 
 import Ruleset.ClientRuleset;
+import Server.GameServerRepresentation;
 import Client.View.Language;
 import ComObjects.ComBeenKicked;
 import ComObjects.ComChatMessage;
@@ -16,7 +17,9 @@ import ComObjects.ComServerAcknowledgement;
 import ComObjects.ComUpdatePlayerlist;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.List;
 import java.util.Observable;
+import java.util.Set;
 
 /** 
  * Implementiert das Client Model.
@@ -48,6 +51,10 @@ public class ClientModel extends Observable{
 	 * Hält den für die Netzwerkkomunikation zuständigen Thread.
 	 */
 	private MessageListenerThread messageListenerThread;
+	
+	private List<String> playerList;
+
+	private Set<GameServerRepresentation> gameList;
 
 	/**
 	 * 
@@ -55,88 +62,125 @@ public class ClientModel extends Observable{
 	public ClientModel() {
 		
 	}
+	
+	/**
+	 * Wird von dem Controller
+	 * beim Verlassen eines Fensters
+	 * ausgeführt.
+	 */
+	public void leaveWindow() {
+		
+	}
 
 	/** 
-	 * Überladene Methode die ComObjekte von der inneren Klasse
-	 * messageListenerThread übergeben bekommt und auswertet.
+	 * Bearbeitet eine eingehende Chatnachricht.
 	 */
-	private void receiveMessage(ComChatMessage msg) {
+	private void processChatMessage(ComChatMessage msg) {
 		
 	}
 	
 	/** 
-	 * Überladene Methode die ComObjekte von der inneren Klasse
-	 * messageListenerThread übergeben bekommt und auswertet.
+	 * Verarbeitet eine Liste von Spielern und Spielen,
+	 * welche sich beim Betreten der ServerLobby bereits darin befinden.
 	 */
-	private void receiveMessage(ComInitLobby msg) {
+	private void processInitServerLobby(ComInitLobby msg) {
 		
 	}
 	
 	/** 
-	 * Überladene Methode die ComObjekte von der inneren Klasse
-	 * messageListenerThread übergeben bekommt und auswertet.
+	 * Verarbeitet eine Liste von Spielern,
+	 * welche sich beim betreten der Spiellobby
+	 * bereits darin befinden.
 	 */
-	private void receiveMessage(ComInitGameLobby msg) {
+	private void processInitGameLobby(ComInitGameLobby msg) {
 		
 	}
 	
 	/** 
-	 * Überladene Methode die ComObjekte von der inneren Klasse
-	 * messageListenerThread übergeben bekommt und auswertet.
+	 * Diese Methode wird von receiveMessage() aufgerufen,
+	 * falls eine Nachricht für das Regelwerk ankommt.
 	 */
-	private void receiveMessage(ComRuleset msg) {
+	private void invokeRuleset(ComRuleset msg) {
 		
 	}
 	
 	/** 
-	 * Überladene Methode die ComObjekte von der inneren Klasse
-	 * messageListenerThread übergeben bekommt und auswertet.
+	 * Diese Hilfsmethode wird von receiveMessage() aufgerufen,
+	 * falls ein Server Acknowledgement auftritt.
+	 * Dabei ist es von Bedeutung,
+	 *  in welchem Zustand sich der Client befindet.
+	 *  @param ack Eine Bestätigung durch den Server.
 	 */
-	private void receiveMessage(ComServerAcknowledgement msg) {
+	private void processAck(ComServerAcknowledgement ack) {
 		
 	}
 	
 	/** 
-	 * Überladene Methode die ComObjekte von der inneren Klasse
-	 * messageListenerThread übergeben bekommt und auswertet.
+	 * Diese Hilfmethode wird von receiveMessage() aufgerufen,
+	 * falls der Spieler aus der Spiellobby durch einen Spielleiter
+	 * entfernt wurde.
 	 */
-	private void receiveMessage(ComBeenKicked msg) {
+	private void processBeenKicked(ComBeenKicked msg) {
+		
+	}
+	
+	/**
+	 * Verarbeitet ein Update, das einen einzelnen Spieler betrifft.
+	 */
+	private void processUpdatePlayerlist(ComUpdatePlayerlist update) {
+		
+	}
+	
+	/**
+	 * Verarbeitet ein Update, das ein einzelnes Spiel betrifft.
+	 */
+	private void processUpdateGamelist(ComLobbyUpdateGamelist update) {
+		
+	}
+	
+	/**
+	 * Diese Methode wird von dem ClientListenerThread aufgerufen
+	 * und bestimmt welche Nachricht sich hinter dem ComObjekt genau
+	 * verbirgt um weitere Verarbeitungsschritte einzuleiten.
+	 * @param comObject Die empfangene Nachricht.
+	 */
+	private void receiveMessage(ComObject comObject){
 		
 	}
 	
 	/**
 	 * Diese Methode wird von der View beim betreten der Spiellobby aufgerufen
 	 * und liefert eine Liste von Spielern in der Spiellobby.
-	 * @return ComInitGameLobby Voller Datensatz für die Spiellobby.
+	 * @return List Eine Liste der Spieler in der Spiellobby.
 	 */
-	public ComInitGameLobby getGameLobbyInit(){
-		return null;
+	public List<String> getGameLobbyPlayerlist(){
+		return playerList;
 	}
 	
 	/**
 	 * Diese Methode wird von der View beim betreten der Serverlobby aufgerufen
 	 * und liefert eine Liste von Spielern und Spielen in der Serverlobby.
-	 * @return ComInitLobby Voller Datensatz für die ServerLobby.
+	 * @return Set Enthält alle Spiele in der ServerLobby.
 	 */
-	public ComInitLobby getServerLobbyInit(){
+	public Set<GameServerRepresentation> getFullServerLobbyGamelist(){
 		return null;
 	}
 	
 	/**
-	 * Diese Methode wird von der View aufgerufen und aktualisiert einzelne
-	 * kommende und abgehende Spieler in den Listen der View.
-	 * @return ComLobbyUpdateGamelist
+	 * Diese Methode wird von der View aufgerufen
+	 * und aktualisiert einzelne Spiele.
+	 * @return GameServerRepresentation Daten eines Spieles.
 	 */
-	public ComLobbyUpdateGamelist getServerLobbyGamelistUpdate(){
+	public GameServerRepresentation getServerLobbyGamelistUpdate(){
 		return null;
 	}
 	
 	/**
 	 * Diese Methode wird von der View aufgerufen um die Liste der Spieler
 	 * zu aktualisieren.
-	 * @return ComUpdatePlayerlist Update für die aktuelle Spielerliste.
+	 * @return List Update für die aktuelle Spielerliste.
 	 */
-	public ComUpdatePlayerlist getPlayerlistUpdate(){
+	public List<String> getPlayerlistUpdate(){
 		return null;
 	}
 	
@@ -145,7 +189,7 @@ public class ClientModel extends Observable{
 	 * abzuholen.
 	 * @return String die Chatnachricht.
 	 */
-	public ComChatMessage getChatMessage(){
+	public String getChatMessage(){
 		return null;
 	}
 	
@@ -176,7 +220,7 @@ public class ClientModel extends Observable{
 	/** 
 	 * Wird vom Controller aufgerufen um einen Spieler
 	 * aus der Spiellobby zu entfernen.
-	 * @param name des Spielerst welcher enfernt werden soll.
+	 * @param name des Spielers welcher enfernt werden soll.
 	 */
 	public void kickPlayer(final String name) {
 	
@@ -185,9 +229,11 @@ public class ClientModel extends Observable{
 	/** 
 	 * Wird vom ClientController aufgerufen und erstellt ein neues Spiel
 	 * auf dem Server.
+	 * @param gameName String Name des Spieles.
+	 * @param password String Passwort zum sichern des Spieles.
 	 */
-	public void hostGame() {
-		
+	public void hostGame(String gameName, String password) {
+
 	}
 
 	/** 
@@ -202,8 +248,9 @@ public class ClientModel extends Observable{
 	 * Diese Methode wird von dem ClientController aufgerufen um
 	 * einem bereits erstelltem Spiel beizutreten.
 	 * @param name String Der Name des Spiels.
+	 * @param password String Passwort eines Spieles.
 	 */
-	public void joinGame(final String name) {
+	public void joinGame(final String name, final String password) {
 	
 	}
 
@@ -230,6 +277,7 @@ public class ClientModel extends Observable{
 	 * zuordnen zu können.
 	 */
 	public void makeMove(CardID id) {
+		
 	}
 
 	/** 
