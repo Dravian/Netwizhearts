@@ -1,0 +1,460 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.5"/>
+<title>NET-WizHearts: Server.GameServer Klassenreferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="kartenspiel.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">NET-WizHearts
+   </div>
+   <div id="projectbrief">Dies ist die Spezifikation fÃ¼r NET-WizHearts</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Erzeugt von Doxygen 1.8.5 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Hauptseite</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Klassen</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Auflistung&#160;der&#160;Klassen</span></a></li>
+      <li><a href="hierarchy.html"><span>Klassenhierarchie</span></a></li>
+      <li><a href="functions.html"><span>Klassen-Elemente</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><b>Server</b></li><li class="navelem"><a class="el" href="a00043.html">GameServer</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Ã–ffentliche Methoden</a> &#124;
+<a href="a00260.html">Aufstellung aller Elemente</a>  </div>
+  <div class="headertitle">
+<div class="title">Server.GameServer Klassenreferenz</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="dynheader">
+Klassendiagramm fÃ¼r Server.GameServer:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="a00043.png" usemap="#Server.GameServer_map" alt=""/>
+  <map id="Server.GameServer_map" name="Server.GameServer_map">
+<area href="a00078.html" title="Ist ein abstrakte Klasse, von der die Klassen LobbyServer und GameServer erben. " alt="Server.Server" shape="rect" coords="0,0,126,24"/>
+</map>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Ã–ffentliche Methoden</h2></td></tr>
+<tr class="memitem:a6db144e60c51cb6ee80f448104127aed"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#a6db144e60c51cb6ee80f448104127aed">GameServer</a> (<a class="el" href="a00054.html">LobbyServer</a> server, <a class="el" href="a00073.html">Player</a> gameMaster, String GameName, <a class="el" href="a00076.html">RulesetType</a> ruleset, String password, boolean hasPassword)</td></tr>
+<tr class="separator:a6db144e60c51cb6ee80f448104127aed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a942046c7512e4fead06f7df12faa119f"><td class="memItemLeft" align="right" valign="top">synchronized void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#a942046c7512e4fead06f7df12faa119f">addPlayer</a> (<a class="el" href="a00073.html">Player</a> player)</td></tr>
+<tr class="separator:a942046c7512e4fead06f7df12faa119f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc6cc835652484da1b7b1fda6071ea0b"><td class="memItemLeft" align="right" valign="top">synchronized void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#afc6cc835652484da1b7b1fda6071ea0b">removePlayer</a> (<a class="el" href="a00073.html">Player</a> player)</td></tr>
+<tr class="separator:afc6cc835652484da1b7b1fda6071ea0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae9201e5827933e23b078bc7eaf2aee3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#aae9201e5827933e23b078bc7eaf2aee3">receiveMessage</a> (<a class="el" href="a00073.html">Player</a> player, ComKickPlayerRequest kickPlayer)</td></tr>
+<tr class="separator:aae9201e5827933e23b078bc7eaf2aee3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7112c8a4b95e71c42a207b844f447305"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#a7112c8a4b95e71c42a207b844f447305">receiveMessage</a> (<a class="el" href="a00073.html">Player</a> player, ComChatMessage chat)</td></tr>
+<tr class="separator:a7112c8a4b95e71c42a207b844f447305"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fd05e79a3ae006b056cb27199ee7aeb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#a9fd05e79a3ae006b056cb27199ee7aeb">receiveMessage</a> (<a class="el" href="a00073.html">Player</a> player, ComClientLeave leave)</td></tr>
+<tr class="separator:a9fd05e79a3ae006b056cb27199ee7aeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3affa434fc5afd574d4fa74060ac9c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#af3affa434fc5afd574d4fa74060ac9c7">receiveMessage</a> (<a class="el" href="a00073.html">Player</a> player, ComClientQuit quit)</td></tr>
+<tr class="separator:af3affa434fc5afd574d4fa74060ac9c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accca048ccec6323df6d3262f96d98723"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#accca048ccec6323df6d3262f96d98723">receiveMessage</a> (<a class="el" href="a00073.html">Player</a> player, ComStartGame start)</td></tr>
+<tr class="separator:accca048ccec6323df6d3262f96d98723"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accad199750d7c6577b2d096483ce6e9d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#accad199750d7c6577b2d096483ce6e9d">receiveMessage</a> (<a class="el" href="a00073.html">Player</a> player, ComRuleset ruleset)</td></tr>
+<tr class="separator:accad199750d7c6577b2d096483ce6e9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e2b83f3466ec6c9cbe0a24a30587333"><td class="memItemLeft" align="right" valign="top">ComInitGameLobby&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#a4e2b83f3466ec6c9cbe0a24a30587333">initLobby</a> ()</td></tr>
+<tr class="separator:a4e2b83f3466ec6c9cbe0a24a30587333"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_a00078"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_a00078')"><img src="closed.png" alt="-"/>&#160;Ã–ffentliche Methoden geerbt von <a class="el" href="a00078.html">Server.Server</a></td></tr>
+<tr class="memitem:a248b5c6e75df5be16fb281ac194c7e20 inherit pub_methods_a00078"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00078.html#a248b5c6e75df5be16fb281ac194c7e20">receiveMessage</a> (<a class="el" href="a00073.html">Player</a> player, <a class="el" href="a00029.html">ComObject</a> com)</td></tr>
+<tr class="separator:a248b5c6e75df5be16fb281ac194c7e20 inherit pub_methods_a00078"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a752adb06d6c1e59797bdb2dde5c9058b inherit pub_methods_a00078"><td class="memItemLeft" align="right" valign="top">synchronized void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00078.html#a752adb06d6c1e59797bdb2dde5c9058b">sendToPlayer</a> (String name, <a class="el" href="a00029.html">ComObject</a> com)</td></tr>
+<tr class="separator:a752adb06d6c1e59797bdb2dde5c9058b inherit pub_methods_a00078"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84083f41e9cbad43bca45072e64877ee inherit pub_methods_a00078"><td class="memItemLeft" align="right" valign="top">synchronized void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00078.html#a84083f41e9cbad43bca45072e64877ee">addPlayer</a> (<a class="el" href="a00073.html">Player</a> player)</td></tr>
+<tr class="separator:a84083f41e9cbad43bca45072e64877ee inherit pub_methods_a00078"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbd5ca08d0f660116673717e38db0343 inherit pub_methods_a00078"><td class="memItemLeft" align="right" valign="top">synchronized void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00078.html#adbd5ca08d0f660116673717e38db0343">removePlayer</a> (<a class="el" href="a00073.html">Player</a> player)</td></tr>
+<tr class="separator:adbd5ca08d0f660116673717e38db0343 inherit pub_methods_a00078"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32695e6a4c0f39af5c7e867384cc3ba7 inherit pub_methods_a00078"><td class="memItemLeft" align="right" valign="top">synchronized void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00078.html#a32695e6a4c0f39af5c7e867384cc3ba7">broadcast</a> (<a class="el" href="a00029.html">ComObject</a> com)</td></tr>
+<tr class="separator:a32695e6a4c0f39af5c7e867384cc3ba7 inherit pub_methods_a00078"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">AusfÃ¼hrliche Beschreibung</h2>
+<div class="textblock"><p>Sie verwaltet die Kommunikation zwischen den Clients während eines Spieles. Die GameServer-Klasse erbt Methoden zur Kommunikation vom <a class="el" href="a00078.html" title="Ist ein abstrakte Klasse, von der die Klassen LobbyServer und GameServer erben. ">Server</a>. Der <a class="el" href="a00043.html" title="Diese Klasse ist für die Spielverwaltung zuständig. ">GameServer</a> tauscht Nachrichten zwischen Ruleset und <a class="el" href="a00073.html" title="Die Player-Klasse wird zum Versenden von Java Serializable Objects verwendet. ">Player</a> aus, um so den Spielablauf zu koordinieren. </p>
+<dl class="section author"><dt>Autor</dt><dd>Viktoria </dd></dl>
+</div><h2 class="groupheader">Beschreibung der Konstruktoren und Destruktoren</h2>
+<a class="anchor" id="a6db144e60c51cb6ee80f448104127aed"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Server.GameServer.GameServer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00054.html">LobbyServer</a>&#160;</td>
+          <td class="paramname"><em>server</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="a00073.html">Player</a>&#160;</td>
+          <td class="paramname"><em>gameMaster</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>GameName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="a00076.html">RulesetType</a>&#160;</td>
+          <td class="paramname"><em>ruleset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>password</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">boolean&#160;</td>
+          <td class="paramname"><em>hasPassword</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Konstruktor des GameServers. </p>
+<p>Setzt die Attribute lobbyServer, name, password, hasPasword und rulesetType auf die übergebenen Werte. Setzt den gameMasterName auf den Namen des gameMaster und fügt den gameMaster dem Set an Spielern hinzu. Bestimmt mithilfe des Enums RulesetType das Ruleset und erstellt es. Setzt currentPlayers auf eins und maxPlayers je nach Ruleset. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">server</td><td>ist der <a class="el" href="a00054.html" title="Diese Klasse ist für die Verwaltung der Spiellobby auf dem Server verantwortlich. ">LobbyServer</a> der den <a class="el" href="a00043.html" title="Diese Klasse ist für die Spielverwaltung zuständig. ">GameServer</a> erstellt hat. </td></tr>
+    <tr><td class="paramname">gameMaster</td><td>ist der Name des Spielleiters </td></tr>
+    <tr><td class="paramname">GameName</td><td>ist der Name des Spiels </td></tr>
+    <tr><td class="paramname">ruleset</td><td>gibt an, welches Ruleset verwendet wird </td></tr>
+    <tr><td class="paramname">password</td><td>speichert das Passwort des Spiels </td></tr>
+    <tr><td class="paramname">hasPassword</td><td>gibt an,ob das Spiel ein Passwort hat </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentation der Elementfunktionen</h2>
+<a class="anchor" id="a942046c7512e4fead06f7df12faa119f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">synchronized void Server.GameServer.addPlayer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00073.html">Player</a>&#160;</td>
+          <td class="paramname"><em>player</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Diese Methode wird vom abstrakten <a class="el" href="a00078.html" title="Ist ein abstrakte Klasse, von der die Klassen LobbyServer und GameServer erben. ">Server</a> vererbt. </p>
+<p>Zusätzlich wird die Zahl der currentPlayers um eins Erhöht. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>ist der <a class="el" href="a00073.html" title="Die Player-Klasse wird zum Versenden von Java Serializable Objects verwendet. ">Player</a>, der hinzugefoügt wird </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a4e2b83f3466ec6c9cbe0a24a30587333"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ComInitGameLobby Server.GameServer.initLobby </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Baut ein neues ComInitGameLobby Objekt und gibt es zurück. </p>
+<dl class="section return"><dt>RÃ¼ckgabe</dt><dd>Gibt das ComInitGameLobby Objekt zurück </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aae9201e5827933e23b078bc7eaf2aee3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Server.GameServer.receiveMessage </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00073.html">Player</a>&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ComKickPlayerRequest&#160;</td>
+          <td class="paramname"><em>kickPlayer</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Diese Methode ist dafur zuständig zu ermitteln, was passiert wenn ein Spieler aus der GameLobby geworfen wird. </p>
+<p>Der <a class="el" href="a00073.html" title="Die Player-Klasse wird zum Versenden von Java Serializable Objects verwendet. ">Player</a> wird durch Aufruf von changeServer an die Lobby zurückgegeben. An diesen Spieler wird ein ComWarning und ein ComInitLobby geschickt. Danach wird ein ComUpdatePlayerlist Objekt mit broadcast an alle Client im Spiel verschickt. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>ist der Threat der die Nachricht erhalten hat </td></tr>
+    <tr><td class="paramname">kicked</td><td>ist das ComObject, das verarbeitet wird </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a7112c8a4b95e71c42a207b844f447305"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Server.GameServer.receiveMessage </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00073.html">Player</a>&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ComChatMessage&#160;</td>
+          <td class="paramname"><em>chat</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Diese Methode ist dafur zuständig eine Chatnachricht an alle Clients im Spiel zu verschicken. </p>
+<p>Dafür wird die ComChatMessage mit broadcast an alle Spieler im playerSet verteilt. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>ist der Threat der die Nachricht erhalten hat </td></tr>
+    <tr><td class="paramname">chat</td><td>ist das ComObject, das die Chatnachricht enthält </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a9fd05e79a3ae006b056cb27199ee7aeb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Server.GameServer.receiveMessage </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00073.html">Player</a>&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ComClientLeave&#160;</td>
+          <td class="paramname"><em>leave</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Diese Methode gibt einen <a class="el" href="a00073.html" title="Die Player-Klasse wird zum Versenden von Java Serializable Objects verwendet. ">Player</a>, der die GameLobby verlassen will, durch Aufruf von changeServer an die ServerLobby zurück und schickt ihm ein ComInitLobby. </p>
+<p>Danach wird ein ComUpdatePlayerlist Objekt mit broadcast an alle Clients im Spiel verschickt. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>ist der Threat der die Nachricht erhalten hat </td></tr>
+    <tr><td class="paramname">leave</td><td>ist das ComObject, welches angibt, dass der Spieler in die Lobby zurückkehrt </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="af3affa434fc5afd574d4fa74060ac9c7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Server.GameServer.receiveMessage </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00073.html">Player</a>&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ComClientQuit&#160;</td>
+          <td class="paramname"><em>quit</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Diese Methode behandelt den Fall, dass ein Spieler das laufende Spiel verlässt. </p>
+<p>Sie gibt einen <a class="el" href="a00073.html" title="Die Player-Klasse wird zum Versenden von Java Serializable Objects verwendet. ">Player</a>, der das Spiel verlassen will, Aufruf von changeServer an die ServerLobby zurück und schickt ihm ein ComInitLobby. Alle Spieler, die sich im Spiel befinden bekommen ein ComWarning und ein ComInitLobby und werden durch Aufruf von changeServer an die Lobby zurückgegeben. Das Spiel wird aufgelöst. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>ist der Threat der die Nachricht erhalten hat </td></tr>
+    <tr><td class="paramname">quit</td><td>ist das ComObject, welches angibt, dass der Spieler das Spiel verlässt </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="accca048ccec6323df6d3262f96d98723"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Server.GameServer.receiveMessage </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00073.html">Player</a>&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ComStartGame&#160;</td>
+          <td class="paramname"><em>start</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Diese Methode sagt dem Ruleset, dass ein neues Spiel gestartet werden soll. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>ist der Threat der die Nachricht erhalten hat </td></tr>
+    <tr><td class="paramname">start</td><td>ist das ComObject, dass angibt, dass das Spiel gestartet werden soll </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="accad199750d7c6577b2d096483ce6e9d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Server.GameServer.receiveMessage </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00073.html">Player</a>&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ComRuleset&#160;</td>
+          <td class="paramname"><em>ruleset</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Diese Methode gibt das erhaltene ComRuleset durch einen Aufruf von resolveMessage an das Ruleset weiter. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>ist der Threat der die Nachricht erhalten hat </td></tr>
+    <tr><td class="paramname">ruleset</td><td>ist das ComObject, das zeigt, dass das Object vom Ruleset bearbeitet werden muss </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="afc6cc835652484da1b7b1fda6071ea0b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">synchronized void Server.GameServer.removePlayer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00073.html">Player</a>&#160;</td>
+          <td class="paramname"><em>player</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Diese Methode wird vom abstrakten <a class="el" href="a00078.html" title="Ist ein abstrakte Klasse, von der die Klassen LobbyServer und GameServer erben. ">Server</a> vererbt. </p>
+<p>Zusätzlich wird die Zahl der currentPlayers um eins Verringert. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>ist der <a class="el" href="a00073.html" title="Die Player-Klasse wird zum Versenden von Java Serializable Objects verwendet. ">Player</a>, der entfernt wird </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Erzeugt am Mit Nov 6 2013 18:42:15 fÃ¼r NET-WizHearts von &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.5
+</small></address>
+</body>
+</html>

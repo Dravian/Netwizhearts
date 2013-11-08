@@ -1,0 +1,46 @@
+\hypertarget{a00055}{\subsection{Client.\-View.\-Login Klassenreferenz}
+\label{a00055}\index{Client.\-View.\-Login@{Client.\-View.\-Login}}
+}
+Klassendiagramm für Client.\-View.\-Login\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{a00055}
+\end{center}
+\end{figure}
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{a00055_a7eb29ea437a3c128a12f4ba1d1b33512}{update} (Observable o, Object arg)
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+In diesem Fenster kann der Benutzer seinen Namen und die Adresse des Servers eingeben. Außerdem ist über den \hyperlink{a00055}{Login} die Auswahl der Sprache möglich. Über den Login-\/\-Button wird die Verbindung zum Server hergestellt.
+
+\begin{DoxyAuthor}{Autor}
+M4nkey 
+\end{DoxyAuthor}
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00055_a7eb29ea437a3c128a12f4ba1d1b33512}{\index{Client\-::\-View\-::\-Login@{Client\-::\-View\-::\-Login}!update@{update}}
+\index{update@{update}!Client::View::Login@{Client\-::\-View\-::\-Login}}
+\paragraph[{update}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\-View.\-Login.\-update (
+\begin{DoxyParamCaption}
+\item[{Observable}]{o, }
+\item[{Object}]{arg}
+\end{DoxyParamCaption}
+)}}\label{a00055_a7eb29ea437a3c128a12f4ba1d1b33512}
+
+
+Wird durch notify() im \hyperlink{a00013}{Client\-Model} aufgerufen. 
+
+Je nach dem in arg übergebenen Befehl wird ein Update des Fensters ausgeführt oder eine Fehlermeldung angezeigt.
+
+
+\begin{DoxyParams}{Parameter}
+{\em o} & erwartet ein Objekt von der Klasse \hyperlink{a00013}{Client\-Model} \\
+\hline
+{\em arg} & erwartet\-: window\-Change\-Acknowledged, window\-Change\-Denied \\
+\hline
+\end{DoxyParams}

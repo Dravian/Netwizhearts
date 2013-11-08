@@ -4,16 +4,19 @@
 package Client;
 
 /** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author m4nkey
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+ * Die ClientMain Klasse startet den Spielclient
+ * und initialisiert dessen Komponenten.
  */
 public class ClientMain {
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Hält eine Referenz auf die Controller Klasse der View.
 	 */
 	private ClientController clientController;
+	
+	/**
+	 * 
+	 * @param args
+	 */
+	public static void main(final String[] args){
+	}
 }

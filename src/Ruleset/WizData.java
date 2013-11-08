@@ -4,46 +4,79 @@
 package Ruleset;
 
 /** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author m4nkey
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+ * Die zusätzlichen Informationen eines Spielers zum Spiel Wizard
  */
 public class WizData extends OtherData {
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Die angesagten Stiche eines Spielers
 	 */
-	private Object announcedTricks;
+	private int announcedTricks;
+	
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Die gemachten Stiche eines Spielers
 	 */
-	private Object achievedTricks;
+	private int achievedTricks;
+	
+	/**
+	 * Der Punktestand eines Spielers
+	 */
+	private int points;
 
+	/**
+	 * Erstellt die zusätzlichen Informationen eines Spielers zum Spiel Wizard
+	 * @param name Der Name des Spielers
+	 */
+	WizData(String name) {
+		super(name);
+		this.announcedTricks = 0;
+		this.achievedTricks = 0;
+	}
+	
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Holt die angesagten Stiche des Spielers
+	 * @return announcedTricks Die angesagten Stiche
 	 */
-	public void getAnnouncedTricks() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	public int getAnnouncedTricks() {
+		return this.announcedTricks;
 	}
 
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Holt die erreichten Stiche des Spielers
+	 * @return achievedTricks Die gemachten Stiche eines Spielers
 	 */
-	public void getAchievedTricks() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	public int getAchievedTricks() {
+		return this.achievedTricks;
+	}
+	
+	/** 
+	 * Holt den Punktestand des Spielers
+	 * @return points Der Punktestand des Spielers
+	 */
+	public int getPoints() {
+		return this.points;
+	}
+	
+	/**
+	 * Beim Spielstart werden die vorausgesagten Stiche des Spieler gespeichert und die gemachten Stiche zurückgesetzt
+	 * @param annouceTricks Die vorausgesagten Stiche des Spielers
+	 */
+	public void announceTricks(int annouceTricks) {
+		this.announcedTricks = annouceTricks;
+		achievedTricks = 0;
+	}
+	
+	/**
+	 * Wenn ein Spieler einen Stich macht, werden die gemachten Stiche um eins erhöht
+	 */
+	public void madeTrick(){
+		this.achievedTricks++;
+	}
+	
+	/**
+	 * Setzt den Punktestand eines Spielers
+	 * @param points Der Punktestand eines Spielers
+	 */
+	public void setPoints(int points){
+		this.points = points;
 	}
 }

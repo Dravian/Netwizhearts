@@ -3,81 +3,91 @@
  */
 package Server;
 
+import java.io.IOException;
+import java.util.Iterator;
 import java.util.Set;
+
+import javax.activation.CommandObject;
 
 import ComObjects.*;
 
-/** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author m4nkey
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+/**
+ * Ist ein abstrakte Klasse, von der die Klassen LobbyServer und
+ * GameServer erben. Es stellt Methoden zur Nachrichtenversendung und
+ * -verarbeitung bereit, sowie zur Verwaltung von Playern
+ * @author Viktoria
+ *
  */
 public abstract class Server {
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	/**
+	 * Ein Set an Spielern, welche momentan vom Server verwaltet werden
 	 */
-	private Set<Player> playerSet;
+	protected Set<Player> playerSet;
 
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	
+	/**
+	 * Diese Methode dient zur Verarbeitung von eingehenden ComObjects 
+	 * @param player ist der Player von dem die Nachricht kommt
+	 * @param com ist das ComObjekt vom Client verschickt wurde
 	 */
-	public void receiveMessage(Player p, ComObject c) {
+	public void receiveMessage(Player player, ComObject com) {
 		// begin-user-code
 		// TODO Auto-generated method stub
 
 		// end-user-code
 	}
 
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	/**
+	 * Diese Methode wird genutzt, um ein ComObject an einen einzigen
+	 * Client zu verschicken. Der Player der die Nachricht verschicken soll
+	 * wird Anhand des übergebenen Benutzernamens identifiziert. Ist der Name
+	 * oder das ComObject leer wird nichts verschickt.
+	 * @param name ist der Name des Clients, an den der Player die Nachricht  
+	 * verschicken soll
+	 * @param c ist das ComObject, dass verschickt werden soll
+	 * @throws IOException wenn der Output nicht funktioniert
 	 */
-	public void sendToPlayer() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	public synchronized void sendToPlayer(String name, ComObject com) throws IOException {
+		if(name != null || com != null){
+				for (Player player : playerSet) {
+					if(player.getName() == name){
+						player.send(com);
+					}		
+				}
+		}
 	}
 
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	/**
+	 * Diese Methode fügt einen Player dem Set an Playern hinzu, welche der
+	 * Server verwaltet.
+	 * @param player ist der Player, der hinzugefoügt wird
 	 */
-	public void addPlayer() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	public synchronized void  addPlayer(Player player) {
+		playerSet.add(player);
 	}
 
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	/**
+	 * Diese Methode entfernt einen Player aus dem Set an Playern, welche der
+	 * Server verwaltet.
+	 * @param player ist der Player, der entfernt wird
 	 */
-	public void removePlayer() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	public synchronized void removePlayer(Player player) {
+		playerSet.remove(player);
 	}
 
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	/**
+	 * Diese Methode wird genutzt, um ein ComObject an alle Clients,
+	 * die vom Server verwaltet werden, zu schicken. Ist das ComObject
+	 * leer, passiert nichts.
+	 * @param com ist das ComObject, dass verschickt werden soll
+	 * @throws IOException wenn der Output nicht funktioniert
 	 */
-	public void broadcast() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	public synchronized void broadcast(ComObject com) throws IOException {
+		if(com != null){
+			for (Player player : playerSet) {
+				player.send(com);
+			}
+		}
 	}
+
 }

@@ -3,97 +3,212 @@
  */
 package Ruleset;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author m4nkey
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+ * Das GameState modelliert einen aktuellen Spielzustand, es wird vom GameServer instanziert 
+ * und vom RuleSet bearbeitet. Es enthält die einzelnen PlayerStates, sowie Informationen 
+ * zum Ablage-, Aufnahmestapel, Rundenanzahl, den momentan aktiven Spieler sowie GamePhase.
  */
 public class GameState {
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Die Spieler die im Spiel sind
 	 */
-	private Set<PlayerState> playerStates;
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	private List<PlayerState> players;
+	
+	/**
+	 * Der Regelwerktyp vom Spiel
 	 */
-	private Object currentPlayer;
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	private RulesetType ruleset;
+	
+	/**
+	 * Der Spieler der als erste die Karte spielt
 	 */
-	private Object roundNumber;
+	private PlayerState firstPlayer;
+	
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Der Spieler der gerade am Zug ist
 	 */
-	private Set<Card> playedCards;
+	private PlayerState currentPlayer;
+
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Die momentane Spielrunde
 	 */
-	private Set<Card> cardsLeftInDeck;
+	private int roundNumber;
+	
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Die Karten die gespielt wurden
+	 */
+	private Map<String,Card> discardPile;
+	
+	/** 
+	 * Die Karten die noch im Aufnahmestapel sind
+	 */
+	private List<Card> deck;
+	
+	/** 
+	 * Die momentane Spielphase
 	 */
 	private GamePhase gamePhase;
-
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	
+	/**
+	 * Die Trumpffarbe im Spiel, diese wird nur im Spiel Wizard verwendet
 	 */
-	public void getCurrentPlayer() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	private Card trumpCard;
+	
+	/**
+	 * Erstellt eine GameStateklasse
+	 * @param ruleset Der Regelwerktyp des Spiels
+	 * @param deck Das Kartendeck im Spiel
+	 */
+	public GameState(RulesetType ruleset, List<Card> deck) {
+		this.ruleset = ruleset;
+		players = new ArrayList<PlayerState>();
+		discardPile = new HashMap<String,Card>();
+		this.deck = deck;
+		gamePhase = GamePhase.Start;
+		
+	}
+	
+	/**
+	 * Fügt den Spieler ins Spiel hinein
+	 * @param name
+	 */
+	public void addPlayerToGame(String name) {
+		PlayerState player = new PlayerState(name,ruleset);
+		players.add(player);
+	}
+	
+	/**
+	 * Setzt einen neuen Spieler als firstPlayer
+	 * @param player Der neue firstPlayer
+	 */
+	public boolean setFirstPlayer(PlayerState player) {
+		if(firstPlayer == player) {
+			this.firstPlayer = player;	
+			return true;
+		} else {
+			return false;
+		}
+		
 	}
 
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Holt den Spieler als erster am Zug war
+	 * @return firstPlayer Der Spielzustand des Spielers der als erster am Zug war
 	 */
-	public void getCardsLeft() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	public PlayerState getFirstPlayer() {
+		return firstPlayer;
+	}
+	
+	/**
+	 * Setzt einen neuen Spieler als currentPlayer
+	 * @param player Der neue currentPlayer
+	 */
+	public boolean setCurrentPlayer(PlayerState player) {
+		if(currentPlayer == player) {
+			this.currentPlayer = player;	
+			return true;
+		} else {
+			return false;
+		}
+		
 	}
 
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Holt den Spieler der momentan am Zug ist
+	 * @return currentPlayer Der Spielzustand des Spielers der grad am Zug ist
 	 */
-	public void getPlayedCards() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	public PlayerState getCurrentPlayer() {
+		return currentPlayer;
 	}
 
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Holt die Karten die noch im Aufnahmestapel sind
+	 * @return deck Holt die Karten die noch im Aufnahmestapel sind
 	 */
-	public void getPlayerState() {
-		// begin-user-code
-		// TODO Auto-generated method stub
+	public List<Card> getCardsLeftInDeck() {
+		return this.deck;
+	}
 
-		// end-user-code
+	/** 
+	 *Holt die gespielten Karten im Ablagestapel
+	 * @return 
+	 *@return discardPile Die gespielten Karten
+	 */
+	public Map<String,Card> getPlayedCards() {
+		return discardPile;
+	}
+	
+	/** 
+	 * Holt einen bestimmten Spieler
+	 * @param name Der Name des Spielers
+	 * @return player Der Spielzustand des Spielers
+	 */
+	public PlayerState getPlayerState(String name) {
+		for(PlayerState p : players) {
+			if(p.getName().equals(name)) {
+				return p;
+			} 
+		}
+		return null;
+	}
+	
+	/**
+	 * Setzt die Trumpfkarte
+	 * @param trumpCard Die Trumpfkarte
+	 */
+	public void setTrumpCard(Card trumpCard){
+		this.trumpCard = trumpCard;
+	}
+
+	/**
+	 * Holt die momentane Trumpfkarte im Spiel
+	 * @return trumpCard Die momentane Trumpfkarte
+	 */
+	public Card getTrumpCard(){
+		return trumpCard;
+	}
+	
+	/**
+	 * Holt die Anzahl der gespielten Karten 
+	 * @return Die Anzahl der gespielten Karten
+	 */
+	public int getNumberOfPlayedCards() {
+		return discardPile.size();
+	}
+	
+	/**
+	 * Holt die Karten eines Spielers
+	 * @param name Der Name vom Spieler 
+	 * @return Karten
+	 */
+	public List<Card> getPlayerCards(String name) {
+		for(PlayerState p : players) {
+			if(p.getName().equals(name)) {
+				return p.getHand();
+			}
+		}
+		return null;
+	}
+	
+	/**
+	 * Entfernt eine Karte aus der Hand des currentPlayer und legt sie auf dem Ablagestapel
+	 * @param card Die gespielte Karte
+	 * @return isInHand Gibt true zurück wenn die gespielte Karte auf der Hand vom
+	 * Spieler liegt und false sonst
+	 */
+	public boolean playCard(Card card) {
+		boolean isInHand;
+		isInHand = currentPlayer.removeCard(card);
+		
+		if(isInHand == true) {
+			discardPile.put(currentPlayer.getName(), card);
+		} 
+		
+		return isInHand;
 	}
 }

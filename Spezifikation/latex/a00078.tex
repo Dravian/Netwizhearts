@@ -1,0 +1,117 @@
+\hypertarget{a00078}{\subsection{Server.\-Server Klassenreferenz}
+\label{a00078}\index{Server.\-Server@{Server.\-Server}}
+}
+Klassendiagramm für Server.\-Server\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{a00078}
+\end{center}
+\end{figure}
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{a00078_a248b5c6e75df5be16fb281ac194c7e20}{receive\-Message} (\hyperlink{a00073}{Player} player, \hyperlink{a00029}{Com\-Object} com)
+\item 
+synchronized void \hyperlink{a00078_a752adb06d6c1e59797bdb2dde5c9058b}{send\-To\-Player} (String name, \hyperlink{a00029}{Com\-Object} com)
+\item 
+synchronized void \hyperlink{a00078_a84083f41e9cbad43bca45072e64877ee}{add\-Player} (\hyperlink{a00073}{Player} player)
+\item 
+synchronized void \hyperlink{a00078_adbd5ca08d0f660116673717e38db0343}{remove\-Player} (\hyperlink{a00073}{Player} player)
+\item 
+synchronized void \hyperlink{a00078_a32695e6a4c0f39af5c7e867384cc3ba7}{broadcast} (\hyperlink{a00029}{Com\-Object} com)
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Es stellt Methoden zur Nachrichtenversendung und -\/verarbeitung bereit, sowie zur Verwaltung von Playern \begin{DoxyAuthor}{Autor}
+Viktoria 
+\end{DoxyAuthor}
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00078_a84083f41e9cbad43bca45072e64877ee}{\index{Server\-::\-Server@{Server\-::\-Server}!add\-Player@{add\-Player}}
+\index{add\-Player@{add\-Player}!Server::Server@{Server\-::\-Server}}
+\paragraph[{add\-Player}]{\setlength{\rightskip}{0pt plus 5cm}synchronized void Server.\-Server.\-add\-Player (
+\begin{DoxyParamCaption}
+\item[{{\bf Player}}]{player}
+\end{DoxyParamCaption}
+)}}\label{a00078_a84083f41e9cbad43bca45072e64877ee}
+
+
+Diese Methode fügt einen \hyperlink{a00073}{Player} dem Set an Playern hinzu, welche der \hyperlink{a00078}{Server} verwaltet. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em player} & ist der \hyperlink{a00073}{Player}, der hinzugefügt wird \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00078_a32695e6a4c0f39af5c7e867384cc3ba7}{\index{Server\-::\-Server@{Server\-::\-Server}!broadcast@{broadcast}}
+\index{broadcast@{broadcast}!Server::Server@{Server\-::\-Server}}
+\paragraph[{broadcast}]{\setlength{\rightskip}{0pt plus 5cm}synchronized void Server.\-Server.\-broadcast (
+\begin{DoxyParamCaption}
+\item[{{\bf Com\-Object}}]{com}
+\end{DoxyParamCaption}
+)}}\label{a00078_a32695e6a4c0f39af5c7e867384cc3ba7}
+
+
+Diese Methode wird genutzt, um ein Com\-Object an alle Clients, die vom \hyperlink{a00078}{Server} verwaltet werden, zu schicken. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em com} & ist das Com\-Object, dass verschickt werden soll \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00078_a248b5c6e75df5be16fb281ac194c7e20}{\index{Server\-::\-Server@{Server\-::\-Server}!receive\-Message@{receive\-Message}}
+\index{receive\-Message@{receive\-Message}!Server::Server@{Server\-::\-Server}}
+\paragraph[{receive\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void Server.\-Server.\-receive\-Message (
+\begin{DoxyParamCaption}
+\item[{{\bf Player}}]{player, }
+\item[{{\bf Com\-Object}}]{com}
+\end{DoxyParamCaption}
+)}}\label{a00078_a248b5c6e75df5be16fb281ac194c7e20}
+
+
+Diese Methode dient zur Verarbeitung von eingehenden Com\-Objects. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em player} & ist der \hyperlink{a00073}{Player} von dem die Nachricht kommt \\
+\hline
+{\em com} & ist das Com\-Objekt vom Client verschickt wurde \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00078_adbd5ca08d0f660116673717e38db0343}{\index{Server\-::\-Server@{Server\-::\-Server}!remove\-Player@{remove\-Player}}
+\index{remove\-Player@{remove\-Player}!Server::Server@{Server\-::\-Server}}
+\paragraph[{remove\-Player}]{\setlength{\rightskip}{0pt plus 5cm}synchronized void Server.\-Server.\-remove\-Player (
+\begin{DoxyParamCaption}
+\item[{{\bf Player}}]{player}
+\end{DoxyParamCaption}
+)}}\label{a00078_adbd5ca08d0f660116673717e38db0343}
+
+
+Diese Methode entfernt einen \hyperlink{a00073}{Player} aus dem Set an Playern, welche der \hyperlink{a00078}{Server} verwaltet. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em player} & ist der \hyperlink{a00073}{Player}, der entfernt wird \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00078_a752adb06d6c1e59797bdb2dde5c9058b}{\index{Server\-::\-Server@{Server\-::\-Server}!send\-To\-Player@{send\-To\-Player}}
+\index{send\-To\-Player@{send\-To\-Player}!Server::Server@{Server\-::\-Server}}
+\paragraph[{send\-To\-Player}]{\setlength{\rightskip}{0pt plus 5cm}synchronized void Server.\-Server.\-send\-To\-Player (
+\begin{DoxyParamCaption}
+\item[{String}]{name, }
+\item[{{\bf Com\-Object}}]{com}
+\end{DoxyParamCaption}
+)}}\label{a00078_a752adb06d6c1e59797bdb2dde5c9058b}
+
+
+Diese Methode wird genutzt, um ein Com\-Object an einen einzigen Client zu verschicken. 
+
+Der \hyperlink{a00073}{Player} der die Nachricht verschicken soll wird Anhand des übergebenen Benutzernamens identifiziert. 
+\begin{DoxyParams}{Parameter}
+{\em name} & ist der Name des Clients, an den der \hyperlink{a00073}{Player} die Nachricht verschicken soll \\
+\hline
+{\em c} & ist das Com\-Object, dass verschickt werden soll \\
+\hline
+\end{DoxyParams}

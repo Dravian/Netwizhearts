@@ -1,0 +1,46 @@
+\hypertarget{a00053}{\subsection{Client.\-View.\-Lobby Klassenreferenz}
+\label{a00053}\index{Client.\-View.\-Lobby@{Client.\-View.\-Lobby}}
+}
+Klassendiagramm für Client.\-View.\-Lobby\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{a00053}
+\end{center}
+\end{figure}
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{a00053_aef8779d31b7676d3d40ff9837ebaa819}{update} (Observable o, Object arg)
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+In der \hyperlink{a00053}{Lobby} werden die Benutzernamen der sich in der \hyperlink{a00053}{Lobby} befindenden Spieler, sowie offene Spiele angezeigt. In der \hyperlink{a00053}{Lobby} können Chatnachrichten gesendet und empfangen werden. über 'Leave' verlässt der Spieler das Spiel. über 'Host \hyperlink{a00038}{Game}' wird der Spieler zum Create\-Game-\/\-Fenster weiter geleitet und mit 'Join \hyperlink{a00038}{Game}' kann einem bereits erstellten Spiel beigetreten werden.
+
+\begin{DoxyAuthor}{Autor}
+M4nkey 
+\end{DoxyAuthor}
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00053_aef8779d31b7676d3d40ff9837ebaa819}{\index{Client\-::\-View\-::\-Lobby@{Client\-::\-View\-::\-Lobby}!update@{update}}
+\index{update@{update}!Client::View::Lobby@{Client\-::\-View\-::\-Lobby}}
+\paragraph[{update}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\-View.\-Lobby.\-update (
+\begin{DoxyParamCaption}
+\item[{Observable}]{o, }
+\item[{Object}]{arg}
+\end{DoxyParamCaption}
+)}}\label{a00053_aef8779d31b7676d3d40ff9837ebaa819}
+
+
+Wird durch notify() im \hyperlink{a00013}{Client\-Model} aufgerufen. 
+
+Je nach dem in arg übergebenen Befehl wird ein Update des Fensters ausgeführt oder eine Fehlermeldung angezeigt.
+
+
+\begin{DoxyParams}{Parameter}
+{\em o} & erwartet ein Objekt von der Klasse \hyperlink{a00013}{Client\-Model} \\
+\hline
+{\em arg} & erwartet\-: window\-Change\-Acknowledged, window\-Change\-Denied, player\-List\-Update, game\-List\-Update, chat\-Message \\
+\hline
+\end{DoxyParams}

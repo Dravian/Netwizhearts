@@ -1,0 +1,172 @@
+\hypertarget{a00045}{\subsection{Ruleset.\-Game\-State Klassenreferenz}
+\label{a00045}\index{Ruleset.\-Game\-State@{Ruleset.\-Game\-State}}
+}
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{a00045_adcdd80db7006a129d2681ef2156d8030}{set\-Current\-Player} (\hyperlink{a00074}{Player\-State} player)
+\item 
+\hyperlink{a00074}{Player\-State} \hyperlink{a00045_a940b04c3b7b3e4b2a407b77fa40cce33}{get\-Current\-Player} ()
+\item 
+Array\-List$<$ \hyperlink{a00002}{Card} $>$ \hyperlink{a00045_acbb1847c191f8642f77c72b971663602}{get\-Cards\-Left\-In\-Deck} ()
+\item 
+Map$<$ String, \hyperlink{a00002}{Card} $>$ \hyperlink{a00045_a1c3dd6d0e4fd89dd49eb5073c1e06234}{get\-Played\-Cards} ()
+\item 
+\hyperlink{a00074}{Player\-State} \hyperlink{a00045_aa087b905d7f5b7ac4f7f3356b7d0f06d}{get\-Player} (String name)
+\item 
+void \hyperlink{a00045_a6cbf9650695639cdbccfc520cc9b112f}{set\-Trump\-Card} (\hyperlink{a00002}{Card} trump\-Card)
+\item 
+\hyperlink{a00002}{Card} \hyperlink{a00045_a263d6b7805c19249a3a1243379480e87}{get\-Trump\-Card} ()
+\item 
+int \hyperlink{a00045_afef5de42e97641f5f4f46c2995697502}{get\-Number\-Of\-Played\-Cards} ()
+\item 
+boolean \hyperlink{a00045_a53e85a9b7f4fe195604de0f1e8a59550}{play\-Card} (\hyperlink{a00002}{Card} card)
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Es enthält die einzelnen Player\-States, sowie Informationen zum Ablage-\/, Aufnahmestapel, Rundenanzahl, den momentan aktiven Spieler sowie \hyperlink{a00042}{Game\-Phase}. 
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00045_acbb1847c191f8642f77c72b971663602}{\index{Ruleset\-::\-Game\-State@{Ruleset\-::\-Game\-State}!get\-Cards\-Left\-In\-Deck@{get\-Cards\-Left\-In\-Deck}}
+\index{get\-Cards\-Left\-In\-Deck@{get\-Cards\-Left\-In\-Deck}!Ruleset::GameState@{Ruleset\-::\-Game\-State}}
+\paragraph[{get\-Cards\-Left\-In\-Deck}]{\setlength{\rightskip}{0pt plus 5cm}Array\-List$<${\bf Card}$>$ Ruleset.\-Game\-State.\-get\-Cards\-Left\-In\-Deck (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00045_acbb1847c191f8642f77c72b971663602}
+
+
+Holt die Karten die noch im Aufnahmestapel sind. 
+
+\begin{DoxyReturn}{Rückgabe}
+cards\-Left\-In\-Deck Holt die Karten die noch im Aufnahmestapel sind 
+\end{DoxyReturn}
+\hypertarget{a00045_a940b04c3b7b3e4b2a407b77fa40cce33}{\index{Ruleset\-::\-Game\-State@{Ruleset\-::\-Game\-State}!get\-Current\-Player@{get\-Current\-Player}}
+\index{get\-Current\-Player@{get\-Current\-Player}!Ruleset::GameState@{Ruleset\-::\-Game\-State}}
+\paragraph[{get\-Current\-Player}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Player\-State} Ruleset.\-Game\-State.\-get\-Current\-Player (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00045_a940b04c3b7b3e4b2a407b77fa40cce33}
+
+
+Holt den Spieler der momentan am Zug ist. 
+
+\begin{DoxyReturn}{Rückgabe}
+current\-Player Der Spielzustand des Spielers der grad am Zug ist 
+\end{DoxyReturn}
+\hypertarget{a00045_afef5de42e97641f5f4f46c2995697502}{\index{Ruleset\-::\-Game\-State@{Ruleset\-::\-Game\-State}!get\-Number\-Of\-Played\-Cards@{get\-Number\-Of\-Played\-Cards}}
+\index{get\-Number\-Of\-Played\-Cards@{get\-Number\-Of\-Played\-Cards}!Ruleset::GameState@{Ruleset\-::\-Game\-State}}
+\paragraph[{get\-Number\-Of\-Played\-Cards}]{\setlength{\rightskip}{0pt plus 5cm}int Ruleset.\-Game\-State.\-get\-Number\-Of\-Played\-Cards (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00045_afef5de42e97641f5f4f46c2995697502}
+
+
+Holt die Anzahl der gespielten Karten. 
+
+\begin{DoxyReturn}{Rückgabe}
+Die Anzahl der gespielten Karten 
+\end{DoxyReturn}
+\hypertarget{a00045_a1c3dd6d0e4fd89dd49eb5073c1e06234}{\index{Ruleset\-::\-Game\-State@{Ruleset\-::\-Game\-State}!get\-Played\-Cards@{get\-Played\-Cards}}
+\index{get\-Played\-Cards@{get\-Played\-Cards}!Ruleset::GameState@{Ruleset\-::\-Game\-State}}
+\paragraph[{get\-Played\-Cards}]{\setlength{\rightskip}{0pt plus 5cm}Map$<$String,{\bf Card}$>$ Ruleset.\-Game\-State.\-get\-Played\-Cards (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00045_a1c3dd6d0e4fd89dd49eb5073c1e06234}
+
+
+Holt die gespielten Karten im Ablagestapel. 
+
+\begin{DoxyReturn}{Rückgabe}
+
+
+discard\-Pile Die gespielten Karten 
+\end{DoxyReturn}
+\hypertarget{a00045_aa087b905d7f5b7ac4f7f3356b7d0f06d}{\index{Ruleset\-::\-Game\-State@{Ruleset\-::\-Game\-State}!get\-Player@{get\-Player}}
+\index{get\-Player@{get\-Player}!Ruleset::GameState@{Ruleset\-::\-Game\-State}}
+\paragraph[{get\-Player}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Player\-State} Ruleset.\-Game\-State.\-get\-Player (
+\begin{DoxyParamCaption}
+\item[{String}]{name}
+\end{DoxyParamCaption}
+)}}\label{a00045_aa087b905d7f5b7ac4f7f3356b7d0f06d}
+
+
+Holt einen bestimmten Spieler. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em name} & Der Name des Spielers \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Rückgabe}
+player Der Spielzustand des Spielers 
+\end{DoxyReturn}
+\hypertarget{a00045_a263d6b7805c19249a3a1243379480e87}{\index{Ruleset\-::\-Game\-State@{Ruleset\-::\-Game\-State}!get\-Trump\-Card@{get\-Trump\-Card}}
+\index{get\-Trump\-Card@{get\-Trump\-Card}!Ruleset::GameState@{Ruleset\-::\-Game\-State}}
+\paragraph[{get\-Trump\-Card}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Card} Ruleset.\-Game\-State.\-get\-Trump\-Card (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00045_a263d6b7805c19249a3a1243379480e87}
+
+
+Holt die momentane Trumpfkarte im Spiel. 
+
+\begin{DoxyReturn}{Rückgabe}
+trump\-Card Die momentane Trumpfkarte 
+\end{DoxyReturn}
+\hypertarget{a00045_a53e85a9b7f4fe195604de0f1e8a59550}{\index{Ruleset\-::\-Game\-State@{Ruleset\-::\-Game\-State}!play\-Card@{play\-Card}}
+\index{play\-Card@{play\-Card}!Ruleset::GameState@{Ruleset\-::\-Game\-State}}
+\paragraph[{play\-Card}]{\setlength{\rightskip}{0pt plus 5cm}boolean Ruleset.\-Game\-State.\-play\-Card (
+\begin{DoxyParamCaption}
+\item[{{\bf Card}}]{card}
+\end{DoxyParamCaption}
+)}}\label{a00045_a53e85a9b7f4fe195604de0f1e8a59550}
+
+
+Entfernt eine Karte aus der Hand des current\-Player und legt sie auf dem Ablagestapel. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em card} & Die gespielte Karte \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Rückgabe}
+is\-In\-Hand Gibt true zurück wenn die gespielte Karte auf der Hand vom Spieler liegt und false sonst 
+\end{DoxyReturn}
+\hypertarget{a00045_adcdd80db7006a129d2681ef2156d8030}{\index{Ruleset\-::\-Game\-State@{Ruleset\-::\-Game\-State}!set\-Current\-Player@{set\-Current\-Player}}
+\index{set\-Current\-Player@{set\-Current\-Player}!Ruleset::GameState@{Ruleset\-::\-Game\-State}}
+\paragraph[{set\-Current\-Player}]{\setlength{\rightskip}{0pt plus 5cm}void Ruleset.\-Game\-State.\-set\-Current\-Player (
+\begin{DoxyParamCaption}
+\item[{{\bf Player\-State}}]{player}
+\end{DoxyParamCaption}
+)}}\label{a00045_adcdd80db7006a129d2681ef2156d8030}
+
+
+Setzt einen neuen Spieler als current\-Player. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em player} & Der neue current\-Player \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00045_a6cbf9650695639cdbccfc520cc9b112f}{\index{Ruleset\-::\-Game\-State@{Ruleset\-::\-Game\-State}!set\-Trump\-Card@{set\-Trump\-Card}}
+\index{set\-Trump\-Card@{set\-Trump\-Card}!Ruleset::GameState@{Ruleset\-::\-Game\-State}}
+\paragraph[{set\-Trump\-Card}]{\setlength{\rightskip}{0pt plus 5cm}void Ruleset.\-Game\-State.\-set\-Trump\-Card (
+\begin{DoxyParamCaption}
+\item[{{\bf Card}}]{trump\-Card}
+\end{DoxyParamCaption}
+)}}\label{a00045_a6cbf9650695639cdbccfc520cc9b112f}
+
+
+Setzt die Trumpfkarte. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em trump\-Card} & Die Trumpfkarte \\
+\hline
+\end{DoxyParams}

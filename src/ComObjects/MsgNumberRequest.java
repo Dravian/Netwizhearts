@@ -1,13 +1,13 @@
-/**
- * 
- */
 package ComObjects;
 
 /** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author m4nkey
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+ * Diese Klasse ist eine Verfeinerung der RulesetMessage-Klasse.
  */
 public class MsgNumberRequest extends RulesetMessage {
+
+    /**
+     * Dies ist der Kontruktor für eine neue MsgNumberRequest-Nachricht.
+     */
+    public MsgNumberRequest() {
+    }
 }

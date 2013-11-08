@@ -1,31 +1,32 @@
-/**
- * 
- */
 package ComObjects;
 
-/** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author m4nkey
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+import Ruleset.Colour;
+
+/**
+ * Diese Klasse ist eine Verfeinerung der RulesetMessage-Klasse.
+ * Diese Nachricht enthält Information über eine Auswahl, die der
+ * Spieler getroffen hat. Die Wahlmöglichkeiten werden durch Integer
+ * repräsentiert.
  */
 public class MsgSelection extends RulesetMessage {
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
-	private Object selection;
 
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
-	public void getSelection() {
-		// begin-user-code
-		// TODO Auto-generated method stub
+	private int selection;
 
-		// end-user-code
-	}
+    /**
+     * Dies ist der Kontruktor für eine neue MsgSelection-Nachricht.
+     * @param selection ist die getroffene Auswahl, repräsentiert
+     *                  durch einen Integer.
+     */
+	public MsgSelection(int selection) {
+        this.selection = selection;
+    }
+
+    /**
+     * Diese Methode gibt die Auswahl des Spieler zurück, die er
+     * gemacht hat.
+     * @return die Auswahl.
+     */
+    public int getSelection() {
+        return selection;
+    }
 }
