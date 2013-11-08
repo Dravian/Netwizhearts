@@ -91,6 +91,10 @@ public abstract class ServerRuleset {
 		// end-user-code
 	}
 	
+	/**
+	 * Erzeugt ein Kartendeck
+	 * @return Gibt ein Kartendeck zurück
+	 */
 	private List<Card> createDeck() {
 		List<Card> deck = new ArrayList<Card>();
 		switch(RULESET) {
@@ -136,6 +140,10 @@ public abstract class ServerRuleset {
 		return firstPlayer;
 	}
 	
+	protected boolean nextPlayer() {
+		return false;	
+	}
+
 	/** 
 	 * Setzt den Spieler der am Nächsten am Zug ist, im Gamestate
 	 * @return false wenn der selbe Spieler nochmal als currentPlayer gesetzt wird
@@ -205,29 +213,31 @@ public abstract class ServerRuleset {
 	}
 	
 	/**
-	 * Verarbeitet die RulesetMessage dass mehrere Karten von einem Spieler übergeben wurden
-	 * @param msgMultiCard Die Nachricht vom Client
-	 * @param name Der Name des Spielers
+	 * Deals a number of cards from the top of the deck
+	 * @param name Name of the Player who gets the cards
+	 * @param number The number of cards
+	 * @return True if a player has no cards, false if he does
 	 */
-	public void resolveMessage(MsgMultiCards msgMultiCard, String name) {
-	
+	protected boolean dealCards(String name, int number) {
+		return false;	
 	}
 	
 	/**
-	 * Verarbeitet die RulesetMessage dass ein Spieler eine Stichangabe gemacht hat
-	 * @param msgNumber Die Nachricht vom Client
-	 * @param name Der Name des Spielers
+	 * Gives one specific card of the deck to a Player
+	 * @param name The name of the Player
+	 * @return true if the card is in the deck
 	 */
-	public void resolveMessage(MsgNumber msgNumber, String name) {
+	protected boolean giveACard(String name, Card card) {
+		return false;	
 	}
-
-	/**
-	 * Verarbeitet die RulesetMessage dass ein Spieler eine Farbe ausgewählt hat
-	 * @param msgSelection Die Nachricht vom Client
-	 * @param name Der Name des Spielers
-	 */
-	public void resolveMessage(MsgSelection msgSelection, String name){
-		
+	
+	protected boolean playCard(Card card) {
+		gameState.playCard(card);
+		return false;
+	}
+	
+	protected void setTrumpCard(Card card) {
+		gameState.setTrumpCard(card);
 	}
 
 	/** 
@@ -237,7 +247,7 @@ public abstract class ServerRuleset {
 	 * @param name Der Name des Spielers
 	 * @return true falls Zug gültig und false wenn nicht
 	 */
-	protected abstract boolean isValidMove(Card card, String name);
+	protected abstract boolean isValidMove(Card card);
 
 	/** 
 	 * Berechnet das Ergebnis von der Berechnung eines Befehls

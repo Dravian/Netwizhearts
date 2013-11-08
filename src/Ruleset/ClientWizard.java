@@ -16,4 +16,5 @@ public class ClientWizard extends ClientRuleset {
 		boolean isValid = false;
 		return isValid;		
 	}
+	
 }

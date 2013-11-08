@@ -33,13 +33,14 @@ public class PlayerState {
 		this.name = name;
 		
 		this.ownHand = new ArrayList<Card>();
+		
 		switch(ruleset) {
 		case Wizard: this.otherData = new WizData(name);
 					 break;
 		case Hearts: this.otherData = new HeartsData(name);
 					 break;
-		default:
-				break;
+		default: 	 this.otherData = null;
+					 break;
 		}
 	}
 

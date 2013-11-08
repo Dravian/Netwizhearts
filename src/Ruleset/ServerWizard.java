@@ -1,7 +1,8 @@
 package Ruleset;
 
-import ComObjects.MsgMultipleCardsRequest;
+import ComObjects.MsgNumber;
 import ComObjects.MsgNumberRequest;
+import ComObjects.MsgSelection;
 import ComObjects.MsgSelectionRequest;
 
 /**
@@ -19,9 +20,26 @@ public class ServerWizard extends ServerRuleset {
 	public ServerWizard() {
 		super(RulesetType.Wizard, MIN_PLAYERS, MAX_PLAYERS);
 	}
+	
+	/**
+	 * Verarbeitet die RulesetMessage dass ein Spieler eine Stichangabe gemacht hat
+	 * @param msgNumber Die Nachricht vom Client
+	 * @param name Der Name des Spielers
+	 */
+	public void resolveMessage(MsgNumber msgNumber, String name) {
+	}
+
+	/**
+	 * Verarbeitet die RulesetMessage dass ein Spieler eine Farbe ausgewählt hat
+	 * @param msgSelection Die Nachricht vom Client
+	 * @param name Der Name des Spielers
+	 */
+	public void resolveMessage(MsgSelection msgSelection, String name){
+		
+	}
 
 	@Override
-	protected boolean isValidMove(Card card, String name) {
+	protected boolean isValidMove(Card card) {
 		boolean isValid = false;
 		return isValid;
 	}

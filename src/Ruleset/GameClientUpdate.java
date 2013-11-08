@@ -106,6 +106,14 @@ public class GameClientUpdate {
 	}
 	
 	/**
+	 * Gibt den Spieler der momentan am Zug ist zurück
+	 * @return Der momentane Spieler
+	 */
+	public PlayerState getCurrentPlayer() {
+		return currentPlayer;
+	}
+	
+	/**
 	 * Holt die aufgedeckte Trumpfkarte
 	 */
 	public Card getTrumpCard() {
