@@ -86,6 +86,13 @@ public abstract class ClientRuleset {
 	public int getMaxPlayers() {
 		return MAX_PLAYERS;
 	}
+	
+	/**
+	 * Gibt den momentanen Spielzustand zurück
+	 */
+	public GamePhase getGamePhase() {
+		return gamePhase;
+	}
 
 	public List<Card> getOwnHand() {
 		return gameState.getOwnHand();

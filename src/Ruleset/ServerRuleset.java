@@ -88,6 +88,13 @@ public abstract class ServerRuleset {
 		return MAX_PLAYERS;
 	}
 	
+	/**
+	 * Gibt den momentanen Spielzustand zurück
+	 */
+	public GamePhase getGamePhase() {
+		return gamePhase;
+	}
+	
 	/** 
 	 * Erstellt ein Spiel und einen GameState
 	 */
