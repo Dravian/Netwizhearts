@@ -1,10 +1,30 @@
 package ComObjects;
 
+import Ruleset.ClientRuleset;
+import Ruleset.ServerRuleset;
+
 import java.io.Serializable;
 
 /**
  * Diese Klasse ist eine Verfeinerung der ComRuleset-Klasse.
- * Sie enthält einen Nachrichtentyp und vererbt an alle Nachrichten für das Regelwerk.
+ * Sie enthï¿½lt einen Nachrichtentyp und vererbt an alle Nachrichten fï¿½r das Regelwerk.
  */
 public abstract class RulesetMessage implements Serializable {
+
+    /**
+     * Hier fehlt noch ein Kommentar
+     * @param serverRuleset
+     * @param name
+     */
+    public void visit(ServerRuleset serverRuleset, String name) {
+        serverRuleset.resolveMessage(this, name);
+    }
+
+    /**
+     * Hier fehlt noch ein Kommentar
+     * @param clientRuleset
+     */
+    public void visit(ClientRuleset clientRuleset) {
+        clientRuleset.resolveMessage(this);
+    }
 }
