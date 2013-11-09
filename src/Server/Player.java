@@ -34,6 +34,8 @@ public class Player implements Runnable{
 	 * ObjectInput, um für Nachrichten vom Client entgegenzunehmen
 	 */
 	private ObjectInput comIn;
+	
+	private boolean run;
 
 	/**
 	 * Konstruktor des Players, in ihm werden die Attribute server, comOut und ComIn mit
@@ -58,6 +60,19 @@ public class Player implements Runnable{
 		// begin-user-code
 		// TODO Auto-generated method stub
 		// end-user-code
+		run = true;
+		try {
+			while(run) {
+			ComObject object = (ComObject) comIn.readObject();
+			object.process(this, server);
+			}
+		} catch (ClassNotFoundException e) {
+			
+		} catch (IOException e) {
+			if (run) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	/**
@@ -101,5 +116,12 @@ public class Player implements Runnable{
 	 */
 	public void setName(String newName){
 		name = newName;
+	}
+	
+	/**
+	 * 
+	 */
+	public void closeConnection(){
+		
 	}
 }

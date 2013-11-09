@@ -3,7 +3,10 @@
  */
 package Client;
 
+import Ruleset.Card;
 import Ruleset.ClientRuleset;
+import Ruleset.OtherData;
+import Ruleset.RulesetType;
 import Server.GameServerRepresentation;
 import Client.View.Language;
 import ComObjects.ComBeenKicked;
@@ -16,6 +19,8 @@ import ComObjects.ComRuleset;
 import ComObjects.ComServerAcknowledgement;
 import ComObjects.ComUpdatePlayerlist;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.List;
 import java.util.Observable;
@@ -75,7 +80,7 @@ public class ClientModel extends Observable{
 	/** 
 	 * Bearbeitet eine eingehende Chatnachricht.
 	 */
-	private void processChatMessage(ComChatMessage msg) {
+	public void receiveMessage(ComChatMessage msg) {
 		
 	}
 	
@@ -83,7 +88,7 @@ public class ClientModel extends Observable{
 	 * Verarbeitet eine Liste von Spielern und Spielen,
 	 * welche sich beim Betreten der ServerLobby bereits darin befinden.
 	 */
-	private void processInitServerLobby(ComInitLobby msg) {
+	public void receiveMessage(ComInitLobby msg) {
 		
 	}
 	
@@ -92,7 +97,7 @@ public class ClientModel extends Observable{
 	 * welche sich beim betreten der Spiellobby
 	 * bereits darin befinden.
 	 */
-	private void processInitGameLobby(ComInitGameLobby msg) {
+	public void receiveMessage(ComInitGameLobby msg) {
 		
 	}
 	
@@ -100,8 +105,8 @@ public class ClientModel extends Observable{
 	 * Diese Methode wird von receiveMessage() aufgerufen,
 	 * falls eine Nachricht für das Regelwerk ankommt.
 	 */
-	private void invokeRuleset(ComRuleset msg) {
-		
+	public void receiveMessage(ComRuleset msg) {
+		//ruleset.resolveMessage(msg.getRulesetMessage());
 	}
 	
 	/** 
@@ -111,7 +116,7 @@ public class ClientModel extends Observable{
 	 *  in welchem Zustand sich der Client befindet.
 	 *  @param ack Eine Bestätigung durch den Server.
 	 */
-	private void processAck(ComServerAcknowledgement ack) {
+	public void receiveMessage(ComServerAcknowledgement ack) {
 		
 	}
 	
@@ -120,31 +125,28 @@ public class ClientModel extends Observable{
 	 * falls der Spieler aus der Spiellobby durch einen Spielleiter
 	 * entfernt wurde.
 	 */
-	private void processBeenKicked(ComBeenKicked msg) {
+	public void receiveMessage(ComBeenKicked msg) {
 		
 	}
 	
 	/**
 	 * Verarbeitet ein Update, das einen einzelnen Spieler betrifft.
 	 */
-	private void processUpdatePlayerlist(ComUpdatePlayerlist update) {
+	public void receiveMessage(ComUpdatePlayerlist update) {
 		
 	}
 	
 	/**
 	 * Verarbeitet ein Update, das ein einzelnes Spiel betrifft.
 	 */
-	private void processUpdateGamelist(ComLobbyUpdateGamelist update) {
+	public void receiveMessage(ComLobbyUpdateGamelist update) {
 		
 	}
 	
 	/**
-	 * Diese Methode wird von dem ClientListenerThread aufgerufen
-	 * und bestimmt welche Nachricht sich hinter dem ComObjekt genau
-	 * verbirgt um weitere Verarbeitungsschritte einzuleiten.
-	 * @param comObject Die empfangene Nachricht.
+	 * 
 	 */
-	private void receiveMessage(ComObject comObject){
+	public void receiveMessage(ComObject object){
 		
 	}
 	
@@ -197,9 +199,37 @@ public class ClientModel extends Observable{
 	 * Gibt der View die gespielte Karte eines anderen Spielers zurück.
 	 * @return enum CardID. Die Id der Karte
 	 */
-	public CardID getPlayedCard(){
+	public Card getPlayedCard(){
 		return null;
 	}
+	
+	/**
+	 * Gibt der View die eigenen Spielkarten zurück.
+	 * @param Card[] Ein Array mit allen Karten,
+	 * die man auf der Hand hat.
+	 */
+	public Card[] getOwnHand() {
+		return null;
+	}
+	
+	/**
+	 * Liefert zusätzliche Daten anderer Spieler zurück.
+	 * @return List<OtherData> Liste mit gespielten Karten.
+	 */
+	public List<OtherData> getOtherPlayerData() {
+		return null;
+		
+	}
+	
+	/**
+	 * Gibt den Punktestand des Spielers aus.
+	 * @return int Der eigene Punktestand.
+	 */
+	public int getOwnScore() {
+		return 0;
+	}
+	
+	
 	
 	/**
 	 * Setzt die Sprache der GUI.
@@ -273,10 +303,9 @@ public class ClientModel extends Observable{
 
 	/** 
 	 * Wird vom ClientConroller aufgerufen um eine Karte auszuspielen.
-	 * @param id Die id der gespielten Karte um sie einer logischen Karte
-	 * zuordnen zu können.
+	 * @param card Die gespielten Karte.
 	 */
-	public void makeMove(CardID id) {
+	public void makeMove(Card card) {
 		
 	}
 
@@ -297,6 +326,30 @@ public class ClientModel extends Observable{
 	public void createConnection(final String username, final String serverAdress, final int port) {
 		
 	}
+	
+	/**
+	 * Gibt den Fehler beim Loginversuch zurück.
+	 */
+	public LoginError getLoginError(){
+		return null;	
+	}
+	
+	/**
+	 * Gibt den Text aus der bei einer Spielwarnung
+	 * angezeigt wird.
+	 * @return String Text der Warnung.
+	 */
+	public String getWarningText() {
+		return null;
+	}
+	
+	/**
+	 * Liefert ein Array mit allen implementierten Regelwerken.
+	 * @param RulesetType[] Array von unterstützten Regelwerken.
+	 */
+	public RulesetType[] getRulesets() {
+		return null;
+	}
 
 	/** 
  * Diese Klasse implementiert die Netzwerkanbindung des Clients an den Server.
@@ -307,6 +360,12 @@ class MessageListenerThread extends Thread{
 	
 	/** Der TCP Socket. */
 	private Socket connection;
+	
+	private ObjectInputStream in;
+	
+	private ObjectOutputStream out;
+	
+	private boolean run = false;
 
 	/**
 	 * Erstellt die initiale Verbindung zum Server.
@@ -328,16 +387,42 @@ class MessageListenerThread extends Thread{
 	/**
 	 * Über diese Methode können Nachrichten an den Server versendet werden.
 	 */
-	protected void send() {
-		
+	protected void send(ComObject object) {
+		try {
+			if (run) {
+				out.writeObject(object);
+				out.flush();
+			}
+		} catch (IOException e) {
+			if (run) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
-	@Override
+	/**
+	 * Initialisiert den In- und OutputStream
+	 * und liest ComObjekte solange der Thread
+	 * lebt von seinem InputStream.
+	 */
 	public void run() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+		try {
+			run = true;
+			ComObject object;
+			out = new ObjectOutputStream(connection.getOutputStream());
+			out.flush();
+			in = new ObjectInputStream(connection.getInputStream());
+			while(run) {
+				object = (ComObject) in.readObject();
+				object.process(ClientModel.this);
+			}
+		} catch (ClassNotFoundException e) {
+			
+		} catch (IOException e) {
+			if(run) {
+				e.printStackTrace();
+			}
+		}
 	}
   }
 }
