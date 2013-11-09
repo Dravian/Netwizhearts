@@ -16,9 +16,21 @@ public enum GamePhase {
 	 */
 	Playing,
 	/** 
-	 * Der Zustand in dem auf eine Eingabe eines Benutzers gewartet wird
+	 * Der Zustand in dem auf eine Karteneingabe des Benutzers gewartet wird
 	 */
-	WaitingForInput,
+	CardRequest,
+	/**
+	 * Der Zustand in dem auf eine Kartenvergabe des Benutzers gewartet wird
+	 */
+	MultipleCardRequest,
+	/**
+	 * Der Zustand in dem auf die Stichanzahl des Benutzers gewartet wird
+	 */
+	TrickRequest,
+	/**
+	 * Der Zustand in dem auf eine Farbauswahl vom Benutzer gewartet wird
+	 */
+	SelectionRequest,
 	/** 
 	 * Der Zustand bei Spielende
 	 */

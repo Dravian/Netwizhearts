@@ -45,6 +45,11 @@ public abstract class ClientRuleset {
 	 */
 	private final int MAX_PLAYERS;
 	
+	/** 
+	 * Die momentane Spielphase
+	 */
+	private GamePhase gamePhase;
+	
 	/**
 	 * Erstellt eine ClientRuleset Klasse
 	 * @param ruleset Das Ruleset zum Spiel
@@ -55,6 +60,7 @@ public abstract class ClientRuleset {
 		RULESET = ruleset;
 		MIN_PLAYERS = minPlayers;
 		MAX_PLAYERS = maxPlayers;
+		gamePhase = GamePhase.Start;
 	}
 	
 	/**

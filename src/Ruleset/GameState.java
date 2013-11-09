@@ -51,11 +51,6 @@ public class GameState {
 	 */
 	private List<Card> deck;
 	
-	/** 
-	 * Die momentane Spielphase
-	 */
-	private GamePhase gamePhase;
-	
 	/**
 	 * Die Trumpffarbe im Spiel, diese wird nur im Spiel Wizard verwendet
 	 */
@@ -71,8 +66,6 @@ public class GameState {
 		players = new LinkedList<PlayerState>();
 		discardPile = new HashMap<String,Card>();
 		this.deck = deck;
-		gamePhase = GamePhase.Start;
-		
 	}
 	
 	/**
