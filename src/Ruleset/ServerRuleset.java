@@ -56,6 +56,9 @@ public abstract class ServerRuleset {
 		RULESET = ruleset;
 		MIN_PLAYERS = min;
 		MAX_PLAYERS = max;
+		if(ruleset == RulesetType.Hearts) {
+			
+		}
 	}
 	
 	/**
@@ -218,6 +221,32 @@ public abstract class ServerRuleset {
 	 * @param name Der Name des Spielers
 	 */
 	protected void processMessage(MsgCard msgCard, String name) {
+		
+	}
+	
+	/**
+	 * Verarbeitet die RulesetMessage dass mehrere Karten von einem Spieler übergeben wurden
+	 * @param msgMultiCard Die Nachricht vom Client
+	 * @param name Der Name des Spielers
+	 */
+	protected void processMessage(MsgMultiCards msgMultiCard, String name) {
+	
+	}
+	
+	/**
+	 * Verarbeitet die RulesetMessage dass ein Spieler eine Stichangabe gemacht hat
+	 * @param msgNumber Die Nachricht vom Client
+	 * @param name Der Name des Spielers
+	 */
+	public void processMessage(MsgNumber msgNumber, String name) {
+	}
+
+	/**
+	 * Verarbeitet die RulesetMessage dass ein Spieler eine Farbe ausgewählt hat
+	 * @param msgSelection Die Nachricht vom Client
+	 * @param name Der Name des Spielers
+	 */
+	protected void processMessage(MsgSelection msgSelection, String name){
 		
 	}
 	

@@ -123,7 +123,7 @@ public abstract class ClientRuleset {
 	 * Verarbeitet die RulesetMessage dass der Server ein Spielupdate an den Client schickt
 	 * @param clientUpdate Die Nachricht vom Server
 	 */
-	protected void resolveMessage(MsgUser clientUpdate) {
+	protected void processMessage(MsgUser clientUpdate) {
 		this.gameState = clientUpdate.getGameClientUpdate();
 	}
 	
@@ -132,7 +132,7 @@ public abstract class ClientRuleset {
 	 * Verarbeitet die RulesetMessage dass der Server von dem Spieler verlangt eine Karte zu spielen
 	 * @param msgCardRequest Die Nachricht vom Server
 	 */
-	protected void resolveMessage(MsgCardRequest msgCardRequest) {
+	protected void processMessage(MsgCardRequest msgCardRequest) {
 		
 	}
 	
@@ -140,7 +140,7 @@ public abstract class ClientRuleset {
 	 * Verarbeitet die RulesetMessage dass der Server von dem Spieler verlangt mehrere Karten anzugeben
 	 * @param msgMultiCardsRequest Die Nachricht vom Server
 	 */
-	protected void resolveMessage(MsgMultipleCardsRequest msgMultiCardsRequest) {
+	protected void processMessage(MsgMultipleCardsRequest msgMultiCardsRequest) {
 		
 		
 	}
@@ -149,7 +149,7 @@ public abstract class ClientRuleset {
 	 * Verarbeitet die RulesetMessage dass der Server von dem Spieler verlangt eine Stichanzahl anzugeben
 	 * @param msgNumber Die Nachricht vom Server
 	 */
-	protected void resolveMessage(MsgNumberRequest msgNumber) {
+	protected void processMessage(MsgNumberRequest msgNumber) {
 		
 	}
 	
@@ -157,7 +157,7 @@ public abstract class ClientRuleset {
 	 * Verarbeitet die RulesetMessage dass der Server von dem Spieler verlangt eine Farbe auszuwählen
 	 * @param msgSelection Die Nachricht vom Server
 	 */
-	protected void resolveMessage(MsgSelectionRequest msgSelection) {
+	protected void processMessage(MsgSelectionRequest msgSelection) {
 		
 	}
 	
