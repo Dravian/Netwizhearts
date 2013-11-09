@@ -26,7 +26,7 @@ public class ServerWizard extends ServerRuleset {
 	 * @param msgNumber Die Nachricht vom Client
 	 * @param name Der Name des Spielers
 	 */
-	public void resolveMessage(MsgNumber msgNumber, String name) {
+	public void processMessage(MsgNumber msgNumber, String name) {
 	}
 
 	/**
@@ -34,7 +34,7 @@ public class ServerWizard extends ServerRuleset {
 	 * @param msgSelection Die Nachricht vom Client
 	 * @param name Der Name des Spielers
 	 */
-	public void resolveMessage(MsgSelection msgSelection, String name){
+	protected void processMessage(MsgSelection msgSelection, String name){
 		
 	}
 

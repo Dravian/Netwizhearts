@@ -203,12 +203,22 @@ public abstract class ServerRuleset {
 	protected void broadcast(RulesetMessage message) {
 		
 	}
+	
+	/** 
+	 * Verarbeitet eine RulesetMessage die von einem Spieler kommt
+	 * @param message Die Nachricht
+	 * @param name Der Name des Spielers
+	 */
+	public void resolveMessage(RulesetMessage message, String name) {
+		
+	}
+	
 	/** 
 	 * Verarbeitet die RulesetMessage dass eine Karte vom Spieler gespielt
 	 * @param msgCard Die Nachricht vom Client welche Karte gespielt wurde
 	 * @param name Der Name des Spielers
 	 */
-	public void resolveMessage(MsgCard msgCard, String name) {
+	protected void processMessage(MsgCard msgCard, String name) {
 		
 	}
 	
