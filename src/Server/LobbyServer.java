@@ -3,7 +3,9 @@
  */
 package Server;
 
+import java.io.IOException;
 import java.net.ServerSocket;
+import java.util.HashSet;
 import java.util.Set;
 
 import ComObjects.*;
@@ -46,7 +48,7 @@ public class LobbyServer extends Server {
 	 * Erstellt und Startet den ClientListenerThread
 	 */
 	public LobbyServer(){
-		
+	
 	}
 	/**
 	 * Diese Klasse ist für das Zustandekommen von Clientverbindungen zuständig. 
@@ -75,10 +77,7 @@ public class LobbyServer extends Server {
 	 * @param name ist der Name der eingefügt wird
 	 */
 	private void addName(String name) {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+		names.add(name);
 	}
 
 	/**
@@ -86,10 +85,7 @@ public class LobbyServer extends Server {
 	 * @param name ist der Name der gelöscht wird
 	 */
 	private void removeName(String name) {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+		names.remove(name);
 	}
 
 	/**
@@ -120,9 +116,10 @@ public class LobbyServer extends Server {
 	 * an alle Spieler im playerSet verteilt.
 	 * @param player ist der Threat der die Nachricht erhalten hat
 	 * @param chat ist das ComObject, das die Chatnachricht enthält
+	 * @throws IOException 
 	 */
-	public void receiveMessage(Player player, ComChatMessage chat){
-
+	public void receiveMessage(Player player, ComChatMessage chat) throws IOException{
+		broadcast(chat);
 	}
 	/**
 	 * Diese Methode schließt die Verbindung, der Player wird aus dem playerSet 
@@ -132,9 +129,10 @@ public class LobbyServer extends Server {
 	 * @param player ist der Threat der die Nachricht erhalten hat
 	 * @param quit ist das ComObject, welches angibt, dass der Spieler das 
 	 * Spiel vollständig verlässt
+	 * @throws IOException 
 	 */
-	public void receiveMessage(Player player, ComClientQuit quit){
-
+	public void receiveMessage(Player player, ComClientQuit quit) throws IOException{
+	
 	}
 	
 	/**
@@ -145,9 +143,9 @@ public class LobbyServer extends Server {
 	 * @param player ist der Threat der die Nachricht erhalten hat
 	 * @param create ist das ComObject, welches angibt, dass der Player 
 	 * ein neues Spiel erstellt hat
+	 * @throws IOException 
 	 */
-	public void receiveMessage(Player player, ComCreateGameRequest create){
-
+	public void receiveMessage(Player player, ComCreateGameRequest create) throws IOException{
 	}
 	
 	/**
@@ -162,9 +160,10 @@ public class LobbyServer extends Server {
 	 * Zusätzlich wird dem joinendenClient mit sendToPlayer ein ComInitGameLobby geschickt.
 	 * @param player ist der Threat der die Nachricht erhalten hat
 	 * @param join ist das ComObject, welches angibt, dass der Player einem Spiel beitreten will
+	 * @throws IOException 
 	 */
-	public void receiveMessage(Player player, ComJoinRequest join){
-
+	public void receiveMessage(Player player, ComJoinRequest join) throws IOException{
+		
 	}
 	/**
 	 * Diese Methode überprüft, ob der Name im Set names vorhanden ist, falls ja, wird ein 
@@ -174,9 +173,10 @@ public class LobbyServer extends Server {
 	 * ComServerAcknowledgement geschickt.
 	 * @param player ist der Threat der die Nachricht erhalten hat
 	 * @param login ist das ComObject, dass den Benutzernamen des Clients enthält
+	 * @throws IOException 
 	 */
-	public void receiveMessage(Player player, ComLoginRequest login){
-
+	public void receiveMessage(Player player, ComLoginRequest login) throws IOException{
+		
 	}
 	
 	/**
@@ -185,5 +185,13 @@ public class LobbyServer extends Server {
 	 */
 	public ComInitLobby initLobby(){
 		return null;
+	}
+
+	public Set<GameServer> getGameServerSet() {
+		return gameServerSet;
+	}
+
+	public void setGameServerSet(Set<GameServer> gameServerSet) {
+		this.gameServerSet = gameServerSet;
 	}
 }
