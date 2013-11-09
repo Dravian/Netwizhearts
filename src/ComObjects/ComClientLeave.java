@@ -3,7 +3,7 @@ package ComObjects;
 /** 
  * Diese Klasse ist ein spezielles Kommunikations-Objekt.
  * Sie wird zur Benachrichtigung gesendet, wenn ein Spieler
- * ins nÃ¤chste Fenster mÃ¶chte und aus dem alten entfernt
+ * ins nächste Fenster möchte und aus dem alten entfernt
  * werden soll.
  *
  */

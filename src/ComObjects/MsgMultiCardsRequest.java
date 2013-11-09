@@ -11,14 +11,14 @@ public class MsgMultiCardsRequest extends RulesetMessage {
     private int count;
 
     /**
-     * Dies ist der Kontruktor fÃ¼r eine neue MsgMultipleCardsRequest-Nachricht.
+     * Dies ist der Kontruktor für eine neue MsgMultipleCardsRequest-Nachricht.
      */
     public MsgMultiCardsRequest(int count) {
         this.count = count;
     }
 
     /**
-     * Diese Methode gibt die Anzahl der Karten zurÃ¼ck, die der Server vom
+     * Diese Methode gibt die Anzahl der Karten zurück, die der Server vom
      * Spieler erwartet.
      * @return die Anzahl der Karten.
      */

@@ -2,7 +2,7 @@ package ComObjects;
 
 /** 
  *  Diese Klasse ist ein spezielles Kommunikations-Objekt.
- *  Sie soll dem Spieler eine Mitteilung senden und so Ã¼ber
+ *  Sie soll dem Spieler eine Mitteilung senden und so über
  *  ein Fehlerevent informieren.
  */
 public class ComWarning extends ComObject {
@@ -11,16 +11,16 @@ public class ComWarning extends ComObject {
 
     /**
      * Dies ist der Konstruktor einer neuen ComWarning-Nachricht.
-     * Er enthÃ¤lt eine Warnung an den Spieler, wenn ein Fehler
+     * Er enthält eine Warnung an den Spieler, wenn ein Fehler
      * passiert.
-     * @param warning ist die Warnung, die der Spieler erhÃ¤lt.
+     * @param warning ist die Warnung, die der Spieler erhält.
      */
     public ComWarning(String warning) {
         this.warning = warning;
     }
 
     /**
-     * Diese Methode gibt die Nachricht zurÃ¼ck, die dem Spieler
+     * Diese Methode gibt die Nachricht zurück, die dem Spieler
      * den Fehler mitteilt.
      * @return die Warnnachricht.
      */

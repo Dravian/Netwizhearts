@@ -12,7 +12,7 @@ public class ComInitGameLobby extends ComObject {
 	private List playerList;
 
     /**
-     * Dies ist der Kontruktor fÃ¼r eine neue ComInitGameLobby-Nachricht.
+     * Dies ist der Kontruktor für eine neue ComInitGameLobby-Nachricht.
      * @param playerList ist die Liste aller Player, die sich im
      *                   Wartefenster befinden.
      */
@@ -21,7 +21,7 @@ public class ComInitGameLobby extends ComObject {
     }
 
     /**
-     * Diese Methode gibt die Liste der Player zurÃ¼ck, die sich momentan
+     * Diese Methode gibt die Liste der Player zurück, die sich momentan
      * inm Wartefenster befinden.
      * @return die Liste der Spieler.
      */

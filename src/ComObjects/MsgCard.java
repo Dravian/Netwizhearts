@@ -11,8 +11,8 @@ public class MsgCard extends RulesetMessage {
 	private Card card;
 
     /**
-     * Dies ist der Kontruktor fÃ¼r eine neue MsgCard-Nachricht.
-     * Diese enthÃ¤lt die Information, welche Karte von einem
+     * Dies ist der Kontruktor für eine neue MsgCard-Nachricht.
+     * Diese enthält die Information, welche Karte von einem
      * Spieler gespielt wurde.
      * @param card ist die Karte.
      */
@@ -21,7 +21,7 @@ public class MsgCard extends RulesetMessage {
     }
 
     /**
-     * Diese Methode gibt die ausgespielte Karte des Spielers zurÃ¼ck.
+     * Diese Methode gibt die ausgespielte Karte des Spielers zurück.
      * @return die Karte.
      */
     public Card getCard() {

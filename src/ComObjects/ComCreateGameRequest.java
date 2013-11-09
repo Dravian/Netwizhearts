@@ -38,7 +38,7 @@ public class ComCreateGameRequest extends ComObject {
     }
 
     /**
-     * Diese Methode gibt das Regelwerk zurÃ¼ck, das benutzt werden soll.
+     * Diese Methode gibt das Regelwerk zurück, das benutzt werden soll.
      * @return das Regelwerk, welches benutzt wird.
      */
     public Enum getRuleset() {
@@ -46,7 +46,7 @@ public class ComCreateGameRequest extends ComObject {
     }
 
     /**
-     * Diese Methode gibt an, ob eine Passwort fÃ¼r ein Spiel gesetzt wurde.
+     * Diese Methode gibt an, ob eine Passwort für ein Spiel gesetzt wurde.
      * @return ob es ein Passwort gibt.
      */
     public boolean hasPassword() {
@@ -54,8 +54,8 @@ public class ComCreateGameRequest extends ComObject {
     }
 
     /**
-     * Gibt das Passwort zurÃ¼ck. Sollte keines gesetzt sein, wird null
-     * zurÃ¼ck gegeben.
+     * Gibt das Passwort zurück. Sollte keines gesetzt sein, wird null
+     * zurück gegeben.
      * @return das Passwort.
      */
     public String getPassword() {

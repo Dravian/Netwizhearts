@@ -8,7 +8,7 @@ package ComObjects;
 public class MsgSelectionRequest extends RulesetMessage {
 
     /**
-     * Dies ist der Kontruktor fÃ¼r eine neue MsgSelectionRequest-Nachricht.
+     * Dies ist der Kontruktor für eine neue MsgSelectionRequest-Nachricht.
      */
     public MsgSelectionRequest() {
 
