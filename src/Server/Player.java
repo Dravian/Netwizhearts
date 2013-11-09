@@ -4,16 +4,17 @@
 package Server;
 
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
+import java.io.PrintWriter;
 
 
 import ComObjects.ComObject;
+import ComObjects.ComUpdatePlayerlist;
 
 /**
  * Die Player-Klasse wird zum Versenden von Java Serializable Objects verwendet.
- * Sie verwaltet fÃ¼r die Dauer einer Serververbindung die Verbindung zum Client
+ * Sie verwaltet für die Dauer einer Serververbindung die Verbindung zum Client
  * @author Viktoria
  *
  */
@@ -23,28 +24,26 @@ public class Player implements Runnable{
 	 */
 	private String name;
 	/**
-	 * Der Server, an den eingehende ComObjects Ã¼bergeben werden sollen
+	 * Der Server, an den eingehende ComObjects übergeben werden sollen
 	 */
 	private Server server;
 	/**
-	 * ObjectOutput, um fÃ¼r Nachrichten an den Client zu Senden
+	 * PrintWriter, um für Nachrichten an den Client zu Senden
 	 */
-	private ObjectOutput comOut;
+	private PrintWriter comOut;
 	/**
-	 * ObjectInput, um fÃ¼r Nachrichten vom Client entgegenzunehmen
+	 * BufferedReader, um für Nachrichten vom Client entgegenzunehmen
 	 */
-	private ObjectInput comIn;
-	
-	private boolean run;
+	private BufferedReader comIn;
 
 	/**
 	 * Konstruktor des Players, in ihm werden die Attribute server, comOut und ComIn mit
-	 * vom ClientListererThret Ã¼bergebenen werten Instanziiert.
+	 * vom ClientListererThret übergebenen werten Instanziiert.
 	 * @param lobbyServer ist der LobbyServer, der zu Beginn den Player verwaltet.
-	 * @param output ist der ObjectOutput an den entsprechenden Client
-	 * @param input ist der ObjectInput vom entsprechenden Client
+	 * @param output ist der PrintWriter an den entsprechenden Client
+	 * @param input ist der BufferedReader vom entsprechenden Client
 	 */
-	public Player(Server lobbyServer, ObjectOutput output, ObjectInput input){
+	public Player(Server lobbyServer, PrintWriter output, BufferedReader input){
 		server = lobbyServer;
 		comOut = output;
 		comIn = input;
@@ -52,28 +51,14 @@ public class Player implements Runnable{
 	
 	/**
 	 * Die run-Methode des Threat nimmt eingehende Nachrichten des Client
-	 * entgegen und Ã¼bergibt diese an den Server durch Aufruf der Methode 
+	 * entgegen und übergibt diese an den Server durch Aufruf der Methode 
 	 * resolveMessage()
-	 * FÃ¤ngt eine IOException ab.
+	 * Fängt eine IOException ab.
 	 */
 	public void run(){
 		// begin-user-code
 		// TODO Auto-generated method stub
-
 		// end-user-code
-		run = true;
-		try {
-			while(run) {
-			ComObject object = (ComObject) comIn.readObject();
-			object.process(this, server);
-			}
-		} catch (ClassNotFoundException e) {
-			
-		} catch (IOException e) {
-			if (run) {
-				e.printStackTrace();
-			}
-		}
 	}
 
 	/**
@@ -82,7 +67,7 @@ public class Player implements Runnable{
 	 * @throws IOException wenn der Output nicht funktioniert
 	 */
 	public void send(ComObject com) throws IOException{
-		comOut.writeObject(com);
+		comOut.print(com);
 		// begin-user-code
 		// TODO Auto-generated method stub
 
@@ -96,33 +81,31 @@ public class Player implements Runnable{
 	 * Danach wird vom neuen Server ein ComUpdatePlayerlist Objekt mit broadcast 
 	 * an alle Clients, die vom Server verwaltet werden, verschickt.
 	 * @param newServer ist der neue Server
+	 * @throws IOException wenn der Output nicht funktioniert
 	 */
-	public void changeServer(Server newServer) {
+	public void changeServer(Server newServer) throws IOException {
+		server.removePlayer(this);
+		server = newServer;
+		server.addPlayer(this);
+		server.broadcast(new ComUpdatePlayerlist(this.getName(),false));
 		// begin-user-code
 		// TODO Auto-generated method stub
 		// end-user-code	
 	}
 	
 	/**
-	 * Getter-Methode fÃ¼r den Benutzernamen
-	 * @return gibt den Benutzernamen des Spielers zurÃ¼ck
+	 * Getter-Methode für den Benutzernamen
+	 * @return gibt den Benutzernamen des Spielers zurück
 	 */
 	public String getName(){
 		return name;
 	}
 	
 	/**
-	 * Setter-Methode fÃ¼r den Benutzernamen
+	 * Setter-Methode für den Benutzernamen
 	 * @param newName ist der neue Name
 	 */
 	public void setName(String newName){
 		name = newName;
-	}
-	
-	/**
-	 * 
-	 */
-	public void closeConnection(){
-		
 	}
 }

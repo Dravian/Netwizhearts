@@ -4,6 +4,9 @@
 package Server;
 
 import static Server.GameServerRepresentation.*;
+
+import java.io.IOException;
+
 import ComObjects.*;
 import Ruleset.RulesetType;
 import Ruleset.ServerRuleset;
@@ -88,10 +91,7 @@ public class GameServer extends Server {
 	 * Erstellt eine neue GameServerRepresentation und gibt sie zurück
 	 */
 	public GameServerRepresentation getRepresentation() {
-		return null;
-		// TODO Auto-generated method stub
-
-		// end-user-code
+		return new GameServerRepresentation(gameMasterName, name, maxPlayers, currentPlayers, rulesetType, hasPassword);
 	}
 	
 	/**
@@ -99,18 +99,18 @@ public class GameServer extends Server {
 	 * Zusätzlich wird die Zahl der currentPlayers um eins Erhöht.
 	 * @param player ist der Player, der hinzugefoügt wird
 	 */
-	@Override
 	public synchronized void addPlayer(Player player) {
-
+		playerSet.add(player);
+		++currentPlayers;
 	}
 	/**
 	 * Diese Methode wird vom abstrakten Server vererbt.
 	 * Zusätzlich wird die Zahl der currentPlayers um eins Verringert.
 	 * @param player ist der Player, der entfernt wird
 	 */
-	@Override
 	public synchronized void removePlayer(Player player) {
-
+		playerSet.remove(player);
+		--currentPlayers;
 	}
 	
 	/**
@@ -119,12 +119,12 @@ public class GameServer extends Server {
 	 * Der Player wird durch Aufruf von changeServer an die Lobby zurückgegeben.
 	 * An diesen Spieler wird ein ComWarning und ein ComInitLobby geschickt.
 	 * Danach wird ein ComUpdatePlayerlist Objekt mit broadcast an
-	 * alle Client im Spiel verschickt.
+	 * alle Clients im Spiel verschickt.
 	 * @param player ist der Threat der die Nachricht erhalten hat
 	 * @param kicked ist das ComObject, das verarbeitet wird
+	 * @throws IOException 
 	 */
-	public void receiveMessage(Player player, ComKickPlayerRequest kickPlayer){
-
+	public void receiveMessage(Player player, ComKickPlayerRequest kickPlayer) throws IOException{
 	}
 	
 	/**
@@ -133,9 +133,10 @@ public class GameServer extends Server {
 	 * an alle Spieler im playerSet verteilt.
 	 * @param player ist der Threat der die Nachricht erhalten hat
 	 * @param chat ist das ComObject, das die Chatnachricht enthält
+	 * @throws IOException 
 	 */
-	public void receiveMessage(Player player, ComChatMessage chat){
-
+	public void receiveMessage(Player player, ComChatMessage chat) throws IOException{
+		broadcast(chat);
 	}
 	/**
 	 * Diese Methode gibt einen Player, der die GameLobby verlassen will, 
@@ -145,9 +146,9 @@ public class GameServer extends Server {
 	 * @param player ist der Threat der die Nachricht erhalten hat
 	 * @param leave ist das ComObject, welches angibt, dass der Spieler in die Lobby 
 	 * zurückkehrt
+	 * @throws IOException 
 	 */
-	public void receiveMessage(Player player, ComClientLeave leave){
-
+	public void receiveMessage(Player player, ComClientLeave leave) throws IOException{
 	}
 	/**
 	 * Diese Methode behandelt den Fall, dass ein Spieler das laufende Spiel verlässt.
@@ -158,8 +159,9 @@ public class GameServer extends Server {
 	 * Das Spiel wird aufgelöst.
 	 * @param player ist der Threat der die Nachricht erhalten hat
 	 * @param quit ist das ComObject, welches angibt, dass der Spieler das Spiel verlässt
+	 * @throws IOException 
 	 */
-	public void receiveMessage(Player player, ComClientQuit quit){
+	public void receiveMessage(Player player, ComClientQuit quit) throws IOException{
 
 	}
 	/**
