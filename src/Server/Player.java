@@ -4,10 +4,9 @@
 package Server;
 
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.PrintWriter;
-
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 import ComObjects.ComObject;
 import ComObjects.ComUpdatePlayerlist;
@@ -30,11 +29,11 @@ public class Player implements Runnable{
 	/**
 	 * PrintWriter, um für Nachrichten an den Client zu Senden
 	 */
-	private PrintWriter comOut;
+	private ObjectOutputStream comOut;
 	/**
 	 * BufferedReader, um für Nachrichten vom Client entgegenzunehmen
 	 */
-	private BufferedReader comIn;
+	private ObjectInputStream comIn;
 
 	/**
 	 * Konstruktor des Players, in ihm werden die Attribute server, comOut und ComIn mit
@@ -43,7 +42,7 @@ public class Player implements Runnable{
 	 * @param output ist der PrintWriter an den entsprechenden Client
 	 * @param input ist der BufferedReader vom entsprechenden Client
 	 */
-	public Player(Server lobbyServer, PrintWriter output, BufferedReader input){
+	public Player(Server lobbyServer, ObjectOutputStream output, ObjectInputStream input){
 		server = lobbyServer;
 		comOut = output;
 		comIn = input;
@@ -67,7 +66,7 @@ public class Player implements Runnable{
 	 * @throws IOException wenn der Output nicht funktioniert
 	 */
 	public void send(ComObject com) throws IOException{
-		comOut.print(com);
+		comOut.writeObject(com);
 		// begin-user-code
 		// TODO Auto-generated method stub
 

@@ -57,11 +57,12 @@ public abstract class ServerRuleset {
 	 * Erstellt ein ServerRuleset
 	 * @param ruleset Der Spieltyp
 	 */
-	protected ServerRuleset(RulesetType ruleset, int min, int max) {
+	protected ServerRuleset(RulesetType ruleset, int min, int max, GameServer s) {
 		RULESET = ruleset;
 		MIN_PLAYERS = min;
 		MAX_PLAYERS = max;
 		gamePhase = GamePhase.Start;
+		this.server = s;
 	}
 	
 	/**
