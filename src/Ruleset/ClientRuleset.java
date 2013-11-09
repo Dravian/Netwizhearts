@@ -56,15 +56,17 @@ public abstract class ClientRuleset {
 	 * @param minPlayers Die minimale Spieleranzahl
 	 * @param maxPlayers Die maximale Spieleranzahl
 	 */
-	protected ClientRuleset(RulesetType ruleset, int minPlayers, int maxPlayers) {
+	protected ClientRuleset(RulesetType ruleset, int minPlayers, 
+			int maxPlayers,ClientModel client) {
 		RULESET = ruleset;
 		MIN_PLAYERS = minPlayers;
 		MAX_PLAYERS = maxPlayers;
 		gamePhase = GamePhase.Start;
+		this.client = client;
 	}
 	
 	/**
-	 * Gibt den Typ des Regelwerks zurÃ¼ck
+	 * Gibt den Typ des Regelwerks zurück
 	 * @return Der Typ vom Regelwerk
 	 */
 	public RulesetType getRulesetType() {
@@ -72,7 +74,7 @@ public abstract class ClientRuleset {
 	}
 	
 	/**
-	 * Gibt die Mindestanzahl an Spielern zurÃ¼ck fÃ¼r dieses Spiel
+	 * Gibt die Mindestanzahl an Spielern zurück für dieses Spiel
 	 * @return Die Mindestanzahl an Spielern
 	 */
 	public int getMinPlayers() {
@@ -80,7 +82,7 @@ public abstract class ClientRuleset {
 	}
 	
 	/**
-	 * Gibt die Maximale anzahl an Spielern zurÃ¼ck
+	 * Gibt die Maximale anzahl an Spielern zurück
 	 * @return Die maximale Anzahl an Spielern
 	 */
 	public int getMaxPlayers() {
@@ -88,7 +90,7 @@ public abstract class ClientRuleset {
 	}
 	
 	/**
-	 * Gibt den momentanen Spielzustand zurÃ¼ck
+	 * Gibt den momentanen Spielzustand zurück
 	 */
 	public GamePhase getGamePhase() {
 		return gamePhase;
@@ -101,15 +103,7 @@ public abstract class ClientRuleset {
 	public OtherData getOwnData() {
 		return gameState.getOwnData();
 	}
-	
-	/**
-	 * Schickt eine Nachricht Ã¼bers Model an den Server
-	 * @param message Die Nachricht
-	 */
-	protected void send(RulesetMessage message) {
 		
-	}
-	
 	/** 
 	 * Holt die Spieldaten der anderen Spieler
 	 * @return otherPlayerData Die Spieldaten der anderen Spieler
@@ -119,7 +113,7 @@ public abstract class ClientRuleset {
 	}
 	
 	/**
-	 * Gibt den Spieler der momentan am Zug ist zurÃ¼ck
+	 * Gibt den Spieler der momentan am Zug ist zurück
 	 * @return Der momentane Spieler
 	 */
 	public PlayerState getCurrentPlayer() {
@@ -175,7 +169,7 @@ public abstract class ClientRuleset {
 	}
 	
 	/**
-	 * Verarbeitet die RulesetMessage dass der Server von dem Spieler verlangt eine Farbe auszuwÃ¤hlen
+	 * Verarbeitet die RulesetMessage dass der Server von dem Spieler verlangt eine Farbe auszuwählen
 	 * @param msgSelection Die Nachricht vom Server
 	 */
 	protected void processMessage(MsgSelectionRequest msgSelection) {
@@ -183,15 +177,23 @@ public abstract class ClientRuleset {
 	}
 	
 	/**
-	 * Schickt eine Nachricht Ã¼bers Model an den Server
+	 * Verpackt eine Karte in ein Rulesetmessage und schick sie an den Server
+	 * @param card Die karte
+	 */
+	public void send(Card card) {
+		send(new MsgCard(card));
+	}
+	
+	/**
+	 * Schickt eine RulesetMessage übers Model an den Server
 	 * @param message Die Nachricht
 	 */
 	protected void send(RulesetMessage message) {
-		
+		//client.send(message);
 	}
 	
 	/** 
-	 * PrÃ¼ft ob ein gemachter Zug in einem Spiel gÃ¼ltig war
+	 * Prüft ob ein gemachter Zug in einem Spiel gültig war
 	 */
 	public abstract boolean isValidMove(Card card);
 }
