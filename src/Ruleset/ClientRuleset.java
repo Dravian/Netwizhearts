@@ -45,6 +45,11 @@ public abstract class ClientRuleset {
 	 */
 	private final int MAX_PLAYERS;
 	
+	/** 
+	 * Die momentane Spielphase
+	 */
+	private GamePhase gamePhase;
+	
 	/**
 	 * Erstellt eine ClientRuleset Klasse
 	 * @param ruleset Das Ruleset zum Spiel
@@ -55,6 +60,7 @@ public abstract class ClientRuleset {
 		RULESET = ruleset;
 		MIN_PLAYERS = minPlayers;
 		MAX_PLAYERS = maxPlayers;
+		gamePhase = GamePhase.Start;
 	}
 	
 	/**
@@ -79,6 +85,13 @@ public abstract class ClientRuleset {
 	 */
 	public int getMaxPlayers() {
 		return MAX_PLAYERS;
+	}
+	
+	/**
+	 * Gibt den momentanen Spielzustand zurück
+	 */
+	public GamePhase getGamePhase() {
+		return gamePhase;
 	}
 
 	public List<Card> getOwnHand() {

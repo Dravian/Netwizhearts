@@ -33,6 +33,11 @@ public abstract class ServerRuleset {
 	 */
 	private GameState gameState;
 	
+	/** 
+	 * Die momentane Spielphase
+	 */
+	private GamePhase gamePhase;
+	
 	/**
 	 * Der Spieltyp
 	 */
@@ -56,9 +61,7 @@ public abstract class ServerRuleset {
 		RULESET = ruleset;
 		MIN_PLAYERS = min;
 		MAX_PLAYERS = max;
-		if(ruleset == RulesetType.Hearts) {
-			
-		}
+		gamePhase = GamePhase.Start;
 	}
 	
 	/**
@@ -83,6 +86,13 @@ public abstract class ServerRuleset {
 	 */
 	public int getMaxPlayers() {
 		return MAX_PLAYERS;
+	}
+	
+	/**
+	 * Gibt den momentanen Spielzustand zurück
+	 */
+	public GamePhase getGamePhase() {
+		return gamePhase;
 	}
 	
 	/** 
