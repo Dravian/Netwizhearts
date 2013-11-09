@@ -52,7 +52,7 @@ public abstract class ServerRuleset {
 	 * Erstellt ein ServerRuleset
 	 * @param ruleset Der Spieltyp
 	 */
-	public ServerRuleset(RulesetType ruleset, int min, int max) {
+	protected ServerRuleset(RulesetType ruleset, int min, int max) {
 		RULESET = ruleset;
 		MIN_PLAYERS = min;
 		MAX_PLAYERS = max;
@@ -222,24 +222,28 @@ public abstract class ServerRuleset {
 	}
 	
 	/**
-	 * Deals a number of cards from the top of the deck
-	 * @param name Name of the Player who gets the cards
-	 * @param number The number of cards
-	 * @return True if a player has no cards, false if he does
+	 * Verteil eine bestimmte Anzahl an Karten an die Spieler
+	 * @param number Die Anzahl an Karten
+	 * @return Gibt true zurück wenn ein Spieler keine Karten hat, false sonst
 	 */
-	protected boolean dealCards(String name, int number) {
+	protected boolean dealCards(int number) {
 		return false;	
 	}
 	
 	/**
-	 * Gives one specific card of the deck to a Player
-	 * @param name The name of the Player
-	 * @return true if the card is in the deck
+	 * Gibt einem Spieler eine bestimmte Karte
+	 * @param name Der Name eines Spielers
+	 * @return Gibt true zurück wenn die Karte im Deck ist, false sonst
 	 */
 	protected boolean giveACard(String name, Card card) {
 		return false;	
 	}
 	
+	/**
+	 * Der momentane Spieler spielt eine Karte
+	 * @param card Die gespielte Karte
+	 * @return true falls der Spieler die Karte hat
+	 */
 	protected boolean playCard(Card card) {
 		gameState.playCard(card);
 		return false;
