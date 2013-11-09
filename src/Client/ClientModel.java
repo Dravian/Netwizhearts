@@ -3,204 +3,341 @@
  */
 package Client;
 
-import static Client.View.Warning.*;
 import Ruleset.ClientRuleset;
+import Server.GameServerRepresentation;
 import Client.View.Language;
+import ComObjects.ComBeenKicked;
+import ComObjects.ComChatMessage;
+import ComObjects.ComInitGameLobby;
+import ComObjects.ComInitLobby;
+import ComObjects.ComLobbyUpdateGamelist;
+import ComObjects.ComObject;
+import ComObjects.ComRuleset;
+import ComObjects.ComServerAcknowledgement;
+import ComObjects.ComUpdatePlayerlist;
+import java.io.IOException;
+import java.net.Socket;
+import java.util.List;
+import java.util.Observable;
+import java.util.Set;
 
 /** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author m4nkey
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+ * Implementiert das Client Model.
+ * Das Model bedient den Server durch den ListenerThread
+ * und leitet Daten an das Regelwerk und View weiter.
  */
-public class ClientModel {
+public class ClientModel extends Observable{
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * String der den eindeutigen Spielernamen repräsentiert.
 	 */
-	private Object socket;
+	private String playerName;
+	
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
-	private Object chatlog;
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Referenz auf das Regelwerk des Spieles.
 	 */
 	private ClientRuleset ruleset;
+
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Die aktuelle Sprache der GUI.
 	 */
 	private Language language;
+
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Der Zustand indem sich der Client befindet.
 	 */
-	
 	private ClientState state;
 	
+	/** 
+	 * Hält den für die Netzwerkkomunikation zuständigen Thread.
+	 */
 	private MessageListenerThread messageListenerThread;
+	
+	private List<String> playerList;
 
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	private Set<GameServerRepresentation> gameList;
+
+	/**
+	 * 
 	 */
-	public void receiveMessage() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	public ClientModel() {
+		
+	}
+	
+	/**
+	 * Wird von dem Controller
+	 * beim Verlassen eines Fensters
+	 * ausgeführt.
+	 */
+	public void leaveWindow() {
+		
 	}
 
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Bearbeitet eine eingehende Chatnachricht.
 	 */
-	private void openInputNumber() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	private void processChatMessage(ComChatMessage msg) {
+		
+	}
+	
+	/** 
+	 * Verarbeitet eine Liste von Spielern und Spielen,
+	 * welche sich beim Betreten der ServerLobby bereits darin befinden.
+	 */
+	private void processInitServerLobby(ComInitLobby msg) {
+		
+	}
+	
+	/** 
+	 * Verarbeitet eine Liste von Spielern,
+	 * welche sich beim betreten der Spiellobby
+	 * bereits darin befinden.
+	 */
+	private void processInitGameLobby(ComInitGameLobby msg) {
+		
+	}
+	
+	/** 
+	 * Diese Methode wird von receiveMessage() aufgerufen,
+	 * falls eine Nachricht für das Regelwerk ankommt.
+	 */
+	private void invokeRuleset(ComRuleset msg) {
+		
+	}
+	
+	/** 
+	 * Diese Hilfsmethode wird von receiveMessage() aufgerufen,
+	 * falls ein Server Acknowledgement auftritt.
+	 * Dabei ist es von Bedeutung,
+	 *  in welchem Zustand sich der Client befindet.
+	 *  @param ack Eine Bestätigung durch den Server.
+	 */
+	private void processAck(ComServerAcknowledgement ack) {
+		
+	}
+	
+	/** 
+	 * Diese Hilfmethode wird von receiveMessage() aufgerufen,
+	 * falls der Spieler aus der Spiellobby durch einen Spielleiter
+	 * entfernt wurde.
+	 */
+	private void processBeenKicked(ComBeenKicked msg) {
+		
+	}
+	
+	/**
+	 * Verarbeitet ein Update, das einen einzelnen Spieler betrifft.
+	 */
+	private void processUpdatePlayerlist(ComUpdatePlayerlist update) {
+		
+	}
+	
+	/**
+	 * Verarbeitet ein Update, das ein einzelnes Spiel betrifft.
+	 */
+	private void processUpdateGamelist(ComLobbyUpdateGamelist update) {
+		
+	}
+	
+	/**
+	 * Diese Methode wird von dem ClientListenerThread aufgerufen
+	 * und bestimmt welche Nachricht sich hinter dem ComObjekt genau
+	 * verbirgt um weitere Verarbeitungsschritte einzuleiten.
+	 * @param comObject Die empfangene Nachricht.
+	 */
+	private void receiveMessage(ComObject comObject){
+		
+	}
+	
+	/**
+	 * Diese Methode wird von der View beim betreten der Spiellobby aufgerufen
+	 * und liefert eine Liste von Spielern in der Spiellobby.
+	 * @return List Eine Liste der Spieler in der Spiellobby.
+	 */
+	public List<String> getGameLobbyPlayerlist(){
+		return playerList;
+	}
+	
+	/**
+	 * Diese Methode wird von der View beim betreten der Serverlobby aufgerufen
+	 * und liefert eine Liste von Spielern und Spielen in der Serverlobby.
+	 * @return Set Enthält alle Spiele in der ServerLobby.
+	 */
+	public Set<GameServerRepresentation> getFullServerLobbyGamelist(){
+		return null;
+	}
+	
+	/**
+	 * Diese Methode wird von der View aufgerufen
+	 * und aktualisiert einzelne Spiele.
+	 * @return GameServerRepresentation Daten eines Spieles.
+	 */
+	public GameServerRepresentation getServerLobbyGamelistUpdate(){
+		return null;
+	}
+	
+	/**
+	 * Diese Methode wird von der View aufgerufen um die Liste der Spieler
+	 * zu aktualisieren.
+	 * @return List Update für die aktuelle Spielerliste.
+	 */
+	public List<String> getPlayerlistUpdate(){
+		return null;
+	}
+	
+	/**
+	 * Diese Methode wird von der View aufgerufen um eine neue Chatnachricht
+	 * abzuholen.
+	 * @return String die Chatnachricht.
+	 */
+	public String getChatMessage(){
+		return null;
+	}
+	
+	/**
+	 * Gibt der View die gespielte Karte eines anderen Spielers zurück.
+	 * @return enum CardID. Die Id der Karte
+	 */
+	public CardID getPlayedCard(){
+		return null;
+	}
+	
+	/**
+	 * Setzt die Sprache der GUI.
+	 * @param language Enumerator der die Spielsprache anzeigt.
+	 */
+	public void setLanguage(final Language language) {
+		this.language = language;
+	}
+	
+	/**
+	 * Liefert die Sprache der GUI.
+	 * @return language Enumerator der die Spielsprache anzeigt.
+	 */
+	public Language getLanguage() {
+		return language;
 	}
 
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Wird vom Controller aufgerufen um einen Spieler
+	 * aus der Spiellobby zu entfernen.
+	 * @param name des Spielers welcher enfernt werden soll.
 	 */
-	private void openScoreWindow() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	public void kickPlayer(final String name) {
+	
 	}
 
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Wird vom ClientController aufgerufen und erstellt ein neues Spiel
+	 * auf dem Server.
+	 * @param gameName String Name des Spieles.
+	 * @param password String Passwort zum sichern des Spieles.
 	 */
-	public void createGame() {
-		// begin-user-code
-		// TODO Auto-generated method stub
+	public void hostGame(String gameName, String password) {
 
-		// end-user-code
 	}
 
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Hilfsmethode des Models um erstellte Nachrichten an den Netzwerkthread weiter
+	 * zuleiten.
 	 */
-	private void openChooseCards() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	private void sendMessage(ComObject object) {
+		
 	}
 
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Diese Methode wird von dem ClientController aufgerufen um
+	 * einem bereits erstelltem Spiel beizutreten.
+	 * @param name String Der Name des Spiels.
+	 * @param password String Passwort eines Spieles.
 	 */
-	public void hostGame() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	public void joinGame(final String name, final String password) {
+	
 	}
 
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
-	private void sendMessage() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
-	public void joinGame() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
-	private void openChooseColour() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Der ClientController ruft diese Methode auf,
+	 * um ein bereits erstelltes Spiel zu starten.
 	 */
 	public void startGame() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	
 	}
 
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Diese Methode wird innerhalb des ClientModels aufgerufen wenn ein Spiel 
+	 * vom Spielleiter gestartet wurde.
+	 * Es werden die Observer benachrichtigt und die View wechselt in die Spielansicht.
 	 */
 	private void initGame() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+		
 	}
 
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Wird vom ClientConroller aufgerufen um eine Karte auszuspielen.
+	 * @param id Die id der gespielten Karte um sie einer logischen Karte
+	 * zuordnen zu können.
 	 */
-	public void makeMove() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	public void makeMove(CardID id) {
+		
 	}
 
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Hilfsmethode die alle verbundenen Observer der GUI kontaktiert.
+	 * @param note Enum der die Art des Aufrufes bestimmt.
 	 */
-	private void informView() {
+	private void informView(ViewNotification note) {
+		
+	}
+	
+	/** 
+	 * Erstellt den MessageListenerThread und führt den Benutzerlogin durch.
+	 * @param username String der eindeutige Benutzername der für den Login verwendet wird.
+	 * @param serverAdress String die Adresse des spielservers.
+	 * @param port Integer der Port des Spielservers.
+	 */
+	public void createConnection(final String username, final String serverAdress, final int port) {
+		
+	}
+
+	/** 
+ * Diese Klasse implementiert die Netzwerkanbindung des Clients an den Server.
+ * Sie ist eine innere Klasse des ClientModels und wird vom selbigen instanziert.
+ * Sie enthält den dazu nötigen Socket und ObjektStream Reader und Writer.
+ */
+class MessageListenerThread extends Thread{
+	
+	/** Der TCP Socket. */
+	private Socket connection;
+
+	/**
+	 * Erstellt die initiale Verbindung zum Server.
+	 * @param connection TCP Socket über den die Verbindung erstellt wird.
+	 * @throws IOException Diese Exception wird an den Aufrufenden weitergeleitet.
+	 */
+	protected MessageListenerThread(final Socket connection) throws IOException{
+		this.connection = connection;
+	}
+	
+	/**
+	 * Hilfsmethode die eine bestehende Verbindung abbaut
+	 * und deren Ressourcen freigibt.
+	 */
+	protected void closeConnection() {
+		
+	}
+	
+	/**
+	 * Über diese Methode können Nachrichten an den Server versendet werden.
+	 */
+	protected void send() {
+		
+	}
+	
+	@Override
+	public void run() {
 		// begin-user-code
 		// TODO Auto-generated method stub
 
 		// end-user-code
 	}
+  }
 }

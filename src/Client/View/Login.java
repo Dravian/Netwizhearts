@@ -22,8 +22,6 @@ import javax.swing.JComboBox;
  * In diesem Fenster kann der Benutzer seinen Namen und die Adresse des Servers eingeben. 
  * Außerdem ist über den Login die Auswahl der Sprache möglich. 
  * Über den Login-Button wird die Verbindung zum Server hergestellt.
- * 
- * @author M4nkey
  */
 public class Login extends JFrame implements Observer{
 

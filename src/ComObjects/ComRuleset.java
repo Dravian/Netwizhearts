@@ -1,31 +1,30 @@
-/**
- * 
- */
 package ComObjects;
 
 /** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author m4nkey
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+ *  Diese Klasse ist ein spezielles Kommunikations-Objekt.
+ *  Sie ist die grundlegende Nachricht eines Regelwerkaufrufes
+ *  und enthält eine verfeinerte Nachricht mit weiteren Informationen,
+ *  die RulesetMessage.
  */
 public class ComRuleset extends ComObject {
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
+
 	private RulesetMessage rulesetMessage;
 
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
-	public void getRulesetMessage() {
-		// begin-user-code
-		// TODO Auto-generated method stub
+    /**
+     * Dies ist der Kontruktor für eine neue ComResult-Nachricht.
+     * @param rulesetMessage ist eine Nachricht, die ans Ruleset
+     *                       gesendet werden soll.
+     */
+    public ComRuleset(RulesetMessage rulesetMessage) {
+        this.rulesetMessage = rulesetMessage;
+    }
 
-		// end-user-code
-	}
+    /**
+     * Diese Methode gibt die Nachricht zurück, die ans Ruleset
+     * gesendet werden soll.
+     * @return die Nachricht.
+     */
+    public RulesetMessage getRulesetMessage() {
+        return rulesetMessage;
+    }
 }

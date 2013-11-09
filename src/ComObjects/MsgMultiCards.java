@@ -1,47 +1,29 @@
-/**
- * 
- */
 package ComObjects;
 
 import java.util.Set;
 import Ruleset.Card;
 
 /** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author m4nkey
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+ * Diese Klasse ist eine Verfeinerung der RulesetMessage-Klasse.
+ * Sie liefert mehrere Karten zum Tausch für das Regelwerk Hearts.
  */
 public class MsgMultiCards extends RulesetMessage {
-	
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
+
 	private Set<Card> cardList;
 
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
-	public void getCount() {
-		// begin-user-code
-		// TODO Auto-generated method stub
+    /**
+     * Dies ist der Kontruktor für eine neue MsgMultiCards-Nachricht.
+     * @param cardList ist die Liste der ausgewählten Karten.
+     */
+    public MsgMultiCards(Set cardList) {
+        this.cardList = cardList;
+    }
 
-		// end-user-code
-	}
-
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
-	public void getCardList() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
+    /**
+     * Gibt die Liste der gewählten Karten zurück.
+     * @return die Liste der Karten.
+     */
+    public Set<Card> getCardList() {
+        return cardList;
+    }
 }

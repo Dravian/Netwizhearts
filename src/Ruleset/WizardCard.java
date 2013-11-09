@@ -1,19 +1,25 @@
-/**
- * 
- */
 package Ruleset;
 
-/** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author m4nkey
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+/**
+ * Modelliert eine Heartskarte
  */
-public class WizardCard extends Card {
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
-	private WizID id;
+public enum WizardCard implements Card{
+	NarrBlau(2,Colour.BLUE),ZauberRot(14,Colour.RED);
+	private final int value;
+	private final Colour colour;
+	
+	private WizardCard(int value, Colour colour) {
+		this.value = value;
+		this.colour = colour;
+	}
+	
+	@Override
+	public int getValue() {
+		return value;
+	}
+
+	@Override
+	public Colour getColour() {
+		return colour;
+	}
 }

@@ -1,51 +1,40 @@
-/**
- * 
- */
 package ComObjects;
 
 import Server.GameServerRepresentation;
 
 /** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author m4nkey
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+ * Diese Klasse ist ein spezielles Kommunikations-Objekt.
+ * Sie aktualisiert die Gameliste in der Lobby.
+ * Dazu enthält sie den GameServer und ein RemoveFlag.
  */
 public class ComLobbyUpdateGamelist extends ComObject {
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
-	private Object removeFlag;
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
-	private GameServerRepresentation GameServer;
 
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
-	public void getGameServer() {
-		// begin-user-code
-		// TODO Auto-generated method stub
+	private boolean removeFlag;
+	private GameServerRepresentation gameServer;
 
-		// end-user-code
-	}
+    /**
+     * Dies ist der Kontruktor für eine neue ComLobbyUpdateGamelist-Nachricht.
+     * @param removeFlag zeigt an, ob das Spiel gelöscht werden soll.
+     * @param gameServer ist das Spiel.
+     */
+    public ComLobbyUpdateGamelist(boolean removeFlag, GameServerRepresentation gameServer) {
+        this.removeFlag = removeFlag;
+        this.gameServer = gameServer;
+    }
 
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
-	public void wasRemoved() {
-		// begin-user-code
-		// TODO Auto-generated method stub
+    /**
+     * Diese Methode liefert, ob ein Spiel gelöscht werden soll oder nicht.
+     * @return ob das Spiel gelöscht wird.
+     */
+    public boolean isRemoveFlag() {
+        return removeFlag;
+    }
 
-		// end-user-code
-	}
+    /**
+     * Diese Methode liefert das Spiel, das geupdated werden soll.
+     * @return das Spiel.
+     */
+    public GameServerRepresentation getGameServer() {
+        return gameServer;
+    }
 }

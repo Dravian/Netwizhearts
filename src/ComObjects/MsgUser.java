@@ -1,34 +1,30 @@
-/**
- * 
- */
 package ComObjects;
 
-import java.util.Set;
 import Ruleset.GameClientUpdate;
 
 /** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author m4nkey
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+ *  Diese Klasse ist eine Verfeinerung der RulesetMessage-Klasse.
+ *  Sie wird dem Client gesendet, um dem ClientRuleset den aktuellen
+ *  Spielzustand in Form eines GameClientUpdate zu übermitteln.
  */
 public class MsgUser extends RulesetMessage {
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
-	private Set<GameClientUpdate> gameClientUpdate;
 
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
-	public void getGameUpdate() {
-		// begin-user-code
-		// TODO Auto-generated method stub
+	private GameClientUpdate gameClientUpdate;
 
-		// end-user-code
-	}
+    /**
+     * Dies ist der Konstruktor einer neuen MsgUser-Nachricht.
+     * @param gameClientUpdate ist der aktuelle Spielstand.
+     */
+    public MsgUser(GameClientUpdate gameClientUpdate) {
+        this.gameClientUpdate = gameClientUpdate;
+    }
+
+    /**
+     * Diese Methode liefert den den aktuellen Spielzustand, der für ein
+     * Update benötigt wird.
+     * @return den aktuellen Spielzustand.
+     */
+    public GameClientUpdate getGameClientUpdate() {
+        return gameClientUpdate;
+    }
 }

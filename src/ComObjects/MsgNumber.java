@@ -1,31 +1,26 @@
-/**
- * 
- */
 package ComObjects;
 
-/** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author m4nkey
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+/**
+ * Diese Klasse ist eine Verfeinerung der RulesetMessage-Klasse.
+ * Sie enthält eine Zahl.
  */
 public class MsgNumber extends RulesetMessage {
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
-	private Object number;
 
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
-	public void getNumber() {
-		// begin-user-code
-		// TODO Auto-generated method stub
+	private int number;
 
-		// end-user-code
-	}
+    /**
+     * Dies ist der Kontruktor für eine neue MsgNumber-Nachricht.
+     * @param number ist eine Eingabe eines Spielers
+     */
+	public MsgNumber(int number) {
+        this.number = number;
+    }
+
+    /**
+     * Diese Methode liefert die Eingabe eines Spielers.
+     * @return eine Zahl, die Eingabe des Spielers.
+     */
+    public int getNumber() {
+        return number;
+    }
 }

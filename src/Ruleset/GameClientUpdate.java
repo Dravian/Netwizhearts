@@ -3,73 +3,112 @@
  */
 package Ruleset;
 
-import java.util.Set;
+import java.util.List;
+import java.util.Map;
 
 /** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author m4nkey
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+ * Das GameClientUpdate wird vom RuleSet über den GameServer an den Client geschickt 
+ * und enthält alle Änderungen des GameState, die für den Client relevant sind. 
+ * Das wären seine Spielhand, der Ablagestapel sowie die Otherdata von allen Spielern.
+ * Bei Wizard enthält es auch die momentane Trumpfkarte.
  */
 public class GameClientUpdate {
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Der Spielerzustand vom Client
 	 */
 	private PlayerState playerState;
+	
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Die gespielten Karten auf dem Ablagestapel
 	 */
-	private Set<Card> ownHand;
+	private Map<String,Card> discardPile;
+	
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Die Spieldaten der anderen Spieler
 	 */
-	private Set<Card> playedCards;
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	private List<OtherData> otherPlayerData;
+	
+	/**
+	 * Der Spieler der grad am Zug ist
 	 */
-	private Set<OtherData> otherData;
-
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	private PlayerState currentPlayer;
+	
+	/**
+	 * Die Trumpffarbe des Spiels, diese wird nur beim Spiel Wizard verwendet
 	 */
-	public void getOwnHand() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	private Card trumpCard;
+	
+	/**
+	 * Erstellt ein GameClientUpdate zum Spiel Hearts
+	 * @param playerState Der Spielerzustand des Client
+	 * @param discardPile Die gespielten Karten
+	 * @param otherPlayerData Die Daten der anderen Spieler
+	 * @param currentPlayer Der momentan aktive Spieler
+	 */
+	GameClientUpdate(PlayerState playerState, Map<String,Card> discardPile, 
+			List<OtherData> otherPlayerData, PlayerState currentPlayer) {
+		this.playerState = playerState;
+		this.discardPile = discardPile;
+		this.otherPlayerData = otherPlayerData;
+		this.currentPlayer = currentPlayer;
+	}
+	
+	/**
+	 * Erstellt ein GameClientUpdate zum Spiel Wizard
+	 * @param playerState Der Spielerzustand des Client
+	 * @param discardPile Der Ablagestapel
+	 * @param otherPlayerData Die Daten der anderen Spieler
+	 * @param currentPlayer Der momentan aktive Spieler
+	 * @param trumpCard Die Trumpffarbe
+	 */
+	GameClientUpdate(PlayerState playerState, Map<String,Card> discardPile,
+			List<OtherData> otherPlayerData,  PlayerState currentPlayer,
+			Card trumpCard) {
+		this.playerState = playerState;
+		this.discardPile = discardPile;
+		this.otherPlayerData = otherPlayerData;
+		this.currentPlayer = currentPlayer;
+		this.trumpCard = trumpCard;
 	}
 
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Holt die Karten die der Client auf der Hand hat
+	 * @return ownHand Die Hand des Clients
 	 */
-	public void getPlayedCards() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	public List<Card> getOwnHand() {
+		List<Card> ownHand = playerState.getHand();
+		return ownHand;
 	}
 
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * Holt die gespielten Karten auf dem Ablagestapel
+	 * @return discardPile Die gespielten Karten
 	 */
-	public void getOtherData() {
-		// begin-user-code
-		// TODO Auto-generated method stub
+	public Map<String, Card> getPlayedCards() {
+		return discardPile;
+	}
 
-		// end-user-code
+	/**
+	 * Holt die zusätzlichen Spieldaten des Client
+	 * @return ownData Die Spieldaten des Clients
+	 */
+	public OtherData getOwnData() {
+		OtherData ownData = playerState.getOtherData();
+		return ownData;
+	}
+	
+	/** 
+	 * Holt die Spieldaten der anderen Spieler
+	 * @return otherPlayerData Die Spieldaten der anderen Spieler
+	 */
+	public List<OtherData> getOtherPlayerData() {
+		return otherPlayerData;
+	}
+	
+	/**
+	 * Holt die aufgedeckte Trumpfkarte
+	 */
+	public Card getTrumpCard() {
+		return trumpCard;
 	}
 }

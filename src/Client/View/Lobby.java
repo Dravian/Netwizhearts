@@ -25,8 +25,6 @@ import javax.swing.ListSelectionModel;
  * und empfangen werden. Über 'Leave' verlässt der Spieler das Spiel. 
  * Über 'Host Game' wird der Spieler zum CreateGame-Fenster weiter geleitet 
  * und mit 'Join Game' kann einem bereits erstellten Spiel beigetreten werden.
- * 
- * @author M4nkey
  */
 public class Lobby extends JFrame implements Observer{
 

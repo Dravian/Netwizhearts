@@ -8,8 +8,6 @@ import java.util.Observer;
 
 /** 
  * In diesem Fenster, kann der Benutzer eine Zahl eingeben.
- * 
- * @author m4nkey
  */
 public class InputNumber implements Observer{
 	
