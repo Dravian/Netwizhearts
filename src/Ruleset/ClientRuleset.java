@@ -29,6 +29,57 @@ public abstract class ClientRuleset {
 	 * Der Spielzustand aus der Sicht des Models
 	 */
 	private GameClientUpdate gameState;
+	
+	/**
+	 * Der Spieltyp
+	 */
+	private final RulesetType RULESET;
+	
+	/**
+	 * Die Mindestanzahl an Spielern
+	 */
+	private final int MIN_PLAYERS;
+	
+	/**
+	 * Die Maximale Anzahl an Spielern
+	 */
+	private final int MAX_PLAYERS;
+	
+	/**
+	 * Erstellt eine ClientRuleset Klasse
+	 * @param ruleset Das Ruleset zum Spiel
+	 * @param minPlayers Die minimale Spieleranzahl
+	 * @param maxPlayers Die maximale Spieleranzahl
+	 */
+	protected ClientRuleset(RulesetType ruleset, int minPlayers, int maxPlayers) {
+		RULESET = ruleset;
+		MIN_PLAYERS = minPlayers;
+		MAX_PLAYERS = maxPlayers;
+	}
+	
+	/**
+	 * Gibt den Typ des Regelwerks zurück
+	 * @return Der Typ vom Regelwerk
+	 */
+	public RulesetType getRulesetType() {
+		return RULESET;
+	}
+	
+	/**
+	 * Gibt die Mindestanzahl an Spielern zurück für dieses Spiel
+	 * @return Die Mindestanzahl an Spielern
+	 */
+	public int getMinPlayers() {
+		return MIN_PLAYERS;
+	}
+	
+	/**
+	 * Gibt die Maximale anzahl an Spielern zurück
+	 * @return Die maximale Anzahl an Spielern
+	 */
+	public int getMaxPlayers() {
+		return MAX_PLAYERS;
+	}
 
 	public List<Card> getOwnHand() {
 		return gameState.getOwnHand();
