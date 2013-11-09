@@ -300,11 +300,19 @@ public abstract class ServerRuleset {
 	 * @return true falls Zug gültig und false wenn nicht
 	 */
 	protected abstract boolean isValidMove(Card card);
+	
+	/**
+	 * Berecnet und verteilt Stichpunkte an einzelne Spieler
+	 */
+	protected abstract void calculateTricks() ;
 
 	/** 
 	 * Berechnet das Ergebnis von der Berechnung eines Befehls
 	 */
-	protected abstract void calculateOutcome();
+	protected abstract void calculateRoundOutcome();
 
-	
+	/**
+	 * Wird beim Spielende aufgerufen und gibt den Namen vom Sieger zurück
+	 */
+	protected abstract String getWinner();
 }
