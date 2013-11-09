@@ -3,6 +3,9 @@
  */
 package Ruleset;
 
+import ComObjects.MsgNumberRequest;
+import ComObjects.MsgSelectionRequest;
+
 /** 
  * Diese Klasse bildet das Regelwerk für den Client bei einer Partie Wizard
  */
