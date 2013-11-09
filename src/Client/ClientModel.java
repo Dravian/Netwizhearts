@@ -4,6 +4,7 @@
 package Client;
 
 import static Client.View.Warning.*;
+import Ruleset.Card;
 import Ruleset.ClientRuleset;
 import Ruleset.OtherData;
 import Ruleset.RulesetType;
@@ -18,6 +19,8 @@ import ComObjects.ComObject;
 import ComObjects.ComRuleset;
 import ComObjects.ComServerAcknowledgement;
 import ComObjects.ComUpdatePlayerlist;
+import ComObjects.RulesetMessage;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -33,7 +36,7 @@ import java.util.Set;
  */
 public class ClientModel extends Observable{
 	/** 
-	 * String der den eindeutigen Spielernamen reprÃ¤sentiert.
+	 * String der den eindeutigen Spielernamen repräsentiert.
 	 */
 	private String playerName;
 	
@@ -54,7 +57,7 @@ public class ClientModel extends Observable{
 	private ClientState state;
 	
 	/** 
-	 * HÃ¤lt den fÃ¼r die Netzwerkkomunikation zustÃ¤ndigen Thread.
+	 * Hält den für die Netzwerkkomunikation zuständigen Thread.
 	 */
 	private MessageListenerThread messageListenerThread;
 	
@@ -70,9 +73,9 @@ public class ClientModel extends Observable{
 	}
 	
 	/**
-	 * Wird von dem Controller
+	 * Wird von dem ClientController
 	 * beim Verlassen eines Fensters
-	 * ausgefÃ¼hrt.
+	 * ausgeführt.
 	 */
 	public void leaveWindow() {
 		
@@ -81,7 +84,7 @@ public class ClientModel extends Observable{
 	/** 
 	 * Bearbeitet eine eingehende Chatnachricht.
 	 */
-	private void processChatMessage(ComChatMessage msg) {
+	public void receiveMessage(ComChatMessage msg) {
 		
 	}
 	
@@ -89,7 +92,7 @@ public class ClientModel extends Observable{
 	 * Verarbeitet eine Liste von Spielern und Spielen,
 	 * welche sich beim Betreten der ServerLobby bereits darin befinden.
 	 */
-	private void processInitServerLobby(ComInitLobby msg) {
+	public void receiveMessage(ComInitLobby msg) {
 		
 	}
 	
@@ -98,15 +101,15 @@ public class ClientModel extends Observable{
 	 * welche sich beim betreten der Spiellobby
 	 * bereits darin befinden.
 	 */
-	private void processInitGameLobby(ComInitGameLobby msg) {
+	public void receiveMessage(ComInitGameLobby msg) {
 		
 	}
 	
 	/** 
 	 * Diese Methode wird von receiveMessage() aufgerufen,
-	 * falls eine Nachricht fÃ¼r das Regelwerk ankommt.
+	 * falls eine Nachricht für das Regelwerk ankommt.
 	 */
-	private void invokeRuleset(ComRuleset msg) {
+	public void receiveMessage(ComRuleset msg) {
 		
 	}
 	
@@ -115,9 +118,9 @@ public class ClientModel extends Observable{
 	 * falls ein Server Acknowledgement auftritt.
 	 * Dabei ist es von Bedeutung,
 	 *  in welchem Zustand sich der Client befindet.
-	 *  @param ack Eine BestÃ¤tigung durch den Server.
+	 *  @param ack Eine Bestätigung durch den Server.
 	 */
-	private void processAck(ComServerAcknowledgement ack) {
+	public void receiveMessage(ComServerAcknowledgement ack) {
 		
 	}
 	
@@ -126,21 +129,21 @@ public class ClientModel extends Observable{
 	 * falls der Spieler aus der Spiellobby durch einen Spielleiter
 	 * entfernt wurde.
 	 */
-	private void processBeenKicked(ComBeenKicked msg) {
+	public void receiveMessage(ComBeenKicked msg) {
 		
 	}
 	
 	/**
 	 * Verarbeitet ein Update, das einen einzelnen Spieler betrifft.
 	 */
-	private void processUpdatePlayerlist(ComUpdatePlayerlist update) {
+	public void receiveMessage(ComUpdatePlayerlist update) {
 		
 	}
 	
 	/**
 	 * Verarbeitet ein Update, das ein einzelnes Spiel betrifft.
 	 */
-	private void processUpdateGamelist(ComLobbyUpdateGamelist update) {
+	public void receiveMessage(ComLobbyUpdateGamelist update) {
 		
 	}
 	
@@ -150,7 +153,7 @@ public class ClientModel extends Observable{
 	 * verbirgt um weitere Verarbeitungsschritte einzuleiten.
 	 * @param comObject Die empfangene Nachricht.
 	 */
-	private void receiveMessage(ComObject comObject){
+	public void receiveMessage(ComObject comObject){
 		
 	}
 	
@@ -166,7 +169,7 @@ public class ClientModel extends Observable{
 	/**
 	 * Diese Methode wird von der View beim betreten der Serverlobby aufgerufen
 	 * und liefert eine Liste von Spielern und Spielen in der Serverlobby.
-	 * @return Set EnthÃ¤lt alle Spiele in der ServerLobby.
+	 * @return Set Enthält alle Spiele in der ServerLobby.
 	 */
 	public Set<GameServerRepresentation> getFullServerLobbyGamelist(){
 		return null;
@@ -184,7 +187,7 @@ public class ClientModel extends Observable{
 	/**
 	 * Diese Methode wird von der View aufgerufen um die Liste der Spieler
 	 * zu aktualisieren.
-	 * @return List Update fÃ¼r die aktuelle Spielerliste.
+	 * @return List Update für die aktuelle Spielerliste.
 	 */
 	public List<String> getPlayerlistUpdate(){
 		return null;
@@ -200,15 +203,15 @@ public class ClientModel extends Observable{
 	}
 	
 	/**
-	 * Gibt der View die gespielte Karte eines anderen Spielers zurÃ¼ck.
+	 * Gibt der View die gespielte Karte eines anderen Spielers zurück.
 	 * @return enum CardID. Die Id der Karte
 	 */
-	public CardID getPlayedCard(){
+	public Card getPlayedCard(){
 		return null;
 	}
 	
 	/**
-	 * Gibt der View die eigenen Spielkarten zurÃ¼ck.
+	 * Gibt der View die eigenen Spielkarten zurück.
 	 * @param Card[] Ein Array mit allen Karten,
 	 * die man auf der Hand hat.
 	 */
@@ -217,7 +220,7 @@ public class ClientModel extends Observable{
 	}
 	
 	/**
-	 * Liefert zusÃ¤tzliche Daten anderer Spieler zurÃ¼ck.
+	 * Liefert zusätzliche Daten anderer Spieler zurück.
 	 * @return List<OtherData> Liste mit gespielten Karten.
 	 */
 	public List<OtherData> getOtherPlayerData() {
@@ -232,8 +235,6 @@ public class ClientModel extends Observable{
 	public int getOwnScore() {
 		return 0;
 	}
-	
-	
 	
 	/**
 	 * Setzt die Sprache der GUI.
@@ -278,6 +279,15 @@ public class ClientModel extends Observable{
 	private void sendMessage(ComObject object) {
 		
 	}
+	
+	/**
+	 * Methode über die das clientRegelwerk
+	 * Nachrichten versenden kann.
+	 */
+	public void send(RulesetMessage msg) {
+		ComObject com = new ComRuleset(msg);
+		sendMessage(com);
+	}
 
 	/** 
 	 * Diese Methode wird von dem ClientController aufgerufen um
@@ -309,7 +319,7 @@ public class ClientModel extends Observable{
 	/** 
 	 * Wird vom ClientConroller aufgerufen um eine Karte auszuspielen.
 	 * @param id Die id der gespielten Karte um sie einer logischen Karte
-	 * zuordnen zu kÃ¶nnen.
+	 * zuordnen zu können.
 	 */
 	public void makeMove(CardID id) {
 		
@@ -324,8 +334,8 @@ public class ClientModel extends Observable{
 	}
 	
 	/** 
-	 * Erstellt den MessageListenerThread und fÃ¼hrt den Benutzerlogin durch.
-	 * @param username String der eindeutige Benutzername der fÃ¼r den Login verwendet wird.
+	 * Erstellt den MessageListenerThread und führt den Benutzerlogin durch.
+	 * @param username String der eindeutige Benutzername der für den Login verwendet wird.
 	 * @param serverAdress String die Adresse des spielservers.
 	 * @param port Integer der Port des Spielservers.
 	 */
@@ -334,7 +344,7 @@ public class ClientModel extends Observable{
 	}
 	
 	/**
-	 * Gibt den Fehler beim Loginversuch zurÃ¼ck.
+	 * Gibt den Fehler beim Loginversuch zurück.
 	 */
 	public LoginError getLoginError(){
 		return null;	
@@ -351,7 +361,7 @@ public class ClientModel extends Observable{
 	
 	/**
 	 * Liefert ein Array mit allen implementierten Regelwerken.
-	 * @param RulesetType[] Array von unterstÃ¼tzten Regelwerken.
+	 * @param RulesetType[] Array von unterstützten Regelwerken.
 	 */
 	public RulesetType[] getRulesets() {
 		return null;
@@ -360,7 +370,7 @@ public class ClientModel extends Observable{
 	/** 
  * Diese Klasse implementiert die Netzwerkanbindung des Clients an den Server.
  * Sie ist eine innere Klasse des ClientModels und wird vom selbigen instanziert.
- * Sie enthÃ¤lt den dazu nÃ¶tigen Socket und ObjektStream Reader und Writer.
+ * Sie enthält den dazu nötigen Socket und ObjektStream Reader und Writer.
  */
 class MessageListenerThread extends Thread{
 	
@@ -375,7 +385,7 @@ class MessageListenerThread extends Thread{
 
 	/**
 	 * Erstellt die initiale Verbindung zum Server.
-	 * @param connection TCP Socket Ã¼ber den die Verbindung erstellt wird.
+	 * @param connection TCP Socket über den die Verbindung erstellt wird.
 	 * @throws IOException Diese Exception wird an den Aufrufenden weitergeleitet.
 	 */
 	protected MessageListenerThread(final Socket connection) throws IOException{
@@ -391,7 +401,7 @@ class MessageListenerThread extends Thread{
 	}
 	
 	/**
-	 * Ãœber diese Methode kÃ¶nnen Nachrichten an den Server versendet werden.
+	 * Über diese Methode kÃ¶nnen Nachrichten an den Server versendet werden.
 	 */
 	protected void send(ComObject object) {
 		try {
