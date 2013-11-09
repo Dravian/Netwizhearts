@@ -4,7 +4,7 @@
 package Ruleset;
 
 /** 
- * Die GamePhase modelliert die verschiedenen Zust√§nde des Spiels im GameState
+ * Die GamePhase modelliert die verschiedenen Zust‰nde des Spiels im GameState
  */
 public enum GamePhase {
 	/** 
