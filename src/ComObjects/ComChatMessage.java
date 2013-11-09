@@ -9,7 +9,7 @@ public class ComChatMessage extends ComObject {
 	private String chatMessage;
 
     /**
-     * Dies ist der Kontruktor für eine neue ComChatMessage-Nachricht.
+     * Dies ist der Kontruktor fÃ¼r eine neue ComChatMessage-Nachricht.
      * @param message ist die Chatnachricht, die versendet wird.
      */
     public ComChatMessage(String message) {

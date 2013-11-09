@@ -7,10 +7,10 @@ import java.util.List;
 import java.util.Map;
 
 /** 
- * Das GameClientUpdate wird vom RuleSet über den GameServer an den Client geschickt 
- * und enthält alle Änderungen des GameState, die für den Client relevant sind. 
- * Das wären seine Spielhand, der Ablagestapel sowie die Otherdata von allen Spielern.
- * Bei Wizard enthält es auch die momentane Trumpfkarte.
+ * Das GameClientUpdate wird vom RuleSet Ã¼ber den GameServer an den Client geschickt 
+ * und enthÃ¤lt alle Ã„nderungen des GameState, die fÃ¼r den Client relevant sind. 
+ * Das wÃ¤ren seine Spielhand, der Ablagestapel sowie die Otherdata von allen Spielern.
+ * Bei Wizard enthÃ¤lt es auch die momentane Trumpfkarte.
  */
 public class GameClientUpdate {
 	/** 
@@ -89,7 +89,7 @@ public class GameClientUpdate {
 	}
 
 	/**
-	 * Holt die zusätzlichen Spieldaten des Client
+	 * Holt die zusÃ¤tzlichen Spieldaten des Client
 	 * @return ownData Die Spieldaten des Clients
 	 */
 	public OtherData getOwnData() {
@@ -106,7 +106,7 @@ public class GameClientUpdate {
 	}
 	
 	/**
-	 * Gibt den Spieler der momentan am Zug ist zurück
+	 * Gibt den Spieler der momentan am Zug ist zurÃ¼ck
 	 * @return Der momentane Spieler
 	 */
 	public PlayerState getCurrentPlayer() {

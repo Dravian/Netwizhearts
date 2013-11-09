@@ -18,29 +18,22 @@ import javax.swing.JPanel;
  * welche je nach Regelwerk auf das Spielfeld gezeichnet werden. 
  * Dazu gehören die eigenen Karten, eventuell ausgewählte Karten, 
  * ein Textfeld z.B. zur Anzeige der Anzahl der restlichen Karten der Mitspieler 
- * und den Ablagestapel (/L194/). Nach jeder Runde wird der Punktestand  aktualisiert.
- * 
- * @author m4nkey
+ * und den Ablagestapel. Nach jeder Runde wird der Punktestand  aktualisiert.
  */
 public class GamePanel extends JPanel{
 	
 	private static final long serialVersionUID = -1041218552426155968L;
 	
-	/** 
-	 */
+	
 	private OwnHand ownHand;
-	/** 
-	 */
+	
 	private Object ownScoreLabel;
-	/** 
-	 */
+	
 	private Set<OtherPlayer> otherPlayer;
-	/** 
-	 */
+	
 	private DrawDeck drawDeck;
-	/** 
-	 */
-	private DiscardPile discardPile;
+	
+	private Set<DiscardPile> discardPiles;
 	
 	private BufferedImage background;
 	
@@ -51,9 +44,24 @@ public class GamePanel extends JPanel{
 	       try {                
 	          background = ImageIO.read(new File("./src/game.png"));
 	       } catch (IOException ex) {
-	            // handle exception...
+	            //TODO
 	       }
 	    }
+	
+	/**
+	 * Erzeugt die Komponenten die bei einem Kartenspiel,
+	 * das um Stiche gespielt wird, für die gewünschte Spielerzahl
+	 * benötigt werden und ordnet sie an. Bei diesem Spieltyp erhält
+	 * jeder Spieler einen eigenen Ablagestapel vor sich.
+	 * 
+	 * @param players Anzahl der Spieler
+	 */
+	public void setupTrickGame(int players) {
+		//TODO
+	}
+	
+	
+	
 	@Override
 	public void paintComponent(Graphics g) {
         //super.paintComponent(g);

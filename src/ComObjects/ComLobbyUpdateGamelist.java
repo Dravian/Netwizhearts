@@ -13,7 +13,7 @@ public class ComLobbyUpdateGamelist extends ComObject {
 	private GameServerRepresentation gameServer;
 
     /**
-     * Dies ist der Kontruktor f�r eine neue ComLobbyUpdateGamelist-Nachricht.
+     * Dies ist der Kontruktor für eine neue ComLobbyUpdateGamelist-Nachricht.
      * @param removeFlag zeigt an, ob das Spiel gelöscht werden soll.
      * @param gameServer ist das Spiel.
      */
@@ -24,7 +24,7 @@ public class ComLobbyUpdateGamelist extends ComObject {
 
     /**
      * Diese Methode liefert, ob ein Spiel gelöscht werden soll oder nicht.
-     * @return ob das Spiel gel�scht wird.
+     * @return ob das Spiel gelöscht wird.
      */
     public boolean isRemoveFlag() {
         return removeFlag;

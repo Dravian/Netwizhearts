@@ -8,10 +8,11 @@ import java.util.Observer;
 
 
 /** 
+ * In diesem Fenster muss der Benutzer eine vorbestimmte Menge Karten auswählen.
  */
 public class ChooseCards implements Observer{
 	
-	private Object playerHandPanel;
+	private OwnHand playerHandPanel;
 
 	/**
 	 * Wird durch notify() im ClientModel aufgerufen. Je nach dem in arg

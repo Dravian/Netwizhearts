@@ -16,10 +16,10 @@ import ComObjects.MsgNumberRequest;
 import ComObjects.MsgSelection;
 import ComObjects.RulesetMessage;
 /** 
- * Das ServerRuleset ist eine akstrakte Klasse und für den Ablauf und die Einhaltung der Regeln eines Spiels zuständig (/L280/). 
- * Das ServerRuleset wird im GameServer instanziert und verwaltet die Zustände des GameStates im Server. 
- * Mit der Methode isValidMove() wird eine Eingabe eines Clients auf Regelkonformität überprüft und dann 
- * im GameServer  das GameState verändert. Über resolveMessage() kann eine GameServerinstanz eine RulesetMessage 
+ * Das ServerRuleset ist eine akstrakte Klasse und fÃ¼r den Ablauf und die Einhaltung der Regeln eines Spiels zustÃ¤ndig (/L280/). 
+ * Das ServerRuleset wird im GameServer instanziert und verwaltet die ZustÃ¤nde des GameStates im Server. 
+ * Mit der Methode isValidMove() wird eine Eingabe eines Clients auf RegelkonformitÃ¤t Ã¼berprÃ¼ft und dann 
+ * im GameServer  das GameState verÃ¤ndert. Ãœber resolveMessage() kann eine GameServerinstanz eine RulesetMessage 
  * vom Player an das Ruleset weiterleiten.
  */
 public abstract class ServerRuleset {
@@ -65,7 +65,7 @@ public abstract class ServerRuleset {
 	}
 	
 	/**
-	 * Gibt den Typ des Regelwerks zurück
+	 * Gibt den Typ des Regelwerks zurÃ¼ck
 	 * @return Der Typ vom Regelwerk
 	 */
 	public RulesetType getRulesetType() {
@@ -73,7 +73,7 @@ public abstract class ServerRuleset {
 	}
 	
 	/**
-	 * Gibt die Mindestanzahl an Spielern zurück für dieses Spiel
+	 * Gibt die Mindestanzahl an Spielern zurÃ¼ck fÃ¼r dieses Spiel
 	 * @return Die Mindestanzahl an Spielern
 	 */
 	public int getMinPlayers() {
@@ -81,7 +81,7 @@ public abstract class ServerRuleset {
 	}
 	
 	/**
-	 * Gibt die Maximale anzahl an Spielern zurück
+	 * Gibt die Maximale anzahl an Spielern zurÃ¼ck
 	 * @return Die maximale Anzahl an Spielern
 	 */
 	public int getMaxPlayers() {
@@ -89,7 +89,7 @@ public abstract class ServerRuleset {
 	}
 	
 	/**
-	 * Gibt den momentanen Spielzustand zurück
+	 * Gibt den momentanen Spielzustand zurÃ¼ck
 	 */
 	public GamePhase getGamePhase() {
 		return gamePhase;
@@ -105,7 +105,7 @@ public abstract class ServerRuleset {
 		// end-user-code
 	}/**
 	 * Erzeugt ein Kartendeck
-	 * @return Gibt ein Kartendeck zurück
+	 * @return Gibt ein Kartendeck zurÃ¼ck
 	 */
 	private List<Card> createDeck() {
 		List<Card> deck = new LinkedList<Card>();
@@ -157,7 +157,7 @@ public abstract class ServerRuleset {
 	}
 
 	/** 
-	 * Setzt den Spieler der am Nächsten am Zug ist, im Gamestate
+	 * Setzt den Spieler der am NÃ¤chsten am Zug ist, im Gamestate
 	 * @return false wenn der selbe Spieler nochmal als currentPlayer gesetzt wird
 	 */
 	protected boolean setCurrentPlayer(PlayerState player) {
@@ -175,7 +175,7 @@ public abstract class ServerRuleset {
 	
 	
 	/**
-	 * Fügt einen Spieler ins Spiel ein
+	 * FÃ¼gt einen Spieler ins Spiel ein
 	 * @param name Der name vom Spieler
 	 */
 	public void addPlayerToGame(String name) {
@@ -235,7 +235,7 @@ public abstract class ServerRuleset {
 	}
 	
 	/**
-	 * Verarbeitet die RulesetMessage dass mehrere Karten von einem Spieler übergeben wurden
+	 * Verarbeitet die RulesetMessage dass mehrere Karten von einem Spieler Ã¼bergeben wurden
 	 * @param msgMultiCard Die Nachricht vom Client
 	 * @param name Der Name des Spielers
 	 */
@@ -252,7 +252,7 @@ public abstract class ServerRuleset {
 	}
 
 	/**
-	 * Verarbeitet die RulesetMessage dass ein Spieler eine Farbe ausgewählt hat
+	 * Verarbeitet die RulesetMessage dass ein Spieler eine Farbe ausgewÃ¤hlt hat
 	 * @param msgSelection Die Nachricht vom Client
 	 * @param name Der Name des Spielers
 	 */
@@ -263,7 +263,7 @@ public abstract class ServerRuleset {
 	/**
 	 * Verteil eine bestimmte Anzahl an Karten an die Spieler
 	 * @param number Die Anzahl an Karten
-	 * @return Gibt true zurück wenn ein Spieler keine Karten hat, false sonst
+	 * @return Gibt true zurÃ¼ck wenn ein Spieler keine Karten hat, false sonst
 	 */
 	protected boolean dealCards(int number) {
 		return false;	
@@ -272,7 +272,7 @@ public abstract class ServerRuleset {
 	/**
 	 * Gibt einem Spieler eine bestimmte Karte
 	 * @param name Der Name eines Spielers
-	 * @return Gibt true zurück wenn die Karte im Deck ist, false sonst
+	 * @return Gibt true zurÃ¼ck wenn die Karte im Deck ist, false sonst
 	 */
 	protected boolean giveACard(String name, Card card) {
 		return false;	
@@ -293,11 +293,11 @@ public abstract class ServerRuleset {
 	}
 
 	/** 
-	 * Prüft ob ein gemachter Zug in einem Spiel gültig war, wenn nicht wird an
+	 * PrÃ¼ft ob ein gemachter Zug in einem Spiel gÃ¼ltig war, wenn nicht wird an
 	 * den Spieler erneut eine MsgCardRequest
 	 * @param card Die Karte die gespielt wurde
 	 * @param name Der Name des Spielers
-	 * @return true falls Zug gültig und false wenn nicht
+	 * @return true falls Zug gÃ¼ltig und false wenn nicht
 	 */
 	protected abstract boolean isValidMove(Card card);
 

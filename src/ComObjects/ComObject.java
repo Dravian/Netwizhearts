@@ -18,7 +18,7 @@ import Client.ClientModel;
 public abstract class ComObject implements Serializable {
 
 	/**
-	 * Überladene Methode die von dem ClientListenerThread nach
+	 * Ãœberladene Methode die von dem ClientListenerThread nach
 	 * empfang einer Nachricht aufgerufen wird.
 	 * @param model Das Client Model,
 	 * an das sich das ComObjekt
@@ -29,7 +29,7 @@ public abstract class ComObject implements Serializable {
 	}
 	
 	/**
-	 * Überladene Methode die von einem PlayerThread nach
+	 * Ãœberladene Methode die von einem PlayerThread nach
 	 * empfang einer Nachricht aufgerufen wird.
 	 * @param player Der Client welcher den Aufruf startet.
 	 * @param server Der Server an den sich das ComObjekt 

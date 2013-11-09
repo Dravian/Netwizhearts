@@ -5,22 +5,22 @@ import Ruleset.Card;
 
 /** 
  * Diese Klasse ist eine Verfeinerung der RulesetMessage-Klasse.
- * Sie liefert mehrere Karten zum Tausch für das Regelwerk Hearts.
+ * Sie liefert mehrere Karten zum Tausch fÃ¼r das Regelwerk Hearts.
  */
 public class MsgMultiCards extends RulesetMessage {
 
 	private Set<Card> cardList;
 
     /**
-     * Dies ist der Kontruktor für eine neue MsgMultiCards-Nachricht.
-     * @param cardList ist die Liste der ausgewählten Karten.
+     * Dies ist der Kontruktor fÃ¼r eine neue MsgMultiCards-Nachricht.
+     * @param cardList ist die Liste der ausgewÃ¤hlten Karten.
      */
     public MsgMultiCards(Set cardList) {
         this.cardList = cardList;
     }
 
     /**
-     * Gibt die Liste der gewählten Karten zurÃ¼ck.
+     * Gibt die Liste der gewÃ¤hlten Karten zurÃ¼ck.
      * @return die Liste der Karten.
      */
     public Set<Card> getCardList() {

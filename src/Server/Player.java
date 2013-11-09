@@ -13,7 +13,7 @@ import ComObjects.ComObject;
 
 /**
  * Die Player-Klasse wird zum Versenden von Java Serializable Objects verwendet.
- * Sie verwaltet für die Dauer einer Serververbindung die Verbindung zum Client
+ * Sie verwaltet fÃ¼r die Dauer einer Serververbindung die Verbindung zum Client
  * @author Viktoria
  *
  */
@@ -23,15 +23,15 @@ public class Player implements Runnable{
 	 */
 	private String name;
 	/**
-	 * Der Server, an den eingehende ComObjects übergeben werden sollen
+	 * Der Server, an den eingehende ComObjects Ã¼bergeben werden sollen
 	 */
 	private Server server;
 	/**
-	 * ObjectOutput, um für Nachrichten an den Client zu Senden
+	 * ObjectOutput, um fÃ¼r Nachrichten an den Client zu Senden
 	 */
 	private ObjectOutput comOut;
 	/**
-	 * ObjectInput, um für Nachrichten vom Client entgegenzunehmen
+	 * ObjectInput, um fÃ¼r Nachrichten vom Client entgegenzunehmen
 	 */
 	private ObjectInput comIn;
 	
@@ -39,7 +39,7 @@ public class Player implements Runnable{
 
 	/**
 	 * Konstruktor des Players, in ihm werden die Attribute server, comOut und ComIn mit
-	 * vom ClientListererThret übergebenen werten Instanziiert.
+	 * vom ClientListererThret Ã¼bergebenen werten Instanziiert.
 	 * @param lobbyServer ist der LobbyServer, der zu Beginn den Player verwaltet.
 	 * @param output ist der ObjectOutput an den entsprechenden Client
 	 * @param input ist der ObjectInput vom entsprechenden Client
@@ -52,13 +52,14 @@ public class Player implements Runnable{
 	
 	/**
 	 * Die run-Methode des Threat nimmt eingehende Nachrichten des Client
-	 * entgegen und übergibt diese an den Server durch Aufruf der Methode 
+	 * entgegen und Ã¼bergibt diese an den Server durch Aufruf der Methode 
 	 * resolveMessage()
-	 * Fängt eine IOException ab.
+	 * FÃ¤ngt eine IOException ab.
 	 */
 	public void run(){
 		// begin-user-code
 		// TODO Auto-generated method stub
+
 		// end-user-code
 		run = true;
 		try {
@@ -103,15 +104,15 @@ public class Player implements Runnable{
 	}
 	
 	/**
-	 * Getter-Methode für den Benutzernamen
-	 * @return gibt den Benutzernamen des Spielers zurück
+	 * Getter-Methode fÃ¼r den Benutzernamen
+	 * @return gibt den Benutzernamen des Spielers zurÃ¼ck
 	 */
 	public String getName(){
 		return name;
 	}
 	
 	/**
-	 * Setter-Methode für den Benutzernamen
+	 * Setter-Methode fÃ¼r den Benutzernamen
 	 * @param newName ist der neue Name
 	 */
 	public void setName(String newName){

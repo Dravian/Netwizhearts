@@ -15,8 +15,8 @@ public class ComKickPlayerRequest extends ComObject {
 
 
     /**
-     * Dies ist der Kontruktor für eine neue ComKickPlayerRequest-Nachricht.
-     * Diese enthält den Namen des Spielers, der aus den Spiel gelöscht werden soll.
+     * Dies ist der Kontruktor fÃ¼r eine neue ComKickPlayerRequest-Nachricht.
+     * Diese enthÃ¤lt den Namen des Spielers, der aus den Spiel gelÃ¶scht werden soll.
      * @param playerName ist der Name des Spielers.
      */
     public ComKickPlayerRequest(String playerName) {

@@ -32,8 +32,6 @@ import java.awt.Color;
  * Außerdem können über ein Dropdown-Menü Änderungen an Hintergrundbild 
  * und Kartenhintergründen vorgenommen werden. Schließen beendet das Spiel 
  * und der Spieler wird in die Lobby zurückgeleitet.
- * 
- * @author M4nkey
  */
 public class Game extends JFrame implements Observer{
 

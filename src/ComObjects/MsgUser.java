@@ -5,7 +5,7 @@ import Ruleset.GameClientUpdate;
 /** 
  *  Diese Klasse ist eine Verfeinerung der RulesetMessage-Klasse.
  *  Sie wird dem Client gesendet, um dem ClientRuleset den aktuellen
- *  Spielzustand in Form eines GameClientUpdate zu übermitteln.
+ *  Spielzustand in Form eines GameClientUpdate zu Ã¼bermitteln.
  */
 public class MsgUser extends RulesetMessage {
 
@@ -20,8 +20,8 @@ public class MsgUser extends RulesetMessage {
     }
 
     /**
-     * Diese Methode liefert den den aktuellen Spielzustand, der für ein
-     * Update benötigt wird.
+     * Diese Methode liefert den den aktuellen Spielzustand, der fÃ¼r ein
+     * Update benÃ¶tigt wird.
      * @return den aktuellen Spielzustand.
      */
     public GameClientUpdate getGameClientUpdate() {

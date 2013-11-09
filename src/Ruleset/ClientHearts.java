@@ -4,7 +4,7 @@
 package Ruleset;
 
 /** 
- * Diese Klasse bildet das Regelwerk für den Client bei einer Partie Hearts. 
+ * Diese Klasse bildet das Regelwerk fÃ¼r den Client bei einer Partie Hearts. 
  */
 public class ClientHearts extends ClientRuleset {
 	private static final int MIN_PLAYERS = 4;
@@ -15,14 +15,12 @@ public class ClientHearts extends ClientRuleset {
 	}
 	
 	/**
-	 * Überprüft ob ein gemachter Zug zu dem Spiel Hearts gültig ist
-	 * @return isValid true falls Zug gültig, false wenn nicht
+	 * ÃœberprÃ¼ft ob ein gemachter Zug zu dem Spiel Hearts gÃ¼ltig ist
+	 * @return isValid true falls Zug gÃ¼ltig, false wenn nicht
 	 */
 	public boolean isValidMove(Card card) {
 		boolean isValid = false;
 		return isValid;
 	}
-	
-	
 
 }

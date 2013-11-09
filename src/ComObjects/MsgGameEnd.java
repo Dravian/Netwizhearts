@@ -7,7 +7,7 @@ package ComObjects;
 public class MsgGameEnd extends RulesetMessage {
 
     /**
-     * Dies ist der Kontruktor für eine neue MsgGameEnd-Nachricht.
+     * Dies ist der Kontruktor fÃ¼r eine neue MsgGameEnd-Nachricht.
      */
     public MsgGameEnd() {
     }

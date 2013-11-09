@@ -3,7 +3,7 @@ package ComObjects;
 /** 
  *  Diese Klasse ist ein spezielles Kommunikations-Objekt.
  *  Sie sendet eine Nachricht zum Update der Playerliste
- *  in der Lobby und Spiellobby. Dazu enthält sie den Player
+ *  in der Lobby und Spiellobby. Dazu enthÃ¤lt sie den Player
  *  und ein removeFlag.
  */
 public class ComUpdatePlayerlist extends ComObject {
@@ -12,11 +12,11 @@ public class ComUpdatePlayerlist extends ComObject {
 	private boolean removeFlag;
 
     /**
-     * Dies ist der Kontruktor für eine neue ComUpdatePlayerlist-Nachricht.
-     * Diese beinhaltet den Namen des Spielers und die Angabe ob er gelöscht
+     * Dies ist der Kontruktor fÃ¼r eine neue ComUpdatePlayerlist-Nachricht.
+     * Diese beinhaltet den Namen des Spielers und die Angabe ob er gelÃ¶scht
      * werden soll.
      * @param playerName ist der Name der Spielers.
-     * @param removeFlag zeigt, ob der Spieler gelöscht werden soll.
+     * @param removeFlag zeigt, ob der Spieler gelÃ¶scht werden soll.
      */
     public ComUpdatePlayerlist(String playerName, boolean removeFlag) {
         this.playerName = playerName;
@@ -24,7 +24,7 @@ public class ComUpdatePlayerlist extends ComObject {
     }
 
     /**
-     * Diese Methode gibt den Namen des Spielers zurück.
+     * Diese Methode gibt den Namen des Spielers zurÃ¼ck.
      * @return den Spielernamen.
      */
     public String getPlayerName() {
@@ -32,9 +32,9 @@ public class ComUpdatePlayerlist extends ComObject {
     }
 
     /**
-     * Diese Methode gibt zurück, ob der Spieler aus der Liste gelöscht
+     * Diese Methode gibt zurÃ¼ck, ob der Spieler aus der Liste gelÃ¶scht
      * werden soll oder nicht.
-     * @return ob der Spieler gelöscht werden soll.
+     * @return ob der Spieler gelÃ¶scht werden soll.
      */
     public boolean isRemoveFlag() {
         return removeFlag;

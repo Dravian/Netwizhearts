@@ -7,8 +7,8 @@ import Server.GameServerRepresentation;
 /** 
  *  Diese Klasse ist ein spezielles Kommunikations-Objekt.
  *  Sie synchronisiert den Client mit der Lobby, wenn er sich mit dem
- *  Server verbindet oder nach einem Spiel in die Lobby zurückkehrt.
- *  Dazu enthält sie sowohl die playerList, als auch die gameList.
+ *  Server verbindet oder nach einem Spiel in die Lobby zurÃ¼ckkehrt.
+ *  Dazu enthÃ¤lt sie sowohl die playerList, als auch die gameList.
  */
 public class ComInitLobby extends ComObject {
 
@@ -17,7 +17,7 @@ public class ComInitLobby extends ComObject {
 	private Set<GameServerRepresentation> gameList;
 
     /**
-     * Dies ist der Kontruktor für eine neue ComInitLobby-Nachricht.
+     * Dies ist der Kontruktor fÃ¼r eine neue ComInitLobby-Nachricht.
      * @param playerList    ist die Liste der Spieler, die sich in der
      *                      Lobby befinden.
      * @param gameList      ist die Liste der Spiele, die existieren
@@ -38,7 +38,7 @@ public class ComInitLobby extends ComObject {
 
     /**
      * Diese Methode liefert eine Liste aller Spiele, die erstellt wurden,
-     * damit sie in der Lobby angezeigt werden können.
+     * damit sie in der Lobby angezeigt werden kÃ¶nnen.
      * @return die Liste der Spiele.
      */
     public Set<GameServerRepresentation> getGameList() {

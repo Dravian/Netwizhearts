@@ -1,6 +1,7 @@
 package Client.View;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -15,8 +16,6 @@ import javax.swing.JButton;
  * Dieses Fenster ermöglicht die Eingabe eines Passwortes 
  * um einem Passwortgeschütztem Spiel beizutreten 
  * oder per 'Leave' wieder in die Lobby zurückzukehren.
- * 
- * @author M4nkey
  */
 public class Password extends JFrame implements Observer{
 
@@ -24,6 +23,10 @@ public class Password extends JFrame implements Observer{
 	
 	private JPanel contentPane;
 	private JTextField textField;
+	private JButton btnJoin;
+	private JLabel lblEnterPasswordPlease;
+	private JButton btnLeave;
+	private Language lang;
 
 	
 	public static void main(String[] args) {
@@ -51,7 +54,7 @@ public class Password extends JFrame implements Observer{
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblEnterPasswordPlease = new JLabel("Enter Password:");
+		lblEnterPasswordPlease = new JLabel("Enter Password:");
 		lblEnterPasswordPlease.setBounds(12, 12, 199, 22);
 		contentPane.add(lblEnterPasswordPlease);
 		
@@ -60,13 +63,36 @@ public class Password extends JFrame implements Observer{
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JButton btnLeave = new JButton("Leave");
+		btnLeave = new JButton("Leave");
 		btnLeave.setBounds(12, 80, 117, 25);
 		contentPane.add(btnLeave);
 		
-		JButton btnJoin = new JButton("Join");
+		btnJoin = new JButton("Join");
 		btnJoin.setBounds(141, 80, 117, 25);
 		contentPane.add(btnJoin);
+	}
+	
+	/**
+	 * Fügt einen ActionListener für den 'Join' Button hinzu
+	 * 
+	 * @param a ein ActionListener
+	 */
+	public void addJoinButtonListener(ActionListener a) {
+		btnJoin.addActionListener(a);
+	}
+	
+	/**
+	 * Ändert die Sprache des Fensters
+	 * 
+	 * @param l Sprache in Form des Language-Enums
+	 */
+	public void setLanguage(Language l) {
+		lang = l;
+		updateLanguage();
+	}
+	
+	private void updateLanguage() {
+		//TODO
 	}
 
 	/**

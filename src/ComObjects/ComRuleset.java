@@ -3,7 +3,7 @@ package ComObjects;
 /** 
  *  Diese Klasse ist ein spezielles Kommunikations-Objekt.
  *  Sie ist die grundlegende Nachricht eines Regelwerkaufrufes
- *  und enthält eine verfeinerte Nachricht mit weiteren Informationen,
+ *  und enthÃ¤lt eine verfeinerte Nachricht mit weiteren Informationen,
  *  die RulesetMessage.
  */
 public class ComRuleset extends ComObject {
@@ -11,7 +11,7 @@ public class ComRuleset extends ComObject {
 	private RulesetMessage rulesetMessage;
 
     /**
-     * Dies ist der Kontruktor für eine neue ComResult-Nachricht.
+     * Dies ist der Kontruktor fÃ¼r eine neue ComResult-Nachricht.
      * @param rulesetMessage ist eine Nachricht, die ans Ruleset
      *                       gesendet werden soll.
      */

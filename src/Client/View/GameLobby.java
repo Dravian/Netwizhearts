@@ -1,6 +1,8 @@
 package Client.View;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -18,16 +20,18 @@ import javax.swing.JButton;
  * des Spieles durch den Spielleiter warten. Der Spielleiter kann Spieler 
  * mit dem Remove Player Button entfernen. Über Leave kehren die Spieler 
  * in die Lobby zurück. Der spielinterne Chat ist ab hier verfügbar.
- * 
- * @author M4nkey
  */
 public class GameLobby extends JFrame implements Observer{
 
 	private static final long serialVersionUID = -1899311213351027436L;
 	
 	private JPanel contentPane;
-	private JTextField textField;
-
+	private JTextField messageField;
+	private Language lang;
+	private JButton btnRemovePlayer;
+	private JButton btnLeave;
+	private JTextArea chatlog;
+	private JButton btnStartGame;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -67,26 +71,75 @@ public class GameLobby extends JFrame implements Observer{
 		list.setBounds(12, 12, 211, 130);
 		contentPane.add(list);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setBounds(12, 154, 367, 84);
-		contentPane.add(textArea);
+		chatlog = new JTextArea();
+		chatlog.setBounds(12, 154, 367, 84);
+		contentPane.add(chatlog);
 		
-		textField = new JTextField();
-		textField.setBounds(12, 250, 367, 31);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		messageField = new JTextField();
+		messageField.setBounds(12, 250, 367, 31);
+		contentPane.add(messageField);
+		messageField.setColumns(10);
 		
-		JButton btnNewButton_1 = new JButton("Remove Player");
-		btnNewButton_1.setBounds(235, 117, 138, 25);
-		contentPane.add(btnNewButton_1);
+		btnRemovePlayer = new JButton("Remove Player");
+		btnRemovePlayer.setBounds(235, 117, 138, 25);
+		contentPane.add(btnRemovePlayer);
 		
-		JButton btnNewButton_2 = new JButton("Leave");
-		btnNewButton_2.setBounds(12, 293, 117, 25);
-		contentPane.add(btnNewButton_2);
+		btnLeave = new JButton("Leave");
+		btnLeave.setBounds(12, 293, 117, 25);
+		contentPane.add(btnLeave);
 		
-		JButton btnNewButton_3 = new JButton("Start Game");
-		btnNewButton_3.setBounds(262, 293, 117, 25);
-		contentPane.add(btnNewButton_3);
+		btnStartGame = new JButton("Start Game");
+		btnStartGame.setBounds(262, 293, 117, 25);
+		contentPane.add(btnStartGame);
+	}
+
+	/**
+	 * Fügt einen ActionListener für den 'Start Game' Button hinzu
+	 * 
+	 * @param a ein ActionListener
+	 */
+	public void addStartButtonListener(ActionListener a) {
+		btnStartGame.addActionListener(a);
+	}
+	
+	/**
+	 * Fügt einen ActionListener für den 'Remove Player' Button hinzu
+	 * 
+	 * @param a ein ActionListener
+	 */
+	public void addRemoveButtonListener(ActionListener a) {
+		btnRemovePlayer.addActionListener(a);
+	}
+	
+	/**
+	 * Fügt einen ActionListener für den 'Leave' Button hinzu
+	 * 
+	 * @param a ein ActionListener
+	 */
+	public void addLeaveButtonListener(ActionListener a) {
+		btnLeave.addActionListener(a);
+	}
+	
+	/**
+	 * Fügt einen KeyListener für das Nachricht-Senden-Feld der Lobby hinzu
+	 * @param k
+	 */
+	public void addChatMessageListener(KeyListener k) {
+		messageField.addKeyListener(k);
+	}
+	
+	/**
+	 * Ändert die Sprache des Fensters
+	 * 
+	 * @param l Sprache in Form des Language-Enums
+	 */
+	public void setLanguage(Language l) {
+		lang = l;
+		updateLanguage();
+	}
+	
+	private void updateLanguage() {
+		//TODO
 	}
 
 	/**

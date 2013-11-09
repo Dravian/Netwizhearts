@@ -9,8 +9,6 @@ import java.util.Set;
  * Stellt die Karten dar, die der Spieler auf der Hand hat. 
  * Der Spieler kann eine Karte durch Anklicken auswählen 
  * und durch einen zweiten Klick ausspielen.
- * 
- * @author m4nkey
  */
 public class OwnHand {
 	

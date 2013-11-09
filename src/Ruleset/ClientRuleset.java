@@ -64,7 +64,7 @@ public abstract class ClientRuleset {
 	}
 	
 	/**
-	 * Gibt den Typ des Regelwerks zurück
+	 * Gibt den Typ des Regelwerks zurÃ¼ck
 	 * @return Der Typ vom Regelwerk
 	 */
 	public RulesetType getRulesetType() {
@@ -72,7 +72,7 @@ public abstract class ClientRuleset {
 	}
 	
 	/**
-	 * Gibt die Mindestanzahl an Spielern zurück für dieses Spiel
+	 * Gibt die Mindestanzahl an Spielern zurÃ¼ck fÃ¼r dieses Spiel
 	 * @return Die Mindestanzahl an Spielern
 	 */
 	public int getMinPlayers() {
@@ -80,7 +80,7 @@ public abstract class ClientRuleset {
 	}
 	
 	/**
-	 * Gibt die Maximale anzahl an Spielern zurück
+	 * Gibt die Maximale anzahl an Spielern zurÃ¼ck
 	 * @return Die maximale Anzahl an Spielern
 	 */
 	public int getMaxPlayers() {
@@ -88,7 +88,7 @@ public abstract class ClientRuleset {
 	}
 	
 	/**
-	 * Gibt den momentanen Spielzustand zurück
+	 * Gibt den momentanen Spielzustand zurÃ¼ck
 	 */
 	public GamePhase getGamePhase() {
 		return gamePhase;
@@ -101,7 +101,15 @@ public abstract class ClientRuleset {
 	public OtherData getOwnData() {
 		return gameState.getOwnData();
 	}
+	
+	/**
+	 * Schickt eine Nachricht Ã¼bers Model an den Server
+	 * @param message Die Nachricht
+	 */
+	protected void send(RulesetMessage message) {
 		
+	}
+	
 	/** 
 	 * Holt die Spieldaten der anderen Spieler
 	 * @return otherPlayerData Die Spieldaten der anderen Spieler
@@ -111,7 +119,7 @@ public abstract class ClientRuleset {
 	}
 	
 	/**
-	 * Gibt den Spieler der momentan am Zug ist zurück
+	 * Gibt den Spieler der momentan am Zug ist zurÃ¼ck
 	 * @return Der momentane Spieler
 	 */
 	public PlayerState getCurrentPlayer() {
@@ -167,7 +175,7 @@ public abstract class ClientRuleset {
 	}
 	
 	/**
-	 * Verarbeitet die RulesetMessage dass der Server von dem Spieler verlangt eine Farbe auszuwählen
+	 * Verarbeitet die RulesetMessage dass der Server von dem Spieler verlangt eine Farbe auszuwÃ¤hlen
 	 * @param msgSelection Die Nachricht vom Server
 	 */
 	protected void processMessage(MsgSelectionRequest msgSelection) {
@@ -175,7 +183,7 @@ public abstract class ClientRuleset {
 	}
 	
 	/**
-	 * Schickt eine Nachricht übers Model an den Server
+	 * Schickt eine Nachricht Ã¼bers Model an den Server
 	 * @param message Die Nachricht
 	 */
 	protected void send(RulesetMessage message) {
@@ -183,7 +191,7 @@ public abstract class ClientRuleset {
 	}
 	
 	/** 
-	 * Prüft ob ein gemachter Zug in einem Spiel gültig war
+	 * PrÃ¼ft ob ein gemachter Zug in einem Spiel gÃ¼ltig war
 	 */
 	public abstract boolean isValidMove(Card card);
 }

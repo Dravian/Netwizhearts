@@ -12,7 +12,7 @@ import java.util.Map;
 
 /** 
  * Das GameState modelliert einen aktuellen Spielzustand, es wird vom GameServer instanziert 
- * und vom RuleSet bearbeitet. Es enthï¿½lt die einzelnen PlayerStates, sowie Informationen 
+ * und vom RuleSet bearbeitet. Es enthÃ¤lt die einzelnen PlayerStates, sowie Informationen 
  * zum Ablage-, Aufnahmestapel, Rundenanzahl, den momentan aktiven Spieler sowie GamePhase.
  */
 public class GameState {
@@ -51,6 +51,11 @@ public class GameState {
 	 */
 	private List<Card> deck;
 	
+	/** 
+	 * Die momentane Spielphase
+	 */
+	private GamePhase gamePhase;
+	
 	/**
 	 * Die Trumpffarbe im Spiel, diese wird nur im Spiel Wizard verwendet
 	 */
@@ -63,24 +68,20 @@ public class GameState {
 	 */
 	public GameState(RulesetType ruleset, List<Card> deck) {
 		this.ruleset = ruleset;
-		players = new LinkedList<PlayerState>();
+		players = new ArrayList<PlayerState>();
 		discardPile = new HashMap<String,Card>();
 		this.deck = deck;
+		gamePhase = GamePhase.Start;
+		
 	}
 	
 	/**
-	 * Fügt den Spieler ins Spiel hinein, falls er nicht schon im Spiel ist
+	 * FÃ¼gt den Spieler ins Spiel hinein
 	 * @param name
 	 */
-	public boolean addPlayerToGame(String name) {
+	public void addPlayerToGame(String name) {
 		PlayerState player = new PlayerState(name,ruleset);
-		
-		if(players.contains(player)) {
-			return false;
-		} else {
-			players.add(player);
-			return true;
-		}
+		players.add(player);
 	}
 	
 	/**
@@ -88,9 +89,8 @@ public class GameState {
 	 * @param player Der neue firstPlayer
 	 */
 	public boolean setFirstPlayer(PlayerState player) {
-		if(firstPlayer != player) {
+		if(firstPlayer == player) {
 			this.firstPlayer = player;	
-			this.currentPlayer = player;
 			return true;
 		} else {
 			return false;
@@ -229,7 +229,7 @@ public class GameState {
 	}
 	
 	/**
-	 * Setzt den nächsten Spieler
+	 * Setzt den nÃ¤chsten Spieler
 	 */
 	public void nextPlayer() {
 		ListIterator i = players.listIterator(players.indexOf(currentPlayer));
@@ -248,7 +248,7 @@ public class GameState {
 	/**
 	 * Entfernt eine Karte aus der Hand des currentPlayer und legt sie auf dem Ablagestapel
 	 * @param card Die gespielte Karte
-	 * @return isInHand Gibt true zurück wenn die gespielte Karte auf der Hand vom
+	 * @return isInHand Gibt true zurÃ¼ck wenn die gespielte Karte auf der Hand vom
 	 * Spieler liegt und false sonst
 	 */
 	public boolean playCard(Card card) {
