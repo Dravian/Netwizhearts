@@ -1,5 +1,6 @@
 package Ruleset;
 
+import Server.GameServer;
 import ComObjects.MsgNumber;
 import ComObjects.MsgNumberRequest;
 import ComObjects.MsgSelection;
@@ -17,8 +18,8 @@ public class ServerWizard extends ServerRuleset {
 	/**
 	 * Erstellt das Regelwerk zum Spiel Wizard
 	 */
-	public ServerWizard() {
-		super(RulesetType.Wizard, MIN_PLAYERS, MAX_PLAYERS);
+	public ServerWizard(GameServer s) {
+		super(RulesetType.Wizard, MIN_PLAYERS, MAX_PLAYERS, s);
 	}
 
 	@Override
