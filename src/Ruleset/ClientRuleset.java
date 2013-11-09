@@ -56,11 +56,13 @@ public abstract class ClientRuleset {
 	 * @param minPlayers Die minimale Spieleranzahl
 	 * @param maxPlayers Die maximale Spieleranzahl
 	 */
-	protected ClientRuleset(RulesetType ruleset, int minPlayers, int maxPlayers) {
+	protected ClientRuleset(RulesetType ruleset, int minPlayers, 
+			int maxPlayers,ClientModel client) {
 		RULESET = ruleset;
 		MIN_PLAYERS = minPlayers;
 		MAX_PLAYERS = maxPlayers;
 		gamePhase = GamePhase.Start;
+		this.client = client;
 	}
 	
 	/**
@@ -175,11 +177,19 @@ public abstract class ClientRuleset {
 	}
 	
 	/**
-	 * Schickt eine Nachricht übers Model an den Server
+	 * Verpackt eine Karte in ein Rulesetmessage und schick sie an den Server
+	 * @param card Die karte
+	 */
+	public void send(Card card) {
+		send(new MsgCard(card));
+	}
+	
+	/**
+	 * Schickt eine RulesetMessage übers Model an den Server
 	 * @param message Die Nachricht
 	 */
 	protected void send(RulesetMessage message) {
-		
+		//client.send(message);
 	}
 	
 	/** 

@@ -3,6 +3,12 @@
  */
 package Ruleset;
 
+import java.util.List;
+import java.util.Set;
+
+import Client.ClientModel;
+import ComObjects.MsgMultiCards;
+
 /** 
  * Diese Klasse bildet das Regelwerk für den Client bei einer Partie Hearts. 
  */
@@ -10,8 +16,8 @@ public class ClientHearts extends ClientRuleset {
 	private static final int MIN_PLAYERS = 4;
 	private static final int MAX_PLAYERS = 4;
 	
-	protected ClientHearts() {
-		super(RulesetType.Hearts, MIN_PLAYERS, MAX_PLAYERS);
+	protected ClientHearts(ClientModel client) {
+		super(RulesetType.Hearts, MIN_PLAYERS, MAX_PLAYERS,client);
 	}
 	
 	/**
@@ -23,6 +29,9 @@ public class ClientHearts extends ClientRuleset {
 		return isValid;
 	}
 	
+	public void send(Set<Card> cards) {
+		send(new MsgMultiCards(cards));
+	}
 	
 
 }

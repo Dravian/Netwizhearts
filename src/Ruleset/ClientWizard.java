@@ -3,7 +3,10 @@
  */
 package Ruleset;
 
+import Client.ClientModel;
+import ComObjects.MsgNumber;
 import ComObjects.MsgNumberRequest;
+import ComObjects.MsgSelection;
 import ComObjects.MsgSelectionRequest;
 
 /** 
@@ -13,8 +16,8 @@ public class ClientWizard extends ClientRuleset {
 	private static final int MIN_PLAYERS = 3;
 	private static final int MAX_PLAYERS = 6;
 	
-	protected ClientWizard() {
-		super(RulesetType.Wizard, MIN_PLAYERS, MAX_PLAYERS);
+	protected ClientWizard(ClientModel client) {
+		super(RulesetType.Wizard, MIN_PLAYERS, MAX_PLAYERS, client);
 	}
 
 	/**
@@ -26,4 +29,11 @@ public class ClientWizard extends ClientRuleset {
 		return isValid;		
 	}
 	
+	public void send(int i) {
+		send(new MsgNumber(i));
+	}
+	
+	public void send(Colour colour) {
+		send(new MsgSelection(colour));
+	}
 }
