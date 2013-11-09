@@ -178,7 +178,7 @@ public abstract class ServerRuleset {
 	 * Fügt einen Spieler ins Spiel ein
 	 * @param name Der name vom Spieler
 	 */
-	public void addPlayerToGame(String name) {
+	protected void addPlayerToGame(String name) {
 		gameState.addPlayerToGame(name);
 	}
 
@@ -248,7 +248,7 @@ public abstract class ServerRuleset {
 	 * @param msgNumber Die Nachricht vom Client
 	 * @param name Der Name des Spielers
 	 */
-	public void processMessage(MsgNumber msgNumber, String name) {
+	protected void processMessage(MsgNumber msgNumber, String name) {
 	}
 
 	/**
