@@ -16,6 +16,10 @@ public class ClientWizard extends ClientRuleset {
 	private static final int MIN_PLAYERS = 3;
 	private static final int MAX_PLAYERS = 6;
 	
+	/**
+	 * Erzeugt ein ClientWizard
+	 * @param client Das Model auf dem gespielt wird
+	 */
 	protected ClientWizard(ClientModel client) {
 		super(RulesetType.Wizard, MIN_PLAYERS, MAX_PLAYERS, client);
 	}

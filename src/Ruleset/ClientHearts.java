@@ -15,7 +15,12 @@ import ComObjects.MsgMultiCards;
 public class ClientHearts extends ClientRuleset {
 	private static final int MIN_PLAYERS = 4;
 	private static final int MAX_PLAYERS = 4;
+	private int inputNumber;
 	
+	/**
+	 * Erzeugt ein ClientHearts
+	 * @param client Das Model auf dem gespielt wird
+	 */
 	protected ClientHearts(ClientModel client) {
 		super(RulesetType.Hearts, MIN_PLAYERS, MAX_PLAYERS,client);
 	}
@@ -29,9 +34,12 @@ public class ClientHearts extends ClientRuleset {
 		return isValid;
 	}
 	
+	/**
+	 * 
+	 * @param cards
+	 */
 	public void send(Set<Card> cards) {
 		send(new MsgMultiCards(cards));
 	}
-	
 
 }
