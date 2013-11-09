@@ -26,7 +26,7 @@ public class ServerHearts extends ServerRuleset {
 	}
 
 	@Override
-	protected void calculateOutcome() {
+	protected void calculateRoundOutcome() {
 		// TODO Automatisch erstellter Methoden-Stub
 		
 	}
@@ -37,6 +37,18 @@ public class ServerHearts extends ServerRuleset {
 	protected void createCardDeck() {
 		// TODO Automatisch erstellter Methoden-Stub
 		
+	}
+
+	@Override
+	protected void calculateTricks() {
+		// TODO Automatisch erstellter Methoden-Stub
+		
+	}
+
+	@Override
+	protected String getWinner() {
+		// TODO Automatisch erstellter Methoden-Stub
+		return null;
 	}
 
 }

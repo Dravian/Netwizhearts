@@ -28,7 +28,7 @@ public class ServerWizard extends ServerRuleset {
 	}
 
 	@Override
-	protected void calculateOutcome() {
+	protected void calculateRoundOutcome() {
 		// TODO Automatisch erstellter Methoden-Stub
 
 	}
@@ -45,6 +45,18 @@ public class ServerWizard extends ServerRuleset {
 	protected void createCardDeck() {
 		// TODO Automatisch erstellter Methoden-Stub
 		
+	}
+
+	@Override
+	protected void calculateTricks() {
+		// TODO Automatisch erstellter Methoden-Stub
+		
+	}
+
+	@Override
+	protected String getWinner() {
+		// TODO Automatisch erstellter Methoden-Stub
+		return null;
 	}
 
 }
