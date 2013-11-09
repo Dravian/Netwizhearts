@@ -19,15 +19,6 @@ public class ServerHearts extends ServerRuleset {
 		super(RulesetType.Hearts, MIN_PLAYERS, MAX_PLAYERS);
 	}
 	
-	/**
-	 * Verarbeitet die RulesetMessage dass mehrere Karten von einem Spieler übergeben wurden
-	 * @param msgMultiCard Die Nachricht vom Client
-	 * @param name Der Name des Spielers
-	 */
-	protected void processMessage(MsgMultiCards msgMultiCard, String name) {
-	
-	}
-	
 	@Override
 	protected boolean isValidMove(Card card) {
 		boolean isValid = false;
