@@ -2,41 +2,65 @@ package Ruleset;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.runners.JUnit4;
 
 public class isValidMoveWizard {
-
+    ServerRuleset ruleset;
+    String player1;
+    String player2;
+    String player3;
+	
+	@Before
+	public void createRuleset() {
+		ruleset = new ServerWizard();	
+		player1 = "Hans";
+		player2 = "Josef";
+		player3 = "Joe";
+		
+		ruleset.initGame();
+		ruleset.addPlayerToGame(player1);
+		ruleset.addPlayerToGame(player2);
+		ruleset.addPlayerToGame(player3);
+		
+		ruleset.setFirstPlayer(ruleset.getPlayerState(player1));
+		ruleset.setTrumpCard(WizardCard.VierRot);
+		
+		ruleset.giveACard(player1, WizardCard.DreiGruen);
+		ruleset.giveACard(player1, WizardCard.ZaubererRot);
+		
+		ruleset.giveACard(player2, WizardCard.ZweiGruen);
+		ruleset.giveACard(player2, WizardCard.DreiRot);
+		
+		ruleset.giveACard(player2, WizardCard.NarrBlau);
+		ruleset.giveACard(player2, WizardCard.EinsGruen);
+		
+		ruleset.playCard(WizardCard.DreiGruen);
+		ruleset.setCurrentPlayer(ruleset.getPlayerState(player2));
+	}
+	
 	@Test
-	public void testIsValidMove() {
-		ServerRuleset server = new ServerWizard();	
-		String player1 = "Hans";
-		String player2 = "Josef";
-		String player3 = "Joe";
-		server.initGame();
-		server.addPlayerToGame(player1);
-		server.addPlayerToGame(player2);
-		server.addPlayerToGame(player3);
+	public void testSecondPlayerPlaysRed3() {
+		boolean isValidMove = ruleset.isValidMove(WizardCard.DreiRot);
 		
-		server.setFirstPlayer(server.getPlayerState(player1));
-		server.setTrumpCard(WizardCard.VierRot);
+		assertFalse(isValidMove);
+	}
+	
+	@Test
+	public void testSecondPlayerPlaysGreen2() {
+		boolean isValidMove = ruleset.isValidMove(WizardCard.ZweiGruen);
 		
-		server.giveACard(player1, WizardCard.DreiGruen);
-		server.giveACard(player1, WizardCard.ZaubererRot);
-		server.giveACard(player2, WizardCard.ZweiGruen);
-		server.giveACard(player2, WizardCard.DreiRot);
-		server.giveACard(player2, WizardCard.NarrBlau);
-		server.giveACard(player2, WizardCard.EinsGruen);
+		assertTrue(isValidMove);
+	}
+	
+	@Test
+	public void testThirdPlayerPlaysFoolBlue() {
+		ruleset.playCard(WizardCard.ZweiGruen);
+		ruleset.setCurrentPlayer(ruleset.getPlayerState(player3));
 		
-		server.playCard(WizardCard.DreiGruen);
-		server.setCurrentPlayer(server.getPlayerState(player2));
+		boolean isValidMove = ruleset.isValidMove(WizardCard.NarrBlau);
 		
-		boolean isValidMove = server.isValidMove(WizardCard.DreiRot);
-		
-		assertEquals(isValidMove, true);
+		assertTrue(isValidMove);
 	}
 
 }
