@@ -24,7 +24,7 @@ public class ServerHearts extends ServerRuleset {
 	 * @param msgMultiCard Die Nachricht vom Client
 	 * @param name Der Name des Spielers
 	 */
-	public void resolveMessage(MsgMultiCards msgMultiCard, String name) {
+	protected void processMessage(MsgMultiCards msgMultiCard, String name) {
 	
 	}
 	
