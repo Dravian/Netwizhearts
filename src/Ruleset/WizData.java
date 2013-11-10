@@ -76,7 +76,7 @@ public class WizData extends OtherData {
 	 * Setzt den Punktestand eines Spielers
 	 * @param points Der Punktestand eines Spielers
 	 */
-	public void setPoints(int points){
+	protected void setPoints(int points){
 		this.points = points;
 	}
 }

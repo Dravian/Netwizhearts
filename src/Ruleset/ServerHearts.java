@@ -1,5 +1,6 @@
 package Ruleset;
 
+import Server.GameServer;
 import ComObjects.MsgMultiCards;
 import ComObjects.MsgMultipleCardsRequest;
 
@@ -15,8 +16,8 @@ public class ServerHearts extends ServerRuleset {
 	/**
 	 * Erstellt das Regelwerk zum Spiel Hearts
 	 */
-	public ServerHearts() {
-		super(RulesetType.Hearts, MIN_PLAYERS, MAX_PLAYERS);
+	public ServerHearts(GameServer s) {
+		super(RulesetType.Hearts, MIN_PLAYERS, MAX_PLAYERS, s);
 	}
 	
 	@Override

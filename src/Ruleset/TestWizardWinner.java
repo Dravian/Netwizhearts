@@ -9,6 +9,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.net.ServerSocket;
 import java.net.Socket;
 
 import org.junit.Test;
@@ -32,22 +33,22 @@ public class TestWizardWinner {
 		Socket socket2 = new Socket();
 		Socket socket3 = new Socket();
 		Socket socket4 = new Socket();
-		OutputStream out1 = socket1.getOutputStream();
+		ObjectOutputStream out1 = new ObjectOutputStream(socket1.getOutputStream());
 		out1.flush();
-		OutputStream out2 = socket2.getOutputStream();
+		ObjectOutputStream out2 = new ObjectOutputStream(socket2.getOutputStream());
 		out2.flush();
-		OutputStream out3 = socket3.getOutputStream();
+		ObjectOutputStream out3 = new ObjectOutputStream(socket3.getOutputStream());
 		out3.flush();
-		OutputStream out4 = socket4.getOutputStream();
+		ObjectOutputStream out4 = new ObjectOutputStream(socket4.getOutputStream());
 		out4.flush();
 		ObjectInputStream in1 = new ObjectInputStream(socket1.getInputStream());
 		ObjectInputStream in2 = new ObjectInputStream(socket2.getInputStream());
 		ObjectInputStream in3 = new ObjectInputStream(socket3.getInputStream());
 		ObjectInputStream in4 = new ObjectInputStream(socket4.getInputStream());
-		Player blue = new Player(lserver, new ObjectOutputStream(out1), in1);
-		Player white = new Player(lserver, new ObjectOutputStream(out2), in2);
-		Player orange = new Player(lserver, new ObjectOutputStream(out2), in3);
-		Player brown = new Player(lserver, new ObjectOutputStream(out3), in4);
+		Player blue = new Player(lserver, out1, in1);
+		Player white = new Player(lserver, out2, in2);
+		Player orange = new Player(lserver, out3, in3);
+		Player brown = new Player(lserver, out4, in4);
 		GameServer server = new GameServer(lserver, blue, "Some Game", RulesetType.Wizard, "", false);
 		server.addPlayer(white);
 		server.addPlayer(orange);
@@ -74,49 +75,7 @@ public class TestWizardWinner {
 		WizData wizdatbrown = (WizData) datebrown;
 		wizdatbrown.setPoints(240);
 		
-		
-		boolean bmsg1 = false;
-		boolean bmsg2 = false;
-		boolean bmsg3 = false;
-		boolean bmsg4 = false;
-		boolean gotall = false;
-		int i = 0;
-		while (!gotall) {
-			ComChatMessage msg1;
-			try {
-				msg1 = (ComChatMessage)(in1.readObject());
-				if (msg1.getChatMessage().compareTo("Mr. Brown has won") == 0) bmsg1 = true;
-			} catch (ClassNotFoundException e) {
-				
-			}
-			ComChatMessage msg2;
-			try {
-				msg2 = (ComChatMessage)(in1.readObject());
-				if (msg2.getChatMessage().compareTo("Mr. Brown has won") == 0) bmsg2 = true;
-			} catch (ClassNotFoundException e) {
-				
-			}
-			ComChatMessage msg3;
-			try {
-				msg3 = (ComChatMessage)(in1.readObject());
-				if (msg3.getChatMessage().compareTo("Mr. Brown has won") == 0) bmsg3 = true;
-			} catch (ClassNotFoundException e) {
-				
-			}
-			ComChatMessage msg4;
-			try {
-				msg4 = (ComChatMessage)(in1.readObject());
-				if (msg4.getChatMessage().compareTo("Mr. Brown has won") == 0) bmsg4 = true;
-			} catch (ClassNotFoundException e) {
-				
-			}
-			gotall = bmsg1 && bmsg2 && bmsg3 && bmsg4;
-			i++;
-			if (i > 200) {break;}
-		}
-		
 		assertTrue(wiz.getWinner().compareTo("Mr. Brown") == 0);
-		assertTrue(gotall);
 	}
 
 }
