@@ -3,7 +3,6 @@
  */
 package Client;
 
-import static Client.View.Warning.*;
 import Ruleset.Card;
 import Ruleset.ClientRuleset;
 import Ruleset.OtherData;
@@ -59,11 +58,13 @@ public class ClientModel extends Observable{
 	/** 
 	 * Hält den für die Netzwerkkomunikation zuständigen Thread.
 	 */
-	private MessageListenerThread messageListenerThread;
+	private Client.MessageListenerThread netIO;
 	
 	private List<String> playerList;
 
 	private Set<GameServerRepresentation> gameList;
+	
+	private String chatMessage;
 
 	/**
 	 * 
@@ -85,7 +86,7 @@ public class ClientModel extends Observable{
 	 * Bearbeitet eine eingehende Chatnachricht.
 	 */
 	public void receiveMessage(ComChatMessage msg) {
-		
+		this.chatMessage = msg.getChatMessage();
 	}
 	
 	/** 
@@ -147,22 +148,23 @@ public class ClientModel extends Observable{
 		
 	}
 	
-	/**
+	/*
 	 * Diese Methode wird von dem ClientListenerThread aufgerufen
 	 * und bestimmt welche Nachricht sich hinter dem ComObjekt genau
 	 * verbirgt um weitere Verarbeitungsschritte einzuleiten.
 	 * @param comObject Die empfangene Nachricht.
 	 */
 	public void receiveMessage(ComObject comObject){
-		
-	}
+		chatMessage = ((ComChatMessage) comObject).getChatMessage();
+		System.out.println("moo");
+	} 
 	
 	/**
 	 * Diese Methode wird von der View beim betreten der Spiellobby aufgerufen
 	 * und liefert eine Liste von Spielern in der Spiellobby.
 	 * @return List Eine Liste der Spieler in der Spiellobby.
 	 */
-	public List<String> getGameLobbyPlayerlist(){
+	public List<String> getPlayerlist(){
 		return playerList;
 	}
 	
@@ -171,25 +173,7 @@ public class ClientModel extends Observable{
 	 * und liefert eine Liste von Spielern und Spielen in der Serverlobby.
 	 * @return Set Enthält alle Spiele in der ServerLobby.
 	 */
-	public Set<GameServerRepresentation> getFullServerLobbyGamelist(){
-		return null;
-	}
-	
-	/**
-	 * Diese Methode wird von der View aufgerufen
-	 * und aktualisiert einzelne Spiele.
-	 * @return GameServerRepresentation Daten eines Spieles.
-	 */
-	public GameServerRepresentation getServerLobbyGamelistUpdate(){
-		return null;
-	}
-	
-	/**
-	 * Diese Methode wird von der View aufgerufen um die Liste der Spieler
-	 * zu aktualisieren.
-	 * @return List Update für die aktuelle Spielerliste.
-	 */
-	public List<String> getPlayerlistUpdate(){
+	public Set<GameServerRepresentation> getLobbyGamelist(){
 		return null;
 	}
 	
@@ -199,7 +183,7 @@ public class ClientModel extends Observable{
 	 * @return String die Chatnachricht.
 	 */
 	public String getChatMessage(){
-		return null;
+		return chatMessage;
 	}
 	
 	/**
@@ -269,15 +253,14 @@ public class ClientModel extends Observable{
 	 */
 	public void hostGame(String gameName, String password) {
 
-		// end-user-code
 	}
 
 	/** 
 	 * Hilfsmethode des Models um erstellte Nachrichten an den Netzwerkthread weiter
 	 * zuleiten.
 	 */
-	private void sendMessage(ComObject object) {
-		
+	public void sendMessage(ComObject object) {
+		netIO.send(object);
 	}
 	
 	/**
@@ -287,6 +270,14 @@ public class ClientModel extends Observable{
 	public void send(RulesetMessage msg) {
 		ComObject com = new ComRuleset(msg);
 		sendMessage(com);
+	}
+	
+	/**
+	 * Nimmt vom ClientController eine Chatnachricht entgegen
+	 * und sendet diese an den Server.
+	 */
+	public void sendChatMessage(final String msg) {
+		sendMessage(new ComChatMessage(msg));
 	}
 
 	/** 
@@ -321,7 +312,7 @@ public class ClientModel extends Observable{
 	 * @param id Die id der gespielten Karte um sie einer logischen Karte
 	 * zuordnen zu können.
 	 */
-	public void makeMove(CardID id) {
+	public void makeMove(Card card) {
 		
 	}
 
@@ -331,6 +322,10 @@ public class ClientModel extends Observable{
 	 */
 	private void informView(ViewNotification note) {
 		
+	}
+	
+	public void setNetIO(Client.MessageListenerThread netIO) {
+		this.netIO = netIO;
 	}
 	
 	/** 
@@ -367,7 +362,7 @@ public class ClientModel extends Observable{
 		return null;
 	}
 
-	/** 
+/** 
  * Diese Klasse implementiert die Netzwerkanbindung des Clients an den Server.
  * Sie ist eine innere Klasse des ClientModels und wird vom selbigen instanziert.
  * Sie enthält den dazu nötigen Socket und ObjektStream Reader und Writer.
@@ -401,7 +396,7 @@ class MessageListenerThread extends Thread{
 	}
 	
 	/**
-	 * Über diese Methode kÃ¶nnen Nachrichten an den Server versendet werden.
+	 * Über diese Methode können Nachrichten an den Server versendet werden.
 	 */
 	protected void send(ComObject object) {
 		try {
