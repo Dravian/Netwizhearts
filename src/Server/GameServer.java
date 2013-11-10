@@ -120,7 +120,7 @@ public class GameServer extends Server {
 	 * An diesen Spieler wird ein ComWarning und ein ComInitLobby geschickt.
 	 * Danach wird ein ComUpdatePlayerlist Objekt mit broadcast an
 	 * alle Clients im Spiel verschickt.
-	 * @param player ist der Threat der die Nachricht erhalten hat
+	 * @param player ist der Thread der die Nachricht erhalten hat
 	 * @param kicked ist das ComObject, das verarbeitet wird
 	 * @throws IOException 
 	 */
@@ -131,7 +131,7 @@ public class GameServer extends Server {
 	 * Diese Methode ist dafur zuständig eine Chatnachricht an alle Clients im
 	 * Spiel zu verschicken. Dafür wird die ComChatMessage mit broadcast
 	 * an alle Spieler im playerSet verteilt.
-	 * @param player ist der Threat der die Nachricht erhalten hat
+	 * @param player ist der Thread der die Nachricht erhalten hat
 	 * @param chat ist das ComObject, das die Chatnachricht enthält
 	 * @throws IOException 
 	 */
@@ -143,7 +143,7 @@ public class GameServer extends Server {
 	 * durch Aufruf von changeServer an die ServerLobby zurück und schickt ihm ein ComInitLobby.
 	 * Danach wird ein ComUpdatePlayerlist Objekt mit broadcast 
 	 * an alle Clients im Spiel verschickt.
-	 * @param player ist der Threat der die Nachricht erhalten hat
+	 * @param player ist der Thread der die Nachricht erhalten hat
 	 * @param leave ist das ComObject, welches angibt, dass der Spieler in die Lobby 
 	 * zurückkehrt
 	 * @throws IOException 
@@ -157,7 +157,7 @@ public class GameServer extends Server {
 	 * Alle Spieler, die sich im Spiel befinden bekommen ein ComWarning und ein ComInitLobby und
 	 * werden durch Aufruf von changeServer an die Lobby zurückgegeben.
 	 * Das Spiel wird aufgelöst.
-	 * @param player ist der Threat der die Nachricht erhalten hat
+	 * @param player ist der Thread der die Nachricht erhalten hat
 	 * @param quit ist das ComObject, welches angibt, dass der Spieler das Spiel verlässt
 	 * @throws IOException 
 	 */
@@ -166,7 +166,7 @@ public class GameServer extends Server {
 	}
 	/**
 	 * Diese Methode sagt dem Ruleset, dass ein neues Spiel gestartet werden soll.
-	 * @param player ist der Threat der die Nachricht erhalten hat
+	 * @param player ist der Thread der die Nachricht erhalten hat
 	 * @param start ist das ComObject, dass angibt, dass das Spiel gestartet werden soll
 	 */
 	public void receiveMessage(Player player, ComStartGame start){
@@ -175,7 +175,7 @@ public class GameServer extends Server {
 	/**
 	 * Diese Methode gibt das erhaltene ComRuleset durch einen Aufruf von resolveMessage
 	 * an das Ruleset weiter.
-	 * @param player ist der Threat der die Nachricht erhalten hat
+	 * @param player ist der Thread der die Nachricht erhalten hat
 	 * @param ruleset ist das ComObject, das zeigt, dass das Object
 	 * vom Ruleset bearbeitet werden muss
 	 */

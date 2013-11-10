@@ -1,9 +1,9 @@
 package Server;
 
-import java.io.BufferedReader;
+import java.io.BufferedInputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 
 import org.junit.Test;
@@ -19,9 +19,9 @@ public class QuitGameTest extends TestCase{
 		super(name);
 	}
 	@Test
-	public void testPlayerQuitGame() throws IOException{		
+	public void testPlayerQuitGame() throws IOException{
 		LobbyServer lobby = new LobbyServer(); 
-		Player player1 = new Player(lobby, new PrintWriter(System.out, true), new BufferedReader(new InputStreamReader(System.in)));
+		Player player1 = new Player(lobby, new ObjectOutputStream(System.out), new ObjectInputStream(new BufferedInputStream(System.in)));
 		player1.setName("MrBlue");
 		lobby.addPlayer(player1);
 		GameServer game = new GameServer(lobby, player1, "MrBluesGame", RulesetType.Hearts, null, false);
@@ -29,11 +29,11 @@ public class QuitGameTest extends TestCase{
 		player1.changeServer(game);
 		assertTrue(game.playerSet.contains(player1));
 		
-		Player player2 = new Player(game, new PrintWriter(System.out, true), new BufferedReader(new InputStreamReader(System.in)));
+		Player player2 = new Player(lobby, new ObjectOutputStream(System.out), new ObjectInputStream(new BufferedInputStream(System.in)));
 		player2.setName("MrWhite");
-		Player player3 = new Player(game, new PrintWriter(System.out, true), new BufferedReader(new InputStreamReader(System.in)));
+		Player player3 = new Player(lobby, new ObjectOutputStream(System.out), new ObjectInputStream(new BufferedInputStream(System.in)));
 		player3.setName("MrPink");
-		Player player4 = new Player(game, new PrintWriter(System.out, true), new BufferedReader(new InputStreamReader(System.in)));
+		Player player4 = new Player(lobby, new ObjectOutputStream(System.out), new ObjectInputStream(new BufferedInputStream(System.in)));
 		player4.setName("MrRed");
 		
 		game.addPlayer(player2);
