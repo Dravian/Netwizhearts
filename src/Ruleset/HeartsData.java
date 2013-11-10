@@ -41,4 +41,22 @@ public class HeartsData extends OtherData {
 	public int getCurrentPoints() {
 		return this.currentPoints;
 	}
+	
+	/**
+	 * /**
+	 * Setzt den Gesamt-Punktestand eines Spielers
+	 * @param points Der Gesamt-Punktestand eines Spielers
+	 */
+	protected void setCompletePoints(int points) {
+		this.completePoints = points;
+	}
+	
+	/**
+	 * /**
+	 * Setzt den aktuellen Punktestand eines Spielers
+	 * @param points Der aktuelle Punktestand eines Spielers
+	 */
+	protected void setCurrentPoints(int points) {
+		this.currentPoints = points;
+	}
 }
