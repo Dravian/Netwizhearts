@@ -1,10 +1,10 @@
 package Ruleset;
 
 /**
- * Modelliert eine Heartskarte
+ * Modelliert eine Heartskarte,
  */
 public enum HeartsCard implements Card{
-	Herz2(0,Colour.HEART),Caro3(3,Colour.DIAMOND);
+	Empty(0,Colour.NONE),Herz2(0,Colour.HEART),Caro3(3,Colour.DIAMOND);
 	private final int value;
 	private final Colour colour;
 	

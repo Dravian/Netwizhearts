@@ -32,14 +32,6 @@ public class ServerHearts extends ServerRuleset {
 		
 	}
 
-	/**
-	 * Erstellt die Karten zum Spiel Hearts
-	 */
-	protected void createCardDeck() {
-		// TODO Automatisch erstellter Methoden-Stub
-		
-	}
-
 	@Override
 	protected void calculateTricks() {
 		// TODO Automatisch erstellter Methoden-Stub

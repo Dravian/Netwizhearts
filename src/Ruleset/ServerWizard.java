@@ -8,8 +8,8 @@ import ComObjects.MsgSelectionRequest;
 
 /**
  * Diese Klasse erstellt das Regelwerk zum Spiel Wizard. Sie enthält zudem weitere Methoden,
- * welche für das Spiel Wizard spezifisch benötigt werden, wie das Bestimmen einer Trumpffarbe 
- * und die Bestimmung der Rundenanzahl.
+ * welche für das Spiel Wizard spezifisch benötigt werden, wie das Ansage von Stichen, 
+ * der Bestimmung von Trumpffarben und die Bestimmung der Rundenanzahl.
  */
 public class ServerWizard extends ServerRuleset {
 	private static final int MIN_PLAYERS = 3;
@@ -38,14 +38,6 @@ public class ServerWizard extends ServerRuleset {
 	 * Erstellt ein neues GameState
 	 */
 	protected void createNewGameState() {
-	}
-
-	/**
-	 * Erstellt die Karten zum Spiel Wizard
-	 */
-	protected void createCardDeck() {
-		// TODO Automatisch erstellter Methoden-Stub
-		
 	}
 
 	@Override

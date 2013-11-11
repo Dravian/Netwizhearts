@@ -105,7 +105,7 @@ public abstract class ServerRuleset {
 	
 		// end-user-code
 	}/**
-	 * Erzeugt ein Kartendeck
+	 * Erzeugt ein Kartendeck, abhängig von dem RulesetType
 	 * @return Gibt ein Kartendeck zurück
 	 */
 	private List<Card> createDeck() {
@@ -138,10 +138,9 @@ public abstract class ServerRuleset {
 	
 	/** 
 	 * Setzt den Spieler der als Erster am Zug ist, im Gamestate
-	 * @return false wenn der selbe Spieler nochmal als firstPlayer gesetzt wird
 	 */
-	protected boolean setFirstPlayer(PlayerState player) {
-		return setFirstPlayer(player);
+	protected void setFirstPlayer(PlayerState player) {
+		gameState.setFirstPlayer(player);
 	}
 
 	/**
@@ -153,6 +152,10 @@ public abstract class ServerRuleset {
 		return firstPlayer;
 	}
 	
+	/**
+	 * Setzt den nächsten Spieler in der List als currentPlayer
+	 * @return true falls es ein anderer Spieler ist und false wenn es derselbe ist.
+	 */
 	protected boolean nextPlayer() {
 		return false;	
 	}
@@ -289,13 +292,17 @@ public abstract class ServerRuleset {
 		return false;
 	}
 	
+	/**
+	 * Setzt eine Karte als Trumpf
+	 * @param card Eine karte
+	 */
 	protected void setTrumpCard(Card card) {
 		gameState.setTrumpCard(card);
 	}
 
 	/** 
 	 * Prüft ob ein gemachter Zug in einem Spiel gültig war, wenn nicht wird an
-	 * den Spieler erneut eine MsgCardRequest
+	 * den Spieler erneut eine MsgCardRequest gesendet
 	 * @param card Die Karte die gespielt wurde
 	 * @param name Der Name des Spielers
 	 * @return true falls Zug gültig und false wenn nicht
@@ -303,7 +310,7 @@ public abstract class ServerRuleset {
 	protected abstract boolean isValidMove(Card card);
 	
 	/**
-	 * Berecnet und verteilt Stichpunkte an einzelne Spieler
+	 * Berechnet und verteilt Stichpunkte an einzelne Spieler
 	 */
 	protected abstract void calculateTricks() ;
 

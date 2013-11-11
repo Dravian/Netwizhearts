@@ -12,7 +12,7 @@ import java.util.Map;
 
 /** 
  * Das GameState modelliert einen aktuellen Spielzustand, es wird vom GameServer instanziert 
- * und vom RuleSet bearbeitet. Es enthï¿½lt die einzelnen PlayerStates, sowie Informationen 
+ * und vom RuleSet bearbeitet. Es enthält die einzelnen PlayerStates, sowie Informationen 
  * zum Ablage-, Aufnahmestapel, Rundenanzahl, den momentan aktiven Spieler sowie GamePhase.
  */
 public class GameState {
@@ -52,27 +52,28 @@ public class GameState {
 	private List<Card> deck;
 	
 	/**
-	 * Die Trumpffarbe im Spiel, diese wird nur im Spiel Wizard verwendet
+	 * Die Trumpffarbe im Spiel
 	 */
 	private Card trumpCard;
 	
 	/**
-	 * Erstellt eine GameStateklasse
+	 * Erstellt eine GameStateklasse und trumpCard wird als WizardCard.Empty instanziert
 	 * @param ruleset Der Regelwerktyp des Spiels
 	 * @param deck Das Kartendeck im Spiel
 	 */
-	public GameState(RulesetType ruleset, List<Card> deck) {
+	protected GameState(RulesetType ruleset, List<Card> deck) {
 		this.ruleset = ruleset;
 		players = new LinkedList<PlayerState>();
 		discardPile = new HashMap<String,Card>();
 		this.deck = deck;
+		trumpCard = WizardCard.Empty;
 	}
 	
 	/**
 	 * Fügt den Spieler ins Spiel hinein, falls er nicht schon im Spiel ist
-	 * @param name
+	 * @param name Der Name eines Spielers
 	 */
-	public boolean addPlayerToGame(String name) {
+	protected boolean addPlayerToGame(String name) {
 		PlayerState player = new PlayerState(name,ruleset);
 		
 		if(players.contains(player)) {
@@ -87,22 +88,16 @@ public class GameState {
 	 * Setzt einen neuen Spieler als firstPlayer
 	 * @param player Der neue firstPlayer
 	 */
-	public boolean setFirstPlayer(PlayerState player) {
-		if(firstPlayer != player) {
-			this.firstPlayer = player;	
-			this.currentPlayer = player;
-			return true;
-		} else {
-			return false;
-		}
-		
+	protected void setFirstPlayer(PlayerState player) {
+		firstPlayer = player;
+	
 	}
 
 	/** 
 	 * Holt den Spieler der als erster am Zug war
 	 * @return firstPlayer Der Spielzustand des Spielers der als erster am Zug war
 	 */
-	public PlayerState getFirstPlayer() {
+	protected PlayerState getFirstPlayer() {
 		return firstPlayer;
 	}
 	
@@ -110,7 +105,7 @@ public class GameState {
 	 * Setzt einen neuen Spieler als currentPlayer
 	 * @param player Der neue currentPlayer
 	 */
-	public boolean setCurrentPlayer(PlayerState player) {
+	protected boolean setCurrentPlayer(PlayerState player) {
 		if(currentPlayer == player) {
 			this.currentPlayer = player;	
 			return true;
@@ -124,7 +119,7 @@ public class GameState {
 	 * Holt den Spieler der momentan am Zug ist
 	 * @return currentPlayer Der Spielzustand des Spielers der grad am Zug ist
 	 */
-	public PlayerState getCurrentPlayer() {
+	protected PlayerState getCurrentPlayer() {
 		return currentPlayer;
 	}
 
@@ -132,7 +127,7 @@ public class GameState {
 	 * Holt die Karten die noch im Aufnahmestapel sind
 	 * @return deck Holt die Karten die noch im Aufnahmestapel sind
 	 */
-	public List<Card> getCardsLeftInDeck() {
+	protected List<Card> getCardsLeftInDeck() {
 		return this.deck;
 	}
 
@@ -140,7 +135,7 @@ public class GameState {
 	 *Holt die gespielten Karten im Ablagestapel
 	 *@return discardPile Die gespielten Karten
 	 */
-	public Map<String,Card> getPlayedCards() {
+	protected Map<String,Card> getPlayedCards() {
 		return discardPile;
 	}
 	
@@ -149,7 +144,7 @@ public class GameState {
 	 * @param name Der Name des Spielers
 	 * @return player Der Spielzustand des Spielers
 	 */
-	public PlayerState getPlayerState(String name) {
+	protected PlayerState getPlayerState(String name) {
 		for(PlayerState p : players) {
 			if(p.getName().equals(name)) {
 				return p;
@@ -162,7 +157,7 @@ public class GameState {
 	 * Setzt die Trumpfkarte
 	 * @param trumpCard Die Trumpfkarte
 	 */
-	public void setTrumpCard(Card trumpCard){
+	protected void setTrumpCard(Card trumpCard){
 		this.trumpCard = trumpCard;
 	}
 
@@ -170,14 +165,21 @@ public class GameState {
 	 * Holt die momentane Trumpfkarte im Spiel
 	 * @return trumpCard Die momentane Trumpfkarte
 	 */
-	public Card getTrumpCard(){
+	protected Card getTrumpCard(){
 		return trumpCard;
 	}
 	
-	public int getRoundNumber() {
+	/**
+	 * Holt die Anzahl an Runden
+	 * @return Die Anzahl der Runden
+	 */
+	protected int getRoundNumber() {
 		return roundNumber;
 	}
 	
+	/**
+	 * Erhöht die Rundenanzahl um eins
+	 */
 	private void newRound() {
 		roundNumber++;
 	}
@@ -186,34 +188,39 @@ public class GameState {
 	 * Holt die Anzahl der gespielten Karten 
 	 * @return Die Anzahl der gespielten Karten
 	 */
-	public int getNumberOfPlayedCards() {
+	protected int getNumberOfPlayedCards() {
 		return discardPile.size();
 	}
 	
 	/**
 	 * Holt die Karten eines Spielers
 	 * @param name Der Name vom Spieler 
-	 * @return Karten
+	 * @return Die Karten eines Spielers zurück, wenn der Spieler nicht gefunden
+	 * wird, wird eine leere Liste zurückgegeben
 	 */
-	public List<Card> getPlayerCards(String name) {
+	protected List<Card> getPlayerCards(String name) {
 		for(PlayerState p : players) {
 			if(p.getName().equals(name)) {
 				return p.getHand();
 			}
 		}
-		return null;
+		List<Card> noPlayer = new LinkedList();
+		return noPlayer;
 	}
 	
-	public void shuffleDeck() {
+	/**
+	 * Mischt das Deck
+	 */
+	protected void shuffleDeck() {
 		Collections.shuffle(deck);
 	}
 	
 	/**
 	 * Verteilt eine bestimmte Anzahl an Karten an die Spieler
 	 * @param number Die Anzahl an Karten
-	 * @return True falls ein Spieler keine Karten hat
+	 * @return True falls ein Spieler keine Karten hat, false sonst
 	 */
-	public boolean dealCards(int number) {
+	protected boolean dealCards(int number) {
 		for(PlayerState player : players) {
 			if(!player.getHand().isEmpty()) {
 				return false;
@@ -231,9 +238,10 @@ public class GameState {
 	/**
 	 * Setzt den nächsten Spieler
 	 */
-	public void nextPlayer() {
-		ListIterator i = players.listIterator(players.indexOf(currentPlayer));
-		currentPlayer = (PlayerState)i.next();
+	protected void nextPlayer() {
+		ListIterator<PlayerState> i = players.listIterator(
+				players.indexOf(currentPlayer));
+		currentPlayer = i.next();
     }
 	
 	/**
@@ -241,7 +249,7 @@ public class GameState {
 	 * @param name Der Name des Spielers
 	 * @return true falls die Karte im Stapel ist, false wenn nicht
 	 */
-	public boolean giveACard(String name, Card card) {
+	protected boolean giveACard(String name, Card card) {
 		return false;	
 	}
 	
@@ -251,7 +259,7 @@ public class GameState {
 	 * @return isInHand Gibt true zurück wenn die gespielte Karte auf der Hand vom
 	 * Spieler liegt und false sonst
 	 */
-	public boolean playCard(Card card) {
+	protected boolean playCard(Card card) {
 		boolean isInHand;
 		isInHand = currentPlayer.removeCard(card);
 		

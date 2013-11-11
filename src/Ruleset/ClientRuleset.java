@@ -4,6 +4,7 @@
 package Ruleset;
 
 import java.util.List;
+import java.util.Map;
 
 import Client.ClientModel;
 import ComObjects.MsgCard;
@@ -17,7 +18,8 @@ import ComObjects.RulesetMessage;
 /** 
  * ClientRuleset ist eine abstrakte Klasse und wird zur Regelvorauswertung im Client verwendet. 
  * Dazu benutzt es die isValidMove() Methode. Des Weiteren kann es vom ClientModel 
- * erhaltene RulesetMessages mit der resolveMessage() Methode behandeln.
+ * erhaltene RulesetMessages mit der resolveMessage() Methode behandeln und neue 
+ * RulesetMessages senden.
  */
 public abstract class ClientRuleset {
 	/** 
@@ -82,7 +84,7 @@ public abstract class ClientRuleset {
 	}
 	
 	/**
-	 * Gibt die Maximale anzahl an Spielern zurück
+	 * Gibt die Maximale Anzahl an Spielern zurück
 	 * @return Die maximale Anzahl an Spielern
 	 */
 	public int getMaxPlayers() {
@@ -96,20 +98,29 @@ public abstract class ClientRuleset {
 		return gamePhase;
 	}
 
+	/**
+	 * Gibt die eigenen Handkarten zurück
+	 * @return Liste von Karten
+	 */
 	public List<Card> getOwnHand() {
 		return gameState.getOwnHand();
 	}
 	
-	public OtherData getOwnData() {
+	/**
+	 * Gibt die eigenen OtherData als String zurück
+	 * @return Eine Stringrepräsentation von Otherdata
+	 */
+	public String getOwnData() {
 		return gameState.getOwnData();
 	}
 		
 	/** 
-	 * Holt die Spieldaten der anderen Spieler
-	 * @return otherPlayerData Die Spieldaten der anderen Spieler
+	 * Holt die OtherData eines anderen Spielers als Stringrepräsentation
+	 * @param Der Spielername
+	 * @return otherPlayerData Die OtherData als String repräsentiert
 	 */
-	public List<OtherData> getOtherPlayerData() {
-		return gameState.getOtherPlayerData();
+	public String getOtherPlayerData(String player) {
+		return gameState.getOtherPlayerData(player);
 	}
 	
 	/**
@@ -122,6 +133,7 @@ public abstract class ClientRuleset {
 	
 	/**
 	 * Holt die aufgedeckte Trumpfkarte
+	 * @return Eine Karte
 	 */
 	public Card getTrumpCard() {
 		return gameState.getTrumpCard();
@@ -138,7 +150,7 @@ public abstract class ClientRuleset {
 	 * Verarbeitet die RulesetMessage dass der Server ein Spielupdate an den Client schickt
 	 * @param clientUpdate Die Nachricht vom Server
 	 */
-	protected void processMessage(MsgUser clientUpdate) {
+	public void resolveMessage(MsgUser clientUpdate) {
 		this.gameState = clientUpdate.getGameClientUpdate();
 	}
 	
@@ -147,32 +159,7 @@ public abstract class ClientRuleset {
 	 * Verarbeitet die RulesetMessage dass der Server von dem Spieler verlangt eine Karte zu spielen
 	 * @param msgCardRequest Die Nachricht vom Server
 	 */
-	protected void processMessage(MsgCardRequest msgCardRequest) {
-		
-	}
-	
-	/**
-	 * Verarbeitet die RulesetMessage dass der Server von dem Spieler verlangt mehrere Karten anzugeben
-	 * @param msgMultiCardsRequest Die Nachricht vom Server
-	 */
-	protected void processMessage(MsgMultipleCardsRequest msgMultiCardsRequest) {
-		
-		
-	}
-	
-	/**
-	 * Verarbeitet die RulesetMessage dass der Server von dem Spieler verlangt eine Stichanzahl anzugeben
-	 * @param msgNumber Die Nachricht vom Server
-	 */
-	protected void processMessage(MsgNumberRequest msgNumber) {
-		
-	}
-	
-	/**
-	 * Verarbeitet die RulesetMessage dass der Server von dem Spieler verlangt eine Farbe auszuwählen
-	 * @param msgSelection Die Nachricht vom Server
-	 */
-	protected void processMessage(MsgSelectionRequest msgSelection) {
+	public void resolveMessage(MsgCardRequest msgCardRequest) {
 		
 	}
 	
@@ -189,7 +176,7 @@ public abstract class ClientRuleset {
 	 * @param message Die Nachricht
 	 */
 	protected void send(RulesetMessage message) {
-		//client.send(message);
+		client.send(message);
 	}
 	
 	/** 

@@ -8,20 +8,27 @@ import java.util.Set;
 
 import Client.ClientModel;
 import ComObjects.MsgMultiCards;
+import ComObjects.MsgMultipleCardsRequest;
 
 /** 
- * Diese Klasse bildet das Regelwerk für den Client bei einer Partie Hearts. 
+ * Diese Klasse bildet das Regelwerk für den Clientmodel bei einer Partie Hearts
  */
 public class ClientHearts extends ClientRuleset {
+	/**
+	 * Die Mindestanzahl an Spielern die Hearts spielen können
+	 */
 	private static final int MIN_PLAYERS = 4;
+	
+	/**
+	 * Die Maximale Anzahl an Spielern die Hearts spielen können 
+	 */
 	private static final int MAX_PLAYERS = 4;
-	private int inputNumber;
 	
 	/**
 	 * Erzeugt ein ClientHearts
 	 * @param client Das Model auf dem gespielt wird
 	 */
-	protected ClientHearts(ClientModel client) {
+	public ClientHearts(ClientModel client) {
 		super(RulesetType.Hearts, MIN_PLAYERS, MAX_PLAYERS,client);
 	}
 	
@@ -35,11 +42,20 @@ public class ClientHearts extends ClientRuleset {
 	}
 	
 	/**
-	 * 
-	 * @param cards
+	 * Schickt ein Set an Karten an den Server
+	 * @param cards Das Set an Karten
 	 */
 	public void send(Set<Card> cards) {
 		send(new MsgMultiCards(cards));
+	}
+	
+	/**
+	 * Verarbeitet die RulesetMessage dass der Server von dem Spieler verlangt mehrere Karten anzugeben
+	 * @param msgMultiCardsRequest Die Nachricht vom Server
+	 */
+	public void resolveMessage(MsgMultipleCardsRequest msgMultiCardsRequest) {
+		
+		
 	}
 
 }
