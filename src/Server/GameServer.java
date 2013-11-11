@@ -12,13 +12,11 @@ import Ruleset.RulesetType;
 import Ruleset.ServerRuleset;
 
 /**
- * Diese Klasse ist für die Spielverwaltung zuständig. Sie verwaltet die 
- * Kommunikation zwischen den Clients während eines Spieles. 
+ * Diese Klasse ist für die Verwaltung eines Spieles zuständig. 
+ * Sie verwaltet die Kommunikation zwischen den Clients während eines Spieles. 
  * Die GameServer-Klasse erbt Methoden zur Kommunikation vom Server. 
  * Der GameServer tauscht Nachrichten zwischen Ruleset und Player aus, 
  * um so den Spielablauf zu koordinieren.
- * @author Viktoria
- *
  */
 public class GameServer extends Server {
 	/**
@@ -31,7 +29,7 @@ public class GameServer extends Server {
 	private String gameMasterName;
 	
 	/**
-	 * Der Name des Spieles
+	 * Der Name des Spiels
 	 */
 	private String name;
 	
@@ -63,7 +61,7 @@ public class GameServer extends Server {
 	private RulesetType rulesetType;
 	
 	/** 
-	 * Das Ruleset, das für den ordnungsgerechten Ablauf eines Spiels uständig ist
+	 * Das Ruleset, das für den ordnungsgerechten Ablauf eines Spiels zuständig ist
 	 */
 	private ServerRuleset ruleset;
 	
@@ -95,7 +93,9 @@ public class GameServer extends Server {
 	}
 	
 	/**
-	 * Diese Methode wird vom abstrakten Server vererbt.
+	 * Diese Methode fügt einen Player dem Set an Playern hinzu, welche der
+	 * Server verwaltet. Es wird vorrausgesetzt, dass der Player gültig und 
+	 * noch nicht im Set vorhanden ist.
 	 * Zusätzlich wird die Zahl der currentPlayers um eins Erhöht.
 	 * @param player ist der Player, der hinzugefoügt wird
 	 */
@@ -104,7 +104,9 @@ public class GameServer extends Server {
 		++currentPlayers;
 	}
 	/**
-	 * Diese Methode wird vom abstrakten Server vererbt.
+	 * Diese Methode entfernt einen Player aus dem Set an Playern, welche der
+	 * Server verwaltet. Es wird vorrausgesetzt, dass der Player gültig und 
+	 * im Set vorhanden ist.
 	 * Zusätzlich wird die Zahl der currentPlayers um eins Verringert.
 	 * @param player ist der Player, der entfernt wird
 	 */
@@ -117,14 +119,13 @@ public class GameServer extends Server {
 	 * Diese Methode ist dafur zuständig zu ermitteln, was passiert wenn 
 	 * ein Spieler aus der GameLobby geworfen wird.
 	 * Der Player wird durch Aufruf von changeServer an die Lobby zurückgegeben.
-	 * An diesen Spieler wird ein ComWarning und ein ComInitLobby geschickt.
+	 * An diesen Spieler wird ein ComInitLobby und ein ComWarning geschickt.
 	 * Danach wird ein ComUpdatePlayerlist Objekt mit broadcast an
 	 * alle Clients im Spiel verschickt.
 	 * @param player ist der Thread der die Nachricht erhalten hat
 	 * @param kicked ist das ComObject, das verarbeitet wird
-	 * @throws IOException 
 	 */
-	public void receiveMessage(Player player, ComKickPlayerRequest kickPlayer) throws IOException{
+	public void receiveMessage(Player player, ComKickPlayerRequest kickPlayer) {
 	}
 	
 	/**
@@ -133,9 +134,8 @@ public class GameServer extends Server {
 	 * an alle Spieler im playerSet verteilt.
 	 * @param player ist der Thread der die Nachricht erhalten hat
 	 * @param chat ist das ComObject, das die Chatnachricht enthält
-	 * @throws IOException 
 	 */
-	public void receiveMessage(Player player, ComChatMessage chat) throws IOException{
+	public void receiveMessage(Player player, ComChatMessage chat){
 		broadcast(chat);
 	}
 	/**
@@ -146,31 +146,30 @@ public class GameServer extends Server {
 	 * @param player ist der Thread der die Nachricht erhalten hat
 	 * @param leave ist das ComObject, welches angibt, dass der Spieler in die Lobby 
 	 * zurückkehrt
-	 * @throws IOException 
 	 */
-	public void receiveMessage(Player player, ComClientLeave leave) throws IOException{
+	public void receiveMessage(Player player, ComClientLeave leave){
 	}
 	/**
 	 * Diese Methode behandelt den Fall, dass ein Spieler das laufende Spiel verlässt.
 	 * Sie gibt einen Player, der das Spiel verlassen will, Aufruf von changeServer an die 
 	 * ServerLobby zurück und schickt ihm ein ComInitLobby.
-	 * Alle Spieler, die sich im Spiel befinden bekommen ein ComWarning und ein ComInitLobby und
-	 * werden durch Aufruf von changeServer an die Lobby zurückgegeben.
-	 * Das Spiel wird aufgelöst.
+	 * Alle Spieler, die sich im Spiel befinden werden durch Aufruf von changeServer an 
+	 * die Lobby zurückgegeben und bekommen ein ComInitLobby und ein ComWarning.
+	 * Das Spiel wird aus dem gameServerSet des LobbyServers entfernt.
 	 * @param player ist der Thread der die Nachricht erhalten hat
 	 * @param quit ist das ComObject, welches angibt, dass der Spieler das Spiel verlässt
-	 * @throws IOException 
 	 */
-	public void receiveMessage(Player player, ComClientQuit quit) throws IOException{
+	public void receiveMessage(Player player, ComClientQuit quit){
 
 	}
 	/**
-	 * Diese Methode sagt dem Ruleset, dass ein neues Spiel gestartet werden soll.
+	 * Diese Methode sagt dem Ruleset, dass ein neues Spiel gestartet werden soll
+	 * indem er dessen runGame Methode aufruft.
 	 * @param player ist der Thread der die Nachricht erhalten hat
 	 * @param start ist das ComObject, dass angibt, dass das Spiel gestartet werden soll
 	 */
 	public void receiveMessage(Player player, ComStartGame start){
-
+		
 	}
 	/**
 	 * Diese Methode gibt das erhaltene ComRuleset durch einen Aufruf von resolveMessage
@@ -189,5 +188,20 @@ public class GameServer extends Server {
 	 */
 	public ComInitGameLobby initLobby(){
 		return null;
+	}
+	
+	/**
+	 * Diese Methode legt den Ablauf fest, was passiert, falls
+	 * die Verbindung zu einem Client verloren gegangen ist.
+	 * Der übergebene Player wird aus dem playerSet im GameServer, sowie 
+	 * dem names Set im LobbyServer entfernt.
+	 * Alle Spieler, die sich im Spiel befinden werden durch Aufruf von changeServer an 
+	 * die Lobby zurückgegeben und bekommen ein ComInitLobby und ein ComWarning.
+	 * Das Spiel wird aus dem gameServerSet des LobbyServers entfernt.
+	 * @param player ist der Tread von dem die IOException kommt
+	 */
+	public void handleIOException(Player player) {
+		// TODO Automatisch erstellter Methoden-Stub
+		
 	}
 }

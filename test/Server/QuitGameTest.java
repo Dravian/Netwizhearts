@@ -10,6 +10,8 @@ import org.junit.Test;
 
 import ComObjects.ComClientQuit;
 import Ruleset.RulesetType;
+import Server.GameServer;
+import Server.LobbyServer;
 
 import junit.framework.*;
 
@@ -18,6 +20,7 @@ public class QuitGameTest extends TestCase{
 	public QuitGameTest(String name){
 		super(name);
 	}
+	
 	@Test
 	public void testPlayerQuitGame() throws IOException{
 		LobbyServer lobby = new LobbyServer(); 
@@ -27,7 +30,7 @@ public class QuitGameTest extends TestCase{
 		GameServer game = new GameServer(lobby, player1, "MrBluesGame", RulesetType.Hearts, null, false);
 		
 		player1.changeServer(game);
-		assertTrue(game.playerSet.contains(player1));
+		assertTrue(game.initLobby().getPlayerList().contains(player1.getName()));
 		
 		Player player2 = new Player(lobby, new ObjectOutputStream(System.out), new ObjectInputStream(new BufferedInputStream(System.in)));
 		player2.setName("MrWhite");
@@ -43,10 +46,10 @@ public class QuitGameTest extends TestCase{
 		ComClientQuit quit = new ComClientQuit();
 		game.receiveMessage(player1, quit);
 
-		assertFalse(lobby.getGameServerSet().contains(game));
-		assertTrue(lobby.playerSet.contains(player1));
-		assertTrue(lobby.playerSet.contains(player2));
-		assertTrue(lobby.playerSet.contains(player3));
-		assertTrue(lobby.playerSet.contains(player4));
+		assertFalse(lobby.initLobby().getGameList().contains(game));
+		assertTrue(lobby.initLobby().getPlayerList().contains(player1.getName()));
+		assertTrue(lobby.initLobby().getPlayerList().contains(player1.getName()));
+		assertTrue(lobby.initLobby().getPlayerList().contains(player1.getName()));
+		assertTrue(lobby.initLobby().getPlayerList().contains(player1.getName()));
 	}
 }

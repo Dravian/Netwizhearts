@@ -8,7 +8,8 @@ import java.util.List;
 
 /** 
  * Repräsentiert den Spielzustand eines Spielers, und wird unter anderem 
- * im GameState gespeichert. Sie enthält den Namen des Spielers, seine Handkarten und OtherData.
+ * im GameState gespeichert. Sie enthält den Namen des Spielers, seine Handkarten
+ * und OtherData.
  */
 public class PlayerState {
 	/** 
@@ -20,7 +21,7 @@ public class PlayerState {
 	 */
 	private List<Card> ownHand;
 	/** 
-	 * Seine zusätzlichen Daten
+	 * Seine OtherData
 	 */
 	private OtherData otherData;
 	
@@ -34,21 +35,18 @@ public class PlayerState {
 		
 		this.ownHand = new ArrayList<Card>();
 		
-		switch(ruleset) {
-		case Wizard: this.otherData = new WizData(name);
-					 break;
-		case Hearts: this.otherData = new HeartsData(name);
-					 break;
-		default: 	 this.otherData = null;
-					 break;
+		if(ruleset == RulesetType.Hearts) {
+			otherData = new HeartsData();
+		} else {
+			otherData = new WizData();
 		}
 	}
 
 	/** 
-	 * Holt den namen eines Spielers
+	 * Holt den Namen eines Spielers
 	 * @return name Der Name des Spielers
 	 */
-	public String getName() {
+	protected String getName() {
 		return this.name;
 	}
 
@@ -56,23 +54,23 @@ public class PlayerState {
 	 * Holt die Kartenhand des Spielers
 	 * @return ownHand Die Kartenhand des Spielers
 	 */
-	public List<Card> getHand() {
+	protected List<Card> getHand() {
 		return this.ownHand;
 	}
 	
-	/** 
-	 * Holt die zusätzlichen Informationen des Spielers
-	 * @return ownHand Die zusätzlichen Informationen des Spielers
+	/**
+	 * Gibt die OtherData des Spielers zurück
+	 * @return otherData Die OtherData eines Spielers
 	 */
-	public OtherData getOtherData() {
-		return this.otherData;
+	protected OtherData getOtherData() {
+		return otherData;
 	}
 	
 	/**
 	 * Gibt dem Spieler eine Karte 
 	 * @param card Die Karte die dem Spieler gegeben wird
 	 */
-	public void addCard(Card card){
+	protected void addCard(Card card){
 		this.ownHand.add(card);
 	}
 	
@@ -82,7 +80,7 @@ public class PlayerState {
 	 * @return ownHand.remove(card) Gibt true zurück wenn die Karte in der Hand ist
 	 * 								und false sonst
 	 */
-	public boolean removeCard(Card card) {
+	protected boolean removeCard(Card card) {
 		 return ownHand.remove(card);
 	}
 	

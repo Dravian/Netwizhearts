@@ -18,8 +18,8 @@ import javax.swing.JButton;
 /**
  * Die GameLobby modelliert das Wartefenster, in dem beigetretene Spieler auf den Start 
  * des Spieles durch den Spielleiter warten. Der Spielleiter kann Spieler 
- * mit dem Remove Player Button entfernen. Über Leave kehren die Spieler 
- * in die Lobby zurück. Der spielinterne Chat ist ab hier verfügbar.
+ * mit dem Remove Player Button entfernen. ï¿½ber Leave kehren die Spieler 
+ * in die Lobby zurï¿½ck. Der spielinterne Chat ist ab hier verfï¿½gbar.
  */
 public class GameLobby extends JFrame implements Observer{
 
@@ -94,7 +94,7 @@ public class GameLobby extends JFrame implements Observer{
 	}
 
 	/**
-	 * Fügt einen ActionListener für den 'Start Game' Button hinzu
+	 * Fï¿½gt einen ActionListener fï¿½r den 'Start Game' Button hinzu
 	 * 
 	 * @param a ein ActionListener
 	 */
@@ -103,7 +103,7 @@ public class GameLobby extends JFrame implements Observer{
 	}
 	
 	/**
-	 * Fügt einen ActionListener für den 'Remove Player' Button hinzu
+	 * Fï¿½gt einen ActionListener fï¿½r den 'Remove Player' Button hinzu
 	 * 
 	 * @param a ein ActionListener
 	 */
@@ -112,7 +112,7 @@ public class GameLobby extends JFrame implements Observer{
 	}
 	
 	/**
-	 * Fügt einen ActionListener für den 'Leave' Button hinzu
+	 * Fï¿½gt einen ActionListener fï¿½r den 'Leave' Button hinzu
 	 * 
 	 * @param a ein ActionListener
 	 */
@@ -121,7 +121,7 @@ public class GameLobby extends JFrame implements Observer{
 	}
 	
 	/**
-	 * Fügt einen KeyListener für das Nachricht-Senden-Feld der Lobby hinzu
+	 * Fï¿½gt einen KeyListener fï¿½r das Nachricht-Senden-Feld der Lobby hinzu
 	 * @param k
 	 */
 	public void addChatMessageListener(KeyListener k) {
@@ -129,7 +129,7 @@ public class GameLobby extends JFrame implements Observer{
 	}
 	
 	/**
-	 * Ändert die Sprache des Fensters
+	 * ï¿½ndert die Sprache des Fensters
 	 * 
 	 * @param l Sprache in Form des Language-Enums
 	 */
@@ -144,16 +144,28 @@ public class GameLobby extends JFrame implements Observer{
 
 	/**
 	 * Wird durch notify() im ClientModel aufgerufen. Je nach dem in arg
-	 * übergebenen ViewNotification-Befehl wird ein Update des Fensters ausgeführt 
+	 * ï¿½bergebenen ViewNotification-Befehl wird ein Update des Fensters ausgefï¿½hrt 
 	 * oder eine Fehlermeldung angezeigt.
 	 * 
 	 * @param o erwartet ein Objekt von der Klasse ClientModel
-	 * @param arg erwartet: windowChangeAcknowledged, windowChangeDenied, 
-	 * 			  playerListUpdate, windowChangeForced, chatMessage
+	 * @param arg erwartet: joinGameSuccessful, playerListUpdate, windowChangeForced,
+	 * 						gameStarted
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	/**
+	 * Wird aufgerufen, wenn eine String-Nachricht im notify() 
+	 * Ã¼bergeben wird. Dieser wird als Chatnachricht interpretiert und
+	 * dem Chatlog angefÃ¼gt.
+	 * 
+	 * @param o erwartet ein Objekt von der Klasse ClientModel
+	 * @param arg erwartet einen String, der eine Chatnachricht darstellt
+	 */
+	public void update(Observable o, String arg) {
+		//TODO
 	}
 }
