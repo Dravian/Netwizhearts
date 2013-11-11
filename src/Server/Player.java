@@ -1,6 +1,3 @@
-/**
- * 
- */
 package Server;
 
 
@@ -8,14 +5,12 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import ComObjects.ComObject;
-import ComObjects.ComUpdatePlayerlist;
+import ComObjects.*;
 
 /**
- * Die Player-Klasse wird zum Versenden von Java Serializable Objects verwendet.
- * Sie verwaltet für die Dauer einer Serververbindung die Verbindung zum Client
- * @author Viktoria
- *
+ * Die Player-Klasse wird zum Versenden von Java Serializable Objects, sowie zum
+ * Annehmen solcher verwendet.
+ * Sie verwaltet für die Dauer einer Serververbindung die Verbindung zu einem Client.
  */
 public class Player implements Runnable{
 	/**
@@ -36,8 +31,8 @@ public class Player implements Runnable{
 	private ObjectInputStream comIn;
 
 	/**
-	 * Konstruktor des Players, in ihm werden die Attribute server, comOut und ComIn mit
-	 * vom ClientListererThread übergebenen werten Instanziiert.
+	 * Konstruktor des Players, in ihm werden die Attribute server, comOut und comIn mit
+	 * vom ClientListererThread übergebenen Werten Instanziiert.
 	 * @param lobbyServer ist der LobbyServer, der zu Beginn den Player verwaltet.
 	 * @param output ist der ObjectOutputStream an den entsprechenden Client
 	 * @param input ist der ObjectInputStream vom entsprechenden Client
@@ -52,21 +47,42 @@ public class Player implements Runnable{
 	 * Die run-Methode des Thread nimmt eingehende Nachrichten des Client
 	 * entgegen und übergibt diese an den Server durch Aufruf der Methode 
 	 * resolveMessage()
-	 * Fängt eine IOException ab.
+	 * Fängt eine ClassNotFoundException ab, falls die Klasse nicht gefunden
+	 * werden kann und gibt einen Fehler aus.
+	 * Fängt eine IOException ab und ruft im jeweiligen Server, dem er zugeteilt
+	 * ist die handleIOException Methode auf.
 	 */
 	public void run(){
-		// begin-user-code
-		// TODO Auto-generated method stub
-		// end-user-code
+		boolean run = true;
+		ComObject object;
+		while(run) {
+			try {
+				object = (ComObject) comIn.readObject();
+				object.process(this, server);
+			} catch (ClassNotFoundException e) {
+				// TODO Automatisch erstellter Catch-Block
+				e.printStackTrace();
+			} catch (IOException e) {
+				server.handleIOException(this);
+				// TODO Automatisch erstellter Catch-Block
+				e.printStackTrace();
+			}			
+		}
 	}
 
 	/**
-	 * Diese Methode schickt ein ComObjekt an den Client
+	 * Diese Methode schickt ein ComObjekt an den Client.
+	 * Sie fängt eine IOException ab und ruft im jeweiligen Server, dem er zugeteilt
+	 * ist die handleIOException Methode auf.
 	 * @param com ist das ComObject das verschickt wird
-	 * @throws IOException wenn der Output nicht funktioniert
 	 */
-	public void send(ComObject com) throws IOException{
-		comOut.writeObject(com);
+	public void send(ComObject com){
+		try {
+			comOut.writeObject(com);
+		} catch (IOException e) {
+			// TODO Automatisch erstellter Catch-Block
+			e.printStackTrace();
+		}
 		// begin-user-code
 		// TODO Auto-generated method stub
 
@@ -80,20 +96,19 @@ public class Player implements Runnable{
 	 * Danach wird vom neuen Server ein ComUpdatePlayerlist Objekt mit broadcast 
 	 * an alle Clients, die vom Server verwaltet werden, verschickt.
 	 * @param newServer ist der neue Server
-	 * @throws IOException wenn der Output nicht funktioniert
 	 */
-	public void changeServer(Server newServer) throws IOException {
+	public void changeServer(Server newServer){
 		server.removePlayer(this);
 		server = newServer;
 		server.addPlayer(this);
-		server.broadcast(new ComUpdatePlayerlist(this.getName(),false));
+		server.broadcast(new ComUpdatePlayerlist(this.getName(), false));
 		// begin-user-code
 		// TODO Auto-generated method stub
 		// end-user-code	
 	}
 	
 	/**
-	 * Getter-Methode für den Benutzernamen
+	 * Getter-Methode für den Benutzernamen.
 	 * @return gibt den Benutzernamen des Spielers zurück
 	 */
 	public String getName(){
@@ -101,7 +116,7 @@ public class Player implements Runnable{
 	}
 	
 	/**
-	 * Setter-Methode für den Benutzernamen
+	 * Setter-Methode für den Benutzernamen.
 	 * @param newName ist der neue Name
 	 */
 	public void setName(String newName){
