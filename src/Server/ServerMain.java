@@ -5,9 +5,7 @@ package Server;
 
 /**
  * Diese Klasse startet den Server und ist für die 
- * Konfigurationund Wartung des Servers verantwortlich.
- * @author Viktoria
- *
+ * Konfiguration des Servers verantwortlich.
  */
 public class ServerMain {
 	/**

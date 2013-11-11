@@ -8,7 +8,8 @@ import java.util.List;
 import org.junit.Test;
 import org.junit.runners.JUnit4;
 
-public class isValidMoveHeartsTest {
+public class isValidMoveHeartsTest2_onlyHearts {
+	
     @Test
     public void testIsValidMove() {
         ServerRuleset server = new ServerHearts();
@@ -25,7 +26,7 @@ public class isValidMoveHeartsTest {
         server.setFirstPlayer(server.getPlayerState(player1));
 
         server.giveACard(player1, HeartsCard.Herz2);
-        server.giveACard(player1, HeartsCard.Kreuz9);
+        server.giveACard(player1, HeartsCard.Herz5);
         server.giveACard(player2, HeartsCard.Caro3);
         server.giveACard(player2, HeartsCard.Caro6);
         server.giveACard(player3, HeartsCard.Pik4);
@@ -35,10 +36,7 @@ public class isValidMoveHeartsTest {
 
         boolean isValidMove = server.isValidMove(HeartsCard.Herz2);
 
-        assertEquals(isValidMove, false);
-
-        boolean isValidMove2 = server.isValidMove(HeartsCard.Caro3);
-
-        assertEquals(isValidMove2, true);
+        assertEquals(isValidMove, true);
     }
 }
+

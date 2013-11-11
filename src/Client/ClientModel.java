@@ -314,6 +314,37 @@ public class ClientModel extends Observable{
 	}
 	
 	/**
+	 * Die die Anzahl der Spieler eines Spieles zurück.
+	 * @return int Die Spielerzahl eines Spieles.
+	 */
+	public int getPlayerCount() {
+		return 0;
+		
+	}
+	
+	/**
+	 * Gibt 
+	 * @return String 
+	 */
+	public String getWindowText() {
+		return null;
+	}
+	
+	/**
+	 * 
+	 */
+	public void setChooseCards(List<Card> cards) {
+		
+	}
+	
+	/**
+	 * 
+	 */
+	public void setInputNumber() {
+		
+	}
+	
+	/**
 	 * Nimmt vom ClientController eine Chatnachricht entgegen
 	 * und sendet diese an den Server.
 	 * 

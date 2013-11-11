@@ -2,32 +2,21 @@ package Ruleset;
 
 import static org.junit.Assert.*;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.net.ServerSocket;
 import java.net.Socket;
 
 import org.junit.Test;
 
-import ComObjects.ComChatMessage;
-import ComObjects.ComObject;
 import Server.GameServer;
 import Server.LobbyServer;
 import Server.Player;
 
-/**
- * Testet ob der richtige Sieger ermittelt wird und ob jedem Mitspieler
- * der richtige Sieger mitgeteilt wird
- */
-public class TestWizardWinner {
+public class TestHeartsWinner {
 
 	@Test
-	public void testGetWinner() throws IOException{
+	public void testGetWinner() throws IOException {
 		LobbyServer lserver = new LobbyServer();
 		Socket socket1 = new Socket();
 		Socket socket2 = new Socket();
@@ -49,33 +38,33 @@ public class TestWizardWinner {
 		Player white = new Player(lserver, out2, in2);
 		Player orange = new Player(lserver, out3, in3);
 		Player brown = new Player(lserver, out4, in4);
-		GameServer server = new GameServer(lserver, blue, "Some Game", RulesetType.Wizard, "", false);
+		GameServer server = new GameServer(lserver, blue, "Some Game", RulesetType.Hearts, "", false);
 		server.addPlayer(white);
 		server.addPlayer(orange);
 		server.addPlayer(brown);
-		ServerWizard wiz = new ServerWizard(server);
-		wiz.addPlayerToGame("Mr. Blue");
-		wiz.addPlayerToGame("Mr. White");
-		wiz.addPlayerToGame("Mr. Orange");
-		wiz.addPlayerToGame("Mr. Brown");
+		ServerHearts hearts = new ServerHearts(server);
+		hearts.addPlayerToGame("Mr. Blue");
+		hearts.addPlayerToGame("Mr. White");
+		hearts.addPlayerToGame("Mr. Orange");
+		hearts.addPlayerToGame("Mr. Brown");
 			
-		OtherData dateblue = wiz.getPlayerState("Mr. Blue").getOtherData();
-		WizData wizdatblue = (WizData) dateblue;
-		wizdatblue.setPoints(80);
+		OtherData dateblue = hearts.getPlayerState("Mr. Blue").getOtherData();
+		HeartsData heartsdatblue = (HeartsData) dateblue;
+		heartsdatblue.setCompletePoints(80);
 		
-		OtherData datewhite = wiz.getPlayerState("Mr. White").getOtherData();
-		WizData wizdatwhite = (WizData) datewhite;
-		wizdatwhite.setPoints(200);
+		OtherData datewhite = hearts.getPlayerState("Mr. White").getOtherData();
+		HeartsData heartsdatwhite = (HeartsData) datewhite;
+		heartsdatwhite.setCompletePoints(200);
 		
-		OtherData dateorange = wiz.getPlayerState("Mr. Orange").getOtherData();
-		WizData wizdatorange = (WizData) dateorange;
-		wizdatorange.setPoints(130);
+		OtherData dateorange = hearts.getPlayerState("Mr. Orange").getOtherData();
+		HeartsData heartsdatorange = (HeartsData) dateorange;
+		heartsdatorange.setCompletePoints(130);
 		
-		OtherData datebrown = wiz.getPlayerState("Mr. Brown").getOtherData();
-		WizData wizdatbrown = (WizData) datebrown;
-		wizdatbrown.setPoints(240);
+		OtherData datebrown = hearts.getPlayerState("Mr. Brown").getOtherData();
+		HeartsData heartsdatbrown = (HeartsData) datebrown;
+		heartsdatbrown.setCompletePoints(240);
 		
-		assertTrue(wiz.getWinner().compareTo("Mr. Brown") == 0);
+		assertTrue(hearts.getWinner().compareTo("Mr. Brown") == 0);
 	}
 
 }
