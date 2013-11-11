@@ -5,7 +5,14 @@ package Client;
 
 /** 
  */
-public enum ViewNotification {
+public enum ViewNotification {	
+	moveAcknowledged,
+	
+	chooseCardsSuccessful,
+	
+	InputNumberSuccessful,
+	
+	chooseItemSuccessful,
 	
 	playerListUpdate,
 	
@@ -13,15 +20,19 @@ public enum ViewNotification {
 	
 	chatMessage,
 	
-	windowChangeAcknowledged,
+	loginSuccesful,
 	
-	windowChangeDenied,
+	joinGameSuccesful,
+	
+	gameStarted,
+	
+	passwordAccepted,
 	
 	playedCardsUpdate,
 	
 	otherDataUpdate,
 	
-	windowChangeForced,
+    windowChangeForced,
 	
 	openChooseCards,
 	

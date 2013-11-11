@@ -15,11 +15,11 @@ public class InputNumber implements Observer{
 
 	/**
 	 * Wird durch notify() im ClientModel aufgerufen. Je nach dem in arg
-	 * übergebenen Befehl wird ein Update des Fensters ausgeführt 
+	 * ï¿½bergebenen Befehl wird ein Update des Fensters ausgefï¿½hrt 
 	 * oder eine Fehlermeldung angezeigt.
 	 * 
 	 * @param o erwartet ein Objekt von der Klasse ClientModel
-	 * @param arg erwartet: openInputNumber
+	 * @param arg erwartet: openInputNumber, inputNumberSuccessful
 	 */
 	@Override
 	public void update(Observable o, Object arg) {

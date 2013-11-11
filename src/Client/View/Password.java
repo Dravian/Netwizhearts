@@ -13,9 +13,9 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 
 /**
- * Dieses Fenster ermöglicht die Eingabe eines Passwortes 
- * um einem Passwortgeschütztem Spiel beizutreten 
- * oder per 'Leave' wieder in die Lobby zurückzukehren.
+ * Dieses Fenster ermï¿½glicht die Eingabe eines Passwortes 
+ * um einem Passwortgeschï¿½tztem Spiel beizutreten 
+ * oder per 'Leave' wieder in die Lobby zurï¿½ckzukehren.
  */
 public class Password extends JFrame implements Observer{
 
@@ -73,7 +73,7 @@ public class Password extends JFrame implements Observer{
 	}
 	
 	/**
-	 * Fügt einen ActionListener für den 'Join' Button hinzu
+	 * Fï¿½gt einen ActionListener fï¿½r den 'Join' Button hinzu
 	 * 
 	 * @param a ein ActionListener
 	 */
@@ -82,7 +82,7 @@ public class Password extends JFrame implements Observer{
 	}
 	
 	/**
-	 * Ändert die Sprache des Fensters
+	 * ï¿½ndert die Sprache des Fensters
 	 * 
 	 * @param l Sprache in Form des Language-Enums
 	 */
@@ -97,11 +97,11 @@ public class Password extends JFrame implements Observer{
 
 	/**
 	 * Wird durch notify() im ClientModel aufgerufen. Je nach dem in arg
-	 * übergebenen ViewNotification-Befehl wird ein Update des Fensters ausgeführt 
+	 * ï¿½bergebenen ViewNotification-Befehl wird ein Update des Fensters ausgefï¿½hrt 
 	 * oder eine Fehlermeldung angezeigt.
 	 * 
 	 * @param o erwartet ein Objekt von der Klasse ClientModel
-	 * @param arg erwartet: windowChangeAcknowledged, windowChangeDenied
+	 * @param arg erwartet: openWarning, passwordAccepted
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
