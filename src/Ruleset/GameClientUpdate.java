@@ -97,6 +97,7 @@ public class GameClientUpdate {
 	
 	/**
 	 * Holt die aufgedeckte Trumpfkarte
+	 * @return trumpCard Die Trumpfkarte
 	 */
 	protected Card getTrumpCard() {
 		return trumpCard;

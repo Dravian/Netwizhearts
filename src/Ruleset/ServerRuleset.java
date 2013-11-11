@@ -123,14 +123,10 @@ public abstract class ServerRuleset {
 		return deck;
 	}
 
-	/** 
+	/**
 	 * Startet das Spiel
 	 */
 	public void runGame() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-	
-		// end-user-code
 	}
 	
 	/** 
@@ -283,7 +279,7 @@ public abstract class ServerRuleset {
 	/**
 	 * Berechnet und verteilt Stichpunkte an einzelne Spieler
 	 */
-	protected abstract void calculateTricks() ;
+	protected abstract void calculateTricks();
 
 	/** 
 	 * Berechnet das Ergebnis von der Rundenberechnung

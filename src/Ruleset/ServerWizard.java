@@ -30,7 +30,6 @@ public class ServerWizard extends ServerRuleset {
 
 	@Override
 	protected void calculateRoundOutcome() {
-		// TODO Automatisch erstellter Methoden-Stub
 
 	}
 	
@@ -49,12 +48,6 @@ public class ServerWizard extends ServerRuleset {
 	 */
 	protected void resolveMessage(MsgSelection msgSelection, String name){
 		
-	}
-	
-	/**
-	 * Erstellt ein neues GameState
-	 */
-	protected void createNewGameState() {
 	}
 
 	@Override

@@ -93,7 +93,8 @@ public abstract class ClientRuleset {
 	}
 	
 	/**
-	 * Gibt den momentanen Spielzustand zurück
+	 * Gibt die momentanen Spielphase zurück
+	 * @return gamePhase Die Spielphase
 	 */
 	public GamePhase getGamePhase() {
 		return gamePhase;
@@ -182,6 +183,7 @@ public abstract class ClientRuleset {
 	
 	/** 
 	 * Prüft ob ein gemachter Zug in einem Spiel gültig war
+	 * @param card Die Karte
 	 */
 	public abstract boolean isValidMove(Card card);
 }

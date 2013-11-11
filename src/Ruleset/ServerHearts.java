@@ -37,19 +37,16 @@ public class ServerHearts extends ServerRuleset {
 
 	@Override
 	protected void calculateRoundOutcome() {
-		// TODO Automatisch erstellter Methoden-Stub
 		
 	}
 
 	@Override
 	protected void calculateTricks() {
-		// TODO Automatisch erstellter Methoden-Stub
 		
 	}
 
 	@Override
 	protected String getWinner() {
-		// TODO Automatisch erstellter Methoden-Stub
 		return null;
 	}
 
