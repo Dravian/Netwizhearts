@@ -35,7 +35,7 @@ public class LobbyServer extends Server {
 	private Set<GameServer> gameServerSet;
 	
 	/** 
-	 * Ein Threat, der für das Annehmen neuer Clientverbindungen zuständig ist
+	 * Ein Thread, der für das Annehmen neuer Clientverbindungen zuständig ist
 	 */
 	private ClientListenerThread clientListenerThread;
 	
@@ -114,7 +114,7 @@ public class LobbyServer extends Server {
 	 * Diese Methode ist dafür zuständig eine Chatnachricht an alle Clients im
 	 * Spiel zu verschicken. Dafür wird die ComChatMessage mit broadcast
 	 * an alle Spieler im playerSet verteilt.
-	 * @param player ist der Threat der die Nachricht erhalten hat
+	 * @param player ist der Thread der die Nachricht erhalten hat
 	 * @param chat ist das ComObject, das die Chatnachricht enthält
 	 * @throws IOException 
 	 */
@@ -126,7 +126,7 @@ public class LobbyServer extends Server {
 	 * (bzw. noNames Set) entfernt, der Name des Players wird aus dem Set names entfernt.
 	 * War der Spieler im playerSet, wird ein ComUpdatePlayerlist mit broadcast an alle 
 	 * Clients verschickt.
-	 * @param player ist der Threat der die Nachricht erhalten hat
+	 * @param player ist der Thread der die Nachricht erhalten hat
 	 * @param quit ist das ComObject, welches angibt, dass der Spieler das 
 	 * Spiel vollständig verlässt
 	 * @throws IOException 
@@ -140,7 +140,7 @@ public class LobbyServer extends Server {
 	 * Durch broadcast wird sowohl im LobbyServer als auch im GameServer ein 
 	 * ComUpdatePlayerlist verschickt.
 	 * Zusätzlich wird dem Client mit sendToPlayer ein ComInitGameLobby geschickt.
-	 * @param player ist der Threat der die Nachricht erhalten hat
+	 * @param player ist der Thread der die Nachricht erhalten hat
 	 * @param create ist das ComObject, welches angibt, dass der Player 
 	 * ein neues Spiel erstellt hat
 	 * @throws IOException 
@@ -158,7 +158,7 @@ public class LobbyServer extends Server {
 	 * Durch broadcast wird sowohl im LobbyServer als auch im GameServer ein 
 	 * ComUpdatePlayerlist verschickt.
 	 * Zusätzlich wird dem joinendenClient mit sendToPlayer ein ComInitGameLobby geschickt.
-	 * @param player ist der Threat der die Nachricht erhalten hat
+	 * @param player ist der Thread der die Nachricht erhalten hat
 	 * @param join ist das ComObject, welches angibt, dass der Player einem Spiel beitreten will
 	 * @throws IOException 
 	 */
@@ -171,7 +171,7 @@ public class LobbyServer extends Server {
 	 * Der Player wird aus dem noNames Set entfernt und in das playerSet eingefügt.
 	 * Der Name wird in das Set names eingefügt. Dem Client wird ein 
 	 * ComServerAcknowledgement geschickt.
-	 * @param player ist der Threat der die Nachricht erhalten hat
+	 * @param player ist der Thread der die Nachricht erhalten hat
 	 * @param login ist das ComObject, dass den Benutzernamen des Clients enthält
 	 * @throws IOException 
 	 */
@@ -187,11 +187,12 @@ public class LobbyServer extends Server {
 		return null;
 	}
 
+	/**
+	 * Getter für das GameServerSet
+	 * @return Gibt das gameServerSet zurück
+	 */
 	public Set<GameServer> getGameServerSet() {
 		return gameServerSet;
 	}
 
-	public void setGameServerSet(Set<GameServer> gameServerSet) {
-		this.gameServerSet = gameServerSet;
-	}
 }

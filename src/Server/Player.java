@@ -27,20 +27,20 @@ public class Player implements Runnable{
 	 */
 	private Server server;
 	/**
-	 * PrintWriter, um für Nachrichten an den Client zu Senden
+	 * ObjectOutputStream, um für Nachrichten an den Client zu Senden
 	 */
 	private ObjectOutputStream comOut;
 	/**
-	 * BufferedReader, um für Nachrichten vom Client entgegenzunehmen
+	 * ObjectInputStream, um für Nachrichten vom Client entgegenzunehmen
 	 */
 	private ObjectInputStream comIn;
 
 	/**
 	 * Konstruktor des Players, in ihm werden die Attribute server, comOut und ComIn mit
-	 * vom ClientListererThret übergebenen werten Instanziiert.
+	 * vom ClientListererThread übergebenen werten Instanziiert.
 	 * @param lobbyServer ist der LobbyServer, der zu Beginn den Player verwaltet.
-	 * @param output ist der PrintWriter an den entsprechenden Client
-	 * @param input ist der BufferedReader vom entsprechenden Client
+	 * @param output ist der ObjectOutputStream an den entsprechenden Client
+	 * @param input ist der ObjectInputStream vom entsprechenden Client
 	 */
 	public Player(Server lobbyServer, ObjectOutputStream output, ObjectInputStream input){
 		server = lobbyServer;
@@ -49,7 +49,7 @@ public class Player implements Runnable{
 	}
 	
 	/**
-	 * Die run-Methode des Threat nimmt eingehende Nachrichten des Client
+	 * Die run-Methode des Thread nimmt eingehende Nachrichten des Client
 	 * entgegen und übergibt diese an den Server durch Aufruf der Methode 
 	 * resolveMessage()
 	 * Fängt eine IOException ab.
