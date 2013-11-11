@@ -14,7 +14,6 @@ public class WizData extends OtherData {
 
 	/**
 	 * Erstellt die OtherData eines Spielers zum Spiel Wizard
-	 * @param name Der Name des Spielers
 	 */
 	protected WizData() {
 		super();

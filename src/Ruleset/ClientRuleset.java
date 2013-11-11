@@ -57,6 +57,7 @@ public abstract class ClientRuleset {
 	 * @param ruleset Das Ruleset zum Spiel
 	 * @param minPlayers Die minimale Spieleranzahl
 	 * @param maxPlayers Die maximale Spieleranzahl
+	 * @param client Das ClientModel auf dem gespielt wird
 	 */
 	protected ClientRuleset(RulesetType ruleset, int minPlayers, 
 			int maxPlayers,ClientModel client) {
@@ -92,7 +93,8 @@ public abstract class ClientRuleset {
 	}
 	
 	/**
-	 * Gibt den momentanen Spielzustand zurück
+	 * Gibt die momentanen Spielphase zurück
+	 * @return gamePhase Die Spielphase
 	 */
 	public GamePhase getGamePhase() {
 		return gamePhase;
@@ -107,19 +109,19 @@ public abstract class ClientRuleset {
 	}
 	
 	/**
-	 * Gibt die eigenen OtherData als String zurück
-	 * @return Eine Stringrepräsentation von Otherdata
+	 * Gibt die OtherData des Models zurück
+	 * @return Die Otherdata des Models
 	 */
-	public String getOwnData() {
+	public OtherData getOwnData() {
 		return gameState.getOwnData();
 	}
 		
 	/** 
-	 * Holt die OtherData eines anderen Spielers als Stringrepräsentation
+	 * Holt die OtherData eines anderen Spielers 
 	 * @param Der Spielername
-	 * @return otherPlayerData Die OtherData als String repräsentiert
+	 * @return otherPlayerData Die OtherData 
 	 */
-	public String getOtherPlayerData(String player) {
+	public OtherData getOtherPlayerData(String player) {
 		return gameState.getOtherPlayerData(player);
 	}
 	
@@ -164,7 +166,7 @@ public abstract class ClientRuleset {
 	}
 	
 	/**
-	 * Verpackt eine Karte in ein Rulesetmessage und schick sie an den Server
+	 * Verpackt eine Karte in eine Rulesetmessage und schickt sie an den Server
 	 * @param card Die karte
 	 */
 	public void send(Card card) {
@@ -181,6 +183,7 @@ public abstract class ClientRuleset {
 	
 	/** 
 	 * Prüft ob ein gemachter Zug in einem Spiel gültig war
+	 * @param card Die Karte
 	 */
 	public abstract boolean isValidMove(Card card);
 }

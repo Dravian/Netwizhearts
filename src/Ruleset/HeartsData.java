@@ -8,6 +8,9 @@ package Ruleset;
  */
 public class HeartsData extends OtherData {
 
+	/**
+	 * Erstellt die OtherData eines Spielers zum Spiel Wizard
+	 */
 	protected HeartsData() {
 		super();
 	}

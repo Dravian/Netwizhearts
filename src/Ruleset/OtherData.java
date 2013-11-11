@@ -24,7 +24,6 @@ public abstract class OtherData {
 	
 	/**
 	 * Erzeugt die OtherData eines Spielers
-	 * @param name Der Name des Spielers dem die Daten gehören
 	 */
 	protected OtherData() {
 	}
@@ -57,9 +56,10 @@ public abstract class OtherData {
 	
 	/**
 	 * Setzt den Punktestand eines Spielers
+	 * @param points Der neue Punktestand
 	 */
-	protected void setPoints() {
-		
+	protected void setPoints(int points) {
+		this.points = points;
 	}
 	/**
 	 * Gibt den Punktestand eines Spielers zurück

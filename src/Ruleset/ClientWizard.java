@@ -14,7 +14,7 @@ import ComObjects.MsgSelectionRequest;
  */
 public class ClientWizard extends ClientRuleset {
 	/**
-	 * Die Mindestanzahl an Spielers die Wizard spielen können
+	 * Die Mindestanzahl an Spielern die Wizard spielen können
 	 */
 	private static final int MIN_PLAYERS = 3;
 	
@@ -33,6 +33,7 @@ public class ClientWizard extends ClientRuleset {
 
 	/**
 	 * Prüft ob ein gemachter Zug zum Spiel Wizard gültig ist
+	 * @param card Eine gespielte Karte
 	 * @return isValid true falls Zug gültig, false wenn nicht
 	 */
 	public boolean isValidMove(Card card) {

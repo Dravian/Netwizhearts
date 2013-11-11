@@ -30,14 +30,24 @@ public class ServerWizard extends ServerRuleset {
 
 	@Override
 	protected void calculateRoundOutcome() {
-		// TODO Automatisch erstellter Methoden-Stub
 
 	}
 	
 	/**
-	 * Erstellt ein neues GameState
+	 * Verarbeitet die RulesetMessage dass ein Spieler eine Stichangabe gemacht hat
+	 * @param msgNumber Die Nachricht vom Client
+	 * @param name Der Name des Spielers
 	 */
-	protected void createNewGameState() {
+	protected void resolveMessage(MsgNumber msgNumber, String name) {
+	}
+
+	/**
+	 * Verarbeitet die RulesetMessage dass ein Spieler eine Farbe ausgewählt hat
+	 * @param msgSelection Die Nachricht vom Client
+	 * @param name Der Name des Spielers
+	 */
+	protected void resolveMessage(MsgSelection msgSelection, String name){
+		
 	}
 
 	@Override

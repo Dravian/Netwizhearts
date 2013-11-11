@@ -1,6 +1,3 @@
-/**
- * 
- */
 package Ruleset;
 
 import java.util.List;
@@ -77,17 +74,17 @@ public class GameClientUpdate {
 	 * Holt die Otherdata des Client als String als Stringrepräsentation
 	 * @return ownData Die Otherdata des Clients
 	 */
-	protected String getOwnData() {
-		String ownData = playerState.getOtherDataAsString();
-		return ownData;
+	protected OtherData getOwnData() {
+		return playerState.getOtherData();
 	}
 	
 	/** 
-	 * Holt die OtherData der anderen Spieler als Stringrepräsentation
+	 * Holt die OtherData eines anderen Spielers als Stringrepräsentation
+	 * @param player Der Name des Spielers
 	 * @return otherPlayerData Die OtherData der anderen Spieler
 	 */
-	protected String getOtherPlayerData(String player) {
-		return (otherPlayerData.get(player)).toString();
+	protected OtherData getOtherPlayerData(String player) {
+		return otherPlayerData.get(player);
 	}
 	
 	/**
@@ -100,6 +97,7 @@ public class GameClientUpdate {
 	
 	/**
 	 * Holt die aufgedeckte Trumpfkarte
+	 * @return trumpCard Die Trumpfkarte
 	 */
 	protected Card getTrumpCard() {
 		return trumpCard;

@@ -58,17 +58,9 @@ public class PlayerState {
 		return this.ownHand;
 	}
 	
-	/** 
-	 * Holt die OtherData dieses Spielers als Stringrepäsentation
-	 * @return ownHand Eine Stringrepäsentation von OtherData
-	 */
-	protected String getOtherDataAsString() {
-		return otherData.toString();
-	}
-	
 	/**
 	 * Gibt die OtherData des Spielers zurück
-	 * @return
+	 * @return otherData Die OtherData eines Spielers
 	 */
 	protected OtherData getOtherData() {
 		return otherData;
