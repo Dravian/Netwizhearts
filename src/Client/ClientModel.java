@@ -74,11 +74,20 @@ public class ClientModel extends Observable{
 	}
 	
 	/**
-	 * Wird von dem ClientController
-	 * beim Verlassen eines Fensters
-	 * ausgeführt.
+	 * Das Clientprogramm schließt sich.
 	 */
-	public void leaveWindow() {
+	public void clientQuit() {
+		
+	}
+	
+	/**
+	 * Schickt eine Nachricht an den
+	 * Server die ihn darüber informiert,
+	 * dass der Spieler die Spiellobby verlassen hat.
+	 * Inforiert ebenfalls die Observer über das das
+	 * Verlassen des Spieles.
+	 */
+	public void leaveGameLobby() {
 		
 	}
 
@@ -178,19 +187,10 @@ public class ClientModel extends Observable{
 	}
 	
 	/**
-	 * Diese Methode wird von der View aufgerufen um eine neue Chatnachricht
-	 * abzuholen.
-	 * @return String die Chatnachricht.
-	 */
-	public String getChatMessage(){
-		return chatMessage;
-	}
-	
-	/**
 	 * Gibt der View die gespielte Karte eines anderen Spielers zurück.
 	 * @return enum CardID. Die Id der Karte
 	 */
-	public Card getPlayedCard(){
+	public final List<Card> discardPile(){
 		return null;
 	}
 	
@@ -199,15 +199,15 @@ public class ClientModel extends Observable{
 	 * @param Card[] Ein Array mit allen Karten,
 	 * die man auf der Hand hat.
 	 */
-	public Card[] getOwnHand() {
+	public final List<Card> getOwnHand() {
 		return null;
 	}
 	
 	/**
-	 * Liefert zusätzliche Daten anderer Spieler zurück.
+	 * Liefert die otherData atrribute anderer Spieler zurück.
 	 * @return List<OtherData> Liste mit gespielten Karten.
 	 */
-	public List<OtherData> getOtherPlayerData() {
+	public final List<OtherData> getOtherPlayerData() {
 		return null;
 		
 	}
@@ -250,8 +250,10 @@ public class ClientModel extends Observable{
 	 * auf dem Server.
 	 * @param gameName String Name des Spieles.
 	 * @param password String Passwort zum sichern des Spieles.
+	 * @param type RulesetType 
+	 * @param hasPassord 
 	 */
-	public void hostGame(String gameName, String password) {
+	public void hostGame(String gameName, String password, RulesetType type, Boolean hasPassword) {
 
 	}
 
@@ -273,6 +275,37 @@ public class ClientModel extends Observable{
 	}
 	
 	/**
+	 * Die die Anzahl der Spieler eines Spieles zurück.
+	 * @return int Die Spielerzahl eines Spieles.
+	 */
+	public int getPlayerCount() {
+		return 0;
+		
+	}
+	
+	/**
+	 * Gibt 
+	 * @return String 
+	 */
+	public String getWindowText() {
+		return null;
+	}
+	
+	/**
+	 * 
+	 */
+	public void setChooseCards(List<Card> cards) {
+		
+	}
+	
+	/**
+	 * 
+	 */
+	public void setInputNumber() {
+		
+	}
+	
+	/**
 	 * Nimmt vom ClientController eine Chatnachricht entgegen
 	 * und sendet diese an den Server.
 	 */
@@ -286,7 +319,7 @@ public class ClientModel extends Observable{
 	 * @param name String Der Name des Spiels.
 	 * @param password String Passwort eines Spieles.
 	 */
-	public void joinGame(final String name, final String password) {
+	public void joinGame(GameServerRepresentation game, String passwort) {
 	
 	}
 
@@ -336,13 +369,6 @@ public class ClientModel extends Observable{
 	 */
 	public void createConnection(final String username, final String serverAdress, final int port) {
 		
-	}
-	
-	/**
-	 * Gibt den Fehler beim Loginversuch zurück.
-	 */
-	public LoginError getLoginError(){
-		return null;	
 	}
 	
 	/**

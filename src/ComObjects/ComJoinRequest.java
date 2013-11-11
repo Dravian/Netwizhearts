@@ -4,7 +4,7 @@ package ComObjects;
  *  Diese Klasse ist ein spezielles Kommunikations-Objekt.
  *  Sie ist eine Nachricht, die an den Server gesendet wird,
  *  wenn der Spieler einem bestimmten Spiel beitreten will.
- *  Dazu enthÃ¤lt es den Namen des Spielleiters als String.
+ *  Dazu enthält es den Namen des Spielleiters als String.
  */
 public class ComJoinRequest extends ComObject {
 
@@ -14,15 +14,19 @@ public class ComJoinRequest extends ComObject {
      * Somit kann jedes Spiel mit Hilfe des Spielleiters identifiziert werden.
 	 */
 	private String gameMasterName;
+	
+	private String password;
 
     /**
-     * Dies ist der Kontruktor fÃ¼r eine neue ConJoinRequest-Nachricht.
+     * Dies ist der Kontruktor für eine neue ConJoinRequest-Nachricht.
      * Ein Spiel kann durch den eindeutigen Namen der Spielleiters
      * identifiziert werden.
      * @param gameMasterName ist der Name der Spielleiters.
+     * @param String Passwort für das Spiel.
      */
-    public ComJoinRequest(String gameMasterName) {
+    public ComJoinRequest(String gameMasterName, String password) {
         this.gameMasterName = gameMasterName;
+        this.password = password;
     }
 
     /**
