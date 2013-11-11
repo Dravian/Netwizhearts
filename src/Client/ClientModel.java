@@ -1,6 +1,3 @@
-/**
- * 
- */
 package Client;
 
 import Ruleset.Card;
@@ -29,9 +26,13 @@ import java.util.Observable;
 import java.util.Set;
 
 /** 
- * Implementiert das Client Model.
- * Das Model bedient den Server durch den ListenerThread
- * und leitet Daten an das Regelwerk und View weiter.
+ * Das ClientModel ist die Schnittstelle zwischen dem MessageListenerThread, 
+ * dem ClientRuleset und der View. Das Model prüft Nachrichten, welche es vom
+ * MessageListenerThread über die Methode receiveMessage() bekommt. RulesetMessages
+ * werden an das ClientRuleset weitergeleitet. Weiterhin informiert es seine Observer über
+ * Veränderungen und stellt ihnen Methoden zu Verfügung um spielrelevante Daten zu lesen.
+ * Weiterhin kann das ClientModel ComMessages and den Server schicken, um Kommandos des
+ * ClientRulesets oder Eingaben des Controllers weiterzugeben.
  */
 public class ClientModel extends Observable{
 	/** 
@@ -67,40 +68,52 @@ public class ClientModel extends Observable{
 	private String chatMessage;
 
 	/**
-	 * 
+	 * Erstellt ein ClientModel
 	 */
 	public ClientModel() {
 		
 	}
 	
 	/**
-	 * Wird von dem ClientController
-	 * beim Verlassen eines Fensters
-	 * ausgeführt.
+	 * Wird aufgerufen, wenn der User die GameLobby verlässt. 
+	 * Der Client gelangt zurück in die Lobby.
 	 */
 	public void leaveWindow() {
 		
 	}
 
 	/** 
-	 * Bearbeitet eine eingehende Chatnachricht.
+	 * Sendet eine eingehende Chatnachricht direkt an alle Observer weiter.
+	 * 
+	 * @param msg die ankommende ComChatMessage Nachricht
 	 */
 	public void receiveMessage(ComChatMessage msg) {
 		this.chatMessage = msg.getChatMessage();
 	}
 	
 	/** 
-	 * Verarbeitet eine Liste von Spielern und Spielen,
-	 * welche sich beim Betreten der ServerLobby bereits darin befinden.
+	 * Diese Methode wird von receiveMessage() aufgerufen,
+	 * falls der Server den Spieler erfolgreich in die Lobby hinzugefügt hat.
+	 * Empfängt die ComInitGameLobby Nachricht, die eine Liste aller
+	 * Spieler enthält, die sich in der Lobby befinden. Speichert
+	 * diese Liste und benachrichtigt die Observer mit der loginSuccesful
+	 * ViewNotification.
+	 * 
+	 * @param msg die ankommende ComInitLobby Nachricht
 	 */
 	public void receiveMessage(ComInitLobby msg) {
 		
 	}
 	
 	/** 
-	 * Verarbeitet eine Liste von Spielern,
-	 * welche sich beim betreten der Spiellobby
-	 * bereits darin befinden.
+	 * Diese Methode wird von receiveMessage() aufgerufen,
+	 * falls der Server den Spieler erfolgreich in die GameLobby hinzugefügt hat.
+	 * Empfängt die ComInitGameLobby Nachricht, die eine Liste aller
+	 * Spieler enthält, die sich in der GameLobby befinden. Speichert
+	 * diese Liste und benachrichtigt die Observer mit der joinGameSuccesful
+	 * ViewNotification.
+	 * 
+	 * @param msg die ankommende ComInitGameLobby Nachricht
 	 */
 	public void receiveMessage(ComInitGameLobby msg) {
 		
@@ -108,17 +121,22 @@ public class ClientModel extends Observable{
 	
 	/** 
 	 * Diese Methode wird von receiveMessage() aufgerufen,
-	 * falls eine Nachricht für das Regelwerk ankommt.
+	 * falls eine Nachricht für das Regelwerk ankommt. Die
+	 * darin enthaltene RulesetMessage wird dem ClientRuleset
+	 * zur Verarbeitung übergeben.
+	 * 
+	 * @param die ankommende ComRuleset Nachricht
 	 */
 	public void receiveMessage(ComRuleset msg) {
 		
 	}
 	
 	/** 
-	 * Diese Hilfsmethode wird von receiveMessage() aufgerufen,
+	 * Diese Methode wird von receiveMessage() aufgerufen,
 	 * falls ein Server Acknowledgement auftritt.
 	 * Dabei ist es von Bedeutung,
 	 *  in welchem Zustand sich der Client befindet.
+	 *  
 	 *  @param ack Eine Bestätigung durch den Server.
 	 */
 	public void receiveMessage(ComServerAcknowledgement ack) {
@@ -126,32 +144,52 @@ public class ClientModel extends Observable{
 	}
 	
 	/** 
-	 * Diese Hilfmethode wird von receiveMessage() aufgerufen,
+	 * Diese Methode wird von receiveMessage() aufgerufen,
 	 * falls der Spieler aus der Spiellobby durch einen Spielleiter
-	 * entfernt wurde.
+	 * entfernt wurde. Der Client gelangt zurück in die Lobby,
+	 * die Observer werden mit windowChangeForced benachrichtigt.
+	 * 
+	 * @param msg die ankommende ComBeenKicked Nachricht
 	 */
 	public void receiveMessage(ComBeenKicked msg) {
 		
 	}
 	
 	/**
-	 * Verarbeitet ein Update, das einen einzelnen Spieler betrifft.
+	 * Diese Methode wird von receiveMessage() aufgerufen,
+	 * falls auf dem Server ein neuer Spieler die Lobby/GameLobby
+	 * betreten hat oder sie von einem Spieler verlassen wurde.
+	 * Empfängt die ComUpdatePlayerlist Nachricht, die die Information
+	 * enthält, ob und welcher Spieler hinzugefügt oder entfernt werden muss.
+	 * Die Spielerliste wird dementsprechend bearbeitet und die Observer mit
+	 * playerListUpdate informiert.
+	 * 
+	 * @param update die ankommende ComLobbyUpdatePlayerlist Nachricht
 	 */
 	public void receiveMessage(ComUpdatePlayerlist update) {
 		
 	}
 	
 	/**
-	 * Verarbeitet ein Update, das ein einzelnes Spiel betrifft.
+	 * Diese Methode wird von receiveMessage() aufgerufen,
+	 * falls auf dem Server ein neues Spiel erstellt wurde oder
+	 * ein Spiel geschlossen/beendet wurde.
+	 * Empfängt die ComLobbyUpdateGamelist Nachricht, die die Information
+	 * enthält, ob und welches Spiel hinzugefügt oder entfernt werden muss.
+	 * Die Spielliste wird dementsprechend bearbeitet und die Observer mit
+	 * gameListUpdate informiert.
+	 * 
+	 * @param update die ankommende ComLobbyUpdateGamelist Nachricht
 	 */
 	public void receiveMessage(ComLobbyUpdateGamelist update) {
 		
 	}
 	
-	/*
+	/**
 	 * Diese Methode wird von dem ClientListenerThread aufgerufen
 	 * und bestimmt welche Nachricht sich hinter dem ComObjekt genau
 	 * verbirgt um weitere Verarbeitungsschritte einzuleiten.
+	 * 
 	 * @param comObject Die empfangene Nachricht.
 	 */
 	public void receiveMessage(ComObject comObject){
@@ -160,61 +198,56 @@ public class ClientModel extends Observable{
 	} 
 	
 	/**
-	 * Diese Methode wird von der View beim betreten der Spiellobby aufgerufen
-	 * und liefert eine Liste von Spielern in der Spiellobby.
-	 * @return List Eine Liste der Spieler in der Spiellobby.
+	 * Liefert eine Liste der Namen der Spieler in der Lobby oder GameLobby.
+	 * 
+	 * @return Liste von Spielernamen
 	 */
 	public List<String> getPlayerlist(){
 		return playerList;
 	}
 	
 	/**
-	 * Diese Methode wird von der View beim betreten der Serverlobby aufgerufen
-	 * und liefert eine Liste von Spielern und Spielen in der Serverlobby.
-	 * @return Set Enthält alle Spiele in der ServerLobby.
+	 * Liefert eine Liste der Spiele, die aktuell auf dem Server offen sind
+	 * oder gerade gespielt werden.
+	 * 
+	 * @return Liste aller Spiele der Lobby.
 	 */
-	public Set<GameServerRepresentation> getLobbyGamelist(){
+	public List<GameServerRepresentation> getLobbyGamelist(){
 		return null;
 	}
 	
 	/**
-	 * Diese Methode wird von der View aufgerufen um eine neue Chatnachricht
-	 * abzuholen.
-	 * @return String die Chatnachricht.
+	 * Gibt eine Liste aller bereits ausgespielten Karten zurück.
+	 * 
+	 * @return enum CardID. Die Ids der Karten
 	 */
-	public String getChatMessage(){
-		return chatMessage;
-	}
-	
-	/**
-	 * Gibt der View die gespielte Karte eines anderen Spielers zurück.
-	 * @return enum CardID. Die Id der Karte
-	 */
-	public Card getPlayedCard(){
+	public List<CardID> getPlayedCards(){
 		return null;
 	}
 	
 	/**
-	 * Gibt der View die eigenen Spielkarten zurück.
-	 * @param Card[] Ein Array mit allen Karten,
-	 * die man auf der Hand hat.
+	 * Gibt eine Liste der Handkarten des Spielers zurück.
+	 * 
+	 * @param Liste aller Handkarten des Spielers
 	 */
-	public Card[] getOwnHand() {
+	public List<CardID> getOwnHand() {
 		return null;
 	}
 	
 	/**
-	 * Liefert zusätzliche Daten anderer Spieler zurück.
-	 * @return List<OtherData> Liste mit gespielten Karten.
+	 * Liefert zusätzliche Daten der anderen Spieler zurück.
+	 * 
+	 * @return Liste der Stringrepräsentationen der OtherData der Spieler
 	 */
-	public List<OtherData> getOtherPlayerData() {
+	public List<String> getOtherPlayerData() {
 		return null;
 		
 	}
 	
 	/**
-	 * Gibt den Punktestand des Spielers aus.
-	 * @return int Der eigene Punktestand.
+	 * Gibt den Punktestand des Spielers zurück.
+	 * 
+	 * @return der eigene Punktestand.
 	 */
 	public int getOwnScore() {
 		return 0;
@@ -222,6 +255,7 @@ public class ClientModel extends Observable{
 	
 	/**
 	 * Setzt die Sprache der GUI.
+	 * 
 	 * @param language Enumerator der die Spielsprache anzeigt.
 	 */
 	public void setLanguage(final Language language) {
@@ -230,6 +264,7 @@ public class ClientModel extends Observable{
 	
 	/**
 	 * Liefert die Sprache der GUI.
+	 * 
 	 * @return language Enumerator der die Spielsprache anzeigt.
 	 */
 	public Language getLanguage() {
@@ -237,35 +272,41 @@ public class ClientModel extends Observable{
 	}
 
 	/** 
-	 * Wird vom Controller aufgerufen um einen Spieler
-	 * aus der Spiellobby zu entfernen.
-	 * @param name des Spielers welcher enfernt werden soll.
+	 * Entfernt einen Spieler aus der GameLobby.
+	 * 
+	 * @param Name des Spielers, der enfernt werden soll
 	 */
 	public void kickPlayer(final String name) {
 	
 	}
 
 	/** 
-	 * Wird vom ClientController aufgerufen und erstellt ein neues Spiel
-	 * auf dem Server.
+	 * Erstellt ein neues Spiel. Sendet dazu eine ComCreateGameRequest Nachricht
+	 * an den Server.
+	 * 
 	 * @param gameName String Name des Spieles.
+	 * @param hasPassword true, wenn das Spiel ein Passwort hat
 	 * @param password String Passwort zum sichern des Spieles.
+	 * @param ruleset das zu verwendende Regelwerk
 	 */
-	public void hostGame(String gameName, String password) {
+	public void hostGame(String gameName, boolean hasPassword, String password, RulesetType ruleset) {
 
 	}
 
 	/** 
-	 * Hilfsmethode des Models um erstellte Nachrichten an den Netzwerkthread weiter
-	 * zuleiten.
+	 * Sendete erstellte ComObjects an den Server.
+	 * 
+	 * @param object ComObject, das verschickt wird
 	 */
-	public void sendMessage(ComObject object) {
+	private void sendMessage(ComObject object) {
 		netIO.send(object);
 	}
 	
 	/**
-	 * Methode über die das clientRegelwerk
-	 * Nachrichten versenden kann.
+	 * Sendet eine RulesetMessage an den Server. Erstellt dazu eine
+	 * ComRuleset, die die RulesetMessage enthält.
+	 * 
+	 * @param msg die RulesetMessage, die an den Server geschickt werden soll
 	 */
 	public void send(RulesetMessage msg) {
 		ComObject com = new ComRuleset(msg);
@@ -275,14 +316,19 @@ public class ClientModel extends Observable{
 	/**
 	 * Nimmt vom ClientController eine Chatnachricht entgegen
 	 * und sendet diese an den Server.
+	 * 
+	 * @param msg die Chatnachricht, die an den Server geschickt werden soll
 	 */
 	public void sendChatMessage(final String msg) {
 		sendMessage(new ComChatMessage(msg));
 	}
 
 	/** 
-	 * Diese Methode wird von dem ClientController aufgerufen um
-	 * einem bereits erstelltem Spiel beizutreten.
+	 * Versucht einem Spiel beizutreten. Sendet dazu eine ComJoinRequest Nachricht an
+	 * den Server. Wird diese bestätigt, gelangt der Client in die GameLobby. Wird die
+	 * Nachricht nicht bestätigt, wird eine Fehlermeldung ausgegeben und die Observer
+	 * mit openWarning informiert.
+	 * 
 	 * @param name String Der Name des Spiels.
 	 * @param password String Passwort eines Spieles.
 	 */
@@ -291,8 +337,9 @@ public class ClientModel extends Observable{
 	}
 
 	/** 
-	 * Der ClientController ruft diese Methode auf,
-	 * um ein bereits erstelltes Spiel zu starten.
+	 * Versucht das erstellte Spiel zu starten. Sendet dazu eine ComStartGame an den Server.
+	 * Wenn der Client der Spielleiter des Spiels ist, gelangt er ins Spiel.
+	 * Wenn der Client nicht der Spielleiter des Spiels ist, wird eine Fehlermeldung ausgegeben.
 	 */
 	public void startGame() {
 	
@@ -300,24 +347,27 @@ public class ClientModel extends Observable{
 
 	/** 
 	 * Diese Methode wird innerhalb des ClientModels aufgerufen wenn ein Spiel 
-	 * vom Spielleiter gestartet wurde.
-	 * Es werden die Observer benachrichtigt und die View wechselt in die Spielansicht.
+	 * vom Spielleiter gestartet wurde. Der Client gelangt ins Spiel
+	 * Die Observer werden über die gameStarted ViewNotification benachrichtigt.
 	 */
 	private void initGame() {
 		
 	}
 
 	/** 
-	 * Wird vom ClientConroller aufgerufen um eine Karte auszuspielen.
-	 * @param id Die id der gespielten Karte um sie einer logischen Karte
-	 * zuordnen zu können.
+	 * Versucht eine Karte auszuspielen. Lässt dazu vom ClientRuleset überpüfen ob, die ausgewählte
+	 * Karte gespielt werden darf. Wenn ja, wird sie im ClientRuleset weiterbehandelt. Wenn nein,
+	 * wird eine Fehlermeldung ausgegeben und dazu die Observer mit openWarning informiert.
+	 * 
+	 * @param die ID der gespielten Karte
 	 */
-	public void makeMove(Card card) {
+	public void makeMove(CardID card) {
 		
 	}
 
 	/** 
 	 * Hilfsmethode die alle verbundenen Observer der GUI kontaktiert.
+	 * 
 	 * @param note Enum der die Art des Aufrufes bestimmt.
 	 */
 	private void informView(ViewNotification note) {
@@ -330,6 +380,7 @@ public class ClientModel extends Observable{
 	
 	/** 
 	 * Erstellt den MessageListenerThread und führt den Benutzerlogin durch.
+	 * 
 	 * @param username String der eindeutige Benutzername der für den Login verwendet wird.
 	 * @param serverAdress String die Adresse des spielservers.
 	 * @param port Integer der Port des Spielservers.
@@ -337,17 +388,11 @@ public class ClientModel extends Observable{
 	public void createConnection(final String username, final String serverAdress, final int port) {
 		
 	}
-	
-	/**
-	 * Gibt den Fehler beim Loginversuch zurück.
-	 */
-	public LoginError getLoginError(){
-		return null;	
-	}
-	
+			
 	/**
 	 * Gibt den Text aus der bei einer Spielwarnung
 	 * angezeigt wird.
+	 * 
 	 * @return String Text der Warnung.
 	 */
 	public String getWarningText() {
@@ -356,6 +401,7 @@ public class ClientModel extends Observable{
 	
 	/**
 	 * Liefert ein Array mit allen implementierten Regelwerken.
+	 * 
 	 * @param RulesetType[] Array von unterstützten Regelwerken.
 	 */
 	public RulesetType[] getRulesets() {
