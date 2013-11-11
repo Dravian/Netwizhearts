@@ -16,8 +16,6 @@ import ComObjects.*;
  * Ist ein abstrakte Klasse, von der die Klassen LobbyServer und
  * GameServer erben. Es stellt Methoden zur Nachrichtenversendung und
  * -verarbeitung bereit, sowie zur Verwaltung von Playern
- * @author Viktoria
- *
  */
 public abstract class Server {
 	/**
@@ -41,27 +39,25 @@ public abstract class Server {
 	/**
 	 * Diese Methode wird genutzt, um ein ComObject an einen einzigen
 	 * Client zu verschicken. Der Player der die Nachricht verschicken soll
-	 * wird Anhand des übergebenen Benutzernamens identifiziert. Ist der Name
-	 * oder das ComObject leer wird nichts verschickt.
+	 * wird Anhand des übergebenen Benutzernamens identifiziert. 
+	 * Es wird vorrausgesetzt, dass der Name und das ComObject gültig sind.
 	 * @param name ist der Name des Clients, an den der Player die Nachricht  
 	 * verschicken soll
 	 * @param c ist das ComObject, dass verschickt werden soll
-	 * @throws IOException wenn der Output nicht funktioniert
 	 */
-	public synchronized void sendToPlayer(String name, ComObject com) throws IOException {
-		if(name != null || com != null){
-				for (Player player : playerSet) {
-					if(player.getName() == name){
-						player.send(com);
-					}		
-				}
+	public synchronized void sendToPlayer(String name, ComObject com){
+		for (Player player : playerSet) {
+			if(player.getName() == name){
+				player.send(com);
+			}
 		}
 	}
 
 	/**
 	 * Diese Methode fügt einen Player dem Set an Playern hinzu, welche der
-	 * Server verwaltet.
-	 * @param player ist der Player, der hinzugefoügt wird
+	 * Server verwaltet. Es wird vorrausgesetzt, dass der Player gültig und 
+	 * noch nicht im Set vorhanden ist.
+	 * @param player ist der Player, der hinzugefügt wird
 	 */
 	public synchronized void  addPlayer(Player player) {
 		playerSet.add(player);
@@ -69,7 +65,8 @@ public abstract class Server {
 
 	/**
 	 * Diese Methode entfernt einen Player aus dem Set an Playern, welche der
-	 * Server verwaltet.
+	 * Server verwaltet. Es wird vorrausgesetzt, dass der Player gültig und 
+	 * im Set vorhanden ist.
 	 * @param player ist der Player, der entfernt wird
 	 */
 	public synchronized void removePlayer(Player player) {
@@ -78,17 +75,26 @@ public abstract class Server {
 
 	/**
 	 * Diese Methode wird genutzt, um ein ComObject an alle Clients,
-	 * die vom Server verwaltet werden, zu schicken. Ist das ComObject
-	 * leer, passiert nichts.
+	 * die vom Server verwaltet werden, zu schicken.
+	 * Es wird vorrausgesetzt, dass das ComObject gültig ist.
 	 * @param com ist das ComObject, dass verschickt werden soll
-	 * @throws IOException wenn der Output nicht funktioniert
 	 */
-	public synchronized void broadcast(ComObject com) throws IOException {
+	public synchronized void broadcast(ComObject com){
 		if(com != null){
 			for (Player player : playerSet) {
 				player.send(com);
 			}
 		}
+	}
+	
+	/**
+	 * Diese Methode legt den Ablauf fest, was passiert, falls
+	 * die Verbindung zu einem Client verloren gegangen ist.
+	 * @param player ist der Tread von dem die IOException kommt
+	 */
+	public void handleIOException(Player player) {
+		// TODO Automatisch erstellter Methoden-Stub
+		
 	}
 
 }

@@ -9,8 +9,6 @@ import Ruleset.RulesetType;
  * Dies eine Klasse, die Informationen über den Zustand eines Spielservers bereithält. 
  * Sie wird dem ComObjekt ComLobbyUpdateGameList angehängt, um die Spielliste in der 
  * GameLobby aktualisieren zu können
- * @author Viktoria
- *
  */
 public class GameServerRepresentation {
 	/**
