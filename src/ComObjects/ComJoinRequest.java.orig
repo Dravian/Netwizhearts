@@ -1,0 +1,49 @@
+package ComObjects;
+
+/** 
+ *  Diese Klasse ist ein spezielles Kommunikations-Objekt.
+ *  Sie ist eine Nachricht, die an den Server gesendet wird,
+ *  wenn der Spieler einem bestimmten Spiel beitreten will.
+<<<<<<< HEAD
+ *  Dazu enthält es den Namen des Spielleiters als String.
+=======
+ *  Dazu enthÃ¤lt es den Namen des Spielleiters als String.
+>>>>>>> ViewKlassen
+ */
+public class ComJoinRequest extends ComObject {
+
+    /**
+	 * Der Name der Spielleiters muss enthalten sein um ein Spiel zuzuornen.
+     * Der Spielname ist nicht eindeutig, aber der Spielleiter schon.
+     * Somit kann jedes Spiel mit Hilfe des Spielleiters identifiziert werden.
+	 */
+	private String gameMasterName;
+
+    /**
+<<<<<<< HEAD
+     * Dies ist der Kontruktor für eine neue ConJoinRequest-Nachricht.
+=======
+     * Dies ist der Kontruktor fÃ¼r eine neue ConJoinRequest-Nachricht.
+>>>>>>> ViewKlassen
+     * Ein Spiel kann durch den eindeutigen Namen der Spielleiters
+     * identifiziert werden.
+     * @param gameMasterName ist der Name der Spielleiters.
+     */
+    public ComJoinRequest(String gameMasterName) {
+        this.gameMasterName = gameMasterName;
+    }
+
+    /**
+<<<<<<< HEAD
+     * Diese Methode gibt den Namen des Spielleiters zurück.
+=======
+     * Diese Methode gibt den Namen des Spielleiters zurÃ¼ck.
+>>>>>>> ViewKlassen
+     * Dieser ist eindeutig, so kann ein bestimmtes Spiel
+     * identifiziert werden.
+     * @return den Namen des Spielleiters.
+     */
+    public String getGameMasterName() {
+        return gameMasterName;
+    }
+}

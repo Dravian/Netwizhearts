@@ -28,10 +28,10 @@ import Client.ViewNotification;
 import java.awt.Color;
 
 /**
- * Im Game Fenster läuft das Spiel ab.Es enthält den Spielchat und ein GamePanel.
- * Außerdem können über ein Dropdown-Menü Änderungen an Hintergrundbild 
- * und Kartenhintergründen vorgenommen werden. Schließen beendet das Spiel 
- * und der Spieler wird in die Lobby zurückgeleitet.
+ * Im Game Fenster lï¿½uft das Spiel ab.Es enthï¿½lt den Spielchat und ein GamePanel.
+ * Auï¿½erdem kï¿½nnen ï¿½ber ein Dropdown-Menï¿½ ï¿½nderungen an Hintergrundbild 
+ * und Kartenhintergrï¿½nden vorgenommen werden. Schlieï¿½en beendet das Spiel 
+ * und der Spieler wird in die Lobby zurï¿½ckgeleitet.
  */
 public class Game extends JFrame implements Observer{
 
@@ -111,14 +111,17 @@ public class Game extends JFrame implements Observer{
 	lblNewLabel_2.setOpaque(false);
 	contentPane.add(lblNewLabel_2); */
 	}
+	
+	//trickgamemethoden
 
 	/**
 	 * Wird durch notify() im ClientModel aufgerufen. Je nach dem in arg
-	 * übergebenen ViewNotification-Befehl wird ein Update des Fensters ausgeführt 
+	 * ï¿½bergebenen ViewNotification-Befehl wird ein Update des Fensters ausgefï¿½hrt 
 	 * oder eine Fehlermeldung angezeigt.
 	 * 
 	 * @param o erwartet ein Objekt von der Klasse ClientModel
-	 * @param arg erwartet: chatMessage, playedCardsUpdate, otherDataUpdate
+	 * @param arg erwartet: playedCardsUpdate, otherDataUpdate,
+	 * 					  	moveAcknowledged, gameStarted
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
@@ -128,7 +131,7 @@ public class Game extends JFrame implements Observer{
 	
 	/**
 	 * Wird durch notify() im ClientModel aufgerufen, wenn
-	 * eine Chatnachricht übergeben wird.
+	 * eine Chatnachricht ï¿½bergeben wird.
 	 * 
 	 * @param o erwartet ein Objekt von der Klasse ClientModel
 	 * @param arg erwartet eine Chatnachricht in String-Form

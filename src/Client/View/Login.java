@@ -18,10 +18,10 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 /**
- * Das Login-Fenster repräsentiert den initialen Dialog zwischen Benutzer und Client.
+ * Das Login-Fenster reprï¿½sentiert den initialen Dialog zwischen Benutzer und Client.
  * In diesem Fenster kann der Benutzer seinen Namen und die Adresse des Servers eingeben. 
- * Außerdem ist über den Login die Auswahl der Sprache möglich. 
- * Über den Login-Button wird die Verbindung zum Server hergestellt.
+ * Auï¿½erdem ist ï¿½ber den Login die Auswahl der Sprache mï¿½glich. 
+ * ï¿½ber den Login-Button wird die Verbindung zum Server hergestellt.
  */
 public class Login extends JFrame implements Observer{
 
@@ -102,7 +102,7 @@ public class Login extends JFrame implements Observer{
 	}
 	
 	/**
-	 * Fügt einen Listener für den 'Connect' Button des Login Fensters hinzu
+	 * Fï¿½gt einen Listener fï¿½r den 'Connect' Button des Login Fensters hinzu
 	 * 
 	 * @param a ein ActionListener
 	 */
@@ -111,7 +111,7 @@ public class Login extends JFrame implements Observer{
 	}
 	
 	/**
-	 * Fügt einen Listener für die Sprachauswahl des Login Fensters hinzu
+	 * Fï¿½gt einen Listener fï¿½r die Sprachauswahl des Login Fensters hinzu
 	 * 
 	 * @param i ein ItemListener
 	 */
@@ -120,7 +120,7 @@ public class Login extends JFrame implements Observer{
 	}
 	
 	/**
-	 * Ändert die Sprache des Fensters
+	 * ï¿½ndert die Sprache des Fensters
 	 * 
 	 * @param l Sprache in Form des Language-Enums
 	 */
@@ -159,11 +159,11 @@ public class Login extends JFrame implements Observer{
 
 	/**
 	 * Wird durch notify() im ClientModel aufgerufen. Je nach dem in arg
-	 * übergebenen ViewNotification-Befehl wird ein Update des Fensters ausgeführt 
+	 * ï¿½bergebenen ViewNotification-Befehl wird ein Update des Fensters ausgefï¿½hrt 
 	 * oder eine Fehlermeldung angezeigt.
 	 * 
 	 * @param o erwartet ein Objekt von der Klasse ClientModel
-	 * @param arg erwartet: windowChangeAcknowledged, windowChangeDenied
+	 * @param arg erwartet: loginSuccessful
 	 */
 	@Override
 	public void update(Observable o, Object arg) {

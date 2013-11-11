@@ -29,10 +29,10 @@ import java.util.Observer;
  * Es bietet alle Komponenten, um ein Regelwerk zu wï¿½hlen, einen Spielnamen festzulegen 
  * und das Spiel durch ein Passwort zu schï¿½tzen. In der Spielerstellung wird ein 
  * Titelbild des ausgewï¿½hlten Spiels und eine kurze Beschreibung angezeigt. 
- * über 'Leave' kehrt der Spieler in die Lobby zurï¿½ck 
+ * ï¿½ber 'Leave' kehrt der Spieler in die Lobby zurï¿½ck 
  * und mit 'Create' wird das Spiel erstellt.
  */
-public class CreateGame extends JFrame implements Observer {
+public class CreateGame extends JFrame{
 
 	
 	private static final long serialVersionUID = -2893031560688870723L;
@@ -130,7 +130,7 @@ public class CreateGame extends JFrame implements Observer {
 	}
 	
 	/**
-	 * Fügt  einen MouseListener zum ImagePanel des CreateGame Fensters hinzu,
+	 * Fï¿½gt  einen MouseListener zum ImagePanel des CreateGame Fensters hinzu,
 	 * der zur Anzeige des MouseOver-Texts verwendet wird.
 	 * 
 	 * @param m ein MouseListener
@@ -140,16 +140,16 @@ public class CreateGame extends JFrame implements Observer {
 	}
 	
 	/**
-	 * Fügt einen Listener für die Regelwerk-Auswahl des CreateGame Fensters hinzu.
+	 * Fï¿½gt einen Listener fï¿½r die Regelwerk-Auswahl des CreateGame Fensters hinzu.
 	 * 
 	 * @param i ein ItemListener
 	 */
-	public void addLanguageSelectionListener(ItemListener i) {
+	public void addRulesetSelectionListener(ItemListener i) {
 		rulesetBox.addItemListener(i);
 	}
 	
 	/**
-	 * Fügt einen ActionListener für den 'Create' Button hinzu.
+	 * Fï¿½gt einen ActionListener fï¿½r den 'Create' Button hinzu.
 	 * 
 	 * @param a ein ActionListener
 	 */
@@ -158,7 +158,7 @@ public class CreateGame extends JFrame implements Observer {
 	}
 	
 	/**
-	 * Fügt einen ActionListener für den 'Leave' Button hinzu.
+	 * Fï¿½gt einen ActionListener fï¿½r den 'Leave' Button hinzu.
 	 * 
 	 * @param a ein ActionListener
 	 */
@@ -167,7 +167,7 @@ public class CreateGame extends JFrame implements Observer {
 	}
 	
 	/**
-	 * Ändert die Sprache des Fensters
+	 * ï¿½ndert die Sprache des Fensters
 	 * 
 	 * @param l Sprache in Form des Language-Enums
 	 */
@@ -178,19 +178,5 @@ public class CreateGame extends JFrame implements Observer {
 	
 	private void updateLanguage() {
 		//TODO
-	}
-
-	/**
-	 * Wird durch notify() im ClientModel aufgerufen. Je nach dem in arg
-	 * ï¿½bergebenen ViewNotification-Befehl wird ein Update des Fensters ausgefï¿½hrt 
-	 * oder eine Fehlermeldung angezeigt.
-	 * 
-	 * @param o erwartet ein Objekt von der Klasse ClientModel
-	 * @param arg erwartet: windowChangeAcknowledged, windowChangeDenied
-	 */
-	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
 	}
 }

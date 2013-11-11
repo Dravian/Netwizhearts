@@ -1,0 +1,48 @@
+package ComObjects;
+
+import Server.GameServerRepresentation;
+
+/** 
+ * Diese Klasse ist ein spezielles Kommunikations-Objekt.
+ * Sie aktualisiert die Gameliste in der Lobby.
+ * Dazu enthält sie den GameServer und ein RemoveFlag.
+ */
+public class ComLobbyUpdateGamelist extends ComObject {
+
+	private boolean removeFlag;
+	private GameServerRepresentation gameServer;
+
+    /**
+<<<<<<< HEAD
+     * Dies ist der Kontruktor f�r eine neue ComLobbyUpdateGamelist-Nachricht.
+=======
+     * Dies ist der Kontruktor für eine neue ComLobbyUpdateGamelist-Nachricht.
+>>>>>>> ViewKlassen
+     * @param removeFlag zeigt an, ob das Spiel gelöscht werden soll.
+     * @param gameServer ist das Spiel.
+     */
+    public ComLobbyUpdateGamelist(boolean removeFlag, GameServerRepresentation gameServer) {
+        this.removeFlag = removeFlag;
+        this.gameServer = gameServer;
+    }
+
+    /**
+     * Diese Methode liefert, ob ein Spiel gelöscht werden soll oder nicht.
+<<<<<<< HEAD
+     * @return ob das Spiel gel�scht wird.
+=======
+     * @return ob das Spiel gelöscht wird.
+>>>>>>> ViewKlassen
+     */
+    public boolean isRemoveFlag() {
+        return removeFlag;
+    }
+
+    /**
+     * Diese Methode liefert das Spiel, das geupdated werden soll.
+     * @return das Spiel.
+     */
+    public GameServerRepresentation getGameServer() {
+        return gameServer;
+    }
+}

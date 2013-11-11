@@ -8,7 +8,7 @@ import java.util.Observer;
 
 
 /** 
- * Dieses Fenster ermöglicht es dem Spieler aus einer Liste von Items eines auszuwählen.
+ * Dieses Fenster ermï¿½glicht es dem Spieler aus einer Liste von Items eines auszuwï¿½hlen.
  */
 public class ChooseItem implements Observer{
 	
@@ -16,11 +16,11 @@ public class ChooseItem implements Observer{
 
 	/**
 	 * Wird durch notify() im ClientModel aufgerufen. Je nach dem in arg
-	 * übergebenen Befehl wird ein Update des Fensters ausgeführt 
+	 * ï¿½bergebenen Befehl wird ein Update des Fensters ausgefï¿½hrt 
 	 * oder eine Fehlermeldung angezeigt.
 	 * 
 	 * @param o erwartet ein Objekt von der Klasse ClientModel
-	 * @param arg erwartet: openChooseItem
+	 * @param arg erwartet: openChooseItem, chooseItemSuccessful
 	 */
 	@Override
 	public void update(Observable arg0, Object arg1) {
