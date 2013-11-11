@@ -24,7 +24,6 @@ public abstract class OtherData {
 	
 	/**
 	 * Erzeugt die OtherData eines Spielers
-	 * @param name Der Name des Spielers dem die Daten gehören
 	 */
 	protected OtherData() {
 	}

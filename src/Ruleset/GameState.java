@@ -72,6 +72,7 @@ public class GameState {
 	/**
 	 * Fügt den Spieler ins Spiel hinein, falls er nicht schon im Spiel ist
 	 * @param name Der Name eines Spielers
+	 * @return true falls der Spieler noch nicht im Spiel ist, und false sonst
 	 */
 	protected boolean addPlayerToGame(String name) {
 		PlayerState player = new PlayerState(name,ruleset);
@@ -178,13 +179,6 @@ public class GameState {
 	}
 	
 	/**
-	 * Erhöht die Rundenanzahl um eins
-	 */
-	private void newRound() {
-		roundNumber++;
-	}
-	
-	/**
 	 * Holt die Anzahl der gespielten Karten 
 	 * @return Die Anzahl der gespielten Karten
 	 */
@@ -247,6 +241,7 @@ public class GameState {
 	/**
 	 * Gibt eine bestimmte Karte einem Spieler
 	 * @param name Der Name des Spielers
+	 * @param card Die Karte
 	 * @return true falls die Karte im Stapel ist, false wenn nicht
 	 */
 	protected boolean giveACard(String name, Card card) {

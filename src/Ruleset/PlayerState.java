@@ -60,7 +60,7 @@ public class PlayerState {
 	
 	/**
 	 * Gibt die OtherData des Spielers zurück
-	 * @return
+	 * @return otherData Die OtherData eines Spielers
 	 */
 	protected OtherData getOtherData() {
 		return otherData;

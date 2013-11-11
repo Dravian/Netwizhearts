@@ -55,14 +55,18 @@ public abstract class ServerRuleset {
 	
 	/**
 	 * Erstellt ein ServerRuleset
-	 * @param ruleset Der Spieltyp
+	 * @param ruleset Der Rulesettyp vom Server
+	 * @param min Die minimale Anzahl an Spielern
+	 * @param max Die maximale Anzahl an Spielern
+	 * @param server Der Server auf dem gespielt wird
 	 */
-	protected ServerRuleset(RulesetType ruleset, int min, int max, GameServer s) {
+	protected ServerRuleset(RulesetType ruleset, int min, int max, 
+			GameServer server) {
 		RULESET = ruleset;
 		MIN_PLAYERS = min;
 		MAX_PLAYERS = max;
 		gamePhase = GamePhase.Start;
-		this.server = s;
+		this.server = server;
 	}
 	
 	/**
@@ -91,6 +95,7 @@ public abstract class ServerRuleset {
 	
 	/**
 	 * Gibt den momentanen Spielzustand zurück
+	 * @return Gibt die momentan Spielphase zurück
 	 */
 	public GamePhase getGamePhase() {
 		return gamePhase;
@@ -130,6 +135,7 @@ public abstract class ServerRuleset {
 	
 	/** 
 	 * Setzt den Spieler der als Erster am Zug ist, im Gamestate
+	 * @param Der Spielerzustand des Spielers
 	 */
 	protected void setFirstPlayer(PlayerState player) {
 		gameState.setFirstPlayer(player);
@@ -154,12 +160,21 @@ public abstract class ServerRuleset {
 
 	/** 
 	 * Setzt den Spieler der am Nächsten am Zug ist, im Gamestate
+	 * @param player Der Playerstate eines Spielers
 	 * @return false wenn der selbe Spieler nochmal als currentPlayer gesetzt wird
 	 */
 	protected boolean setCurrentPlayer(PlayerState player) {
 		return setCurrentPlayer(player);
 	}
 	
+	/**
+	 * Die OtherData eines Spielers
+	 * @param player Der Spielerzustand
+	 * @return Gibt OtherData zurück
+	 */
+	protected OtherData getOtherData(PlayerState player) {
+		return player.getOtherData();
+	}
 	/**
 	 * Holt den Spieler der gerade am Zug ist
 	 * @return currentPlayer Der Spielzustand des Spielers der grad am Zug ist
@@ -213,51 +228,16 @@ public abstract class ServerRuleset {
 	}
 	
 	/** 
-	 * Verarbeitet eine RulesetMessage die von einem Spieler kommt
-	 * @param message Die Nachricht
-	 * @param name Der Name des Spielers
-	 */
-	public void resolveMessage(RulesetMessage message, String name) {
-		
-	}
-	
-	/** 
 	 * Verarbeitet die RulesetMessage dass eine Karte vom Spieler gespielt
 	 * @param msgCard Die Nachricht vom Client welche Karte gespielt wurde
 	 * @param name Der Name des Spielers
 	 */
-	protected void processMessage(MsgCard msgCard, String name) {
+	protected void resolveMessage(MsgCard msgCard, String name) {
 		
 	}
 	
 	/**
-	 * Verarbeitet die RulesetMessage dass mehrere Karten von einem Spieler übergeben wurden
-	 * @param msgMultiCard Die Nachricht vom Client
-	 * @param name Der Name des Spielers
-	 */
-	protected void processMessage(MsgMultiCards msgMultiCard, String name) {
-	
-	}
-	
-	/**
-	 * Verarbeitet die RulesetMessage dass ein Spieler eine Stichangabe gemacht hat
-	 * @param msgNumber Die Nachricht vom Client
-	 * @param name Der Name des Spielers
-	 */
-	protected void processMessage(MsgNumber msgNumber, String name) {
-	}
-
-	/**
-	 * Verarbeitet die RulesetMessage dass ein Spieler eine Farbe ausgewählt hat
-	 * @param msgSelection Die Nachricht vom Client
-	 * @param name Der Name des Spielers
-	 */
-	protected void processMessage(MsgSelection msgSelection, String name){
-		
-	}
-	
-	/**
-	 * Verteil eine bestimmte Anzahl an Karten an die Spieler
+	 * Verteilt eine bestimmte Anzahl an Karten an die Spieler
 	 * @param number Die Anzahl an Karten
 	 * @return Gibt true zurück wenn ein Spieler keine Karten hat, false sonst
 	 */
@@ -268,6 +248,7 @@ public abstract class ServerRuleset {
 	/**
 	 * Gibt einem Spieler eine bestimmte Karte
 	 * @param name Der Name eines Spielers
+	 * @param card Eine Karte
 	 * @return Gibt true zurück wenn die Karte im Deck ist, false sonst
 	 */
 	protected boolean giveACard(String name, Card card) {
@@ -280,8 +261,7 @@ public abstract class ServerRuleset {
 	 * @return true falls der Spieler die Karte hat
 	 */
 	protected boolean playCard(Card card) {
-		gameState.playCard(card);
-		return false;
+		return gameState.playCard(card);
 	}
 	
 	/**
@@ -293,10 +273,9 @@ public abstract class ServerRuleset {
 	}
 
 	/** 
-	 * Prüft ob ein gemachter Zug in einem Spiel gültig war, wenn nicht wird an
-	 * den Spieler erneut eine MsgCardRequest gesendet
+	 * Prüft ob ein gemachter Zug vom currentPlayer in einem Spiel gültig war,
+	 * wenn nicht wird an den Spieler erneut eine MsgCardRequest gesendet
 	 * @param card Die Karte die gespielt wurde
-	 * @param name Der Name des Spielers
 	 * @return true falls Zug gültig und false wenn nicht
 	 */
 	protected abstract boolean isValidMove(Card card);
@@ -307,7 +286,7 @@ public abstract class ServerRuleset {
 	protected abstract void calculateTricks() ;
 
 	/** 
-	 * Berechnet das Ergebnis von der Berechnung eines Befehls
+	 * Berechnet das Ergebnis von der Rundenberechnung
 	 */
 	protected abstract void calculateRoundOutcome();
 

@@ -25,6 +25,15 @@ public class ServerHearts extends ServerRuleset {
 		boolean isValid = false;
 		return isValid;
 	}
+		
+	/**
+	 * Verarbeitet die RulesetMessage dass mehrere Karten von einem Spieler übergeben wurden
+	 * @param msgMultiCard Die Nachricht vom Client
+	 * @param name Der Name des Spielers
+	 */
+	protected void resolveMessage(MsgMultiCards msgMultiCard, String name) {
+	
+	}
 
 	@Override
 	protected void calculateRoundOutcome() {

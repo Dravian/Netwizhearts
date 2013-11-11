@@ -35,6 +35,23 @@ public class ServerWizard extends ServerRuleset {
 	}
 	
 	/**
+	 * Verarbeitet die RulesetMessage dass ein Spieler eine Stichangabe gemacht hat
+	 * @param msgNumber Die Nachricht vom Client
+	 * @param name Der Name des Spielers
+	 */
+	protected void resolveMessage(MsgNumber msgNumber, String name) {
+	}
+
+	/**
+	 * Verarbeitet die RulesetMessage dass ein Spieler eine Farbe ausgewählt hat
+	 * @param msgSelection Die Nachricht vom Client
+	 * @param name Der Name des Spielers
+	 */
+	protected void resolveMessage(MsgSelection msgSelection, String name){
+		
+	}
+	
+	/**
 	 * Erstellt ein neues GameState
 	 */
 	protected void createNewGameState() {

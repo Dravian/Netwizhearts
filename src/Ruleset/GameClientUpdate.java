@@ -1,6 +1,3 @@
-/**
- * 
- */
 package Ruleset;
 
 import java.util.List;
@@ -82,7 +79,8 @@ public class GameClientUpdate {
 	}
 	
 	/** 
-	 * Holt die OtherData der anderen Spieler als Stringrepräsentation
+	 * Holt die OtherData eines anderen Spielers als Stringrepräsentation
+	 * @param player Der Name des Spielers
 	 * @return otherPlayerData Die OtherData der anderen Spieler
 	 */
 	protected OtherData getOtherPlayerData(String player) {

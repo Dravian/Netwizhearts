@@ -57,6 +57,7 @@ public abstract class ClientRuleset {
 	 * @param ruleset Das Ruleset zum Spiel
 	 * @param minPlayers Die minimale Spieleranzahl
 	 * @param maxPlayers Die maximale Spieleranzahl
+	 * @param client Das ClientModel auf dem gespielt wird
 	 */
 	protected ClientRuleset(RulesetType ruleset, int minPlayers, 
 			int maxPlayers,ClientModel client) {
@@ -107,17 +108,17 @@ public abstract class ClientRuleset {
 	}
 	
 	/**
-	 * Gibt die eigenen OtherData als String zurück
-	 * @return Eine Stringrepräsentation von Otherdata
+	 * Gibt die OtherData des Models zurück
+	 * @return Die Otherdata des Models
 	 */
 	public OtherData getOwnData() {
 		return gameState.getOwnData();
 	}
 		
 	/** 
-	 * Holt die OtherData eines anderen Spielers als Stringrepräsentation
+	 * Holt die OtherData eines anderen Spielers 
 	 * @param Der Spielername
-	 * @return otherPlayerData Die OtherData als String repräsentiert
+	 * @return otherPlayerData Die OtherData 
 	 */
 	public OtherData getOtherPlayerData(String player) {
 		return gameState.getOtherPlayerData(player);
@@ -164,7 +165,7 @@ public abstract class ClientRuleset {
 	}
 	
 	/**
-	 * Verpackt eine Karte in ein Rulesetmessage und schick sie an den Server
+	 * Verpackt eine Karte in eine Rulesetmessage und schickt sie an den Server
 	 * @param card Die karte
 	 */
 	public void send(Card card) {
