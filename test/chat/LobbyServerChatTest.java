@@ -11,7 +11,7 @@ import org.mockito.MockitoAnnotations;
 
 import ComObjects.ComChatMessage;
 
-public class LobbyServerTest {
+public class LobbyServerChatTest {
 
 	ComChatMessage testMessage;
 	

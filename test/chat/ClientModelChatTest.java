@@ -17,11 +17,12 @@ public class ClientModelChatTest {
 	ClientModel testModel;
 
 	@Mock
-	MessageListenerThread netIO;
+	ClientListenerThread netIO;
 	
 	@Before  
     public void setUp() {
 		MockitoAnnotations.initMocks(this);
+		ClientModel.
 		testMessage = new ComChatMessage("Hello Test!");
 		testModel = new ClientModel(); 
     }  
