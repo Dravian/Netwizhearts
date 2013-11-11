@@ -96,15 +96,7 @@ public abstract class ServerRuleset {
 		return gamePhase;
 	}
 	
-	/** 
-	 * Erstellt ein Spiel und einen GameState
-	 */
-	protected void initGame() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-	
-		// end-user-code
-	}/**
+	/**
 	 * Erzeugt ein Kartendeck, abhängig von dem RulesetType
 	 * @return Gibt ein Kartendeck zurück
 	 */
@@ -129,7 +121,7 @@ public abstract class ServerRuleset {
 	/** 
 	 * Startet das Spiel
 	 */
-	protected void runGame() {
+	public void runGame() {
 		// begin-user-code
 		// TODO Auto-generated method stub
 	
