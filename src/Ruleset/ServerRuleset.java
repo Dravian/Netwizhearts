@@ -159,7 +159,7 @@ public abstract class ServerRuleset {
 	protected boolean setCurrentPlayer(PlayerState player) {
 		return setCurrentPlayer(player);
 	}
-
+	
 	/**
 	 * Holt den Spieler der gerade am Zug ist
 	 * @return currentPlayer Der Spielzustand des Spielers der grad am Zug ist

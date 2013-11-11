@@ -110,7 +110,7 @@ public abstract class ClientRuleset {
 	 * Gibt die eigenen OtherData als String zurück
 	 * @return Eine Stringrepräsentation von Otherdata
 	 */
-	public String getOwnData() {
+	public OtherData getOwnData() {
 		return gameState.getOwnData();
 	}
 		
@@ -119,7 +119,7 @@ public abstract class ClientRuleset {
 	 * @param Der Spielername
 	 * @return otherPlayerData Die OtherData als String repräsentiert
 	 */
-	public String getOtherPlayerData(String player) {
+	public OtherData getOtherPlayerData(String player) {
 		return gameState.getOtherPlayerData(player);
 	}
 	

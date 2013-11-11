@@ -77,17 +77,16 @@ public class GameClientUpdate {
 	 * Holt die Otherdata des Client als String als Stringrepräsentation
 	 * @return ownData Die Otherdata des Clients
 	 */
-	protected String getOwnData() {
-		String ownData = playerState.getOtherDataAsString();
-		return ownData;
+	protected OtherData getOwnData() {
+		return playerState.getOtherData();
 	}
 	
 	/** 
 	 * Holt die OtherData der anderen Spieler als Stringrepräsentation
 	 * @return otherPlayerData Die OtherData der anderen Spieler
 	 */
-	protected String getOtherPlayerData(String player) {
-		return (otherPlayerData.get(player)).toString();
+	protected OtherData getOtherPlayerData(String player) {
+		return otherPlayerData.get(player);
 	}
 	
 	/**
