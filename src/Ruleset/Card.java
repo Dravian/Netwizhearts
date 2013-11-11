@@ -1,7 +1,7 @@
 package Ruleset;
 
 /**
- * Modelliert eine Spielkarte
+ * Dieses Interface modelliert eine Spielkarte
  */
 public interface Card {
 	
