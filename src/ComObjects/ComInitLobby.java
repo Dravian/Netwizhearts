@@ -12,7 +12,7 @@ import Server.GameServerRepresentation;
  */
 public class ComInitLobby extends ComObject {
 
-	private List playerList;
+	private List<String> playerList;
 
 	private Set<GameServerRepresentation> gameList;
 
@@ -23,7 +23,7 @@ public class ComInitLobby extends ComObject {
      * @param gameList      ist die Liste der Spiele, die existieren
      *                      und in der Lobby angezeigt werden.
      */
-    public ComInitLobby(List playerList, Set gameList) {
+    public ComInitLobby(List<String> playerList, Set gameList) {
         this.playerList = playerList;
         this.gameList = gameList;
     }
@@ -32,7 +32,7 @@ public class ComInitLobby extends ComObject {
      * Die Methode liefert die Liste aller Spieler, die in der Lobby sind.
      * @return die Liste der Spieler.
      */
-    public List getPlayerList() {
+    public List<String> getPlayerList() {
         return playerList;
     }
 

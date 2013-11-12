@@ -9,14 +9,14 @@ import java.util.List;
  */
 public class ComInitGameLobby extends ComObject {
 
-	private List playerList;
+	private List<String> playerList;
 
     /**
      * Dies ist der Kontruktor für eine neue ComInitGameLobby-Nachricht.
      * @param playerList ist die Liste aller Player, die sich im
      *                   Wartefenster befinden.
      */
-    public ComInitGameLobby(List playerList) {
+    public ComInitGameLobby(List<String> playerList) {
         this.playerList = playerList;
     }
 
@@ -25,7 +25,7 @@ public class ComInitGameLobby extends ComObject {
      * inm Wartefenster befinden.
      * @return die Liste der Spieler.
      */
-    public Object getPlayerList() {
+    public List<String> getPlayerList() {
         return playerList;
     }
 }
