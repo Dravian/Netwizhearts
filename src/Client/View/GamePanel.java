@@ -13,12 +13,12 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 /** 
- * Das Panel ist die Komponente des Game-Fensters, 
+ * GamePanel. Das GamePanel ist die Komponente des Game-Fensters, 
  * welche das eigentliche Spiel darstellt. Es besteht aus veschiedenen Panelobjekten, 
  * welche je nach Regelwerk auf das Spielfeld gezeichnet werden. 
- * Dazu gehören die eigenen Karten, eventuell ausgewählte Karten, 
+ * Dazu gehoeren die eigenen Karten, eventuell ausgewaehlte Karten, 
  * ein Textfeld z.B. zur Anzeige der Anzahl der restlichen Karten der Mitspieler 
- * und den Ablagestapel. Nach jeder Runde wird der Punktestand  aktualisiert.
+ * und den Ablagestapel. Nach jeder Runde wird der Punktestand aktualisiert.
  */
 public class GamePanel extends JPanel{
 	
@@ -48,16 +48,37 @@ public class GamePanel extends JPanel{
 	       }
 	    }
 	
+		
 	/**
-	 * Erzeugt die Komponenten die bei einem Kartenspiel,
-	 * das um Stiche gespielt wird, für die gewünschte Spielerzahl
-	 * benötigt werden und ordnet sie an. Bei diesem Spieltyp erhält
-	 * jeder Spieler einen eigenen Ablagestapel vor sich.
-	 * 
-	 * @param players Anzahl der Spieler
+	 * Erstellt eine Spielfeld fuer ein Stich-Kartenspiel
+	 * mit 3 Spielern
 	 */
-	public void setupTrickGame(int players) {
-		//TODO
+	public void makeTrickGameBoardThreePlayers() {
+		
+	}
+	
+	/**
+	 * Erstellt eine Spielfeld fuer ein Stich-Kartenspiel
+	 * mit 4 Spielern
+	 */
+	public void makeTrickGameBoardFourPlayers() {
+		
+	}
+
+	/**
+	 * Erstellt eine Spielfeld fuer ein Stich-Kartenspiel
+	 * mit 5 Spielern
+	 */
+	public void makeTrickGameBoardFivePlayers() {
+	
+	}
+
+	/**
+	 * Erstellt eine Spielfeld fuer ein Stich-Kartenspiel
+	 * mit 6 Spielern
+	 */
+	public void makeTrickGameBoardSixPlayers() {
+	
 	}
 	
 	

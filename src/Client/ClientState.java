@@ -1,7 +1,7 @@
 package Client;
 
 /** 
- * Dieser Enumerator enthält alle Zustände in denen sich der Client
+ * ClientState. Dieser Enumerator enthält alle Zustaende in denen sich der Client
  * befinden kann.
  */
 public enum ClientState {

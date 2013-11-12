@@ -7,12 +7,21 @@ import java.util.Observable;
 import java.util.Observer;
 
 /** 
- * Das Warning-Fenster zeigt dem Benutzer Fehlermeldungen bzw. Hinweise an, 
- * welche vom ClientModel übergeben wurden. Es wird nur im Fehlerfall angezeigt.
+ * Warning. Das Warning-Fenster zeigt dem Benutzer Fehlermeldungen bzw. Hinweise an, 
+ * welche vom ClientModel uebergeben wurden. Es wird nur im Fehlerfall angezeigt.
  */
 public class Warning implements Observer{
 	
 	private String warningText;
+	
+	/**
+	 * Setzt den Warnhinweis des Fensters.
+	 * 
+	 * @param text Warnhinweis, der angezeigt werden soll
+	 */
+	public void setText(String text) {
+		warningText = text;
+	}
 
 	/**
 	 * Wird durch notify() im ClientModel aufgerufen. Je nach dem in arg

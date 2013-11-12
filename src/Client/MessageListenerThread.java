@@ -11,8 +11,8 @@ import java.net.Socket;
 import ComObjects.ComObject;
 
 /** 
- * Diese Klasse implementiert die Netzwerkanbindung des Clients an den Server.
- * Sie enthält den dazu nötigen Socket und ObjektStream Reader und Writer.
+ * MessageListenerThread. Diese Klasse implementiert die Netzwerkanbindung des Clients an den Server.
+ * Sie enthaelt den dazu noetigen Socket und ObjektStream Reader und Writer.
  */
 public class MessageListenerThread extends Thread {
 	
@@ -28,7 +28,7 @@ public class MessageListenerThread extends Thread {
 
 	/**
 	 * Implementiert die Netzwerkverbindung
-	 * zum Server und ermöglicht das empfangen
+	 * zum Server und ermoeglicht das empfangen
 	 * und versenden von Nachrichten über einen TCP Socket.
 	 */
 	public MessageListenerThread() {
@@ -39,7 +39,7 @@ public class MessageListenerThread extends Thread {
 	 * Initialisiert die ObjectStreams und speichert den TCP Socket im Thread.
 	 * @param model ClientModel, Das Model das den Spielablauf und Serverkommunikation
 	 * steuert.
-	 * @param connection Socket, der Socket über den die TCP Verbindung läuft.
+	 * @param connection Socket, der Socket über den die TCP Verbindung laeuft.
 	 * @throws IllegalArgumentException Wird geworfen bei falschen ClientModel
 	 * oder Socket Argumenten.
 	 * @throws IOException Wird geworfen beim fehlerbehafteten Erstellen der
@@ -63,7 +63,7 @@ public class MessageListenerThread extends Thread {
 	}
 	
 	/**
-	 * Über diese Methode können Nachrichten an den Server versendet werden.
+	 * Über diese Methode koennen Nachrichten an den Server versendet werden.
 	 */
 	public void send(ComObject object) {
 		try {

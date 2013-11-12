@@ -21,17 +21,17 @@ import java.util.Observable;
 import java.util.Set;
 
 /** 
- * Das ClientModel ist die Schnittstelle zwischen dem MessageListenerThread, 
+ * ClientModel. Das ClientModel ist die Schnittstelle zwischen dem MessageListenerThread, 
  * dem ClientRuleset und der View. Das Model prüft Nachrichten, welche es vom
  * MessageListenerThread über die Methode receiveMessage() bekommt. RulesetMessages
  * werden an das ClientRuleset weitergeleitet. Weiterhin informiert es seine Observer über
- * Veränderungen und stellt ihnen Methoden zu Verfügung um spielrelevante Daten zu lesen.
+ * Veraenderungen und stellt ihnen Methoden zu Verfügung um spielrelevante Daten zu lesen.
  * Weiterhin kann das ClientModel ComMessages and den Server schicken, um Kommandos des
  * ClientRulesets oder Eingaben des Controllers weiterzugeben.
  */
 public class ClientModel extends Observable{
 	/** 
-	 * String der den eindeutigen Spielernamen repräsentiert.
+	 * String der den eindeutigen Spielernamen repraesentiert.
 	 */
 	private String playerName;
 	
@@ -57,25 +57,34 @@ public class ClientModel extends Observable{
 	private Set<GameServerRepresentation> gameList;
 	
 	/** 
-	 * Hält den für die Netzwerkkomunikation zuständigen Thread.
+	 * Haelt den für die Netzwerkkomunikation zustaendigen Thread.
 	 */
 	private MessageListenerThread netIO;
 
 	/**
 	 * Erstellt ein ClientModel und erwartet als
-	 * Argument einen MessageListenerThread für
+	 * Argument einen MessageListenerThread fuer
 	 * die Netzwerkanbindung.
-	 * @param netIO MessageListenerThread für die Netzwerkverbindung.
+	 * @param netIO MessageListenerThread fuer die Netzwerkverbindung.
 	 */
 	public ClientModel(MessageListenerThread netIO) {
 		this.netIO = netIO;
 	}
 	
 	/**
-	 * Wird aufgerufen, wenn der User die GameLobby verlässt. 
-	 * Der Client gelangt zurück in die Lobby.
+	 * Wird aufgerufen, wenn der User die GameLobby verlaesst. 
+	 * Der Client gelangt zurueck in die Lobby.
 	 */
 	public void leaveWindow() {
+		
+	}
+	
+	/**
+	 * Wird aufgerufen, wenn ein Fehler bei der Verbindung
+	 * zum Server auftritt und die korrekte Ausfuehrung des Programs
+	 * deswegen nicht mehr gewaerleistet werden kann.
+	 */
+	public void terminateProgram() {
 		
 	}
 
@@ -93,8 +102,8 @@ public class ClientModel extends Observable{
 	/** 
 	 * Diese Methode wird von receiveMessage() aufgerufen,
 	 * falls der Server den Spieler erfolgreich in die Lobby hinzugefügt hat.
-	 * Empfängt die ComInitGameLobby Nachricht, die eine Liste aller
-	 * Spieler enthält, die sich in der Lobby befinden. Speichert
+	 * Empfaengt die ComInitGameLobby Nachricht, die eine Liste aller
+	 * Spieler enthaelt, die sich in der Lobby befinden. Speichert
 	 * diese Liste und benachrichtigt die Observer mit der loginSuccesful
 	 * ViewNotification.
 	 * 
@@ -106,9 +115,9 @@ public class ClientModel extends Observable{
 	
 	/** 
 	 * Diese Methode wird von receiveMessage() aufgerufen,
-	 * falls der Server den Spieler erfolgreich in die GameLobby hinzugefügt hat.
-	 * Empfängt die ComInitGameLobby Nachricht, die eine Liste aller
-	 * Spieler enthält, die sich in der GameLobby befinden. Speichert
+	 * falls der Server den Spieler erfolgreich in die GameLobby hinzugefuegt hat.
+	 * Empfaengt die ComInitGameLobby Nachricht, die eine Liste aller
+	 * Spieler enthaelt, die sich in der GameLobby befinden. Speichert
 	 * diese Liste und benachrichtigt die Observer mit der joinGameSuccesful
 	 * ViewNotification.
 	 * 
@@ -122,7 +131,7 @@ public class ClientModel extends Observable{
 	 * Diese Methode wird von receiveMessage() aufgerufen,
 	 * falls eine Nachricht für das Regelwerk ankommt. Die
 	 * darin enthaltene RulesetMessage wird dem ClientRuleset
-	 * zur Verarbeitung übergeben.
+	 * zur Verarbeitung uebergeben.
 	 * 
 	 * @param die ankommende ComRuleset Nachricht
 	 */
@@ -133,8 +142,7 @@ public class ClientModel extends Observable{
 	/** 
 	 * Diese Methode wird von receiveMessage() aufgerufen,
 	 * falls ein Server Acknowledgement auftritt.
-	 * Dabei ist es von Bedeutung,
-	 *  in welchem Zustand sich der Client befindet.
+	 * Dabei ist es von Bedeutung, in welchem Zustand sich der Client befindet.
 	 *  
 	 *  @param ack Eine Bestätigung durch den Server.
 	 */
@@ -145,7 +153,7 @@ public class ClientModel extends Observable{
 	/** 
 	 * Diese Methode wird von receiveMessage() aufgerufen,
 	 * falls der Spieler aus der Spiellobby durch einen Spielleiter
-	 * entfernt wurde. Der Client gelangt zurück in die Lobby,
+	 * entfernt wurde. Der Client gelangt zurueck in die Lobby,
 	 * die Observer werden mit windowChangeForced benachrichtigt.
 	 * 
 	 * @param msg die ankommende ComBeenKicked Nachricht
@@ -158,8 +166,8 @@ public class ClientModel extends Observable{
 	 * Diese Methode wird von receiveMessage() aufgerufen,
 	 * falls auf dem Server ein neuer Spieler die Lobby/GameLobby
 	 * betreten hat oder sie von einem Spieler verlassen wurde.
-	 * Empfängt die ComUpdatePlayerlist Nachricht, die die Information
-	 * enthält, ob und welcher Spieler hinzugefügt oder entfernt werden muss.
+	 * Empfaengt die ComUpdatePlayerlist Nachricht, die die Information
+	 * enthaelt, ob und welcher Spieler hinzugefuegt oder entfernt werden muss.
 	 * Die Spielerliste wird dementsprechend bearbeitet und die Observer mit
 	 * playerListUpdate informiert.
 	 * 
@@ -173,8 +181,8 @@ public class ClientModel extends Observable{
 	 * Diese Methode wird von receiveMessage() aufgerufen,
 	 * falls auf dem Server ein neues Spiel erstellt wurde oder
 	 * ein Spiel geschlossen/beendet wurde.
-	 * Empfängt die ComLobbyUpdateGamelist Nachricht, die die Information
-	 * enthält, ob und welches Spiel hinzugefügt oder entfernt werden muss.
+	 * Empfaengt die ComLobbyUpdateGamelist Nachricht, die die Information
+	 * enthaelt, ob und welches Spiel hinzugefuegt oder entfernt werden muss.
 	 * Die Spielliste wird dementsprechend bearbeitet und die Observer mit
 	 * gameListUpdate informiert.
 	 * 
@@ -217,25 +225,25 @@ public class ClientModel extends Observable{
 	}
 	
 	/**
-	 * Gibt eine Liste aller bereits ausgespielten Karten zurück.
+	 * Gibt eine Liste aller bereits ausgespielten Karten zurueck.
 	 * 
-	 * @return enum CardID. Die Ids der Karten
+	 * @return Card. Die Ids der Karten
 	 */
-	public List<CardID> getPlayedCards(){
+	public List<Card> getPlayedCards(){
 		return null;
 	}
 	
 	/**
-	 * Gibt eine Liste der Handkarten des Spielers zurück.
+	 * Gibt eine Liste der Handkarten des Spielers zurueck.
 	 * 
 	 * @param Liste aller Handkarten des Spielers
 	 */
-	public List<CardID> getOwnHand() {
+	public List<Card> getOwnHand() {
 		return null;
 	}
 	
 	/**
-	 * Liefert zusätzliche Daten der anderen Spieler zurück.
+	 * Gibt zusaetzliche Daten der anderen Spieler zurueck.
 	 * 
 	 * @return Liste der Stringrepräsentationen der OtherData der Spieler
 	 */
@@ -245,7 +253,7 @@ public class ClientModel extends Observable{
 	}
 	
 	/**
-	 * Gibt den Punktestand des Spielers zurück.
+	 * Gibt den Punktestand des Spielers zurueck.
 	 * 
 	 * @return der eigene Punktestand.
 	 */
@@ -304,7 +312,7 @@ public class ClientModel extends Observable{
 	
 	/**
 	 * Sendet eine RulesetMessage an den Server. Erstellt dazu eine
-	 * ComRuleset, die die RulesetMessage enthält.
+	 * ComRuleset, die die RulesetMessage enthaelt.
 	 * 
 	 * @param msg die RulesetMessage, die an den Server geschickt werden soll
 	 */
@@ -314,7 +322,8 @@ public class ClientModel extends Observable{
 	}
 	
 	/**
-	 * Die die Anzahl der Spieler eines Spieles zurück.
+	 * Die die Anzahl der Spieler eines Spieles zurueck.
+	 * 
 	 * @return int Die Spielerzahl eines Spieles.
 	 */
 	public int getPlayerCount() {
@@ -323,7 +332,9 @@ public class ClientModel extends Observable{
 	}
 	
 	/**
-	 * Gibt 
+	 * Gibt den Text zurueck, der in einem Sonderfenster 
+	 * (InputNumber, ChooseItem, ChooseCards) angezeigt werden soll.
+	 * 
 	 * @return String 
 	 */
 	public String getWindowText() {
@@ -331,16 +342,88 @@ public class ClientModel extends Observable{
 	}
 	
 	/**
+	 * Gibt die Karten zurueck, aus denen gewaehlt werden soll.
 	 * 
+	 * @return Karten, aus denen gewahlt werden kann
 	 */
-	public void setChooseCards(List<Card> cards) {
+	public List<Card> getChooseCards() {
+		return null;
+	}
+	
+	/**
+	 * Uebergibt die Karten, die vom User gewahlt wurden. Diese
+	 * werden dann dem Regelwerk weitergegeben. Akzeptiert dieses
+	 * die gewahlten Karten nicht, wird nochmal openChooseCards aufgerufen.
+	 * 
+	 * @param cards Karten, die der User gewahlt hat
+	 */
+	public void giveChosenCards(List<Card> cards) {
 		
 	}
 	
 	/**
+	 * Benachrichtigt die Observer mit der openChooseCards ViewNotification
+	 * und speichert die Liste der Karten sowie den Anzeigetext des Regelwerks
+	 * zwischen.
 	 * 
+	 * @param cards Liste der Karten, von denen gewaehlt werden kann
+	 * @param text Text, der dem User angezeigt werden soll
 	 */
-	public void setInputNumber() {
+	public void openChooseCards(List<Card> cards, String text) {
+		
+	}
+	
+	/**
+	 * Gibt die Items zurueck, aus denen eines gewaehlt werden soll.
+	 * 
+	 * @return Items, aus denen gewahlt werden kann
+	 */
+	public List<Object> getChooseItems() {
+		return null;
+	}
+	
+	/**
+	 * Uebergibt das Item, das vom User gewahlt wurden. Dieses
+	 * wird dann dem Regelwerk weitergegeben. Akzeptiert dieses
+	 * das gewahlte Item nicht, wird nochmal openChooseItem aufgerufen.
+	 * 
+	 * @param item Item, das der User gewahlt hat
+	 */
+	public void giveChosenItem(Object item) {
+		
+	}
+	
+	/**
+	 * Benachrichtigt die Observer mit der openChooseItem ViewNotification
+	 * und speichert die Liste der Items, von denen eines gewaehlt werden soll,
+	 * sowie den Anzeigtetext des Regelwerks zwischen.
+	 * 
+	 * @param items Liste der Items, von denen eines gewaehlt werden soll
+	 * @param text Text, der dem User angezeigt werden soll
+	 */
+	public void openChooseItem(List<Object> items, String text) {
+		
+	}
+	
+	/**
+	 * Uebergibt die Zahl, die vom User gewahlt wurde. Diese 
+	 * wird dann dem Regelwerk weitergegeben. Akzeptiert dieses
+	 * die gewaehlte Zahl nicht, wird nochmal openInputNumber
+	 * aufgerufen.
+	 * 
+	 * @param number Zahl, die vom User gewahlt wurde
+	 */
+	public void giveInputNumber(int number) {
+		
+	}
+	
+	/**
+	 * Benachrichtigt die Observer mit der openInputNumber ViewNotification
+	 * und speichert den Anzeigetext des Regelwerks zwischen.
+	 * 
+	 * @param text Text, der dem User angezeigt werden soll
+	 */
+	public void openInputNumber(String text) {
 		
 	}
 	
@@ -356,8 +439,8 @@ public class ClientModel extends Observable{
 
 	/** 
 	 * Versucht einem Spiel beizutreten. Sendet dazu eine ComJoinRequest Nachricht an
-	 * den Server. Wird diese bestätigt, gelangt der Client in die GameLobby. Wird die
-	 * Nachricht nicht bestätigt, wird eine Fehlermeldung ausgegeben und die Observer
+	 * den Server. Wird diese bestaetigt, gelangt der Client in die GameLobby. Wird die
+	 * Nachricht nicht bestaetigt, wird eine Fehlermeldung ausgegeben und die Observer
 	 * mit openWarning informiert.
 	 * 
 	 * @param name String Der Name des Spiels.
@@ -386,7 +469,7 @@ public class ClientModel extends Observable{
 	}
 
 	/** 
-	 * Versucht eine Karte auszuspielen. Lässt dazu vom ClientRuleset überpüfen ob, die ausgewählte
+	 * Versucht eine Karte auszuspielen. Laesst dazu vom ClientRuleset ueberpruefen ob, die ausgewaehlte
 	 * Karte gespielt werden darf. Wenn ja, wird sie im ClientRuleset weiterbehandelt. Wenn nein,
 	 * wird eine Fehlermeldung ausgegeben und dazu die Observer mit openWarning informiert.
 	 * 
@@ -406,7 +489,7 @@ public class ClientModel extends Observable{
 	}
 	
 	/** 
-	 * Erstellt den MessageListenerThread und führt den Benutzerlogin durch.
+	 * Erstellt den MessageListenerThread und fuehrt den Benutzerlogin durch.
 	 * 
 	 * @param username String der eindeutige Benutzername der für den Login verwendet wird.
 	 * @param serverAdress String die Adresse des spielservers.
