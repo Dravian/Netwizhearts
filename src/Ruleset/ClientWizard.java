@@ -42,18 +42,19 @@ public class ClientWizard extends ClientRuleset {
 	}
 	
 	/**
-	 * Sendet die Anzahl der angesagten Stiche
+	 * 
 	 * @param number Die Anzahl der angesagten Stiche
 	 */
-	public void send(int number) {
+	private void generateMsgNumber(int number) {
 		send(new MsgNumber(number));
 	}
 	
 	/**
-	 * Sendet eine ausgewählte Trumpffarbe
+	 * Generiert eine MsgSelection aus einer Farbe und ruft bei sich 
+	 * die send Methode auf
 	 * @param colour Die Trumpffarbe
 	 */
-	public void send(Colour colour) {
+	private void generateMsgSelection(Colour colour) {
 		send(new MsgSelection(colour));
 	}
 	
@@ -71,5 +72,23 @@ public class ClientWizard extends ClientRuleset {
 	 */
 	public void resolveMessage(MsgSelectionRequest msgSelection) {
 		
+	}
+	
+	/**
+	 * Prüft ob die Anzahl der angesagten Stiche vom Spieler gültig sind
+	 * @param number Die Anzahl der angesagten Sticht
+	 * @return true falls die Anzahl der Stiche passen, false wenn nicht
+	 */
+	public boolean isValidTrickNumber(int number) {
+		return false;
+	}
+	
+	/**
+	 * Prüft ob die angesagte Trumpffarbe richtig
+	 * @param colour Die angesagte Trumpffarbe
+	 * @return true falls die Farbe in Ordnung ist, false wenn nicht
+	 */
+	public boolean isValidColour(Colour colour) {
+		return false;
 	}
 }

@@ -166,10 +166,11 @@ public abstract class ClientRuleset {
 	}
 	
 	/**
-	 * Verpackt eine Karte in eine Rulesetmessage und schickt sie an den Server
-	 * @param card Die karte
+	 * Generiert eine MsgCard aus einer Karte und ruft bei sich 
+	 * die send Methode auf
+	 * @param card Die Karte
 	 */
-	public void send(Card card) {
+	protected void generateMsgCard(Card card) {
 		send(new MsgCard(card));
 	}
 	

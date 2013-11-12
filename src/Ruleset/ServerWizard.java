@@ -49,6 +49,22 @@ public class ServerWizard extends ServerRuleset {
 	protected void resolveMessage(MsgSelection msgSelection, String name){
 		
 	}
+	
+	/**
+	 * Generiert eine MsgNumberRequest und ruft bei sich die send Methode auf
+	 * @param name Der Name vom Spieler
+	 */
+	private void generateNumberRequest(String name) {
+		
+	}
+	
+	/**
+	 * Generiert eine MsgMultiCardRequest und ruft bei sich die send Methode auf
+	 * @param name Der Name vom Spieler
+	 */
+	private void generateMsgSelectionRequest(String name) {
+		
+	}
 
 	@Override
 	protected void calculateTricks() {
