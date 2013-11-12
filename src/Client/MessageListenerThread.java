@@ -6,14 +6,17 @@ package Client;
 import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
+import java.net.Socket;
+
 import ComObjects.ComObject;
 
 /** 
  * Diese Klasse implementiert die Netzwerkanbindung des Clients an den Server.
- * Sie ist eine innere Klasse des ClientModels und wird vom selbigen instanziert.
  * Sie enthält den dazu nötigen Socket und ObjektStream Reader und Writer.
  */
-class MessageListenerThread extends Thread {
+public class MessageListenerThread extends Thread {
+	
+	private Socket socket;
 	
 	private ObjectInput in;
 	
@@ -24,14 +27,25 @@ class MessageListenerThread extends Thread {
 	private ClientModel model;
 
 	/**
-	 * Erstellt die Verbindung zum Server.
-	 * @param connection TCP Socket über den die Verbindung erstellt wird.
-	 * @throws IOException Diese Exception wird an den Aufrufenden weitergeleitet.
+	 * Implementiert die Netzwerkverbindung
+	 * zum Server und ermöglicht das empfangen
+	 * und versenden von Nachrichten über einen TCP Socket.
 	 */
-	protected MessageListenerThread(ClientModel model, ObjectInput in, ObjectOutput out) throws IOException {
-		this.out = out;
-		out.flush();
-		this.in = in;
+	public MessageListenerThread() {
+		
+	}
+	
+	/**
+	 * Initialisiert die ObjectStreams und speichert den TCP Socket im Thread.
+	 * @param model ClientModel, Das Model das den Spielablauf und Serverkommunikation
+	 * steuert.
+	 * @param connection Socket, der Socket über den die TCP Verbindung läuft.
+	 * @throws IllegalArgumentException Wird geworfen bei falschen ClientModel
+	 * oder Socket Argumenten.
+	 * @throws IOException Wird geworfen beim fehlerbehafteten Erstellen der
+	 * ObjectStreams.
+	 */
+	public void startConnection(ClientModel model, Socket connection) throws IllegalArgumentException, IOException {
 		
 	}
 	
@@ -39,14 +53,19 @@ class MessageListenerThread extends Thread {
 	 * Hilfsmethode die eine bestehende Verbindung abbaut
 	 * und deren Ressourcen freigibt.
 	 */
-	protected void closeConnection() {
-		
+	public void closeConnection() {
+		try {
+			socket.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	/**
 	 * Über diese Methode können Nachrichten an den Server versendet werden.
 	 */
-	protected void send(ComObject object) {
+	public void send(ComObject object) {
 		try {
 			if (run) {
 				out.writeObject(object);
@@ -66,7 +85,6 @@ class MessageListenerThread extends Thread {
 	 */
 	public void run() {
 		try {
-			run = true;
 			ComObject object;
 			while(run) {
 				object = (ComObject) in.readObject();

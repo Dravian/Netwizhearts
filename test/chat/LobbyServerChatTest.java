@@ -1,14 +1,12 @@
-package Server;
+package chat;
 
-import java.io.IOException;
+import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 
+import Server.LobbyServer;
 import ComObjects.ComChatMessage;
 
 public class LobbyServerChatTest {
@@ -17,20 +15,25 @@ public class LobbyServerChatTest {
 	
 	LobbyServer testServer;
 
-	@Mock
-	Player player1;
+	TestPlayer player1;
 	
-	@Mock
-	Player player2;
+	TestPlayer player2;
 	
-	@Mock
-	Player player3;
+	TestPlayer player3;
+	
+	String testText1;
+	
+	String testText2;
+	
+	String testText3;
 
 	@Before
 	public void setUp() {
-		MockitoAnnotations.initMocks(this);
 		testMessage = new ComChatMessage("Hello Test!");
 		testServer = new LobbyServer();
+		player1 = new TestPlayer(testServer, null, null);
+		player2 = new TestPlayer(testServer, null, null);
+		player3 = new TestPlayer(testServer, null, null);
 	}
 
 	@After
@@ -40,16 +43,23 @@ public class LobbyServerChatTest {
 		player1 = null;
 		player2 = null;
 		player3 = null;
+		testText1 = null;
+		testText2 = null;
+		testText3 = null;
 	}
 
 	@Test
-	public void testReceiveMessagePlayerComChatMessage() throws IOException {
+	public void testReceiveMessagePlayerComChatMessage() {
+		String messageToMatch = testMessage.getChatMessage();
 		testServer.addPlayer(player1);
 		testServer.addPlayer(player2);
 		testServer.addPlayer(player3);
-		testMessage.process(player1, testServer);
-		Mockito.verify(player1).send(testMessage);
-		Mockito.verify(player2).send(testMessage);
-		Mockito.verify(player3).send(testMessage);
+		player1.injectComObject(testMessage);
+		testText1 = ((ComChatMessage) player1.getServerInput()).getChatMessage();
+		testText2 = ((ComChatMessage) player2.getServerInput()).getChatMessage();
+		testText3 = ((ComChatMessage) player3.getServerInput()).getChatMessage();
+		assertEquals("Nachricht an Spieler 1", messageToMatch, testText1);
+		assertEquals("Nachricht an Spieler 2", messageToMatch, testText2);
+		assertEquals("Nachricht an Spieler 3", messageToMatch, testText3);
 	}
 }

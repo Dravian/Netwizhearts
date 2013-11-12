@@ -1,50 +1,59 @@
-package Client;
+package chat;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 import org.junit.After;
 import org.junit.Before;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
+import Client.MessageListenerThread;
+import Client.ClientModel;
 import ComObjects.ComChatMessage;
+import chat.TestObserver;
+import chat.TestMessageListenerThread;
 
 public class ClientModelChatTest {
 
 	ComChatMessage testMessage;
 	
 	ClientModel testModel;
-
-	@Mock
-	ClientListenerThread netIO;
+	
+	TestObserver testObserver;
+	
+	TestMessageListenerThread testNetIO;
+	
+	String testText;
 	
 	@Before  
     public void setUp() {
-		MockitoAnnotations.initMocks(this);
-		ClientModel.
+		
+		testNetIO = new TestMessageListenerThread();
+		testObserver = new TestObserver();
 		testMessage = new ComChatMessage("Hello Test!");
-		testModel = new ClientModel(); 
+		testModel = new ClientModel((MessageListenerThread) testNetIO);
+		testNetIO.setModel(testModel);
+		testModel.addObserver(testObserver);
     }  
   
     @After  
     public void tearDown() { 
-    	netIO = null;
+    	testNetIO = null;
     	testMessage = null;
     	testModel = null;
+    	testObserver = null;
     }  
 	
 	@Test
 	public void testSendChatMessage() {
-		testModel.setNetIO(netIO);
-		testModel.sendMessage(testMessage);
-		Mockito.verify(netIO).send(testMessage);
+		String inputText = "Hello Test!";
+		testModel.sendChatMessage(inputText);
+		testText = ((ComChatMessage) testNetIO.getModelInput()).getChatMessage();
+		assertEquals("Vergleich der gesendeten Chatnachrichten", testText, inputText);
 	}
 	
 	@Test
 	public void testReceiveChatMessage() {
-		testMessage.process(testModel);
-		assertTrue(testModel.getChatMessage().equals(testMessage.getChatMessage()));
+		testNetIO.injectComObject(testMessage);
+		assertTrue("Vergleich der empfangenen Chatnachrichten", 
+				testObserver.getChatMessage().equals(testMessage.getChatMessage()));
 	}
-
 }

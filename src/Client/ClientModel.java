@@ -2,7 +2,6 @@ package Client;
 
 import Ruleset.Card;
 import Ruleset.ClientRuleset;
-import Ruleset.OtherData;
 import Ruleset.RulesetType;
 import Server.GameServerRepresentation;
 import Client.View.Language;
@@ -17,10 +16,6 @@ import ComObjects.ComServerAcknowledgement;
 import ComObjects.ComUpdatePlayerlist;
 import ComObjects.RulesetMessage;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.net.Socket;
 import java.util.List;
 import java.util.Observable;
 import java.util.Set;
@@ -53,25 +48,27 @@ public class ClientModel extends Observable{
 	/** 
 	 * Der Zustand indem sich der Client befindet.
 	 */
-	
 	private ClientState state;
+	
+	private List<String> playerList;
+	
+	private String chatMessage;
+
+	private Set<GameServerRepresentation> gameList;
 	
 	/** 
 	 * Hält den für die Netzwerkkomunikation zuständigen Thread.
 	 */
-	private Client.MessageListenerThread netIO;
-	
-	private List<String> playerList;
-
-	private Set<GameServerRepresentation> gameList;
-	
-	private String chatMessage;
+	private MessageListenerThread netIO;
 
 	/**
-	 * Erstellt ein ClientModel
+	 * Erstellt ein ClientModel und erwartet als
+	 * Argument einen MessageListenerThread für
+	 * die Netzwerkanbindung.
+	 * @param netIO MessageListenerThread für die Netzwerkverbindung.
 	 */
-	public ClientModel() {
-		
+	public ClientModel(MessageListenerThread netIO) {
+		this.netIO = netIO;
 	}
 	
 	/**
@@ -89,6 +86,8 @@ public class ClientModel extends Observable{
 	 */
 	public void receiveMessage(ComChatMessage msg) {
 		this.chatMessage = msg.getChatMessage();
+		setChanged();
+		notifyObservers(chatMessage);
 	}
 	
 	/** 
@@ -194,7 +193,8 @@ public class ClientModel extends Observable{
 	 */
 	public void receiveMessage(ComObject comObject){
 		chatMessage = ((ComChatMessage) comObject).getChatMessage();
-		System.out.println("moo");
+		setChanged();
+		notifyObservers(chatMessage);
 	} 
 	
 	/**
@@ -298,7 +298,7 @@ public class ClientModel extends Observable{
 	 * 
 	 * @param object ComObject, das verschickt wird
 	 */
-	private void sendMessage(ComObject object) {
+	public void sendMessage(ComObject object) {
 		netIO.send(object);
 	}
 	
@@ -392,7 +392,7 @@ public class ClientModel extends Observable{
 	 * 
 	 * @param die ID der gespielten Karte
 	 */
-	public void makeMove(CardID card) {
+	public void makeMove(Card card) {
 		
 	}
 
@@ -403,10 +403,6 @@ public class ClientModel extends Observable{
 	 */
 	private void informView(ViewNotification note) {
 		
-	}
-	
-	public void setNetIO(Client.MessageListenerThread netIO) {
-		this.netIO = netIO;
 	}
 	
 	/** 
@@ -438,79 +434,4 @@ public class ClientModel extends Observable{
 	public RulesetType[] getRulesets() {
 		return null;
 	}
-
-/** 
- * Diese Klasse implementiert die Netzwerkanbindung des Clients an den Server.
- * Sie ist eine innere Klasse des ClientModels und wird vom selbigen instanziert.
- * Sie enthält den dazu nötigen Socket und ObjektStream Reader und Writer.
- */
-class MessageListenerThread extends Thread{
-	
-	/** Der TCP Socket. */
-	private Socket connection;
-	
-	private ObjectInputStream in;
-	
-	private ObjectOutputStream out;
-	
-	private boolean run = false;
-
-	/**
-	 * Erstellt die initiale Verbindung zum Server.
-	 * @param connection TCP Socket über den die Verbindung erstellt wird.
-	 * @throws IOException Diese Exception wird an den Aufrufenden weitergeleitet.
-	 */
-	protected MessageListenerThread(final Socket connection) throws IOException{
-		this.connection = connection;
-	}
-	
-	/**
-	 * Hilfsmethode die eine bestehende Verbindung abbaut
-	 * und deren Ressourcen freigibt.
-	 */
-	protected void closeConnection() {
-		
-	}
-	
-	/**
-	 * Über diese Methode können Nachrichten an den Server versendet werden.
-	 */
-	protected void send(ComObject object) {
-		try {
-			if (run) {
-				out.writeObject(object);
-				out.flush();
-			}
-		} catch (IOException e) {
-			if (run) {
-				e.printStackTrace();
-			}
-		}
-	}
-	
-	/**
-	 * Initialisiert den In- und OutputStream
-	 * und liest ComObjekte solange der Thread
-	 * lebt von seinem InputStream.
-	 */
-	public void run() {
-		try {
-			run = true;
-			ComObject object;
-			out = new ObjectOutputStream(connection.getOutputStream());
-			out.flush();
-			in = new ObjectInputStream(connection.getInputStream());
-			while(run) {
-				object = (ComObject) in.readObject();
-				object.process(ClientModel.this);
-			}
-		} catch (ClassNotFoundException e) {
-			
-		} catch (IOException e) {
-			if(run) {
-				e.printStackTrace();
-			}
-		}
-	}
-  }
 }
