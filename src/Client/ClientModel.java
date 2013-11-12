@@ -66,8 +66,10 @@ public class ClientModel extends Observable{
 	 * Argument einen MessageListenerThread fuer
 	 * die Netzwerkanbindung.
 	 * @param netIO MessageListenerThread fuer die Netzwerkverbindung.
+	 * @throws IllegalArgumentException Wird geworfen bei fehlerhaftem
+	 * MessageListenerThread Argument.
 	 */
-	public ClientModel(MessageListenerThread netIO) {
+	public ClientModel(MessageListenerThread netIO) throws IllegalArgumentException {
 		this.netIO = netIO;
 	}
 	
@@ -100,7 +102,7 @@ public class ClientModel extends Observable{
 	}
 	
 	/** 
-	 * Diese Methode wird von receiveMessage() aufgerufen,
+	 * Diese Methode wird aufgerufen,
 	 * falls der Server den Spieler erfolgreich in die Lobby hinzugefügt hat.
 	 * Empfaengt die ComInitGameLobby Nachricht, die eine Liste aller
 	 * Spieler enthaelt, die sich in der Lobby befinden. Speichert
@@ -114,7 +116,7 @@ public class ClientModel extends Observable{
 	}
 	
 	/** 
-	 * Diese Methode wird von receiveMessage() aufgerufen,
+	 * Diese Methode wird aufgerufen,
 	 * falls der Server den Spieler erfolgreich in die GameLobby hinzugefuegt hat.
 	 * Empfaengt die ComInitGameLobby Nachricht, die eine Liste aller
 	 * Spieler enthaelt, die sich in der GameLobby befinden. Speichert
@@ -128,7 +130,7 @@ public class ClientModel extends Observable{
 	}
 	
 	/** 
-	 * Diese Methode wird von receiveMessage() aufgerufen,
+	 * Diese Methode wird aufgerufen,
 	 * falls eine Nachricht für das Regelwerk ankommt. Die
 	 * darin enthaltene RulesetMessage wird dem ClientRuleset
 	 * zur Verarbeitung uebergeben.
@@ -140,7 +142,7 @@ public class ClientModel extends Observable{
 	}
 	
 	/** 
-	 * Diese Methode wird von receiveMessage() aufgerufen,
+	 * Diese Methode wird aufgerufen,
 	 * falls ein Server Acknowledgement auftritt.
 	 * Dabei ist es von Bedeutung, in welchem Zustand sich der Client befindet.
 	 *  
@@ -151,7 +153,7 @@ public class ClientModel extends Observable{
 	}
 	
 	/** 
-	 * Diese Methode wird von receiveMessage() aufgerufen,
+	 * Diese Methode wird aufgerufen,
 	 * falls der Spieler aus der Spiellobby durch einen Spielleiter
 	 * entfernt wurde. Der Client gelangt zurueck in die Lobby,
 	 * die Observer werden mit windowChangeForced benachrichtigt.
@@ -163,7 +165,7 @@ public class ClientModel extends Observable{
 	}
 	
 	/**
-	 * Diese Methode wird von receiveMessage() aufgerufen,
+	 * Diese Methode wird aufgerufen,
 	 * falls auf dem Server ein neuer Spieler die Lobby/GameLobby
 	 * betreten hat oder sie von einem Spieler verlassen wurde.
 	 * Empfaengt die ComUpdatePlayerlist Nachricht, die die Information
@@ -178,7 +180,7 @@ public class ClientModel extends Observable{
 	}
 	
 	/**
-	 * Diese Methode wird von receiveMessage() aufgerufen,
+	 * Diese Methode wird aufgerufen,
 	 * falls auf dem Server ein neues Spiel erstellt wurde oder
 	 * ein Spiel geschlossen/beendet wurde.
 	 * Empfaengt die ComLobbyUpdateGamelist Nachricht, die die Information
@@ -193,17 +195,13 @@ public class ClientModel extends Observable{
 	}
 	
 	/**
-	 * Diese Methode wird von dem ClientListenerThread aufgerufen
-	 * und bestimmt welche Nachricht sich hinter dem ComObjekt genau
-	 * verbirgt um weitere Verarbeitungsschritte einzuleiten.
-	 * 
-	 * @param comObject Die empfangene Nachricht.
+	 * Standard receiveMessage Methode, die ComObjekte
+	 * zur Weiterverarbeitung identifiziert.
+	 * @param com Das auflaufende ComObjekt.
 	 */
-	public void receiveMessage(ComObject comObject){
-		chatMessage = ((ComChatMessage) comObject).getChatMessage();
-		setChanged();
-		notifyObservers(chatMessage);
-	} 
+	public void receiveMessage(ComObject com) {
+		
+	}
 	
 	/**
 	 * Liefert eine Liste der Namen der Spieler in der Lobby oder GameLobby.
@@ -302,11 +300,11 @@ public class ClientModel extends Observable{
 	}
 
 	/** 
-	 * Sendete erstellte ComObjects an den Server.
+	 * Sendet erstellte ComObjects an den Server.
 	 * 
 	 * @param object ComObject, das verschickt wird
 	 */
-	public void sendMessage(ComObject object) {
+	public void send(ComObject object) {
 		netIO.send(object);
 	}
 	
@@ -318,7 +316,7 @@ public class ClientModel extends Observable{
 	 */
 	public void send(RulesetMessage msg) {
 		ComObject com = new ComRuleset(msg);
-		sendMessage(com);
+		send(com);
 	}
 	
 	/**
@@ -434,7 +432,7 @@ public class ClientModel extends Observable{
 	 * @param msg die Chatnachricht, die an den Server geschickt werden soll
 	 */
 	public void sendChatMessage(final String msg) {
-		sendMessage(new ComChatMessage(msg));
+		send(new ComChatMessage(msg));
 	}
 
 	/** 

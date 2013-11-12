@@ -6,7 +6,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import testKlassen.TestPlayer;
 import Server.LobbyServer;
 import ComObjects.ComChatMessage;
 

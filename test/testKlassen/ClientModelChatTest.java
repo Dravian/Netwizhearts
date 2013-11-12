@@ -5,12 +5,11 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import org.junit.After;
 import org.junit.Before;
-
-import testKlassen.TestMessageListenerThread;
-import testKlassen.TestObserver;
 import Client.MessageListenerThread;
 import Client.ClientModel;
 import ComObjects.ComChatMessage;
+import chat.TestObserver;
+import chat.TestMessageListenerThread;
 
 public class ClientModelChatTest {
 
@@ -26,6 +25,7 @@ public class ClientModelChatTest {
 	
 	@Before  
     public void setUp() {
+		
 		testNetIO = new TestMessageListenerThread();
 		testObserver = new TestObserver();
 		testMessage = new ComChatMessage("Hello Test!");
@@ -46,7 +46,7 @@ public class ClientModelChatTest {
 	public void testSendChatMessage() {
 		String inputText = "Hello Test!";
 		testModel.sendChatMessage(inputText);
-		testText = ((ComChatMessage) testNetIO.getModelInput().get(0)).getChatMessage();
+		testText = ((ComChatMessage) testNetIO.getModelInput()).getChatMessage();
 		assertEquals("Vergleich der gesendeten Chatnachrichten", testText, inputText);
 	}
 	
