@@ -76,6 +76,9 @@ public class QuitGameTest {
 		player1.changeServer(game);
 		assertTrue(game.initLobby().getPlayerList().contains(player1.getName()));
 		
+		ComInitLobby initLobby = lobby.initLobby();
+		ComWarning warning = new ComWarning("Ein Spieler hat das Spiel verlassen");
+		
 		player1.injectComObject(quit);
 
 		assertFalse(lobby.initLobby().getGameList().contains(game));
@@ -83,8 +86,7 @@ public class QuitGameTest {
 		assertTrue(lobby.initLobby().getPlayerList().contains(player1.getName()));
 		assertTrue(lobby.initLobby().getPlayerList().contains(player1.getName()));
 		assertTrue(lobby.initLobby().getPlayerList().contains(player1.getName()));
-		ComInitLobby initLobby = lobby.initLobby();
-		ComWarning warning = new ComWarning("Ein Spieler hat das Spiel verlassen");
+		
 		assertTrue(player1.getServerInput().get(0).getClass() == initLobby.getClass());
 		assertTrue(player1.getServerInput().get(1).getClass() == warning.getClass());
 		assertTrue(player2.getServerInput().get(0).getClass() == initLobby.getClass());
