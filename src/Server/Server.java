@@ -13,7 +13,7 @@ import javax.activation.CommandObject;
 import ComObjects.*;
 
 /**
- * Ist ein abstrakte Klasse, von der die Klassen LobbyServer und
+ * Server. Ist eine abstrakte Klasse, von der die Klassen LobbyServer und
  * GameServer erben. Es stellt Methoden zur Nachrichtenversendung und
  * -verarbeitung bereit, sowie zur Verwaltung von Playern
  */
@@ -39,8 +39,8 @@ public abstract class Server {
 	/**
 	 * Diese Methode wird genutzt, um ein ComObject an einen einzigen
 	 * Client zu verschicken. Der Player der die Nachricht verschicken soll
-	 * wird Anhand des übergebenen Benutzernamens identifiziert. 
-	 * Es wird vorrausgesetzt, dass der Name und das ComObject gültig sind.
+	 * wird Anhand des uebergebenen Benutzernamens identifiziert. 
+	 * Es wird vorrausgesetzt, dass der Name und das ComObject gueltig sind.
 	 * @param name ist der Name des Clients, an den der Player die Nachricht  
 	 * verschicken soll
 	 * @param c ist das ComObject, dass verschickt werden soll
@@ -54,10 +54,10 @@ public abstract class Server {
 	}
 
 	/**
-	 * Diese Methode fügt einen Player dem Set an Playern hinzu, welche der
-	 * Server verwaltet. Es wird vorrausgesetzt, dass der Player gültig und 
+	 * Diese Methode fuegt einen Player dem Set an Playern hinzu, welche der
+	 * Server verwaltet. Es wird vorrausgesetzt, dass der Player gueltig und 
 	 * noch nicht im Set vorhanden ist.
-	 * @param player ist der Player, der hinzugefügt wird
+	 * @param player ist der Player, der hinzugefuegt wird
 	 */
 	public synchronized void  addPlayer(Player player) {
 		playerSet.add(player);
@@ -65,7 +65,7 @@ public abstract class Server {
 
 	/**
 	 * Diese Methode entfernt einen Player aus dem Set an Playern, welche der
-	 * Server verwaltet. Es wird vorrausgesetzt, dass der Player gültig und 
+	 * Server verwaltet. Es wird vorrausgesetzt, dass der Player gueltig und 
 	 * im Set vorhanden ist.
 	 * @param player ist der Player, der entfernt wird
 	 */
@@ -76,7 +76,7 @@ public abstract class Server {
 	/**
 	 * Diese Methode wird genutzt, um ein ComObject an alle Clients,
 	 * die vom Server verwaltet werden, zu schicken.
-	 * Es wird vorrausgesetzt, dass das ComObject gültig ist.
+	 * Es wird vorrausgesetzt, dass das ComObject gueltig ist.
 	 * @param com ist das ComObject, dass verschickt werden soll
 	 */
 	public synchronized void broadcast(ComObject com){

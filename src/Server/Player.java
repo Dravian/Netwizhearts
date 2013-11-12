@@ -8,9 +8,9 @@ import java.io.ObjectOutputStream;
 import ComObjects.*;
 
 /**
- * Die Player-Klasse wird zum Versenden von Java Serializable Objects, sowie zum
+ * Player. Die Player-Klasse wird zum Versenden von Java Serializable Objects, sowie zum
  * Annehmen solcher verwendet.
- * Sie verwaltet für die Dauer einer Serververbindung die Verbindung zu einem Client.
+ * Sie verwaltet fuer die Dauer einer Serververbindung die Verbindung zu einem Client.
  */
 public class Player implements Runnable{
 	/**
@@ -18,21 +18,21 @@ public class Player implements Runnable{
 	 */
 	private String name;
 	/**
-	 * Der Server, an den eingehende ComObjects übergeben werden sollen
+	 * Der Server, an den eingehende ComObjects uebergeben werden sollen
 	 */
 	private Server server;
 	/**
-	 * ObjectOutputStream, um für Nachrichten an den Client zu Senden
+	 * ObjectOutputStream, um fuer Nachrichten an den Client zu Senden
 	 */
 	private ObjectOutputStream comOut;
 	/**
-	 * ObjectInputStream, um für Nachrichten vom Client entgegenzunehmen
+	 * ObjectInputStream, um fuer Nachrichten vom Client entgegenzunehmen
 	 */
 	private ObjectInputStream comIn;
 
 	/**
 	 * Konstruktor des Players, in ihm werden die Attribute server, comOut und comIn mit
-	 * vom ClientListererThread übergebenen Werten Instanziiert.
+	 * vom ClientListererThread uebergebenen Werten Instanziiert.
 	 * @param lobbyServer ist der LobbyServer, der zu Beginn den Player verwaltet.
 	 * @param output ist der ObjectOutputStream an den entsprechenden Client
 	 * @param input ist der ObjectInputStream vom entsprechenden Client
@@ -45,11 +45,11 @@ public class Player implements Runnable{
 	
 	/**
 	 * Die run-Methode des Thread nimmt eingehende Nachrichten des Client
-	 * entgegen und übergibt diese an den Server durch Aufruf der Methode 
+	 * entgegen und uebergibt diese an den Server durch Aufruf der Methode 
 	 * resolveMessage()
-	 * Fängt eine ClassNotFoundException ab, falls die Klasse nicht gefunden
+	 * Faengt eine ClassNotFoundException ab, falls die Klasse nicht gefunden
 	 * werden kann und gibt einen Fehler aus.
-	 * Fängt eine IOException ab und ruft im jeweiligen Server, dem er zugeteilt
+	 * Faengt eine IOException ab und ruft im jeweiligen Server, dem er zugeteilt
 	 * ist die handleIOException Methode auf.
 	 */
 	public void run(){
@@ -72,7 +72,7 @@ public class Player implements Runnable{
 
 	/**
 	 * Diese Methode schickt ein ComObjekt an den Client.
-	 * Sie fängt eine IOException ab und ruft im jeweiligen Server, dem er zugeteilt
+	 * Sie faengt eine IOException ab und ruft im jeweiligen Server, dem er zugeteilt
 	 * ist die handleIOException Methode auf.
 	 * @param com ist das ComObject das verschickt wird
 	 */
@@ -92,7 +92,7 @@ public class Player implements Runnable{
 	/**
 	 * Diese Methode wechselt beim Player den Server an den er comObjects
 	 * weiterleiten soll. Dabei wird er aus dem playerSet des alten Servers
-	 * entfernt und in das playerSet des neuen Players eingefugt. 
+	 * entfernt und in das playerSet des neuen Players eingefuegt. 
 	 * Danach wird vom neuen Server ein ComUpdatePlayerlist Objekt mit broadcast 
 	 * an alle Clients, die vom Server verwaltet werden, verschickt.
 	 * @param newServer ist der neue Server
@@ -108,15 +108,15 @@ public class Player implements Runnable{
 	}
 	
 	/**
-	 * Getter-Methode für den Benutzernamen.
-	 * @return gibt den Benutzernamen des Spielers zurück
+	 * Getter-Methode fuer den Benutzernamen.
+	 * @return gibt den Benutzernamen des Spielers zurueck
 	 */
 	public String getName(){
 		return name;
 	}
 	
 	/**
-	 * Setter-Methode für den Benutzernamen.
+	 * Setter-Methode fuer den Benutzernamen.
 	 * @param newName ist der neue Name
 	 */
 	public void setName(String newName){
