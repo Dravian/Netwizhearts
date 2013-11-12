@@ -60,8 +60,26 @@ public abstract class ServerRuleset {
 		RULESET = ruleset;
 		MIN_PLAYERS = min;
 		MAX_PLAYERS = max;
+		List<Card> deck = createDeck();
+		gameState = new GameState(ruleset,deck);
 		gamePhase = GamePhase.Start;
 		this.server = server;
+	}
+	
+	/**
+	 * Setzt eine neue Spielrunde
+	 * @param 
+	 */
+	protected void setRoundNumber(int number) {
+		gameState.setRoundNumber(number);
+	}
+	
+	/**
+	 * Holt die aktuelle Rundenanzahl zurück
+	 * @return
+	 */
+	protected int getRoundNumber() {
+		return gameState.getRoundNumber();
 	}
 	
 	/**
@@ -88,6 +106,14 @@ public abstract class ServerRuleset {
 		return MAX_PLAYERS;
 	}
 	
+	/**
+	 * Ändert den momentanen Spielphase
+	 * @param phase Die neue Spielphase
+	 */
+	protected void setGamePhase(GamePhase phase) {
+		
+	}
+
 	/**
 	 * Gibt den momentanen Spielzustand zurück
 	 * @return Gibt die momentan Spielphase zurück
@@ -131,7 +157,7 @@ public abstract class ServerRuleset {
 	protected void setFirstPlayer(PlayerState player) {
 		gameState.setFirstPlayer(player);
 	}
-
+	
 	/**
 	 * Holt den Spieler der als erster am Zug war
 	 * @return firstPlayer Der Spielzustand des Spielers der als erster am Zug war
@@ -207,23 +233,16 @@ public abstract class ServerRuleset {
 	 * @param name Der Name vom Spieler
 	 */
 	protected void send(RulesetMessage message, String name) {
-		
+		server.send(message,name);
 	}
 	
-	/**
-	 * Generiert eine MsgCardRequest und ruft bei sich die send Methode auf
-	 * @param name Der Name vom Spieler
-	 */
-	protected void generateMsgCardRequest(String name) {
-		
-	}
 	
 	/**
 	 * Schickt eine Nachricht an alle Spieler
 	 * @param message Die Nachricht
 	 */
 	protected void broadcast(RulesetMessage message) {
-		
+		server.broadcast(message);
 	}
 	
 	/** 
@@ -247,6 +266,24 @@ public abstract class ServerRuleset {
 		
 	}
 	
+	/**
+	 * Setzt den Punktestand eines Spielers
+	 * @param player Der Spieler 
+	 * @param i Punktestand
+	 */
+	protected void setPoints(PlayerState player, int i) {
+		OtherData otherData = player.getOtherData();
+		otherData.setPoints(i);
+	}
+	
+	/**
+	 * Holt den Punktestand eines Spielers
+	 * @param player Der Spieler
+	 * @return Die Punkte des Spielers
+	 */
+	protected int getPoints(PlayerState player) {
+		return (player.getOtherData()).getPoints();
+	}
 	/**
 	 * Verteilt eine bestimmte Anzahl an Karten an die Spieler
 	 * @param number Die Anzahl an Karten
@@ -297,7 +334,9 @@ public abstract class ServerRuleset {
 	protected abstract void calculateTricks();
 
 	/** 
-	 * Berechnet das Ergebnis von der Rundenberechnung
+	 * Berechnet das Ergebnis einer Rundenberechnung und ist verantwortlich 
+	 * für das Setzten von Punkten beim Rundenende, sowie zur Überprüfung auf
+	 * Spielende. 
 	 */
 	protected abstract void calculateRoundOutcome();
 
@@ -305,4 +344,10 @@ public abstract class ServerRuleset {
 	 * Wird beim Spielende aufgerufen und gibt den Namen vom Sieger zurück
 	 */
 	protected abstract String getWinner();
+	
+	/**
+	 * Erzeugt ein GameClientUpdate welches individuell für jeden Benutzer ist
+	 * @param player Dem Spieler 
+	 */
+	protected abstract GameClientUpdate generateGameClientUpdate(String player);
 }

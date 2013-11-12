@@ -28,6 +28,10 @@ public enum GamePhase {
 	 * Der Zustand in dem auf eine Farbauswahl vom Benutzer gewartet wird
 	 */
 	SelectionRequest,
+	/**
+	 * Der Zustand wenn eine Runde vorbei ist
+	 */
+	RoundEnd,
 	/** 
 	 * Der Zustand bei Spielende
 	 */
