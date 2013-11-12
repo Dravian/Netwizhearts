@@ -4,7 +4,7 @@
 package Server;
 
 /**
- * Diese Klasse startet den Server und ist für die 
+ * ServerMain. Diese Klasse startet den Server und ist fuer die 
  * Konfiguration des Servers verantwortlich.
  */
 public class ServerMain {

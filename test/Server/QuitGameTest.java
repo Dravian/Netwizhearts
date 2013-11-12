@@ -1,24 +1,28 @@
 package Server;
 
+
+import static org.junit.Assert.*;
+
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import ComObjects.ComClientQuit;
 import Ruleset.RulesetType;
-import Server.GameServer;
-import Server.LobbyServer;
 
-import junit.framework.*;
+public class QuitGameTest {
 
-public class QuitGameTest extends TestCase{
+	@Before
+	public void setUp() throws Exception {
+	}
 
-	public QuitGameTest(String name){
-		super(name);
+	@After
+	public void tearDown() throws Exception {
 	}
 	
 	@Test
