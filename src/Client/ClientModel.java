@@ -134,8 +134,7 @@ public class ClientModel extends Observable{
 	 * falls eine Nachricht für das Regelwerk ankommt. Die
 	 * darin enthaltene RulesetMessage wird dem ClientRuleset
 	 * zur Verarbeitung uebergeben.
-	 * 
-	 * @param die ankommende ComRuleset Nachricht
+	 * @param msg Die ankommende ComRuleset Nachricht
 	 */
 	public void receiveMessage(ComRuleset msg) {
 		
@@ -225,7 +224,7 @@ public class ClientModel extends Observable{
 	/**
 	 * Gibt eine Liste aller bereits ausgespielten Karten zurueck.
 	 * 
-	 * @return Card. Die Ids der Karten
+	 * @return List<Card>. Eine Liste der gespielten Karten.
 	 */
 	public List<Card> getPlayedCards(){
 		return null;
