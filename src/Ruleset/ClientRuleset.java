@@ -9,9 +9,6 @@ import java.util.Map;
 import Client.ClientModel;
 import ComObjects.MsgCard;
 import ComObjects.MsgCardRequest;
-import ComObjects.MsgMultipleCardsRequest;
-import ComObjects.MsgNumberRequest;
-import ComObjects.MsgSelectionRequest;
 import ComObjects.MsgUser;
 import ComObjects.RulesetMessage;
 
