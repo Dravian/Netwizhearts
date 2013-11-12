@@ -1,5 +1,7 @@
 package Ruleset;
 
+import java.util.Set;
+
 import Server.GameServer;
 import ComObjects.MsgMultiCards;
 import ComObjects.MsgMultipleCardsRequest;
@@ -27,12 +29,24 @@ public class ServerHearts extends ServerRuleset {
 	}
 		
 	/**
-	 * Verarbeitet die RulesetMessage dass mehrere Karten von einem Spieler übergeben wurden
+	 * Verarbeitet die RulesetMessage dass mehrerer Karten vom Spieler übergeben werden.
+	 * Die wird dann in isValidMove überprüft, bei falsche Eingabe wird´
+	 * generateMsgMultiCardRequest für den selben Spieler aufgerufen. 
+	 * Bei richtiger Eingabe geht das Spiel weiter.
 	 * @param msgMultiCard Die Nachricht vom Client
 	 * @param name Der Name des Spielers
 	 */
-	protected void resolveMessage(MsgMultiCards msgMultiCard, String name) {
+	public void resolveMessage(MsgMultiCards msgMultiCard, String name) {
+		
+	}
 	
+	/**
+	 * Überprüft ob eine übergebenes Kartenset von einem Spieler gültig ist
+	 * @param cards Ein Kartenset
+	 * @return true falls das Kartenset gültig ist, false wenn nicht
+	 */
+	private boolean areValidChoosenCards(Set<Card> cards, String name) {
+		return false;
 	}
 	
 	/**

@@ -236,16 +236,19 @@ public abstract class ServerRuleset {
 	 * @param msgCard Die Nachricht vom Client welche Karte gespielt wurde
 	 * @param name Der Name des Spielers
 	 */
-	protected void resolveMessage(RulesetMessage message, String name) {
+	public void resolveMessage(RulesetMessage message, String name) {
 		
 	}
 	
 	/** 
-	 * Verarbeitet die RulesetMessage dass eine Karte vom Spieler gespielt
+	 * Verarbeitet die RulesetMessage dass eine Karte vom Spieler gespielt.
+	 * Die wird dann in isValidMove überprüft, bei falsche Eingabe wird´
+	 * generateMsgCardRequest für den selben Spieler aufgerufen. 
+	 * Bei richtiger Eingabe geht das Spiel weiter.
 	 * @param msgCard Die Nachricht vom Client welche Karte gespielt wurde
 	 * @param name Der Name des Spielers
 	 */
-	protected void resolveMessage(MsgCard msgCard, String name) {
+	public void resolveMessage(MsgCard msgCard, String name) {
 		
 	}
 	

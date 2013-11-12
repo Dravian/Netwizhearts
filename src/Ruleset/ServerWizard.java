@@ -34,22 +34,46 @@ public class ServerWizard extends ServerRuleset {
 	}
 	
 	/**
-	 * Verarbeitet die RulesetMessage dass ein Spieler eine Stichangabe gemacht hat
+	 * Verarbeitet die RulesetMessage dass der Spieler eine Stichansage macht.
+	 * Die wird dann in isValidNumber überprüft, bei falsche Eingabe wird´
+	 * generateMsgCardRequest für den selben Spieler aufgerufen. 
+	 * Bei richtiger Eingabe geht das Spiel weiter.
 	 * @param msgNumber Die Nachricht vom Client
 	 * @param name Der Name des Spielers
 	 */
-	protected void resolveMessage(MsgNumber msgNumber, String name) {
+	public void resolveMessage(MsgNumber msgNumber, String name) {
 	}
 
 	/**
-	 * Verarbeitet die RulesetMessage dass ein Spieler eine Farbe ausgewählt hat
+	 * Überprüft ob eine eingegebene Stichangabe eines Spielers gültig ist
+	 * @param number Die Stichangabe
+	 * @param name Der Name vom Spieler
+	 * @return true falls die Stichangabe gültig ist, false wenn nicht
+	 */
+	private boolean isValidNumber(int number, String name) {
+		return false;
+	}
+	/**
+	 * Verarbeitet die RulesetMessage dass mehrerer Karten vom Spieler übergeben werden.
+	 * Die wird dann in isValidColour überprüft, bei falsche Eingabe wird´
+	 * generateMsgMultiCardRequest für den selben Spieler aufgerufen. 
+	 * Bei richtiger Eingabe geht das Spiel weiter.
 	 * @param msgSelection Die Nachricht vom Client
 	 * @param name Der Name des Spielers
 	 */
-	protected void resolveMessage(MsgSelection msgSelection, String name){
+	public void resolveMessage(MsgSelection msgSelection, String name){
 		
 	}
 	
+	/**
+	 * Überprüft ob eine eingebene Trumpffarbe eines Spielers gültig ist
+	 * @param colour Die Trumpffarbe
+	 * @param name Der Name des Spielers
+	 * @return true falls die Farbe gültig ist, false wenn nicht
+	 */
+	private boolean isValidColour(Colour colour, String name) {
+		return false;
+	}
 	/**
 	 * Generiert eine MsgNumberRequest und ruft bei sich die send Methode auf
 	 * @param name Der Name vom Spieler
