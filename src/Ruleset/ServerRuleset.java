@@ -225,7 +225,7 @@ public abstract class ServerRuleset {
 	 * @param name Der Name vom Spieler
 	 */
 	protected void send(RulesetMessage message, String name) {
-		server.send(message,name);
+		server.sendRulesetMessage(name,message);
 	}
 	
 	
@@ -234,7 +234,7 @@ public abstract class ServerRuleset {
 	 * @param message Die Nachricht
 	 */
 	protected void broadcast(RulesetMessage message) {
-		server.broadcast(message);
+		server.broadcastRulesetMessage(message);
 	}
 	
 	/** 
