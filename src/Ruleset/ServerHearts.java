@@ -34,6 +34,14 @@ public class ServerHearts extends ServerRuleset {
 	protected void resolveMessage(MsgMultiCards msgMultiCard, String name) {
 	
 	}
+	
+	/**
+	 * Generiert eine MsgMultiCardRequest und ruft bei sich die send Methode auf
+	 * @param name Der Name vom Spieler
+	 */
+	private void generateMsgMultiCardRequest(String name) {
+		
+	}
 
 	@Override
 	protected void calculateRoundOutcome() {

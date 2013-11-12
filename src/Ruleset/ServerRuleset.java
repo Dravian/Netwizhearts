@@ -207,7 +207,7 @@ public abstract class ServerRuleset {
 		return gameState.getPlayerCards(name);
 	}
 	/**
-	 * Schickt eine Nachricht an einen Spieler
+	 * Schickt eine Nachricht an einen Spieler, über den Gameserver
 	 * @param message Die Nachricht vom Typ RulesetMessage
 	 * @param name Der Name vom Spieler
 	 */
@@ -216,10 +216,27 @@ public abstract class ServerRuleset {
 	}
 	
 	/**
+	 * Generiert eine MsgCardRequest und ruft bei sich die send Methode auf
+	 * @param name Der Name vom Spieler
+	 */
+	protected void generateMsgCardRequest(String name) {
+		
+	}
+	
+	/**
 	 * Schickt eine Nachricht an alle Spieler
 	 * @param message Die Nachricht
 	 */
 	protected void broadcast(RulesetMessage message) {
+		
+	}
+	
+	/** 
+	 * Verarbeitet eine allgemeine RulesetMessage
+	 * @param msgCard Die Nachricht vom Client welche Karte gespielt wurde
+	 * @param name Der Name des Spielers
+	 */
+	protected void resolveMessage(RulesetMessage message, String name) {
 		
 	}
 	

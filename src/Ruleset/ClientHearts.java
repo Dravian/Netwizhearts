@@ -42,10 +42,11 @@ public class ClientHearts extends ClientRuleset {
 	}
 	
 	/**
-	 * Schickt ein Set an Karten an den Server
+	 * Generiert eine MsgMultiCards aus den Karten und ruft bei sich 
+	 * die send Methode auf
 	 * @param cards Das Set an Karten
 	 */
-	public void send(Set<Card> cards) {
+	private void generateMsgMultiCards(Set<Card> cards) {
 		send(new MsgMultiCards(cards));
 	}
 	
@@ -56,6 +57,15 @@ public class ClientHearts extends ClientRuleset {
 	public void resolveMessage(MsgMultipleCardsRequest msgMultiCardsRequest) {
 		
 		
+	}
+	
+	/**
+	 * Gibt zurück ob die Karten die der Client tauschen will, gültig sind
+	 * @param cards Die zu tauschenden Karten
+	 * @return true wenn Karten valide sind, false wenn nicht
+	 */
+	public boolean areValidChoosenCards(Set<Card> cards) {
+		return false;
 	}
 
 }
