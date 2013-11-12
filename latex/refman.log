@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.9.25)  12 NOV 2013 23:29
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.9.25)  12 NOV 2013 23:56
 entering extended mode
 **refman
 (C:\Users\Laptop\Desktop\Doxygen\latex\refman.tex
@@ -1872,14 +1872,14 @@ File: Milestone1.png Graphic file (type png)
 
 <use Milestone1.png>
 Package pdftex.def Info: Milestone1.png used on input line 1036.
-(pdftex.def)             Requested size: 637.33897pt x 166.9443pt.
+(pdftex.def)             Requested size: 546.29153pt x 143.09628pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 1035--1037
 
  []
 
 
-Overfull \hbox (91.04744pt too wide) in paragraph at lines 1035--1037
+Overfull \hbox (45.52025pt too wide) in paragraph at lines 1035--1037
 | [] 
  []
 
@@ -1897,14 +1897,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 1035--1037
 File: Milestone2.png Graphic file (type png)
  <use Milestone2.png>
 Package pdftex.def Info: Milestone2.png used on input line 1039.
-(pdftex.def)             Requested size: 637.33897pt x 118.18755pt.
+(pdftex.def)             Requested size: 546.29153pt x 101.30191pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 1038--1040
 
  []
 
 
-Overfull \hbox (91.04744pt too wide) in paragraph at lines 1038--1040
+Overfull \hbox (45.52025pt too wide) in paragraph at lines 1038--1040
 | [] 
  []
 
@@ -1922,14 +1922,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 1038--1040
 File: Milestone3.png Graphic file (type png)
  <use Milestone3.png>
 Package pdftex.def Info: Milestone3.png used on input line 1042.
-(pdftex.def)             Requested size: 637.33897pt x 152.97566pt.
+(pdftex.def)             Requested size: 546.29153pt x 131.12135pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 1041--1043
 
  []
 
 
-Overfull \hbox (91.04744pt too wide) in paragraph at lines 1041--1043
+Overfull \hbox (45.52025pt too wide) in paragraph at lines 1041--1043
 | [] 
  []
 
@@ -1947,14 +1947,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 1041--1043
 File: Milestone4.png Graphic file (type png)
  <use Milestone4.png>
 Package pdftex.def Info: Milestone4.png used on input line 1045.
-(pdftex.def)             Requested size: 637.33897pt x 144.59146pt.
+(pdftex.def)             Requested size: 546.29153pt x 123.93604pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 1044--1047
 
  []
 
 
-Overfull \hbox (91.04744pt too wide) in paragraph at lines 1044--1047
+Overfull \hbox (45.52025pt too wide) in paragraph at lines 1044--1047
 | [] 
  []
 
@@ -2011,7 +2011,7 @@ m Files (x86)/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Program Files
 iKTeX 2.9/fonts/type1/urw/helvetic/uhvbo8ac.pfb><C:/Program Files (x86)/MiKTeX 
 2.9/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
 s/type1/urw/helvetic/uhvro8a.pfb>
-Output written on refman.pdf (141 pages, 2815076 bytes).
+Output written on refman.pdf (141 pages, 2815074 bytes).
 PDF statistics:
  6641 PDF objects out of 7423 (max. 8388607)
  2336 named destinations out of 2487 (max. 500000)
