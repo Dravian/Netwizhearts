@@ -7,6 +7,7 @@ import Server.Server;
 import java.io.Serializable;
 
 /**
+ * ComCreateGameRequest.
  * Diese Klasse ist ein spezielles Kommunikations-Objekt.
  * Diese Nachricht wird versendet, wenn ein neues Spiel erstellt
  * werden soll.
@@ -22,7 +23,8 @@ public class ComCreateGameRequest implements ComObject, Serializable {
     private String password;
 
     /**
-     * Dies ist der Kontruktor für eine neue ComCreateGameRequest-Nachricht.
+     * Dies ist der Kontruktor fuer eine neue ComCreateGameRequest-Nachricht.
+     * Wurde kein Passwort gesetzt, bleibt dieses leer.
      * @param name          ist der Name des Spiels.
      * @param ruleset       ist die der Spieltyp, der erstellt werden soll.
      * @param hasPassword   sagt, ob ein Passwort gesetzt wurde.
@@ -36,7 +38,7 @@ public class ComCreateGameRequest implements ComObject, Serializable {
     }
 
     /**
-     * Diese Methode gibt den Namen des Spiels zurück.
+     * Diese Methode gibt den Namen des Spiels zurueck.
      * @return den Spielnamen.
      */
     public String getGameName() {
@@ -44,7 +46,7 @@ public class ComCreateGameRequest implements ComObject, Serializable {
     }
 
     /**
-     * Diese Methode gibt das Regelwerk zurück, das benutzt werden soll.
+     * Diese Methode gibt das Regelwerk zurueck, das benutzt werden soll.
      * @return das Regelwerk, welches benutzt wird.
      */
     public Enum getRuleset() {
@@ -52,7 +54,7 @@ public class ComCreateGameRequest implements ComObject, Serializable {
     }
 
     /**
-     * Diese Methode gibt an, ob eine Passwort für ein Spiel gesetzt wurde.
+     * Diese Methode gibt an, ob eine Passwort fuer ein Spiel gesetzt wurde.
      * @return ob es ein Passwort gibt.
      */
     public boolean hasPassword() {
@@ -60,8 +62,8 @@ public class ComCreateGameRequest implements ComObject, Serializable {
     }
 
     /**
-     * Gibt das Passwort zurück. Sollte keines gesetzt sein, wird null
-     * zurück gegeben.
+     * Gibt das Passwort zurueck. Sollte keines gesetzt sein, wird null
+     * zurueck gegeben.
      * @return das Passwort.
      */
     public String getPassword() {

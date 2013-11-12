@@ -7,16 +7,16 @@ import Server.Server;
 import java.io.Serializable;
 
 /**
+ * ComClientLeave.
  * Diese Klasse ist ein spezielles Kommunikations-Objekt.
  * Sie wird zur Benachrichtigung gesendet, wenn ein Spieler
- * ins nächste Fenster möchte und aus dem alten entfernt
+ * ins naechste Fenster moechte und aus dem alten entfernt
  * werden soll.
- *
  */
 public class ComClientLeave implements ComObject, Serializable {
 
     /**
-     * Dieser Konstruktor erstellt eine neue ComClientLeave-Nachricht.
+     * Dies ist der Konstruktor einer neuen ComClientLeave-Nachricht.
      */
     public ComClientLeave() {
     }

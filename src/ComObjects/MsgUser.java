@@ -6,10 +6,11 @@ import Ruleset.ServerRuleset;
 
 import java.io.Serializable;
 
-/** 
+/**
+ * MsgUser.
  *  Diese Klasse ist eine Verfeinerung der RulesetMessage-Klasse.
  *  Sie wird dem Client gesendet, um dem ClientRuleset den aktuellen
- *  Spielzustand in Form eines GameClientUpdate zu übermitteln.
+ *  Spielzustand in Form eines GameClientUpdate zu uebermitteln.
  */
 public class MsgUser implements RulesetMessage, Serializable {
 
@@ -24,8 +25,8 @@ public class MsgUser implements RulesetMessage, Serializable {
     }
 
     /**
-     * Diese Methode liefert den den aktuellen Spielzustand, der für ein
-     * Update benötigt wird.
+     * Diese Methode liefert den den aktuellen Spielzustand, der fuer
+     * ein Update benoetigt wird.
      * @return den aktuellen Spielzustand.
      */
     public GameClientUpdate getGameClientUpdate() {

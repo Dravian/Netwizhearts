@@ -7,16 +7,16 @@ import Server.Server;
 import java.io.Serializable;
 
 /**
+ * ComStartGame.
  * Diese Klasse ist ein spezielles Kommunikations-Objekt.
  * Sie wird versendet, wenn ein Spiel gestartet werden soll.
  */
 public class ComStartGame implements ComObject, Serializable {
 
     /**
-     * Dies ist der Kontruktor für eine neue ComStartGame-Nachricht.
+     * Dies ist der Kontruktor fuer eine neue ComStartGame-Nachricht.
      */
     public ComStartGame() {
-
     }
 
     @Override

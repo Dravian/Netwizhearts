@@ -6,16 +6,17 @@ import Ruleset.ServerRuleset;
 import java.io.Serializable;
 
 /**
+ * MsgNumber.
  * Diese Klasse ist eine Verfeinerung der RulesetMessage-Klasse.
- * Sie enthält eine Zahl.
+ * Sie enthaelt eine Zahl, die ein Spieler zuvor ausgewaehlt hat.
  */
 public class MsgNumber implements RulesetMessage, Serializable {
 
 	private int number;
 
     /**
-     * Dies ist der Kontruktor für eine neue MsgNumber-Nachricht.
-     * @param number ist eine Eingabe eines Spielers
+     * Dies ist der Kontruktor fuer eine neue MsgNumber-Nachricht.
+     * @param number ist eine Eingabe eines Spielers.
      */
 	public MsgNumber(int number) {
         this.number = number;
