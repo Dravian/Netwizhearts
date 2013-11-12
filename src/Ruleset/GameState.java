@@ -102,14 +102,6 @@ public class GameState {
 	}
 	
 	/**
-	 * Setzt die Spielrundenanzahl
-	 * @param Die eine neue Rundenanzahl
-	 */
-	protected void setRoundNumber(int number) {
-		
-	}
-	
-	/**
 	 * Setzt einen neuen Spieler als currentPlayer
 	 * @param player Der neue currentPlayer
 	 */
