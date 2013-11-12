@@ -191,9 +191,9 @@ public class GameState {
 	 * @return Die Karten eines Spielers zurueck, wenn der Spieler nicht gefunden
 	 * wird, wird eine leere Liste zurückgegeben
 	 */
-	protected List<Card> getPlayerCards(String name) {
+	protected List<Card> getPlayerCards(PlayerState player) {
 		for(PlayerState p : players) {
-			if(p.getName().equals(name)) {
+			if(p.getName().equals(player.getName())) {
 				return p.getHand();
 			}
 		}
@@ -243,7 +243,7 @@ public class GameState {
 	 * @param card Die Karte
 	 * @return true falls die Karte im Stapel ist, false wenn nicht
 	 */
-	protected boolean giveACard(String name, Card card) {
+	protected boolean giveACard(PlayerState player, Card card) {
 		return false;	
 	}
 	
