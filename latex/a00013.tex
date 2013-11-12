@@ -1,0 +1,59 @@
+\hypertarget{a00013}{\subsection{Game\-Panel Klassenreferenz}
+\label{a00013}\index{Game\-Panel@{Game\-Panel}}
+}
+
+
+Abgeleitet von J\-Panel.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00013_a73abdd374fb7a65dea21a362b9569508}{\hyperlink{a00013_a73abdd374fb7a65dea21a362b9569508}{Game\-Panel} ()}\label{a00013_a73abdd374fb7a65dea21a362b9569508}
+
+\item 
+\hypertarget{a00013_afa6a5d047dafd989e2ae07279729e2de}{void \hyperlink{a00013_afa6a5d047dafd989e2ae07279729e2de}{make\-Trick\-Game\-Board\-Three\-Players} ()}\label{a00013_afa6a5d047dafd989e2ae07279729e2de}
+
+\item 
+\hypertarget{a00013_aa9038a7308bfeec897b7948681b71df5}{void \hyperlink{a00013_aa9038a7308bfeec897b7948681b71df5}{make\-Trick\-Game\-Board\-Four\-Players} ()}\label{a00013_aa9038a7308bfeec897b7948681b71df5}
+
+\item 
+\hypertarget{a00013_ae76b0ec73b0efc3bb802b1f9fff0a695}{void \hyperlink{a00013_ae76b0ec73b0efc3bb802b1f9fff0a695}{make\-Trick\-Game\-Board\-Five\-Players} ()}\label{a00013_ae76b0ec73b0efc3bb802b1f9fff0a695}
+
+\item 
+\hypertarget{a00013_a92259214e2d47f6822290e4c70281a73}{void \hyperlink{a00013_a92259214e2d47f6822290e4c70281a73}{make\-Trick\-Game\-Board\-Six\-Players} ()}\label{a00013_a92259214e2d47f6822290e4c70281a73}
+
+\item 
+\hypertarget{a00013_aac9233d06f3c093fc37139d7d2b258f6}{void {\bfseries paint\-Component} (Graphics g)}\label{a00013_aac9233d06f3c093fc37139d7d2b258f6}
+
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00013_abc2b86a848d138a9fa440633697d91fe}{\hyperlink{a00019}{Own\-Hand} {\bfseries own\-Hand}}\label{a00013_abc2b86a848d138a9fa440633697d91fe}
+
+\item 
+\hypertarget{a00013_ac1d053a82e4efcc49e4817315dfb282e}{Object {\bfseries own\-Score\-Label}}\label{a00013_ac1d053a82e4efcc49e4817315dfb282e}
+
+\item 
+\hypertarget{a00013_a5900859081242fdd5b35a0165e3aed66}{Set$<$ \hyperlink{a00018}{Other\-Player} $>$ {\bfseries other\-Player}}\label{a00013_a5900859081242fdd5b35a0165e3aed66}
+
+\item 
+\hypertarget{a00013_a25b0a421eff1aa5441292abae419e594}{\hyperlink{a00010}{Draw\-Deck} {\bfseries draw\-Deck}}\label{a00013_a25b0a421eff1aa5441292abae419e594}
+
+\item 
+\hypertarget{a00013_a0c36411186948010cb7232fb7ef099c4}{Set$<$ \hyperlink{a00009}{Discard\-Pile} $>$ {\bfseries discard\-Piles}}\label{a00013_a0c36411186948010cb7232fb7ef099c4}
+
+\item 
+\hypertarget{a00013_a714354485419fb2b615f17fcce85657e}{Buffered\-Image {\bfseries background}}\label{a00013_a714354485419fb2b615f17fcce85657e}
+
+\end{DoxyCompactItemize}
+\subsubsection*{Statische, private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00013_a3238d314ecdee14d2966760945d00c3b}{static final long {\bfseries serial\-Version\-U\-I\-D} = -\/1041218552426155968\-L}\label{a00013_a3238d314ecdee14d2966760945d00c3b}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Das \hyperlink{a00013}{Game\-Panel} ist die Komponente des Game-\/\-Fensters, welche das eigentliche Spiel darstellt. Es besteht aus veschiedenen Panelobjekten, welche je nach Regelwerk auf das Spielfeld gezeichnet werden. Dazu gehoeren die eigenen Karten, eventuell ausgewaehlte Karten, ein Textfeld z.\-B. zur Anzeige der Anzahl der restlichen Karten der Mitspieler und den Ablagestapel. Nach jeder Runde wird der Punktestand aktualisiert. 

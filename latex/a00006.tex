@@ -1,0 +1,45 @@
+\hypertarget{a00006}{\subsection{Choose\-Cards Klassenreferenz}
+\label{a00006}\index{Choose\-Cards@{Choose\-Cards}}
+}
+
+
+Abgeleitet von Observer.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{a00006_a2b67d42550fdf9ddd8f3878d0849965c}{update} (Observable o, Object arg)
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00006_a78a1f793ce7650a7cfefc4a7e4d14a04}{\hyperlink{a00019}{Own\-Hand} {\bfseries player\-Hand\-Panel}}\label{a00006_a78a1f793ce7650a7cfefc4a7e4d14a04}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+In diesem Fenster muss der Benutzer eine vorbestimmte Menge Karten auswaehlen. 
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00006_a2b67d42550fdf9ddd8f3878d0849965c}{\index{Client\-::\-View\-::\-Choose\-Cards@{Client\-::\-View\-::\-Choose\-Cards}!update@{update}}
+\index{update@{update}!Client::View::ChooseCards@{Client\-::\-View\-::\-Choose\-Cards}}
+\paragraph[{update}]{\setlength{\rightskip}{0pt plus 5cm}void update (
+\begin{DoxyParamCaption}
+\item[{Observable}]{o, }
+\item[{Object}]{arg}
+\end{DoxyParamCaption}
+)}}\label{a00006_a2b67d42550fdf9ddd8f3878d0849965c}
+
+
+Wird durch notify() im \hyperlink{a00003}{Client\-Model} aufgerufen. 
+
+Je nach dem in arg uebergebenen Befehl wird ein Update des Fensters ausgefuehrt oder eine Fehlermeldung angezeigt.
+
+
+\begin{DoxyParams}{Parameter}
+{\em o} & erwartet ein Objekt von der Klasse \hyperlink{a00003}{Client\-Model} \\
+\hline
+{\em arg} & erwartet\-: open\-Choose\-Cards, choose\-Cards\-Successful \\
+\hline
+\end{DoxyParams}

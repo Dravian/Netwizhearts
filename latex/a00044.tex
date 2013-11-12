@@ -1,0 +1,66 @@
+\hypertarget{a00044}{\subsection{Msg\-Card\-Request Klassenreferenz}
+\label{a00044}\index{Msg\-Card\-Request@{Msg\-Card\-Request}}
+}
+
+
+Abgeleitet von \hyperlink{a00053}{Ruleset\-Message} und Serializable.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00044_aaf6f2b5233061621b8165dc140db514c}{\hyperlink{a00044_aaf6f2b5233061621b8165dc140db514c}{Msg\-Card\-Request} ()}\label{a00044_aaf6f2b5233061621b8165dc140db514c}
+
+\item 
+void \hyperlink{a00044_ab45288da8f64e79408f1effd5579b5c2}{visit} (\hyperlink{a00068}{Server\-Ruleset} server\-Ruleset, String name)
+\item 
+void \hyperlink{a00044_acb5be722a2d1c9110d39f31c6e18f6e7}{visit} (\hyperlink{a00056}{Client\-Ruleset} client\-Ruleset)
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Diese Klasse ist eine Verfeinerung der Ruleset\-Message-\/\-Klasse. Diese Nachricht wird von Server gesendet, um einem Spieler mitzuteilen, dass er das Spielen einer Karte erwartet. 
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00044_ab45288da8f64e79408f1effd5579b5c2}{\index{Com\-Objects\-::\-Msg\-Card\-Request@{Com\-Objects\-::\-Msg\-Card\-Request}!visit@{visit}}
+\index{visit@{visit}!ComObjects::MsgCardRequest@{Com\-Objects\-::\-Msg\-Card\-Request}}
+\paragraph[{visit}]{\setlength{\rightskip}{0pt plus 5cm}void visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Server\-Ruleset}}]{server\-Ruleset, }
+\item[{String}]{name}
+\end{DoxyParamCaption}
+)}}\label{a00044_ab45288da8f64e79408f1effd5579b5c2}
+
+
+Diese Methode ist noetig, damit das Server\-Ruleset entscheiden kann welche Message es enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em server\-Ruleset} & ist das Ruleset, welches Ã¼bergeben wird, damit die ueberladene Methode richtig gewaehlt wird. \\
+\hline
+{\em name} & ist der Name des Spielers. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00053_ab45288da8f64e79408f1effd5579b5c2}{Ruleset\-Message}.
+
+\hypertarget{a00044_acb5be722a2d1c9110d39f31c6e18f6e7}{\index{Com\-Objects\-::\-Msg\-Card\-Request@{Com\-Objects\-::\-Msg\-Card\-Request}!visit@{visit}}
+\index{visit@{visit}!ComObjects::MsgCardRequest@{Com\-Objects\-::\-Msg\-Card\-Request}}
+\paragraph[{visit}]{\setlength{\rightskip}{0pt plus 5cm}void visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Client\-Ruleset}}]{client\-Ruleset}
+\end{DoxyParamCaption}
+)}}\label{a00044_acb5be722a2d1c9110d39f31c6e18f6e7}
+
+
+Diese Methode ist noetig, damit das Client\-Ruleset entscheiden kann welche Message es enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em client\-Ruleset} & ist das Ruleset, welches uebergeben wird, damit die ueberladene Methode richtig gewaehlt wird. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00053_acb5be722a2d1c9110d39f31c6e18f6e7}{Ruleset\-Message}.
+

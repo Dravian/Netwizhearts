@@ -1,0 +1,125 @@
+\hypertarget{a00011}{\subsection{Game Klassenreferenz}
+\label{a00011}\index{Game@{Game}}
+}
+
+
+Abgeleitet von J\-Frame und Observer.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00011_a98d87ba6bde3f389e92664a2ef9bfcb1}{Game} ()  throws I\-O\-Exception 
+\item 
+void \hyperlink{a00011_af74d428669a1985071ce854ba7a2448c}{make\-Trick\-Game\-Board} (int playercount)
+\item 
+void \hyperlink{a00011_a2b67d42550fdf9ddd8f3878d0849965c}{update} (Observable o, Object arg)
+\item 
+void \hyperlink{a00011_a41caffb40957934b02960cf166c78494}{update} (Observable o, String arg)
+\end{DoxyCompactItemize}
+\subsubsection*{Öffentliche, statische Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00011_a8b260eecbaabcef8473fd87ada040682}{static void {\bfseries main} (String\mbox{[}$\,$\mbox{]} args)  throws I\-O\-Exception}\label{a00011_a8b260eecbaabcef8473fd87ada040682}
+
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00011_aee369a2eca6b8f16ea106cddf68273e8}{J\-Panel {\bfseries content\-Pane}}\label{a00011_aee369a2eca6b8f16ea106cddf68273e8}
+
+\item 
+\hypertarget{a00011_a361f69c3885676f88e8d42f906ff4e7a}{J\-Text\-Field {\bfseries text\-Field}}\label{a00011_a361f69c3885676f88e8d42f906ff4e7a}
+
+\item 
+\hypertarget{a00011_a163cdd80f2ed681bf118140cbf202892}{\hyperlink{a00013}{Game\-Panel} {\bfseries panel}}\label{a00011_a163cdd80f2ed681bf118140cbf202892}
+
+\end{DoxyCompactItemize}
+\subsubsection*{Statische, private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00011_a3238d314ecdee14d2966760945d00c3b}{static final long {\bfseries serial\-Version\-U\-I\-D} = -\/2655520138213745249\-L}\label{a00011_a3238d314ecdee14d2966760945d00c3b}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Im \hyperlink{a00011}{Game} Fenster laeuft das Spiel ab.\-Es enthaelt den Spielchat und ein \hyperlink{a00013}{Game\-Panel}. Ausserdem koennen ueber ein Dropdown-\/\-Menue Aenderungen an Hintergrundbild und Kartenhintergruenden vorgenommen werden. Schliesseen beendet das Spiel und der Spieler wird in die \hyperlink{a00016}{Lobby} zurueckgeleitet. 
+
+\subsubsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{a00011_a98d87ba6bde3f389e92664a2ef9bfcb1}{\index{Client\-::\-View\-::\-Game@{Client\-::\-View\-::\-Game}!Game@{Game}}
+\index{Game@{Game}!Client::View::Game@{Client\-::\-View\-::\-Game}}
+\paragraph[{Game}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Game} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) throws I\-O\-Exception}}\label{a00011_a98d87ba6bde3f389e92664a2ef9bfcb1}
+
+
+Erstellt das \hyperlink{a00011}{Game} Fenster. 
+
+
+\begin{DoxyExceptions}{Ausnahmebehandlung}
+{\em I\-O\-Exception} & \\
+\hline
+\end{DoxyExceptions}
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00011_af74d428669a1985071ce854ba7a2448c}{\index{Client\-::\-View\-::\-Game@{Client\-::\-View\-::\-Game}!make\-Trick\-Game\-Board@{make\-Trick\-Game\-Board}}
+\index{make\-Trick\-Game\-Board@{make\-Trick\-Game\-Board}!Client::View::Game@{Client\-::\-View\-::\-Game}}
+\paragraph[{make\-Trick\-Game\-Board}]{\setlength{\rightskip}{0pt plus 5cm}void make\-Trick\-Game\-Board (
+\begin{DoxyParamCaption}
+\item[{int}]{playercount}
+\end{DoxyParamCaption}
+)}}\label{a00011_af74d428669a1985071ce854ba7a2448c}
+
+
+Arrangiert die Elemente der Spielfeld-\/\-Oberflaeche für ein Kartenspiel, bei dem Stiche gemacht werden. 
+
+Hierfuer hat jeder Spieler einen eigenen Ablagestapel vor sich. Es koennen 3, 4, 5, oder 6 Spieler gewaehlt werden.
+
+
+\begin{DoxyParams}{Parameter}
+{\em playercount} & Anzahl der Spieler, wobei 3 $<$= playercount $<$=6 einzuhalten ist \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00011_a2b67d42550fdf9ddd8f3878d0849965c}{\index{Client\-::\-View\-::\-Game@{Client\-::\-View\-::\-Game}!update@{update}}
+\index{update@{update}!Client::View::Game@{Client\-::\-View\-::\-Game}}
+\paragraph[{update}]{\setlength{\rightskip}{0pt plus 5cm}void update (
+\begin{DoxyParamCaption}
+\item[{Observable}]{o, }
+\item[{Object}]{arg}
+\end{DoxyParamCaption}
+)}}\label{a00011_a2b67d42550fdf9ddd8f3878d0849965c}
+
+
+Wird durch notify() im \hyperlink{a00003}{Client\-Model} aufgerufen. 
+
+Je nach dem in arg uebergebenen View\-Notification-\/\-Befehl wird ein Update des Fensters ausgefuehrt oder eine Fehlermeldung angezeigt.
+
+
+\begin{DoxyParams}{Parameter}
+{\em o} & erwartet ein Objekt von der Klasse \hyperlink{a00003}{Client\-Model} \\
+\hline
+{\em arg} & erwartet\-: played\-Cards\-Update, other\-Data\-Update, move\-Acknowledged, game\-Started \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00011_a41caffb40957934b02960cf166c78494}{\index{Client\-::\-View\-::\-Game@{Client\-::\-View\-::\-Game}!update@{update}}
+\index{update@{update}!Client::View::Game@{Client\-::\-View\-::\-Game}}
+\paragraph[{update}]{\setlength{\rightskip}{0pt plus 5cm}void update (
+\begin{DoxyParamCaption}
+\item[{Observable}]{o, }
+\item[{String}]{arg}
+\end{DoxyParamCaption}
+)}}\label{a00011_a41caffb40957934b02960cf166c78494}
+
+
+Wird durch notify() im \hyperlink{a00003}{Client\-Model} aufgerufen, wenn eine Chatnachricht uebergeben wird. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em o} & erwartet ein Objekt von der Klasse \hyperlink{a00003}{Client\-Model} \\
+\hline
+{\em arg} & erwartet eine Chatnachricht in String-\/\-Form \\
+\hline
+\end{DoxyParams}

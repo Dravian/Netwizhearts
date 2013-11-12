@@ -1,0 +1,114 @@
+\hypertarget{a00047}{\subsection{Msg\-Multi\-Cards\-Request Klassenreferenz}
+\label{a00047}\index{Msg\-Multi\-Cards\-Request@{Msg\-Multi\-Cards\-Request}}
+}
+
+
+Abgeleitet von \hyperlink{a00053}{Ruleset\-Message} und Serializable.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00047_a8bddd71e746b26a73e6f873006972fcb}{Msg\-Multi\-Cards\-Request} (int \hyperlink{a00047_ad43c3812e6d13e0518d9f8b8f463ffcf}{count})
+\item 
+int \hyperlink{a00047_ae452b1c7e00c383f2916c4a530fab737}{get\-Count} ()
+\item 
+void \hyperlink{a00047_ab45288da8f64e79408f1effd5579b5c2}{visit} (\hyperlink{a00068}{Server\-Ruleset} server\-Ruleset, String name)
+\item 
+void \hyperlink{a00047_acb5be722a2d1c9110d39f31c6e18f6e7}{visit} (\hyperlink{a00056}{Client\-Ruleset} client\-Ruleset)
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00047_ad43c3812e6d13e0518d9f8b8f463ffcf}{int \hyperlink{a00047_ad43c3812e6d13e0518d9f8b8f463ffcf}{count}}\label{a00047_ad43c3812e6d13e0518d9f8b8f463ffcf}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Diese Klasse ist eine Verfeinerung der Ruleset\-Message-\/\-Klasse. Diese Nachricht wird gesendet, wenn die Auswahl mehrerer Karten vom Spieler gefordert werden soll. 
+
+\subsubsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{a00047_a8bddd71e746b26a73e6f873006972fcb}{\index{Com\-Objects\-::\-Msg\-Multi\-Cards\-Request@{Com\-Objects\-::\-Msg\-Multi\-Cards\-Request}!Msg\-Multi\-Cards\-Request@{Msg\-Multi\-Cards\-Request}}
+\index{Msg\-Multi\-Cards\-Request@{Msg\-Multi\-Cards\-Request}!ComObjects::MsgMultiCardsRequest@{Com\-Objects\-::\-Msg\-Multi\-Cards\-Request}}
+\paragraph[{Msg\-Multi\-Cards\-Request}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Msg\-Multi\-Cards\-Request} (
+\begin{DoxyParamCaption}
+\item[{int}]{count}
+\end{DoxyParamCaption}
+)}}\label{a00047_a8bddd71e746b26a73e6f873006972fcb}
+
+
+Dies ist der Kontruktor fuer eine neue Msg\-Multiple\-Cards\-Request-\/\-Nachricht. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em count} & ist die erwartete Anzahl an Karten. \\
+\hline
+\end{DoxyParams}
+
+
+Benutzt Msg\-Multi\-Cards\-Request.\-count.
+
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00047_ae452b1c7e00c383f2916c4a530fab737}{\index{Com\-Objects\-::\-Msg\-Multi\-Cards\-Request@{Com\-Objects\-::\-Msg\-Multi\-Cards\-Request}!get\-Count@{get\-Count}}
+\index{get\-Count@{get\-Count}!ComObjects::MsgMultiCardsRequest@{Com\-Objects\-::\-Msg\-Multi\-Cards\-Request}}
+\paragraph[{get\-Count}]{\setlength{\rightskip}{0pt plus 5cm}int get\-Count (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00047_ae452b1c7e00c383f2916c4a530fab737}
+
+
+Diese Methode gibt die Anzahl der Karten zurueck, die der Server vom Spieler erwartet. 
+
+\begin{DoxyReturn}{Rückgabe}
+die Anzahl der Karten. 
+\end{DoxyReturn}
+
+
+Benutzt Msg\-Multi\-Cards\-Request.\-count.
+
+\hypertarget{a00047_ab45288da8f64e79408f1effd5579b5c2}{\index{Com\-Objects\-::\-Msg\-Multi\-Cards\-Request@{Com\-Objects\-::\-Msg\-Multi\-Cards\-Request}!visit@{visit}}
+\index{visit@{visit}!ComObjects::MsgMultiCardsRequest@{Com\-Objects\-::\-Msg\-Multi\-Cards\-Request}}
+\paragraph[{visit}]{\setlength{\rightskip}{0pt plus 5cm}void visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Server\-Ruleset}}]{server\-Ruleset, }
+\item[{String}]{name}
+\end{DoxyParamCaption}
+)}}\label{a00047_ab45288da8f64e79408f1effd5579b5c2}
+
+
+Diese Methode ist noetig, damit das Server\-Ruleset entscheiden kann welche Message es enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em server\-Ruleset} & ist das Ruleset, welches Ã¼bergeben wird, damit die ueberladene Methode richtig gewaehlt wird. \\
+\hline
+{\em name} & ist der Name des Spielers. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00053_ab45288da8f64e79408f1effd5579b5c2}{Ruleset\-Message}.
+
+\hypertarget{a00047_acb5be722a2d1c9110d39f31c6e18f6e7}{\index{Com\-Objects\-::\-Msg\-Multi\-Cards\-Request@{Com\-Objects\-::\-Msg\-Multi\-Cards\-Request}!visit@{visit}}
+\index{visit@{visit}!ComObjects::MsgMultiCardsRequest@{Com\-Objects\-::\-Msg\-Multi\-Cards\-Request}}
+\paragraph[{visit}]{\setlength{\rightskip}{0pt plus 5cm}void visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Client\-Ruleset}}]{client\-Ruleset}
+\end{DoxyParamCaption}
+)}}\label{a00047_acb5be722a2d1c9110d39f31c6e18f6e7}
+
+
+Diese Methode ist noetig, damit das Client\-Ruleset entscheiden kann welche Message es enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em client\-Ruleset} & ist das Ruleset, welches uebergeben wird, damit die ueberladene Methode richtig gewaehlt wird. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00053_acb5be722a2d1c9110d39f31c6e18f6e7}{Ruleset\-Message}.
+

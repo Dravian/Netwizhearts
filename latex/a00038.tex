@@ -1,0 +1,106 @@
+\hypertarget{a00038}{\subsection{Com\-Ruleset Klassenreferenz}
+\label{a00038}\index{Com\-Ruleset@{Com\-Ruleset}}
+}
+
+
+Abgeleitet von \hyperlink{a00037}{Com\-Object} und Serializable.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00038_abd0ede642fb4c2daeecff71a44c8ac53}{Com\-Ruleset} (\hyperlink{a00053}{Ruleset\-Message} ruleset\-Message)
+\item 
+\hyperlink{a00053}{Ruleset\-Message} \hyperlink{a00038_a37ab2219f7218ea7420e038158d03a05}{get\-Ruleset\-Message} ()
+\item 
+void \hyperlink{a00038_a758d7005755a181717f238f714d87dd2}{process} (\hyperlink{a00003}{Client\-Model} model)
+\item 
+void \hyperlink{a00038_ac67b5ce3ec03d48ef1e6caad6e49c902}{process} (\hyperlink{a00076}{Player} player, \hyperlink{a00077}{Server} server)
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00038_a5c48ec3493553153b58479fc85a10e2f}{\hyperlink{a00053}{Ruleset\-Message} {\bfseries ruleset\-Message}}\label{a00038_a5c48ec3493553153b58479fc85a10e2f}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Diese Klasse ist ein spezielles Kommunikations-\/\-Objekt. Sie ist die grundlegende Nachricht eines Regelwerkaufrufes und enthaelt eine verfeinerte Nachricht mit weiteren Informationen, die \hyperlink{a00053}{Ruleset\-Message}. 
+
+\subsubsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{a00038_abd0ede642fb4c2daeecff71a44c8ac53}{\index{Com\-Objects\-::\-Com\-Ruleset@{Com\-Objects\-::\-Com\-Ruleset}!Com\-Ruleset@{Com\-Ruleset}}
+\index{Com\-Ruleset@{Com\-Ruleset}!ComObjects::ComRuleset@{Com\-Objects\-::\-Com\-Ruleset}}
+\paragraph[{Com\-Ruleset}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Com\-Ruleset} (
+\begin{DoxyParamCaption}
+\item[{{\bf Ruleset\-Message}}]{ruleset\-Message}
+\end{DoxyParamCaption}
+)}}\label{a00038_abd0ede642fb4c2daeecff71a44c8ac53}
+
+
+Dies ist der Kontruktor fuer eine neue Com\-Ruleset-\/\-Nachricht. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em ruleset\-Message} & ist eine Nachricht, die ans Ruleset gesendet werden soll. \\
+\hline
+\end{DoxyParams}
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00038_a37ab2219f7218ea7420e038158d03a05}{\index{Com\-Objects\-::\-Com\-Ruleset@{Com\-Objects\-::\-Com\-Ruleset}!get\-Ruleset\-Message@{get\-Ruleset\-Message}}
+\index{get\-Ruleset\-Message@{get\-Ruleset\-Message}!ComObjects::ComRuleset@{Com\-Objects\-::\-Com\-Ruleset}}
+\paragraph[{get\-Ruleset\-Message}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Ruleset\-Message} get\-Ruleset\-Message (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00038_a37ab2219f7218ea7420e038158d03a05}
+
+
+Diese Methode gibt die Nachricht zurueck, die ans Ruleset gesendet werden soll. 
+
+\begin{DoxyReturn}{Rückgabe}
+die Nachricht. 
+\end{DoxyReturn}
+\hypertarget{a00038_a758d7005755a181717f238f714d87dd2}{\index{Com\-Objects\-::\-Com\-Ruleset@{Com\-Objects\-::\-Com\-Ruleset}!process@{process}}
+\index{process@{process}!ComObjects::ComRuleset@{Com\-Objects\-::\-Com\-Ruleset}}
+\paragraph[{process}]{\setlength{\rightskip}{0pt plus 5cm}void process (
+\begin{DoxyParamCaption}
+\item[{{\bf Client\-Model}}]{model}
+\end{DoxyParamCaption}
+)}}\label{a00038_a758d7005755a181717f238f714d87dd2}
+
+
+Diese Methode ist noetig, damit der Client\-Listener\-Thread entscheiden kann welche Message das Object enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em model} & ist das Client\-Model, welches Ã¼bergeben wird, damit die ueberladene Methode richtig gewaehlt wird. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00037_a758d7005755a181717f238f714d87dd2}{Com\-Object}.
+
+\hypertarget{a00038_ac67b5ce3ec03d48ef1e6caad6e49c902}{\index{Com\-Objects\-::\-Com\-Ruleset@{Com\-Objects\-::\-Com\-Ruleset}!process@{process}}
+\index{process@{process}!ComObjects::ComRuleset@{Com\-Objects\-::\-Com\-Ruleset}}
+\paragraph[{process}]{\setlength{\rightskip}{0pt plus 5cm}void process (
+\begin{DoxyParamCaption}
+\item[{{\bf Player}}]{player, }
+\item[{{\bf Server}}]{server}
+\end{DoxyParamCaption}
+)}}\label{a00038_ac67b5ce3ec03d48ef1e6caad6e49c902}
+
+
+Diese Methode ist noetig, damit der Thread Player entscheiden kann welche Message das Object enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em player} & Der Client welcher den Aufruf startet. \\
+\hline
+{\em server} & Der Server an den sich das Com\-Objekt weitergibt. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00037_ac67b5ce3ec03d48ef1e6caad6e49c902}{Com\-Object}.
+

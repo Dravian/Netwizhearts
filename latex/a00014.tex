@@ -1,0 +1,45 @@
+\hypertarget{a00014}{\subsection{Input\-Number Klassenreferenz}
+\label{a00014}\index{Input\-Number@{Input\-Number}}
+}
+
+
+Abgeleitet von Observer.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{a00014_a2b67d42550fdf9ddd8f3878d0849965c}{update} (Observable o, Object arg)
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00014_a6d8bcbe4ebb8e887e3dccb18c9ce3ad7}{Object {\bfseries number\-Textfield}}\label{a00014_a6d8bcbe4ebb8e887e3dccb18c9ce3ad7}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+In diesem Fenster, kann der Benutzer eine Zahl eingeben. 
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00014_a2b67d42550fdf9ddd8f3878d0849965c}{\index{Client\-::\-View\-::\-Input\-Number@{Client\-::\-View\-::\-Input\-Number}!update@{update}}
+\index{update@{update}!Client::View::InputNumber@{Client\-::\-View\-::\-Input\-Number}}
+\paragraph[{update}]{\setlength{\rightskip}{0pt plus 5cm}void update (
+\begin{DoxyParamCaption}
+\item[{Observable}]{o, }
+\item[{Object}]{arg}
+\end{DoxyParamCaption}
+)}}\label{a00014_a2b67d42550fdf9ddd8f3878d0849965c}
+
+
+Wird durch notify() im \hyperlink{a00003}{Client\-Model} aufgerufen. 
+
+Je nach dem in arg uebergebenen Befehl wird ein Update des Fensters ausgefuehrt oder eine Fehlermeldung angezeigt.
+
+
+\begin{DoxyParams}{Parameter}
+{\em o} & erwartet ein Objekt von der Klasse \hyperlink{a00003}{Client\-Model} \\
+\hline
+{\em arg} & erwartet\-: open\-Input\-Number, input\-Number\-Successful \\
+\hline
+\end{DoxyParams}

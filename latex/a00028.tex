@@ -1,0 +1,66 @@
+\hypertarget{a00028}{\subsection{Com\-Client\-Quit Klassenreferenz}
+\label{a00028}\index{Com\-Client\-Quit@{Com\-Client\-Quit}}
+}
+
+
+Abgeleitet von \hyperlink{a00037}{Com\-Object} und Serializable.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00028_a52307476eb55f9bf5ab7174c2b113676}{\hyperlink{a00028_a52307476eb55f9bf5ab7174c2b113676}{Com\-Client\-Quit} ()}\label{a00028_a52307476eb55f9bf5ab7174c2b113676}
+
+\item 
+void \hyperlink{a00028_a758d7005755a181717f238f714d87dd2}{process} (\hyperlink{a00003}{Client\-Model} model)
+\item 
+void \hyperlink{a00028_ac67b5ce3ec03d48ef1e6caad6e49c902}{process} (\hyperlink{a00076}{Player} player, \hyperlink{a00077}{Server} server)
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Diese Klasse ist ein spezielles Kommunikations-\/\-Objekt. Die Nachricht wird verschickt, wenn der Spieler ein Fenster schlieÃŸt. 
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00028_a758d7005755a181717f238f714d87dd2}{\index{Com\-Objects\-::\-Com\-Client\-Quit@{Com\-Objects\-::\-Com\-Client\-Quit}!process@{process}}
+\index{process@{process}!ComObjects::ComClientQuit@{Com\-Objects\-::\-Com\-Client\-Quit}}
+\paragraph[{process}]{\setlength{\rightskip}{0pt plus 5cm}void process (
+\begin{DoxyParamCaption}
+\item[{{\bf Client\-Model}}]{model}
+\end{DoxyParamCaption}
+)}}\label{a00028_a758d7005755a181717f238f714d87dd2}
+
+
+Diese Methode ist noetig, damit der Client\-Listener\-Thread entscheiden kann welche Message das Object enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em model} & ist das Client\-Model, welches Ã¼bergeben wird, damit die ueberladene Methode richtig gewaehlt wird. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00037_a758d7005755a181717f238f714d87dd2}{Com\-Object}.
+
+\hypertarget{a00028_ac67b5ce3ec03d48ef1e6caad6e49c902}{\index{Com\-Objects\-::\-Com\-Client\-Quit@{Com\-Objects\-::\-Com\-Client\-Quit}!process@{process}}
+\index{process@{process}!ComObjects::ComClientQuit@{Com\-Objects\-::\-Com\-Client\-Quit}}
+\paragraph[{process}]{\setlength{\rightskip}{0pt plus 5cm}void process (
+\begin{DoxyParamCaption}
+\item[{{\bf Player}}]{player, }
+\item[{{\bf Server}}]{server}
+\end{DoxyParamCaption}
+)}}\label{a00028_ac67b5ce3ec03d48ef1e6caad6e49c902}
+
+
+Diese Methode ist noetig, damit der Thread Player entscheiden kann welche Message das Object enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em player} & Der Client welcher den Aufruf startet. \\
+\hline
+{\em server} & Der Server an den sich das Com\-Objekt weitergibt. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00037_ac67b5ce3ec03d48ef1e6caad6e49c902}{Com\-Object}.
+

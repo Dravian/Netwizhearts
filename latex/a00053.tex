@@ -1,0 +1,63 @@
+\hypertarget{a00053}{\subsection{Ruleset\-Message Schnittstellenreferenz}
+\label{a00053}\index{Ruleset\-Message@{Ruleset\-Message}}
+}
+
+
+Basisklasse für \hyperlink{a00043}{Msg\-Card}, \hyperlink{a00044}{Msg\-Card\-Request}, \hyperlink{a00045}{Msg\-Game\-End}, \hyperlink{a00046}{Msg\-Multi\-Cards}, \hyperlink{a00047}{Msg\-Multi\-Cards\-Request}, \hyperlink{a00048}{Msg\-Number}, \hyperlink{a00049}{Msg\-Number\-Request}, \hyperlink{a00050}{Msg\-Selection}, \hyperlink{a00051}{Msg\-Selection\-Request} und \hyperlink{a00052}{Msg\-User}.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{a00053_ab45288da8f64e79408f1effd5579b5c2}{visit} (\hyperlink{a00068}{Server\-Ruleset} server\-Ruleset, String name)
+\item 
+void \hyperlink{a00053_acb5be722a2d1c9110d39f31c6e18f6e7}{visit} (\hyperlink{a00056}{Client\-Ruleset} client\-Ruleset)
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Dieses Interface ist eine Verfeinerung der Com\-Ruleset-\/\-Klasse. Es enthÃ¤lt Methoden, die von speziellen Ruleset\-Messages implementiert werden mÃ¼ssen. 
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00053_ab45288da8f64e79408f1effd5579b5c2}{\index{Com\-Objects\-::\-Ruleset\-Message@{Com\-Objects\-::\-Ruleset\-Message}!visit@{visit}}
+\index{visit@{visit}!ComObjects::RulesetMessage@{Com\-Objects\-::\-Ruleset\-Message}}
+\paragraph[{visit}]{\setlength{\rightskip}{0pt plus 5cm}void visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Server\-Ruleset}}]{server\-Ruleset, }
+\item[{String}]{name}
+\end{DoxyParamCaption}
+)}}\label{a00053_ab45288da8f64e79408f1effd5579b5c2}
+
+
+Diese Methode ist noetig, damit das Server\-Ruleset entscheiden kann welche Message es enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em server\-Ruleset} & ist das Ruleset, welches Ã¼bergeben wird, damit die ueberladene Methode richtig gewaehlt wird. \\
+\hline
+{\em name} & ist der Name des Spielers. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert in \hyperlink{a00047_ab45288da8f64e79408f1effd5579b5c2}{Msg\-Multi\-Cards\-Request}, \hyperlink{a00050_ab45288da8f64e79408f1effd5579b5c2}{Msg\-Selection}, \hyperlink{a00043_ab45288da8f64e79408f1effd5579b5c2}{Msg\-Card}, \hyperlink{a00052_ab45288da8f64e79408f1effd5579b5c2}{Msg\-User}, \hyperlink{a00045_ab45288da8f64e79408f1effd5579b5c2}{Msg\-Game\-End}, \hyperlink{a00046_ab45288da8f64e79408f1effd5579b5c2}{Msg\-Multi\-Cards}, \hyperlink{a00048_ab45288da8f64e79408f1effd5579b5c2}{Msg\-Number}, \hyperlink{a00044_ab45288da8f64e79408f1effd5579b5c2}{Msg\-Card\-Request}, \hyperlink{a00049_ab45288da8f64e79408f1effd5579b5c2}{Msg\-Number\-Request} und \hyperlink{a00051_ab45288da8f64e79408f1effd5579b5c2}{Msg\-Selection\-Request}.
+
+\hypertarget{a00053_acb5be722a2d1c9110d39f31c6e18f6e7}{\index{Com\-Objects\-::\-Ruleset\-Message@{Com\-Objects\-::\-Ruleset\-Message}!visit@{visit}}
+\index{visit@{visit}!ComObjects::RulesetMessage@{Com\-Objects\-::\-Ruleset\-Message}}
+\paragraph[{visit}]{\setlength{\rightskip}{0pt plus 5cm}void visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Client\-Ruleset}}]{client\-Ruleset}
+\end{DoxyParamCaption}
+)}}\label{a00053_acb5be722a2d1c9110d39f31c6e18f6e7}
+
+
+Diese Methode ist noetig, damit das Client\-Ruleset entscheiden kann welche Message es enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em client\-Ruleset} & ist das Ruleset, welches uebergeben wird, damit die ueberladene Methode richtig gewaehlt wird. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert in \hyperlink{a00047_acb5be722a2d1c9110d39f31c6e18f6e7}{Msg\-Multi\-Cards\-Request}, \hyperlink{a00043_acb5be722a2d1c9110d39f31c6e18f6e7}{Msg\-Card}, \hyperlink{a00050_acb5be722a2d1c9110d39f31c6e18f6e7}{Msg\-Selection}, \hyperlink{a00052_acb5be722a2d1c9110d39f31c6e18f6e7}{Msg\-User}, \hyperlink{a00045_acb5be722a2d1c9110d39f31c6e18f6e7}{Msg\-Game\-End}, \hyperlink{a00046_acb5be722a2d1c9110d39f31c6e18f6e7}{Msg\-Multi\-Cards}, \hyperlink{a00048_acb5be722a2d1c9110d39f31c6e18f6e7}{Msg\-Number}, \hyperlink{a00049_acb5be722a2d1c9110d39f31c6e18f6e7}{Msg\-Number\-Request}, \hyperlink{a00051_acb5be722a2d1c9110d39f31c6e18f6e7}{Msg\-Selection\-Request} und \hyperlink{a00044_acb5be722a2d1c9110d39f31c6e18f6e7}{Msg\-Card\-Request}.
+

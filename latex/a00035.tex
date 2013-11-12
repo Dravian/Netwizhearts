@@ -1,0 +1,128 @@
+\hypertarget{a00035}{\subsection{Com\-Lobby\-Update\-Gamelist Klassenreferenz}
+\label{a00035}\index{Com\-Lobby\-Update\-Gamelist@{Com\-Lobby\-Update\-Gamelist}}
+}
+
+
+Abgeleitet von \hyperlink{a00037}{Com\-Object} und Serializable.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00035_a23bb741ab4c146ea0f8eb23746d9e28f}{Com\-Lobby\-Update\-Gamelist} (boolean remove\-Flag, \hyperlink{a00073}{Game\-Server\-Representation} game\-Server)
+\item 
+boolean \hyperlink{a00035_a9dff5523222ad77b87dac521beceadd3}{is\-Remove\-Flag} ()
+\item 
+\hyperlink{a00073}{Game\-Server\-Representation} \hyperlink{a00035_aaef399d0f2297f4aebba7a7210243973}{get\-Game\-Server} ()
+\item 
+void \hyperlink{a00035_a758d7005755a181717f238f714d87dd2}{process} (\hyperlink{a00003}{Client\-Model} model)
+\item 
+void \hyperlink{a00035_ac67b5ce3ec03d48ef1e6caad6e49c902}{process} (\hyperlink{a00076}{Player} player, \hyperlink{a00077}{Server} server)
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00035_a6a8036d75616cc037b0cf641819947e9}{boolean {\bfseries remove\-Flag}}\label{a00035_a6a8036d75616cc037b0cf641819947e9}
+
+\item 
+\hypertarget{a00035_a19947984d075500f41c6335d070b8c21}{\hyperlink{a00073}{Game\-Server\-Representation} {\bfseries game\-Server}}\label{a00035_a19947984d075500f41c6335d070b8c21}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Diese Klasse ist ein spezielles Kommunikations-\/\-Objekt. Sie aktualisiert die Gameliste in der Lobby. Dazu enthaelt sie den Game\-Server und ein Remove\-Flag. 
+
+\subsubsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{a00035_a23bb741ab4c146ea0f8eb23746d9e28f}{\index{Com\-Objects\-::\-Com\-Lobby\-Update\-Gamelist@{Com\-Objects\-::\-Com\-Lobby\-Update\-Gamelist}!Com\-Lobby\-Update\-Gamelist@{Com\-Lobby\-Update\-Gamelist}}
+\index{Com\-Lobby\-Update\-Gamelist@{Com\-Lobby\-Update\-Gamelist}!ComObjects::ComLobbyUpdateGamelist@{Com\-Objects\-::\-Com\-Lobby\-Update\-Gamelist}}
+\paragraph[{Com\-Lobby\-Update\-Gamelist}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Com\-Lobby\-Update\-Gamelist} (
+\begin{DoxyParamCaption}
+\item[{boolean}]{remove\-Flag, }
+\item[{{\bf Game\-Server\-Representation}}]{game\-Server}
+\end{DoxyParamCaption}
+)}}\label{a00035_a23bb741ab4c146ea0f8eb23746d9e28f}
+
+
+Dies ist der Kontruktor fuer eine neue Com\-Lobby\-Update\-Gamelist-\/\-Nachricht. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em remove\-Flag} & zeigt an, ob das Spiel geloescht werden soll. \\
+\hline
+{\em game\-Server} & ist das Spiel. \\
+\hline
+\end{DoxyParams}
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00035_a9dff5523222ad77b87dac521beceadd3}{\index{Com\-Objects\-::\-Com\-Lobby\-Update\-Gamelist@{Com\-Objects\-::\-Com\-Lobby\-Update\-Gamelist}!is\-Remove\-Flag@{is\-Remove\-Flag}}
+\index{is\-Remove\-Flag@{is\-Remove\-Flag}!ComObjects::ComLobbyUpdateGamelist@{Com\-Objects\-::\-Com\-Lobby\-Update\-Gamelist}}
+\paragraph[{is\-Remove\-Flag}]{\setlength{\rightskip}{0pt plus 5cm}boolean is\-Remove\-Flag (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00035_a9dff5523222ad77b87dac521beceadd3}
+
+
+Diese Methode liefert, ob ein Spiel geloescht werden soll oder nicht. 
+
+\begin{DoxyReturn}{Rückgabe}
+ob das Spiel gelÃ¶scht wird. 
+\end{DoxyReturn}
+\hypertarget{a00035_aaef399d0f2297f4aebba7a7210243973}{\index{Com\-Objects\-::\-Com\-Lobby\-Update\-Gamelist@{Com\-Objects\-::\-Com\-Lobby\-Update\-Gamelist}!get\-Game\-Server@{get\-Game\-Server}}
+\index{get\-Game\-Server@{get\-Game\-Server}!ComObjects::ComLobbyUpdateGamelist@{Com\-Objects\-::\-Com\-Lobby\-Update\-Gamelist}}
+\paragraph[{get\-Game\-Server}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Game\-Server\-Representation} get\-Game\-Server (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00035_aaef399d0f2297f4aebba7a7210243973}
+
+
+Diese Methode liefert das Spiel, das geupdated werden soll. 
+
+\begin{DoxyReturn}{Rückgabe}
+das Spiel. 
+\end{DoxyReturn}
+\hypertarget{a00035_a758d7005755a181717f238f714d87dd2}{\index{Com\-Objects\-::\-Com\-Lobby\-Update\-Gamelist@{Com\-Objects\-::\-Com\-Lobby\-Update\-Gamelist}!process@{process}}
+\index{process@{process}!ComObjects::ComLobbyUpdateGamelist@{Com\-Objects\-::\-Com\-Lobby\-Update\-Gamelist}}
+\paragraph[{process}]{\setlength{\rightskip}{0pt plus 5cm}void process (
+\begin{DoxyParamCaption}
+\item[{{\bf Client\-Model}}]{model}
+\end{DoxyParamCaption}
+)}}\label{a00035_a758d7005755a181717f238f714d87dd2}
+
+
+Diese Methode ist noetig, damit der Client\-Listener\-Thread entscheiden kann welche Message das Object enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em model} & ist das Client\-Model, welches Ã¼bergeben wird, damit die ueberladene Methode richtig gewaehlt wird. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00037_a758d7005755a181717f238f714d87dd2}{Com\-Object}.
+
+\hypertarget{a00035_ac67b5ce3ec03d48ef1e6caad6e49c902}{\index{Com\-Objects\-::\-Com\-Lobby\-Update\-Gamelist@{Com\-Objects\-::\-Com\-Lobby\-Update\-Gamelist}!process@{process}}
+\index{process@{process}!ComObjects::ComLobbyUpdateGamelist@{Com\-Objects\-::\-Com\-Lobby\-Update\-Gamelist}}
+\paragraph[{process}]{\setlength{\rightskip}{0pt plus 5cm}void process (
+\begin{DoxyParamCaption}
+\item[{{\bf Player}}]{player, }
+\item[{{\bf Server}}]{server}
+\end{DoxyParamCaption}
+)}}\label{a00035_ac67b5ce3ec03d48ef1e6caad6e49c902}
+
+
+Diese Methode ist noetig, damit der Thread Player entscheiden kann welche Message das Object enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em player} & Der Client welcher den Aufruf startet. \\
+\hline
+{\em server} & Der Server an den sich das Com\-Objekt weitergibt. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00037_ac67b5ce3ec03d48ef1e6caad6e49c902}{Com\-Object}.
+

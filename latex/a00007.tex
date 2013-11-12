@@ -1,0 +1,45 @@
+\hypertarget{a00007}{\subsection{Choose\-Item Klassenreferenz}
+\label{a00007}\index{Choose\-Item@{Choose\-Item}}
+}
+
+
+Abgeleitet von Observer.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{a00007_a5e5bb525779faa05530c9ebdc49ad123}{update} (Observable arg0, Object arg1)
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00007_a5eae36bb5790864ced94623c9d08cb90}{Object {\bfseries item\-Combo\-Box}}\label{a00007_a5eae36bb5790864ced94623c9d08cb90}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Dieses Fenster ermoeglicht es dem Spieler aus einer Liste von Items eines auszuwaehlen. 
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00007_a5e5bb525779faa05530c9ebdc49ad123}{\index{Client\-::\-View\-::\-Choose\-Item@{Client\-::\-View\-::\-Choose\-Item}!update@{update}}
+\index{update@{update}!Client::View::ChooseItem@{Client\-::\-View\-::\-Choose\-Item}}
+\paragraph[{update}]{\setlength{\rightskip}{0pt plus 5cm}void update (
+\begin{DoxyParamCaption}
+\item[{Observable}]{arg0, }
+\item[{Object}]{arg1}
+\end{DoxyParamCaption}
+)}}\label{a00007_a5e5bb525779faa05530c9ebdc49ad123}
+
+
+Wird durch notify() im \hyperlink{a00003}{Client\-Model} aufgerufen. 
+
+Je nach dem in arg uebergebenen Befehl wird ein Update des Fensters ausgefuehrt oder eine Fehlermeldung angezeigt.
+
+
+\begin{DoxyParams}{Parameter}
+{\em o} & erwartet ein Objekt von der Klasse \hyperlink{a00003}{Client\-Model} \\
+\hline
+{\em arg} & erwartet\-: open\-Choose\-Item, choose\-Item\-Successful \\
+\hline
+\end{DoxyParams}

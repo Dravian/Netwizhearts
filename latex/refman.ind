@@ -1,0 +1,1365 @@
+\begin{theindex}
+
+  \item {add\discretionary {-}{}{}Card}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Player\discretionary {-}{}{}State}, 
+		\hyperpage{87}
+  \item {add\discretionary {-}{}{}Chat\discretionary {-}{}{}Message\discretionary {-}{}{}Listener}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Lobby}, 
+		\hyperpage{24}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Lobby}, 
+		\hyperpage{27}
+  \item {add\discretionary {-}{}{}Connect\discretionary {-}{}{}Button\discretionary {-}{}{}Listener}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Login}, 
+		\hyperpage{29}
+  \item {add\discretionary {-}{}{}Create\discretionary {-}{}{}Button\discretionary {-}{}{}Listener}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Create\discretionary {-}{}{}Game}, 
+		\hyperpage{21}
+  \item {add\discretionary {-}{}{}Game\discretionary {-}{}{}Server}
+    \subitem {Server\discretionary {-}{}{}::\discretionary {-}{}{}Lobby\discretionary {-}{}{}Server}, 
+		\hyperpage{106}
+  \item {add\discretionary {-}{}{}Host\discretionary {-}{}{}Button\discretionary {-}{}{}Listener}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Lobby}, 
+		\hyperpage{27}
+  \item {add\discretionary {-}{}{}Join\discretionary {-}{}{}Button\discretionary {-}{}{}Listener}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Lobby}, 
+		\hyperpage{27}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Password}, 
+		\hyperpage{31}
+  \item {add\discretionary {-}{}{}Language\discretionary {-}{}{}Selection\discretionary {-}{}{}Listener}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Login}, 
+		\hyperpage{29}
+  \item {add\discretionary {-}{}{}Leave\discretionary {-}{}{}Button\discretionary {-}{}{}Listener}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Create\discretionary {-}{}{}Game}, 
+		\hyperpage{21}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Lobby}, 
+		\hyperpage{24}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Lobby}, 
+		\hyperpage{27}
+  \item {add\discretionary {-}{}{}Name}
+    \subitem {Server\discretionary {-}{}{}::\discretionary {-}{}{}Lobby\discretionary {-}{}{}Server}, 
+		\hyperpage{105}
+  \item {add\discretionary {-}{}{}Panel\discretionary {-}{}{}Mouse\discretionary {-}{}{}Listener}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Create\discretionary {-}{}{}Game}, 
+		\hyperpage{20}
+  \item {add\discretionary {-}{}{}Player}
+    \subitem {Server\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Server}, 
+		\hyperpage{101}
+    \subitem {Server\discretionary {-}{}{}::\discretionary {-}{}{}Server}, 
+		\hyperpage{110}
+  \item {add\discretionary {-}{}{}Player\discretionary {-}{}{}To\discretionary {-}{}{}Game}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}State}, 
+		\hyperpage{80}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{93}
+  \item {add\discretionary {-}{}{}Remove\discretionary {-}{}{}Button\discretionary {-}{}{}Listener}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Lobby}, 
+		\hyperpage{24}
+  \item {add\discretionary {-}{}{}Ruleset\discretionary {-}{}{}Selection\discretionary {-}{}{}Listener}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Create\discretionary {-}{}{}Game}, 
+		\hyperpage{20}
+  \item {add\discretionary {-}{}{}Start\discretionary {-}{}{}Button\discretionary {-}{}{}Listener}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Lobby}, 
+		\hyperpage{23}
+  \item {are\discretionary {-}{}{}Valid\discretionary {-}{}{}Choosen\discretionary {-}{}{}Cards}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Hearts}, 
+		\hyperpage{70}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Hearts}, 
+		\hyperpage{89}
+
+  \indexspace
+
+  \item {broadcast}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{93}
+    \subitem {Server\discretionary {-}{}{}::\discretionary {-}{}{}Server}, 
+		\hyperpage{110}
+  \item {broadcast\discretionary {-}{}{}Ruleset\discretionary {-}{}{}Message}
+    \subitem {Server\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Server}, 
+		\hyperpage{102}
+
+  \indexspace
+
+  \item {Card}, \hyperpage{69}
+  \item {change\discretionary {-}{}{}Server}
+    \subitem {Server\discretionary {-}{}{}::\discretionary {-}{}{}Player}, 
+		\hyperpage{109}
+  \item {Choose\discretionary {-}{}{}Cards}, \hyperpage{18}
+  \item {Choose\discretionary {-}{}{}Item}, \hyperpage{19}
+  \item {Client\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Main}
+    \subitem {main}, \hyperpage{9}
+  \item {Client\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Model}
+    \subitem {Client\discretionary {-}{}{}Model}, \hyperpage{10}
+    \subitem {create\discretionary {-}{}{}Connection}, \hyperpage{17}
+    \subitem {get\discretionary {-}{}{}Choose\discretionary {-}{}{}Cards}, 
+		\hyperpage{14}
+    \subitem {get\discretionary {-}{}{}Choose\discretionary {-}{}{}Items}, 
+		\hyperpage{15}
+    \subitem {get\discretionary {-}{}{}Language}, \hyperpage{13}
+    \subitem {get\discretionary {-}{}{}Lobby\discretionary {-}{}{}Gamelist}, 
+		\hyperpage{12}
+    \subitem {get\discretionary {-}{}{}Other\discretionary {-}{}{}Player\discretionary {-}{}{}Data}, 
+		\hyperpage{13}
+    \subitem {get\discretionary {-}{}{}Own\discretionary {-}{}{}Hand}, 
+		\hyperpage{13}
+    \subitem {get\discretionary {-}{}{}Own\discretionary {-}{}{}Score}, 
+		\hyperpage{13}
+    \subitem {get\discretionary {-}{}{}Played\discretionary {-}{}{}Cards}, 
+		\hyperpage{13}
+    \subitem {get\discretionary {-}{}{}Player\discretionary {-}{}{}Count}, 
+		\hyperpage{14}
+    \subitem {get\discretionary {-}{}{}Playerlist}, \hyperpage{12}
+    \subitem {get\discretionary {-}{}{}Rulesets}, \hyperpage{17}
+    \subitem {get\discretionary {-}{}{}Warning\discretionary {-}{}{}Text}, 
+		\hyperpage{17}
+    \subitem {get\discretionary {-}{}{}Window\discretionary {-}{}{}Text}, 
+		\hyperpage{14}
+    \subitem {give\discretionary {-}{}{}Chosen\discretionary {-}{}{}Cards}, 
+		\hyperpage{14}
+    \subitem {give\discretionary {-}{}{}Chosen\discretionary {-}{}{}Item}, 
+		\hyperpage{15}
+    \subitem {give\discretionary {-}{}{}Input\discretionary {-}{}{}Number}, 
+		\hyperpage{15}
+    \subitem {host\discretionary {-}{}{}Game}, \hyperpage{14}
+    \subitem {inform\discretionary {-}{}{}View}, \hyperpage{16}
+    \subitem {init\discretionary {-}{}{}Game}, \hyperpage{16}
+    \subitem {join\discretionary {-}{}{}Game}, \hyperpage{16}
+    \subitem {kick\discretionary {-}{}{}Player}, \hyperpage{13}
+    \subitem {leave\discretionary {-}{}{}Window}, \hyperpage{11}
+    \subitem {make\discretionary {-}{}{}Move}, \hyperpage{16}
+    \subitem {open\discretionary {-}{}{}Choose\discretionary {-}{}{}Cards}, 
+		\hyperpage{15}
+    \subitem {open\discretionary {-}{}{}Choose\discretionary {-}{}{}Item}, 
+		\hyperpage{15}
+    \subitem {open\discretionary {-}{}{}Input\discretionary {-}{}{}Number}, 
+		\hyperpage{16}
+    \subitem {receive\discretionary {-}{}{}Message}, \hyperpage{11, 12}
+    \subitem {send}, \hyperpage{14}
+    \subitem {send\discretionary {-}{}{}Chat\discretionary {-}{}{}Message}, 
+		\hyperpage{16}
+    \subitem {set\discretionary {-}{}{}Language}, \hyperpage{13}
+    \subitem {start\discretionary {-}{}{}Game}, \hyperpage{16}
+  \item {Client\discretionary {-}{}{}::\discretionary {-}{}{}Message\discretionary {-}{}{}Listener\discretionary {-}{}{}Thread}
+    \subitem {start\discretionary {-}{}{}Connection}, \hyperpage{18}
+  \item {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Choose\discretionary {-}{}{}Cards}
+    \subitem {update}, \hyperpage{19}
+  \item {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Choose\discretionary {-}{}{}Item}
+    \subitem {update}, \hyperpage{19}
+  \item {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Create\discretionary {-}{}{}Game}
+    \subitem {add\discretionary {-}{}{}Create\discretionary {-}{}{}Button\discretionary {-}{}{}Listener}, 
+		\hyperpage{21}
+    \subitem {add\discretionary {-}{}{}Leave\discretionary {-}{}{}Button\discretionary {-}{}{}Listener}, 
+		\hyperpage{21}
+    \subitem {add\discretionary {-}{}{}Panel\discretionary {-}{}{}Mouse\discretionary {-}{}{}Listener}, 
+		\hyperpage{20}
+    \subitem {add\discretionary {-}{}{}Ruleset\discretionary {-}{}{}Selection\discretionary {-}{}{}Listener}, 
+		\hyperpage{20}
+    \subitem {set\discretionary {-}{}{}Language}, \hyperpage{21}
+  \item {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Game}
+    \subitem {Game}, \hyperpage{22}
+    \subitem {make\discretionary {-}{}{}Trick\discretionary {-}{}{}Game\discretionary {-}{}{}Board}, 
+		\hyperpage{22}
+    \subitem {update}, \hyperpage{22}
+  \item {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Lobby}
+    \subitem {add\discretionary {-}{}{}Chat\discretionary {-}{}{}Message\discretionary {-}{}{}Listener}, 
+		\hyperpage{24}
+    \subitem {add\discretionary {-}{}{}Leave\discretionary {-}{}{}Button\discretionary {-}{}{}Listener}, 
+		\hyperpage{24}
+    \subitem {add\discretionary {-}{}{}Remove\discretionary {-}{}{}Button\discretionary {-}{}{}Listener}, 
+		\hyperpage{24}
+    \subitem {add\discretionary {-}{}{}Start\discretionary {-}{}{}Button\discretionary {-}{}{}Listener}, 
+		\hyperpage{23}
+    \subitem {set\discretionary {-}{}{}Language}, \hyperpage{24}
+    \subitem {update}, \hyperpage{24}
+  \item {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Input\discretionary {-}{}{}Number}
+    \subitem {update}, \hyperpage{26}
+  \item {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Lobby}
+    \subitem {add\discretionary {-}{}{}Chat\discretionary {-}{}{}Message\discretionary {-}{}{}Listener}, 
+		\hyperpage{27}
+    \subitem {add\discretionary {-}{}{}Host\discretionary {-}{}{}Button\discretionary {-}{}{}Listener}, 
+		\hyperpage{27}
+    \subitem {add\discretionary {-}{}{}Join\discretionary {-}{}{}Button\discretionary {-}{}{}Listener}, 
+		\hyperpage{27}
+    \subitem {add\discretionary {-}{}{}Leave\discretionary {-}{}{}Button\discretionary {-}{}{}Listener}, 
+		\hyperpage{27}
+    \subitem {set\discretionary {-}{}{}Language}, \hyperpage{28}
+    \subitem {update}, \hyperpage{28}
+  \item {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Login}
+    \subitem {add\discretionary {-}{}{}Connect\discretionary {-}{}{}Button\discretionary {-}{}{}Listener}, 
+		\hyperpage{29}
+    \subitem {add\discretionary {-}{}{}Language\discretionary {-}{}{}Selection\discretionary {-}{}{}Listener}, 
+		\hyperpage{29}
+    \subitem {set\discretionary {-}{}{}Language}, \hyperpage{29}
+    \subitem {update}, \hyperpage{29}
+  \item {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Password}
+    \subitem {add\discretionary {-}{}{}Join\discretionary {-}{}{}Button\discretionary {-}{}{}Listener}, 
+		\hyperpage{31}
+    \subitem {set\discretionary {-}{}{}Language}, \hyperpage{31}
+    \subitem {update}, \hyperpage{31}
+  \item {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Score\discretionary {-}{}{}Window}
+    \subitem {update}, \hyperpage{32}
+  \item {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}Card}
+    \subitem {get\discretionary {-}{}{}I\discretionary {-}{}{}D}, 
+		\hyperpage{33}
+    \subitem {View\discretionary {-}{}{}Card}, \hyperpage{32}
+  \item {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Warning}
+    \subitem {set\discretionary {-}{}{}Text}, \hyperpage{33}
+    \subitem {update}, \hyperpage{33}
+  \item {Client\discretionary {-}{}{}Controller}, \hyperpage{8}
+  \item {Client\discretionary {-}{}{}Hearts}, \hyperpage{69}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Hearts}, 
+		\hyperpage{70}
+  \item {Client\discretionary {-}{}{}Main}, \hyperpage{9}
+  \item {Client\discretionary {-}{}{}Model}, \hyperpage{9}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Model}, 
+		\hyperpage{10}
+  \item {Client\discretionary {-}{}{}Ruleset}, \hyperpage{71}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{71}
+  \item {Client\discretionary {-}{}{}State}, \hyperpage{17}
+  \item {Client\discretionary {-}{}{}Wizard}, \hyperpage{74}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Wizard}, 
+		\hyperpage{75}
+  \item {Colour}, \hyperpage{77}
+  \item {Com\discretionary {-}{}{}Been\discretionary {-}{}{}Kicked}, 
+		\hyperpage{34}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Been\discretionary {-}{}{}Kicked}, 
+		\hyperpage{35}
+  \item {Com\discretionary {-}{}{}Chat\discretionary {-}{}{}Message}, 
+		\hyperpage{35}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Chat\discretionary {-}{}{}Message}, 
+		\hyperpage{36}
+  \item {Com\discretionary {-}{}{}Client\discretionary {-}{}{}Leave}, 
+		\hyperpage{36}
+  \item {Com\discretionary {-}{}{}Client\discretionary {-}{}{}Quit}, 
+		\hyperpage{37}
+  \item {Com\discretionary {-}{}{}Create\discretionary {-}{}{}Game\discretionary {-}{}{}Request}, 
+		\hyperpage{38}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Create\discretionary {-}{}{}Game\discretionary {-}{}{}Request}, 
+		\hyperpage{38}
+  \item {Com\discretionary {-}{}{}Game\discretionary {-}{}{}End}, 
+		\hyperpage{40}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Game\discretionary {-}{}{}End}, 
+		\hyperpage{40}
+  \item {Com\discretionary {-}{}{}Init\discretionary {-}{}{}Game\discretionary {-}{}{}Lobby}, 
+		\hyperpage{41}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Init\discretionary {-}{}{}Game\discretionary {-}{}{}Lobby}, 
+		\hyperpage{41}
+  \item {Com\discretionary {-}{}{}Init\discretionary {-}{}{}Lobby}, 
+		\hyperpage{42}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Init\discretionary {-}{}{}Lobby}, 
+		\hyperpage{43}
+  \item {Com\discretionary {-}{}{}Join\discretionary {-}{}{}Request}, 
+		\hyperpage{44}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Join\discretionary {-}{}{}Request}, 
+		\hyperpage{44}
+  \item {Com\discretionary {-}{}{}Kick\discretionary {-}{}{}Player\discretionary {-}{}{}Request}, 
+		\hyperpage{46}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Kick\discretionary {-}{}{}Player\discretionary {-}{}{}Request}, 
+		\hyperpage{46}
+  \item {Com\discretionary {-}{}{}Lobby\discretionary {-}{}{}Update\discretionary {-}{}{}Gamelist}, 
+		\hyperpage{47}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Lobby\discretionary {-}{}{}Update\discretionary {-}{}{}Gamelist}, 
+		\hyperpage{48}
+  \item {Com\discretionary {-}{}{}Login\discretionary {-}{}{}Request}, 
+		\hyperpage{48}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Login\discretionary {-}{}{}Request}, 
+		\hyperpage{49}
+  \item {Com\discretionary {-}{}{}Object}, \hyperpage{50}
+  \item {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Been\discretionary {-}{}{}Kicked}
+    \subitem {Com\discretionary {-}{}{}Been\discretionary {-}{}{}Kicked}, 
+		\hyperpage{35}
+    \subitem {get\discretionary {-}{}{}Message}, \hyperpage{35}
+    \subitem {process}, \hyperpage{35}
+  \item {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Chat\discretionary {-}{}{}Message}
+    \subitem {Com\discretionary {-}{}{}Chat\discretionary {-}{}{}Message}, 
+		\hyperpage{36}
+    \subitem {get\discretionary {-}{}{}Chat\discretionary {-}{}{}Message}, 
+		\hyperpage{36}
+    \subitem {process}, \hyperpage{36}
+  \item {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Client\discretionary {-}{}{}Leave}
+    \subitem {process}, \hyperpage{37}
+  \item {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Client\discretionary {-}{}{}Quit}
+    \subitem {process}, \hyperpage{37, 38}
+  \item {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Create\discretionary {-}{}{}Game\discretionary {-}{}{}Request}
+    \subitem {Com\discretionary {-}{}{}Create\discretionary {-}{}{}Game\discretionary {-}{}{}Request}, 
+		\hyperpage{38}
+    \subitem {get\discretionary {-}{}{}Game\discretionary {-}{}{}Name}, 
+		\hyperpage{39}
+    \subitem {get\discretionary {-}{}{}Password}, \hyperpage{39}
+    \subitem {get\discretionary {-}{}{}Ruleset}, \hyperpage{39}
+    \subitem {has\discretionary {-}{}{}Password}, \hyperpage{39}
+    \subitem {process}, \hyperpage{39}
+  \item {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Game\discretionary {-}{}{}End}
+    \subitem {Com\discretionary {-}{}{}Game\discretionary {-}{}{}End}, 
+		\hyperpage{40}
+    \subitem {get\discretionary {-}{}{}Points}, \hyperpage{40}
+    \subitem {get\discretionary {-}{}{}Winner}, \hyperpage{40}
+    \subitem {process}, \hyperpage{41}
+  \item {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Init\discretionary {-}{}{}Game\discretionary {-}{}{}Lobby}
+    \subitem {Com\discretionary {-}{}{}Init\discretionary {-}{}{}Game\discretionary {-}{}{}Lobby}, 
+		\hyperpage{41}
+    \subitem {get\discretionary {-}{}{}Player\discretionary {-}{}{}List}, 
+		\hyperpage{42}
+    \subitem {process}, \hyperpage{42}
+  \item {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Init\discretionary {-}{}{}Lobby}
+    \subitem {Com\discretionary {-}{}{}Init\discretionary {-}{}{}Lobby}, 
+		\hyperpage{43}
+    \subitem {get\discretionary {-}{}{}Game\discretionary {-}{}{}List}, 
+		\hyperpage{43}
+    \subitem {get\discretionary {-}{}{}Player\discretionary {-}{}{}List}, 
+		\hyperpage{43}
+    \subitem {process}, \hyperpage{43}
+  \item {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Join\discretionary {-}{}{}Request}
+    \subitem {Com\discretionary {-}{}{}Join\discretionary {-}{}{}Request}, 
+		\hyperpage{44}
+    \subitem {game\discretionary {-}{}{}Master\discretionary {-}{}{}Name}, 
+		\hyperpage{46}
+    \subitem {get\discretionary {-}{}{}Game\discretionary {-}{}{}Master\discretionary {-}{}{}Name}, 
+		\hyperpage{44}
+    \subitem {process}, \hyperpage{44}, \hyperpage{46}
+  \item {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Kick\discretionary {-}{}{}Player\discretionary {-}{}{}Request}
+    \subitem {Com\discretionary {-}{}{}Kick\discretionary {-}{}{}Player\discretionary {-}{}{}Request}, 
+		\hyperpage{46}
+    \subitem {get\discretionary {-}{}{}Player\discretionary {-}{}{}Name}, 
+		\hyperpage{47}
+    \subitem {process}, \hyperpage{47}
+  \item {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Lobby\discretionary {-}{}{}Update\discretionary {-}{}{}Gamelist}
+    \subitem {Com\discretionary {-}{}{}Lobby\discretionary {-}{}{}Update\discretionary {-}{}{}Gamelist}, 
+		\hyperpage{48}
+    \subitem {get\discretionary {-}{}{}Game\discretionary {-}{}{}Server}, 
+		\hyperpage{48}
+    \subitem {is\discretionary {-}{}{}Remove\discretionary {-}{}{}Flag}, 
+		\hyperpage{48}
+    \subitem {process}, \hyperpage{48}
+  \item {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Login\discretionary {-}{}{}Request}
+    \subitem {Com\discretionary {-}{}{}Login\discretionary {-}{}{}Request}, 
+		\hyperpage{49}
+    \subitem {get\discretionary {-}{}{}Player\discretionary {-}{}{}Name}, 
+		\hyperpage{49}
+    \subitem {process}, \hyperpage{49}
+  \item {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Object}
+    \subitem {process}, \hyperpage{50}
+  \item {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Ruleset}
+    \subitem {Com\discretionary {-}{}{}Ruleset}, \hyperpage{51}
+    \subitem {get\discretionary {-}{}{}Ruleset\discretionary {-}{}{}Message}, 
+		\hyperpage{51}
+    \subitem {process}, \hyperpage{51}
+  \item {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Server\discretionary {-}{}{}Acknowledgement}
+    \subitem {process}, \hyperpage{52}
+  \item {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Start\discretionary {-}{}{}Game}
+    \subitem {process}, \hyperpage{53}
+  \item {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Update\discretionary {-}{}{}Playerlist}
+    \subitem {Com\discretionary {-}{}{}Update\discretionary {-}{}{}Playerlist}, 
+		\hyperpage{53}
+    \subitem {get\discretionary {-}{}{}Player\discretionary {-}{}{}Name}, 
+		\hyperpage{55}
+    \subitem {is\discretionary {-}{}{}Remove\discretionary {-}{}{}Flag}, 
+		\hyperpage{55}
+    \subitem {process}, \hyperpage{55}
+  \item {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Warning}
+    \subitem {Com\discretionary {-}{}{}Warning}, \hyperpage{56}
+    \subitem {get\discretionary {-}{}{}Warning}, \hyperpage{56}
+    \subitem {process}, \hyperpage{56}
+  \item {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Msg\discretionary {-}{}{}Card}
+    \subitem {get\discretionary {-}{}{}Card}, \hyperpage{57}
+    \subitem {Msg\discretionary {-}{}{}Card}, \hyperpage{57}
+    \subitem {visit}, \hyperpage{57}
+  \item {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Msg\discretionary {-}{}{}Card\discretionary {-}{}{}Request}
+    \subitem {visit}, \hyperpage{58}
+  \item {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Msg\discretionary {-}{}{}Game\discretionary {-}{}{}End}
+    \subitem {get\discretionary {-}{}{}Winner\discretionary {-}{}{}Name}, 
+		\hyperpage{59}
+    \subitem {Msg\discretionary {-}{}{}Game\discretionary {-}{}{}End}, 
+		\hyperpage{59}
+    \subitem {visit}, \hyperpage{59}
+  \item {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Msg\discretionary {-}{}{}Multi\discretionary {-}{}{}Cards}
+    \subitem {get\discretionary {-}{}{}Card\discretionary {-}{}{}List}, 
+		\hyperpage{60}
+    \subitem {Msg\discretionary {-}{}{}Multi\discretionary {-}{}{}Cards}, 
+		\hyperpage{60}
+    \subitem {visit}, \hyperpage{60}
+  \item {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Msg\discretionary {-}{}{}Multi\discretionary {-}{}{}Cards\discretionary {-}{}{}Request}
+    \subitem {get\discretionary {-}{}{}Count}, \hyperpage{61}
+    \subitem {Msg\discretionary {-}{}{}Multi\discretionary {-}{}{}Cards\discretionary {-}{}{}Request}, 
+		\hyperpage{61}
+    \subitem {visit}, \hyperpage{61, 62}
+  \item {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Msg\discretionary {-}{}{}Number}
+    \subitem {get\discretionary {-}{}{}Number}, \hyperpage{62}
+    \subitem {Msg\discretionary {-}{}{}Number}, \hyperpage{62}
+    \subitem {visit}, \hyperpage{63}
+  \item {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Msg\discretionary {-}{}{}Number\discretionary {-}{}{}Request}
+    \subitem {visit}, \hyperpage{63, 64}
+  \item {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Msg\discretionary {-}{}{}Selection}
+    \subitem {get\discretionary {-}{}{}Selection}, \hyperpage{64}
+    \subitem {Msg\discretionary {-}{}{}Selection}, \hyperpage{64}
+    \subitem {visit}, \hyperpage{64}, \hyperpage{66}
+  \item {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Msg\discretionary {-}{}{}Selection\discretionary {-}{}{}Request}
+    \subitem {visit}, \hyperpage{66}
+  \item {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Msg\discretionary {-}{}{}User}
+    \subitem {get\discretionary {-}{}{}Game\discretionary {-}{}{}Client\discretionary {-}{}{}Update}, 
+		\hyperpage{67}
+    \subitem {Msg\discretionary {-}{}{}User}, \hyperpage{67}
+    \subitem {visit}, \hyperpage{67, 68}
+  \item {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Ruleset\discretionary {-}{}{}Message}
+    \subitem {visit}, \hyperpage{68}
+  \item {Com\discretionary {-}{}{}Ruleset}, \hyperpage{51}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{51}
+  \item {Com\discretionary {-}{}{}Server\discretionary {-}{}{}Acknowledgement}, 
+		\hyperpage{52}
+  \item {Com\discretionary {-}{}{}Start\discretionary {-}{}{}Game}, 
+		\hyperpage{52}
+  \item {Com\discretionary {-}{}{}Update\discretionary {-}{}{}Playerlist}, 
+		\hyperpage{53}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Update\discretionary {-}{}{}Playerlist}, 
+		\hyperpage{53}
+  \item {Com\discretionary {-}{}{}Warning}, \hyperpage{55}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Warning}, 
+		\hyperpage{56}
+  \item {create\discretionary {-}{}{}Connection}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Model}, 
+		\hyperpage{17}
+  \item {create\discretionary {-}{}{}Deck}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{91}
+  \item {Create\discretionary {-}{}{}Game}, \hyperpage{19}
+
+  \indexspace
+
+  \item {deal\discretionary {-}{}{}Cards}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}State}, 
+		\hyperpage{82}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{94}
+  \item {Discard\discretionary {-}{}{}Pile}, \hyperpage{21}
+  \item {Draw\discretionary {-}{}{}Deck}, \hyperpage{21}
+
+  \indexspace
+
+  \item {Game}, \hyperpage{21}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Game}, 
+		\hyperpage{22}
+  \item {Game\discretionary {-}{}{}Client\discretionary {-}{}{}Update}, 
+		\hyperpage{77}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Client\discretionary {-}{}{}Update}, 
+		\hyperpage{77}
+  \item {Game\discretionary {-}{}{}Lobby}, \hyperpage{23}
+  \item {game\discretionary {-}{}{}Master\discretionary {-}{}{}Name}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Join\discretionary {-}{}{}Request}, 
+		\hyperpage{46}
+  \item {Game\discretionary {-}{}{}Panel}, \hyperpage{25}
+  \item {Game\discretionary {-}{}{}Phase}, \hyperpage{79}
+  \item {Game\discretionary {-}{}{}Server}, \hyperpage{100}
+    \subitem {Server\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Server}, 
+		\hyperpage{101}
+  \item {Game\discretionary {-}{}{}Server\discretionary {-}{}{}Representation}, 
+		\hyperpage{104}
+    \subitem {Server\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Server\discretionary {-}{}{}Representation}, 
+		\hyperpage{104}
+  \item {Game\discretionary {-}{}{}State}, \hyperpage{79}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}State}, 
+		\hyperpage{80}
+  \item {generate\discretionary {-}{}{}Game\discretionary {-}{}{}Client\discretionary {-}{}{}Update}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Hearts}, 
+		\hyperpage{89}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{95}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Wizard}, 
+		\hyperpage{98}
+  \item {get\discretionary {-}{}{}Announced\discretionary {-}{}{}Tricks}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Wiz\discretionary {-}{}{}Data}, 
+		\hyperpage{100}
+  \item {get\discretionary {-}{}{}Card}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Msg\discretionary {-}{}{}Card}, 
+		\hyperpage{57}
+  \item {get\discretionary {-}{}{}Card\discretionary {-}{}{}List}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Msg\discretionary {-}{}{}Multi\discretionary {-}{}{}Cards}, 
+		\hyperpage{60}
+  \item {get\discretionary {-}{}{}Cards\discretionary {-}{}{}Left\discretionary {-}{}{}In\discretionary {-}{}{}Deck}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}State}, 
+		\hyperpage{81}
+  \item {get\discretionary {-}{}{}Chat\discretionary {-}{}{}Message}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Chat\discretionary {-}{}{}Message}, 
+		\hyperpage{36}
+  \item {get\discretionary {-}{}{}Choose\discretionary {-}{}{}Cards}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Model}, 
+		\hyperpage{14}
+  \item {get\discretionary {-}{}{}Choose\discretionary {-}{}{}Items}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Model}, 
+		\hyperpage{15}
+  \item {get\discretionary {-}{}{}Colour}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Card}, 
+		\hyperpage{69}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Hearts\discretionary {-}{}{}Card}, 
+		\hyperpage{84}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Wizard\discretionary {-}{}{}Card}, 
+		\hyperpage{99}
+  \item {get\discretionary {-}{}{}Count}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Msg\discretionary {-}{}{}Multi\discretionary {-}{}{}Cards\discretionary {-}{}{}Request}, 
+		\hyperpage{61}
+  \item {get\discretionary {-}{}{}Current\discretionary {-}{}{}Player}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{73}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Client\discretionary {-}{}{}Update}, 
+		\hyperpage{78}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}State}, 
+		\hyperpage{81}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{92}
+  \item {get\discretionary {-}{}{}Ending\discretionary {-}{}{}Points}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Hearts}, 
+		\hyperpage{88}
+  \item {get\discretionary {-}{}{}First\discretionary {-}{}{}Player}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}State}, 
+		\hyperpage{80}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{92}
+  \item {get\discretionary {-}{}{}Game\discretionary {-}{}{}Client\discretionary {-}{}{}Update}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Msg\discretionary {-}{}{}User}, 
+		\hyperpage{67}
+  \item {get\discretionary {-}{}{}Game\discretionary {-}{}{}List}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Init\discretionary {-}{}{}Lobby}, 
+		\hyperpage{43}
+  \item {get\discretionary {-}{}{}Game\discretionary {-}{}{}Master\discretionary {-}{}{}Name}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Join\discretionary {-}{}{}Request}, 
+		\hyperpage{44}
+  \item {get\discretionary {-}{}{}Game\discretionary {-}{}{}Name}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Create\discretionary {-}{}{}Game\discretionary {-}{}{}Request}, 
+		\hyperpage{39}
+  \item {get\discretionary {-}{}{}Game\discretionary {-}{}{}Phase}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{72}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{91}
+  \item {get\discretionary {-}{}{}Game\discretionary {-}{}{}Server}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Lobby\discretionary {-}{}{}Update\discretionary {-}{}{}Gamelist}, 
+		\hyperpage{48}
+  \item {get\discretionary {-}{}{}Hand}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Player\discretionary {-}{}{}State}, 
+		\hyperpage{87}
+  \item {get\discretionary {-}{}{}I\discretionary {-}{}{}D}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}Card}, 
+		\hyperpage{33}
+  \item {get\discretionary {-}{}{}Language}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Model}, 
+		\hyperpage{13}
+  \item {get\discretionary {-}{}{}Lobby\discretionary {-}{}{}Gamelist}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Model}, 
+		\hyperpage{12}
+  \item {get\discretionary {-}{}{}Max\discretionary {-}{}{}Players}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{72}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{91}
+  \item {get\discretionary {-}{}{}Message}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Been\discretionary {-}{}{}Kicked}, 
+		\hyperpage{35}
+  \item {get\discretionary {-}{}{}Min\discretionary {-}{}{}Players}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{72}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{91}
+  \item {get\discretionary {-}{}{}Name}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Player\discretionary {-}{}{}State}, 
+		\hyperpage{86}
+    \subitem {Server\discretionary {-}{}{}::\discretionary {-}{}{}Player}, 
+		\hyperpage{109}
+  \item {get\discretionary {-}{}{}Number}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Msg\discretionary {-}{}{}Number}, 
+		\hyperpage{62}
+  \item {get\discretionary {-}{}{}Number\discretionary {-}{}{}Of\discretionary {-}{}{}Played\discretionary {-}{}{}Cards}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}State}, 
+		\hyperpage{82}
+  \item {get\discretionary {-}{}{}Number\discretionary {-}{}{}Of\discretionary {-}{}{}Tricks}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Other\discretionary {-}{}{}Data}, 
+		\hyperpage{85}
+  \item {get\discretionary {-}{}{}Other\discretionary {-}{}{}Data}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Player\discretionary {-}{}{}State}, 
+		\hyperpage{87}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{92}
+  \item {get\discretionary {-}{}{}Other\discretionary {-}{}{}Player\discretionary {-}{}{}Data}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Model}, 
+		\hyperpage{13}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{73}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Client\discretionary {-}{}{}Update}, 
+		\hyperpage{78}
+  \item {get\discretionary {-}{}{}Own\discretionary {-}{}{}Data}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{72}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Client\discretionary {-}{}{}Update}, 
+		\hyperpage{78}
+  \item {get\discretionary {-}{}{}Own\discretionary {-}{}{}Hand}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Model}, 
+		\hyperpage{13}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{72}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Client\discretionary {-}{}{}Update}, 
+		\hyperpage{78}
+  \item {get\discretionary {-}{}{}Own\discretionary {-}{}{}Score}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Model}, 
+		\hyperpage{13}
+  \item {get\discretionary {-}{}{}Password}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Create\discretionary {-}{}{}Game\discretionary {-}{}{}Request}, 
+		\hyperpage{39}
+  \item {get\discretionary {-}{}{}Played\discretionary {-}{}{}Cards}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Model}, 
+		\hyperpage{13}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Client\discretionary {-}{}{}Update}, 
+		\hyperpage{78}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}State}, 
+		\hyperpage{81}
+  \item {get\discretionary {-}{}{}Player\discretionary {-}{}{}Cards}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}State}, 
+		\hyperpage{82}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{93}
+  \item {get\discretionary {-}{}{}Player\discretionary {-}{}{}Count}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Model}, 
+		\hyperpage{14}
+  \item {get\discretionary {-}{}{}Player\discretionary {-}{}{}List}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Init\discretionary {-}{}{}Game\discretionary {-}{}{}Lobby}, 
+		\hyperpage{42}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Init\discretionary {-}{}{}Lobby}, 
+		\hyperpage{43}
+  \item {get\discretionary {-}{}{}Player\discretionary {-}{}{}Name}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Kick\discretionary {-}{}{}Player\discretionary {-}{}{}Request}, 
+		\hyperpage{47}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Login\discretionary {-}{}{}Request}, 
+		\hyperpage{49}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Update\discretionary {-}{}{}Playerlist}, 
+		\hyperpage{55}
+  \item {get\discretionary {-}{}{}Player\discretionary {-}{}{}State}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}State}, 
+		\hyperpage{81}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{93}
+  \item {get\discretionary {-}{}{}Playerlist}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Model}, 
+		\hyperpage{12}
+  \item {get\discretionary {-}{}{}Points}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Game\discretionary {-}{}{}End}, 
+		\hyperpage{40}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Other\discretionary {-}{}{}Data}, 
+		\hyperpage{85}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{94}
+  \item {get\discretionary {-}{}{}Representation}
+    \subitem {Server\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Server}, 
+		\hyperpage{101}
+  \item {get\discretionary {-}{}{}Round\discretionary {-}{}{}Number}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}State}, 
+		\hyperpage{82}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{91}
+  \item {get\discretionary {-}{}{}Ruleset}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Create\discretionary {-}{}{}Game\discretionary {-}{}{}Request}, 
+		\hyperpage{39}
+  \item {get\discretionary {-}{}{}Ruleset\discretionary {-}{}{}Message}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{51}
+  \item {get\discretionary {-}{}{}Ruleset\discretionary {-}{}{}Type}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{72}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{91}
+  \item {get\discretionary {-}{}{}Rulesets}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Model}, 
+		\hyperpage{17}
+  \item {get\discretionary {-}{}{}Selection}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Msg\discretionary {-}{}{}Selection}, 
+		\hyperpage{64}
+  \item {get\discretionary {-}{}{}Trump\discretionary {-}{}{}Card}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{73}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Client\discretionary {-}{}{}Update}, 
+		\hyperpage{78}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}State}, 
+		\hyperpage{82}
+  \item {get\discretionary {-}{}{}Value}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Card}, 
+		\hyperpage{69}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Hearts\discretionary {-}{}{}Card}, 
+		\hyperpage{84}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Wizard\discretionary {-}{}{}Card}, 
+		\hyperpage{99}
+  \item {get\discretionary {-}{}{}Warning}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Warning}, 
+		\hyperpage{56}
+  \item {get\discretionary {-}{}{}Warning\discretionary {-}{}{}Text}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Model}, 
+		\hyperpage{17}
+  \item {get\discretionary {-}{}{}Window\discretionary {-}{}{}Text}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Model}, 
+		\hyperpage{14}
+  \item {get\discretionary {-}{}{}Winner}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Game\discretionary {-}{}{}End}, 
+		\hyperpage{40}
+  \item {get\discretionary {-}{}{}Winner\discretionary {-}{}{}Name}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Msg\discretionary {-}{}{}Game\discretionary {-}{}{}End}, 
+		\hyperpage{59}
+  \item {getplaying\discretionary {-}{}{}Rounds}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Wizard}, 
+		\hyperpage{97}
+  \item {give\discretionary {-}{}{}A\discretionary {-}{}{}Card}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}State}, 
+		\hyperpage{82}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{94}
+  \item {give\discretionary {-}{}{}Chosen\discretionary {-}{}{}Cards}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Model}, 
+		\hyperpage{14}
+  \item {give\discretionary {-}{}{}Chosen\discretionary {-}{}{}Item}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Model}, 
+		\hyperpage{15}
+  \item {give\discretionary {-}{}{}Input\discretionary {-}{}{}Number}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Model}, 
+		\hyperpage{15}
+
+  \indexspace
+
+  \item {handle\discretionary {-}{}{}I\discretionary {-}{}{}O\discretionary {-}{}{}Exception}
+    \subitem {Server\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Server}, 
+		\hyperpage{103}
+    \subitem {Server\discretionary {-}{}{}::\discretionary {-}{}{}Lobby\discretionary {-}{}{}Server}, 
+		\hyperpage{107}
+    \subitem {Server\discretionary {-}{}{}::\discretionary {-}{}{}Server}, 
+		\hyperpage{110}
+  \item {has\discretionary {-}{}{}Password}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Create\discretionary {-}{}{}Game\discretionary {-}{}{}Request}, 
+		\hyperpage{39}
+  \item {Hearts\discretionary {-}{}{}Card}, \hyperpage{83}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Hearts\discretionary {-}{}{}Card}, 
+		\hyperpage{83}
+  \item {Hearts\discretionary {-}{}{}Data}, \hyperpage{84}
+  \item {host\discretionary {-}{}{}Game}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Model}, 
+		\hyperpage{14}
+
+  \indexspace
+
+  \item {inform\discretionary {-}{}{}View}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Model}, 
+		\hyperpage{16}
+  \item {init\discretionary {-}{}{}Game}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Model}, 
+		\hyperpage{16}
+  \item {init\discretionary {-}{}{}Lobby}
+    \subitem {Server\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Server}, 
+		\hyperpage{103}
+    \subitem {Server\discretionary {-}{}{}::\discretionary {-}{}{}Lobby\discretionary {-}{}{}Server}, 
+		\hyperpage{107}
+  \item {Input\discretionary {-}{}{}Number}, \hyperpage{25}
+  \item {is\discretionary {-}{}{}Remove\discretionary {-}{}{}Flag}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Lobby\discretionary {-}{}{}Update\discretionary {-}{}{}Gamelist}, 
+		\hyperpage{48}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Update\discretionary {-}{}{}Playerlist}, 
+		\hyperpage{55}
+  \item {is\discretionary {-}{}{}Valid\discretionary {-}{}{}Colour}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Wizard}, 
+		\hyperpage{76}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Wizard}, 
+		\hyperpage{97}
+  \item {is\discretionary {-}{}{}Valid\discretionary {-}{}{}Move}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Hearts}, 
+		\hyperpage{70}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{74}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Wizard}, 
+		\hyperpage{76}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Hearts}, 
+		\hyperpage{88}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{95}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Wizard}, 
+		\hyperpage{96}
+  \item {is\discretionary {-}{}{}Valid\discretionary {-}{}{}Number}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Wizard}, 
+		\hyperpage{97}
+  \item {is\discretionary {-}{}{}Valid\discretionary {-}{}{}Trick\discretionary {-}{}{}Number}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Wizard}, 
+		\hyperpage{76}
+
+  \indexspace
+
+  \item {join\discretionary {-}{}{}Game}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Model}, 
+		\hyperpage{16}
+
+  \indexspace
+
+  \item {kick\discretionary {-}{}{}Player}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Model}, 
+		\hyperpage{13}
+
+  \indexspace
+
+  \item {Language}, \hyperpage{26}
+  \item {leave\discretionary {-}{}{}Window}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Model}, 
+		\hyperpage{11}
+  \item {Lobby}, \hyperpage{26}
+  \item {Lobby\discretionary {-}{}{}Server}, \hyperpage{104}
+  \item {Lobby\discretionary {-}{}{}Server.\discretionary {-}{}{}Client\discretionary {-}{}{}Listener\discretionary {-}{}{}Thread}, 
+		\hyperpage{107}
+  \item {Login}, \hyperpage{28}
+
+  \indexspace
+
+  \item {made\discretionary {-}{}{}Trick}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Other\discretionary {-}{}{}Data}, 
+		\hyperpage{85}
+  \item {main}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Main}, 
+		\hyperpage{9}
+    \subitem {Server\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Main}, 
+		\hyperpage{111}
+  \item {make\discretionary {-}{}{}Move}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Model}, 
+		\hyperpage{16}
+  \item {make\discretionary {-}{}{}Trick\discretionary {-}{}{}Game\discretionary {-}{}{}Board}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Game}, 
+		\hyperpage{22}
+  \item {Message\discretionary {-}{}{}Listener\discretionary {-}{}{}Thread}, 
+		\hyperpage{17}
+  \item {Msg\discretionary {-}{}{}Card}, \hyperpage{56}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Msg\discretionary {-}{}{}Card}, 
+		\hyperpage{57}
+  \item {Msg\discretionary {-}{}{}Card\discretionary {-}{}{}Request}, 
+		\hyperpage{58}
+  \item {Msg\discretionary {-}{}{}Game\discretionary {-}{}{}End}, 
+		\hyperpage{58}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Msg\discretionary {-}{}{}Game\discretionary {-}{}{}End}, 
+		\hyperpage{59}
+  \item {Msg\discretionary {-}{}{}Multi\discretionary {-}{}{}Cards}, 
+		\hyperpage{60}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Msg\discretionary {-}{}{}Multi\discretionary {-}{}{}Cards}, 
+		\hyperpage{60}
+  \item {Msg\discretionary {-}{}{}Multi\discretionary {-}{}{}Cards\discretionary {-}{}{}Request}, 
+		\hyperpage{61}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Msg\discretionary {-}{}{}Multi\discretionary {-}{}{}Cards\discretionary {-}{}{}Request}, 
+		\hyperpage{61}
+  \item {Msg\discretionary {-}{}{}Number}, \hyperpage{62}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Msg\discretionary {-}{}{}Number}, 
+		\hyperpage{62}
+  \item {Msg\discretionary {-}{}{}Number\discretionary {-}{}{}Request}, 
+		\hyperpage{63}
+  \item {Msg\discretionary {-}{}{}Selection}, \hyperpage{64}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Msg\discretionary {-}{}{}Selection}, 
+		\hyperpage{64}
+  \item {Msg\discretionary {-}{}{}Selection\discretionary {-}{}{}Request}, 
+		\hyperpage{66}
+  \item {Msg\discretionary {-}{}{}User}, \hyperpage{67}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Msg\discretionary {-}{}{}User}, 
+		\hyperpage{67}
+
+  \indexspace
+
+  \item {next\discretionary {-}{}{}Player}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{92}
+
+  \indexspace
+
+  \item {open\discretionary {-}{}{}Choose\discretionary {-}{}{}Cards}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Model}, 
+		\hyperpage{15}
+  \item {open\discretionary {-}{}{}Choose\discretionary {-}{}{}Item}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Model}, 
+		\hyperpage{15}
+  \item {open\discretionary {-}{}{}Input\discretionary {-}{}{}Number}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Model}, 
+		\hyperpage{16}
+  \item {Other\discretionary {-}{}{}Data}, \hyperpage{84}
+  \item {Other\discretionary {-}{}{}Player}, \hyperpage{30}
+  \item {Own\discretionary {-}{}{}Hand}, \hyperpage{30}
+
+  \indexspace
+
+  \item {Password}, \hyperpage{30}
+  \item {password}
+    \subitem {Server\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Server}, 
+		\hyperpage{103}
+  \item {play\discretionary {-}{}{}Card}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}State}, 
+		\hyperpage{83}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{95}
+  \item {Player}, \hyperpage{108}
+    \subitem {Server\discretionary {-}{}{}::\discretionary {-}{}{}Player}, 
+		\hyperpage{108}
+  \item {Player\discretionary {-}{}{}State}, \hyperpage{86}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Player\discretionary {-}{}{}State}, 
+		\hyperpage{86}
+  \item {playing\discretionary {-}{}{}Rounds}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Wizard}, 
+		\hyperpage{98}
+  \item {process}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Been\discretionary {-}{}{}Kicked}, 
+		\hyperpage{35}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Chat\discretionary {-}{}{}Message}, 
+		\hyperpage{36}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Client\discretionary {-}{}{}Leave}, 
+		\hyperpage{37}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Client\discretionary {-}{}{}Quit}, 
+		\hyperpage{37, 38}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Create\discretionary {-}{}{}Game\discretionary {-}{}{}Request}, 
+		\hyperpage{39}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Game\discretionary {-}{}{}End}, 
+		\hyperpage{41}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Init\discretionary {-}{}{}Game\discretionary {-}{}{}Lobby}, 
+		\hyperpage{42}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Init\discretionary {-}{}{}Lobby}, 
+		\hyperpage{43}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Join\discretionary {-}{}{}Request}, 
+		\hyperpage{44}, \hyperpage{46}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Kick\discretionary {-}{}{}Player\discretionary {-}{}{}Request}, 
+		\hyperpage{47}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Lobby\discretionary {-}{}{}Update\discretionary {-}{}{}Gamelist}, 
+		\hyperpage{48}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Login\discretionary {-}{}{}Request}, 
+		\hyperpage{49}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Object}, 
+		\hyperpage{50}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{51}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Server\discretionary {-}{}{}Acknowledgement}, 
+		\hyperpage{52}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Start\discretionary {-}{}{}Game}, 
+		\hyperpage{53}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Update\discretionary {-}{}{}Playerlist}, 
+		\hyperpage{55}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Com\discretionary {-}{}{}Warning}, 
+		\hyperpage{56}
+
+  \indexspace
+
+  \item {receive\discretionary {-}{}{}Message}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Model}, 
+		\hyperpage{11, 12}
+    \subitem {Server\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Server}, 
+		\hyperpage{102, 103}
+    \subitem {Server\discretionary {-}{}{}::\discretionary {-}{}{}Lobby\discretionary {-}{}{}Server}, 
+		\hyperpage{106, 107}
+    \subitem {Server\discretionary {-}{}{}::\discretionary {-}{}{}Server}, 
+		\hyperpage{110}
+  \item {remove\discretionary {-}{}{}Card}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Player\discretionary {-}{}{}State}, 
+		\hyperpage{87}
+  \item {remove\discretionary {-}{}{}Game\discretionary {-}{}{}Server}
+    \subitem {Server\discretionary {-}{}{}::\discretionary {-}{}{}Lobby\discretionary {-}{}{}Server}, 
+		\hyperpage{106}
+  \item {remove\discretionary {-}{}{}Name}
+    \subitem {Server\discretionary {-}{}{}::\discretionary {-}{}{}Lobby\discretionary {-}{}{}Server}, 
+		\hyperpage{105}
+  \item {remove\discretionary {-}{}{}Player}
+    \subitem {Server\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Server}, 
+		\hyperpage{101}
+    \subitem {Server\discretionary {-}{}{}::\discretionary {-}{}{}Server}, 
+		\hyperpage{110}
+  \item {remove\discretionary {-}{}{}Tricks}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Other\discretionary {-}{}{}Data}, 
+		\hyperpage{85}
+  \item {resolve\discretionary {-}{}{}Message}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Hearts}, 
+		\hyperpage{70}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{73}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Wizard}, 
+		\hyperpage{76}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Hearts}, 
+		\hyperpage{88}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{93, 94}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Wizard}, 
+		\hyperpage{97}
+  \item {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Card}
+    \subitem {get\discretionary {-}{}{}Colour}, \hyperpage{69}
+    \subitem {get\discretionary {-}{}{}Value}, \hyperpage{69}
+  \item {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Hearts}
+    \subitem {are\discretionary {-}{}{}Valid\discretionary {-}{}{}Choosen\discretionary {-}{}{}Cards}, 
+		\hyperpage{70}
+    \subitem {Client\discretionary {-}{}{}Hearts}, \hyperpage{70}
+    \subitem {is\discretionary {-}{}{}Valid\discretionary {-}{}{}Move}, 
+		\hyperpage{70}
+    \subitem {resolve\discretionary {-}{}{}Message}, \hyperpage{70}
+  \item {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Ruleset}
+    \subitem {Client\discretionary {-}{}{}Ruleset}, \hyperpage{71}
+    \subitem {get\discretionary {-}{}{}Current\discretionary {-}{}{}Player}, 
+		\hyperpage{73}
+    \subitem {get\discretionary {-}{}{}Game\discretionary {-}{}{}Phase}, 
+		\hyperpage{72}
+    \subitem {get\discretionary {-}{}{}Max\discretionary {-}{}{}Players}, 
+		\hyperpage{72}
+    \subitem {get\discretionary {-}{}{}Min\discretionary {-}{}{}Players}, 
+		\hyperpage{72}
+    \subitem {get\discretionary {-}{}{}Other\discretionary {-}{}{}Player\discretionary {-}{}{}Data}, 
+		\hyperpage{73}
+    \subitem {get\discretionary {-}{}{}Own\discretionary {-}{}{}Data}, 
+		\hyperpage{72}
+    \subitem {get\discretionary {-}{}{}Own\discretionary {-}{}{}Hand}, 
+		\hyperpage{72}
+    \subitem {get\discretionary {-}{}{}Ruleset\discretionary {-}{}{}Type}, 
+		\hyperpage{72}
+    \subitem {get\discretionary {-}{}{}Trump\discretionary {-}{}{}Card}, 
+		\hyperpage{73}
+    \subitem {is\discretionary {-}{}{}Valid\discretionary {-}{}{}Move}, 
+		\hyperpage{74}
+    \subitem {resolve\discretionary {-}{}{}Message}, \hyperpage{73}
+    \subitem {send}, \hyperpage{74}
+  \item {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Wizard}
+    \subitem {Client\discretionary {-}{}{}Wizard}, \hyperpage{75}
+    \subitem {is\discretionary {-}{}{}Valid\discretionary {-}{}{}Colour}, 
+		\hyperpage{76}
+    \subitem {is\discretionary {-}{}{}Valid\discretionary {-}{}{}Move}, 
+		\hyperpage{76}
+    \subitem {is\discretionary {-}{}{}Valid\discretionary {-}{}{}Trick\discretionary {-}{}{}Number}, 
+		\hyperpage{76}
+    \subitem {resolve\discretionary {-}{}{}Message}, \hyperpage{76}
+  \item {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Client\discretionary {-}{}{}Update}
+    \subitem {Game\discretionary {-}{}{}Client\discretionary {-}{}{}Update}, 
+		\hyperpage{77}
+    \subitem {get\discretionary {-}{}{}Current\discretionary {-}{}{}Player}, 
+		\hyperpage{78}
+    \subitem {get\discretionary {-}{}{}Other\discretionary {-}{}{}Player\discretionary {-}{}{}Data}, 
+		\hyperpage{78}
+    \subitem {get\discretionary {-}{}{}Own\discretionary {-}{}{}Data}, 
+		\hyperpage{78}
+    \subitem {get\discretionary {-}{}{}Own\discretionary {-}{}{}Hand}, 
+		\hyperpage{78}
+    \subitem {get\discretionary {-}{}{}Played\discretionary {-}{}{}Cards}, 
+		\hyperpage{78}
+    \subitem {get\discretionary {-}{}{}Trump\discretionary {-}{}{}Card}, 
+		\hyperpage{78}
+  \item {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}State}
+    \subitem {add\discretionary {-}{}{}Player\discretionary {-}{}{}To\discretionary {-}{}{}Game}, 
+		\hyperpage{80}
+    \subitem {deal\discretionary {-}{}{}Cards}, \hyperpage{82}
+    \subitem {Game\discretionary {-}{}{}State}, \hyperpage{80}
+    \subitem {get\discretionary {-}{}{}Cards\discretionary {-}{}{}Left\discretionary {-}{}{}In\discretionary {-}{}{}Deck}, 
+		\hyperpage{81}
+    \subitem {get\discretionary {-}{}{}Current\discretionary {-}{}{}Player}, 
+		\hyperpage{81}
+    \subitem {get\discretionary {-}{}{}First\discretionary {-}{}{}Player}, 
+		\hyperpage{80}
+    \subitem {get\discretionary {-}{}{}Number\discretionary {-}{}{}Of\discretionary {-}{}{}Played\discretionary {-}{}{}Cards}, 
+		\hyperpage{82}
+    \subitem {get\discretionary {-}{}{}Played\discretionary {-}{}{}Cards}, 
+		\hyperpage{81}
+    \subitem {get\discretionary {-}{}{}Player\discretionary {-}{}{}Cards}, 
+		\hyperpage{82}
+    \subitem {get\discretionary {-}{}{}Player\discretionary {-}{}{}State}, 
+		\hyperpage{81}
+    \subitem {get\discretionary {-}{}{}Round\discretionary {-}{}{}Number}, 
+		\hyperpage{82}
+    \subitem {get\discretionary {-}{}{}Trump\discretionary {-}{}{}Card}, 
+		\hyperpage{82}
+    \subitem {give\discretionary {-}{}{}A\discretionary {-}{}{}Card}, 
+		\hyperpage{82}
+    \subitem {play\discretionary {-}{}{}Card}, \hyperpage{83}
+    \subitem {set\discretionary {-}{}{}Current\discretionary {-}{}{}Player}, 
+		\hyperpage{81}
+    \subitem {set\discretionary {-}{}{}First\discretionary {-}{}{}Player}, 
+		\hyperpage{80}
+    \subitem {set\discretionary {-}{}{}Trump\discretionary {-}{}{}Card}, 
+		\hyperpage{81}
+  \item {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Hearts\discretionary {-}{}{}Card}
+    \subitem {get\discretionary {-}{}{}Colour}, \hyperpage{84}
+    \subitem {get\discretionary {-}{}{}Value}, \hyperpage{84}
+    \subitem {Hearts\discretionary {-}{}{}Card}, \hyperpage{83}
+  \item {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Other\discretionary {-}{}{}Data}
+    \subitem {get\discretionary {-}{}{}Number\discretionary {-}{}{}Of\discretionary {-}{}{}Tricks}, 
+		\hyperpage{85}
+    \subitem {get\discretionary {-}{}{}Points}, \hyperpage{85}
+    \subitem {made\discretionary {-}{}{}Trick}, \hyperpage{85}
+    \subitem {remove\discretionary {-}{}{}Tricks}, \hyperpage{85}
+    \subitem {set\discretionary {-}{}{}Points}, \hyperpage{85}
+  \item {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Player\discretionary {-}{}{}State}
+    \subitem {add\discretionary {-}{}{}Card}, \hyperpage{87}
+    \subitem {get\discretionary {-}{}{}Hand}, \hyperpage{87}
+    \subitem {get\discretionary {-}{}{}Name}, \hyperpage{86}
+    \subitem {get\discretionary {-}{}{}Other\discretionary {-}{}{}Data}, 
+		\hyperpage{87}
+    \subitem {Player\discretionary {-}{}{}State}, \hyperpage{86}
+    \subitem {remove\discretionary {-}{}{}Card}, \hyperpage{87}
+  \item {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Hearts}
+    \subitem {are\discretionary {-}{}{}Valid\discretionary {-}{}{}Choosen\discretionary {-}{}{}Cards}, 
+		\hyperpage{89}
+    \subitem {generate\discretionary {-}{}{}Game\discretionary {-}{}{}Client\discretionary {-}{}{}Update}, 
+		\hyperpage{89}
+    \subitem {get\discretionary {-}{}{}Ending\discretionary {-}{}{}Points}, 
+		\hyperpage{88}
+    \subitem {is\discretionary {-}{}{}Valid\discretionary {-}{}{}Move}, 
+		\hyperpage{88}
+    \subitem {resolve\discretionary {-}{}{}Message}, \hyperpage{88}
+  \item {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Ruleset}
+    \subitem {add\discretionary {-}{}{}Player\discretionary {-}{}{}To\discretionary {-}{}{}Game}, 
+		\hyperpage{93}
+    \subitem {broadcast}, \hyperpage{93}
+    \subitem {create\discretionary {-}{}{}Deck}, \hyperpage{91}
+    \subitem {deal\discretionary {-}{}{}Cards}, \hyperpage{94}
+    \subitem {generate\discretionary {-}{}{}Game\discretionary {-}{}{}Client\discretionary {-}{}{}Update}, 
+		\hyperpage{95}
+    \subitem {get\discretionary {-}{}{}Current\discretionary {-}{}{}Player}, 
+		\hyperpage{92}
+    \subitem {get\discretionary {-}{}{}First\discretionary {-}{}{}Player}, 
+		\hyperpage{92}
+    \subitem {get\discretionary {-}{}{}Game\discretionary {-}{}{}Phase}, 
+		\hyperpage{91}
+    \subitem {get\discretionary {-}{}{}Max\discretionary {-}{}{}Players}, 
+		\hyperpage{91}
+    \subitem {get\discretionary {-}{}{}Min\discretionary {-}{}{}Players}, 
+		\hyperpage{91}
+    \subitem {get\discretionary {-}{}{}Other\discretionary {-}{}{}Data}, 
+		\hyperpage{92}
+    \subitem {get\discretionary {-}{}{}Player\discretionary {-}{}{}Cards}, 
+		\hyperpage{93}
+    \subitem {get\discretionary {-}{}{}Player\discretionary {-}{}{}State}, 
+		\hyperpage{93}
+    \subitem {get\discretionary {-}{}{}Points}, \hyperpage{94}
+    \subitem {get\discretionary {-}{}{}Round\discretionary {-}{}{}Number}, 
+		\hyperpage{91}
+    \subitem {get\discretionary {-}{}{}Ruleset\discretionary {-}{}{}Type}, 
+		\hyperpage{91}
+    \subitem {give\discretionary {-}{}{}A\discretionary {-}{}{}Card}, 
+		\hyperpage{94}
+    \subitem {is\discretionary {-}{}{}Valid\discretionary {-}{}{}Move}, 
+		\hyperpage{95}
+    \subitem {next\discretionary {-}{}{}Player}, \hyperpage{92}
+    \subitem {play\discretionary {-}{}{}Card}, \hyperpage{95}
+    \subitem {resolve\discretionary {-}{}{}Message}, \hyperpage{93, 94}
+    \subitem {send}, \hyperpage{93}
+    \subitem {Server\discretionary {-}{}{}Ruleset}, \hyperpage{90}
+    \subitem {set\discretionary {-}{}{}Current\discretionary {-}{}{}Player}, 
+		\hyperpage{92}
+    \subitem {set\discretionary {-}{}{}First\discretionary {-}{}{}Player}, 
+		\hyperpage{92}
+    \subitem {set\discretionary {-}{}{}Game\discretionary {-}{}{}Phase}, 
+		\hyperpage{91}
+    \subitem {set\discretionary {-}{}{}Points}, \hyperpage{94}
+    \subitem {set\discretionary {-}{}{}Trump\discretionary {-}{}{}Card}, 
+		\hyperpage{95}
+  \item {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Wizard}
+    \subitem {generate\discretionary {-}{}{}Game\discretionary {-}{}{}Client\discretionary {-}{}{}Update}, 
+		\hyperpage{98}
+    \subitem {getplaying\discretionary {-}{}{}Rounds}, \hyperpage{97}
+    \subitem {is\discretionary {-}{}{}Valid\discretionary {-}{}{}Colour}, 
+		\hyperpage{97}
+    \subitem {is\discretionary {-}{}{}Valid\discretionary {-}{}{}Move}, 
+		\hyperpage{96}
+    \subitem {is\discretionary {-}{}{}Valid\discretionary {-}{}{}Number}, 
+		\hyperpage{97}
+    \subitem {playing\discretionary {-}{}{}Rounds}, \hyperpage{98}
+    \subitem {resolve\discretionary {-}{}{}Message}, \hyperpage{97}
+    \subitem {set\discretionary {-}{}{}Playing\discretionary {-}{}{}Rounds}, 
+		\hyperpage{96}
+  \item {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Wiz\discretionary {-}{}{}Data}
+    \subitem {get\discretionary {-}{}{}Announced\discretionary {-}{}{}Tricks}, 
+		\hyperpage{100}
+    \subitem {set\discretionary {-}{}{}Announced\discretionary {-}{}{}Tricks}, 
+		\hyperpage{100}
+  \item {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Wizard\discretionary {-}{}{}Card}
+    \subitem {get\discretionary {-}{}{}Colour}, \hyperpage{99}
+    \subitem {get\discretionary {-}{}{}Value}, \hyperpage{99}
+    \subitem {Wizard\discretionary {-}{}{}Card}, \hyperpage{99}
+  \item {Ruleset\discretionary {-}{}{}Message}, \hyperpage{68}
+  \item {Ruleset\discretionary {-}{}{}Type}, \hyperpage{87}
+  \item {run}
+    \subitem {Server\discretionary {-}{}{}::\discretionary {-}{}{}Player}, 
+		\hyperpage{108}
+
+  \indexspace
+
+  \item {Score\discretionary {-}{}{}Window}, \hyperpage{31}
+  \item {send}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Model}, 
+		\hyperpage{14}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{74}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{93}
+    \subitem {Server\discretionary {-}{}{}::\discretionary {-}{}{}Player}, 
+		\hyperpage{108}
+  \item {send\discretionary {-}{}{}Chat\discretionary {-}{}{}Message}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Model}, 
+		\hyperpage{16}
+  \item {send\discretionary {-}{}{}Ruleset\discretionary {-}{}{}Message}
+    \subitem {Server\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Server}, 
+		\hyperpage{102}
+  \item {send\discretionary {-}{}{}To\discretionary {-}{}{}Player}
+    \subitem {Server\discretionary {-}{}{}::\discretionary {-}{}{}Server}, 
+		\hyperpage{110}
+  \item {Server}, \hyperpage{109}
+  \item {Server\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Server}
+    \subitem {add\discretionary {-}{}{}Player}, \hyperpage{101}
+    \subitem {broadcast\discretionary {-}{}{}Ruleset\discretionary {-}{}{}Message}, 
+		\hyperpage{102}
+    \subitem {Game\discretionary {-}{}{}Server}, \hyperpage{101}
+    \subitem {get\discretionary {-}{}{}Representation}, \hyperpage{101}
+    \subitem {handle\discretionary {-}{}{}I\discretionary {-}{}{}O\discretionary {-}{}{}Exception}, 
+		\hyperpage{103}
+    \subitem {init\discretionary {-}{}{}Lobby}, \hyperpage{103}
+    \subitem {password}, \hyperpage{103}
+    \subitem {receive\discretionary {-}{}{}Message}, 
+		\hyperpage{102, 103}
+    \subitem {remove\discretionary {-}{}{}Player}, \hyperpage{101}
+    \subitem {send\discretionary {-}{}{}Ruleset\discretionary {-}{}{}Message}, 
+		\hyperpage{102}
+  \item {Server\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Server\discretionary {-}{}{}Representation}
+    \subitem {Game\discretionary {-}{}{}Server\discretionary {-}{}{}Representation}, 
+		\hyperpage{104}
+  \item {Server\discretionary {-}{}{}::\discretionary {-}{}{}Lobby\discretionary {-}{}{}Server}
+    \subitem {add\discretionary {-}{}{}Game\discretionary {-}{}{}Server}, 
+		\hyperpage{106}
+    \subitem {add\discretionary {-}{}{}Name}, \hyperpage{105}
+    \subitem {handle\discretionary {-}{}{}I\discretionary {-}{}{}O\discretionary {-}{}{}Exception}, 
+		\hyperpage{107}
+    \subitem {init\discretionary {-}{}{}Lobby}, \hyperpage{107}
+    \subitem {receive\discretionary {-}{}{}Message}, 
+		\hyperpage{106, 107}
+    \subitem {remove\discretionary {-}{}{}Game\discretionary {-}{}{}Server}, 
+		\hyperpage{106}
+    \subitem {remove\discretionary {-}{}{}Name}, \hyperpage{105}
+  \item {Server\discretionary {-}{}{}::\discretionary {-}{}{}Player}
+    \subitem {change\discretionary {-}{}{}Server}, \hyperpage{109}
+    \subitem {get\discretionary {-}{}{}Name}, \hyperpage{109}
+    \subitem {Player}, \hyperpage{108}
+    \subitem {run}, \hyperpage{108}
+    \subitem {send}, \hyperpage{108}
+    \subitem {set\discretionary {-}{}{}Name}, \hyperpage{109}
+  \item {Server\discretionary {-}{}{}::\discretionary {-}{}{}Server}
+    \subitem {add\discretionary {-}{}{}Player}, \hyperpage{110}
+    \subitem {broadcast}, \hyperpage{110}
+    \subitem {handle\discretionary {-}{}{}I\discretionary {-}{}{}O\discretionary {-}{}{}Exception}, 
+		\hyperpage{110}
+    \subitem {receive\discretionary {-}{}{}Message}, \hyperpage{110}
+    \subitem {remove\discretionary {-}{}{}Player}, \hyperpage{110}
+    \subitem {send\discretionary {-}{}{}To\discretionary {-}{}{}Player}, 
+		\hyperpage{110}
+  \item {Server\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Main}
+    \subitem {main}, \hyperpage{111}
+  \item {Server\discretionary {-}{}{}Hearts}, \hyperpage{87}
+  \item {Server\discretionary {-}{}{}Main}, \hyperpage{111}
+  \item {Server\discretionary {-}{}{}Ruleset}, \hyperpage{89}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{90}
+  \item {Server\discretionary {-}{}{}Wizard}, \hyperpage{95}
+  \item {set\discretionary {-}{}{}Announced\discretionary {-}{}{}Tricks}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Wiz\discretionary {-}{}{}Data}, 
+		\hyperpage{100}
+  \item {set\discretionary {-}{}{}Current\discretionary {-}{}{}Player}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}State}, 
+		\hyperpage{81}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{92}
+  \item {set\discretionary {-}{}{}First\discretionary {-}{}{}Player}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}State}, 
+		\hyperpage{80}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{92}
+  \item {set\discretionary {-}{}{}Game\discretionary {-}{}{}Phase}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{91}
+  \item {set\discretionary {-}{}{}Language}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Model}, 
+		\hyperpage{13}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Create\discretionary {-}{}{}Game}, 
+		\hyperpage{21}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Lobby}, 
+		\hyperpage{24}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Lobby}, 
+		\hyperpage{28}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Login}, 
+		\hyperpage{29}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Password}, 
+		\hyperpage{31}
+  \item {set\discretionary {-}{}{}Name}
+    \subitem {Server\discretionary {-}{}{}::\discretionary {-}{}{}Player}, 
+		\hyperpage{109}
+  \item {set\discretionary {-}{}{}Playing\discretionary {-}{}{}Rounds}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Wizard}, 
+		\hyperpage{96}
+  \item {set\discretionary {-}{}{}Points}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Other\discretionary {-}{}{}Data}, 
+		\hyperpage{85}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{94}
+  \item {set\discretionary {-}{}{}Text}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Warning}, 
+		\hyperpage{33}
+  \item {set\discretionary {-}{}{}Trump\discretionary {-}{}{}Card}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}State}, 
+		\hyperpage{81}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Server\discretionary {-}{}{}Ruleset}, 
+		\hyperpage{95}
+  \item {start\discretionary {-}{}{}Connection}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}Message\discretionary {-}{}{}Listener\discretionary {-}{}{}Thread}, 
+		\hyperpage{18}
+  \item {start\discretionary {-}{}{}Game}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}Client\discretionary {-}{}{}Model}, 
+		\hyperpage{16}
+
+  \indexspace
+
+  \item {update}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Choose\discretionary {-}{}{}Cards}, 
+		\hyperpage{19}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Choose\discretionary {-}{}{}Item}, 
+		\hyperpage{19}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Game}, 
+		\hyperpage{22}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Lobby}, 
+		\hyperpage{24}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Input\discretionary {-}{}{}Number}, 
+		\hyperpage{26}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Lobby}, 
+		\hyperpage{28}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Login}, 
+		\hyperpage{29}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Password}, 
+		\hyperpage{31}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Score\discretionary {-}{}{}Window}, 
+		\hyperpage{32}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}Warning}, 
+		\hyperpage{33}
+
+  \indexspace
+
+  \item {View\discretionary {-}{}{}Card}, \hyperpage{32}
+    \subitem {Client\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}::\discretionary {-}{}{}View\discretionary {-}{}{}Card}, 
+		\hyperpage{32}
+  \item {View\discretionary {-}{}{}Notification}, \hyperpage{34}
+  \item {visit}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Msg\discretionary {-}{}{}Card}, 
+		\hyperpage{57}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Msg\discretionary {-}{}{}Card\discretionary {-}{}{}Request}, 
+		\hyperpage{58}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Msg\discretionary {-}{}{}Game\discretionary {-}{}{}End}, 
+		\hyperpage{59}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Msg\discretionary {-}{}{}Multi\discretionary {-}{}{}Cards}, 
+		\hyperpage{60}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Msg\discretionary {-}{}{}Multi\discretionary {-}{}{}Cards\discretionary {-}{}{}Request}, 
+		\hyperpage{61, 62}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Msg\discretionary {-}{}{}Number}, 
+		\hyperpage{63}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Msg\discretionary {-}{}{}Number\discretionary {-}{}{}Request}, 
+		\hyperpage{63, 64}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Msg\discretionary {-}{}{}Selection}, 
+		\hyperpage{64}, \hyperpage{66}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Msg\discretionary {-}{}{}Selection\discretionary {-}{}{}Request}, 
+		\hyperpage{66}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Msg\discretionary {-}{}{}User}, 
+		\hyperpage{67, 68}
+    \subitem {Com\discretionary {-}{}{}Objects\discretionary {-}{}{}::\discretionary {-}{}{}Ruleset\discretionary {-}{}{}Message}, 
+		\hyperpage{68}
+
+  \indexspace
+
+  \item {Warning}, \hyperpage{33}
+  \item {Wiz\discretionary {-}{}{}Data}, \hyperpage{99}
+  \item {Wizard\discretionary {-}{}{}Card}, \hyperpage{98}
+    \subitem {Ruleset\discretionary {-}{}{}::\discretionary {-}{}{}Wizard\discretionary {-}{}{}Card}, 
+		\hyperpage{99}
+
+\end{theindex}

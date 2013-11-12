@@ -1,0 +1,106 @@
+\hypertarget{a00025}{\subsection{Com\-Been\-Kicked Klassenreferenz}
+\label{a00025}\index{Com\-Been\-Kicked@{Com\-Been\-Kicked}}
+}
+
+
+Abgeleitet von \hyperlink{a00037}{Com\-Object} und Serializable.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00025_a62d740de69f8a07fdcd3817754fc616e}{Com\-Been\-Kicked} (String message)
+\item 
+String \hyperlink{a00025_afafd068b736520af1e24269a284980a9}{get\-Message} ()
+\item 
+void \hyperlink{a00025_a758d7005755a181717f238f714d87dd2}{process} (\hyperlink{a00003}{Client\-Model} model)
+\item 
+void \hyperlink{a00025_ac67b5ce3ec03d48ef1e6caad6e49c902}{process} (\hyperlink{a00076}{Player} player, \hyperlink{a00077}{Server} server)
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00025_a2836db0f8ae4563c70935b5e514bdc21}{String {\bfseries message}}\label{a00025_a2836db0f8ae4563c70935b5e514bdc21}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Diese Klasse ist ein spezielles Kommunikations-\/\-Objekt. Die Nachricht wird an einen Spieler gesendet, wenn er aus einem Spiel erntfernt wurde. Dies geschieht, wenn ein Spieler ein Spiel verlaesst oder wenn der Spielleiter das Wartefenster verlaesst. 
+
+\subsubsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{a00025_a62d740de69f8a07fdcd3817754fc616e}{\index{Com\-Objects\-::\-Com\-Been\-Kicked@{Com\-Objects\-::\-Com\-Been\-Kicked}!Com\-Been\-Kicked@{Com\-Been\-Kicked}}
+\index{Com\-Been\-Kicked@{Com\-Been\-Kicked}!ComObjects::ComBeenKicked@{Com\-Objects\-::\-Com\-Been\-Kicked}}
+\paragraph[{Com\-Been\-Kicked}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Com\-Been\-Kicked} (
+\begin{DoxyParamCaption}
+\item[{String}]{message}
+\end{DoxyParamCaption}
+)}}\label{a00025_a62d740de69f8a07fdcd3817754fc616e}
+
+
+Dies ist der Kontruktor fuer eine neue Com\-Been\-Kicked-\/\-Nachricht. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em message} & ist die Nachricht. \\
+\hline
+\end{DoxyParams}
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00025_afafd068b736520af1e24269a284980a9}{\index{Com\-Objects\-::\-Com\-Been\-Kicked@{Com\-Objects\-::\-Com\-Been\-Kicked}!get\-Message@{get\-Message}}
+\index{get\-Message@{get\-Message}!ComObjects::ComBeenKicked@{Com\-Objects\-::\-Com\-Been\-Kicked}}
+\paragraph[{get\-Message}]{\setlength{\rightskip}{0pt plus 5cm}String get\-Message (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00025_afafd068b736520af1e24269a284980a9}
+
+
+Diese Methode liefert die Nachricht, die an den Spieler gesendet wird, wenn er entfernt wird. 
+
+\begin{DoxyReturn}{Rückgabe}
+die Nachricht. 
+\end{DoxyReturn}
+\hypertarget{a00025_a758d7005755a181717f238f714d87dd2}{\index{Com\-Objects\-::\-Com\-Been\-Kicked@{Com\-Objects\-::\-Com\-Been\-Kicked}!process@{process}}
+\index{process@{process}!ComObjects::ComBeenKicked@{Com\-Objects\-::\-Com\-Been\-Kicked}}
+\paragraph[{process}]{\setlength{\rightskip}{0pt plus 5cm}void process (
+\begin{DoxyParamCaption}
+\item[{{\bf Client\-Model}}]{model}
+\end{DoxyParamCaption}
+)}}\label{a00025_a758d7005755a181717f238f714d87dd2}
+
+
+Diese Methode ist noetig, damit der Client\-Listener\-Thread entscheiden kann welche Message das Object enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em model} & ist das Client\-Model, welches Ã¼bergeben wird, damit die ueberladene Methode richtig gewaehlt wird. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00037_a758d7005755a181717f238f714d87dd2}{Com\-Object}.
+
+\hypertarget{a00025_ac67b5ce3ec03d48ef1e6caad6e49c902}{\index{Com\-Objects\-::\-Com\-Been\-Kicked@{Com\-Objects\-::\-Com\-Been\-Kicked}!process@{process}}
+\index{process@{process}!ComObjects::ComBeenKicked@{Com\-Objects\-::\-Com\-Been\-Kicked}}
+\paragraph[{process}]{\setlength{\rightskip}{0pt plus 5cm}void process (
+\begin{DoxyParamCaption}
+\item[{{\bf Player}}]{player, }
+\item[{{\bf Server}}]{server}
+\end{DoxyParamCaption}
+)}}\label{a00025_ac67b5ce3ec03d48ef1e6caad6e49c902}
+
+
+Diese Methode ist noetig, damit der Thread Player entscheiden kann welche Message das Object enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em player} & Der Client welcher den Aufruf startet. \\
+\hline
+{\em server} & Der Server an den sich das Com\-Objekt weitergibt. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00037_ac67b5ce3ec03d48ef1e6caad6e49c902}{Com\-Object}.
+

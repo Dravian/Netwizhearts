@@ -1,0 +1,106 @@
+\hypertarget{a00045}{\subsection{Msg\-Game\-End Klassenreferenz}
+\label{a00045}\index{Msg\-Game\-End@{Msg\-Game\-End}}
+}
+
+
+Abgeleitet von \hyperlink{a00053}{Ruleset\-Message} und Serializable.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00045_a78d13200591b96670d4fda150e01de67}{Msg\-Game\-End} (String name)
+\item 
+String \hyperlink{a00045_a1308ca53d34712b2519a9e21e69e06a9}{get\-Winner\-Name} ()
+\item 
+void \hyperlink{a00045_ab45288da8f64e79408f1effd5579b5c2}{visit} (\hyperlink{a00068}{Server\-Ruleset} server\-Ruleset, String name)
+\item 
+void \hyperlink{a00045_acb5be722a2d1c9110d39f31c6e18f6e7}{visit} (\hyperlink{a00056}{Client\-Ruleset} client\-Ruleset)
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00045_a715154ea039b91667be44f697b466c9c}{String {\bfseries winner\-Name}}\label{a00045_a715154ea039b91667be44f697b466c9c}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Diese Klasse ist eine Verfeinerung der Ruleset\-Message-\/\-Klasse. Sie signalisiert dem Client\-Ruleset, dass das Spiel zu Ende ist. 
+
+\subsubsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{a00045_a78d13200591b96670d4fda150e01de67}{\index{Com\-Objects\-::\-Msg\-Game\-End@{Com\-Objects\-::\-Msg\-Game\-End}!Msg\-Game\-End@{Msg\-Game\-End}}
+\index{Msg\-Game\-End@{Msg\-Game\-End}!ComObjects::MsgGameEnd@{Com\-Objects\-::\-Msg\-Game\-End}}
+\paragraph[{Msg\-Game\-End}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Msg\-Game\-End} (
+\begin{DoxyParamCaption}
+\item[{String}]{name}
+\end{DoxyParamCaption}
+)}}\label{a00045_a78d13200591b96670d4fda150e01de67}
+
+
+Dies ist der Kontruktor fuer eine neue Msg\-Game\-End-\/\-Nachricht. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em name} & ist der Name des Gewinners. \\
+\hline
+\end{DoxyParams}
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00045_a1308ca53d34712b2519a9e21e69e06a9}{\index{Com\-Objects\-::\-Msg\-Game\-End@{Com\-Objects\-::\-Msg\-Game\-End}!get\-Winner\-Name@{get\-Winner\-Name}}
+\index{get\-Winner\-Name@{get\-Winner\-Name}!ComObjects::MsgGameEnd@{Com\-Objects\-::\-Msg\-Game\-End}}
+\paragraph[{get\-Winner\-Name}]{\setlength{\rightskip}{0pt plus 5cm}String get\-Winner\-Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00045_a1308ca53d34712b2519a9e21e69e06a9}
+
+
+Diese Methode liefert den Namen des Gewinners eines Spiels. 
+
+\begin{DoxyReturn}{Rückgabe}
+den Gewinnernamen. 
+\end{DoxyReturn}
+\hypertarget{a00045_ab45288da8f64e79408f1effd5579b5c2}{\index{Com\-Objects\-::\-Msg\-Game\-End@{Com\-Objects\-::\-Msg\-Game\-End}!visit@{visit}}
+\index{visit@{visit}!ComObjects::MsgGameEnd@{Com\-Objects\-::\-Msg\-Game\-End}}
+\paragraph[{visit}]{\setlength{\rightskip}{0pt plus 5cm}void visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Server\-Ruleset}}]{server\-Ruleset, }
+\item[{String}]{name}
+\end{DoxyParamCaption}
+)}}\label{a00045_ab45288da8f64e79408f1effd5579b5c2}
+
+
+Diese Methode ist noetig, damit das Server\-Ruleset entscheiden kann welche Message es enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em server\-Ruleset} & ist das Ruleset, welches Ã¼bergeben wird, damit die ueberladene Methode richtig gewaehlt wird. \\
+\hline
+{\em name} & ist der Name des Spielers. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00053_ab45288da8f64e79408f1effd5579b5c2}{Ruleset\-Message}.
+
+\hypertarget{a00045_acb5be722a2d1c9110d39f31c6e18f6e7}{\index{Com\-Objects\-::\-Msg\-Game\-End@{Com\-Objects\-::\-Msg\-Game\-End}!visit@{visit}}
+\index{visit@{visit}!ComObjects::MsgGameEnd@{Com\-Objects\-::\-Msg\-Game\-End}}
+\paragraph[{visit}]{\setlength{\rightskip}{0pt plus 5cm}void visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Client\-Ruleset}}]{client\-Ruleset}
+\end{DoxyParamCaption}
+)}}\label{a00045_acb5be722a2d1c9110d39f31c6e18f6e7}
+
+
+Diese Methode ist noetig, damit das Client\-Ruleset entscheiden kann welche Message es enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em client\-Ruleset} & ist das Ruleset, welches uebergeben wird, damit die ueberladene Methode richtig gewaehlt wird. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00053_acb5be722a2d1c9110d39f31c6e18f6e7}{Ruleset\-Message}.
+

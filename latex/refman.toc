@@ -1,0 +1,617 @@
+\select@language {ngerman}
+\contentsline {section}{\numberline {1}Hierarchie-\/\discretionary {-}{}{}Verzeichnis}{2}{section.1}
+\contentsline {subsection}{\numberline {1.1}Klassenhierarchie}{2}{subsection.1.1}
+\contentsline {section}{\numberline {2}Klassen-\/\discretionary {-}{}{}Verzeichnis}{4}{section.2}
+\contentsline {subsection}{\numberline {2.1}Auflistung der Klassen}{4}{subsection.2.1}
+\contentsline {section}{\numberline {3}Klassen-\/\discretionary {-}{}{}Dokumentation}{8}{section.3}
+\contentsline {subsection}{\numberline {3.1}Client\discretionary {-}{}{}Controller Klassenreferenz}{8}{subsection.3.1}
+\contentsline {subsubsection}{\numberline {3.1.1}Ausf\IeC {\"u}hrliche Beschreibung}{8}{subsubsection.3.1.1}
+\contentsline {subsection}{\numberline {3.2}Client\discretionary {-}{}{}Main Klassenreferenz}{9}{subsection.3.2}
+\contentsline {subsubsection}{\numberline {3.2.1}Ausf\IeC {\"u}hrliche Beschreibung}{9}{subsubsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2}Dokumentation der Elementfunktionen}{9}{subsubsection.3.2.2}
+\contentsline {paragraph}{\numberline {3.2.2.1}main}{9}{paragraph.3.2.2.1}
+\contentsline {subsection}{\numberline {3.3}Client\discretionary {-}{}{}Model Klassenreferenz}{9}{subsection.3.3}
+\contentsline {subsubsection}{\numberline {3.3.1}Ausf\IeC {\"u}hrliche Beschreibung}{10}{subsubsection.3.3.1}
+\contentsline {subsubsection}{\numberline {3.3.2}Beschreibung der Konstruktoren und Destruktoren}{10}{subsubsection.3.3.2}
+\contentsline {paragraph}{\numberline {3.3.2.1}Client\discretionary {-}{}{}Model}{10}{paragraph.3.3.2.1}
+\contentsline {subsubsection}{\numberline {3.3.3}Dokumentation der Elementfunktionen}{11}{subsubsection.3.3.3}
+\contentsline {paragraph}{\numberline {3.3.3.1}leave\discretionary {-}{}{}Window}{11}{paragraph.3.3.3.1}
+\contentsline {paragraph}{\numberline {3.3.3.2}receive\discretionary {-}{}{}Message}{11}{paragraph.3.3.3.2}
+\contentsline {paragraph}{\numberline {3.3.3.3}receive\discretionary {-}{}{}Message}{11}{paragraph.3.3.3.3}
+\contentsline {paragraph}{\numberline {3.3.3.4}receive\discretionary {-}{}{}Message}{11}{paragraph.3.3.3.4}
+\contentsline {paragraph}{\numberline {3.3.3.5}receive\discretionary {-}{}{}Message}{11}{paragraph.3.3.3.5}
+\contentsline {paragraph}{\numberline {3.3.3.6}receive\discretionary {-}{}{}Message}{11}{paragraph.3.3.3.6}
+\contentsline {paragraph}{\numberline {3.3.3.7}receive\discretionary {-}{}{}Message}{12}{paragraph.3.3.3.7}
+\contentsline {paragraph}{\numberline {3.3.3.8}receive\discretionary {-}{}{}Message}{12}{paragraph.3.3.3.8}
+\contentsline {paragraph}{\numberline {3.3.3.9}receive\discretionary {-}{}{}Message}{12}{paragraph.3.3.3.9}
+\contentsline {paragraph}{\numberline {3.3.3.10}receive\discretionary {-}{}{}Message}{12}{paragraph.3.3.3.10}
+\contentsline {paragraph}{\numberline {3.3.3.11}get\discretionary {-}{}{}Playerlist}{12}{paragraph.3.3.3.11}
+\contentsline {paragraph}{\numberline {3.3.3.12}get\discretionary {-}{}{}Lobby\discretionary {-}{}{}Gamelist}{12}{paragraph.3.3.3.12}
+\contentsline {paragraph}{\numberline {3.3.3.13}get\discretionary {-}{}{}Played\discretionary {-}{}{}Cards}{13}{paragraph.3.3.3.13}
+\contentsline {paragraph}{\numberline {3.3.3.14}get\discretionary {-}{}{}Own\discretionary {-}{}{}Hand}{13}{paragraph.3.3.3.14}
+\contentsline {paragraph}{\numberline {3.3.3.15}get\discretionary {-}{}{}Other\discretionary {-}{}{}Player\discretionary {-}{}{}Data}{13}{paragraph.3.3.3.15}
+\contentsline {paragraph}{\numberline {3.3.3.16}get\discretionary {-}{}{}Own\discretionary {-}{}{}Score}{13}{paragraph.3.3.3.16}
+\contentsline {paragraph}{\numberline {3.3.3.17}set\discretionary {-}{}{}Language}{13}{paragraph.3.3.3.17}
+\contentsline {paragraph}{\numberline {3.3.3.18}get\discretionary {-}{}{}Language}{13}{paragraph.3.3.3.18}
+\contentsline {paragraph}{\numberline {3.3.3.19}kick\discretionary {-}{}{}Player}{13}{paragraph.3.3.3.19}
+\contentsline {paragraph}{\numberline {3.3.3.20}host\discretionary {-}{}{}Game}{14}{paragraph.3.3.3.20}
+\contentsline {paragraph}{\numberline {3.3.3.21}send}{14}{paragraph.3.3.3.21}
+\contentsline {paragraph}{\numberline {3.3.3.22}send}{14}{paragraph.3.3.3.22}
+\contentsline {paragraph}{\numberline {3.3.3.23}get\discretionary {-}{}{}Player\discretionary {-}{}{}Count}{14}{paragraph.3.3.3.23}
+\contentsline {paragraph}{\numberline {3.3.3.24}get\discretionary {-}{}{}Window\discretionary {-}{}{}Text}{14}{paragraph.3.3.3.24}
+\contentsline {paragraph}{\numberline {3.3.3.25}get\discretionary {-}{}{}Choose\discretionary {-}{}{}Cards}{14}{paragraph.3.3.3.25}
+\contentsline {paragraph}{\numberline {3.3.3.26}give\discretionary {-}{}{}Chosen\discretionary {-}{}{}Cards}{15}{paragraph.3.3.3.26}
+\contentsline {paragraph}{\numberline {3.3.3.27}open\discretionary {-}{}{}Choose\discretionary {-}{}{}Cards}{15}{paragraph.3.3.3.27}
+\contentsline {paragraph}{\numberline {3.3.3.28}get\discretionary {-}{}{}Choose\discretionary {-}{}{}Items}{15}{paragraph.3.3.3.28}
+\contentsline {paragraph}{\numberline {3.3.3.29}give\discretionary {-}{}{}Chosen\discretionary {-}{}{}Item}{15}{paragraph.3.3.3.29}
+\contentsline {paragraph}{\numberline {3.3.3.30}open\discretionary {-}{}{}Choose\discretionary {-}{}{}Item}{15}{paragraph.3.3.3.30}
+\contentsline {paragraph}{\numberline {3.3.3.31}give\discretionary {-}{}{}Input\discretionary {-}{}{}Number}{15}{paragraph.3.3.3.31}
+\contentsline {paragraph}{\numberline {3.3.3.32}open\discretionary {-}{}{}Input\discretionary {-}{}{}Number}{16}{paragraph.3.3.3.32}
+\contentsline {paragraph}{\numberline {3.3.3.33}send\discretionary {-}{}{}Chat\discretionary {-}{}{}Message}{16}{paragraph.3.3.3.33}
+\contentsline {paragraph}{\numberline {3.3.3.34}join\discretionary {-}{}{}Game}{16}{paragraph.3.3.3.34}
+\contentsline {paragraph}{\numberline {3.3.3.35}start\discretionary {-}{}{}Game}{16}{paragraph.3.3.3.35}
+\contentsline {paragraph}{\numberline {3.3.3.36}init\discretionary {-}{}{}Game}{16}{paragraph.3.3.3.36}
+\contentsline {paragraph}{\numberline {3.3.3.37}make\discretionary {-}{}{}Move}{16}{paragraph.3.3.3.37}
+\contentsline {paragraph}{\numberline {3.3.3.38}inform\discretionary {-}{}{}View}{16}{paragraph.3.3.3.38}
+\contentsline {paragraph}{\numberline {3.3.3.39}create\discretionary {-}{}{}Connection}{17}{paragraph.3.3.3.39}
+\contentsline {paragraph}{\numberline {3.3.3.40}get\discretionary {-}{}{}Warning\discretionary {-}{}{}Text}{17}{paragraph.3.3.3.40}
+\contentsline {paragraph}{\numberline {3.3.3.41}get\discretionary {-}{}{}Rulesets}{17}{paragraph.3.3.3.41}
+\contentsline {subsection}{\numberline {3.4}Client\discretionary {-}{}{}State Enum-\/\discretionary {-}{}{}Referenz}{17}{subsection.3.4}
+\contentsline {subsubsection}{\numberline {3.4.1}Ausf\IeC {\"u}hrliche Beschreibung}{17}{subsubsection.3.4.1}
+\contentsline {subsection}{\numberline {3.5}Message\discretionary {-}{}{}Listener\discretionary {-}{}{}Thread Klassenreferenz}{17}{subsection.3.5}
+\contentsline {subsubsection}{\numberline {3.5.1}Ausf\IeC {\"u}hrliche Beschreibung}{18}{subsubsection.3.5.1}
+\contentsline {subsubsection}{\numberline {3.5.2}Dokumentation der Elementfunktionen}{18}{subsubsection.3.5.2}
+\contentsline {paragraph}{\numberline {3.5.2.1}start\discretionary {-}{}{}Connection}{18}{paragraph.3.5.2.1}
+\contentsline {subsection}{\numberline {3.6}Choose\discretionary {-}{}{}Cards Klassenreferenz}{18}{subsection.3.6}
+\contentsline {subsubsection}{\numberline {3.6.1}Ausf\IeC {\"u}hrliche Beschreibung}{18}{subsubsection.3.6.1}
+\contentsline {subsubsection}{\numberline {3.6.2}Dokumentation der Elementfunktionen}{19}{subsubsection.3.6.2}
+\contentsline {paragraph}{\numberline {3.6.2.1}update}{19}{paragraph.3.6.2.1}
+\contentsline {subsection}{\numberline {3.7}Choose\discretionary {-}{}{}Item Klassenreferenz}{19}{subsection.3.7}
+\contentsline {subsubsection}{\numberline {3.7.1}Ausf\IeC {\"u}hrliche Beschreibung}{19}{subsubsection.3.7.1}
+\contentsline {subsubsection}{\numberline {3.7.2}Dokumentation der Elementfunktionen}{19}{subsubsection.3.7.2}
+\contentsline {paragraph}{\numberline {3.7.2.1}update}{19}{paragraph.3.7.2.1}
+\contentsline {subsection}{\numberline {3.8}Create\discretionary {-}{}{}Game Klassenreferenz}{19}{subsection.3.8}
+\contentsline {subsubsection}{\numberline {3.8.1}Ausf\IeC {\"u}hrliche Beschreibung}{20}{subsubsection.3.8.1}
+\contentsline {subsubsection}{\numberline {3.8.2}Dokumentation der Elementfunktionen}{20}{subsubsection.3.8.2}
+\contentsline {paragraph}{\numberline {3.8.2.1}add\discretionary {-}{}{}Panel\discretionary {-}{}{}Mouse\discretionary {-}{}{}Listener}{20}{paragraph.3.8.2.1}
+\contentsline {paragraph}{\numberline {3.8.2.2}add\discretionary {-}{}{}Ruleset\discretionary {-}{}{}Selection\discretionary {-}{}{}Listener}{20}{paragraph.3.8.2.2}
+\contentsline {paragraph}{\numberline {3.8.2.3}add\discretionary {-}{}{}Create\discretionary {-}{}{}Button\discretionary {-}{}{}Listener}{21}{paragraph.3.8.2.3}
+\contentsline {paragraph}{\numberline {3.8.2.4}add\discretionary {-}{}{}Leave\discretionary {-}{}{}Button\discretionary {-}{}{}Listener}{21}{paragraph.3.8.2.4}
+\contentsline {paragraph}{\numberline {3.8.2.5}set\discretionary {-}{}{}Language}{21}{paragraph.3.8.2.5}
+\contentsline {subsection}{\numberline {3.9}Discard\discretionary {-}{}{}Pile Klassenreferenz}{21}{subsection.3.9}
+\contentsline {subsubsection}{\numberline {3.9.1}Ausf\IeC {\"u}hrliche Beschreibung}{21}{subsubsection.3.9.1}
+\contentsline {subsection}{\numberline {3.10}Draw\discretionary {-}{}{}Deck Klassenreferenz}{21}{subsection.3.10}
+\contentsline {subsubsection}{\numberline {3.10.1}Ausf\IeC {\"u}hrliche Beschreibung}{21}{subsubsection.3.10.1}
+\contentsline {subsection}{\numberline {3.11}Game Klassenreferenz}{21}{subsection.3.11}
+\contentsline {subsubsection}{\numberline {3.11.1}Ausf\IeC {\"u}hrliche Beschreibung}{22}{subsubsection.3.11.1}
+\contentsline {subsubsection}{\numberline {3.11.2}Beschreibung der Konstruktoren und Destruktoren}{22}{subsubsection.3.11.2}
+\contentsline {paragraph}{\numberline {3.11.2.1}Game}{22}{paragraph.3.11.2.1}
+\contentsline {subsubsection}{\numberline {3.11.3}Dokumentation der Elementfunktionen}{22}{subsubsection.3.11.3}
+\contentsline {paragraph}{\numberline {3.11.3.1}make\discretionary {-}{}{}Trick\discretionary {-}{}{}Game\discretionary {-}{}{}Board}{22}{paragraph.3.11.3.1}
+\contentsline {paragraph}{\numberline {3.11.3.2}update}{22}{paragraph.3.11.3.2}
+\contentsline {paragraph}{\numberline {3.11.3.3}update}{22}{paragraph.3.11.3.3}
+\contentsline {subsection}{\numberline {3.12}Game\discretionary {-}{}{}Lobby Klassenreferenz}{23}{subsection.3.12}
+\contentsline {subsubsection}{\numberline {3.12.1}Ausf\IeC {\"u}hrliche Beschreibung}{23}{subsubsection.3.12.1}
+\contentsline {subsubsection}{\numberline {3.12.2}Dokumentation der Elementfunktionen}{23}{subsubsection.3.12.2}
+\contentsline {paragraph}{\numberline {3.12.2.1}add\discretionary {-}{}{}Start\discretionary {-}{}{}Button\discretionary {-}{}{}Listener}{23}{paragraph.3.12.2.1}
+\contentsline {paragraph}{\numberline {3.12.2.2}add\discretionary {-}{}{}Remove\discretionary {-}{}{}Button\discretionary {-}{}{}Listener}{24}{paragraph.3.12.2.2}
+\contentsline {paragraph}{\numberline {3.12.2.3}add\discretionary {-}{}{}Leave\discretionary {-}{}{}Button\discretionary {-}{}{}Listener}{24}{paragraph.3.12.2.3}
+\contentsline {paragraph}{\numberline {3.12.2.4}add\discretionary {-}{}{}Chat\discretionary {-}{}{}Message\discretionary {-}{}{}Listener}{24}{paragraph.3.12.2.4}
+\contentsline {paragraph}{\numberline {3.12.2.5}set\discretionary {-}{}{}Language}{24}{paragraph.3.12.2.5}
+\contentsline {paragraph}{\numberline {3.12.2.6}update}{24}{paragraph.3.12.2.6}
+\contentsline {paragraph}{\numberline {3.12.2.7}update}{24}{paragraph.3.12.2.7}
+\contentsline {subsection}{\numberline {3.13}Game\discretionary {-}{}{}Panel Klassenreferenz}{25}{subsection.3.13}
+\contentsline {subsubsection}{\numberline {3.13.1}Ausf\IeC {\"u}hrliche Beschreibung}{25}{subsubsection.3.13.1}
+\contentsline {subsection}{\numberline {3.14}Input\discretionary {-}{}{}Number Klassenreferenz}{25}{subsection.3.14}
+\contentsline {subsubsection}{\numberline {3.14.1}Ausf\IeC {\"u}hrliche Beschreibung}{25}{subsubsection.3.14.1}
+\contentsline {subsubsection}{\numberline {3.14.2}Dokumentation der Elementfunktionen}{26}{subsubsection.3.14.2}
+\contentsline {paragraph}{\numberline {3.14.2.1}update}{26}{paragraph.3.14.2.1}
+\contentsline {subsection}{\numberline {3.15}Language Enum-\/\discretionary {-}{}{}Referenz}{26}{subsection.3.15}
+\contentsline {subsubsection}{\numberline {3.15.1}Ausf\IeC {\"u}hrliche Beschreibung}{26}{subsubsection.3.15.1}
+\contentsline {subsection}{\numberline {3.16}Lobby Klassenreferenz}{26}{subsection.3.16}
+\contentsline {subsubsection}{\numberline {3.16.1}Ausf\IeC {\"u}hrliche Beschreibung}{27}{subsubsection.3.16.1}
+\contentsline {subsubsection}{\numberline {3.16.2}Dokumentation der Elementfunktionen}{27}{subsubsection.3.16.2}
+\contentsline {paragraph}{\numberline {3.16.2.1}add\discretionary {-}{}{}Join\discretionary {-}{}{}Button\discretionary {-}{}{}Listener}{27}{paragraph.3.16.2.1}
+\contentsline {paragraph}{\numberline {3.16.2.2}add\discretionary {-}{}{}Host\discretionary {-}{}{}Button\discretionary {-}{}{}Listener}{27}{paragraph.3.16.2.2}
+\contentsline {paragraph}{\numberline {3.16.2.3}add\discretionary {-}{}{}Leave\discretionary {-}{}{}Button\discretionary {-}{}{}Listener}{27}{paragraph.3.16.2.3}
+\contentsline {paragraph}{\numberline {3.16.2.4}add\discretionary {-}{}{}Chat\discretionary {-}{}{}Message\discretionary {-}{}{}Listener}{27}{paragraph.3.16.2.4}
+\contentsline {paragraph}{\numberline {3.16.2.5}set\discretionary {-}{}{}Language}{28}{paragraph.3.16.2.5}
+\contentsline {paragraph}{\numberline {3.16.2.6}update}{28}{paragraph.3.16.2.6}
+\contentsline {paragraph}{\numberline {3.16.2.7}update}{28}{paragraph.3.16.2.7}
+\contentsline {subsection}{\numberline {3.17}Login Klassenreferenz}{28}{subsection.3.17}
+\contentsline {subsubsection}{\numberline {3.17.1}Ausf\IeC {\"u}hrliche Beschreibung}{29}{subsubsection.3.17.1}
+\contentsline {subsubsection}{\numberline {3.17.2}Dokumentation der Elementfunktionen}{29}{subsubsection.3.17.2}
+\contentsline {paragraph}{\numberline {3.17.2.1}add\discretionary {-}{}{}Connect\discretionary {-}{}{}Button\discretionary {-}{}{}Listener}{29}{paragraph.3.17.2.1}
+\contentsline {paragraph}{\numberline {3.17.2.2}add\discretionary {-}{}{}Language\discretionary {-}{}{}Selection\discretionary {-}{}{}Listener}{29}{paragraph.3.17.2.2}
+\contentsline {paragraph}{\numberline {3.17.2.3}set\discretionary {-}{}{}Language}{29}{paragraph.3.17.2.3}
+\contentsline {paragraph}{\numberline {3.17.2.4}update}{29}{paragraph.3.17.2.4}
+\contentsline {subsection}{\numberline {3.18}Other\discretionary {-}{}{}Player Klassenreferenz}{30}{subsection.3.18}
+\contentsline {subsubsection}{\numberline {3.18.1}Ausf\IeC {\"u}hrliche Beschreibung}{30}{subsubsection.3.18.1}
+\contentsline {subsection}{\numberline {3.19}Own\discretionary {-}{}{}Hand Klassenreferenz}{30}{subsection.3.19}
+\contentsline {subsubsection}{\numberline {3.19.1}Ausf\IeC {\"u}hrliche Beschreibung}{30}{subsubsection.3.19.1}
+\contentsline {subsection}{\numberline {3.20}Password Klassenreferenz}{30}{subsection.3.20}
+\contentsline {subsubsection}{\numberline {3.20.1}Ausf\IeC {\"u}hrliche Beschreibung}{31}{subsubsection.3.20.1}
+\contentsline {subsubsection}{\numberline {3.20.2}Dokumentation der Elementfunktionen}{31}{subsubsection.3.20.2}
+\contentsline {paragraph}{\numberline {3.20.2.1}add\discretionary {-}{}{}Join\discretionary {-}{}{}Button\discretionary {-}{}{}Listener}{31}{paragraph.3.20.2.1}
+\contentsline {paragraph}{\numberline {3.20.2.2}set\discretionary {-}{}{}Language}{31}{paragraph.3.20.2.2}
+\contentsline {paragraph}{\numberline {3.20.2.3}update}{31}{paragraph.3.20.2.3}
+\contentsline {subsection}{\numberline {3.21}Score\discretionary {-}{}{}Window Klassenreferenz}{31}{subsection.3.21}
+\contentsline {subsubsection}{\numberline {3.21.1}Ausf\IeC {\"u}hrliche Beschreibung}{32}{subsubsection.3.21.1}
+\contentsline {subsubsection}{\numberline {3.21.2}Dokumentation der Elementfunktionen}{32}{subsubsection.3.21.2}
+\contentsline {paragraph}{\numberline {3.21.2.1}update}{32}{paragraph.3.21.2.1}
+\contentsline {subsection}{\numberline {3.22}View\discretionary {-}{}{}Card Klassenreferenz}{32}{subsection.3.22}
+\contentsline {subsubsection}{\numberline {3.22.1}Ausf\IeC {\"u}hrliche Beschreibung}{32}{subsubsection.3.22.1}
+\contentsline {subsubsection}{\numberline {3.22.2}Beschreibung der Konstruktoren und Destruktoren}{32}{subsubsection.3.22.2}
+\contentsline {paragraph}{\numberline {3.22.2.1}View\discretionary {-}{}{}Card}{32}{paragraph.3.22.2.1}
+\contentsline {subsubsection}{\numberline {3.22.3}Dokumentation der Elementfunktionen}{33}{subsubsection.3.22.3}
+\contentsline {paragraph}{\numberline {3.22.3.1}get\discretionary {-}{}{}I\discretionary {-}{}{}D}{33}{paragraph.3.22.3.1}
+\contentsline {subsection}{\numberline {3.23}Warning Klassenreferenz}{33}{subsection.3.23}
+\contentsline {subsubsection}{\numberline {3.23.1}Ausf\IeC {\"u}hrliche Beschreibung}{33}{subsubsection.3.23.1}
+\contentsline {subsubsection}{\numberline {3.23.2}Dokumentation der Elementfunktionen}{33}{subsubsection.3.23.2}
+\contentsline {paragraph}{\numberline {3.23.2.1}set\discretionary {-}{}{}Text}{33}{paragraph.3.23.2.1}
+\contentsline {paragraph}{\numberline {3.23.2.2}update}{33}{paragraph.3.23.2.2}
+\contentsline {subsection}{\numberline {3.24}View\discretionary {-}{}{}Notification Enum-\/\discretionary {-}{}{}Referenz}{34}{subsection.3.24}
+\contentsline {subsubsection}{\numberline {3.24.1}Ausf\IeC {\"u}hrliche Beschreibung}{34}{subsubsection.3.24.1}
+\contentsline {subsection}{\numberline {3.25}Com\discretionary {-}{}{}Been\discretionary {-}{}{}Kicked Klassenreferenz}{34}{subsection.3.25}
+\contentsline {subsubsection}{\numberline {3.25.1}Ausf\IeC {\"u}hrliche Beschreibung}{34}{subsubsection.3.25.1}
+\contentsline {subsubsection}{\numberline {3.25.2}Beschreibung der Konstruktoren und Destruktoren}{35}{subsubsection.3.25.2}
+\contentsline {paragraph}{\numberline {3.25.2.1}Com\discretionary {-}{}{}Been\discretionary {-}{}{}Kicked}{35}{paragraph.3.25.2.1}
+\contentsline {subsubsection}{\numberline {3.25.3}Dokumentation der Elementfunktionen}{35}{subsubsection.3.25.3}
+\contentsline {paragraph}{\numberline {3.25.3.1}get\discretionary {-}{}{}Message}{35}{paragraph.3.25.3.1}
+\contentsline {paragraph}{\numberline {3.25.3.2}process}{35}{paragraph.3.25.3.2}
+\contentsline {paragraph}{\numberline {3.25.3.3}process}{35}{paragraph.3.25.3.3}
+\contentsline {subsection}{\numberline {3.26}Com\discretionary {-}{}{}Chat\discretionary {-}{}{}Message Klassenreferenz}{35}{subsection.3.26}
+\contentsline {subsubsection}{\numberline {3.26.1}Ausf\IeC {\"u}hrliche Beschreibung}{36}{subsubsection.3.26.1}
+\contentsline {subsubsection}{\numberline {3.26.2}Beschreibung der Konstruktoren und Destruktoren}{36}{subsubsection.3.26.2}
+\contentsline {paragraph}{\numberline {3.26.2.1}Com\discretionary {-}{}{}Chat\discretionary {-}{}{}Message}{36}{paragraph.3.26.2.1}
+\contentsline {subsubsection}{\numberline {3.26.3}Dokumentation der Elementfunktionen}{36}{subsubsection.3.26.3}
+\contentsline {paragraph}{\numberline {3.26.3.1}get\discretionary {-}{}{}Chat\discretionary {-}{}{}Message}{36}{paragraph.3.26.3.1}
+\contentsline {paragraph}{\numberline {3.26.3.2}process}{36}{paragraph.3.26.3.2}
+\contentsline {paragraph}{\numberline {3.26.3.3}process}{36}{paragraph.3.26.3.3}
+\contentsline {subsection}{\numberline {3.27}Com\discretionary {-}{}{}Client\discretionary {-}{}{}Leave Klassenreferenz}{36}{subsection.3.27}
+\contentsline {subsubsection}{\numberline {3.27.1}Ausf\IeC {\"u}hrliche Beschreibung}{37}{subsubsection.3.27.1}
+\contentsline {subsubsection}{\numberline {3.27.2}Dokumentation der Elementfunktionen}{37}{subsubsection.3.27.2}
+\contentsline {paragraph}{\numberline {3.27.2.1}process}{37}{paragraph.3.27.2.1}
+\contentsline {paragraph}{\numberline {3.27.2.2}process}{37}{paragraph.3.27.2.2}
+\contentsline {subsection}{\numberline {3.28}Com\discretionary {-}{}{}Client\discretionary {-}{}{}Quit Klassenreferenz}{37}{subsection.3.28}
+\contentsline {subsubsection}{\numberline {3.28.1}Ausf\IeC {\"u}hrliche Beschreibung}{37}{subsubsection.3.28.1}
+\contentsline {subsubsection}{\numberline {3.28.2}Dokumentation der Elementfunktionen}{37}{subsubsection.3.28.2}
+\contentsline {paragraph}{\numberline {3.28.2.1}process}{37}{paragraph.3.28.2.1}
+\contentsline {paragraph}{\numberline {3.28.2.2}process}{38}{paragraph.3.28.2.2}
+\contentsline {subsection}{\numberline {3.29}Com\discretionary {-}{}{}Create\discretionary {-}{}{}Game\discretionary {-}{}{}Request Klassenreferenz}{38}{subsection.3.29}
+\contentsline {subsubsection}{\numberline {3.29.1}Ausf\IeC {\"u}hrliche Beschreibung}{38}{subsubsection.3.29.1}
+\contentsline {subsubsection}{\numberline {3.29.2}Beschreibung der Konstruktoren und Destruktoren}{38}{subsubsection.3.29.2}
+\contentsline {paragraph}{\numberline {3.29.2.1}Com\discretionary {-}{}{}Create\discretionary {-}{}{}Game\discretionary {-}{}{}Request}{38}{paragraph.3.29.2.1}
+\contentsline {subsubsection}{\numberline {3.29.3}Dokumentation der Elementfunktionen}{39}{subsubsection.3.29.3}
+\contentsline {paragraph}{\numberline {3.29.3.1}get\discretionary {-}{}{}Game\discretionary {-}{}{}Name}{39}{paragraph.3.29.3.1}
+\contentsline {paragraph}{\numberline {3.29.3.2}get\discretionary {-}{}{}Ruleset}{39}{paragraph.3.29.3.2}
+\contentsline {paragraph}{\numberline {3.29.3.3}has\discretionary {-}{}{}Password}{39}{paragraph.3.29.3.3}
+\contentsline {paragraph}{\numberline {3.29.3.4}get\discretionary {-}{}{}Password}{39}{paragraph.3.29.3.4}
+\contentsline {paragraph}{\numberline {3.29.3.5}process}{39}{paragraph.3.29.3.5}
+\contentsline {paragraph}{\numberline {3.29.3.6}process}{39}{paragraph.3.29.3.6}
+\contentsline {subsection}{\numberline {3.30}Com\discretionary {-}{}{}Game\discretionary {-}{}{}End Klassenreferenz}{40}{subsection.3.30}
+\contentsline {subsubsection}{\numberline {3.30.1}Ausf\IeC {\"u}hrliche Beschreibung}{40}{subsubsection.3.30.1}
+\contentsline {subsubsection}{\numberline {3.30.2}Beschreibung der Konstruktoren und Destruktoren}{40}{subsubsection.3.30.2}
+\contentsline {paragraph}{\numberline {3.30.2.1}Com\discretionary {-}{}{}Game\discretionary {-}{}{}End}{40}{paragraph.3.30.2.1}
+\contentsline {subsubsection}{\numberline {3.30.3}Dokumentation der Elementfunktionen}{40}{subsubsection.3.30.3}
+\contentsline {paragraph}{\numberline {3.30.3.1}get\discretionary {-}{}{}Winner}{40}{paragraph.3.30.3.1}
+\contentsline {paragraph}{\numberline {3.30.3.2}get\discretionary {-}{}{}Points}{41}{paragraph.3.30.3.2}
+\contentsline {paragraph}{\numberline {3.30.3.3}process}{41}{paragraph.3.30.3.3}
+\contentsline {paragraph}{\numberline {3.30.3.4}process}{41}{paragraph.3.30.3.4}
+\contentsline {subsection}{\numberline {3.31}Com\discretionary {-}{}{}Init\discretionary {-}{}{}Game\discretionary {-}{}{}Lobby Klassenreferenz}{41}{subsection.3.31}
+\contentsline {subsubsection}{\numberline {3.31.1}Ausf\IeC {\"u}hrliche Beschreibung}{41}{subsubsection.3.31.1}
+\contentsline {subsubsection}{\numberline {3.31.2}Beschreibung der Konstruktoren und Destruktoren}{41}{subsubsection.3.31.2}
+\contentsline {paragraph}{\numberline {3.31.2.1}Com\discretionary {-}{}{}Init\discretionary {-}{}{}Game\discretionary {-}{}{}Lobby}{41}{paragraph.3.31.2.1}
+\contentsline {subsubsection}{\numberline {3.31.3}Dokumentation der Elementfunktionen}{42}{subsubsection.3.31.3}
+\contentsline {paragraph}{\numberline {3.31.3.1}get\discretionary {-}{}{}Player\discretionary {-}{}{}List}{42}{paragraph.3.31.3.1}
+\contentsline {paragraph}{\numberline {3.31.3.2}process}{42}{paragraph.3.31.3.2}
+\contentsline {paragraph}{\numberline {3.31.3.3}process}{42}{paragraph.3.31.3.3}
+\contentsline {subsection}{\numberline {3.32}Com\discretionary {-}{}{}Init\discretionary {-}{}{}Lobby Klassenreferenz}{42}{subsection.3.32}
+\contentsline {subsubsection}{\numberline {3.32.1}Ausf\IeC {\"u}hrliche Beschreibung}{43}{subsubsection.3.32.1}
+\contentsline {subsubsection}{\numberline {3.32.2}Beschreibung der Konstruktoren und Destruktoren}{43}{subsubsection.3.32.2}
+\contentsline {paragraph}{\numberline {3.32.2.1}Com\discretionary {-}{}{}Init\discretionary {-}{}{}Lobby}{43}{paragraph.3.32.2.1}
+\contentsline {subsubsection}{\numberline {3.32.3}Dokumentation der Elementfunktionen}{43}{subsubsection.3.32.3}
+\contentsline {paragraph}{\numberline {3.32.3.1}get\discretionary {-}{}{}Player\discretionary {-}{}{}List}{43}{paragraph.3.32.3.1}
+\contentsline {paragraph}{\numberline {3.32.3.2}get\discretionary {-}{}{}Game\discretionary {-}{}{}List}{43}{paragraph.3.32.3.2}
+\contentsline {paragraph}{\numberline {3.32.3.3}process}{43}{paragraph.3.32.3.3}
+\contentsline {paragraph}{\numberline {3.32.3.4}process}{43}{paragraph.3.32.3.4}
+\contentsline {subsection}{\numberline {3.33}Com\discretionary {-}{}{}Join\discretionary {-}{}{}Request Klassenreferenz}{44}{subsection.3.33}
+\contentsline {subsubsection}{\numberline {3.33.1}Ausf\IeC {\"u}hrliche Beschreibung}{44}{subsubsection.3.33.1}
+\contentsline {subsubsection}{\numberline {3.33.2}Beschreibung der Konstruktoren und Destruktoren}{44}{subsubsection.3.33.2}
+\contentsline {paragraph}{\numberline {3.33.2.1}Com\discretionary {-}{}{}Join\discretionary {-}{}{}Request}{44}{paragraph.3.33.2.1}
+\contentsline {subsubsection}{\numberline {3.33.3}Dokumentation der Elementfunktionen}{44}{subsubsection.3.33.3}
+\contentsline {paragraph}{\numberline {3.33.3.1}get\discretionary {-}{}{}Game\discretionary {-}{}{}Master\discretionary {-}{}{}Name}{44}{paragraph.3.33.3.1}
+\contentsline {paragraph}{\numberline {3.33.3.2}process}{45}{paragraph.3.33.3.2}
+\contentsline {paragraph}{\numberline {3.33.3.3}process}{46}{paragraph.3.33.3.3}
+\contentsline {subsubsection}{\numberline {3.33.4}Dokumentation der Datenelemente}{46}{subsubsection.3.33.4}
+\contentsline {paragraph}{\numberline {3.33.4.1}game\discretionary {-}{}{}Master\discretionary {-}{}{}Name}{46}{paragraph.3.33.4.1}
+\contentsline {subsection}{\numberline {3.34}Com\discretionary {-}{}{}Kick\discretionary {-}{}{}Player\discretionary {-}{}{}Request Klassenreferenz}{46}{subsection.3.34}
+\contentsline {subsubsection}{\numberline {3.34.1}Ausf\IeC {\"u}hrliche Beschreibung}{46}{subsubsection.3.34.1}
+\contentsline {subsubsection}{\numberline {3.34.2}Beschreibung der Konstruktoren und Destruktoren}{46}{subsubsection.3.34.2}
+\contentsline {paragraph}{\numberline {3.34.2.1}Com\discretionary {-}{}{}Kick\discretionary {-}{}{}Player\discretionary {-}{}{}Request}{46}{paragraph.3.34.2.1}
+\contentsline {subsubsection}{\numberline {3.34.3}Dokumentation der Elementfunktionen}{47}{subsubsection.3.34.3}
+\contentsline {paragraph}{\numberline {3.34.3.1}get\discretionary {-}{}{}Player\discretionary {-}{}{}Name}{47}{paragraph.3.34.3.1}
+\contentsline {paragraph}{\numberline {3.34.3.2}process}{47}{paragraph.3.34.3.2}
+\contentsline {paragraph}{\numberline {3.34.3.3}process}{47}{paragraph.3.34.3.3}
+\contentsline {subsection}{\numberline {3.35}Com\discretionary {-}{}{}Lobby\discretionary {-}{}{}Update\discretionary {-}{}{}Gamelist Klassenreferenz}{47}{subsection.3.35}
+\contentsline {subsubsection}{\numberline {3.35.1}Ausf\IeC {\"u}hrliche Beschreibung}{48}{subsubsection.3.35.1}
+\contentsline {subsubsection}{\numberline {3.35.2}Beschreibung der Konstruktoren und Destruktoren}{48}{subsubsection.3.35.2}
+\contentsline {paragraph}{\numberline {3.35.2.1}Com\discretionary {-}{}{}Lobby\discretionary {-}{}{}Update\discretionary {-}{}{}Gamelist}{48}{paragraph.3.35.2.1}
+\contentsline {subsubsection}{\numberline {3.35.3}Dokumentation der Elementfunktionen}{48}{subsubsection.3.35.3}
+\contentsline {paragraph}{\numberline {3.35.3.1}is\discretionary {-}{}{}Remove\discretionary {-}{}{}Flag}{48}{paragraph.3.35.3.1}
+\contentsline {paragraph}{\numberline {3.35.3.2}get\discretionary {-}{}{}Game\discretionary {-}{}{}Server}{48}{paragraph.3.35.3.2}
+\contentsline {paragraph}{\numberline {3.35.3.3}process}{48}{paragraph.3.35.3.3}
+\contentsline {paragraph}{\numberline {3.35.3.4}process}{48}{paragraph.3.35.3.4}
+\contentsline {subsection}{\numberline {3.36}Com\discretionary {-}{}{}Login\discretionary {-}{}{}Request Klassenreferenz}{48}{subsection.3.36}
+\contentsline {subsubsection}{\numberline {3.36.1}Ausf\IeC {\"u}hrliche Beschreibung}{49}{subsubsection.3.36.1}
+\contentsline {subsubsection}{\numberline {3.36.2}Beschreibung der Konstruktoren und Destruktoren}{49}{subsubsection.3.36.2}
+\contentsline {paragraph}{\numberline {3.36.2.1}Com\discretionary {-}{}{}Login\discretionary {-}{}{}Request}{49}{paragraph.3.36.2.1}
+\contentsline {subsubsection}{\numberline {3.36.3}Dokumentation der Elementfunktionen}{49}{subsubsection.3.36.3}
+\contentsline {paragraph}{\numberline {3.36.3.1}get\discretionary {-}{}{}Player\discretionary {-}{}{}Name}{49}{paragraph.3.36.3.1}
+\contentsline {paragraph}{\numberline {3.36.3.2}process}{49}{paragraph.3.36.3.2}
+\contentsline {paragraph}{\numberline {3.36.3.3}process}{49}{paragraph.3.36.3.3}
+\contentsline {subsection}{\numberline {3.37}Com\discretionary {-}{}{}Object Schnittstellenreferenz}{50}{subsection.3.37}
+\contentsline {subsubsection}{\numberline {3.37.1}Ausf\IeC {\"u}hrliche Beschreibung}{50}{subsubsection.3.37.1}
+\contentsline {subsubsection}{\numberline {3.37.2}Dokumentation der Elementfunktionen}{50}{subsubsection.3.37.2}
+\contentsline {paragraph}{\numberline {3.37.2.1}process}{50}{paragraph.3.37.2.1}
+\contentsline {paragraph}{\numberline {3.37.2.2}process}{50}{paragraph.3.37.2.2}
+\contentsline {subsection}{\numberline {3.38}Com\discretionary {-}{}{}Ruleset Klassenreferenz}{51}{subsection.3.38}
+\contentsline {subsubsection}{\numberline {3.38.1}Ausf\IeC {\"u}hrliche Beschreibung}{51}{subsubsection.3.38.1}
+\contentsline {subsubsection}{\numberline {3.38.2}Beschreibung der Konstruktoren und Destruktoren}{51}{subsubsection.3.38.2}
+\contentsline {paragraph}{\numberline {3.38.2.1}Com\discretionary {-}{}{}Ruleset}{51}{paragraph.3.38.2.1}
+\contentsline {subsubsection}{\numberline {3.38.3}Dokumentation der Elementfunktionen}{51}{subsubsection.3.38.3}
+\contentsline {paragraph}{\numberline {3.38.3.1}get\discretionary {-}{}{}Ruleset\discretionary {-}{}{}Message}{51}{paragraph.3.38.3.1}
+\contentsline {paragraph}{\numberline {3.38.3.2}process}{51}{paragraph.3.38.3.2}
+\contentsline {paragraph}{\numberline {3.38.3.3}process}{51}{paragraph.3.38.3.3}
+\contentsline {subsection}{\numberline {3.39}Com\discretionary {-}{}{}Server\discretionary {-}{}{}Acknowledgement Klassenreferenz}{52}{subsection.3.39}
+\contentsline {subsubsection}{\numberline {3.39.1}Ausf\IeC {\"u}hrliche Beschreibung}{52}{subsubsection.3.39.1}
+\contentsline {subsubsection}{\numberline {3.39.2}Dokumentation der Elementfunktionen}{52}{subsubsection.3.39.2}
+\contentsline {paragraph}{\numberline {3.39.2.1}process}{52}{paragraph.3.39.2.1}
+\contentsline {paragraph}{\numberline {3.39.2.2}process}{52}{paragraph.3.39.2.2}
+\contentsline {subsection}{\numberline {3.40}Com\discretionary {-}{}{}Start\discretionary {-}{}{}Game Klassenreferenz}{52}{subsection.3.40}
+\contentsline {subsubsection}{\numberline {3.40.1}Ausf\IeC {\"u}hrliche Beschreibung}{53}{subsubsection.3.40.1}
+\contentsline {subsubsection}{\numberline {3.40.2}Dokumentation der Elementfunktionen}{53}{subsubsection.3.40.2}
+\contentsline {paragraph}{\numberline {3.40.2.1}process}{53}{paragraph.3.40.2.1}
+\contentsline {paragraph}{\numberline {3.40.2.2}process}{53}{paragraph.3.40.2.2}
+\contentsline {subsection}{\numberline {3.41}Com\discretionary {-}{}{}Update\discretionary {-}{}{}Playerlist Klassenreferenz}{53}{subsection.3.41}
+\contentsline {subsubsection}{\numberline {3.41.1}Ausf\IeC {\"u}hrliche Beschreibung}{53}{subsubsection.3.41.1}
+\contentsline {subsubsection}{\numberline {3.41.2}Beschreibung der Konstruktoren und Destruktoren}{53}{subsubsection.3.41.2}
+\contentsline {paragraph}{\numberline {3.41.2.1}Com\discretionary {-}{}{}Update\discretionary {-}{}{}Playerlist}{53}{paragraph.3.41.2.1}
+\contentsline {subsubsection}{\numberline {3.41.3}Dokumentation der Elementfunktionen}{55}{subsubsection.3.41.3}
+\contentsline {paragraph}{\numberline {3.41.3.1}get\discretionary {-}{}{}Player\discretionary {-}{}{}Name}{55}{paragraph.3.41.3.1}
+\contentsline {paragraph}{\numberline {3.41.3.2}is\discretionary {-}{}{}Remove\discretionary {-}{}{}Flag}{55}{paragraph.3.41.3.2}
+\contentsline {paragraph}{\numberline {3.41.3.3}process}{55}{paragraph.3.41.3.3}
+\contentsline {paragraph}{\numberline {3.41.3.4}process}{55}{paragraph.3.41.3.4}
+\contentsline {subsection}{\numberline {3.42}Com\discretionary {-}{}{}Warning Klassenreferenz}{55}{subsection.3.42}
+\contentsline {subsubsection}{\numberline {3.42.1}Ausf\IeC {\"u}hrliche Beschreibung}{56}{subsubsection.3.42.1}
+\contentsline {subsubsection}{\numberline {3.42.2}Beschreibung der Konstruktoren und Destruktoren}{56}{subsubsection.3.42.2}
+\contentsline {paragraph}{\numberline {3.42.2.1}Com\discretionary {-}{}{}Warning}{56}{paragraph.3.42.2.1}
+\contentsline {subsubsection}{\numberline {3.42.3}Dokumentation der Elementfunktionen}{56}{subsubsection.3.42.3}
+\contentsline {paragraph}{\numberline {3.42.3.1}get\discretionary {-}{}{}Warning}{56}{paragraph.3.42.3.1}
+\contentsline {paragraph}{\numberline {3.42.3.2}process}{56}{paragraph.3.42.3.2}
+\contentsline {paragraph}{\numberline {3.42.3.3}process}{56}{paragraph.3.42.3.3}
+\contentsline {subsection}{\numberline {3.43}Msg\discretionary {-}{}{}Card Klassenreferenz}{56}{subsection.3.43}
+\contentsline {subsubsection}{\numberline {3.43.1}Ausf\IeC {\"u}hrliche Beschreibung}{57}{subsubsection.3.43.1}
+\contentsline {subsubsection}{\numberline {3.43.2}Beschreibung der Konstruktoren und Destruktoren}{57}{subsubsection.3.43.2}
+\contentsline {paragraph}{\numberline {3.43.2.1}Msg\discretionary {-}{}{}Card}{57}{paragraph.3.43.2.1}
+\contentsline {subsubsection}{\numberline {3.43.3}Dokumentation der Elementfunktionen}{57}{subsubsection.3.43.3}
+\contentsline {paragraph}{\numberline {3.43.3.1}get\discretionary {-}{}{}Card}{57}{paragraph.3.43.3.1}
+\contentsline {paragraph}{\numberline {3.43.3.2}visit}{57}{paragraph.3.43.3.2}
+\contentsline {paragraph}{\numberline {3.43.3.3}visit}{57}{paragraph.3.43.3.3}
+\contentsline {subsection}{\numberline {3.44}Msg\discretionary {-}{}{}Card\discretionary {-}{}{}Request Klassenreferenz}{58}{subsection.3.44}
+\contentsline {subsubsection}{\numberline {3.44.1}Ausf\IeC {\"u}hrliche Beschreibung}{58}{subsubsection.3.44.1}
+\contentsline {subsubsection}{\numberline {3.44.2}Dokumentation der Elementfunktionen}{58}{subsubsection.3.44.2}
+\contentsline {paragraph}{\numberline {3.44.2.1}visit}{58}{paragraph.3.44.2.1}
+\contentsline {paragraph}{\numberline {3.44.2.2}visit}{58}{paragraph.3.44.2.2}
+\contentsline {subsection}{\numberline {3.45}Msg\discretionary {-}{}{}Game\discretionary {-}{}{}End Klassenreferenz}{58}{subsection.3.45}
+\contentsline {subsubsection}{\numberline {3.45.1}Ausf\IeC {\"u}hrliche Beschreibung}{59}{subsubsection.3.45.1}
+\contentsline {subsubsection}{\numberline {3.45.2}Beschreibung der Konstruktoren und Destruktoren}{59}{subsubsection.3.45.2}
+\contentsline {paragraph}{\numberline {3.45.2.1}Msg\discretionary {-}{}{}Game\discretionary {-}{}{}End}{59}{paragraph.3.45.2.1}
+\contentsline {subsubsection}{\numberline {3.45.3}Dokumentation der Elementfunktionen}{59}{subsubsection.3.45.3}
+\contentsline {paragraph}{\numberline {3.45.3.1}get\discretionary {-}{}{}Winner\discretionary {-}{}{}Name}{59}{paragraph.3.45.3.1}
+\contentsline {paragraph}{\numberline {3.45.3.2}visit}{59}{paragraph.3.45.3.2}
+\contentsline {paragraph}{\numberline {3.45.3.3}visit}{59}{paragraph.3.45.3.3}
+\contentsline {subsection}{\numberline {3.46}Msg\discretionary {-}{}{}Multi\discretionary {-}{}{}Cards Klassenreferenz}{60}{subsection.3.46}
+\contentsline {subsubsection}{\numberline {3.46.1}Ausf\IeC {\"u}hrliche Beschreibung}{60}{subsubsection.3.46.1}
+\contentsline {subsubsection}{\numberline {3.46.2}Beschreibung der Konstruktoren und Destruktoren}{60}{subsubsection.3.46.2}
+\contentsline {paragraph}{\numberline {3.46.2.1}Msg\discretionary {-}{}{}Multi\discretionary {-}{}{}Cards}{60}{paragraph.3.46.2.1}
+\contentsline {subsubsection}{\numberline {3.46.3}Dokumentation der Elementfunktionen}{60}{subsubsection.3.46.3}
+\contentsline {paragraph}{\numberline {3.46.3.1}get\discretionary {-}{}{}Card\discretionary {-}{}{}List}{60}{paragraph.3.46.3.1}
+\contentsline {paragraph}{\numberline {3.46.3.2}visit}{60}{paragraph.3.46.3.2}
+\contentsline {paragraph}{\numberline {3.46.3.3}visit}{60}{paragraph.3.46.3.3}
+\contentsline {subsection}{\numberline {3.47}Msg\discretionary {-}{}{}Multi\discretionary {-}{}{}Cards\discretionary {-}{}{}Request Klassenreferenz}{61}{subsection.3.47}
+\contentsline {subsubsection}{\numberline {3.47.1}Ausf\IeC {\"u}hrliche Beschreibung}{61}{subsubsection.3.47.1}
+\contentsline {subsubsection}{\numberline {3.47.2}Beschreibung der Konstruktoren und Destruktoren}{61}{subsubsection.3.47.2}
+\contentsline {paragraph}{\numberline {3.47.2.1}Msg\discretionary {-}{}{}Multi\discretionary {-}{}{}Cards\discretionary {-}{}{}Request}{61}{paragraph.3.47.2.1}
+\contentsline {subsubsection}{\numberline {3.47.3}Dokumentation der Elementfunktionen}{61}{subsubsection.3.47.3}
+\contentsline {paragraph}{\numberline {3.47.3.1}get\discretionary {-}{}{}Count}{61}{paragraph.3.47.3.1}
+\contentsline {paragraph}{\numberline {3.47.3.2}visit}{61}{paragraph.3.47.3.2}
+\contentsline {paragraph}{\numberline {3.47.3.3}visit}{62}{paragraph.3.47.3.3}
+\contentsline {subsection}{\numberline {3.48}Msg\discretionary {-}{}{}Number Klassenreferenz}{62}{subsection.3.48}
+\contentsline {subsubsection}{\numberline {3.48.1}Ausf\IeC {\"u}hrliche Beschreibung}{62}{subsubsection.3.48.1}
+\contentsline {subsubsection}{\numberline {3.48.2}Beschreibung der Konstruktoren und Destruktoren}{62}{subsubsection.3.48.2}
+\contentsline {paragraph}{\numberline {3.48.2.1}Msg\discretionary {-}{}{}Number}{62}{paragraph.3.48.2.1}
+\contentsline {subsubsection}{\numberline {3.48.3}Dokumentation der Elementfunktionen}{62}{subsubsection.3.48.3}
+\contentsline {paragraph}{\numberline {3.48.3.1}get\discretionary {-}{}{}Number}{62}{paragraph.3.48.3.1}
+\contentsline {paragraph}{\numberline {3.48.3.2}visit}{63}{paragraph.3.48.3.2}
+\contentsline {paragraph}{\numberline {3.48.3.3}visit}{63}{paragraph.3.48.3.3}
+\contentsline {subsection}{\numberline {3.49}Msg\discretionary {-}{}{}Number\discretionary {-}{}{}Request Klassenreferenz}{63}{subsection.3.49}
+\contentsline {subsubsection}{\numberline {3.49.1}Ausf\IeC {\"u}hrliche Beschreibung}{63}{subsubsection.3.49.1}
+\contentsline {subsubsection}{\numberline {3.49.2}Dokumentation der Elementfunktionen}{63}{subsubsection.3.49.2}
+\contentsline {paragraph}{\numberline {3.49.2.1}visit}{63}{paragraph.3.49.2.1}
+\contentsline {paragraph}{\numberline {3.49.2.2}visit}{64}{paragraph.3.49.2.2}
+\contentsline {subsection}{\numberline {3.50}Msg\discretionary {-}{}{}Selection Klassenreferenz}{64}{subsection.3.50}
+\contentsline {subsubsection}{\numberline {3.50.1}Ausf\IeC {\"u}hrliche Beschreibung}{64}{subsubsection.3.50.1}
+\contentsline {subsubsection}{\numberline {3.50.2}Beschreibung der Konstruktoren und Destruktoren}{64}{subsubsection.3.50.2}
+\contentsline {paragraph}{\numberline {3.50.2.1}Msg\discretionary {-}{}{}Selection}{64}{paragraph.3.50.2.1}
+\contentsline {subsubsection}{\numberline {3.50.3}Dokumentation der Elementfunktionen}{64}{subsubsection.3.50.3}
+\contentsline {paragraph}{\numberline {3.50.3.1}get\discretionary {-}{}{}Selection}{64}{paragraph.3.50.3.1}
+\contentsline {paragraph}{\numberline {3.50.3.2}visit}{65}{paragraph.3.50.3.2}
+\contentsline {paragraph}{\numberline {3.50.3.3}visit}{66}{paragraph.3.50.3.3}
+\contentsline {subsection}{\numberline {3.51}Msg\discretionary {-}{}{}Selection\discretionary {-}{}{}Request Klassenreferenz}{66}{subsection.3.51}
+\contentsline {subsubsection}{\numberline {3.51.1}Ausf\IeC {\"u}hrliche Beschreibung}{66}{subsubsection.3.51.1}
+\contentsline {subsubsection}{\numberline {3.51.2}Dokumentation der Elementfunktionen}{66}{subsubsection.3.51.2}
+\contentsline {paragraph}{\numberline {3.51.2.1}visit}{66}{paragraph.3.51.2.1}
+\contentsline {paragraph}{\numberline {3.51.2.2}visit}{66}{paragraph.3.51.2.2}
+\contentsline {subsection}{\numberline {3.52}Msg\discretionary {-}{}{}User Klassenreferenz}{67}{subsection.3.52}
+\contentsline {subsubsection}{\numberline {3.52.1}Ausf\IeC {\"u}hrliche Beschreibung}{67}{subsubsection.3.52.1}
+\contentsline {subsubsection}{\numberline {3.52.2}Beschreibung der Konstruktoren und Destruktoren}{67}{subsubsection.3.52.2}
+\contentsline {paragraph}{\numberline {3.52.2.1}Msg\discretionary {-}{}{}User}{67}{paragraph.3.52.2.1}
+\contentsline {subsubsection}{\numberline {3.52.3}Dokumentation der Elementfunktionen}{67}{subsubsection.3.52.3}
+\contentsline {paragraph}{\numberline {3.52.3.1}get\discretionary {-}{}{}Game\discretionary {-}{}{}Client\discretionary {-}{}{}Update}{67}{paragraph.3.52.3.1}
+\contentsline {paragraph}{\numberline {3.52.3.2}visit}{67}{paragraph.3.52.3.2}
+\contentsline {paragraph}{\numberline {3.52.3.3}visit}{68}{paragraph.3.52.3.3}
+\contentsline {subsection}{\numberline {3.53}Ruleset\discretionary {-}{}{}Message Schnittstellenreferenz}{68}{subsection.3.53}
+\contentsline {subsubsection}{\numberline {3.53.1}Ausf\IeC {\"u}hrliche Beschreibung}{68}{subsubsection.3.53.1}
+\contentsline {subsubsection}{\numberline {3.53.2}Dokumentation der Elementfunktionen}{68}{subsubsection.3.53.2}
+\contentsline {paragraph}{\numberline {3.53.2.1}visit}{68}{paragraph.3.53.2.1}
+\contentsline {paragraph}{\numberline {3.53.2.2}visit}{68}{paragraph.3.53.2.2}
+\contentsline {subsection}{\numberline {3.54}Card Schnittstellenreferenz}{69}{subsection.3.54}
+\contentsline {subsubsection}{\numberline {3.54.1}Ausf\IeC {\"u}hrliche Beschreibung}{69}{subsubsection.3.54.1}
+\contentsline {subsubsection}{\numberline {3.54.2}Dokumentation der Elementfunktionen}{69}{subsubsection.3.54.2}
+\contentsline {paragraph}{\numberline {3.54.2.1}get\discretionary {-}{}{}Value}{69}{paragraph.3.54.2.1}
+\contentsline {paragraph}{\numberline {3.54.2.2}get\discretionary {-}{}{}Colour}{69}{paragraph.3.54.2.2}
+\contentsline {subsection}{\numberline {3.55}Client\discretionary {-}{}{}Hearts Klassenreferenz}{69}{subsection.3.55}
+\contentsline {subsubsection}{\numberline {3.55.1}Ausf\IeC {\"u}hrliche Beschreibung}{70}{subsubsection.3.55.1}
+\contentsline {subsubsection}{\numberline {3.55.2}Beschreibung der Konstruktoren und Destruktoren}{70}{subsubsection.3.55.2}
+\contentsline {paragraph}{\numberline {3.55.2.1}Client\discretionary {-}{}{}Hearts}{70}{paragraph.3.55.2.1}
+\contentsline {subsubsection}{\numberline {3.55.3}Dokumentation der Elementfunktionen}{70}{subsubsection.3.55.3}
+\contentsline {paragraph}{\numberline {3.55.3.1}is\discretionary {-}{}{}Valid\discretionary {-}{}{}Move}{70}{paragraph.3.55.3.1}
+\contentsline {paragraph}{\numberline {3.55.3.2}resolve\discretionary {-}{}{}Message}{70}{paragraph.3.55.3.2}
+\contentsline {paragraph}{\numberline {3.55.3.3}are\discretionary {-}{}{}Valid\discretionary {-}{}{}Choosen\discretionary {-}{}{}Cards}{70}{paragraph.3.55.3.3}
+\contentsline {subsection}{\numberline {3.56}Client\discretionary {-}{}{}Ruleset Klassenreferenz}{71}{subsection.3.56}
+\contentsline {subsubsection}{\numberline {3.56.1}Ausf\IeC {\"u}hrliche Beschreibung}{71}{subsubsection.3.56.1}
+\contentsline {subsubsection}{\numberline {3.56.2}Beschreibung der Konstruktoren und Destruktoren}{71}{subsubsection.3.56.2}
+\contentsline {paragraph}{\numberline {3.56.2.1}Client\discretionary {-}{}{}Ruleset}{71}{paragraph.3.56.2.1}
+\contentsline {subsubsection}{\numberline {3.56.3}Dokumentation der Elementfunktionen}{72}{subsubsection.3.56.3}
+\contentsline {paragraph}{\numberline {3.56.3.1}get\discretionary {-}{}{}Ruleset\discretionary {-}{}{}Type}{72}{paragraph.3.56.3.1}
+\contentsline {paragraph}{\numberline {3.56.3.2}get\discretionary {-}{}{}Min\discretionary {-}{}{}Players}{72}{paragraph.3.56.3.2}
+\contentsline {paragraph}{\numberline {3.56.3.3}get\discretionary {-}{}{}Max\discretionary {-}{}{}Players}{72}{paragraph.3.56.3.3}
+\contentsline {paragraph}{\numberline {3.56.3.4}get\discretionary {-}{}{}Game\discretionary {-}{}{}Phase}{72}{paragraph.3.56.3.4}
+\contentsline {paragraph}{\numberline {3.56.3.5}get\discretionary {-}{}{}Own\discretionary {-}{}{}Hand}{72}{paragraph.3.56.3.5}
+\contentsline {paragraph}{\numberline {3.56.3.6}get\discretionary {-}{}{}Own\discretionary {-}{}{}Data}{73}{paragraph.3.56.3.6}
+\contentsline {paragraph}{\numberline {3.56.3.7}get\discretionary {-}{}{}Other\discretionary {-}{}{}Player\discretionary {-}{}{}Data}{73}{paragraph.3.56.3.7}
+\contentsline {paragraph}{\numberline {3.56.3.8}get\discretionary {-}{}{}Current\discretionary {-}{}{}Player}{73}{paragraph.3.56.3.8}
+\contentsline {paragraph}{\numberline {3.56.3.9}get\discretionary {-}{}{}Trump\discretionary {-}{}{}Card}{73}{paragraph.3.56.3.9}
+\contentsline {paragraph}{\numberline {3.56.3.10}resolve\discretionary {-}{}{}Message}{73}{paragraph.3.56.3.10}
+\contentsline {paragraph}{\numberline {3.56.3.11}resolve\discretionary {-}{}{}Message}{73}{paragraph.3.56.3.11}
+\contentsline {paragraph}{\numberline {3.56.3.12}resolve\discretionary {-}{}{}Message}{73}{paragraph.3.56.3.12}
+\contentsline {paragraph}{\numberline {3.56.3.13}send}{74}{paragraph.3.56.3.13}
+\contentsline {paragraph}{\numberline {3.56.3.14}is\discretionary {-}{}{}Valid\discretionary {-}{}{}Move}{74}{paragraph.3.56.3.14}
+\contentsline {subsection}{\numberline {3.57}Client\discretionary {-}{}{}Wizard Klassenreferenz}{74}{subsection.3.57}
+\contentsline {subsubsection}{\numberline {3.57.1}Ausf\IeC {\"u}hrliche Beschreibung}{74}{subsubsection.3.57.1}
+\contentsline {subsubsection}{\numberline {3.57.2}Beschreibung der Konstruktoren und Destruktoren}{75}{subsubsection.3.57.2}
+\contentsline {paragraph}{\numberline {3.57.2.1}Client\discretionary {-}{}{}Wizard}{75}{paragraph.3.57.2.1}
+\contentsline {subsubsection}{\numberline {3.57.3}Dokumentation der Elementfunktionen}{76}{subsubsection.3.57.3}
+\contentsline {paragraph}{\numberline {3.57.3.1}is\discretionary {-}{}{}Valid\discretionary {-}{}{}Move}{76}{paragraph.3.57.3.1}
+\contentsline {paragraph}{\numberline {3.57.3.2}resolve\discretionary {-}{}{}Message}{76}{paragraph.3.57.3.2}
+\contentsline {paragraph}{\numberline {3.57.3.3}resolve\discretionary {-}{}{}Message}{76}{paragraph.3.57.3.3}
+\contentsline {paragraph}{\numberline {3.57.3.4}is\discretionary {-}{}{}Valid\discretionary {-}{}{}Trick\discretionary {-}{}{}Number}{76}{paragraph.3.57.3.4}
+\contentsline {paragraph}{\numberline {3.57.3.5}is\discretionary {-}{}{}Valid\discretionary {-}{}{}Colour}{76}{paragraph.3.57.3.5}
+\contentsline {subsection}{\numberline {3.58}Colour Enum-\/\discretionary {-}{}{}Referenz}{77}{subsection.3.58}
+\contentsline {subsubsection}{\numberline {3.58.1}Ausf\IeC {\"u}hrliche Beschreibung}{77}{subsubsection.3.58.1}
+\contentsline {subsection}{\numberline {3.59}Game\discretionary {-}{}{}Client\discretionary {-}{}{}Update Klassenreferenz}{77}{subsection.3.59}
+\contentsline {subsubsection}{\numberline {3.59.1}Ausf\IeC {\"u}hrliche Beschreibung}{77}{subsubsection.3.59.1}
+\contentsline {subsubsection}{\numberline {3.59.2}Beschreibung der Konstruktoren und Destruktoren}{77}{subsubsection.3.59.2}
+\contentsline {paragraph}{\numberline {3.59.2.1}Game\discretionary {-}{}{}Client\discretionary {-}{}{}Update}{77}{paragraph.3.59.2.1}
+\contentsline {subsubsection}{\numberline {3.59.3}Dokumentation der Elementfunktionen}{78}{subsubsection.3.59.3}
+\contentsline {paragraph}{\numberline {3.59.3.1}get\discretionary {-}{}{}Own\discretionary {-}{}{}Hand}{78}{paragraph.3.59.3.1}
+\contentsline {paragraph}{\numberline {3.59.3.2}get\discretionary {-}{}{}Played\discretionary {-}{}{}Cards}{78}{paragraph.3.59.3.2}
+\contentsline {paragraph}{\numberline {3.59.3.3}get\discretionary {-}{}{}Own\discretionary {-}{}{}Data}{78}{paragraph.3.59.3.3}
+\contentsline {paragraph}{\numberline {3.59.3.4}get\discretionary {-}{}{}Other\discretionary {-}{}{}Player\discretionary {-}{}{}Data}{78}{paragraph.3.59.3.4}
+\contentsline {paragraph}{\numberline {3.59.3.5}get\discretionary {-}{}{}Current\discretionary {-}{}{}Player}{78}{paragraph.3.59.3.5}
+\contentsline {paragraph}{\numberline {3.59.3.6}get\discretionary {-}{}{}Trump\discretionary {-}{}{}Card}{79}{paragraph.3.59.3.6}
+\contentsline {subsection}{\numberline {3.60}Game\discretionary {-}{}{}Phase Enum-\/\discretionary {-}{}{}Referenz}{79}{subsection.3.60}
+\contentsline {subsubsection}{\numberline {3.60.1}Ausf\IeC {\"u}hrliche Beschreibung}{79}{subsubsection.3.60.1}
+\contentsline {subsection}{\numberline {3.61}Game\discretionary {-}{}{}State Klassenreferenz}{79}{subsection.3.61}
+\contentsline {subsubsection}{\numberline {3.61.1}Ausf\IeC {\"u}hrliche Beschreibung}{80}{subsubsection.3.61.1}
+\contentsline {subsubsection}{\numberline {3.61.2}Beschreibung der Konstruktoren und Destruktoren}{80}{subsubsection.3.61.2}
+\contentsline {paragraph}{\numberline {3.61.2.1}Game\discretionary {-}{}{}State}{80}{paragraph.3.61.2.1}
+\contentsline {subsubsection}{\numberline {3.61.3}Dokumentation der Elementfunktionen}{80}{subsubsection.3.61.3}
+\contentsline {paragraph}{\numberline {3.61.3.1}add\discretionary {-}{}{}Player\discretionary {-}{}{}To\discretionary {-}{}{}Game}{80}{paragraph.3.61.3.1}
+\contentsline {paragraph}{\numberline {3.61.3.2}set\discretionary {-}{}{}First\discretionary {-}{}{}Player}{80}{paragraph.3.61.3.2}
+\contentsline {paragraph}{\numberline {3.61.3.3}get\discretionary {-}{}{}First\discretionary {-}{}{}Player}{81}{paragraph.3.61.3.3}
+\contentsline {paragraph}{\numberline {3.61.3.4}set\discretionary {-}{}{}Current\discretionary {-}{}{}Player}{81}{paragraph.3.61.3.4}
+\contentsline {paragraph}{\numberline {3.61.3.5}get\discretionary {-}{}{}Current\discretionary {-}{}{}Player}{81}{paragraph.3.61.3.5}
+\contentsline {paragraph}{\numberline {3.61.3.6}get\discretionary {-}{}{}Cards\discretionary {-}{}{}Left\discretionary {-}{}{}In\discretionary {-}{}{}Deck}{81}{paragraph.3.61.3.6}
+\contentsline {paragraph}{\numberline {3.61.3.7}get\discretionary {-}{}{}Played\discretionary {-}{}{}Cards}{81}{paragraph.3.61.3.7}
+\contentsline {paragraph}{\numberline {3.61.3.8}get\discretionary {-}{}{}Player\discretionary {-}{}{}State}{81}{paragraph.3.61.3.8}
+\contentsline {paragraph}{\numberline {3.61.3.9}set\discretionary {-}{}{}Trump\discretionary {-}{}{}Card}{81}{paragraph.3.61.3.9}
+\contentsline {paragraph}{\numberline {3.61.3.10}get\discretionary {-}{}{}Trump\discretionary {-}{}{}Card}{82}{paragraph.3.61.3.10}
+\contentsline {paragraph}{\numberline {3.61.3.11}get\discretionary {-}{}{}Round\discretionary {-}{}{}Number}{82}{paragraph.3.61.3.11}
+\contentsline {paragraph}{\numberline {3.61.3.12}get\discretionary {-}{}{}Number\discretionary {-}{}{}Of\discretionary {-}{}{}Played\discretionary {-}{}{}Cards}{82}{paragraph.3.61.3.12}
+\contentsline {paragraph}{\numberline {3.61.3.13}get\discretionary {-}{}{}Player\discretionary {-}{}{}Cards}{82}{paragraph.3.61.3.13}
+\contentsline {paragraph}{\numberline {3.61.3.14}deal\discretionary {-}{}{}Cards}{82}{paragraph.3.61.3.14}
+\contentsline {paragraph}{\numberline {3.61.3.15}give\discretionary {-}{}{}A\discretionary {-}{}{}Card}{82}{paragraph.3.61.3.15}
+\contentsline {paragraph}{\numberline {3.61.3.16}play\discretionary {-}{}{}Card}{83}{paragraph.3.61.3.16}
+\contentsline {subsection}{\numberline {3.62}Hearts\discretionary {-}{}{}Card Enum-\/\discretionary {-}{}{}Referenz}{83}{subsection.3.62}
+\contentsline {subsubsection}{\numberline {3.62.1}Ausf\IeC {\"u}hrliche Beschreibung}{83}{subsubsection.3.62.1}
+\contentsline {subsubsection}{\numberline {3.62.2}Beschreibung der Konstruktoren und Destruktoren}{83}{subsubsection.3.62.2}
+\contentsline {paragraph}{\numberline {3.62.2.1}Hearts\discretionary {-}{}{}Card}{83}{paragraph.3.62.2.1}
+\contentsline {subsubsection}{\numberline {3.62.3}Dokumentation der Elementfunktionen}{84}{subsubsection.3.62.3}
+\contentsline {paragraph}{\numberline {3.62.3.1}get\discretionary {-}{}{}Value}{84}{paragraph.3.62.3.1}
+\contentsline {paragraph}{\numberline {3.62.3.2}get\discretionary {-}{}{}Colour}{84}{paragraph.3.62.3.2}
+\contentsline {subsection}{\numberline {3.63}Hearts\discretionary {-}{}{}Data Klassenreferenz}{84}{subsection.3.63}
+\contentsline {subsubsection}{\numberline {3.63.1}Ausf\IeC {\"u}hrliche Beschreibung}{84}{subsubsection.3.63.1}
+\contentsline {subsection}{\numberline {3.64}Other\discretionary {-}{}{}Data Klassenreferenz}{84}{subsection.3.64}
+\contentsline {subsubsection}{\numberline {3.64.1}Ausf\IeC {\"u}hrliche Beschreibung}{85}{subsubsection.3.64.1}
+\contentsline {subsubsection}{\numberline {3.64.2}Dokumentation der Elementfunktionen}{85}{subsubsection.3.64.2}
+\contentsline {paragraph}{\numberline {3.64.2.1}made\discretionary {-}{}{}Trick}{85}{paragraph.3.64.2.1}
+\contentsline {paragraph}{\numberline {3.64.2.2}remove\discretionary {-}{}{}Tricks}{85}{paragraph.3.64.2.2}
+\contentsline {paragraph}{\numberline {3.64.2.3}get\discretionary {-}{}{}Number\discretionary {-}{}{}Of\discretionary {-}{}{}Tricks}{85}{paragraph.3.64.2.3}
+\contentsline {paragraph}{\numberline {3.64.2.4}set\discretionary {-}{}{}Points}{85}{paragraph.3.64.2.4}
+\contentsline {paragraph}{\numberline {3.64.2.5}get\discretionary {-}{}{}Points}{86}{paragraph.3.64.2.5}
+\contentsline {subsection}{\numberline {3.65}Player\discretionary {-}{}{}State Klassenreferenz}{86}{subsection.3.65}
+\contentsline {subsubsection}{\numberline {3.65.1}Ausf\IeC {\"u}hrliche Beschreibung}{86}{subsubsection.3.65.1}
+\contentsline {subsubsection}{\numberline {3.65.2}Beschreibung der Konstruktoren und Destruktoren}{86}{subsubsection.3.65.2}
+\contentsline {paragraph}{\numberline {3.65.2.1}Player\discretionary {-}{}{}State}{86}{paragraph.3.65.2.1}
+\contentsline {subsubsection}{\numberline {3.65.3}Dokumentation der Elementfunktionen}{86}{subsubsection.3.65.3}
+\contentsline {paragraph}{\numberline {3.65.3.1}get\discretionary {-}{}{}Name}{86}{paragraph.3.65.3.1}
+\contentsline {paragraph}{\numberline {3.65.3.2}get\discretionary {-}{}{}Hand}{87}{paragraph.3.65.3.2}
+\contentsline {paragraph}{\numberline {3.65.3.3}get\discretionary {-}{}{}Other\discretionary {-}{}{}Data}{87}{paragraph.3.65.3.3}
+\contentsline {paragraph}{\numberline {3.65.3.4}add\discretionary {-}{}{}Card}{87}{paragraph.3.65.3.4}
+\contentsline {paragraph}{\numberline {3.65.3.5}remove\discretionary {-}{}{}Card}{87}{paragraph.3.65.3.5}
+\contentsline {subsection}{\numberline {3.66}Ruleset\discretionary {-}{}{}Type Enum-\/\discretionary {-}{}{}Referenz}{87}{subsection.3.66}
+\contentsline {subsubsection}{\numberline {3.66.1}Ausf\IeC {\"u}hrliche Beschreibung}{87}{subsubsection.3.66.1}
+\contentsline {subsection}{\numberline {3.67}Server\discretionary {-}{}{}Hearts Klassenreferenz}{87}{subsection.3.67}
+\contentsline {subsubsection}{\numberline {3.67.1}Ausf\IeC {\"u}hrliche Beschreibung}{88}{subsubsection.3.67.1}
+\contentsline {subsubsection}{\numberline {3.67.2}Dokumentation der Elementfunktionen}{88}{subsubsection.3.67.2}
+\contentsline {paragraph}{\numberline {3.67.2.1}is\discretionary {-}{}{}Valid\discretionary {-}{}{}Move}{88}{paragraph.3.67.2.1}
+\contentsline {paragraph}{\numberline {3.67.2.2}get\discretionary {-}{}{}Ending\discretionary {-}{}{}Points}{88}{paragraph.3.67.2.2}
+\contentsline {paragraph}{\numberline {3.67.2.3}resolve\discretionary {-}{}{}Message}{89}{paragraph.3.67.2.3}
+\contentsline {paragraph}{\numberline {3.67.2.4}are\discretionary {-}{}{}Valid\discretionary {-}{}{}Choosen\discretionary {-}{}{}Cards}{89}{paragraph.3.67.2.4}
+\contentsline {paragraph}{\numberline {3.67.2.5}generate\discretionary {-}{}{}Game\discretionary {-}{}{}Client\discretionary {-}{}{}Update}{89}{paragraph.3.67.2.5}
+\contentsline {subsection}{\numberline {3.68}Server\discretionary {-}{}{}Ruleset Klassenreferenz}{89}{subsection.3.68}
+\contentsline {subsubsection}{\numberline {3.68.1}Ausf\IeC {\"u}hrliche Beschreibung}{90}{subsubsection.3.68.1}
+\contentsline {subsubsection}{\numberline {3.68.2}Beschreibung der Konstruktoren und Destruktoren}{90}{subsubsection.3.68.2}
+\contentsline {paragraph}{\numberline {3.68.2.1}Server\discretionary {-}{}{}Ruleset}{90}{paragraph.3.68.2.1}
+\contentsline {subsubsection}{\numberline {3.68.3}Dokumentation der Elementfunktionen}{91}{subsubsection.3.68.3}
+\contentsline {paragraph}{\numberline {3.68.3.1}get\discretionary {-}{}{}Round\discretionary {-}{}{}Number}{91}{paragraph.3.68.3.1}
+\contentsline {paragraph}{\numberline {3.68.3.2}get\discretionary {-}{}{}Ruleset\discretionary {-}{}{}Type}{91}{paragraph.3.68.3.2}
+\contentsline {paragraph}{\numberline {3.68.3.3}get\discretionary {-}{}{}Min\discretionary {-}{}{}Players}{91}{paragraph.3.68.3.3}
+\contentsline {paragraph}{\numberline {3.68.3.4}get\discretionary {-}{}{}Max\discretionary {-}{}{}Players}{91}{paragraph.3.68.3.4}
+\contentsline {paragraph}{\numberline {3.68.3.5}set\discretionary {-}{}{}Game\discretionary {-}{}{}Phase}{91}{paragraph.3.68.3.5}
+\contentsline {paragraph}{\numberline {3.68.3.6}get\discretionary {-}{}{}Game\discretionary {-}{}{}Phase}{91}{paragraph.3.68.3.6}
+\contentsline {paragraph}{\numberline {3.68.3.7}create\discretionary {-}{}{}Deck}{92}{paragraph.3.68.3.7}
+\contentsline {paragraph}{\numberline {3.68.3.8}set\discretionary {-}{}{}First\discretionary {-}{}{}Player}{92}{paragraph.3.68.3.8}
+\contentsline {paragraph}{\numberline {3.68.3.9}get\discretionary {-}{}{}First\discretionary {-}{}{}Player}{92}{paragraph.3.68.3.9}
+\contentsline {paragraph}{\numberline {3.68.3.10}next\discretionary {-}{}{}Player}{92}{paragraph.3.68.3.10}
+\contentsline {paragraph}{\numberline {3.68.3.11}set\discretionary {-}{}{}Current\discretionary {-}{}{}Player}{92}{paragraph.3.68.3.11}
+\contentsline {paragraph}{\numberline {3.68.3.12}get\discretionary {-}{}{}Other\discretionary {-}{}{}Data}{92}{paragraph.3.68.3.12}
+\contentsline {paragraph}{\numberline {3.68.3.13}get\discretionary {-}{}{}Current\discretionary {-}{}{}Player}{93}{paragraph.3.68.3.13}
+\contentsline {paragraph}{\numberline {3.68.3.14}add\discretionary {-}{}{}Player\discretionary {-}{}{}To\discretionary {-}{}{}Game}{93}{paragraph.3.68.3.14}
+\contentsline {paragraph}{\numberline {3.68.3.15}get\discretionary {-}{}{}Player\discretionary {-}{}{}State}{93}{paragraph.3.68.3.15}
+\contentsline {paragraph}{\numberline {3.68.3.16}get\discretionary {-}{}{}Player\discretionary {-}{}{}Cards}{93}{paragraph.3.68.3.16}
+\contentsline {paragraph}{\numberline {3.68.3.17}send}{93}{paragraph.3.68.3.17}
+\contentsline {paragraph}{\numberline {3.68.3.18}broadcast}{93}{paragraph.3.68.3.18}
+\contentsline {paragraph}{\numberline {3.68.3.19}resolve\discretionary {-}{}{}Message}{93}{paragraph.3.68.3.19}
+\contentsline {paragraph}{\numberline {3.68.3.20}resolve\discretionary {-}{}{}Message}{94}{paragraph.3.68.3.20}
+\contentsline {paragraph}{\numberline {3.68.3.21}set\discretionary {-}{}{}Points}{94}{paragraph.3.68.3.21}
+\contentsline {paragraph}{\numberline {3.68.3.22}get\discretionary {-}{}{}Points}{94}{paragraph.3.68.3.22}
+\contentsline {paragraph}{\numberline {3.68.3.23}deal\discretionary {-}{}{}Cards}{94}{paragraph.3.68.3.23}
+\contentsline {paragraph}{\numberline {3.68.3.24}give\discretionary {-}{}{}A\discretionary {-}{}{}Card}{94}{paragraph.3.68.3.24}
+\contentsline {paragraph}{\numberline {3.68.3.25}play\discretionary {-}{}{}Card}{95}{paragraph.3.68.3.25}
+\contentsline {paragraph}{\numberline {3.68.3.26}set\discretionary {-}{}{}Trump\discretionary {-}{}{}Card}{95}{paragraph.3.68.3.26}
+\contentsline {paragraph}{\numberline {3.68.3.27}is\discretionary {-}{}{}Valid\discretionary {-}{}{}Move}{95}{paragraph.3.68.3.27}
+\contentsline {paragraph}{\numberline {3.68.3.28}generate\discretionary {-}{}{}Game\discretionary {-}{}{}Client\discretionary {-}{}{}Update}{95}{paragraph.3.68.3.28}
+\contentsline {subsection}{\numberline {3.69}Server\discretionary {-}{}{}Wizard Klassenreferenz}{95}{subsection.3.69}
+\contentsline {subsubsection}{\numberline {3.69.1}Ausf\IeC {\"u}hrliche Beschreibung}{96}{subsubsection.3.69.1}
+\contentsline {subsubsection}{\numberline {3.69.2}Dokumentation der Elementfunktionen}{96}{subsubsection.3.69.2}
+\contentsline {paragraph}{\numberline {3.69.2.1}is\discretionary {-}{}{}Valid\discretionary {-}{}{}Move}{96}{paragraph.3.69.2.1}
+\contentsline {paragraph}{\numberline {3.69.2.2}set\discretionary {-}{}{}Playing\discretionary {-}{}{}Rounds}{96}{paragraph.3.69.2.2}
+\contentsline {paragraph}{\numberline {3.69.2.3}getplaying\discretionary {-}{}{}Rounds}{97}{paragraph.3.69.2.3}
+\contentsline {paragraph}{\numberline {3.69.2.4}resolve\discretionary {-}{}{}Message}{97}{paragraph.3.69.2.4}
+\contentsline {paragraph}{\numberline {3.69.2.5}is\discretionary {-}{}{}Valid\discretionary {-}{}{}Number}{97}{paragraph.3.69.2.5}
+\contentsline {paragraph}{\numberline {3.69.2.6}resolve\discretionary {-}{}{}Message}{97}{paragraph.3.69.2.6}
+\contentsline {paragraph}{\numberline {3.69.2.7}is\discretionary {-}{}{}Valid\discretionary {-}{}{}Colour}{97}{paragraph.3.69.2.7}
+\contentsline {paragraph}{\numberline {3.69.2.8}generate\discretionary {-}{}{}Game\discretionary {-}{}{}Client\discretionary {-}{}{}Update}{98}{paragraph.3.69.2.8}
+\contentsline {subsubsection}{\numberline {3.69.3}Dokumentation der Datenelemente}{98}{subsubsection.3.69.3}
+\contentsline {paragraph}{\numberline {3.69.3.1}playing\discretionary {-}{}{}Rounds}{98}{paragraph.3.69.3.1}
+\contentsline {subsection}{\numberline {3.70}Wizard\discretionary {-}{}{}Card Enum-\/\discretionary {-}{}{}Referenz}{98}{subsection.3.70}
+\contentsline {subsubsection}{\numberline {3.70.1}Ausf\IeC {\"u}hrliche Beschreibung}{99}{subsubsection.3.70.1}
+\contentsline {subsubsection}{\numberline {3.70.2}Beschreibung der Konstruktoren und Destruktoren}{99}{subsubsection.3.70.2}
+\contentsline {paragraph}{\numberline {3.70.2.1}Wizard\discretionary {-}{}{}Card}{99}{paragraph.3.70.2.1}
+\contentsline {subsubsection}{\numberline {3.70.3}Dokumentation der Elementfunktionen}{99}{subsubsection.3.70.3}
+\contentsline {paragraph}{\numberline {3.70.3.1}get\discretionary {-}{}{}Value}{99}{paragraph.3.70.3.1}
+\contentsline {paragraph}{\numberline {3.70.3.2}get\discretionary {-}{}{}Colour}{99}{paragraph.3.70.3.2}
+\contentsline {subsection}{\numberline {3.71}Wiz\discretionary {-}{}{}Data Klassenreferenz}{99}{subsection.3.71}
+\contentsline {subsubsection}{\numberline {3.71.1}Ausf\IeC {\"u}hrliche Beschreibung}{100}{subsubsection.3.71.1}
+\contentsline {subsubsection}{\numberline {3.71.2}Dokumentation der Elementfunktionen}{100}{subsubsection.3.71.2}
+\contentsline {paragraph}{\numberline {3.71.2.1}get\discretionary {-}{}{}Announced\discretionary {-}{}{}Tricks}{100}{paragraph.3.71.2.1}
+\contentsline {paragraph}{\numberline {3.71.2.2}set\discretionary {-}{}{}Announced\discretionary {-}{}{}Tricks}{100}{paragraph.3.71.2.2}
+\contentsline {subsection}{\numberline {3.72}Game\discretionary {-}{}{}Server Klassenreferenz}{100}{subsection.3.72}
+\contentsline {subsubsection}{\numberline {3.72.1}Ausf\IeC {\"u}hrliche Beschreibung}{101}{subsubsection.3.72.1}
+\contentsline {subsubsection}{\numberline {3.72.2}Beschreibung der Konstruktoren und Destruktoren}{101}{subsubsection.3.72.2}
+\contentsline {paragraph}{\numberline {3.72.2.1}Game\discretionary {-}{}{}Server}{101}{paragraph.3.72.2.1}
+\contentsline {subsubsection}{\numberline {3.72.3}Dokumentation der Elementfunktionen}{101}{subsubsection.3.72.3}
+\contentsline {paragraph}{\numberline {3.72.3.1}get\discretionary {-}{}{}Representation}{101}{paragraph.3.72.3.1}
+\contentsline {paragraph}{\numberline {3.72.3.2}add\discretionary {-}{}{}Player}{101}{paragraph.3.72.3.2}
+\contentsline {paragraph}{\numberline {3.72.3.3}remove\discretionary {-}{}{}Player}{101}{paragraph.3.72.3.3}
+\contentsline {paragraph}{\numberline {3.72.3.4}send\discretionary {-}{}{}Ruleset\discretionary {-}{}{}Message}{102}{paragraph.3.72.3.4}
+\contentsline {paragraph}{\numberline {3.72.3.5}broadcast\discretionary {-}{}{}Ruleset\discretionary {-}{}{}Message}{102}{paragraph.3.72.3.5}
+\contentsline {paragraph}{\numberline {3.72.3.6}receive\discretionary {-}{}{}Message}{102}{paragraph.3.72.3.6}
+\contentsline {paragraph}{\numberline {3.72.3.7}receive\discretionary {-}{}{}Message}{102}{paragraph.3.72.3.7}
+\contentsline {paragraph}{\numberline {3.72.3.8}receive\discretionary {-}{}{}Message}{102}{paragraph.3.72.3.8}
+\contentsline {paragraph}{\numberline {3.72.3.9}receive\discretionary {-}{}{}Message}{103}{paragraph.3.72.3.9}
+\contentsline {paragraph}{\numberline {3.72.3.10}receive\discretionary {-}{}{}Message}{103}{paragraph.3.72.3.10}
+\contentsline {paragraph}{\numberline {3.72.3.11}receive\discretionary {-}{}{}Message}{103}{paragraph.3.72.3.11}
+\contentsline {paragraph}{\numberline {3.72.3.12}init\discretionary {-}{}{}Lobby}{103}{paragraph.3.72.3.12}
+\contentsline {paragraph}{\numberline {3.72.3.13}handle\discretionary {-}{}{}I\discretionary {-}{}{}O\discretionary {-}{}{}Exception}{103}{paragraph.3.72.3.13}
+\contentsline {subsubsection}{\numberline {3.72.4}Dokumentation der Datenelemente}{103}{subsubsection.3.72.4}
+\contentsline {paragraph}{\numberline {3.72.4.1}password}{104}{paragraph.3.72.4.1}
+\contentsline {subsection}{\numberline {3.73}Game\discretionary {-}{}{}Server\discretionary {-}{}{}Representation Klassenreferenz}{104}{subsection.3.73}
+\contentsline {subsubsection}{\numberline {3.73.1}Ausf\IeC {\"u}hrliche Beschreibung}{104}{subsubsection.3.73.1}
+\contentsline {subsubsection}{\numberline {3.73.2}Beschreibung der Konstruktoren und Destruktoren}{104}{subsubsection.3.73.2}
+\contentsline {paragraph}{\numberline {3.73.2.1}Game\discretionary {-}{}{}Server\discretionary {-}{}{}Representation}{104}{paragraph.3.73.2.1}
+\contentsline {subsection}{\numberline {3.74}Lobby\discretionary {-}{}{}Server Klassenreferenz}{104}{subsection.3.74}
+\contentsline {subsubsection}{\numberline {3.74.1}Ausf\IeC {\"u}hrliche Beschreibung}{105}{subsubsection.3.74.1}
+\contentsline {subsubsection}{\numberline {3.74.2}Dokumentation der Elementfunktionen}{105}{subsubsection.3.74.2}
+\contentsline {paragraph}{\numberline {3.74.2.1}add\discretionary {-}{}{}Name}{105}{paragraph.3.74.2.1}
+\contentsline {paragraph}{\numberline {3.74.2.2}remove\discretionary {-}{}{}Name}{105}{paragraph.3.74.2.2}
+\contentsline {paragraph}{\numberline {3.74.2.3}add\discretionary {-}{}{}Game\discretionary {-}{}{}Server}{106}{paragraph.3.74.2.3}
+\contentsline {paragraph}{\numberline {3.74.2.4}remove\discretionary {-}{}{}Game\discretionary {-}{}{}Server}{106}{paragraph.3.74.2.4}
+\contentsline {paragraph}{\numberline {3.74.2.5}receive\discretionary {-}{}{}Message}{106}{paragraph.3.74.2.5}
+\contentsline {paragraph}{\numberline {3.74.2.6}receive\discretionary {-}{}{}Message}{106}{paragraph.3.74.2.6}
+\contentsline {paragraph}{\numberline {3.74.2.7}receive\discretionary {-}{}{}Message}{106}{paragraph.3.74.2.7}
+\contentsline {paragraph}{\numberline {3.74.2.8}receive\discretionary {-}{}{}Message}{106}{paragraph.3.74.2.8}
+\contentsline {paragraph}{\numberline {3.74.2.9}receive\discretionary {-}{}{}Message}{107}{paragraph.3.74.2.9}
+\contentsline {paragraph}{\numberline {3.74.2.10}init\discretionary {-}{}{}Lobby}{107}{paragraph.3.74.2.10}
+\contentsline {paragraph}{\numberline {3.74.2.11}handle\discretionary {-}{}{}I\discretionary {-}{}{}O\discretionary {-}{}{}Exception}{107}{paragraph.3.74.2.11}
+\contentsline {subsection}{\numberline {3.75}Lobby\discretionary {-}{}{}Server.\discretionary {-}{}{}Client\discretionary {-}{}{}Listener\discretionary {-}{}{}Thread Klassenreferenz}{107}{subsection.3.75}
+\contentsline {subsubsection}{\numberline {3.75.1}Ausf\IeC {\"u}hrliche Beschreibung}{107}{subsubsection.3.75.1}
+\contentsline {subsection}{\numberline {3.76}Player Klassenreferenz}{108}{subsection.3.76}
+\contentsline {subsubsection}{\numberline {3.76.1}Ausf\IeC {\"u}hrliche Beschreibung}{108}{subsubsection.3.76.1}
+\contentsline {subsubsection}{\numberline {3.76.2}Beschreibung der Konstruktoren und Destruktoren}{108}{subsubsection.3.76.2}
+\contentsline {paragraph}{\numberline {3.76.2.1}Player}{108}{paragraph.3.76.2.1}
+\contentsline {subsubsection}{\numberline {3.76.3}Dokumentation der Elementfunktionen}{108}{subsubsection.3.76.3}
+\contentsline {paragraph}{\numberline {3.76.3.1}run}{108}{paragraph.3.76.3.1}
+\contentsline {paragraph}{\numberline {3.76.3.2}send}{108}{paragraph.3.76.3.2}
+\contentsline {paragraph}{\numberline {3.76.3.3}change\discretionary {-}{}{}Server}{109}{paragraph.3.76.3.3}
+\contentsline {paragraph}{\numberline {3.76.3.4}get\discretionary {-}{}{}Name}{109}{paragraph.3.76.3.4}
+\contentsline {paragraph}{\numberline {3.76.3.5}set\discretionary {-}{}{}Name}{109}{paragraph.3.76.3.5}
+\contentsline {subsection}{\numberline {3.77}Server Klassenreferenz}{109}{subsection.3.77}
+\contentsline {subsubsection}{\numberline {3.77.1}Ausf\IeC {\"u}hrliche Beschreibung}{109}{subsubsection.3.77.1}
+\contentsline {subsubsection}{\numberline {3.77.2}Dokumentation der Elementfunktionen}{110}{subsubsection.3.77.2}
+\contentsline {paragraph}{\numberline {3.77.2.1}receive\discretionary {-}{}{}Message}{110}{paragraph.3.77.2.1}
+\contentsline {paragraph}{\numberline {3.77.2.2}send\discretionary {-}{}{}To\discretionary {-}{}{}Player}{110}{paragraph.3.77.2.2}
+\contentsline {paragraph}{\numberline {3.77.2.3}add\discretionary {-}{}{}Player}{110}{paragraph.3.77.2.3}
+\contentsline {paragraph}{\numberline {3.77.2.4}remove\discretionary {-}{}{}Player}{110}{paragraph.3.77.2.4}
+\contentsline {paragraph}{\numberline {3.77.2.5}broadcast}{110}{paragraph.3.77.2.5}
+\contentsline {paragraph}{\numberline {3.77.2.6}handle\discretionary {-}{}{}I\discretionary {-}{}{}O\discretionary {-}{}{}Exception}{110}{paragraph.3.77.2.6}
+\contentsline {subsection}{\numberline {3.78}Server\discretionary {-}{}{}Main Klassenreferenz}{111}{subsection.3.78}
+\contentsline {subsubsection}{\numberline {3.78.1}Ausf\IeC {\"u}hrliche Beschreibung}{111}{subsubsection.3.78.1}
+\contentsline {subsubsection}{\numberline {3.78.2}Dokumentation der Elementfunktionen}{111}{subsubsection.3.78.2}
+\contentsline {paragraph}{\numberline {3.78.2.1}main}{111}{paragraph.3.78.2.1}
+\contentsline {section}{\numberline {4}JUnit-Tests}{111}{section.4}
+\contentsline {subsection}{\numberline {4.1}isValidWizardMove}{111}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}isValidHeartsMove}{113}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}getWinner}{115}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}QuitPlayer}{119}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.5}Chat}{120}{subsection.4.5}
+\contentsline {section}{\numberline {5}Implementierungsplan}{123}{section.5}
+\contentsline {subsection}{\numberline {5.1}Milestone 1}{123}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Milestone 2}{123}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Milestone 3}{124}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}Finale Version}{124}{subsection.5.4}
+\contentsline {subsection}{\numberline {5.5}Gantt-Diagramme}{125}{subsection.5.5}
+\contentsline {part}{Index}{127}{section*.174}

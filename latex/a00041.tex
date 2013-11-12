@@ -1,0 +1,128 @@
+\hypertarget{a00041}{\subsection{Com\-Update\-Playerlist Klassenreferenz}
+\label{a00041}\index{Com\-Update\-Playerlist@{Com\-Update\-Playerlist}}
+}
+
+
+Abgeleitet von \hyperlink{a00037}{Com\-Object} und Serializable.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00041_a3b55cecd3dda26d304f7b3d46be76afe}{Com\-Update\-Playerlist} (String player\-Name, boolean remove\-Flag)
+\item 
+String \hyperlink{a00041_a8cd2886758be9855ae14404540d4873d}{get\-Player\-Name} ()
+\item 
+boolean \hyperlink{a00041_a9dff5523222ad77b87dac521beceadd3}{is\-Remove\-Flag} ()
+\item 
+void \hyperlink{a00041_a758d7005755a181717f238f714d87dd2}{process} (\hyperlink{a00003}{Client\-Model} model)
+\item 
+void \hyperlink{a00041_ac67b5ce3ec03d48ef1e6caad6e49c902}{process} (\hyperlink{a00076}{Player} player, \hyperlink{a00077}{Server} server)
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00041_a12adf3f64463f614eb3af6dd82414e0a}{String {\bfseries player\-Name}}\label{a00041_a12adf3f64463f614eb3af6dd82414e0a}
+
+\item 
+\hypertarget{a00041_a6a8036d75616cc037b0cf641819947e9}{boolean {\bfseries remove\-Flag}}\label{a00041_a6a8036d75616cc037b0cf641819947e9}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Diese Klasse ist ein spezielles Kommunikations-\/\-Objekt. Sie sendet eine Nachricht zum Update der Playerliste in der Lobby und Spiellobby. Dazu enthaelt sie den Player und ein remove\-Flag. 
+
+\subsubsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{a00041_a3b55cecd3dda26d304f7b3d46be76afe}{\index{Com\-Objects\-::\-Com\-Update\-Playerlist@{Com\-Objects\-::\-Com\-Update\-Playerlist}!Com\-Update\-Playerlist@{Com\-Update\-Playerlist}}
+\index{Com\-Update\-Playerlist@{Com\-Update\-Playerlist}!ComObjects::ComUpdatePlayerlist@{Com\-Objects\-::\-Com\-Update\-Playerlist}}
+\paragraph[{Com\-Update\-Playerlist}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Com\-Update\-Playerlist} (
+\begin{DoxyParamCaption}
+\item[{String}]{player\-Name, }
+\item[{boolean}]{remove\-Flag}
+\end{DoxyParamCaption}
+)}}\label{a00041_a3b55cecd3dda26d304f7b3d46be76afe}
+
+
+Dies ist der Kontruktor fuer eine neue Com\-Update\-Playerlist-\/\-Nachricht. 
+
+Diese beinhaltet den Namen des Spielers und die Angabe ob er geloescht werden soll. 
+\begin{DoxyParams}{Parameter}
+{\em player\-Name} & ist der Name der Spielers. \\
+\hline
+{\em remove\-Flag} & zeigt, ob der Spieler geloescht werden soll. \\
+\hline
+\end{DoxyParams}
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00041_a8cd2886758be9855ae14404540d4873d}{\index{Com\-Objects\-::\-Com\-Update\-Playerlist@{Com\-Objects\-::\-Com\-Update\-Playerlist}!get\-Player\-Name@{get\-Player\-Name}}
+\index{get\-Player\-Name@{get\-Player\-Name}!ComObjects::ComUpdatePlayerlist@{Com\-Objects\-::\-Com\-Update\-Playerlist}}
+\paragraph[{get\-Player\-Name}]{\setlength{\rightskip}{0pt plus 5cm}String get\-Player\-Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00041_a8cd2886758be9855ae14404540d4873d}
+
+
+Diese Methode gibt den Namen des Spielers zurueck. 
+
+\begin{DoxyReturn}{Rückgabe}
+den Spielernamen. 
+\end{DoxyReturn}
+\hypertarget{a00041_a9dff5523222ad77b87dac521beceadd3}{\index{Com\-Objects\-::\-Com\-Update\-Playerlist@{Com\-Objects\-::\-Com\-Update\-Playerlist}!is\-Remove\-Flag@{is\-Remove\-Flag}}
+\index{is\-Remove\-Flag@{is\-Remove\-Flag}!ComObjects::ComUpdatePlayerlist@{Com\-Objects\-::\-Com\-Update\-Playerlist}}
+\paragraph[{is\-Remove\-Flag}]{\setlength{\rightskip}{0pt plus 5cm}boolean is\-Remove\-Flag (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00041_a9dff5523222ad77b87dac521beceadd3}
+
+
+Diese Methode gibt zurueck, ob der Spieler aus der Liste geloescht werden soll oder nicht. 
+
+\begin{DoxyReturn}{Rückgabe}
+ob der Spieler geloescht werden soll. 
+\end{DoxyReturn}
+\hypertarget{a00041_a758d7005755a181717f238f714d87dd2}{\index{Com\-Objects\-::\-Com\-Update\-Playerlist@{Com\-Objects\-::\-Com\-Update\-Playerlist}!process@{process}}
+\index{process@{process}!ComObjects::ComUpdatePlayerlist@{Com\-Objects\-::\-Com\-Update\-Playerlist}}
+\paragraph[{process}]{\setlength{\rightskip}{0pt plus 5cm}void process (
+\begin{DoxyParamCaption}
+\item[{{\bf Client\-Model}}]{model}
+\end{DoxyParamCaption}
+)}}\label{a00041_a758d7005755a181717f238f714d87dd2}
+
+
+Diese Methode ist noetig, damit der Client\-Listener\-Thread entscheiden kann welche Message das Object enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em model} & ist das Client\-Model, welches Ã¼bergeben wird, damit die ueberladene Methode richtig gewaehlt wird. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00037_a758d7005755a181717f238f714d87dd2}{Com\-Object}.
+
+\hypertarget{a00041_ac67b5ce3ec03d48ef1e6caad6e49c902}{\index{Com\-Objects\-::\-Com\-Update\-Playerlist@{Com\-Objects\-::\-Com\-Update\-Playerlist}!process@{process}}
+\index{process@{process}!ComObjects::ComUpdatePlayerlist@{Com\-Objects\-::\-Com\-Update\-Playerlist}}
+\paragraph[{process}]{\setlength{\rightskip}{0pt plus 5cm}void process (
+\begin{DoxyParamCaption}
+\item[{{\bf Player}}]{player, }
+\item[{{\bf Server}}]{server}
+\end{DoxyParamCaption}
+)}}\label{a00041_ac67b5ce3ec03d48ef1e6caad6e49c902}
+
+
+Diese Methode ist noetig, damit der Thread Player entscheiden kann welche Message das Object enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em player} & Der Client welcher den Aufruf startet. \\
+\hline
+{\em server} & Der Server an den sich das Com\-Objekt weitergibt. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00037_ac67b5ce3ec03d48ef1e6caad6e49c902}{Com\-Object}.
+

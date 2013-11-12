@@ -1,0 +1,79 @@
+\hypertarget{a00022}{\subsection{View\-Card Klassenreferenz}
+\label{a00022}\index{View\-Card@{View\-Card}}
+}
+
+
+Abgeleitet von J\-Panel.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00022_a682302cb58c058e170ea714a45c2342c}{View\-Card} (String s, int n)
+\item 
+int \hyperlink{a00022_aea93026f92028ac88f6b60cd2f3e438b}{get\-I\-D} ()
+\item 
+\hypertarget{a00022_aac9233d06f3c093fc37139d7d2b258f6}{void {\bfseries paint\-Component} (Graphics g)}\label{a00022_aac9233d06f3c093fc37139d7d2b258f6}
+
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00022_adb85e16ac8c9f62df2d33b1262649843}{String {\bfseries path}}\label{a00022_adb85e16ac8c9f62df2d33b1262649843}
+
+\item 
+\hypertarget{a00022_a7441ef0865bcb3db9b8064dd7375c1ea}{int {\bfseries id}}\label{a00022_a7441ef0865bcb3db9b8064dd7375c1ea}
+
+\item 
+\hypertarget{a00022_a9d8fedf4068416562cae5761080e4792}{Buffered\-Image {\bfseries face}}\label{a00022_a9d8fedf4068416562cae5761080e4792}
+
+\end{DoxyCompactItemize}
+\subsubsection*{Statische, private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00022_a3238d314ecdee14d2966760945d00c3b}{static final long {\bfseries serial\-Version\-U\-I\-D} = 8733682958484899430\-L}\label{a00022_a3238d314ecdee14d2966760945d00c3b}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+\hyperlink{a00022}{View\-Card} ist die View-\/seitige Repraesentation einer Karte. Sie wird verwendet um einzelne Karten auf das Spielfeld zu zeichnen. Dazu enthaelt sie die Pfadangabe zu dem Ordner, in dem die Bilder der Karten gespeichert sind, und eine I\-D, um das genaue Bild zu spezifizieren. 
+
+\subsubsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{a00022_a682302cb58c058e170ea714a45c2342c}{\index{Client\-::\-View\-::\-View\-Card@{Client\-::\-View\-::\-View\-Card}!View\-Card@{View\-Card}}
+\index{View\-Card@{View\-Card}!Client::View::ViewCard@{Client\-::\-View\-::\-View\-Card}}
+\paragraph[{View\-Card}]{\setlength{\rightskip}{0pt plus 5cm}{\bf View\-Card} (
+\begin{DoxyParamCaption}
+\item[{String}]{s, }
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)}}\label{a00022_a682302cb58c058e170ea714a45c2342c}
+
+
+Erstellt eine neue Karte fuer die Anzeige und zeichnet dafuer das Bild, das durch die Pfadangabe s und seine Kardinaliaet n im Ordner angegeben ist. 
+
+Die Pfadangabe wird durch das Regelwerk bestimmt.
+
+
+\begin{DoxyParams}{Parameter}
+{\em s} & Pfadangabe zum zu zeichnenden Bild \\
+\hline
+{\em n} & I\-D der Karte \\
+\hline
+\end{DoxyParams}
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00022_aea93026f92028ac88f6b60cd2f3e438b}{\index{Client\-::\-View\-::\-View\-Card@{Client\-::\-View\-::\-View\-Card}!get\-I\-D@{get\-I\-D}}
+\index{get\-I\-D@{get\-I\-D}!Client::View::ViewCard@{Client\-::\-View\-::\-View\-Card}}
+\paragraph[{get\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}int get\-I\-D (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00022_aea93026f92028ac88f6b60cd2f3e438b}
+
+
+Gibt die I\-D der Karte zurueck. 
+
+\begin{DoxyReturn}{Rückgabe}
+I\-D der Karte 
+\end{DoxyReturn}

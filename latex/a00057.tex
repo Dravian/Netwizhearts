@@ -1,0 +1,157 @@
+\hypertarget{a00057}{\subsection{Client\-Wizard Klassenreferenz}
+\label{a00057}\index{Client\-Wizard@{Client\-Wizard}}
+}
+
+
+Abgeleitet von \hyperlink{a00056}{Client\-Ruleset}.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00057_a7944dd841fd8985fe49d9e2d52f36b0f}{Client\-Wizard} (\hyperlink{a00003}{Client\-Model} \hyperlink{a00056_a937cb3d928d5cde5863e895e163b048e}{client})
+\item 
+boolean \hyperlink{a00057_aa58080772a961e1f9f88d766777f82ed}{is\-Valid\-Move} (\hyperlink{a00054}{Card} card)
+\item 
+void \hyperlink{a00057_a346a9e356e52aa231aab7a309f7cf69f}{resolve\-Message} (\hyperlink{a00049}{Msg\-Number\-Request} msg\-Number)
+\item 
+void \hyperlink{a00057_a06db25d7d363bc633009a8722a797cc3}{resolve\-Message} (\hyperlink{a00051}{Msg\-Selection\-Request} msg\-Selection)
+\item 
+boolean \hyperlink{a00057_a34e8cc2994c9799ec78964834e470228}{is\-Valid\-Trick\-Number} (int number)
+\item 
+boolean \hyperlink{a00057_ae9116e1fb048aebeb428ffaf62599d69}{is\-Valid\-Colour} (\hyperlink{a00058}{Colour} colour)
+\end{DoxyCompactItemize}
+\subsubsection*{Statische, private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00057_a57fe2c01c4e61b1f0c44c70ccc75d903}{static final int \hyperlink{a00057_a57fe2c01c4e61b1f0c44c70ccc75d903}{M\-I\-N\-\_\-\-P\-L\-A\-Y\-E\-R\-S} = 3}\label{a00057_a57fe2c01c4e61b1f0c44c70ccc75d903}
+
+\item 
+\hypertarget{a00057_ae6ed433235a83c520ce79bee49bc2b01}{static final int \hyperlink{a00057_ae6ed433235a83c520ce79bee49bc2b01}{M\-A\-X\-\_\-\-P\-L\-A\-Y\-E\-R\-S} = 6}\label{a00057_ae6ed433235a83c520ce79bee49bc2b01}
+
+\item 
+\hypertarget{a00057_a3045f525de18ff0ad68134f0d512ea16}{static final \hyperlink{a00066}{Ruleset\-Type} \hyperlink{a00057_a3045f525de18ff0ad68134f0d512ea16}{R\-U\-L\-E\-S\-E\-T} = \hyperlink{a00066_a35e49e93bdb15f20f8e9940d3f54c887}{Ruleset\-Type.\-Wizard}}\label{a00057_a3045f525de18ff0ad68134f0d512ea16}
+
+\end{DoxyCompactItemize}
+\subsubsection*{Weitere Geerbte Elemente}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Diese Klasse bildet das Regelwerk fuer den Client bei einer Partie Wizard 
+
+\subsubsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{a00057_a7944dd841fd8985fe49d9e2d52f36b0f}{\index{Ruleset\-::\-Client\-Wizard@{Ruleset\-::\-Client\-Wizard}!Client\-Wizard@{Client\-Wizard}}
+\index{Client\-Wizard@{Client\-Wizard}!Ruleset::ClientWizard@{Ruleset\-::\-Client\-Wizard}}
+\paragraph[{Client\-Wizard}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Client\-Wizard} (
+\begin{DoxyParamCaption}
+\item[{{\bf Client\-Model}}]{client}
+\end{DoxyParamCaption}
+)}}\label{a00057_a7944dd841fd8985fe49d9e2d52f36b0f}
+
+
+Erzeugt ein \hyperlink{a00057}{Client\-Wizard}. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em client} & Das Model auf dem gespielt wird \\
+\hline
+\end{DoxyParams}
+
+
+Benutzt Client\-Wizard.\-M\-A\-X\-\_\-\-P\-L\-A\-Y\-E\-R\-S, Client\-Wizard.\-M\-I\-N\-\_\-\-P\-L\-A\-Y\-E\-R\-S und Client\-Wizard.\-R\-U\-L\-E\-S\-E\-T.
+
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00057_aa58080772a961e1f9f88d766777f82ed}{\index{Ruleset\-::\-Client\-Wizard@{Ruleset\-::\-Client\-Wizard}!is\-Valid\-Move@{is\-Valid\-Move}}
+\index{is\-Valid\-Move@{is\-Valid\-Move}!Ruleset::ClientWizard@{Ruleset\-::\-Client\-Wizard}}
+\paragraph[{is\-Valid\-Move}]{\setlength{\rightskip}{0pt plus 5cm}boolean is\-Valid\-Move (
+\begin{DoxyParamCaption}
+\item[{{\bf Card}}]{card}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{a00057_aa58080772a961e1f9f88d766777f82ed}
+
+
+Prueft ob ein gemachter Zug in einem Spiel gueltig war. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em card} & Die Karte \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Rückgabe}
+true falls die Karte gueltig ist, false wenn nicht 
+\end{DoxyReturn}
+
+
+Implementiert \hyperlink{a00056_a48cc9b97dd2832c14668fac3a6f5be1a}{Client\-Ruleset}.
+
+\hypertarget{a00057_a346a9e356e52aa231aab7a309f7cf69f}{\index{Ruleset\-::\-Client\-Wizard@{Ruleset\-::\-Client\-Wizard}!resolve\-Message@{resolve\-Message}}
+\index{resolve\-Message@{resolve\-Message}!Ruleset::ClientWizard@{Ruleset\-::\-Client\-Wizard}}
+\paragraph[{resolve\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void resolve\-Message (
+\begin{DoxyParamCaption}
+\item[{{\bf Msg\-Number\-Request}}]{msg\-Number}
+\end{DoxyParamCaption}
+)}}\label{a00057_a346a9e356e52aa231aab7a309f7cf69f}
+
+
+Verarbeitet die Ruleset\-Message dass der Server von dem Spieler verlangt eine Stichanzahl anzugeben. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em msg\-Number} & Die Nachricht vom Server \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00057_a06db25d7d363bc633009a8722a797cc3}{\index{Ruleset\-::\-Client\-Wizard@{Ruleset\-::\-Client\-Wizard}!resolve\-Message@{resolve\-Message}}
+\index{resolve\-Message@{resolve\-Message}!Ruleset::ClientWizard@{Ruleset\-::\-Client\-Wizard}}
+\paragraph[{resolve\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void resolve\-Message (
+\begin{DoxyParamCaption}
+\item[{{\bf Msg\-Selection\-Request}}]{msg\-Selection}
+\end{DoxyParamCaption}
+)}}\label{a00057_a06db25d7d363bc633009a8722a797cc3}
+
+
+Verarbeitet die Ruleset\-Message dass der Server von dem Spieler verlangt eine Farbe auszuwählen. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em msg\-Selection} & Die Nachricht vom Server \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00057_a34e8cc2994c9799ec78964834e470228}{\index{Ruleset\-::\-Client\-Wizard@{Ruleset\-::\-Client\-Wizard}!is\-Valid\-Trick\-Number@{is\-Valid\-Trick\-Number}}
+\index{is\-Valid\-Trick\-Number@{is\-Valid\-Trick\-Number}!Ruleset::ClientWizard@{Ruleset\-::\-Client\-Wizard}}
+\paragraph[{is\-Valid\-Trick\-Number}]{\setlength{\rightskip}{0pt plus 5cm}boolean is\-Valid\-Trick\-Number (
+\begin{DoxyParamCaption}
+\item[{int}]{number}
+\end{DoxyParamCaption}
+)}}\label{a00057_a34e8cc2994c9799ec78964834e470228}
+
+
+Prüft ob die Anzahl der angesagten Stiche vom Spieler gültig sind. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em number} & Die Anzahl der angesagten Sticht \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Rückgabe}
+true falls die Anzahl der Stiche passen, false wenn nicht 
+\end{DoxyReturn}
+\hypertarget{a00057_ae9116e1fb048aebeb428ffaf62599d69}{\index{Ruleset\-::\-Client\-Wizard@{Ruleset\-::\-Client\-Wizard}!is\-Valid\-Colour@{is\-Valid\-Colour}}
+\index{is\-Valid\-Colour@{is\-Valid\-Colour}!Ruleset::ClientWizard@{Ruleset\-::\-Client\-Wizard}}
+\paragraph[{is\-Valid\-Colour}]{\setlength{\rightskip}{0pt plus 5cm}boolean is\-Valid\-Colour (
+\begin{DoxyParamCaption}
+\item[{{\bf Colour}}]{colour}
+\end{DoxyParamCaption}
+)}}\label{a00057_ae9116e1fb048aebeb428ffaf62599d69}
+
+
+Prüft ob die angesagte Trumpffarbe richtig. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em colour} & Die angesagte Trumpffarbe \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Rückgabe}
+true falls die Farbe in Ordnung ist, false wenn nicht 
+\end{DoxyReturn}

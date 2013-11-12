@@ -1,0 +1,20 @@
+\hypertarget{a00075}{\subsection{Lobby\-Server.\-Client\-Listener\-Thread Klassenreferenz}
+\label{a00075}\index{Lobby\-Server.\-Client\-Listener\-Thread@{Lobby\-Server.\-Client\-Listener\-Thread}}
+}
+
+
+Abgeleitet von Runnable.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00075_aed0a888ec8e223a5e13ade3ec8c785dc}{\hyperlink{a00075_aed0a888ec8e223a5e13ade3ec8c785dc}{Client\-Listener\-Thread} ()}\label{a00075_aed0a888ec8e223a5e13ade3ec8c785dc}
+
+\item 
+\hypertarget{a00075_a13a43e6d814de94978c515cb084873b1}{void \hyperlink{a00075_a13a43e6d814de94978c515cb084873b1}{run} ()}\label{a00075_a13a43e6d814de94978c515cb084873b1}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Diese innere Klasse ist fuer das Zustandekommen von Clientverbindungen zustaendig. Der Thread wartet auf eingehende Clientverbindungen, stellt diese her und instanziiert fuer jede Verbindung eine Klasse \hyperlink{a00076}{Player}. Dieser wird dann dem \hyperlink{a00074}{Lobby\-Server} uebergeben. 

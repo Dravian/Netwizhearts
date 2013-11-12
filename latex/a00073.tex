@@ -1,0 +1,84 @@
+\hypertarget{a00073}{\subsection{Game\-Server\-Representation Klassenreferenz}
+\label{a00073}\index{Game\-Server\-Representation@{Game\-Server\-Representation}}
+}
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00073_a27c2eb8bafadf0b25fadc00ec31fcb2d}{Game\-Server\-Representation} (String game\-Master, String game\-Name, int max, int current, \hyperlink{a00066}{Ruleset\-Type} type, boolean password)
+\item 
+\hypertarget{a00073_a3acba35c72b8d4dcf49579142910672f}{String \hyperlink{a00073_a3acba35c72b8d4dcf49579142910672f}{get\-Game\-Master\-Name} ()}\label{a00073_a3acba35c72b8d4dcf49579142910672f}
+
+\item 
+\hypertarget{a00073_a78ee178b6a73658d65ca60da4d1e6683}{String \hyperlink{a00073_a78ee178b6a73658d65ca60da4d1e6683}{get\-Name} ()}\label{a00073_a78ee178b6a73658d65ca60da4d1e6683}
+
+\item 
+\hypertarget{a00073_aa019a8bc2bbcb20450ace4f9b481fc34}{int \hyperlink{a00073_aa019a8bc2bbcb20450ace4f9b481fc34}{get\-Max\-Players} ()}\label{a00073_aa019a8bc2bbcb20450ace4f9b481fc34}
+
+\item 
+\hypertarget{a00073_a7a85faad49e657892c6d0716c30b43ac}{int \hyperlink{a00073_a7a85faad49e657892c6d0716c30b43ac}{get\-Current\-Players} ()}\label{a00073_a7a85faad49e657892c6d0716c30b43ac}
+
+\item 
+\hypertarget{a00073_acc377c72a145354e206375a9c1cf06cb}{\hyperlink{a00066}{Ruleset\-Type} \hyperlink{a00073_acc377c72a145354e206375a9c1cf06cb}{get\-Ruleset} ()}\label{a00073_acc377c72a145354e206375a9c1cf06cb}
+
+\item 
+\hypertarget{a00073_acb069a594bda5b57ef2fc5c077d804f4}{boolean \hyperlink{a00073_acb069a594bda5b57ef2fc5c077d804f4}{is\-Has\-Password} ()}\label{a00073_acb069a594bda5b57ef2fc5c077d804f4}
+
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00073_ad3f74f58e5b41a74c02e21e0407280b8}{String \hyperlink{a00073_ad3f74f58e5b41a74c02e21e0407280b8}{game\-Master\-Name}}\label{a00073_ad3f74f58e5b41a74c02e21e0407280b8}
+
+\item 
+\hypertarget{a00073_a9a2326f35466e54c36c070829245c557}{String \hyperlink{a00073_a9a2326f35466e54c36c070829245c557}{name}}\label{a00073_a9a2326f35466e54c36c070829245c557}
+
+\item 
+\hypertarget{a00073_aa1b24fe78bd4f1d94890fc632e97151f}{int \hyperlink{a00073_aa1b24fe78bd4f1d94890fc632e97151f}{max\-Players}}\label{a00073_aa1b24fe78bd4f1d94890fc632e97151f}
+
+\item 
+\hypertarget{a00073_a2ea963db2aa2189f682df32952d4df12}{int \hyperlink{a00073_a2ea963db2aa2189f682df32952d4df12}{current\-Players}}\label{a00073_a2ea963db2aa2189f682df32952d4df12}
+
+\item 
+\hypertarget{a00073_ab1a0de7ba523f1538143a3924bc5db91}{\hyperlink{a00066}{Ruleset\-Type} \hyperlink{a00073_ab1a0de7ba523f1538143a3924bc5db91}{ruleset}}\label{a00073_ab1a0de7ba523f1538143a3924bc5db91}
+
+\item 
+\hypertarget{a00073_aeb207819150d367d4c5b73beaec78e52}{boolean \hyperlink{a00073_aeb207819150d367d4c5b73beaec78e52}{has\-Password}}\label{a00073_aeb207819150d367d4c5b73beaec78e52}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Dies ist eine Klasse, die Informationen ueber den Zustand eines Spielservers bereithaelt. Sie wird dem Com\-Objekt Com\-Lobby\-Update\-Game\-List angehaengt, um die Spielliste in der Game\-Lobby aktualisieren zu koennen. 
+
+\subsubsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{a00073_a27c2eb8bafadf0b25fadc00ec31fcb2d}{\index{Server\-::\-Game\-Server\-Representation@{Server\-::\-Game\-Server\-Representation}!Game\-Server\-Representation@{Game\-Server\-Representation}}
+\index{Game\-Server\-Representation@{Game\-Server\-Representation}!Server::GameServerRepresentation@{Server\-::\-Game\-Server\-Representation}}
+\paragraph[{Game\-Server\-Representation}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Game\-Server\-Representation} (
+\begin{DoxyParamCaption}
+\item[{String}]{game\-Master, }
+\item[{String}]{game\-Name, }
+\item[{int}]{max, }
+\item[{int}]{current, }
+\item[{{\bf Ruleset\-Type}}]{type, }
+\item[{boolean}]{password}
+\end{DoxyParamCaption}
+)}}\label{a00073_a27c2eb8bafadf0b25fadc00ec31fcb2d}
+
+
+Der Konstruktor der Klasse \hyperlink{a00073}{Game\-Server\-Representation} initialisiert die Attribute mit den vom \hyperlink{a00072}{Game\-Server} übergebenen Werten. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em game\-Master} & der Name des Spielleiters \\
+\hline
+{\em game\-Name} & der Name des Spiels \\
+\hline
+{\em max} & Maximal moegliche Anzahl teilnehmender Spieler \\
+\hline
+{\em current} & Anzahl momentaner Spieler \\
+\hline
+{\em type} & Welches Ruleset verwendet wird \\
+\hline
+{\em password} & ob das Spiel ein Passwort hat \\
+\hline
+\end{DoxyParams}

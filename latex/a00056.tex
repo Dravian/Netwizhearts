@@ -1,0 +1,336 @@
+\hypertarget{a00056}{\subsection{Client\-Ruleset Klassenreferenz}
+\label{a00056}\index{Client\-Ruleset@{Client\-Ruleset}}
+}
+
+
+Basisklasse für \hyperlink{a00055}{Client\-Hearts} und \hyperlink{a00057}{Client\-Wizard}.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00056_a1cfcda2bcff350b5c0083e931ba49219}{Client\-Ruleset} (\hyperlink{a00066}{Ruleset\-Type} ruleset, int min\-Players, int max\-Players, \hyperlink{a00003}{Client\-Model} \hyperlink{a00056_a937cb3d928d5cde5863e895e163b048e}{client})
+\item 
+\hyperlink{a00066}{Ruleset\-Type} \hyperlink{a00056_a3ac0f377128f45d56b53fee6a22a525e}{get\-Ruleset\-Type} ()
+\item 
+int \hyperlink{a00056_ae52f9f6999c512f3fad72c38b1f212d7}{get\-Min\-Players} ()
+\item 
+int \hyperlink{a00056_aa019a8bc2bbcb20450ace4f9b481fc34}{get\-Max\-Players} ()
+\item 
+\hyperlink{a00060}{Game\-Phase} \hyperlink{a00056_a6cba00c7720cc8d49c42a6cd5cd7bca1}{get\-Game\-Phase} ()
+\item 
+List$<$ \hyperlink{a00054}{Card} $>$ \hyperlink{a00056_a1b82d59f9b439be5785c6faffd4d3c05}{get\-Own\-Hand} ()
+\item 
+\hyperlink{a00064}{Other\-Data} \hyperlink{a00056_a4173e0089631ea0b571bef5965547cf6}{get\-Own\-Data} ()
+\item 
+\hyperlink{a00064}{Other\-Data} \hyperlink{a00056_abb320c3a473c538ecee368f8cdd4e44b}{get\-Other\-Player\-Data} (String player)
+\item 
+\hyperlink{a00065}{Player\-State} \hyperlink{a00056_ad3e8a11e9c53ca1b4bb6e753e48ef5ed}{get\-Current\-Player} ()
+\item 
+\hyperlink{a00054}{Card} \hyperlink{a00056_a278ccc7c69243be691f69d421cf7420a}{get\-Trump\-Card} ()
+\item 
+void \hyperlink{a00056_a7544deba8485150e5417e8a7061f7770}{resolve\-Message} (\hyperlink{a00053}{Ruleset\-Message} message)
+\item 
+void \hyperlink{a00056_a0538138e8aea44d9ef7b9d55bd0d1128}{resolve\-Message} (\hyperlink{a00052}{Msg\-User} client\-Update)
+\item 
+void \hyperlink{a00056_a8a1a3d8ac4df5ec0c46a7d501d7c7f82}{resolve\-Message} (\hyperlink{a00044}{Msg\-Card\-Request} msg\-Card\-Request)
+\item 
+abstract boolean \hyperlink{a00056_a48cc9b97dd2832c14668fac3a6f5be1a}{is\-Valid\-Move} (\hyperlink{a00054}{Card} card)
+\end{DoxyCompactItemize}
+\subsubsection*{Geschützte Methoden}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{a00056_a875663183bf010b917b8c28390f22649}{send} (\hyperlink{a00053}{Ruleset\-Message} message)
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00056_a937cb3d928d5cde5863e895e163b048e}{\hyperlink{a00003}{Client\-Model} \hyperlink{a00056_a937cb3d928d5cde5863e895e163b048e}{client}}\label{a00056_a937cb3d928d5cde5863e895e163b048e}
+
+\item 
+\hypertarget{a00056_a762c24908c9862d5ec61f4c2dac18aef}{\hyperlink{a00059}{Game\-Client\-Update} \hyperlink{a00056_a762c24908c9862d5ec61f4c2dac18aef}{game\-State}}\label{a00056_a762c24908c9862d5ec61f4c2dac18aef}
+
+\item 
+\hypertarget{a00056_a3045f525de18ff0ad68134f0d512ea16}{final \hyperlink{a00066}{Ruleset\-Type} \hyperlink{a00056_a3045f525de18ff0ad68134f0d512ea16}{R\-U\-L\-E\-S\-E\-T}}\label{a00056_a3045f525de18ff0ad68134f0d512ea16}
+
+\item 
+\hypertarget{a00056_a57fe2c01c4e61b1f0c44c70ccc75d903}{final int \hyperlink{a00056_a57fe2c01c4e61b1f0c44c70ccc75d903}{M\-I\-N\-\_\-\-P\-L\-A\-Y\-E\-R\-S}}\label{a00056_a57fe2c01c4e61b1f0c44c70ccc75d903}
+
+\item 
+\hypertarget{a00056_ae6ed433235a83c520ce79bee49bc2b01}{final int \hyperlink{a00056_ae6ed433235a83c520ce79bee49bc2b01}{M\-A\-X\-\_\-\-P\-L\-A\-Y\-E\-R\-S}}\label{a00056_ae6ed433235a83c520ce79bee49bc2b01}
+
+\item 
+\hypertarget{a00056_a0bf8d5630d25491480bcf41f44bd5d98}{\hyperlink{a00060}{Game\-Phase} \hyperlink{a00056_a0bf8d5630d25491480bcf41f44bd5d98}{game\-Phase}}\label{a00056_a0bf8d5630d25491480bcf41f44bd5d98}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+\hyperlink{a00056}{Client\-Ruleset} ist eine abstrakte Klasse und wird zur Regelvorauswertung im Client verwendet. Dazu benutzt es die \hyperlink{a00056_a48cc9b97dd2832c14668fac3a6f5be1a}{is\-Valid\-Move()} Methode. Des Weiteren kann es vom Client\-Model erhaltene Ruleset\-Messages mit der \hyperlink{a00056_a7544deba8485150e5417e8a7061f7770}{resolve\-Message()} Methode behandeln und neue Ruleset\-Messages senden. 
+
+\subsubsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{a00056_a1cfcda2bcff350b5c0083e931ba49219}{\index{Ruleset\-::\-Client\-Ruleset@{Ruleset\-::\-Client\-Ruleset}!Client\-Ruleset@{Client\-Ruleset}}
+\index{Client\-Ruleset@{Client\-Ruleset}!Ruleset::ClientRuleset@{Ruleset\-::\-Client\-Ruleset}}
+\paragraph[{Client\-Ruleset}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Client\-Ruleset} (
+\begin{DoxyParamCaption}
+\item[{{\bf Ruleset\-Type}}]{ruleset, }
+\item[{int}]{min\-Players, }
+\item[{int}]{max\-Players, }
+\item[{{\bf Client\-Model}}]{client}
+\end{DoxyParamCaption}
+)}}\label{a00056_a1cfcda2bcff350b5c0083e931ba49219}
+
+
+Erstellt eine \hyperlink{a00056}{Client\-Ruleset} Klasse. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em ruleset} & Das Ruleset zum Spiel \\
+\hline
+{\em min\-Players} & Die minimale Spieleranzahl \\
+\hline
+{\em max\-Players} & Die maximale Spieleranzahl \\
+\hline
+{\em client} & Das Client\-Model auf dem gespielt wird \\
+\hline
+\end{DoxyParams}
+
+
+Benutzt Client\-Ruleset.\-client, Client\-Ruleset.\-game\-Phase, Client\-Ruleset.\-M\-A\-X\-\_\-\-P\-L\-A\-Y\-E\-R\-S, Client\-Ruleset.\-M\-I\-N\-\_\-\-P\-L\-A\-Y\-E\-R\-S, Client\-Ruleset.\-R\-U\-L\-E\-S\-E\-T und Game\-Phase.\-Start.
+
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00056_a3ac0f377128f45d56b53fee6a22a525e}{\index{Ruleset\-::\-Client\-Ruleset@{Ruleset\-::\-Client\-Ruleset}!get\-Ruleset\-Type@{get\-Ruleset\-Type}}
+\index{get\-Ruleset\-Type@{get\-Ruleset\-Type}!Ruleset::ClientRuleset@{Ruleset\-::\-Client\-Ruleset}}
+\paragraph[{get\-Ruleset\-Type}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Ruleset\-Type} get\-Ruleset\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00056_a3ac0f377128f45d56b53fee6a22a525e}
+
+
+Gibt den Typ des Regelwerks zurueck. 
+
+\begin{DoxyReturn}{Rückgabe}
+Der Typ vom Regelwerk 
+\end{DoxyReturn}
+
+
+Benutzt Client\-Ruleset.\-R\-U\-L\-E\-S\-E\-T.
+
+\hypertarget{a00056_ae52f9f6999c512f3fad72c38b1f212d7}{\index{Ruleset\-::\-Client\-Ruleset@{Ruleset\-::\-Client\-Ruleset}!get\-Min\-Players@{get\-Min\-Players}}
+\index{get\-Min\-Players@{get\-Min\-Players}!Ruleset::ClientRuleset@{Ruleset\-::\-Client\-Ruleset}}
+\paragraph[{get\-Min\-Players}]{\setlength{\rightskip}{0pt plus 5cm}int get\-Min\-Players (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00056_ae52f9f6999c512f3fad72c38b1f212d7}
+
+
+Gibt die Mindestanzahl an Spielern zurueck für dieses Spiel. 
+
+\begin{DoxyReturn}{Rückgabe}
+Die Mindestanzahl an Spielern 
+\end{DoxyReturn}
+
+
+Benutzt Client\-Ruleset.\-M\-I\-N\-\_\-\-P\-L\-A\-Y\-E\-R\-S.
+
+\hypertarget{a00056_aa019a8bc2bbcb20450ace4f9b481fc34}{\index{Ruleset\-::\-Client\-Ruleset@{Ruleset\-::\-Client\-Ruleset}!get\-Max\-Players@{get\-Max\-Players}}
+\index{get\-Max\-Players@{get\-Max\-Players}!Ruleset::ClientRuleset@{Ruleset\-::\-Client\-Ruleset}}
+\paragraph[{get\-Max\-Players}]{\setlength{\rightskip}{0pt plus 5cm}int get\-Max\-Players (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00056_aa019a8bc2bbcb20450ace4f9b481fc34}
+
+
+Gibt die Maximale Anzahl an Spielern zurueck. 
+
+\begin{DoxyReturn}{Rückgabe}
+Die maximale Anzahl an Spielern 
+\end{DoxyReturn}
+
+
+Benutzt Client\-Ruleset.\-M\-A\-X\-\_\-\-P\-L\-A\-Y\-E\-R\-S.
+
+\hypertarget{a00056_a6cba00c7720cc8d49c42a6cd5cd7bca1}{\index{Ruleset\-::\-Client\-Ruleset@{Ruleset\-::\-Client\-Ruleset}!get\-Game\-Phase@{get\-Game\-Phase}}
+\index{get\-Game\-Phase@{get\-Game\-Phase}!Ruleset::ClientRuleset@{Ruleset\-::\-Client\-Ruleset}}
+\paragraph[{get\-Game\-Phase}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Game\-Phase} get\-Game\-Phase (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00056_a6cba00c7720cc8d49c42a6cd5cd7bca1}
+
+
+Gibt die momentane Spielphase zurück. 
+
+\begin{DoxyReturn}{Rückgabe}
+game\-Phase Die Spielphase 
+\end{DoxyReturn}
+
+
+Benutzt Client\-Ruleset.\-game\-Phase.
+
+\hypertarget{a00056_a1b82d59f9b439be5785c6faffd4d3c05}{\index{Ruleset\-::\-Client\-Ruleset@{Ruleset\-::\-Client\-Ruleset}!get\-Own\-Hand@{get\-Own\-Hand}}
+\index{get\-Own\-Hand@{get\-Own\-Hand}!Ruleset::ClientRuleset@{Ruleset\-::\-Client\-Ruleset}}
+\paragraph[{get\-Own\-Hand}]{\setlength{\rightskip}{0pt plus 5cm}List$<${\bf Card}$>$ get\-Own\-Hand (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00056_a1b82d59f9b439be5785c6faffd4d3c05}
+
+
+Gibt die eigenen Handkarten zurueck. 
+
+\begin{DoxyReturn}{Rückgabe}
+Liste von Karten 
+\end{DoxyReturn}
+\hypertarget{a00056_a4173e0089631ea0b571bef5965547cf6}{\index{Ruleset\-::\-Client\-Ruleset@{Ruleset\-::\-Client\-Ruleset}!get\-Own\-Data@{get\-Own\-Data}}
+\index{get\-Own\-Data@{get\-Own\-Data}!Ruleset::ClientRuleset@{Ruleset\-::\-Client\-Ruleset}}
+\paragraph[{get\-Own\-Data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Other\-Data} get\-Own\-Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00056_a4173e0089631ea0b571bef5965547cf6}
+
+
+Gibt die \hyperlink{a00064}{Other\-Data} des Models zurueck. 
+
+\begin{DoxyReturn}{Rückgabe}
+Die Otherdata des Models 
+\end{DoxyReturn}
+\hypertarget{a00056_abb320c3a473c538ecee368f8cdd4e44b}{\index{Ruleset\-::\-Client\-Ruleset@{Ruleset\-::\-Client\-Ruleset}!get\-Other\-Player\-Data@{get\-Other\-Player\-Data}}
+\index{get\-Other\-Player\-Data@{get\-Other\-Player\-Data}!Ruleset::ClientRuleset@{Ruleset\-::\-Client\-Ruleset}}
+\paragraph[{get\-Other\-Player\-Data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Other\-Data} get\-Other\-Player\-Data (
+\begin{DoxyParamCaption}
+\item[{String}]{player}
+\end{DoxyParamCaption}
+)}}\label{a00056_abb320c3a473c538ecee368f8cdd4e44b}
+
+
+Holt die \hyperlink{a00064}{Other\-Data} eines anderen Spielers. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em Der} & Spielername \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Rückgabe}
+other\-Player\-Data Die \hyperlink{a00064}{Other\-Data} 
+\end{DoxyReturn}
+\hypertarget{a00056_ad3e8a11e9c53ca1b4bb6e753e48ef5ed}{\index{Ruleset\-::\-Client\-Ruleset@{Ruleset\-::\-Client\-Ruleset}!get\-Current\-Player@{get\-Current\-Player}}
+\index{get\-Current\-Player@{get\-Current\-Player}!Ruleset::ClientRuleset@{Ruleset\-::\-Client\-Ruleset}}
+\paragraph[{get\-Current\-Player}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Player\-State} get\-Current\-Player (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00056_ad3e8a11e9c53ca1b4bb6e753e48ef5ed}
+
+
+Gibt den Spieler der momentan am Zug ist zurueck. 
+
+\begin{DoxyReturn}{Rückgabe}
+Der momentane Spieler 
+\end{DoxyReturn}
+\hypertarget{a00056_a278ccc7c69243be691f69d421cf7420a}{\index{Ruleset\-::\-Client\-Ruleset@{Ruleset\-::\-Client\-Ruleset}!get\-Trump\-Card@{get\-Trump\-Card}}
+\index{get\-Trump\-Card@{get\-Trump\-Card}!Ruleset::ClientRuleset@{Ruleset\-::\-Client\-Ruleset}}
+\paragraph[{get\-Trump\-Card}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Card} get\-Trump\-Card (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00056_a278ccc7c69243be691f69d421cf7420a}
+
+
+Holt die aufgedeckte Trumpfkarte. 
+
+\begin{DoxyReturn}{Rückgabe}
+Eine Karte 
+\end{DoxyReturn}
+\hypertarget{a00056_a7544deba8485150e5417e8a7061f7770}{\index{Ruleset\-::\-Client\-Ruleset@{Ruleset\-::\-Client\-Ruleset}!resolve\-Message@{resolve\-Message}}
+\index{resolve\-Message@{resolve\-Message}!Ruleset::ClientRuleset@{Ruleset\-::\-Client\-Ruleset}}
+\paragraph[{resolve\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void resolve\-Message (
+\begin{DoxyParamCaption}
+\item[{{\bf Ruleset\-Message}}]{message}
+\end{DoxyParamCaption}
+)}}\label{a00056_a7544deba8485150e5417e8a7061f7770}
+
+
+Verarbeitet eine Ruleset\-Message vom Server. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em client\-Update} & Die Nachricht vom Server \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00056_a0538138e8aea44d9ef7b9d55bd0d1128}{\index{Ruleset\-::\-Client\-Ruleset@{Ruleset\-::\-Client\-Ruleset}!resolve\-Message@{resolve\-Message}}
+\index{resolve\-Message@{resolve\-Message}!Ruleset::ClientRuleset@{Ruleset\-::\-Client\-Ruleset}}
+\paragraph[{resolve\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void resolve\-Message (
+\begin{DoxyParamCaption}
+\item[{{\bf Msg\-User}}]{client\-Update}
+\end{DoxyParamCaption}
+)}}\label{a00056_a0538138e8aea44d9ef7b9d55bd0d1128}
+
+
+Verarbeitet die Ruleset\-Message dass der Server ein Spielupdate an den Client schickt. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em client\-Update} & Die Nachricht vom Server \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00056_a8a1a3d8ac4df5ec0c46a7d501d7c7f82}{\index{Ruleset\-::\-Client\-Ruleset@{Ruleset\-::\-Client\-Ruleset}!resolve\-Message@{resolve\-Message}}
+\index{resolve\-Message@{resolve\-Message}!Ruleset::ClientRuleset@{Ruleset\-::\-Client\-Ruleset}}
+\paragraph[{resolve\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void resolve\-Message (
+\begin{DoxyParamCaption}
+\item[{{\bf Msg\-Card\-Request}}]{msg\-Card\-Request}
+\end{DoxyParamCaption}
+)}}\label{a00056_a8a1a3d8ac4df5ec0c46a7d501d7c7f82}
+
+
+Verarbeitet die Ruleset\-Message dass der Server von dem Spieler verlangt eine Karte zu spielen. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em msg\-Card\-Request} & Die Nachricht vom Server \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00056_a875663183bf010b917b8c28390f22649}{\index{Ruleset\-::\-Client\-Ruleset@{Ruleset\-::\-Client\-Ruleset}!send@{send}}
+\index{send@{send}!Ruleset::ClientRuleset@{Ruleset\-::\-Client\-Ruleset}}
+\paragraph[{send}]{\setlength{\rightskip}{0pt plus 5cm}void send (
+\begin{DoxyParamCaption}
+\item[{{\bf Ruleset\-Message}}]{message}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{a00056_a875663183bf010b917b8c28390f22649}
+
+
+Ruft beim Model die send Methode auf und verschickt eine Rulesetmessage. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em message} & Die Nachricht \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00056_a48cc9b97dd2832c14668fac3a6f5be1a}{\index{Ruleset\-::\-Client\-Ruleset@{Ruleset\-::\-Client\-Ruleset}!is\-Valid\-Move@{is\-Valid\-Move}}
+\index{is\-Valid\-Move@{is\-Valid\-Move}!Ruleset::ClientRuleset@{Ruleset\-::\-Client\-Ruleset}}
+\paragraph[{is\-Valid\-Move}]{\setlength{\rightskip}{0pt plus 5cm}abstract boolean is\-Valid\-Move (
+\begin{DoxyParamCaption}
+\item[{{\bf Card}}]{card}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{a00056_a48cc9b97dd2832c14668fac3a6f5be1a}
+
+
+Prueft ob ein gemachter Zug in einem Spiel gueltig war. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em card} & Die Karte \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Rückgabe}
+true falls die Karte gueltig ist, false wenn nicht 
+\end{DoxyReturn}
+
+
+Implementiert in \hyperlink{a00055_aa58080772a961e1f9f88d766777f82ed}{Client\-Hearts} und \hyperlink{a00057_aa58080772a961e1f9f88d766777f82ed}{Client\-Wizard}.
+

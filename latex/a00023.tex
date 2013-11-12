@@ -1,0 +1,63 @@
+\hypertarget{a00023}{\subsection{Warning Klassenreferenz}
+\label{a00023}\index{Warning@{Warning}}
+}
+
+
+Abgeleitet von Observer.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{a00023_a1f0025961cc745f47ae48ba98ffad7bf}{set\-Text} (String text)
+\item 
+void \hyperlink{a00023_a2b67d42550fdf9ddd8f3878d0849965c}{update} (Observable o, Object arg)
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00023_a7e805d5872b3c74587fd7af4be6091fd}{String {\bfseries warning\-Text}}\label{a00023_a7e805d5872b3c74587fd7af4be6091fd}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Das Warning-\/\-Fenster zeigt dem Benutzer Fehlermeldungen bzw. Hinweise an, welche vom \hyperlink{a00003}{Client\-Model} uebergeben wurden. Es wird nur im Fehlerfall angezeigt. 
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00023_a1f0025961cc745f47ae48ba98ffad7bf}{\index{Client\-::\-View\-::\-Warning@{Client\-::\-View\-::\-Warning}!set\-Text@{set\-Text}}
+\index{set\-Text@{set\-Text}!Client::View::Warning@{Client\-::\-View\-::\-Warning}}
+\paragraph[{set\-Text}]{\setlength{\rightskip}{0pt plus 5cm}void set\-Text (
+\begin{DoxyParamCaption}
+\item[{String}]{text}
+\end{DoxyParamCaption}
+)}}\label{a00023_a1f0025961cc745f47ae48ba98ffad7bf}
+
+
+Setzt den Warnhinweis des Fensters. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em text} & Warnhinweis, der angezeigt werden soll \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00023_a2b67d42550fdf9ddd8f3878d0849965c}{\index{Client\-::\-View\-::\-Warning@{Client\-::\-View\-::\-Warning}!update@{update}}
+\index{update@{update}!Client::View::Warning@{Client\-::\-View\-::\-Warning}}
+\paragraph[{update}]{\setlength{\rightskip}{0pt plus 5cm}void update (
+\begin{DoxyParamCaption}
+\item[{Observable}]{o, }
+\item[{Object}]{arg}
+\end{DoxyParamCaption}
+)}}\label{a00023_a2b67d42550fdf9ddd8f3878d0849965c}
+
+
+Wird durch notify() im \hyperlink{a00003}{Client\-Model} aufgerufen. 
+
+Je nach dem in arg übergebenen Befehl wird ein Update des Fensters ausgeführt oder eine Fehlermeldung angezeigt.
+
+
+\begin{DoxyParams}{Parameter}
+{\em o} & erwartet ein Objekt von der Klasse \hyperlink{a00003}{Client\-Model} \\
+\hline
+{\em arg} & erwartet\-: open\-Warning \\
+\hline
+\end{DoxyParams}

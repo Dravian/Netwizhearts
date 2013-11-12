@@ -1,0 +1,106 @@
+\hypertarget{a00042}{\subsection{Com\-Warning Klassenreferenz}
+\label{a00042}\index{Com\-Warning@{Com\-Warning}}
+}
+
+
+Abgeleitet von \hyperlink{a00037}{Com\-Object} und Serializable.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00042_a5c697b925b40d1ec204a2d45c0bccccb}{Com\-Warning} (String warning)
+\item 
+String \hyperlink{a00042_a871f3f6b982d1e3b4468a95f99a083e1}{get\-Warning} ()
+\item 
+void \hyperlink{a00042_a758d7005755a181717f238f714d87dd2}{process} (\hyperlink{a00003}{Client\-Model} model)
+\item 
+void \hyperlink{a00042_ac67b5ce3ec03d48ef1e6caad6e49c902}{process} (\hyperlink{a00076}{Player} player, \hyperlink{a00077}{Server} server)
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00042_a393c8163a2f6f4a86dbd8b8793d341f3}{String {\bfseries warning}}\label{a00042_a393c8163a2f6f4a86dbd8b8793d341f3}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Diese Klasse ist ein spezielles Kommunikations-\/\-Objekt. Sie soll dem Spieler eine Mitteilung senden und so ueber ein Fehlerevent informieren. 
+
+\subsubsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{a00042_a5c697b925b40d1ec204a2d45c0bccccb}{\index{Com\-Objects\-::\-Com\-Warning@{Com\-Objects\-::\-Com\-Warning}!Com\-Warning@{Com\-Warning}}
+\index{Com\-Warning@{Com\-Warning}!ComObjects::ComWarning@{Com\-Objects\-::\-Com\-Warning}}
+\paragraph[{Com\-Warning}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Com\-Warning} (
+\begin{DoxyParamCaption}
+\item[{String}]{warning}
+\end{DoxyParamCaption}
+)}}\label{a00042_a5c697b925b40d1ec204a2d45c0bccccb}
+
+
+Dies ist der Konstruktor einer neuen Com\-Warning-\/\-Nachricht. 
+
+Er enthaelt eine Warnung an den Spieler, wenn ein Fehler passiert. 
+\begin{DoxyParams}{Parameter}
+{\em warning} & ist die Warnung, die der Spieler erhaelt. \\
+\hline
+\end{DoxyParams}
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00042_a871f3f6b982d1e3b4468a95f99a083e1}{\index{Com\-Objects\-::\-Com\-Warning@{Com\-Objects\-::\-Com\-Warning}!get\-Warning@{get\-Warning}}
+\index{get\-Warning@{get\-Warning}!ComObjects::ComWarning@{Com\-Objects\-::\-Com\-Warning}}
+\paragraph[{get\-Warning}]{\setlength{\rightskip}{0pt plus 5cm}String get\-Warning (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00042_a871f3f6b982d1e3b4468a95f99a083e1}
+
+
+Diese Methode gibt die Nachricht zurueck, die dem Spieler den Fehler mitteilt. 
+
+\begin{DoxyReturn}{Rückgabe}
+die Warnnachricht. 
+\end{DoxyReturn}
+\hypertarget{a00042_a758d7005755a181717f238f714d87dd2}{\index{Com\-Objects\-::\-Com\-Warning@{Com\-Objects\-::\-Com\-Warning}!process@{process}}
+\index{process@{process}!ComObjects::ComWarning@{Com\-Objects\-::\-Com\-Warning}}
+\paragraph[{process}]{\setlength{\rightskip}{0pt plus 5cm}void process (
+\begin{DoxyParamCaption}
+\item[{{\bf Client\-Model}}]{model}
+\end{DoxyParamCaption}
+)}}\label{a00042_a758d7005755a181717f238f714d87dd2}
+
+
+Diese Methode ist noetig, damit der Client\-Listener\-Thread entscheiden kann welche Message das Object enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em model} & ist das Client\-Model, welches Ã¼bergeben wird, damit die ueberladene Methode richtig gewaehlt wird. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00037_a758d7005755a181717f238f714d87dd2}{Com\-Object}.
+
+\hypertarget{a00042_ac67b5ce3ec03d48ef1e6caad6e49c902}{\index{Com\-Objects\-::\-Com\-Warning@{Com\-Objects\-::\-Com\-Warning}!process@{process}}
+\index{process@{process}!ComObjects::ComWarning@{Com\-Objects\-::\-Com\-Warning}}
+\paragraph[{process}]{\setlength{\rightskip}{0pt plus 5cm}void process (
+\begin{DoxyParamCaption}
+\item[{{\bf Player}}]{player, }
+\item[{{\bf Server}}]{server}
+\end{DoxyParamCaption}
+)}}\label{a00042_ac67b5ce3ec03d48ef1e6caad6e49c902}
+
+
+Diese Methode ist noetig, damit der Thread Player entscheiden kann welche Message das Object enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em player} & Der Client welcher den Aufruf startet. \\
+\hline
+{\em server} & Der Server an den sich das Com\-Objekt weitergibt. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00037_ac67b5ce3ec03d48ef1e6caad6e49c902}{Com\-Object}.
+

@@ -1,0 +1,159 @@
+\hypertarget{a00067}{\subsection{Server\-Hearts Klassenreferenz}
+\label{a00067}\index{Server\-Hearts@{Server\-Hearts}}
+}
+
+
+Abgeleitet von \hyperlink{a00068}{Server\-Ruleset}.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00067_a079b5eaa797ef9f3ccdc71b812fbcd69}{\hyperlink{a00067_a079b5eaa797ef9f3ccdc71b812fbcd69}{Server\-Hearts} (\hyperlink{a00072}{Game\-Server} s)}\label{a00067_a079b5eaa797ef9f3ccdc71b812fbcd69}
+
+\item 
+void \hyperlink{a00067_abc96b962b5e60c8c0203985dc7d455c2}{resolve\-Message} (\hyperlink{a00046}{Msg\-Multi\-Cards} msg\-Multi\-Card, String name)
+\end{DoxyCompactItemize}
+\subsubsection*{Geschützte Methoden}
+\begin{DoxyCompactItemize}
+\item 
+boolean \hyperlink{a00067_aa58080772a961e1f9f88d766777f82ed}{is\-Valid\-Move} (\hyperlink{a00054}{Card} card)
+\item 
+int \hyperlink{a00067_aea8671bc04a1458c6602f409eb404ec2}{get\-Ending\-Points} ()
+\item 
+\hypertarget{a00067_aceebbbc4dd4d00fe4e4086be6acda2d7}{void \hyperlink{a00067_aceebbbc4dd4d00fe4e4086be6acda2d7}{calculate\-Round\-Outcome} ()}\label{a00067_aceebbbc4dd4d00fe4e4086be6acda2d7}
+
+\item 
+\hypertarget{a00067_a0e9e22cb0e4021e9b0fff0aa0dba1499}{void \hyperlink{a00067_a0e9e22cb0e4021e9b0fff0aa0dba1499}{calculate\-Tricks} ()}\label{a00067_a0e9e22cb0e4021e9b0fff0aa0dba1499}
+
+\item 
+\hypertarget{a00067_a159081d6eb49d67e8fe72bc03a47c336}{String \hyperlink{a00067_a159081d6eb49d67e8fe72bc03a47c336}{get\-Winner} ()}\label{a00067_a159081d6eb49d67e8fe72bc03a47c336}
+
+\item 
+\hyperlink{a00059}{Game\-Client\-Update} \hyperlink{a00067_ae26f0271bee2539ca4acd6b646ad895a}{generate\-Game\-Client\-Update} (String player)
+\end{DoxyCompactItemize}
+\subsubsection*{Private Methoden}
+\begin{DoxyCompactItemize}
+\item 
+boolean \hyperlink{a00067_a0a68097ee0b989d47d21198da2d32fbc}{are\-Valid\-Choosen\-Cards} (Set$<$ \hyperlink{a00054}{Card} $>$ cards, String name)
+\end{DoxyCompactItemize}
+\subsubsection*{Statische, private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00067_a57fe2c01c4e61b1f0c44c70ccc75d903}{static final int \hyperlink{a00067_a57fe2c01c4e61b1f0c44c70ccc75d903}{M\-I\-N\-\_\-\-P\-L\-A\-Y\-E\-R\-S} = 4}\label{a00067_a57fe2c01c4e61b1f0c44c70ccc75d903}
+
+\item 
+\hypertarget{a00067_ae6ed433235a83c520ce79bee49bc2b01}{static final int \hyperlink{a00067_ae6ed433235a83c520ce79bee49bc2b01}{M\-A\-X\-\_\-\-P\-L\-A\-Y\-E\-R\-S} = 4}\label{a00067_ae6ed433235a83c520ce79bee49bc2b01}
+
+\item 
+\hypertarget{a00067_a3045f525de18ff0ad68134f0d512ea16}{static final \hyperlink{a00066}{Ruleset\-Type} \hyperlink{a00067_a3045f525de18ff0ad68134f0d512ea16}{R\-U\-L\-E\-S\-E\-T} = \hyperlink{a00066_a6e9f988fd4b1f5b39d289b0f44514af4}{Ruleset\-Type.\-Hearts}}\label{a00067_a3045f525de18ff0ad68134f0d512ea16}
+
+\item 
+\hypertarget{a00067_a1c46271610f140c16addf500353a090b}{static final int \hyperlink{a00067_a1c46271610f140c16addf500353a090b}{E\-N\-D\-I\-N\-G\-\_\-\-P\-O\-I\-N\-T\-S} = 100}\label{a00067_a1c46271610f140c16addf500353a090b}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Diese Klasse erstellt das Regelwerk zum Spiel Hearts. Sie enthaelt zudem weitere Methoden, welche für das Spiel Hearts spezifisch benoetigt werden, wie die Regelung zum Tausch von Karten und die Berechnung der Stichpunkten. 
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00067_aa58080772a961e1f9f88d766777f82ed}{\index{Ruleset\-::\-Server\-Hearts@{Ruleset\-::\-Server\-Hearts}!is\-Valid\-Move@{is\-Valid\-Move}}
+\index{is\-Valid\-Move@{is\-Valid\-Move}!Ruleset::ServerHearts@{Ruleset\-::\-Server\-Hearts}}
+\paragraph[{is\-Valid\-Move}]{\setlength{\rightskip}{0pt plus 5cm}boolean is\-Valid\-Move (
+\begin{DoxyParamCaption}
+\item[{{\bf Card}}]{card}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{a00067_aa58080772a961e1f9f88d766777f82ed}
+
+
+Prueft ob ein gemachter Zug vom current\-Player in einem Spiel gueltig war, wenn nicht wird an den Spieler erneut eine Msg\-Card\-Request gesendet. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em card} & Die Karte die gespielt wurde \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Rückgabe}
+true falls Zug gueltig und false wenn nicht 
+\end{DoxyReturn}
+
+
+Implementiert \hyperlink{a00068_a48cc9b97dd2832c14668fac3a6f5be1a}{Server\-Ruleset}.
+
+\hypertarget{a00067_aea8671bc04a1458c6602f409eb404ec2}{\index{Ruleset\-::\-Server\-Hearts@{Ruleset\-::\-Server\-Hearts}!get\-Ending\-Points@{get\-Ending\-Points}}
+\index{get\-Ending\-Points@{get\-Ending\-Points}!Ruleset::ServerHearts@{Ruleset\-::\-Server\-Hearts}}
+\paragraph[{get\-Ending\-Points}]{\setlength{\rightskip}{0pt plus 5cm}int get\-Ending\-Points (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{a00067_aea8671bc04a1458c6602f409eb404ec2}
+
+
+Holt die Anzahl der Punkte die ein Spieler haben kann ab der, das Spiel vorbei ist. 
+
+\begin{DoxyReturn}{Rückgabe}
+Anzahl der maximalen Punkte 
+\end{DoxyReturn}
+
+
+Benutzt Server\-Hearts.\-E\-N\-D\-I\-N\-G\-\_\-\-P\-O\-I\-N\-T\-S.
+
+\hypertarget{a00067_abc96b962b5e60c8c0203985dc7d455c2}{\index{Ruleset\-::\-Server\-Hearts@{Ruleset\-::\-Server\-Hearts}!resolve\-Message@{resolve\-Message}}
+\index{resolve\-Message@{resolve\-Message}!Ruleset::ServerHearts@{Ruleset\-::\-Server\-Hearts}}
+\paragraph[{resolve\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void resolve\-Message (
+\begin{DoxyParamCaption}
+\item[{{\bf Msg\-Multi\-Cards}}]{msg\-Multi\-Card, }
+\item[{String}]{name}
+\end{DoxyParamCaption}
+)}}\label{a00067_abc96b962b5e60c8c0203985dc7d455c2}
+
+
+Verarbeitet die Ruleset\-Message dass mehrerer Karten vom Spieler uebergeben werden. 
+
+Die wird dann in are\-Valid\-Choosen\-Cards ueberprueft, bei falsche Eingabe wird´ eine Msg\-Multi\-Cards\-Request an den selben Spieler gesendet. Bei richtiger Eingabe geht das Spiel weiter. 
+\begin{DoxyParams}{Parameter}
+{\em msg\-Multi\-Card} & Die Nachricht vom Client \\
+\hline
+{\em name} & Der Name des Spielers \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00067_a0a68097ee0b989d47d21198da2d32fbc}{\index{Ruleset\-::\-Server\-Hearts@{Ruleset\-::\-Server\-Hearts}!are\-Valid\-Choosen\-Cards@{are\-Valid\-Choosen\-Cards}}
+\index{are\-Valid\-Choosen\-Cards@{are\-Valid\-Choosen\-Cards}!Ruleset::ServerHearts@{Ruleset\-::\-Server\-Hearts}}
+\paragraph[{are\-Valid\-Choosen\-Cards}]{\setlength{\rightskip}{0pt plus 5cm}boolean are\-Valid\-Choosen\-Cards (
+\begin{DoxyParamCaption}
+\item[{Set$<$ {\bf Card} $>$}]{cards, }
+\item[{String}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{a00067_a0a68097ee0b989d47d21198da2d32fbc}
+
+
+Ueberprueft ob eine uebergebenes Kartenset von einem Spieler gültig ist. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em cards} & Ein Kartenset \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Rückgabe}
+true falls das Kartenset gueltig ist, false wenn nicht 
+\end{DoxyReturn}
+\hypertarget{a00067_ae26f0271bee2539ca4acd6b646ad895a}{\index{Ruleset\-::\-Server\-Hearts@{Ruleset\-::\-Server\-Hearts}!generate\-Game\-Client\-Update@{generate\-Game\-Client\-Update}}
+\index{generate\-Game\-Client\-Update@{generate\-Game\-Client\-Update}!Ruleset::ServerHearts@{Ruleset\-::\-Server\-Hearts}}
+\paragraph[{generate\-Game\-Client\-Update}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Game\-Client\-Update} generate\-Game\-Client\-Update (
+\begin{DoxyParamCaption}
+\item[{String}]{player}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{a00067_ae26f0271bee2539ca4acd6b646ad895a}
+
+
+Erzeugt ein \hyperlink{a00059}{Game\-Client\-Update} welches individuell für jeden Benutzer ist. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em player} & Dem Spieler \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00068_a4bc36d254178bf54e75fcdf472a5f863}{Server\-Ruleset}.
+
