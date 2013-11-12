@@ -216,8 +216,8 @@ public abstract class ServerRuleset {
 	 * @param name Der Name eines Spielers
 	 * @return Die Spielkarten des Spielers
 	 */
-	protected List<Card> getPlayerCards(String name) {
-		return gameState.getPlayerCards(name);
+	protected List<Card> getPlayerCards(PlayerState player) {
+		return gameState.getPlayerCards(player);
 	}
 	/**
 	 * Schickt eine Nachricht an einen Spieler, über den Gameserver
@@ -225,7 +225,7 @@ public abstract class ServerRuleset {
 	 * @param name Der Name vom Spieler
 	 */
 	protected void send(RulesetMessage message, String name) {
-		server.send(message,name);
+		server.sendRulesetMessage(name,message);
 	}
 	
 	
@@ -234,7 +234,7 @@ public abstract class ServerRuleset {
 	 * @param message Die Nachricht
 	 */
 	protected void broadcast(RulesetMessage message) {
-		server.broadcast(message);
+		server.broadcastRulesetMessage(message);
 	}
 	
 	/** 
@@ -287,11 +287,11 @@ public abstract class ServerRuleset {
 	
 	/**
 	 * Gibt einem Spieler eine bestimmte Karte
-	 * @param name Der Name eines Spielers
+	 * @param player Der Name eines Spielers
 	 * @param card Eine Karte
 	 * @return Gibt true zurück wenn die Karte im Deck ist, false sonst
 	 */
-	protected boolean giveACard(String name, Card card) {
+	protected boolean giveACard(PlayerState player, Card card) {
 		return false;	
 	}
 	
