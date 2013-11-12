@@ -25,18 +25,20 @@ public class TestisValidMoveWizard {
 	LobbyServer lobbyServer;
 	
 	Player player;
-	String player1 ="Hans";
-	String player2 ="Joe";
-	String player3 = "ko";
+	String player1;
+	String player2;
+	String player3;
 	
 	@Before
 	public void setUp() throws Exception {
+		player1 = "Tick";
+		player2 = "Trick";
+		player3 = "Track";
 		lobbyServer = new TestLobbyServer();
 		player = new TestPlayer(lobbyServer,null,null);
 		gameServer = new TestGameServer(lobbyServer,player,"Mein Spiel",RulesetType.Wizard, 
 				"",false);
 		ruleset = new ServerWizard(gameServer);
-		ruleset.isValidMove(WizardCard.NarrBlau);
 		
 		ruleset.addPlayerToGame(player1);
 		ruleset.addPlayerToGame(player2);
@@ -58,6 +60,7 @@ public class TestisValidMoveWizard {
 		ruleset.giveACard(player3, WizardCard.ZweiRot);
 	}
 	
+	@Test
 	public void testSorcerer() {
 		ruleset.playCard(WizardCard.ZaubererRot);
 		ruleset.setCurrentPlayer(ruleset.getPlayerState(player2));
@@ -97,11 +100,6 @@ public class TestisValidMoveWizard {
 		boolean isValidMove = ruleset.isValidMove(WizardCard.NarrBlau);
 		
 		assertTrue(isValidMove);
-	}
-
-	
-	@After
-	public void tearDown() throws Exception {
 	}
 
 }

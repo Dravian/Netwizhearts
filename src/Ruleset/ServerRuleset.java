@@ -11,10 +11,10 @@ import Server.GameServer;
 import ComObjects.MsgCard;
 import ComObjects.RulesetMessage;
 /** 
- * Das ServerRuleset ist eine akstrakte Klasse und für den Ablauf und die Einhaltung der Regeln eines Spiels zuständig (/L280/). 
- * Das ServerRuleset wird im GameServer instanziert und verwaltet die Zustände des GameStates im Server. 
- * Mit der Methode isValidMove() wird eine Eingabe eines Clients auf Regelkonformität überprüft und dann 
- * im GameServer  das GameState verändert. Über resolveMessage() kann eine GameServerinstanz eine RulesetMessage 
+ * ServerRuleset. Das ServerRuleset ist eine akstrakte Klasse und fuer den Ablauf und die Einhaltung der Regeln eines Spiels zustaendig (/L280/). 
+ * Das ServerRuleset wird im GameServer instanziert und verwaltet die Zustaende des GameStates im Server. 
+ * Mit der Methode isValidMove() wird eine Eingabe eines Clients auf Regelkonformität ueberprueft und dann
+ * das GameState veraendert. Ueber resolveMessage() kann eine GameServerinstanz eine RulesetMessage 
  * vom Player an das Ruleset weiterleiten.
  */
 public abstract class ServerRuleset {
@@ -49,13 +49,13 @@ public abstract class ServerRuleset {
 	private final int MAX_PLAYERS;
 	
 	/**
-	 * Erstellt ein ServerRuleset
+	 * Erstellt ein ServerRuleset und erzeugt ein GameState
 	 * @param ruleset Der Rulesettyp vom Server
 	 * @param min Die minimale Anzahl an Spielern
 	 * @param max Die maximale Anzahl an Spielern
 	 * @param server Der Server auf dem gespielt wird
 	 */
-	protected ServerRuleset(RulesetType ruleset, int min, int max, 
+	public ServerRuleset(RulesetType ruleset, int min, int max, 
 			GameServer server) {
 		RULESET = ruleset;
 		MIN_PLAYERS = min;
@@ -67,23 +67,15 @@ public abstract class ServerRuleset {
 	}
 	
 	/**
-	 * Setzt eine neue Spielrunde
-	 * @param 
-	 */
-	protected void setRoundNumber(int number) {
-		gameState.setRoundNumber(number);
-	}
-	
-	/**
-	 * Holt die aktuelle Rundenanzahl zurück
-	 * @return
+	 * Holt die aktuelle Rundenanzahl zurueck
+	 * @return Die aktuelle Rundenanzahl
 	 */
 	protected int getRoundNumber() {
 		return gameState.getRoundNumber();
 	}
 	
 	/**
-	 * Gibt den Typ des Regelwerks zurück
+	 * Gibt den Typ des Regelwerks zurueck
 	 * @return Der Typ vom Regelwerk
 	 */
 	public RulesetType getRulesetType() {
@@ -91,7 +83,7 @@ public abstract class ServerRuleset {
 	}
 	
 	/**
-	 * Gibt die Mindestanzahl an Spielern zurück für dieses Spiel
+	 * Gibt die Mindestanzahl an Spielern zurueck für dieses Spiel
 	 * @return Die Mindestanzahl an Spielern
 	 */
 	public int getMinPlayers() {
@@ -99,7 +91,7 @@ public abstract class ServerRuleset {
 	}
 	
 	/**
-	 * Gibt die Maximale anzahl an Spielern zurück
+	 * Gibt die Maximale Anzahl an Spielern zurueck
 	 * @return Die maximale Anzahl an Spielern
 	 */
 	public int getMaxPlayers() {
@@ -107,7 +99,7 @@ public abstract class ServerRuleset {
 	}
 	
 	/**
-	 * Ändert den momentanen Spielphase
+	 * Aendert den momentanen Spielphase
 	 * @param phase Die neue Spielphase
 	 */
 	protected void setGamePhase(GamePhase phase) {
@@ -115,8 +107,8 @@ public abstract class ServerRuleset {
 	}
 
 	/**
-	 * Gibt den momentanen Spielzustand zurück
-	 * @return Gibt die momentan Spielphase zurück
+	 * Gibt den momentanen Spielzustand zurueck
+	 * @return Gibt die momentan Spielphase zurueck
 	 */
 	public GamePhase getGamePhase() {
 		return gamePhase;
@@ -124,7 +116,7 @@ public abstract class ServerRuleset {
 	
 	/**
 	 * Erzeugt ein Kartendeck, abhängig von dem RulesetType
-	 * @return Gibt ein Kartendeck zurück
+	 * @return Gibt ein Kartendeck zurueck
 	 */
 	private List<Card> createDeck() {
 		List<Card> deck = new LinkedList<Card>();
@@ -168,7 +160,7 @@ public abstract class ServerRuleset {
 	}
 	
 	/**
-	 * Setzt den nächsten Spieler in der List als currentPlayer
+	 * Setzt den naechsten Spieler in der List als currentPlayer
 	 * @return true falls es ein anderer Spieler ist und false wenn es derselbe ist.
 	 */
 	protected boolean nextPlayer() {
@@ -176,7 +168,7 @@ public abstract class ServerRuleset {
 	}
 
 	/** 
-	 * Setzt den Spieler der am Nächsten am Zug ist, im Gamestate
+	 * Setzt den Spieler der am Naechsten am Zug ist, im Gamestate
 	 * @param player Der Playerstate eines Spielers
 	 * @return false wenn der selbe Spieler nochmal als currentPlayer gesetzt wird
 	 */
@@ -203,7 +195,7 @@ public abstract class ServerRuleset {
 	
 	
 	/**
-	 * Fügt einen Spieler ins Spiel ein
+	 * Fuegt einen Spieler ins Spiel ein
 	 * @param name Der name vom Spieler
 	 */
 	protected void addPlayerToGame(String name) {
@@ -233,7 +225,7 @@ public abstract class ServerRuleset {
 	 * @param name Der Name vom Spieler
 	 */
 	protected void send(RulesetMessage message, String name) {
-		server.send(message,name);
+		server.sendRulesetMessage(name,message);
 	}
 	
 	
@@ -242,7 +234,7 @@ public abstract class ServerRuleset {
 	 * @param message Die Nachricht
 	 */
 	protected void broadcast(RulesetMessage message) {
-		server.broadcast(message);
+		server.broadcastRulesetMessage(message);
 	}
 	
 	/** 
@@ -257,7 +249,7 @@ public abstract class ServerRuleset {
 	/** 
 	 * Verarbeitet die RulesetMessage dass eine Karte vom Spieler gespielt.
 	 * Die wird dann in isValidMove überprüft, bei falsche Eingabe wird´
-	 * generateMsgCardRequest für den selben Spieler aufgerufen. 
+	 * eine MsgCardRequest an den selben Spieler geschickt. 
 	 * Bei richtiger Eingabe geht das Spiel weiter.
 	 * @param msgCard Die Nachricht vom Client welche Karte gespielt wurde
 	 * @param name Der Name des Spielers
@@ -287,7 +279,7 @@ public abstract class ServerRuleset {
 	/**
 	 * Verteilt eine bestimmte Anzahl an Karten an die Spieler
 	 * @param number Die Anzahl an Karten
-	 * @return Gibt true zurück wenn ein Spieler keine Karten hat, false sonst
+	 * @return Gibt true zurueck wenn ein Spieler keine Karten hat, false sonst
 	 */
 	protected boolean dealCards(int number) {
 		return false;	
@@ -306,7 +298,7 @@ public abstract class ServerRuleset {
 	/**
 	 * Der momentane Spieler spielt eine Karte
 	 * @param card Die gespielte Karte
-	 * @return true falls der Spieler die Karte hat
+	 * @return true falls der Spieler die Karte hat, false wenn nicht
 	 */
 	protected boolean playCard(Card card) {
 		return gameState.playCard(card);
@@ -314,17 +306,17 @@ public abstract class ServerRuleset {
 	
 	/**
 	 * Setzt eine Karte als Trumpf
-	 * @param card Eine karte
+	 * @param card Eine Karte
 	 */
 	protected void setTrumpCard(Card card) {
 		gameState.setTrumpCard(card);
 	}
 
 	/** 
-	 * Prüft ob ein gemachter Zug vom currentPlayer in einem Spiel gültig war,
+	 * Prueft ob ein gemachter Zug vom currentPlayer in einem Spiel gueltig war,
 	 * wenn nicht wird an den Spieler erneut eine MsgCardRequest gesendet
 	 * @param card Die Karte die gespielt wurde
-	 * @return true falls Zug gültig und false wenn nicht
+	 * @return true falls Zug gueltig und false wenn nicht
 	 */
 	protected abstract boolean isValidMove(Card card);
 	
@@ -335,13 +327,13 @@ public abstract class ServerRuleset {
 
 	/** 
 	 * Berechnet das Ergebnis einer Rundenberechnung und ist verantwortlich 
-	 * für das Setzten von Punkten beim Rundenende, sowie zur Überprüfung auf
+	 * fuer das Setzten von Punkten beim Rundenende, sowie zur Überprüfung auf
 	 * Spielende. 
 	 */
 	protected abstract void calculateRoundOutcome();
 
 	/**
-	 * Wird beim Spielende aufgerufen und gibt den Namen vom Sieger zurück
+	 * Wird bei Spielende aufgerufen und gibt den Namen vom Sieger zurück
 	 */
 	protected abstract String getWinner();
 	

@@ -4,7 +4,7 @@
 package Ruleset;
 
 /** 
- * Die Otherdata eines Spielers zum Spiel Wizard
+ * WizData. Die Otherdata eines Spielers zum Spiel Wizard
  */
 public class WizData extends OtherData {
 	/** 
@@ -32,7 +32,7 @@ public class WizData extends OtherData {
 	 * Beim Spielstart werden die vorausgesagten Stiche des Spieler gespeichert
 	 * @param annouceTricks Die vorausgesagten Stiche des Spielers
 	 */
-	protected void setAnnounceTricks(int annouceTricks) {
+	protected void setAnnouncedTricks(int annouceTricks) {
 		this.announcedTricks = annouceTricks;
 	}
 

@@ -6,12 +6,15 @@ import Ruleset.ServerRuleset;
 import java.io.Serializable;
 
 /**
+ * MsgNumberRequest.
  * Diese Klasse ist eine Verfeinerung der RulesetMessage-Klasse.
+ * Sie Wird gesendet, wenn die Eingabe einer Zahl gefordert werden
+ * soll.
  */
 public class MsgNumberRequest implements RulesetMessage, Serializable {
 
     /**
-     * Dies ist der Kontruktor f�r eine neue MsgNumberRequest-Nachricht.
+     * Dies ist der Kontruktor fuer eine neue MsgNumberRequest-Nachricht.
      */
     public MsgNumberRequest() {
     }

@@ -8,16 +8,17 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- *  Diese Klasse ist ein spezielles Kommunikations-Objekt.
- *  Sie liefert die Liste der Spieler, die sich bereits
- *  beim Betreten des Wartefensters darin befinden.
+ * ComInitGameLobby.
+ * Diese Klasse ist ein spezielles Kommunikations-Objekt.
+ * Sie liefert die Liste der Spieler, die sich bereits
+ * beim Betreten des Wartefensters darin befinden.
  */
 public class ComInitGameLobby implements ComObject, Serializable {
 
 	private List<String> playerList;
 
     /**
-     * Dies ist der Kontruktor für eine neue ComInitGameLobby-Nachricht.
+     * Dies ist der Kontruktor fuer eine neue ComInitGameLobby-Nachricht.
      * @param playerList ist die Liste aller Player, die sich im
      *                   Wartefenster befinden.
      */
@@ -25,6 +26,12 @@ public class ComInitGameLobby implements ComObject, Serializable {
         this.playerList = playerList;
     }
 
+    /**
+     * Diese Methode liefert die Liste der Player, die sich beim
+     * Hinzufuegen eines weiteren Spielers bereits im Wartefenster
+     * befinden.
+     * @return  die Liste der Spieler, die im Wartefenster sind.
+     */
     public List<String> getPlayerList() {
         return playerList;
     }

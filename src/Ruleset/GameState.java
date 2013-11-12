@@ -102,14 +102,6 @@ public class GameState {
 	}
 	
 	/**
-	 * Setzt die Spielrundenanzahl
-	 * @param Die eine neue Rundenanzahl
-	 */
-	protected void setRoundNumber(int number) {
-		
-	}
-	
-	/**
 	 * Setzt einen neuen Spieler als currentPlayer
 	 * @param player Der neue currentPlayer
 	 */
@@ -196,7 +188,7 @@ public class GameState {
 	/**
 	 * Holt die Karten eines Spielers
 	 * @param name Der Name vom Spieler 
-	 * @return Die Karten eines Spielers zurück, wenn der Spieler nicht gefunden
+	 * @return Die Karten eines Spielers zurueck, wenn der Spieler nicht gefunden
 	 * wird, wird eine leere Liste zurückgegeben
 	 */
 	protected List<Card> getPlayerCards(String name) {
@@ -237,7 +229,7 @@ public class GameState {
 	}
 	
 	/**
-	 * Setzt den nächsten Spieler
+	 * Setzt den naechsten Spieler
 	 */
 	protected void nextPlayer() {
 		ListIterator<PlayerState> i = players.listIterator(

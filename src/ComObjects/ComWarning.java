@@ -7,9 +7,10 @@ import Server.Server;
 import java.io.Serializable;
 
 /**
- *  Diese Klasse ist ein spezielles Kommunikations-Objekt.
- *  Sie soll dem Spieler eine Mitteilung senden und so �ber
- *  ein Fehlerevent informieren.
+ * ComWarning.
+ * Diese Klasse ist ein spezielles Kommunikations-Objekt.
+ * Sie soll dem Spieler eine Mitteilung senden und so ueber
+ * ein Fehlerevent informieren.
  */
 public class ComWarning implements ComObject, Serializable {
 
@@ -17,16 +18,16 @@ public class ComWarning implements ComObject, Serializable {
 
     /**
      * Dies ist der Konstruktor einer neuen ComWarning-Nachricht.
-     * Er enth�lt eine Warnung an den Spieler, wenn ein Fehler
+     * Er enthaelt eine Warnung an den Spieler, wenn ein Fehler
      * passiert.
-     * @param warning ist die Warnung, die der Spieler erh�lt.
+     * @param warning ist die Warnung, die der Spieler erhaelt.
      */
     public ComWarning(String warning) {
         this.warning = warning;
     }
 
     /**
-     * Diese Methode gibt die Nachricht zur�ck, die dem Spieler
+     * Diese Methode gibt die Nachricht zurueck, die dem Spieler
      * den Fehler mitteilt.
      * @return die Warnnachricht.
      */

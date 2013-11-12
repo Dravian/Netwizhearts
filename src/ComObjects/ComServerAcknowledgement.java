@@ -7,8 +7,9 @@ import Server.Server;
 import java.io.Serializable;
 
 /**
+ * ComServerAcknowledgement.
  * Diese Klasse ist ein spezielles Kommunikations-Objekt.
- * Diese Nachricht wird von Server als Bestätigung gesendet.
+ * Diese Nachricht wird vom Server als Bestaetigung gesendet.
  */
 public class ComServerAcknowledgement implements ComObject, Serializable {
 

@@ -7,20 +7,33 @@ import ComObjects.MsgMultiCards;
 import ComObjects.MsgMultiCardsRequest;
 
 /**
- * Diese Klasse erstellt das Regelwerk zum Spiel Hearts. Sie enthält zudem weitere Methoden, 
- * welche für das Spiel Hearts spezifisch benötigt werden, wie die Regelung zum Tausch von Karten 
+ * ServerHearts. Diese Klasse erstellt das Regelwerk zum Spiel Hearts. Sie enthaelt zudem weitere Methoden, 
+ * welche für das Spiel Hearts spezifisch benoetigt werden, wie die Regelung zum Tausch von Karten 
  * und die Berechnung der Stichpunkten.
  */
 public class ServerHearts extends ServerRuleset {
+	/**
+	 * Die Minimale Anzahl an Spielern im Spiel Hearts
+	 */
 	private final static int MIN_PLAYERS = 4;
+	/**
+	 * Die maximale Anzahl an Spielern im Spiel Wizard
+	 */
 	private final static int MAX_PLAYERS = 4;
+	/**
+	 * Der Typ des Ruleset
+	 */
+	private final static RulesetType RULESET = RulesetType.Hearts;
+	/**
+	 * Die Punktanzahl eines Spielers ab der das Spiel zu Ende ist
+	 */
 	private final static int ENDING_POINTS = 100;
 	
 	/**
 	 * Erstellt das Regelwerk zum Spiel Hearts
 	 */
 	public ServerHearts(GameServer s) {
-		super(RulesetType.Hearts, MIN_PLAYERS, MAX_PLAYERS, s);
+		super(RULESET, MIN_PLAYERS, MAX_PLAYERS, s);
 	}
 	
 	@Override
@@ -38,9 +51,9 @@ public class ServerHearts extends ServerRuleset {
 	}
 		
 	/**
-	 * Verarbeitet die RulesetMessage dass mehrerer Karten vom Spieler übergeben werden.
-	 * Die wird dann in isValidMove überprüft, bei falsche Eingabe wird´
-	 * generateMsgMultiCardRequest für den selben Spieler aufgerufen. 
+	 * Verarbeitet die RulesetMessage dass mehrerer Karten vom Spieler uebergeben werden.
+	 * Die wird dann in areValidChoosenCards ueberprueft, bei falsche Eingabe wird´
+	 * eine MsgMultiCardsRequest an den selben Spieler gesendet. 
 	 * Bei richtiger Eingabe geht das Spiel weiter.
 	 * @param msgMultiCard Die Nachricht vom Client
 	 * @param name Der Name des Spielers
@@ -50,20 +63,12 @@ public class ServerHearts extends ServerRuleset {
 	}
 	
 	/**
-	 * Überprüft ob eine übergebenes Kartenset von einem Spieler gültig ist
+	 * Ueberprueft ob eine uebergebenes Kartenset von einem Spieler gültig ist
 	 * @param cards Ein Kartenset
-	 * @return true falls das Kartenset gültig ist, false wenn nicht
+	 * @return true falls das Kartenset gueltig ist, false wenn nicht
 	 */
 	private boolean areValidChoosenCards(Set<Card> cards, String name) {
 		return false;
-	}
-	
-	/**
-	 * Generiert eine MsgMultiCardRequest und ruft bei sich die send Methode auf
-	 * @param name Der Name vom Spieler
-	 */
-	private void generateMsgMultiCardRequest(String name) {
-		
 	}
 
 	@Override

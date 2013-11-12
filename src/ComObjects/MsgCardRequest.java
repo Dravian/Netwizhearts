@@ -6,6 +6,7 @@ import Ruleset.ServerRuleset;
 import java.io.Serializable;
 
 /**
+ * MsgCardRequest.
  * Diese Klasse ist eine Verfeinerung der RulesetMessage-Klasse.
  * Diese Nachricht wird von Server gesendet, um einem Spieler
  * mitzuteilen, dass er das Spielen einer Karte erwartet.
@@ -17,7 +18,6 @@ public class MsgCardRequest implements RulesetMessage, Serializable {
      */
     public MsgCardRequest() {
     }
-
 
     @Override
     public void visit(ServerRuleset serverRuleset, String name) {

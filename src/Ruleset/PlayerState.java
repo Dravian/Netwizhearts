@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /** 
- * Repräsentiert den Spielzustand eines Spielers, und wird unter anderem 
+ * PlayerState. Repraesentiert den Spielzustand eines Spielers, und wird unter anderem 
  * im GameState gespeichert. Sie enthält den Namen des Spielers, seine Handkarten
  * und OtherData.
  */
@@ -77,7 +77,7 @@ public class PlayerState {
 	/**
 	 * Entfernt eine Karte aus der Hand des Spielers 
 	 * @param card
-	 * @return ownHand.remove(card) Gibt true zurück wenn die Karte in der Hand ist
+	 * @return Gibt true zurueck wenn die Karte in der Hand ist
 	 * 								und false sonst
 	 */
 	protected boolean removeCard(Card card) {

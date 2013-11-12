@@ -7,17 +7,18 @@ import Server.Server;
 import java.io.Serializable;
 
 /**
- *  Diese Klasse ist ein spezielles Kommunikations-Objekt.
- *  Sie ist die grundlegende Nachricht eines Regelwerkaufrufes
- *  und enthält eine verfeinerte Nachricht mit weiteren Informationen,
- *  die RulesetMessage.
+ * ComRuleset.
+ * Diese Klasse ist ein spezielles Kommunikations-Objekt.
+ * Sie ist die grundlegende Nachricht eines Regelwerkaufrufes
+ * und enthaelt eine verfeinerte Nachricht mit weiteren Informationen,
+ * die RulesetMessage.
  */
 public class ComRuleset implements ComObject, Serializable {
 
 	private RulesetMessage rulesetMessage;
 
     /**
-     * Dies ist der Kontruktor für eine neue ComResult-Nachricht.
+     * Dies ist der Kontruktor fuer eine neue ComRuleset-Nachricht.
      * @param rulesetMessage ist eine Nachricht, die ans Ruleset
      *                       gesendet werden soll.
      */
@@ -26,7 +27,7 @@ public class ComRuleset implements ComObject, Serializable {
     }
 
     /**
-     * Diese Methode gibt die Nachricht zurück, die ans Ruleset
+     * Diese Methode gibt die Nachricht zurueck, die ans Ruleset
      * gesendet werden soll.
      * @return die Nachricht.
      */

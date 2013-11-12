@@ -7,10 +7,12 @@ import Server.Server;
 import java.io.Serializable;
 
 /**
- *  Diese Klasse ist ein spezielles Kommunikations-Objekt.
- *  Sie ist eine Nachricht, die an den Server gesendet wird,
- *  wenn der Spieler einem bestimmten Spiel beitreten will.
- *  Dazu enth�lt es den Namen des Spielleiters als String.
+ * ComJoinRequest.
+ * Diese Klasse ist ein spezielles Kommunikations-Objekt.
+ * Sie ist eine Nachricht, die an den Server gesendet wird,
+ * wenn der Spieler einem bestimmten Spiel beitreten will.
+ * Dazu enthaelt sie den Namen des Spielleiters als String
+ * und ein Passwort, falls dieses von Spielleiter gesetzt wurde.
  */
 public class ComJoinRequest implements ComObject, Serializable {
 
@@ -24,11 +26,11 @@ public class ComJoinRequest implements ComObject, Serializable {
 	private String password;
 
     /**
-     * Dies ist der Kontruktor f�r eine neue ConJoinRequest-Nachricht.
+     * Dies ist der Kontruktor fuer eine neue ConJoinRequest-Nachricht.
      * Ein Spiel kann durch den eindeutigen Namen der Spielleiters
      * identifiziert werden.
      * @param gameMasterName ist der Name der Spielleiters.
-     * @param password f�r das Spiel.
+     * @param password fuer das Spiel.
      */
     public ComJoinRequest(String gameMasterName, String password) {
         this.gameMasterName = gameMasterName;
@@ -36,10 +38,10 @@ public class ComJoinRequest implements ComObject, Serializable {
     }
 
     /**
-     * Diese Methode gibt den Namen des Spielleiters zurück.
+     * Diese Methode gibt den Namen des Spielleiters zurueck.
      * Dieser ist eindeutig, so kann ein bestimmtes Spiel
      * identifiziert werden.
-     * @return den Namen des Spielleiters.
+     * @return der Name des Spielleiters.
      */
     public String getGameMasterName() {
         return gameMasterName;

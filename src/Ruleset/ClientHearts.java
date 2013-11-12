@@ -11,18 +11,23 @@ import ComObjects.MsgMultiCards;
 import ComObjects.MsgMultiCardsRequest;
 
 /** 
- * Diese Klasse bildet das Regelwerk für den Clientmodel bei einer Partie Hearts
+ * ClientHearts. Diese Klasse bildet das Regelwerk für den Clientmodel bei einer Partie Hearts
  */
 public class ClientHearts extends ClientRuleset {
 	/**
-	 * Die Mindestanzahl an Spielern die Hearts spielen können
+	 * Die Mindestanzahl an Spielern die Hearts spielen koennen
 	 */
 	private static final int MIN_PLAYERS = 4;
 	
 	/**
-	 * Die Maximale Anzahl an Spielern die Hearts spielen können 
+	 * Die Maximale Anzahl an Spielern die Hearts spielen koennen 
 	 */
 	private static final int MAX_PLAYERS = 4;
+	
+	/**
+	 * Der RulesetTyp des Spiels
+	 */
+	private static final RulesetType RULESET = RulesetType.Hearts;
 	
 	/**
 	 * Erzeugt ein ClientHearts
@@ -32,22 +37,10 @@ public class ClientHearts extends ClientRuleset {
 		super(RulesetType.Hearts, MIN_PLAYERS, MAX_PLAYERS,client);
 	}
 	
-	/**
-	 * Überprüft ob ein gemachter Zug zu dem Spiel Hearts gültig ist
-	 * @return isValid true falls Zug gültig, false wenn nicht
-	 */
+	@Override
 	public boolean isValidMove(Card card) {
 		boolean isValid = false;
 		return isValid;
-	}
-	
-	/**
-	 * Generiert eine MsgMultiCards aus den Karten und ruft bei sich 
-	 * die send Methode auf
-	 * @param cards Das Set an Karten
-	 */
-	private void generateMsgMultiCards(Set<Card> cards) {
-		send(new MsgMultiCards(cards));
 	}
 	
 	/**
@@ -60,7 +53,7 @@ public class ClientHearts extends ClientRuleset {
 	}
 	
 	/**
-	 * Gibt zurück ob die Karten die der Client tauschen will, gültig sind
+	 * Gibt zuueck ob die Karten die der Client tauschen will, gueltig sind
 	 * @param cards Die zu tauschenden Karten
 	 * @return true wenn Karten valide sind, false wenn nicht
 	 */

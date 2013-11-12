@@ -4,7 +4,7 @@
 package Ruleset;
 
 /** 
- * Die Otherdata eines Spielers zum Spiel Hearts
+ * HeartsData. Die Otherdata eines Spielers zum Spiel Hearts
  */
 public class HeartsData extends OtherData {
 
