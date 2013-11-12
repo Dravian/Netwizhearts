@@ -169,8 +169,6 @@ public class GameServer extends Server {
 	
 	/**
 	 * Diese Methode behandelt den Fall, dass ein Spieler das laufende Spiel verlaesst.
-	 * Sie gibt einen Player, der das Spiel verlassen will, Aufruf von changeServer an die 
-	 * ServerLobby zurueck und schickt ihm ein ComInitLobby.
 	 * Alle Spieler, die sich im Spiel befinden werden durch Aufruf von changeServer an 
 	 * die Lobby zurueckgegeben und bekommen ein ComInitLobby und ein ComWarning.
 	 * Das Spiel wird aus dem gameServerSet des LobbyServers entfernt.
