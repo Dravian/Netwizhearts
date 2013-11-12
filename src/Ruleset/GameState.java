@@ -196,7 +196,7 @@ public class GameState {
 	/**
 	 * Holt die Karten eines Spielers
 	 * @param name Der Name vom Spieler 
-	 * @return Die Karten eines Spielers zurück, wenn der Spieler nicht gefunden
+	 * @return Die Karten eines Spielers zurueck, wenn der Spieler nicht gefunden
 	 * wird, wird eine leere Liste zurückgegeben
 	 */
 	protected List<Card> getPlayerCards(String name) {
@@ -237,7 +237,7 @@ public class GameState {
 	}
 	
 	/**
-	 * Setzt den nächsten Spieler
+	 * Setzt den naechsten Spieler
 	 */
 	protected void nextPlayer() {
 		ListIterator<PlayerState> i = players.listIterator(

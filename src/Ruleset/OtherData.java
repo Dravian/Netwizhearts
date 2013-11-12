@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 /** 
- * OtherData speichert alle Spielinformationen eines Spielers, 
+ * OtherData. OtherData speichert alle Spielinformationen eines Spielers, 
  * außer seiner eigenen Spielhand.
  */
 public abstract class OtherData {
@@ -37,7 +37,7 @@ public abstract class OtherData {
 	}
 	
 	/**
-	 * Entfernt die gemachten Stichkarten eines Spielers und fügt sie wieder in den
+	 * Entfernt die gemachten Stichkarten eines Spielers und fuegt sie wieder in den
 	 * Kartenstapel
 	 * @return Die Kartenstiche
 	 */
@@ -47,7 +47,7 @@ public abstract class OtherData {
 	}
 	
 	/**
-	 * Gibt die Anzahl der gemachten Stiche des Spielers zurück
+	 * Gibt die Anzahl der gemachten Stiche des Spielers zurueck
 	 * @return Die Anzahl der gemachten Stiche
 	 */
 	protected int getNumberOfTricks() {
@@ -70,7 +70,7 @@ public abstract class OtherData {
 	}
 	
 	/**
-	 * Gibt die Stringrepräsentation der OtherData zurück
+	 * Gibt die Stringrepraesentation der OtherData zurück
 	 */
 	public abstract String toString();
 }

@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Map;
 
 /** 
- * Das GameClientUpdate wird vom RuleSet über den GameServer an den Client geschickt 
- * und enthält alle Änderungen des GameState, die für den Client relevant sind. 
- * Das wären seine Spielhand, der Ablagestapel sowie die Otherdata von allen Spielern
+ * GameClientUpdate. Das GameClientUpdate wird vom RuleSet ueber den GameServer an den Client geschickt 
+ * und enthaelt alle Aenderungen des GameState, die für den Client relevant sind. 
+ * Das waeren seine Spielhand, der Ablagestapel sowie die Otherdata von allen Spielern
  * und die Trumpfkarte.
  */
 public class GameClientUpdate {
