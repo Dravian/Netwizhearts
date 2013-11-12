@@ -7,15 +7,16 @@ import Server.Server;
 import java.io.Serializable;
 
 /**
+ * ComChatMessage.
  * Diese Klasse ist ein spezielles Kommunikations-Objekt.
- * Sie enthält eine Chatnachricht in Form eines Strings.
+ * Sie enthaelt eine Chatnachricht in Form eines Strings.
  */
 public class ComChatMessage implements ComObject, Serializable {
 
 	private String chatMessage;
 
     /**
-     * Dies ist der Kontruktor für eine neue ComChatMessage-Nachricht.
+     * Dies ist der Kontruktor fuer eine neue ComChatMessage-Nachricht.
      * @param message ist die Chatnachricht, die versendet wird.
      */
     public ComChatMessage(String message) {

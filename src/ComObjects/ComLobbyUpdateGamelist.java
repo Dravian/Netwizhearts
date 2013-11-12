@@ -7,10 +7,11 @@ import Server.Server;
 
 import java.io.Serializable;
 
-/** 
+/**
+ * ComLobbyUpdateGamelist.
  * Diese Klasse ist ein spezielles Kommunikations-Objekt.
  * Sie aktualisiert die Gameliste in der Lobby.
- * Dazu enthält sie den GameServer und ein RemoveFlag.
+ * Dazu enthaelt sie den GameServer und ein RemoveFlag.
  */
 public class ComLobbyUpdateGamelist implements ComObject, Serializable {
 
@@ -18,8 +19,8 @@ public class ComLobbyUpdateGamelist implements ComObject, Serializable {
 	private GameServerRepresentation gameServer;
 
     /**
-     * Dies ist der Kontruktor für eine neue ComLobbyUpdateGamelist-Nachricht.
-     * @param removeFlag zeigt an, ob das Spiel gelöscht werden soll.
+     * Dies ist der Kontruktor fuer eine neue ComLobbyUpdateGamelist-Nachricht.
+     * @param removeFlag zeigt an, ob das Spiel geloescht werden soll.
      * @param gameServer ist das Spiel.
      */
     public ComLobbyUpdateGamelist(boolean removeFlag, GameServerRepresentation gameServer) {
@@ -28,7 +29,7 @@ public class ComLobbyUpdateGamelist implements ComObject, Serializable {
     }
 
     /**
-     * Diese Methode liefert, ob ein Spiel gelöscht werden soll oder nicht.
+     * Diese Methode liefert, ob ein Spiel geloescht werden soll oder nicht.
      * @return ob das Spiel gelöscht wird.
      */
     public boolean isRemoveFlag() {

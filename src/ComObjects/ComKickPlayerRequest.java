@@ -7,22 +7,23 @@ import Server.Server;
 import java.io.Serializable;
 
 /**
+ * ComKickPlayerRequest.
  * Diese Klasse ist ein spezielles Kommunikations-Objekt.
  * Sie ist eine Nachricht an den Server, die angibt einen
- * Spieler vom Spiel zu entfernen. Dazu enthält es einen String,
- * der den Namen des Spielers enthält.
+ * Spieler vom Spiel zu entfernen. Dazu enthaelt sie einen String,
+ * der den Namen des Spielers enthaelt.
  */
 public class ComKickPlayerRequest implements ComObject, Serializable {
 
     /**
-	 * Dies ist der Name des Players, der gekicked werden soll.
+	 * Dies ist der Name des Players, der entfernt werden soll.
 	 */
 	private String playerName;
 
 
     /**
-     * Dies ist der Kontruktor für eine neue ComKickPlayerRequest-Nachricht.
-     * Diese enthält den Namen des Spielers, der aus den Spiel gelöscht werden soll.
+     * Dies ist der Kontruktor fuer eine neue ComKickPlayerRequest-Nachricht.
+     * Diese enthaelt den Namen des Spielers, der aus den Spiel geloescht werden soll.
      * @param playerName ist der Name des Spielers.
      */
     public ComKickPlayerRequest(String playerName) {

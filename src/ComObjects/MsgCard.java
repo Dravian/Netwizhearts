@@ -6,7 +6,8 @@ import Ruleset.ServerRuleset;
 
 import java.io.Serializable;
 
-/** 
+/**
+ * MsgCard.
  * Diese Klasse ist eine Verfeinerung der RulesetMessage-Klasse.
  * Sie beinhaltet die ausgespielte Karte eines Spielers.
  */
@@ -15,8 +16,8 @@ public class MsgCard implements RulesetMessage, Serializable {
 	private Card card;
 
     /**
-     * Dies ist der Kontruktor für eine neue MsgCard-Nachricht.
-     * Diese enthält die Information, welche Karte von einem
+     * Dies ist der Kontruktor fuer eine neue MsgCard-Nachricht.
+     * Diese enthaelt die Information, welche Karte von einem
      * Spieler gespielt wurde.
      * @param card ist die Karte.
      */
@@ -25,7 +26,7 @@ public class MsgCard implements RulesetMessage, Serializable {
     }
 
     /**
-     * Diese Methode gibt die ausgespielte Karte des Spielers zurück.
+     * Diese Methode gibt die ausgespielte Karte des Spielers zurueck.
      * @return die Karte.
      */
     public Card getCard() {
@@ -39,5 +40,6 @@ public class MsgCard implements RulesetMessage, Serializable {
 
     @Override
     public void visit(ClientRuleset clientRuleset) {
-        clientRuleset.resolveMessage(this);    }
+        clientRuleset.resolveMessage(this);
+    }
 }

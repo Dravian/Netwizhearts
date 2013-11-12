@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.util.Map;
 
 /**
+ * ComGameEnd.
  * Diese Klasse ist ein spezielles Kommunikations-Objekt.
  * Sie liefert den Gewinner eines Spiels und eine Auflistung
  * der Spieler mit ihren erspielten Punkten und wird versendet,
@@ -20,7 +21,7 @@ public class ComGameEnd implements ComObject, Serializable {
     private Map<String, Integer> points;
 
     /**
-     * Dies ist der Kontruktor für eine neue ComGameEnd-Nachricht.
+     * Dies ist der Kontruktor fuer eine neue ComGameEnd-Nachricht.
      * @param winner    ist der Gewinner des Spiels.
      * @param points    ist eine Auflistung der Spieler mit ihren Punkten.
      */
@@ -30,7 +31,7 @@ public class ComGameEnd implements ComObject, Serializable {
     }
 
     /**
-     * Diese Methode gibt den Gewinner zurück.
+     * Diese Methode gibt den Gewinner zurueck.
      * @return  den Gewinner.
      */
     public String getWinner() {
@@ -39,7 +40,7 @@ public class ComGameEnd implements ComObject, Serializable {
 
     /**
      * Diese Methode gibt die Auflistung der Spieler mit ihren
-     * zugehörigen Punkten zurück.
+     * zugehoerigen Punkten zurueck.
      * @return  die Liste der Spieler mit ihren Punkten.
      */
     public Map<String, Integer> getPoints() {

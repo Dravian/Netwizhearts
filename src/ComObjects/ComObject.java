@@ -1,13 +1,4 @@
-/**
- * 
- */
 package ComObjects;
-
-/** 
- * Die Klasse ComObject ist eine Klasse, die ein Objekt darstellt,
- * das zur Kommunikation genutzt werden kann. Spezielle ComObject Klassen
- * erben von dieser grundlegenden Klasse.
- */
 
 import java.io.Serializable;
 
@@ -15,27 +6,27 @@ import Server.Player;
 import Server.Server;
 import Client.ClientModel;
 
+/**
+ * ComObject.
+ * Die Klasse ComObject ist ein Interface, welches ein Objekt darstellt,
+ * das zur Kommunikation genutzt werden kann. Spezielle ComObject Klassen
+ * implementieren diese grundlegenden Klasse.
+ */
 public interface ComObject {
 
-	/**
-	 * Überladene Methode die von dem ClientListenerThread nach
-	 * empfang einer Nachricht aufgerufen wird.
-	 * @param model Das Client Model,
-	 * an das sich das ComObjekt
-	 * weitergibt.
+    /**
+     * Diese Methode ist noetig, damit der ClientListenerThread entscheiden kann
+     * welche Message das Object enthaelt und wie diese verarbeitet werden soll.
+	 * @param model ist das ClientModel, welches übergeben wird, damit
+     *              die ueberladene Methode richtig gewaehlt wird.
 	 */
 	public void process(ClientModel model);
-		//model.receiveMessage(this);
 
-	
-	/**
-	 * Überladene Methode die von einem PlayerThread nach
-	 * empfang einer Nachricht aufgerufen wird.
-	 * @param player Der Client welcher den Aufruf startet.
-	 * @param server Der Server an den sich das ComObjekt 
-	 * weitergibt.
+    /**
+     * Diese Methode ist noetig, damit der Thread Player entscheiden kann
+     * welche Message das Object enthaelt und wie diese verarbeitet werden soll.
+	 * @param player    Der Client welcher den Aufruf startet.
+	 * @param server    Der Server an den sich das ComObjekt weitergibt.
 	 */
 	public void process(Player player, Server server);
-		//server.receiveMessage(player,this);
-
 }
