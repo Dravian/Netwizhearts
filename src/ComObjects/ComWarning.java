@@ -1,30 +1,46 @@
 package ComObjects;
 
-/** 
+import Client.ClientModel;
+import Server.Player;
+import Server.Server;
+
+import java.io.Serializable;
+
+/**
  *  Diese Klasse ist ein spezielles Kommunikations-Objekt.
- *  Sie soll dem Spieler eine Mitteilung senden und so über
+ *  Sie soll dem Spieler eine Mitteilung senden und so ï¿½ber
  *  ein Fehlerevent informieren.
  */
-public class ComWarning extends ComObject {
+public class ComWarning implements ComObject, Serializable {
 
     private String warning;
 
     /**
      * Dies ist der Konstruktor einer neuen ComWarning-Nachricht.
-     * Er enthält eine Warnung an den Spieler, wenn ein Fehler
+     * Er enthï¿½lt eine Warnung an den Spieler, wenn ein Fehler
      * passiert.
-     * @param warning ist die Warnung, die der Spieler erhält.
+     * @param warning ist die Warnung, die der Spieler erhï¿½lt.
      */
     public ComWarning(String warning) {
         this.warning = warning;
     }
 
     /**
-     * Diese Methode gibt die Nachricht zurück, die dem Spieler
+     * Diese Methode gibt die Nachricht zurï¿½ck, die dem Spieler
      * den Fehler mitteilt.
      * @return die Warnnachricht.
      */
     public String getWarning() {
         return warning;
+    }
+
+    @Override
+    public void process(ClientModel model) {
+        model.receiveMessage(this);
+    }
+
+    @Override
+    public void process(Player player, Server server) {
+        server.receiveMessage(player,this);
     }
 }

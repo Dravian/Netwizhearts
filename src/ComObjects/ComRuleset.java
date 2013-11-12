@@ -1,12 +1,18 @@
 package ComObjects;
 
-/** 
+import Client.ClientModel;
+import Server.Player;
+import Server.Server;
+
+import java.io.Serializable;
+
+/**
  *  Diese Klasse ist ein spezielles Kommunikations-Objekt.
  *  Sie ist die grundlegende Nachricht eines Regelwerkaufrufes
  *  und enthält eine verfeinerte Nachricht mit weiteren Informationen,
  *  die RulesetMessage.
  */
-public class ComRuleset extends ComObject {
+public class ComRuleset implements ComObject, Serializable {
 
 	private RulesetMessage rulesetMessage;
 
@@ -26,5 +32,15 @@ public class ComRuleset extends ComObject {
      */
     public RulesetMessage getRulesetMessage() {
         return rulesetMessage;
+    }
+
+    @Override
+    public void process(ClientModel model) {
+        model.receiveMessage(this);
+    }
+
+    @Override
+    public void process(Player player, Server server) {
+        server.receiveMessage(player,this);
     }
 }

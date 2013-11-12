@@ -1,8 +1,13 @@
 package ComObjects;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
+
+import Client.ClientModel;
 import Server.GameServerRepresentation;
+import Server.Player;
+import Server.Server;
 
 /** 
  *  Diese Klasse ist ein spezielles Kommunikations-Objekt.
@@ -10,7 +15,7 @@ import Server.GameServerRepresentation;
  *  Server verbindet oder nach einem Spiel in die Lobby zurückkehrt.
  *  Dazu enthält sie sowohl die playerList, als auch die gameList.
  */
-public class ComInitLobby extends ComObject {
+public class ComInitLobby implements ComObject, Serializable {
 
 	private List<String> playerList;
 
@@ -43,5 +48,15 @@ public class ComInitLobby extends ComObject {
      */
     public Set<GameServerRepresentation> getGameList() {
         return gameList;
+    }
+
+    @Override
+    public void process(ClientModel model) {
+        model.receiveMessage(this);
+    }
+
+    @Override
+    public void process(Player player, Server server) {
+        server.receiveMessage(player,this);
     }
 }

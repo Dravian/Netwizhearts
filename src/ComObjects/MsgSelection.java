@@ -1,13 +1,17 @@
 package ComObjects;
 
+import Ruleset.ClientRuleset;
 import Ruleset.Colour;
+import Ruleset.ServerRuleset;
+
+import java.io.Serializable;
 
 /**
  * Diese Klasse ist eine Verfeinerung der RulesetMessage-Klasse.
  * Diese Nachricht enth�lt eine Kartenfarbe, die der
  * Spieler zuvor in einem Drop-Down Men� ausgewählt hat.
  */
-public class MsgSelection extends RulesetMessage {
+public class MsgSelection implements RulesetMessage, Serializable {
 
 	private Colour selection;
 
@@ -28,4 +32,12 @@ public class MsgSelection extends RulesetMessage {
     public Colour getSelection() {
         return selection;
     }
+
+    @Override
+    public void visit(ServerRuleset serverRuleset, String name) {
+        serverRuleset.resolveMessage(this, name);    }
+
+    @Override
+    public void visit(ClientRuleset clientRuleset) {
+        clientRuleset.resolveMessage(this);    }
 }

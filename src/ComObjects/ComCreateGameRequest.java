@@ -1,11 +1,17 @@
 package ComObjects;
 
-/** 
+import Client.ClientModel;
+import Server.Player;
+import Server.Server;
+
+import java.io.Serializable;
+
+/**
  * Diese Klasse ist ein spezielles Kommunikations-Objekt.
  * Diese Nachricht wird versendet, wenn ein neues Spiel erstellt
  * werden soll.
  */
-public class ComCreateGameRequest extends ComObject {
+public class ComCreateGameRequest implements ComObject, Serializable {
 
     private String gameName;
 
@@ -60,5 +66,15 @@ public class ComCreateGameRequest extends ComObject {
      */
     public String getPassword() {
         return password;
+    }
+
+    @Override
+    public void process(ClientModel model) {
+        model.receiveMessage(this);
+    }
+
+    @Override
+    public void process(Player player, Server server) {
+        server.receiveMessage(player,this);
     }
 }

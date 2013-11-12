@@ -1,13 +1,17 @@
 package ComObjects;
 
+import Ruleset.ClientRuleset;
 import Ruleset.GameClientUpdate;
+import Ruleset.ServerRuleset;
+
+import java.io.Serializable;
 
 /** 
  *  Diese Klasse ist eine Verfeinerung der RulesetMessage-Klasse.
  *  Sie wird dem Client gesendet, um dem ClientRuleset den aktuellen
  *  Spielzustand in Form eines GameClientUpdate zu übermitteln.
  */
-public class MsgUser extends RulesetMessage {
+public class MsgUser implements RulesetMessage, Serializable {
 
 	private GameClientUpdate gameClientUpdate;
 
@@ -26,5 +30,15 @@ public class MsgUser extends RulesetMessage {
      */
     public GameClientUpdate getGameClientUpdate() {
         return gameClientUpdate;
+    }
+
+    @Override
+    public void visit(ServerRuleset serverRuleset, String name) {
+        serverRuleset.resolveMessage(this, name);
+    }
+
+    @Override
+    public void visit(ClientRuleset clientRuleset) {
+        clientRuleset.resolveMessage(this);
     }
 }

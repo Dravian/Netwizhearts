@@ -1,12 +1,18 @@
 package ComObjects;
 
-/** 
+import Client.ClientModel;
+import Server.Player;
+import Server.Server;
+
+import java.io.Serializable;
+
+/**
  *  Diese Klasse ist ein spezielles Kommunikations-Objekt.
  *  Sie sendet eine Nachricht zum Update der Playerliste
  *  in der Lobby und Spiellobby. Dazu enthält sie den Player
  *  und ein removeFlag.
  */
-public class ComUpdatePlayerlist extends ComObject {
+public class ComUpdatePlayerlist implements ComObject, Serializable {
 
 	private String playerName;
 	private boolean removeFlag;
@@ -38,5 +44,15 @@ public class ComUpdatePlayerlist extends ComObject {
      */
     public boolean isRemoveFlag() {
         return removeFlag;
+    }
+
+    @Override
+    public void process(ClientModel model) {
+        model.receiveMessage(this);
+    }
+
+    @Override
+    public void process(Player player, Server server) {
+        server.receiveMessage(player,this);
     }
 }

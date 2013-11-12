@@ -1,5 +1,10 @@
 package ComObjects;
 
+import Client.ClientModel;
+import Server.Player;
+import Server.Server;
+
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -7,7 +12,7 @@ import java.util.List;
  *  Sie liefert die Liste der Spieler, die sich bereits
  *  beim Betreten des Wartefensters darin befinden.
  */
-public class ComInitGameLobby extends ComObject {
+public class ComInitGameLobby implements ComObject, Serializable {
 
 	private List<String> playerList;
 
@@ -20,12 +25,17 @@ public class ComInitGameLobby extends ComObject {
         this.playerList = playerList;
     }
 
-    /**
-     * Diese Methode gibt die Liste der Player zurück, die sich momentan
-     * inm Wartefenster befinden.
-     * @return die Liste der Spieler.
-     */
     public List<String> getPlayerList() {
         return playerList;
+    }
+
+    @Override
+    public void process(ClientModel model) {
+        model.receiveMessage(this);
+    }
+
+    @Override
+    public void process(Player player, Server server) {
+        server.receiveMessage(player,this);
     }
 }
