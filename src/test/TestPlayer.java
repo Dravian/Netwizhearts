@@ -1,4 +1,4 @@
-package chat;
+package test;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -9,15 +9,15 @@ import Server.Server;
 
 public class TestPlayer extends Player {
 
+	public TestPlayer(Server lobbyServer, ObjectOutputStream output,
+			ObjectInputStream input) {
+		super(lobbyServer, output, input);
+	}
+
 	private Server server;
 	
 	private ComObject inputComObject;
-	
-	public TestPlayer(Server server, ObjectOutputStream output,
-			ObjectInputStream input) {
-		
-		this.server = server;
-	}
+
 	
 	public ComObject getServerInput() {
 		return inputComObject;

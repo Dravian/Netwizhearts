@@ -1,4 +1,4 @@
-package chat;
+package test;
 
 import java.net.Socket;
 
