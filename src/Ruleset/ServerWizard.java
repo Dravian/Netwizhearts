@@ -14,6 +14,7 @@ import ComObjects.MsgSelectionRequest;
 public class ServerWizard extends ServerRuleset {
 	private static final int MIN_PLAYERS = 3;
 	private static final int MAX_PLAYERS = 6;
+	private int maxRounds;
 	
 	/**
 	 * Erstellt das Regelwerk zum Spiel Wizard
@@ -33,6 +34,20 @@ public class ServerWizard extends ServerRuleset {
 
 	}
 	
+	/**
+	 * Setzt die maximale Anzahl an Runden
+	 */
+	private void setMaxRounds() {
+		
+	}
+	
+	/**
+	 * Holt die maximale Anzahl an Runden die gespielt werden kann
+	 * @return
+	 */
+	protected int getMaxRounds() {
+		return maxRounds;
+	}
 	/**
 	 * Verarbeitet die RulesetMessage dass der Spieler eine Stichansage macht.
 	 * Die wird dann in isValidNumber überprüft, bei falsche Eingabe wird´
@@ -75,7 +90,7 @@ public class ServerWizard extends ServerRuleset {
 		return false;
 	}
 	/**
-	 * Generiert eine MsgNumberRequest und ruft bei sich die send Methode auf
+	 * Generiert eine MsgNumberRequest und ruft bei sich die broadcast Methode auf
 	 * @param name Der Name vom Spieler
 	 */
 	private void generateNumberRequest(String name) {
@@ -83,7 +98,7 @@ public class ServerWizard extends ServerRuleset {
 	}
 	
 	/**
-	 * Generiert eine MsgMultiCardRequest und ruft bei sich die send Methode auf
+	 * Generiert eine MsgMultiCardRequest und ruft bei sich die broadcast Methode auf
 	 * @param name Der Name vom Spieler
 	 */
 	private void generateMsgSelectionRequest(String name) {
@@ -98,6 +113,18 @@ public class ServerWizard extends ServerRuleset {
 
 	@Override
 	protected String getWinner() {
+		// TODO Automatisch erstellter Methoden-Stub
+		return null;
+	}
+
+	@Override
+	protected void generateMsgUser(String player) {
+		// TODO Automatisch erstellter Methoden-Stub
+		
+	}
+
+	@Override
+	protected GameClientUpdate generateGameClientUpdate(String player) {
 		// TODO Automatisch erstellter Methoden-Stub
 		return null;
 	}

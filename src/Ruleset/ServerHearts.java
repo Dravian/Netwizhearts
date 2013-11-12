@@ -14,6 +14,7 @@ import ComObjects.MsgMultiCardsRequest;
 public class ServerHearts extends ServerRuleset {
 	private final static int MIN_PLAYERS = 4;
 	private final static int MAX_PLAYERS = 4;
+	private final static int ENDING_POINTS = 100;
 	
 	/**
 	 * Erstellt das Regelwerk zum Spiel Hearts
@@ -26,6 +27,14 @@ public class ServerHearts extends ServerRuleset {
 	protected boolean isValidMove(Card card) {
 		boolean isValid = false;
 		return isValid;
+	}
+	
+	/**
+	 * Holt die Anzahl der Punkte die ein Spieler haben kann ab der, das Spiel vorbei ist
+	 * @return Anzahl der maximalen Punkte
+	 */
+	protected int getEndingPoints() {
+		return ENDING_POINTS;
 	}
 		
 	/**
@@ -71,5 +80,12 @@ public class ServerHearts extends ServerRuleset {
 	protected String getWinner() {
 		return null;
 	}
+
+	@Override
+	protected GameClientUpdate generateGameClientUpdate(String player) {
+		// TODO Automatisch erstellter Methoden-Stub
+		return null;
+	}
+
 
 }

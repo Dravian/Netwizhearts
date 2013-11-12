@@ -57,7 +57,7 @@ public class TestHeartsWinner {
 		hearts.addPlayerToGame("Mr. White");
 		hearts.addPlayerToGame("Mr. Orange");
 		hearts.addPlayerToGame("Mr. Brown");
-			
+		
 		OtherData dateblue = hearts.getPlayerState("Mr. Blue").getOtherData();
 		HeartsData heartsdatblue = (HeartsData) dateblue;
 		heartsdatblue.setPoints(80);
