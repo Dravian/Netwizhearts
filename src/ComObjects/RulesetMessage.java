@@ -9,7 +9,7 @@ import java.io.Serializable;
  * Diese Klasse ist eine Verfeinerung der ComRuleset-Klasse.
  * Sie enthält einen Nachrichtentyp und vererbt an alle Nachrichten für das Regelwerk.
  */
-public abstract class RulesetMessage implements Serializable {
+public interface RulesetMessage {
 
     /**
      * Diese Methode ist nötig, damit das ServerRuleset entscheiden kann
@@ -18,9 +18,7 @@ public abstract class RulesetMessage implements Serializable {
      *                      die überladene Methode richtig gewählt wird.
      * @param name          ist der Name des Spielers.
      */
-    public void visit(ServerRuleset serverRuleset, String name) {
-        serverRuleset.resolveMessage(this, name);
-    }
+    public void visit(ServerRuleset serverRuleset, String name);
 
     /**
      * Diese Methode ist nötig, damit das ServerRuleset entscheiden kann
@@ -28,7 +26,5 @@ public abstract class RulesetMessage implements Serializable {
      * @param clientRuleset ist das Ruleset, welches übergeben wird, damit
      *                      die überladene Methode richtig gewählt wird.
      */
-    public void visit(ClientRuleset clientRuleset) {
-        clientRuleset.resolveMessage(this);
-    }
+    public void visit(ClientRuleset clientRuleset);
 }

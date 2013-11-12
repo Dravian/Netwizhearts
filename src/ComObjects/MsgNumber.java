@@ -1,10 +1,15 @@
 package ComObjects;
 
+import Ruleset.ClientRuleset;
+import Ruleset.ServerRuleset;
+
+import java.io.Serializable;
+
 /**
  * Diese Klasse ist eine Verfeinerung der RulesetMessage-Klasse.
  * Sie enthält eine Zahl.
  */
-public class MsgNumber extends RulesetMessage {
+public class MsgNumber implements RulesetMessage, Serializable {
 
 	private int number;
 
@@ -23,4 +28,12 @@ public class MsgNumber extends RulesetMessage {
     public int getNumber() {
         return number;
     }
+
+    @Override
+    public void visit(ServerRuleset serverRuleset, String name) {
+        serverRuleset.resolveMessage(this, name);    }
+
+    @Override
+    public void visit(ClientRuleset clientRuleset) {
+        clientRuleset.resolveMessage(this);    }
 }

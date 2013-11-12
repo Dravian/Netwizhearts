@@ -1,5 +1,11 @@
 package ComObjects;
 
+import Client.ClientModel;
+import Server.Player;
+import Server.Server;
+
+import java.io.Serializable;
+
 /**
  * Diese Klasse ist ein spezielles Kommunikations-Objekt.
  * Die Nachricht wird an einen Spieler gesendet, wenn er aus
@@ -7,7 +13,7 @@ package ComObjects;
  * ein Spiel verlässt oder wenn der Spielleiter das Wartefenster
  * verlässt.
  */
-public class ComBeenKicked {
+public class ComBeenKicked implements ComObject, Serializable {
 
     private String message;
 
@@ -26,5 +32,15 @@ public class ComBeenKicked {
      */
     public String getMessage() {
         return message;
+    }
+
+    @Override
+    public void process(ClientModel model) {
+        model.receiveMessage(this);
+    }
+
+    @Override
+    public void process(Player player, Server server) {
+        server.receiveMessage(player,this);
     }
 }

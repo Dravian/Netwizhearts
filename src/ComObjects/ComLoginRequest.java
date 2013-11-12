@@ -1,11 +1,17 @@
 package ComObjects;
 
-/** 
+import Client.ClientModel;
+import Server.Player;
+import Server.Server;
+
+import java.io.Serializable;
+
+/**
  * Diese Klasse ist ein spezielles Kommunikations-Objekt.
  * Sie ist eine Nachricht, die beim Login an den Server gesendet wird.
  * Dazu enthält sie den Namen des Spielers, der sich einloggen möchte.
  */
-public class ComLoginRequest extends ComObject {
+public class ComLoginRequest implements ComObject, Serializable {
 
 	private String playerName;
 
@@ -24,5 +30,15 @@ public class ComLoginRequest extends ComObject {
      */
     public String getPlayerName() {
         return playerName;
+    }
+
+    @Override
+    public void process(ClientModel model) {
+        model.receiveMessage(this);
+    }
+
+    @Override
+    public void process(Player player, Server server) {
+        server.receiveMessage(player,this);
     }
 }

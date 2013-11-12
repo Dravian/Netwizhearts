@@ -1,17 +1,27 @@
 package ComObjects;
 
-/** 
+import Ruleset.ClientRuleset;
+import Ruleset.ServerRuleset;
+
+import java.io.Serializable;
+
+/**
  * Diese Klasse ist eine Verfeinerung der RulesetMessage-Klasse.
  */
-public class MsgNumberRequest extends RulesetMessage {
+public class MsgNumberRequest implements RulesetMessage, Serializable {
 
     /**
-<<<<<<< HEAD
-     * Dies ist der Kontruktor für eine neue MsgNumberRequest-Nachricht.
-=======
-     * Dies ist der Kontruktor fÃ¼r eine neue MsgNumberRequest-Nachricht.
->>>>>>> ViewKlassen
+     * Dies ist der Kontruktor fï¿½r eine neue MsgNumberRequest-Nachricht.
      */
     public MsgNumberRequest() {
     }
+
+    @Override
+    public void visit(ServerRuleset serverRuleset, String name) {
+        serverRuleset.resolveMessage(this, name);
+    }
+
+    @Override
+    public void visit(ClientRuleset clientRuleset) {
+        clientRuleset.resolveMessage(this);    }
 }

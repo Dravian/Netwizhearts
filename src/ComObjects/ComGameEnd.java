@@ -1,5 +1,10 @@
 package ComObjects;
 
+import Client.ClientModel;
+import Server.Player;
+import Server.Server;
+
+import java.io.Serializable;
 import java.util.Map;
 
 /**
@@ -9,7 +14,7 @@ import java.util.Map;
  * wenn ein Spiel zu Ende ist oder eine Runde. In diesem Fall
  * wird der Gewinner einfach leer gelassen, da es noch keinen gibt.
  */
-public class ComGameEnd {
+public class ComGameEnd implements ComObject, Serializable {
 
     private String winner;
     private Map<String, Integer> points;
@@ -39,5 +44,15 @@ public class ComGameEnd {
      */
     public Map<String, Integer> getPoints() {
         return points;
+    }
+
+    @Override
+    public void process(ClientModel model) {
+        model.receiveMessage(this);
+    }
+
+    @Override
+    public void process(Player player, Server server) {
+        server.receiveMessage(player,this);
     }
 }

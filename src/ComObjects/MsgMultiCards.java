@@ -1,13 +1,16 @@
 package ComObjects;
 
+import java.io.Serializable;
 import java.util.Set;
 import Ruleset.Card;
+import Ruleset.ClientRuleset;
+import Ruleset.ServerRuleset;
 
 /** 
  * Diese Klasse ist eine Verfeinerung der RulesetMessage-Klasse.
  * Sie liefert mehrere Karten zum Tausch für das Regelwerk Hearts.
  */
-public class MsgMultiCards extends RulesetMessage {
+public class MsgMultiCards implements RulesetMessage, Serializable {
 
 	private Set<Card> cardList;
 
@@ -26,4 +29,12 @@ public class MsgMultiCards extends RulesetMessage {
     public Set<Card> getCardList() {
         return cardList;
     }
+
+    @Override
+    public void visit(ServerRuleset serverRuleset, String name) {
+        serverRuleset.resolveMessage(this, name);    }
+
+    @Override
+    public void visit(ClientRuleset clientRuleset) {
+        clientRuleset.resolveMessage(this);    }
 }

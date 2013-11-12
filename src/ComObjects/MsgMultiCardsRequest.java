@@ -1,9 +1,14 @@
 package ComObjects;
 
-/** 
+import Ruleset.ClientRuleset;
+import Ruleset.ServerRuleset;
+
+import java.io.Serializable;
+
+/**
  * Diese Klasse ist eine Verfeinerung der RulesetMessage-Klasse.
  */
-public class MsgMultiCardsRequest extends RulesetMessage {
+public class MsgMultiCardsRequest implements RulesetMessage, Serializable {
 
     /**
      * Dies ist die Anzahl der Karten, die der Server von Spieler erwartet.
@@ -11,18 +16,26 @@ public class MsgMultiCardsRequest extends RulesetMessage {
     private int count;
 
     /**
-     * Dies ist der Kontruktor für eine neue MsgMultipleCardsRequest-Nachricht.
+     * Dies ist der Kontruktor fï¿½r eine neue MsgMultipleCardsRequest-Nachricht.
      */
     public MsgMultiCardsRequest(int count) {
         this.count = count;
     }
 
     /**
-     * Diese Methode gibt die Anzahl der Karten zurück, die der Server vom
+     * Diese Methode gibt die Anzahl der Karten zurï¿½ck, die der Server vom
      * Spieler erwartet.
      * @return die Anzahl der Karten.
      */
     public int getCount() {
         return count;
     }
+
+    @Override
+    public void visit(ServerRuleset serverRuleset, String name) {
+        serverRuleset.resolveMessage(this, name);    }
+
+    @Override
+    public void visit(ClientRuleset clientRuleset) {
+        clientRuleset.resolveMessage(this);    }
 }

@@ -1,12 +1,18 @@
 package ComObjects;
 
-/** 
+import Client.ClientModel;
+import Server.Player;
+import Server.Server;
+
+import java.io.Serializable;
+
+/**
  *  Diese Klasse ist ein spezielles Kommunikations-Objekt.
  *  Sie ist eine Nachricht, die an den Server gesendet wird,
  *  wenn der Spieler einem bestimmten Spiel beitreten will.
- *  Dazu enthält es den Namen des Spielleiters als String.
+ *  Dazu enthï¿½lt es den Namen des Spielleiters als String.
  */
-public class ComJoinRequest extends ComObject {
+public class ComJoinRequest implements ComObject, Serializable {
 
     /**
 	 * Der Name der Spielleiters muss enthalten sein um ein Spiel zuzuornen.
@@ -18,11 +24,11 @@ public class ComJoinRequest extends ComObject {
 	private String password;
 
     /**
-     * Dies ist der Kontruktor für eine neue ConJoinRequest-Nachricht.
+     * Dies ist der Kontruktor fï¿½r eine neue ConJoinRequest-Nachricht.
      * Ein Spiel kann durch den eindeutigen Namen der Spielleiters
      * identifiziert werden.
      * @param gameMasterName ist der Name der Spielleiters.
-     * @param String Passwort für das Spiel.
+     * @param password fï¿½r das Spiel.
      */
     public ComJoinRequest(String gameMasterName, String password) {
         this.gameMasterName = gameMasterName;
@@ -37,5 +43,15 @@ public class ComJoinRequest extends ComObject {
      */
     public String getGameMasterName() {
         return gameMasterName;
+    }
+
+    @Override
+    public void process(ClientModel model) {
+        model.receiveMessage(this);
+    }
+
+    @Override
+    public void process(Player player, Server server) {
+        server.receiveMessage(player,this);
     }
 }

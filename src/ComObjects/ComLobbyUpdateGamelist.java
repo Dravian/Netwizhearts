@@ -1,13 +1,18 @@
 package ComObjects;
 
+import Client.ClientModel;
 import Server.GameServerRepresentation;
+import Server.Player;
+import Server.Server;
+
+import java.io.Serializable;
 
 /** 
  * Diese Klasse ist ein spezielles Kommunikations-Objekt.
  * Sie aktualisiert die Gameliste in der Lobby.
  * Dazu enthält sie den GameServer und ein RemoveFlag.
  */
-public class ComLobbyUpdateGamelist extends ComObject {
+public class ComLobbyUpdateGamelist implements ComObject, Serializable {
 
 	private boolean removeFlag;
 	private GameServerRepresentation gameServer;
@@ -36,5 +41,15 @@ public class ComLobbyUpdateGamelist extends ComObject {
      */
     public GameServerRepresentation getGameServer() {
         return gameServer;
+    }
+
+    @Override
+    public void process(ClientModel model) {
+        model.receiveMessage(this);
+    }
+
+    @Override
+    public void process(Player player, Server server) {
+        server.receiveMessage(player,this);
     }
 }

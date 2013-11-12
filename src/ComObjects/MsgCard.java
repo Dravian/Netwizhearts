@@ -1,12 +1,16 @@
 package ComObjects;
 
 import Ruleset.Card;
+import Ruleset.ClientRuleset;
+import Ruleset.ServerRuleset;
+
+import java.io.Serializable;
 
 /** 
  * Diese Klasse ist eine Verfeinerung der RulesetMessage-Klasse.
  * Sie beinhaltet die ausgespielte Karte eines Spielers.
  */
-public class MsgCard extends RulesetMessage {
+public class MsgCard implements RulesetMessage, Serializable {
 
 	private Card card;
 
@@ -27,4 +31,13 @@ public class MsgCard extends RulesetMessage {
     public Card getCard() {
         return card;
     }
+
+    @Override
+    public void visit(ServerRuleset serverRuleset, String name) {
+        serverRuleset.resolveMessage(this, name);
+    }
+
+    @Override
+    public void visit(ClientRuleset clientRuleset) {
+        clientRuleset.resolveMessage(this);    }
 }

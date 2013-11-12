@@ -1,10 +1,16 @@
 package ComObjects;
 
-/** 
+import Client.ClientModel;
+import Server.Player;
+import Server.Server;
+
+import java.io.Serializable;
+
+/**
  * Diese Klasse ist ein spezielles Kommunikations-Objekt.
  * Sie enthält eine Chatnachricht in Form eines Strings.
  */
-public class ComChatMessage extends ComObject {
+public class ComChatMessage implements ComObject, Serializable {
 
 	private String chatMessage;
 
@@ -24,4 +30,14 @@ public class ComChatMessage extends ComObject {
 	public String getChatMessage() {
         return chatMessage;
 	}
+
+    @Override
+    public void process(ClientModel model) {
+        model.receiveMessage(this);
+    }
+
+    @Override
+    public void process(Player player, Server server) {
+        server.receiveMessage(player,this);
+    }
 }

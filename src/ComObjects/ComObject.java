@@ -15,7 +15,7 @@ import Server.Player;
 import Server.Server;
 import Client.ClientModel;
 
-public abstract class ComObject implements Serializable {
+public interface ComObject {
 
 	/**
 	 * Überladene Methode die von dem ClientListenerThread nach
@@ -24,9 +24,9 @@ public abstract class ComObject implements Serializable {
 	 * an das sich das ComObjekt
 	 * weitergibt.
 	 */
-	public void process(ClientModel model) {
-		model.receiveMessage(this);
-	}
+	public void process(ClientModel model);
+		//model.receiveMessage(this);
+
 	
 	/**
 	 * Überladene Methode die von einem PlayerThread nach
@@ -35,7 +35,7 @@ public abstract class ComObject implements Serializable {
 	 * @param server Der Server an den sich das ComObjekt 
 	 * weitergibt.
 	 */
-	public void process(Player player, Server server) {
-		server.receiveMessage(player,this);
-	}
+	public void process(Player player, Server server);
+		//server.receiveMessage(player,this);
+
 }
