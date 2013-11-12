@@ -8,7 +8,7 @@ import java.util.Set;
 
 import Client.ClientModel;
 import ComObjects.MsgMultiCards;
-import ComObjects.MsgMultipleCardsRequest;
+import ComObjects.MsgMultiCardsRequest;
 
 /** 
  * Diese Klasse bildet das Regelwerk für den Clientmodel bei einer Partie Hearts
@@ -54,7 +54,7 @@ public class ClientHearts extends ClientRuleset {
 	 * Verarbeitet die RulesetMessage dass der Server von dem Spieler verlangt mehrere Karten anzugeben
 	 * @param msgMultiCardsRequest Die Nachricht vom Server
 	 */
-	public void resolveMessage(MsgMultipleCardsRequest msgMultiCardsRequest) {
+	public void resolveMessage(MsgMultiCardsRequest msgMultiCardsRequest) {
 		
 		
 	}
