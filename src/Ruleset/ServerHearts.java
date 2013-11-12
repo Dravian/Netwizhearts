@@ -4,7 +4,7 @@ import java.util.Set;
 
 import Server.GameServer;
 import ComObjects.MsgMultiCards;
-import ComObjects.MsgMultipleCardsRequest;
+import ComObjects.MsgMultiCardsRequest;
 
 /**
  * Diese Klasse erstellt das Regelwerk zum Spiel Hearts. Sie enthält zudem weitere Methoden, 

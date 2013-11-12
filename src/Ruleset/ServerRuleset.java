@@ -9,11 +9,6 @@ import java.util.List;
 
 import Server.GameServer;
 import ComObjects.MsgCard;
-import ComObjects.MsgMultiCards;
-import ComObjects.MsgMultipleCardsRequest;
-import ComObjects.MsgNumber;
-import ComObjects.MsgNumberRequest;
-import ComObjects.MsgSelection;
 import ComObjects.RulesetMessage;
 /** 
  * Das ServerRuleset ist eine akstrakte Klasse und für den Ablauf und die Einhaltung der Regeln eines Spiels zuständig (/L280/). 
