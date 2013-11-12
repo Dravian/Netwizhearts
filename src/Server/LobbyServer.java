@@ -55,6 +55,14 @@ public class LobbyServer extends Server {
 	 * 
 	 */
 	public class ClientListenerThread implements Runnable {
+		
+		/**
+		 * Konstruktor des ClientListenerThreads
+		 */
+		public ClientListenerThread(){
+			
+		}
+		
 		/**
 		 * Die run-Methode nimmt Clientverbinungen an, erstellt einen neuen Player 
 		 * und fuegt ihn in das noNames-Set ein
