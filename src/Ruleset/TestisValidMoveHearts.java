@@ -28,6 +28,11 @@ public class TestisValidMoveHearts {
 	String player3;
 	String player4;
 	
+	PlayerState playerState1;
+	PlayerState playerState2;
+	PlayerState playerState3;
+	PlayerState playerState4;
+	
 	@Before
 	public void setUp() throws Exception {
 		player1 = "Tick";
@@ -44,20 +49,24 @@ public class TestisValidMoveHearts {
         ruleset.addPlayerToGame(player2);
         ruleset.addPlayerToGame(player3);
         ruleset.addPlayerToGame(player4);
+        
+        playerState1 = ruleset.getPlayerState(player1);
+        playerState2 = ruleset.getPlayerState(player2);
+        playerState3 = ruleset.getPlayerState(player3);
 
-        ruleset.setFirstPlayer(ruleset.getPlayerState(player1));
+        ruleset.setFirstPlayer(playerState1);
 	}
 	
 	@Test
 	public void testIsValidMove() {
-		 ruleset.giveACard(player1, HeartsCard.Herz2);
-	     ruleset.giveACard(player1, HeartsCard.Kreuz9);
-	     ruleset.giveACard(player2, HeartsCard.Caro3);
-	     ruleset.giveACard(player2, HeartsCard.Caro6);
-	     ruleset.giveACard(player3, HeartsCard.Pik4);
-	     ruleset.giveACard(player3, HeartsCard.Pik5);
-         ruleset.giveACard(player4, HeartsCard.Pik1);
-	     ruleset.giveACard(player4, HeartsCard.Herz7);
+		 ruleset.giveACard(playerState1, HeartsCard.Herz2);
+	     ruleset.giveACard(playerState1, HeartsCard.Kreuz9);
+	     ruleset.giveACard(playerState2, HeartsCard.Caro3);
+	     ruleset.giveACard(playerState2, HeartsCard.Caro6);
+	     ruleset.giveACard(playerState3, HeartsCard.Pik4);
+	     ruleset.giveACard(playerState3, HeartsCard.Pik5);
+         ruleset.giveACard(playerState4, HeartsCard.Pik1);
+	     ruleset.giveACard(playerState4, HeartsCard.Herz7);
 	     
 	     boolean isValidMove = ruleset.isValidMove(HeartsCard.Herz2);
 
@@ -70,14 +79,14 @@ public class TestisValidMoveHearts {
 	
 	@Test
 	public void testIsValidMoveOnlyHearts() {
-		 ruleset.giveACard(player1, HeartsCard.Herz2);
-	     ruleset.giveACard(player1, HeartsCard.Herz5);
-	     ruleset.giveACard(player2, HeartsCard.Caro3);
-	     ruleset.giveACard(player2, HeartsCard.Caro6);
-	     ruleset.giveACard(player3, HeartsCard.Pik4);
-	     ruleset.giveACard(player3, HeartsCard.Pik5);
-         ruleset.giveACard(player4, HeartsCard.Pik1);
-	     ruleset.giveACard(player4, HeartsCard.Herz7);
+		 ruleset.giveACard(playerState1, HeartsCard.Herz2);
+	     ruleset.giveACard(playerState1, HeartsCard.Herz5);
+	     ruleset.giveACard(playerState2, HeartsCard.Caro3);
+	     ruleset.giveACard(playerState2, HeartsCard.Caro6);
+	     ruleset.giveACard(playerState3, HeartsCard.Pik4);
+	     ruleset.giveACard(playerState3, HeartsCard.Pik5);
+         ruleset.giveACard(playerState4, HeartsCard.Pik1);
+	     ruleset.giveACard(playerState4, HeartsCard.Herz7);
 	     
 	     boolean isValidMove = ruleset.isValidMove(HeartsCard.Herz2);
 
