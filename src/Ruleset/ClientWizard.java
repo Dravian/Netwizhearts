@@ -10,52 +10,36 @@ import ComObjects.MsgSelection;
 import ComObjects.MsgSelectionRequest;
 
 /** 
- * Diese Klasse bildet das Regelwerk für den Client bei einer Partie Wizard
+ * ClientWizard. Diese Klasse bildet das Regelwerk fuer den Client bei einer Partie Wizard
  */
 public class ClientWizard extends ClientRuleset {
 	/**
-	 * Die Mindestanzahl an Spielern die Wizard spielen können
+	 * Die Mindestanzahl an Spielern die Wizard spielen koennen
 	 */
 	private static final int MIN_PLAYERS = 3;
 	
 	/**
-	 * Die Maximale Anzahl an Spielern die Wizard spielen können
+	 * Die Maximale Anzahl an Spielern die Wizard spielen koennen
 	 */
-	private static final int MAX_PLAYERS = 6;
+	private static final int MAX_PLAYERS = 6; 
+	
+	/**
+	 * Der RulesetTyp des Spiels
+	 */
+	private static final RulesetType RULESET = RulesetType.Wizard;
 	
 	/**
 	 * Erzeugt ein ClientWizard
 	 * @param client Das Model auf dem gespielt wird
 	 */
-	protected ClientWizard(ClientModel client) {
-		super(RulesetType.Wizard, MIN_PLAYERS, MAX_PLAYERS, client);
+	public ClientWizard(ClientModel client) {
+		super(RULESET, MIN_PLAYERS, MAX_PLAYERS, client);
 	}
 
-	/**
-	 * Prüft ob ein gemachter Zug zum Spiel Wizard gültig ist
-	 * @param card Eine gespielte Karte
-	 * @return isValid true falls Zug gültig, false wenn nicht
-	 */
+	@Override
 	public boolean isValidMove(Card card) {
 		boolean isValid = false;
 		return isValid;		
-	}
-	
-	/**
-	 * 
-	 * @param number Die Anzahl der angesagten Stiche
-	 */
-	private void generateMsgNumber(int number) {
-		send(new MsgNumber(number));
-	}
-	
-	/**
-	 * Generiert eine MsgSelection aus einer Farbe und ruft bei sich 
-	 * die send Methode auf
-	 * @param colour Die Trumpffarbe
-	 */
-	private void generateMsgSelection(Colour colour) {
-		send(new MsgSelection(colour));
 	}
 	
 	/**

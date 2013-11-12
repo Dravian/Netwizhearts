@@ -13,7 +13,7 @@ import ComObjects.MsgUser;
 import ComObjects.RulesetMessage;
 
 /** 
- * ClientRuleset ist eine abstrakte Klasse und wird zur Regelvorauswertung im Client verwendet. 
+ * ClientRuleset. ClientRuleset ist eine abstrakte Klasse und wird zur Regelvorauswertung im Client verwendet. 
  * Dazu benutzt es die isValidMove() Methode. Des Weiteren kann es vom ClientModel 
  * erhaltene RulesetMessages mit der resolveMessage() Methode behandeln und neue 
  * RulesetMessages senden.
@@ -56,7 +56,7 @@ public abstract class ClientRuleset {
 	 * @param maxPlayers Die maximale Spieleranzahl
 	 * @param client Das ClientModel auf dem gespielt wird
 	 */
-	protected ClientRuleset(RulesetType ruleset, int minPlayers, 
+	public ClientRuleset(RulesetType ruleset, int minPlayers, 
 			int maxPlayers,ClientModel client) {
 		RULESET = ruleset;
 		MIN_PLAYERS = minPlayers;
@@ -66,7 +66,7 @@ public abstract class ClientRuleset {
 	}
 	
 	/**
-	 * Gibt den Typ des Regelwerks zurück
+	 * Gibt den Typ des Regelwerks zurueck
 	 * @return Der Typ vom Regelwerk
 	 */
 	public RulesetType getRulesetType() {
@@ -74,7 +74,7 @@ public abstract class ClientRuleset {
 	}
 	
 	/**
-	 * Gibt die Mindestanzahl an Spielern zurück für dieses Spiel
+	 * Gibt die Mindestanzahl an Spielern zurueck für dieses Spiel
 	 * @return Die Mindestanzahl an Spielern
 	 */
 	public int getMinPlayers() {
@@ -82,7 +82,7 @@ public abstract class ClientRuleset {
 	}
 	
 	/**
-	 * Gibt die Maximale Anzahl an Spielern zurück
+	 * Gibt die Maximale Anzahl an Spielern zurueck
 	 * @return Die maximale Anzahl an Spielern
 	 */
 	public int getMaxPlayers() {
@@ -90,7 +90,7 @@ public abstract class ClientRuleset {
 	}
 	
 	/**
-	 * Gibt die momentanen Spielphase zurück
+	 * Gibt die momentane Spielphase zurück
 	 * @return gamePhase Die Spielphase
 	 */
 	public GamePhase getGamePhase() {
@@ -98,7 +98,7 @@ public abstract class ClientRuleset {
 	}
 
 	/**
-	 * Gibt die eigenen Handkarten zurück
+	 * Gibt die eigenen Handkarten zurueck
 	 * @return Liste von Karten
 	 */
 	public List<Card> getOwnHand() {
@@ -106,7 +106,7 @@ public abstract class ClientRuleset {
 	}
 	
 	/**
-	 * Gibt die OtherData des Models zurück
+	 * Gibt die OtherData des Models zurueck
 	 * @return Die Otherdata des Models
 	 */
 	public OtherData getOwnData() {
@@ -123,7 +123,7 @@ public abstract class ClientRuleset {
 	}
 	
 	/**
-	 * Gibt den Spieler der momentan am Zug ist zurück
+	 * Gibt den Spieler der momentan am Zug ist zurueck
 	 * @return Der momentane Spieler
 	 */
 	public PlayerState getCurrentPlayer() {
@@ -163,16 +163,8 @@ public abstract class ClientRuleset {
 	}
 	
 	/**
-	 * Generiert eine MsgCard aus einer Karte und ruft bei sich 
-	 * die send Methode auf
-	 * @param card Die Karte
-	 */
-	protected void generateMsgCard(Card card) {
-		send(new MsgCard(card));
-	}
-	
-	/**
-	 * Schickt eine RulesetMessage übers Model an den Server
+	 * Ruft beim Model die send Methode auf und verschickt eine 
+	 * Rulesetmessage
 	 * @param message Die Nachricht
 	 */
 	protected void send(RulesetMessage message) {
@@ -180,8 +172,9 @@ public abstract class ClientRuleset {
 	}
 	
 	/** 
-	 * Prüft ob ein gemachter Zug in einem Spiel gültig war
+	 * Prueft ob ein gemachter Zug in einem Spiel gueltig war
 	 * @param card Die Karte
+	 * @return true falls die Karte gueltig ist, false wenn nicht
 	 */
 	public abstract boolean isValidMove(Card card);
 }

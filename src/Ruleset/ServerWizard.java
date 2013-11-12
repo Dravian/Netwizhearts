@@ -7,20 +7,34 @@ import ComObjects.MsgSelection;
 import ComObjects.MsgSelectionRequest;
 
 /**
- * Diese Klasse erstellt das Regelwerk zum Spiel Wizard. Sie enthält zudem weitere Methoden,
- * welche für das Spiel Wizard spezifisch benötigt werden, wie das Ansage von Stichen, 
+ * ServerWizard. Diese Klasse erstellt das Regelwerk zum Spiel Wizard. Sie enthaelt zudem weitere Methoden,
+ * welche für das Spiel Wizard spezifisch benoetigt werden, wie das Ansage von Stichen, 
  * der Bestimmung von Trumpffarben und die Bestimmung der Rundenanzahl.
  */
 public class ServerWizard extends ServerRuleset {
+	/**
+	 * Die minimale Anzahl an Spielern in Wizard
+	 */
 	private static final int MIN_PLAYERS = 3;
+	/**
+	 * Die maximal Anzahl an Spielern in Hearts
+	 */
 	private static final int MAX_PLAYERS = 6;
-	private int maxRounds;
+	/**
+	 * Der Ruleset Typ des Spiels
+	 */
+	private final static RulesetType RULESET = RulesetType.Wizard;
+	
+	/**
+	 * Die Anzahl an Runden die gespielt wird. Ist abhaengig von der Spieleranzahl.
+	 */
+	private int playingRounds;
 	
 	/**
 	 * Erstellt das Regelwerk zum Spiel Wizard
 	 */
 	public ServerWizard(GameServer s) {
-		super(RulesetType.Wizard, MIN_PLAYERS, MAX_PLAYERS, s);
+		super(RULESET, MIN_PLAYERS, MAX_PLAYERS, s);
 	}
 
 	@Override
@@ -35,23 +49,24 @@ public class ServerWizard extends ServerRuleset {
 	}
 	
 	/**
-	 * Setzt die maximale Anzahl an Runden
+	 * Setzt die Anzahl an Runden die es in diesem Spiel gibt
+	 * @param rounds Die Anzahl an Runden
 	 */
-	private void setMaxRounds() {
-		
+	private void setPlayingRounds(int rounds) {
+		playingRounds = rounds;
 	}
 	
 	/**
-	 * Holt die maximale Anzahl an Runden die gespielt werden kann
-	 * @return
+	 * Holt die Anzahl der Runden die gespielt werden
+	 * @return playingRounds Die Anzahl an Runden
 	 */
-	protected int getMaxRounds() {
-		return maxRounds;
+	protected int getplayingRounds() {
+		return playingRounds;
 	}
 	/**
 	 * Verarbeitet die RulesetMessage dass der Spieler eine Stichansage macht.
 	 * Die wird dann in isValidNumber überprüft, bei falsche Eingabe wird´
-	 * generateMsgCardRequest für den selben Spieler aufgerufen. 
+	 * eine MsgCardRequest an den selben Spieler geschickt. 
 	 * Bei richtiger Eingabe geht das Spiel weiter.
 	 * @param msgNumber Die Nachricht vom Client
 	 * @param name Der Name des Spielers
@@ -60,7 +75,7 @@ public class ServerWizard extends ServerRuleset {
 	}
 
 	/**
-	 * Überprüft ob eine eingegebene Stichangabe eines Spielers gültig ist
+	 * Ueberprueft ob eine eingegebene Stichangabe eines Spielers gueltig ist.
 	 * @param number Die Stichangabe
 	 * @param name Der Name vom Spieler
 	 * @return true falls die Stichangabe gültig ist, false wenn nicht
@@ -69,9 +84,9 @@ public class ServerWizard extends ServerRuleset {
 		return false;
 	}
 	/**
-	 * Verarbeitet die RulesetMessage dass mehrerer Karten vom Spieler übergeben werden.
+	 * Verarbeitet die RulesetMessage dass mehrerer Karten vom Spieler uebergeben werden.
 	 * Die wird dann in isValidColour überprüft, bei falsche Eingabe wird´
-	 * generateMsgMultiCardRequest für den selben Spieler aufgerufen. 
+	 * MsgMultiCardRequest an den selben Spieler geschickt. 
 	 * Bei richtiger Eingabe geht das Spiel weiter.
 	 * @param msgSelection Die Nachricht vom Client
 	 * @param name Der Name des Spielers
@@ -81,28 +96,13 @@ public class ServerWizard extends ServerRuleset {
 	}
 	
 	/**
-	 * Überprüft ob eine eingebene Trumpffarbe eines Spielers gültig ist
+	 * Ueberprueft ob eine eingebene Trumpffarbe eines Spielers gueltig ist
 	 * @param colour Die Trumpffarbe
 	 * @param name Der Name des Spielers
-	 * @return true falls die Farbe gültig ist, false wenn nicht
+	 * @return true falls die Farbe gueltig ist, false wenn nicht
 	 */
 	private boolean isValidColour(Colour colour, String name) {
 		return false;
-	}
-	/**
-	 * Generiert eine MsgNumberRequest und ruft bei sich die broadcast Methode auf
-	 * @param name Der Name vom Spieler
-	 */
-	private void generateNumberRequest(String name) {
-		
-	}
-	
-	/**
-	 * Generiert eine MsgMultiCardRequest und ruft bei sich die broadcast Methode auf
-	 * @param name Der Name vom Spieler
-	 */
-	private void generateMsgSelectionRequest(String name) {
-		
 	}
 
 	@Override
@@ -115,12 +115,6 @@ public class ServerWizard extends ServerRuleset {
 	protected String getWinner() {
 		// TODO Automatisch erstellter Methoden-Stub
 		return null;
-	}
-
-	@Override
-	protected void generateMsgUser(String player) {
-		// TODO Automatisch erstellter Methoden-Stub
-		
 	}
 
 	@Override
