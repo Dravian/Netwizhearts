@@ -25,11 +25,11 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
- * Das Fenster CreateGame dient dem Benutzer zur Erstellung eines neuen Spieles.
- * Es bietet alle Komponenten, um ein Regelwerk zu w�hlen, einen Spielnamen festzulegen 
- * und das Spiel durch ein Passwort zu sch�tzen. In der Spielerstellung wird ein 
- * Titelbild des ausgew�hlten Spiels und eine kurze Beschreibung angezeigt. 
- * �ber 'Leave' kehrt der Spieler in die Lobby zur�ck 
+ * CreateGame. Das Fenster CreateGame dient dem Benutzer zur Erstellung eines neuen Spieles.
+ * Es bietet alle Komponenten, um ein Regelwerk zu waehlen, einen Spielnamen festzulegen 
+ * und das Spiel durch ein Passwort zu schuetzen. In der Spielerstellung wird ein 
+ * Titelbild des ausgewaehlten Spiels und eine kurze Beschreibung angezeigt. 
+ * ueber 'Leave' kehrt der Spieler in die Lobby zurueck 
  * und mit 'Create' wird das Spiel erstellt.
  */
 public class CreateGame extends JFrame{
@@ -130,7 +130,7 @@ public class CreateGame extends JFrame{
 	}
 	
 	/**
-	 * F�gt  einen MouseListener zum ImagePanel des CreateGame Fensters hinzu,
+	 * Fuegt  einen MouseListener zum ImagePanel des CreateGame Fensters hinzu,
 	 * der zur Anzeige des MouseOver-Texts verwendet wird.
 	 * 
 	 * @param m ein MouseListener
@@ -140,7 +140,7 @@ public class CreateGame extends JFrame{
 	}
 	
 	/**
-	 * F�gt einen Listener f�r die Regelwerk-Auswahl des CreateGame Fensters hinzu.
+	 * Fuegt einen Listener fuer die Regelwerk-Auswahl des CreateGame Fensters hinzu.
 	 * 
 	 * @param i ein ItemListener
 	 */
@@ -149,7 +149,7 @@ public class CreateGame extends JFrame{
 	}
 	
 	/**
-	 * F�gt einen ActionListener f�r den 'Create' Button hinzu.
+	 * Fuegt einen ActionListener fuer den 'Create' Button hinzu.
 	 * 
 	 * @param a ein ActionListener
 	 */
@@ -158,7 +158,7 @@ public class CreateGame extends JFrame{
 	}
 	
 	/**
-	 * F�gt einen ActionListener f�r den 'Leave' Button hinzu.
+	 * Fuegt einen ActionListener fuer den 'Leave' Button hinzu.
 	 * 
 	 * @param a ein ActionListener
 	 */
@@ -167,7 +167,7 @@ public class CreateGame extends JFrame{
 	}
 	
 	/**
-	 * �ndert die Sprache des Fensters
+	 * Aendert die Sprache des Fensters
 	 * 
 	 * @param l Sprache in Form des Language-Enums
 	 */

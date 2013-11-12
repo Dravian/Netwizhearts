@@ -16,10 +16,10 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 
 /**
- * Die GameLobby modelliert das Wartefenster, in dem beigetretene Spieler auf den Start 
+ * GameLobby. Die GameLobby modelliert das Wartefenster, in dem beigetretene Spieler auf den Start 
  * des Spieles durch den Spielleiter warten. Der Spielleiter kann Spieler 
- * mit dem Remove Player Button entfernen. �ber Leave kehren die Spieler 
- * in die Lobby zur�ck. Der spielinterne Chat ist ab hier verf�gbar.
+ * mit dem Remove Player Button entfernen. ueber Leave kehren die Spieler 
+ * in die Lobby zurueck. Der spielinterne Chat ist ab hier verfuegbar.
  */
 public class GameLobby extends JFrame implements Observer{
 
@@ -94,7 +94,7 @@ public class GameLobby extends JFrame implements Observer{
 	}
 
 	/**
-	 * F�gt einen ActionListener f�r den 'Start Game' Button hinzu
+	 * Fuegt einen ActionListener fuer den 'Start Game' Button hinzu
 	 * 
 	 * @param a ein ActionListener
 	 */
@@ -103,7 +103,7 @@ public class GameLobby extends JFrame implements Observer{
 	}
 	
 	/**
-	 * F�gt einen ActionListener f�r den 'Remove Player' Button hinzu
+	 * Fuegt einen ActionListener fuer den 'Remove Player' Button hinzu
 	 * 
 	 * @param a ein ActionListener
 	 */
@@ -112,7 +112,7 @@ public class GameLobby extends JFrame implements Observer{
 	}
 	
 	/**
-	 * F�gt einen ActionListener f�r den 'Leave' Button hinzu
+	 * Fuegt einen ActionListener fuer den 'Leave' Button hinzu
 	 * 
 	 * @param a ein ActionListener
 	 */
@@ -121,7 +121,7 @@ public class GameLobby extends JFrame implements Observer{
 	}
 	
 	/**
-	 * F�gt einen KeyListener f�r das Nachricht-Senden-Feld der Lobby hinzu
+	 * Fuet einen KeyListener fuer das Nachricht-Senden-Feld der Lobby hinzu
 	 * @param k
 	 */
 	public void addChatMessageListener(KeyListener k) {
@@ -129,7 +129,7 @@ public class GameLobby extends JFrame implements Observer{
 	}
 	
 	/**
-	 * �ndert die Sprache des Fensters
+	 * Aendert die Sprache des Fensters
 	 * 
 	 * @param l Sprache in Form des Language-Enums
 	 */
@@ -144,7 +144,7 @@ public class GameLobby extends JFrame implements Observer{
 
 	/**
 	 * Wird durch notify() im ClientModel aufgerufen. Je nach dem in arg
-	 * �bergebenen ViewNotification-Befehl wird ein Update des Fensters ausgef�hrt 
+	 * uebergebenen ViewNotification-Befehl wird ein Update des Fensters ausgefuehrt 
 	 * oder eine Fehlermeldung angezeigt.
 	 * 
 	 * @param o erwartet ein Objekt von der Klasse ClientModel
@@ -159,8 +159,8 @@ public class GameLobby extends JFrame implements Observer{
 	
 	/**
 	 * Wird aufgerufen, wenn eine String-Nachricht im notify() 
-	 * übergeben wird. Dieser wird als Chatnachricht interpretiert und
-	 * dem Chatlog angefügt.
+	 * uebergeben wird. Dieser wird als Chatnachricht interpretiert und
+	 * dem Chatlog angefuegt.
 	 * 
 	 * @param o erwartet ein Objekt von der Klasse ClientModel
 	 * @param arg erwartet einen String, der eine Chatnachricht darstellt

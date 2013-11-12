@@ -4,7 +4,7 @@
 package Client.View;
 
 /** 
- * Language stellt Repräsentationen verschiedener Sprachen dar,
+ * Language. Language stellt Repraesentationen verschiedener Sprachen dar,
  * die von der GUI verwendet werden, um festzustellen welche Anzeigesprache
  * verwendet werden soll.
  */

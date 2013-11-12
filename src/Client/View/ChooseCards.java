@@ -8,7 +8,7 @@ import java.util.Observer;
 
 
 /** 
- * In diesem Fenster muss der Benutzer eine vorbestimmte Menge Karten ausw�hlen.
+ * ChooseCards. In diesem Fenster muss der Benutzer eine vorbestimmte Menge Karten auswaehlen.
  */
 public class ChooseCards implements Observer{
 	
@@ -16,7 +16,7 @@ public class ChooseCards implements Observer{
 
 	/**
 	 * Wird durch notify() im ClientModel aufgerufen. Je nach dem in arg
-	 * �bergebenen Befehl wird ein Update des Fensters ausgef�hrt 
+	 * uebergebenen Befehl wird ein Update des Fensters ausgefuehrt 
 	 * oder eine Fehlermeldung angezeigt.
 	 * 
 	 * @param o erwartet ein Objekt von der Klasse ClientModel

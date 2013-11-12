@@ -4,6 +4,9 @@
 package Client;
 
 /** 
+ * ViewNotification. Enum, das vom ClientModel ueber notify an
+ * seine Observer geschickt wird, um mitzuteilen, welche Veraenderung
+ * stattgefunden hat.
  */
 public enum ViewNotification {	
 	moveAcknowledged,

@@ -12,9 +12,9 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 /** 
- * Card ist die View-seitige Repr�sentation einer Karte. 
+ * ViewCard. ViewCard ist die View-seitige Repraesentation einer Karte. 
  * Sie wird verwendet um einzelne Karten auf das Spielfeld zu zeichnen.
- * Dazu enth�lt sie die Pfadangabe zu dem Ordner, in dem die Bilder der
+ * Dazu enthaelt sie die Pfadangabe zu dem Ordner, in dem die Bilder der
  * Karten gespeichert sind, und eine ID, um das genaue Bild zu spezifizieren.
  */
 public class ViewCard extends JPanel{
@@ -26,8 +26,8 @@ public class ViewCard extends JPanel{
 	private BufferedImage face;
 	
 	/**
-	 * Erstellt eine neue Karte f�r die Anzeige und zeichnet daf�r
-	 * das Bild, das durch die Pfadangabe s und seine Kardinaliät n 
+	 * Erstellt eine neue Karte fuer die Anzeige und zeichnet dafuer
+	 * das Bild, das durch die Pfadangabe s und seine Kardinaliaet n 
 	 * im Ordner angegeben ist. Die Pfadangabe wird durch das Regelwerk
 	 * bestimmt.
 	 * 
@@ -46,7 +46,7 @@ public class ViewCard extends JPanel{
 	}
 	
 	/**
-	 * Gibt die ID der Karte zurück
+	 * Gibt die ID der Karte zurueck
 	 * 
 	 * @return ID der Karte
 	 */

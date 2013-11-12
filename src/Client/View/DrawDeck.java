@@ -4,7 +4,7 @@
 package Client.View;
 
 /** 
- * Stellt einen Aufnahmestapel dar.
+ * DrawDeck. Stellt einen Aufnahmestapel dar.
  */
 public class DrawDeck {
 }

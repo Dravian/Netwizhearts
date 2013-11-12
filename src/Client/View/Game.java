@@ -26,10 +26,10 @@ import Client.ViewNotification;
 import java.awt.Color;
 
 /**
- * Im Game Fenster lï¿½uft das Spiel ab.Es enthï¿½lt den Spielchat und ein GamePanel.
- * Auï¿½erdem kï¿½nnen ï¿½ber ein Dropdown-Menï¿½ ï¿½nderungen an Hintergrundbild 
- * und Kartenhintergrï¿½nden vorgenommen werden. Schlieï¿½en beendet das Spiel 
- * und der Spieler wird in die Lobby zurï¿½ckgeleitet.
+ * Game. Im Game Fenster laeuft das Spiel ab.Es enthaelt den Spielchat und ein GamePanel.
+ * Ausserdem koennen ueber ein Dropdown-Menue Aenderungen an Hintergrundbild 
+ * und Kartenhintergruenden vorgenommen werden. Schliesseen beendet das Spiel 
+ * und der Spieler wird in die Lobby zurueckgeleitet.
  */
 public class Game extends JFrame implements Observer{
 
@@ -37,6 +37,7 @@ public class Game extends JFrame implements Observer{
 	
 	private JPanel contentPane;
 	private JTextField textField;
+	private GamePanel panel;
 
 	
 	public static void main(String[] args) throws IOException{
@@ -65,7 +66,7 @@ public class Game extends JFrame implements Observer{
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel panel = new GamePanel();
+		panel = new GamePanel();
 		panel.setBounds(10, 11, 764, 370);
 		panel.setOpaque(false);
 		contentPane.add(panel); 
@@ -111,50 +112,34 @@ public class Game extends JFrame implements Observer{
 	}
 	
 	/**
-	 * Arrangiert die Elemente der Spielfeld-Oberfläche für ein Kartenspiel, 
-	 * bei dem Stiche gemacht werden. Hierfür hat jeder Spieler einen eigenen
-	 * Ablagestapel vor sich. Es können 3, 4, 5, oder 6 Spieler gewählt werden.
+	 * Arrangiert die Elemente der Spielfeld-Oberflaeche für ein Kartenspiel, 
+	 * bei dem Stiche gemacht werden. Hierfuer hat jeder Spieler einen eigenen
+	 * Ablagestapel vor sich. Es koennen 3, 4, 5, oder 6 Spieler gewaehlt werden.
 	 * 
 	 * @param playercount Anzahl der Spieler, wobei 3 <= playercount <=6 einzuhalten ist
 	 */
 	public void makeTrickGameBoard(int playercount) {
 		switch (playercount) {
 		case 3:
-			makeTrickGameBoardThreePlayers();
+			panel.makeTrickGameBoardThreePlayers();
 			break;
 		case 4:
-			makeTrickGameBoardFourPlayers();
+			panel.makeTrickGameBoardFourPlayers();
 			break;
 		case 5:
-			makeTrickGameBoardFivePlayers();
+			panel.makeTrickGameBoardFivePlayers();
 			break;
 		case 6:
-			makeTrickGameBoardSixPlayers();
+			panel.makeTrickGameBoardSixPlayers();
 			break;
 		default:
 			break;
 		}
 	}
 	
-	private void makeTrickGameBoardThreePlayers() {
-		
-	}
-	
-	private void makeTrickGameBoardFourPlayers() {
-		
-	}
-
-	private void makeTrickGameBoardFivePlayers() {
-	
-	}
-
-	private void makeTrickGameBoardSixPlayers() {
-	
-	}
-
 	/**
 	 * Wird durch notify() im ClientModel aufgerufen. Je nach dem in arg
-	 * ï¿½bergebenen ViewNotification-Befehl wird ein Update des Fensters ausgefï¿½hrt 
+	 * uebergebenen ViewNotification-Befehl wird ein Update des Fensters ausgefuehrt 
 	 * oder eine Fehlermeldung angezeigt.
 	 * 
 	 * @param o erwartet ein Objekt von der Klasse ClientModel
@@ -169,7 +154,7 @@ public class Game extends JFrame implements Observer{
 	
 	/**
 	 * Wird durch notify() im ClientModel aufgerufen, wenn
-	 * eine Chatnachricht ï¿½bergeben wird.
+	 * eine Chatnachricht uebergeben wird.
 	 * 
 	 * @param o erwartet ein Objekt von der Klasse ClientModel
 	 * @param arg erwartet eine Chatnachricht in String-Form

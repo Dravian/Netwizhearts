@@ -18,10 +18,10 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 /**
- * Das Login-Fenster repr�sentiert den initialen Dialog zwischen Benutzer und Client.
+ * Login. Das Login-Fenster repraesentiert den initialen Dialog zwischen Benutzer und Client.
  * In diesem Fenster kann der Benutzer seinen Namen und die Adresse des Servers eingeben. 
- * Au�erdem ist �ber den Login die Auswahl der Sprache m�glich. 
- * �ber den Login-Button wird die Verbindung zum Server hergestellt.
+ * Ausserdem ist ueber den Login die Auswahl der Sprache moeglich. 
+ * ueber den Login-Button wird die Verbindung zum Server hergestellt.
  */
 public class Login extends JFrame implements Observer{
 
@@ -102,7 +102,7 @@ public class Login extends JFrame implements Observer{
 	}
 	
 	/**
-	 * F�gt einen Listener f�r den 'Connect' Button des Login Fensters hinzu
+	 * Fuegt einen Listener fuer den 'Connect' Button des Login Fensters hinzu
 	 * 
 	 * @param a ein ActionListener
 	 */
@@ -111,7 +111,7 @@ public class Login extends JFrame implements Observer{
 	}
 	
 	/**
-	 * F�gt einen Listener f�r die Sprachauswahl des Login Fensters hinzu
+	 * Fuegt einen Listener fuer die Sprachauswahl des Login Fensters hinzu
 	 * 
 	 * @param i ein ItemListener
 	 */
@@ -120,7 +120,7 @@ public class Login extends JFrame implements Observer{
 	}
 	
 	/**
-	 * �ndert die Sprache des Fensters
+	 * Aendert die Sprache des Fensters
 	 * 
 	 * @param l Sprache in Form des Language-Enums
 	 */
@@ -159,7 +159,7 @@ public class Login extends JFrame implements Observer{
 
 	/**
 	 * Wird durch notify() im ClientModel aufgerufen. Je nach dem in arg
-	 * �bergebenen ViewNotification-Befehl wird ein Update des Fensters ausgef�hrt 
+	 * uebergebenen ViewNotification-Befehl wird ein Update des Fensters ausgefuehrt 
 	 * oder eine Fehlermeldung angezeigt.
 	 * 
 	 * @param o erwartet ein Objekt von der Klasse ClientModel

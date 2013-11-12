@@ -18,12 +18,12 @@ import javax.swing.AbstractListModel;
 import javax.swing.ListSelectionModel;
 
 /**
- * Diese Klasse erzeugt die Ansicht der ServerLobby auf der Client Seite, 
- * in der die Spieler neue Spiele erstellen oder offenen beitreten k�nnen.
+ * Lobby. Diese Klasse erzeugt die Ansicht der ServerLobby auf der Client Seite, 
+ * in der die Spieler neue Spiele erstellen oder offenen beitreten koennen.
  * In der Lobby werden die Benutzernamen der sich in der Lobby befindenden Spieler, 
- * sowie offene Spiele angezeigt. In der Lobby k�nnen Chatnachrichten gesendet 
- * und empfangen werden. �ber 'Leave' verl�sst der Spieler das Spiel. 
- * �ber 'Host Game' wird der Spieler zum CreateGame-Fenster weiter geleitet 
+ * sowie offene Spiele angezeigt. In der Lobby koennen Chatnachrichten gesendet 
+ * und empfangen werden. ueber 'Leave' verlaesst der Spieler das Spiel. 
+ * ueber 'Host Game' wird der Spieler zum CreateGame-Fenster weiter geleitet 
  * und mit 'Join Game' kann einem bereits erstellten Spiel beigetreten werden.
  */
 public class Lobby extends JFrame implements Observer{
@@ -125,7 +125,7 @@ public class Lobby extends JFrame implements Observer{
 	}
 	
 	/**
-	 * F�gt einen ActionListener f�r den 'Join' Button hinzu
+	 * Fuegt einen ActionListener fuer den 'Join' Button hinzu
 	 * 
 	 * @param a ein ActionListener
 	 */
@@ -134,7 +134,7 @@ public class Lobby extends JFrame implements Observer{
 	}
 	
 	/**
-	 * F�gt einen ActionListener f�r den 'Host' Button hinzu
+	 * Fuegt einen ActionListener fuer den 'Host' Button hinzu
 	 * 
 	 * @param a ein ActionListener
 	 */
@@ -143,7 +143,7 @@ public class Lobby extends JFrame implements Observer{
 	}
 	
 	/**
-	 * F�gt einen ActionListener f�r den 'Leave' Button hinzu
+	 * Fuegt einen ActionListener fuer den 'Leave' Button hinzu
 	 * 
 	 * @param a ein ActionListener
 	 */
@@ -152,7 +152,7 @@ public class Lobby extends JFrame implements Observer{
 	}
 	
 	/**
-	 * F�gt einen KeyListener f�r das Nachricht-Senden-Feld der Lobby hinzu
+	 * Fuegt einen KeyListener fuer das Nachricht-Senden-Feld der Lobby hinzu
 	 * @param k
 	 */
 	public void addChatMessageListener(KeyListener k) {
@@ -160,7 +160,7 @@ public class Lobby extends JFrame implements Observer{
 	}
 	
 	/**
-	 * �ndert die Sprache des Fensters
+	 * Aendert die Sprache des Fensters
 	 * 
 	 * @param l Sprache in Form des Language-Enums
 	 */
@@ -175,7 +175,7 @@ public class Lobby extends JFrame implements Observer{
 
 	/**
 	 * Wird durch notify() im ClientModel aufgerufen. Je nach dem in arg
-	 * �bergebenen ViewNotification-Befehl wird ein Update des Fensters ausgef�hrt 
+	 * uebergebenen ViewNotification-Befehl wird ein Update des Fensters ausgefuehrt 
 	 * oder eine Fehlermeldung angezeigt.
 	 * 
 	 * @param o erwartet ein Objekt von der Klasse ClientModel
@@ -190,8 +190,8 @@ public class Lobby extends JFrame implements Observer{
 	
 	/**
 	 * Wird aufgerufen, wenn eine String-Nachricht im notify() 
-	 * übergeben wird. Dieser wird als Chatnachricht interpretiert und
-	 * dem Chatlog angefügt.
+	 * uebergeben wird. Dieser wird als Chatnachricht interpretiert und
+	 * dem Chatlog angefuegt.
 	 * 
 	 * @param o erwartet ein Objekt von der Klasse ClientModel
 	 * @param arg erwartet einen String, der eine Chatnachricht darstellt
