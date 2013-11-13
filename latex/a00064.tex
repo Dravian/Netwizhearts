@@ -1,0 +1,130 @@
+\hypertarget{a00064}{\subsection{Other\-Data Klassenreferenz}
+\label{a00064}\index{Other\-Data@{Other\-Data}}
+}
+
+
+Basisklasse für \hyperlink{a00063}{Hearts\-Data} und \hyperlink{a00071}{Wiz\-Data}.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00064_a77e2151cf49df9f80a4999e0e9e54d55}{abstract String \hyperlink{a00064_a77e2151cf49df9f80a4999e0e9e54d55}{to\-String} ()}\label{a00064_a77e2151cf49df9f80a4999e0e9e54d55}
+
+\end{DoxyCompactItemize}
+\subsubsection*{Geschützte Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00064_a857cb9ffd8d9e2e10616eb5f28140092}{\hyperlink{a00064_a857cb9ffd8d9e2e10616eb5f28140092}{Other\-Data} ()}\label{a00064_a857cb9ffd8d9e2e10616eb5f28140092}
+
+\item 
+void \hyperlink{a00064_aef3e585a8e80c4983a80847e9fe75c4e}{made\-Trick} (Set$<$ \hyperlink{a00054}{Card} $>$ tricks)
+\item 
+List$<$ \hyperlink{a00054}{Card} $>$ \hyperlink{a00064_acbe5a7d8a4d5b8bd0576dc1f288e5511}{remove\-Tricks} ()
+\item 
+int \hyperlink{a00064_a0bb789bf164652b6b15609e8efd3e422}{get\-Number\-Of\-Tricks} ()
+\item 
+void \hyperlink{a00064_a284323bbb05781ca701f6b0b6bc428a6}{set\-Points} (int \hyperlink{a00064_af7f8f4a4e39e09fdb5e9f02330ecabef}{points})
+\item 
+int \hyperlink{a00064_a2bfc3c1acea7211e0fc7494cf8ef4188}{get\-Points} ()
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00064_a566d6db6591b09356fc88c8f664c65dd}{Set$<$ \hyperlink{a00054}{Card} $>$ \hyperlink{a00064_a566d6db6591b09356fc88c8f664c65dd}{made\-Tricks}}\label{a00064_a566d6db6591b09356fc88c8f664c65dd}
+
+\item 
+\hypertarget{a00064_af7f8f4a4e39e09fdb5e9f02330ecabef}{int \hyperlink{a00064_af7f8f4a4e39e09fdb5e9f02330ecabef}{points}}\label{a00064_af7f8f4a4e39e09fdb5e9f02330ecabef}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+\hyperlink{a00064}{Other\-Data} speichert alle Spielinformationen eines Spielers, außer seiner eigenen Spielhand. 
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00064_aef3e585a8e80c4983a80847e9fe75c4e}{\index{Ruleset\-::\-Other\-Data@{Ruleset\-::\-Other\-Data}!made\-Trick@{made\-Trick}}
+\index{made\-Trick@{made\-Trick}!Ruleset::OtherData@{Ruleset\-::\-Other\-Data}}
+\paragraph[{made\-Trick}]{\setlength{\rightskip}{0pt plus 5cm}void made\-Trick (
+\begin{DoxyParamCaption}
+\item[{Set$<$ {\bf Card} $>$}]{tricks}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{a00064_aef3e585a8e80c4983a80847e9fe75c4e}
+
+
+Gibt dem Spieler die Stichkarten die er gemacht. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em tricks} & Die Stiche \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00064_acbe5a7d8a4d5b8bd0576dc1f288e5511}{\index{Ruleset\-::\-Other\-Data@{Ruleset\-::\-Other\-Data}!remove\-Tricks@{remove\-Tricks}}
+\index{remove\-Tricks@{remove\-Tricks}!Ruleset::OtherData@{Ruleset\-::\-Other\-Data}}
+\paragraph[{remove\-Tricks}]{\setlength{\rightskip}{0pt plus 5cm}List$<${\bf Card}$>$ remove\-Tricks (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{a00064_acbe5a7d8a4d5b8bd0576dc1f288e5511}
+
+
+Entfernt die gemachten Stichkarten eines Spielers und fuegt sie wieder in den Kartenstapel. 
+
+\begin{DoxyReturn}{Rückgabe}
+Die Kartenstiche 
+\end{DoxyReturn}
+
+
+Benutzt Other\-Data.\-made\-Tricks.
+
+\hypertarget{a00064_a0bb789bf164652b6b15609e8efd3e422}{\index{Ruleset\-::\-Other\-Data@{Ruleset\-::\-Other\-Data}!get\-Number\-Of\-Tricks@{get\-Number\-Of\-Tricks}}
+\index{get\-Number\-Of\-Tricks@{get\-Number\-Of\-Tricks}!Ruleset::OtherData@{Ruleset\-::\-Other\-Data}}
+\paragraph[{get\-Number\-Of\-Tricks}]{\setlength{\rightskip}{0pt plus 5cm}int get\-Number\-Of\-Tricks (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{a00064_a0bb789bf164652b6b15609e8efd3e422}
+
+
+Gibt die Anzahl der gemachten Stiche des Spielers zurueck. 
+
+\begin{DoxyReturn}{Rückgabe}
+Die Anzahl der gemachten Stiche 
+\end{DoxyReturn}
+\hypertarget{a00064_a284323bbb05781ca701f6b0b6bc428a6}{\index{Ruleset\-::\-Other\-Data@{Ruleset\-::\-Other\-Data}!set\-Points@{set\-Points}}
+\index{set\-Points@{set\-Points}!Ruleset::OtherData@{Ruleset\-::\-Other\-Data}}
+\paragraph[{set\-Points}]{\setlength{\rightskip}{0pt plus 5cm}void set\-Points (
+\begin{DoxyParamCaption}
+\item[{int}]{points}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{a00064_a284323bbb05781ca701f6b0b6bc428a6}
+
+
+Setzt den Punktestand eines Spielers. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em points} & Der neue Punktestand \\
+\hline
+\end{DoxyParams}
+
+
+Benutzt Other\-Data.\-points.
+
+\hypertarget{a00064_a2bfc3c1acea7211e0fc7494cf8ef4188}{\index{Ruleset\-::\-Other\-Data@{Ruleset\-::\-Other\-Data}!get\-Points@{get\-Points}}
+\index{get\-Points@{get\-Points}!Ruleset::OtherData@{Ruleset\-::\-Other\-Data}}
+\paragraph[{get\-Points}]{\setlength{\rightskip}{0pt plus 5cm}int get\-Points (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{a00064_a2bfc3c1acea7211e0fc7494cf8ef4188}
+
+
+Gibt den Punktestand eines Spielers zurück. 
+
+\begin{DoxyReturn}{Rückgabe}
+Der Punktestand 
+\end{DoxyReturn}
+
+
+Benutzt Other\-Data.\-points.
+

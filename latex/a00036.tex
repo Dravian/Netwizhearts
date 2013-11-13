@@ -1,0 +1,106 @@
+\hypertarget{a00036}{\subsection{Com\-Login\-Request Klassenreferenz}
+\label{a00036}\index{Com\-Login\-Request@{Com\-Login\-Request}}
+}
+
+
+Abgeleitet von \hyperlink{a00037}{Com\-Object} und Serializable.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00036_a1247e09d6e0b4d346008f419a1d1c5cd}{Com\-Login\-Request} (String name)
+\item 
+String \hyperlink{a00036_a8cd2886758be9855ae14404540d4873d}{get\-Player\-Name} ()
+\item 
+void \hyperlink{a00036_a758d7005755a181717f238f714d87dd2}{process} (\hyperlink{a00003}{Client\-Model} model)
+\item 
+void \hyperlink{a00036_ac67b5ce3ec03d48ef1e6caad6e49c902}{process} (\hyperlink{a00076}{Player} player, \hyperlink{a00077}{Server} server)
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00036_a12adf3f64463f614eb3af6dd82414e0a}{String {\bfseries player\-Name}}\label{a00036_a12adf3f64463f614eb3af6dd82414e0a}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Diese Klasse ist ein spezielles Kommunikations-\/\-Objekt. Sie ist eine Nachricht, die beim Login an den Server gesendet wird. Dazu enthaelt sie den Namen des Spielers, der sich einloggen moechte. 
+
+\subsubsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{a00036_a1247e09d6e0b4d346008f419a1d1c5cd}{\index{Com\-Objects\-::\-Com\-Login\-Request@{Com\-Objects\-::\-Com\-Login\-Request}!Com\-Login\-Request@{Com\-Login\-Request}}
+\index{Com\-Login\-Request@{Com\-Login\-Request}!ComObjects::ComLoginRequest@{Com\-Objects\-::\-Com\-Login\-Request}}
+\paragraph[{Com\-Login\-Request}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Com\-Login\-Request} (
+\begin{DoxyParamCaption}
+\item[{String}]{name}
+\end{DoxyParamCaption}
+)}}\label{a00036_a1247e09d6e0b4d346008f419a1d1c5cd}
+
+
+Dies ist der Kontruktor fuer eine neue Com\-Login\-Request-\/\-Nachricht. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em name} & ist der Name des Spielers, des sich einloggen moechte. \\
+\hline
+\end{DoxyParams}
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00036_a8cd2886758be9855ae14404540d4873d}{\index{Com\-Objects\-::\-Com\-Login\-Request@{Com\-Objects\-::\-Com\-Login\-Request}!get\-Player\-Name@{get\-Player\-Name}}
+\index{get\-Player\-Name@{get\-Player\-Name}!ComObjects::ComLoginRequest@{Com\-Objects\-::\-Com\-Login\-Request}}
+\paragraph[{get\-Player\-Name}]{\setlength{\rightskip}{0pt plus 5cm}String get\-Player\-Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00036_a8cd2886758be9855ae14404540d4873d}
+
+
+Diese Methode liefert den Namen des Spielers, des sich einloggen moechte. 
+
+Dieser muss auf Eindeutigkeit geprueft werden. \begin{DoxyReturn}{Rückgabe}
+den Spielernamen. 
+\end{DoxyReturn}
+\hypertarget{a00036_a758d7005755a181717f238f714d87dd2}{\index{Com\-Objects\-::\-Com\-Login\-Request@{Com\-Objects\-::\-Com\-Login\-Request}!process@{process}}
+\index{process@{process}!ComObjects::ComLoginRequest@{Com\-Objects\-::\-Com\-Login\-Request}}
+\paragraph[{process}]{\setlength{\rightskip}{0pt plus 5cm}void process (
+\begin{DoxyParamCaption}
+\item[{{\bf Client\-Model}}]{model}
+\end{DoxyParamCaption}
+)}}\label{a00036_a758d7005755a181717f238f714d87dd2}
+
+
+Diese Methode ist noetig, damit der Client\-Listener\-Thread entscheiden kann welche Message das Object enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em model} & ist das Client\-Model, welches Ã¼bergeben wird, damit die ueberladene Methode richtig gewaehlt wird. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00037_a758d7005755a181717f238f714d87dd2}{Com\-Object}.
+
+\hypertarget{a00036_ac67b5ce3ec03d48ef1e6caad6e49c902}{\index{Com\-Objects\-::\-Com\-Login\-Request@{Com\-Objects\-::\-Com\-Login\-Request}!process@{process}}
+\index{process@{process}!ComObjects::ComLoginRequest@{Com\-Objects\-::\-Com\-Login\-Request}}
+\paragraph[{process}]{\setlength{\rightskip}{0pt plus 5cm}void process (
+\begin{DoxyParamCaption}
+\item[{{\bf Player}}]{player, }
+\item[{{\bf Server}}]{server}
+\end{DoxyParamCaption}
+)}}\label{a00036_ac67b5ce3ec03d48ef1e6caad6e49c902}
+
+
+Diese Methode ist noetig, damit der Thread Player entscheiden kann welche Message das Object enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em player} & Der Client welcher den Aufruf startet. \\
+\hline
+{\em server} & Der Server an den sich das Com\-Objekt weitergibt. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00037_ac67b5ce3ec03d48ef1e6caad6e49c902}{Com\-Object}.
+

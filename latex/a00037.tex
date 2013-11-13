@@ -1,0 +1,63 @@
+\hypertarget{a00037}{\subsection{Com\-Object Schnittstellenreferenz}
+\label{a00037}\index{Com\-Object@{Com\-Object}}
+}
+
+
+Basisklasse für \hyperlink{a00025}{Com\-Been\-Kicked}, \hyperlink{a00026}{Com\-Chat\-Message}, \hyperlink{a00027}{Com\-Client\-Leave}, \hyperlink{a00028}{Com\-Client\-Quit}, \hyperlink{a00029}{Com\-Create\-Game\-Request}, \hyperlink{a00030}{Com\-Game\-End}, \hyperlink{a00031}{Com\-Init\-Game\-Lobby}, \hyperlink{a00032}{Com\-Init\-Lobby}, \hyperlink{a00033}{Com\-Join\-Request}, \hyperlink{a00034}{Com\-Kick\-Player\-Request}, \hyperlink{a00035}{Com\-Lobby\-Update\-Gamelist}, \hyperlink{a00036}{Com\-Login\-Request}, \hyperlink{a00038}{Com\-Ruleset}, \hyperlink{a00039}{Com\-Server\-Acknowledgement}, \hyperlink{a00040}{Com\-Start\-Game}, \hyperlink{a00041}{Com\-Update\-Playerlist} und \hyperlink{a00042}{Com\-Warning}.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{a00037_a758d7005755a181717f238f714d87dd2}{process} (\hyperlink{a00003}{Client\-Model} model)
+\item 
+void \hyperlink{a00037_ac67b5ce3ec03d48ef1e6caad6e49c902}{process} (\hyperlink{a00076}{Player} player, \hyperlink{a00077}{Server} server)
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Die Klasse \hyperlink{a00037}{Com\-Object} ist ein Interface, welches ein Objekt darstellt, das zur Kommunikation genutzt werden kann. Spezielle \hyperlink{a00037}{Com\-Object} Klassen implementieren diese grundlegenden Klasse. 
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00037_a758d7005755a181717f238f714d87dd2}{\index{Com\-Objects\-::\-Com\-Object@{Com\-Objects\-::\-Com\-Object}!process@{process}}
+\index{process@{process}!ComObjects::ComObject@{Com\-Objects\-::\-Com\-Object}}
+\paragraph[{process}]{\setlength{\rightskip}{0pt plus 5cm}void process (
+\begin{DoxyParamCaption}
+\item[{{\bf Client\-Model}}]{model}
+\end{DoxyParamCaption}
+)}}\label{a00037_a758d7005755a181717f238f714d87dd2}
+
+
+Diese Methode ist noetig, damit der Client\-Listener\-Thread entscheiden kann welche Message das Object enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em model} & ist das Client\-Model, welches Ã¼bergeben wird, damit die ueberladene Methode richtig gewaehlt wird. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert in \hyperlink{a00029_a758d7005755a181717f238f714d87dd2}{Com\-Create\-Game\-Request}, \hyperlink{a00032_a758d7005755a181717f238f714d87dd2}{Com\-Init\-Lobby}, \hyperlink{a00030_a758d7005755a181717f238f714d87dd2}{Com\-Game\-End}, \hyperlink{a00033_a758d7005755a181717f238f714d87dd2}{Com\-Join\-Request}, \hyperlink{a00041_a758d7005755a181717f238f714d87dd2}{Com\-Update\-Playerlist}, \hyperlink{a00035_a758d7005755a181717f238f714d87dd2}{Com\-Lobby\-Update\-Gamelist}, \hyperlink{a00034_a758d7005755a181717f238f714d87dd2}{Com\-Kick\-Player\-Request}, \hyperlink{a00031_a758d7005755a181717f238f714d87dd2}{Com\-Init\-Game\-Lobby}, \hyperlink{a00025_a758d7005755a181717f238f714d87dd2}{Com\-Been\-Kicked}, \hyperlink{a00038_a758d7005755a181717f238f714d87dd2}{Com\-Ruleset}, \hyperlink{a00042_a758d7005755a181717f238f714d87dd2}{Com\-Warning}, \hyperlink{a00036_a758d7005755a181717f238f714d87dd2}{Com\-Login\-Request}, \hyperlink{a00026_a758d7005755a181717f238f714d87dd2}{Com\-Chat\-Message}, \hyperlink{a00027_a758d7005755a181717f238f714d87dd2}{Com\-Client\-Leave}, \hyperlink{a00028_a758d7005755a181717f238f714d87dd2}{Com\-Client\-Quit}, \hyperlink{a00040_a758d7005755a181717f238f714d87dd2}{Com\-Start\-Game} und \hyperlink{a00039_a758d7005755a181717f238f714d87dd2}{Com\-Server\-Acknowledgement}.
+
+\hypertarget{a00037_ac67b5ce3ec03d48ef1e6caad6e49c902}{\index{Com\-Objects\-::\-Com\-Object@{Com\-Objects\-::\-Com\-Object}!process@{process}}
+\index{process@{process}!ComObjects::ComObject@{Com\-Objects\-::\-Com\-Object}}
+\paragraph[{process}]{\setlength{\rightskip}{0pt plus 5cm}void process (
+\begin{DoxyParamCaption}
+\item[{{\bf Player}}]{player, }
+\item[{{\bf Server}}]{server}
+\end{DoxyParamCaption}
+)}}\label{a00037_ac67b5ce3ec03d48ef1e6caad6e49c902}
+
+
+Diese Methode ist noetig, damit der Thread Player entscheiden kann welche Message das Object enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em player} & Der Client welcher den Aufruf startet. \\
+\hline
+{\em server} & Der Server an den sich das Com\-Objekt weitergibt. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert in \hyperlink{a00029_ac67b5ce3ec03d48ef1e6caad6e49c902}{Com\-Create\-Game\-Request}, \hyperlink{a00032_ac67b5ce3ec03d48ef1e6caad6e49c902}{Com\-Init\-Lobby}, \hyperlink{a00030_ac67b5ce3ec03d48ef1e6caad6e49c902}{Com\-Game\-End}, \hyperlink{a00033_ac67b5ce3ec03d48ef1e6caad6e49c902}{Com\-Join\-Request}, \hyperlink{a00041_ac67b5ce3ec03d48ef1e6caad6e49c902}{Com\-Update\-Playerlist}, \hyperlink{a00035_ac67b5ce3ec03d48ef1e6caad6e49c902}{Com\-Lobby\-Update\-Gamelist}, \hyperlink{a00034_ac67b5ce3ec03d48ef1e6caad6e49c902}{Com\-Kick\-Player\-Request}, \hyperlink{a00031_ac67b5ce3ec03d48ef1e6caad6e49c902}{Com\-Init\-Game\-Lobby}, \hyperlink{a00025_ac67b5ce3ec03d48ef1e6caad6e49c902}{Com\-Been\-Kicked}, \hyperlink{a00038_ac67b5ce3ec03d48ef1e6caad6e49c902}{Com\-Ruleset}, \hyperlink{a00042_ac67b5ce3ec03d48ef1e6caad6e49c902}{Com\-Warning}, \hyperlink{a00036_ac67b5ce3ec03d48ef1e6caad6e49c902}{Com\-Login\-Request}, \hyperlink{a00026_ac67b5ce3ec03d48ef1e6caad6e49c902}{Com\-Chat\-Message}, \hyperlink{a00027_ac67b5ce3ec03d48ef1e6caad6e49c902}{Com\-Client\-Leave}, \hyperlink{a00028_ac67b5ce3ec03d48ef1e6caad6e49c902}{Com\-Client\-Quit}, \hyperlink{a00040_ac67b5ce3ec03d48ef1e6caad6e49c902}{Com\-Start\-Game} und \hyperlink{a00039_ac67b5ce3ec03d48ef1e6caad6e49c902}{Com\-Server\-Acknowledgement}.
+

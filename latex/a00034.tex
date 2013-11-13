@@ -1,0 +1,114 @@
+\hypertarget{a00034}{\subsection{Com\-Kick\-Player\-Request Klassenreferenz}
+\label{a00034}\index{Com\-Kick\-Player\-Request@{Com\-Kick\-Player\-Request}}
+}
+
+
+Abgeleitet von \hyperlink{a00037}{Com\-Object} und Serializable.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00034_ae62e08a885d902a978f355560928a796}{Com\-Kick\-Player\-Request} (String \hyperlink{a00034_a12adf3f64463f614eb3af6dd82414e0a}{player\-Name})
+\item 
+String \hyperlink{a00034_a8cd2886758be9855ae14404540d4873d}{get\-Player\-Name} ()
+\item 
+void \hyperlink{a00034_a758d7005755a181717f238f714d87dd2}{process} (\hyperlink{a00003}{Client\-Model} model)
+\item 
+void \hyperlink{a00034_ac67b5ce3ec03d48ef1e6caad6e49c902}{process} (\hyperlink{a00076}{Player} player, \hyperlink{a00077}{Server} server)
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00034_a12adf3f64463f614eb3af6dd82414e0a}{String \hyperlink{a00034_a12adf3f64463f614eb3af6dd82414e0a}{player\-Name}}\label{a00034_a12adf3f64463f614eb3af6dd82414e0a}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Diese Klasse ist ein spezielles Kommunikations-\/\-Objekt. Sie ist eine Nachricht an den Server, die angibt einen Spieler vom Spiel zu entfernen. Dazu enthaelt sie einen String, der den Namen des Spielers enthaelt. 
+
+\subsubsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{a00034_ae62e08a885d902a978f355560928a796}{\index{Com\-Objects\-::\-Com\-Kick\-Player\-Request@{Com\-Objects\-::\-Com\-Kick\-Player\-Request}!Com\-Kick\-Player\-Request@{Com\-Kick\-Player\-Request}}
+\index{Com\-Kick\-Player\-Request@{Com\-Kick\-Player\-Request}!ComObjects::ComKickPlayerRequest@{Com\-Objects\-::\-Com\-Kick\-Player\-Request}}
+\paragraph[{Com\-Kick\-Player\-Request}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Com\-Kick\-Player\-Request} (
+\begin{DoxyParamCaption}
+\item[{String}]{player\-Name}
+\end{DoxyParamCaption}
+)}}\label{a00034_ae62e08a885d902a978f355560928a796}
+
+
+Dies ist der Kontruktor fuer eine neue Com\-Kick\-Player\-Request-\/\-Nachricht. 
+
+Diese enthaelt den Namen des Spielers, der aus den Spiel geloescht werden soll. 
+\begin{DoxyParams}{Parameter}
+{\em player\-Name} & ist der Name des Spielers. \\
+\hline
+\end{DoxyParams}
+
+
+Benutzt Com\-Kick\-Player\-Request.\-player\-Name.
+
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00034_a8cd2886758be9855ae14404540d4873d}{\index{Com\-Objects\-::\-Com\-Kick\-Player\-Request@{Com\-Objects\-::\-Com\-Kick\-Player\-Request}!get\-Player\-Name@{get\-Player\-Name}}
+\index{get\-Player\-Name@{get\-Player\-Name}!ComObjects::ComKickPlayerRequest@{Com\-Objects\-::\-Com\-Kick\-Player\-Request}}
+\paragraph[{get\-Player\-Name}]{\setlength{\rightskip}{0pt plus 5cm}String get\-Player\-Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00034_a8cd2886758be9855ae14404540d4873d}
+
+
+Diese Methode liefert den Namen des Spielers, der aus dem Spiel entfernt werden soll. 
+
+\begin{DoxyReturn}{Rückgabe}
+den Spielernamen. 
+\end{DoxyReturn}
+
+
+Benutzt Com\-Kick\-Player\-Request.\-player\-Name.
+
+\hypertarget{a00034_a758d7005755a181717f238f714d87dd2}{\index{Com\-Objects\-::\-Com\-Kick\-Player\-Request@{Com\-Objects\-::\-Com\-Kick\-Player\-Request}!process@{process}}
+\index{process@{process}!ComObjects::ComKickPlayerRequest@{Com\-Objects\-::\-Com\-Kick\-Player\-Request}}
+\paragraph[{process}]{\setlength{\rightskip}{0pt plus 5cm}void process (
+\begin{DoxyParamCaption}
+\item[{{\bf Client\-Model}}]{model}
+\end{DoxyParamCaption}
+)}}\label{a00034_a758d7005755a181717f238f714d87dd2}
+
+
+Diese Methode ist noetig, damit der Client\-Listener\-Thread entscheiden kann welche Message das Object enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em model} & ist das Client\-Model, welches Ã¼bergeben wird, damit die ueberladene Methode richtig gewaehlt wird. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00037_a758d7005755a181717f238f714d87dd2}{Com\-Object}.
+
+\hypertarget{a00034_ac67b5ce3ec03d48ef1e6caad6e49c902}{\index{Com\-Objects\-::\-Com\-Kick\-Player\-Request@{Com\-Objects\-::\-Com\-Kick\-Player\-Request}!process@{process}}
+\index{process@{process}!ComObjects::ComKickPlayerRequest@{Com\-Objects\-::\-Com\-Kick\-Player\-Request}}
+\paragraph[{process}]{\setlength{\rightskip}{0pt plus 5cm}void process (
+\begin{DoxyParamCaption}
+\item[{{\bf Player}}]{player, }
+\item[{{\bf Server}}]{server}
+\end{DoxyParamCaption}
+)}}\label{a00034_ac67b5ce3ec03d48ef1e6caad6e49c902}
+
+
+Diese Methode ist noetig, damit der Thread Player entscheiden kann welche Message das Object enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em player} & Der Client welcher den Aufruf startet. \\
+\hline
+{\em server} & Der Server an den sich das Com\-Objekt weitergibt. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00037_ac67b5ce3ec03d48ef1e6caad6e49c902}{Com\-Object}.
+

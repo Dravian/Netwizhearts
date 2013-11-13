@@ -1,0 +1,244 @@
+\hypertarget{a00069}{\subsection{Server\-Wizard Klassenreferenz}
+\label{a00069}\index{Server\-Wizard@{Server\-Wizard}}
+}
+
+
+Abgeleitet von \hyperlink{a00068}{Server\-Ruleset}.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00069_a43e18699cde5f39f7a07428c6846044c}{\hyperlink{a00069_a43e18699cde5f39f7a07428c6846044c}{Server\-Wizard} (\hyperlink{a00072}{Game\-Server} s)}\label{a00069_a43e18699cde5f39f7a07428c6846044c}
+
+\item 
+void \hyperlink{a00069_ab81696440ded730e339029a5423bd17f}{resolve\-Message} (\hyperlink{a00048}{Msg\-Number} msg\-Number, String name)
+\item 
+void \hyperlink{a00069_a2942b8a23a70ac5f8654690b7e3cfc09}{resolve\-Message} (\hyperlink{a00050}{Msg\-Selection} msg\-Selection, String name)
+\end{DoxyCompactItemize}
+\subsubsection*{Geschützte Methoden}
+\begin{DoxyCompactItemize}
+\item 
+boolean \hyperlink{a00069_aa58080772a961e1f9f88d766777f82ed}{is\-Valid\-Move} (\hyperlink{a00054}{Card} card)
+\item 
+\hypertarget{a00069_aceebbbc4dd4d00fe4e4086be6acda2d7}{void \hyperlink{a00069_aceebbbc4dd4d00fe4e4086be6acda2d7}{calculate\-Round\-Outcome} ()}\label{a00069_aceebbbc4dd4d00fe4e4086be6acda2d7}
+
+\item 
+int \hyperlink{a00069_a2f51687eb56bb1a10058b2c1cc2d421e}{getplaying\-Rounds} ()
+\item 
+\hypertarget{a00069_a0e9e22cb0e4021e9b0fff0aa0dba1499}{void \hyperlink{a00069_a0e9e22cb0e4021e9b0fff0aa0dba1499}{calculate\-Tricks} ()}\label{a00069_a0e9e22cb0e4021e9b0fff0aa0dba1499}
+
+\item 
+\hypertarget{a00069_a159081d6eb49d67e8fe72bc03a47c336}{String \hyperlink{a00069_a159081d6eb49d67e8fe72bc03a47c336}{get\-Winner} ()}\label{a00069_a159081d6eb49d67e8fe72bc03a47c336}
+
+\item 
+\hyperlink{a00059}{Game\-Client\-Update} \hyperlink{a00069_ae26f0271bee2539ca4acd6b646ad895a}{generate\-Game\-Client\-Update} (String player)
+\end{DoxyCompactItemize}
+\subsubsection*{Private Methoden}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{a00069_a20dac5ede6116cf0ca90930d015c4c2a}{set\-Playing\-Rounds} (int rounds)
+\item 
+boolean \hyperlink{a00069_a2a80072981f095510c4aeb16edc18a33}{is\-Valid\-Number} (int number, String name)
+\item 
+boolean \hyperlink{a00069_a5107692ee4ad56672e366f68d6714d52}{is\-Valid\-Colour} (\hyperlink{a00058}{Colour} colour, String name)
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{a00069_afdd09d28760a65b79bafdb1551e30585}{playing\-Rounds}
+\end{DoxyCompactItemize}
+\subsubsection*{Statische, private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00069_a57fe2c01c4e61b1f0c44c70ccc75d903}{static final int \hyperlink{a00069_a57fe2c01c4e61b1f0c44c70ccc75d903}{M\-I\-N\-\_\-\-P\-L\-A\-Y\-E\-R\-S} = 3}\label{a00069_a57fe2c01c4e61b1f0c44c70ccc75d903}
+
+\item 
+\hypertarget{a00069_ae6ed433235a83c520ce79bee49bc2b01}{static final int \hyperlink{a00069_ae6ed433235a83c520ce79bee49bc2b01}{M\-A\-X\-\_\-\-P\-L\-A\-Y\-E\-R\-S} = 6}\label{a00069_ae6ed433235a83c520ce79bee49bc2b01}
+
+\item 
+\hypertarget{a00069_a3045f525de18ff0ad68134f0d512ea16}{static final \hyperlink{a00066}{Ruleset\-Type} \hyperlink{a00069_a3045f525de18ff0ad68134f0d512ea16}{R\-U\-L\-E\-S\-E\-T} = \hyperlink{a00066_a35e49e93bdb15f20f8e9940d3f54c887}{Ruleset\-Type.\-Wizard}}\label{a00069_a3045f525de18ff0ad68134f0d512ea16}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Diese Klasse erstellt das Regelwerk zum Spiel Wizard. Sie enthaelt zudem weitere Methoden, welche für das Spiel Wizard spezifisch benoetigt werden, wie das Ansage von Stichen, der Bestimmung von Trumpffarben und die Bestimmung der Rundenanzahl. 
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00069_aa58080772a961e1f9f88d766777f82ed}{\index{Ruleset\-::\-Server\-Wizard@{Ruleset\-::\-Server\-Wizard}!is\-Valid\-Move@{is\-Valid\-Move}}
+\index{is\-Valid\-Move@{is\-Valid\-Move}!Ruleset::ServerWizard@{Ruleset\-::\-Server\-Wizard}}
+\paragraph[{is\-Valid\-Move}]{\setlength{\rightskip}{0pt plus 5cm}boolean is\-Valid\-Move (
+\begin{DoxyParamCaption}
+\item[{{\bf Card}}]{card}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{a00069_aa58080772a961e1f9f88d766777f82ed}
+
+
+Prueft ob ein gemachter Zug vom current\-Player in einem Spiel gueltig war, wenn nicht wird an den Spieler erneut eine Msg\-Card\-Request gesendet. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em card} & Die Karte die gespielt wurde \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Rückgabe}
+true falls Zug gueltig und false wenn nicht 
+\end{DoxyReturn}
+
+
+Implementiert \hyperlink{a00068_a48cc9b97dd2832c14668fac3a6f5be1a}{Server\-Ruleset}.
+
+\hypertarget{a00069_a20dac5ede6116cf0ca90930d015c4c2a}{\index{Ruleset\-::\-Server\-Wizard@{Ruleset\-::\-Server\-Wizard}!set\-Playing\-Rounds@{set\-Playing\-Rounds}}
+\index{set\-Playing\-Rounds@{set\-Playing\-Rounds}!Ruleset::ServerWizard@{Ruleset\-::\-Server\-Wizard}}
+\paragraph[{set\-Playing\-Rounds}]{\setlength{\rightskip}{0pt plus 5cm}void set\-Playing\-Rounds (
+\begin{DoxyParamCaption}
+\item[{int}]{rounds}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{a00069_a20dac5ede6116cf0ca90930d015c4c2a}
+
+
+Setzt die Anzahl an Runden die es in diesem Spiel gibt. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em rounds} & Die Anzahl an Runden \\
+\hline
+\end{DoxyParams}
+
+
+Benutzt Server\-Wizard.\-playing\-Rounds.
+
+\hypertarget{a00069_a2f51687eb56bb1a10058b2c1cc2d421e}{\index{Ruleset\-::\-Server\-Wizard@{Ruleset\-::\-Server\-Wizard}!getplaying\-Rounds@{getplaying\-Rounds}}
+\index{getplaying\-Rounds@{getplaying\-Rounds}!Ruleset::ServerWizard@{Ruleset\-::\-Server\-Wizard}}
+\paragraph[{getplaying\-Rounds}]{\setlength{\rightskip}{0pt plus 5cm}int getplaying\-Rounds (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{a00069_a2f51687eb56bb1a10058b2c1cc2d421e}
+
+
+Holt die Anzahl der Runden die gespielt werden. 
+
+\begin{DoxyReturn}{Rückgabe}
+playing\-Rounds Die Anzahl an Runden 
+\end{DoxyReturn}
+
+
+Benutzt Server\-Wizard.\-playing\-Rounds.
+
+\hypertarget{a00069_ab81696440ded730e339029a5423bd17f}{\index{Ruleset\-::\-Server\-Wizard@{Ruleset\-::\-Server\-Wizard}!resolve\-Message@{resolve\-Message}}
+\index{resolve\-Message@{resolve\-Message}!Ruleset::ServerWizard@{Ruleset\-::\-Server\-Wizard}}
+\paragraph[{resolve\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void resolve\-Message (
+\begin{DoxyParamCaption}
+\item[{{\bf Msg\-Number}}]{msg\-Number, }
+\item[{String}]{name}
+\end{DoxyParamCaption}
+)}}\label{a00069_ab81696440ded730e339029a5423bd17f}
+
+
+Verarbeitet die Ruleset\-Message dass der Spieler eine Stichansage macht. 
+
+Die wird dann in is\-Valid\-Number überprüft, bei falsche Eingabe wird´ eine Msg\-Card\-Request an den selben Spieler geschickt. Bei richtiger Eingabe geht das Spiel weiter. 
+\begin{DoxyParams}{Parameter}
+{\em msg\-Number} & Die Nachricht vom Client \\
+\hline
+{\em name} & Der Name des Spielers \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00069_a2a80072981f095510c4aeb16edc18a33}{\index{Ruleset\-::\-Server\-Wizard@{Ruleset\-::\-Server\-Wizard}!is\-Valid\-Number@{is\-Valid\-Number}}
+\index{is\-Valid\-Number@{is\-Valid\-Number}!Ruleset::ServerWizard@{Ruleset\-::\-Server\-Wizard}}
+\paragraph[{is\-Valid\-Number}]{\setlength{\rightskip}{0pt plus 5cm}boolean is\-Valid\-Number (
+\begin{DoxyParamCaption}
+\item[{int}]{number, }
+\item[{String}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{a00069_a2a80072981f095510c4aeb16edc18a33}
+
+
+Ueberprueft ob eine eingegebene Stichangabe eines Spielers gueltig ist. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em number} & Die Stichangabe \\
+\hline
+{\em name} & Der Name vom Spieler \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Rückgabe}
+true falls die Stichangabe gültig ist, false wenn nicht 
+\end{DoxyReturn}
+\hypertarget{a00069_a2942b8a23a70ac5f8654690b7e3cfc09}{\index{Ruleset\-::\-Server\-Wizard@{Ruleset\-::\-Server\-Wizard}!resolve\-Message@{resolve\-Message}}
+\index{resolve\-Message@{resolve\-Message}!Ruleset::ServerWizard@{Ruleset\-::\-Server\-Wizard}}
+\paragraph[{resolve\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void resolve\-Message (
+\begin{DoxyParamCaption}
+\item[{{\bf Msg\-Selection}}]{msg\-Selection, }
+\item[{String}]{name}
+\end{DoxyParamCaption}
+)}}\label{a00069_a2942b8a23a70ac5f8654690b7e3cfc09}
+
+
+Verarbeitet die Ruleset\-Message dass mehrerer Karten vom Spieler uebergeben werden. 
+
+Die wird dann in is\-Valid\-Colour überprüft, bei falsche Eingabe wird´ Msg\-Multi\-Card\-Request an den selben Spieler geschickt. Bei richtiger Eingabe geht das Spiel weiter. 
+\begin{DoxyParams}{Parameter}
+{\em msg\-Selection} & Die Nachricht vom Client \\
+\hline
+{\em name} & Der Name des Spielers \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00069_a5107692ee4ad56672e366f68d6714d52}{\index{Ruleset\-::\-Server\-Wizard@{Ruleset\-::\-Server\-Wizard}!is\-Valid\-Colour@{is\-Valid\-Colour}}
+\index{is\-Valid\-Colour@{is\-Valid\-Colour}!Ruleset::ServerWizard@{Ruleset\-::\-Server\-Wizard}}
+\paragraph[{is\-Valid\-Colour}]{\setlength{\rightskip}{0pt plus 5cm}boolean is\-Valid\-Colour (
+\begin{DoxyParamCaption}
+\item[{{\bf Colour}}]{colour, }
+\item[{String}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{a00069_a5107692ee4ad56672e366f68d6714d52}
+
+
+Ueberprueft ob eine eingebene Trumpffarbe eines Spielers gueltig ist. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em colour} & Die Trumpffarbe \\
+\hline
+{\em name} & Der Name des Spielers \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Rückgabe}
+true falls die Farbe gueltig ist, false wenn nicht 
+\end{DoxyReturn}
+\hypertarget{a00069_ae26f0271bee2539ca4acd6b646ad895a}{\index{Ruleset\-::\-Server\-Wizard@{Ruleset\-::\-Server\-Wizard}!generate\-Game\-Client\-Update@{generate\-Game\-Client\-Update}}
+\index{generate\-Game\-Client\-Update@{generate\-Game\-Client\-Update}!Ruleset::ServerWizard@{Ruleset\-::\-Server\-Wizard}}
+\paragraph[{generate\-Game\-Client\-Update}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Game\-Client\-Update} generate\-Game\-Client\-Update (
+\begin{DoxyParamCaption}
+\item[{String}]{player}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{a00069_ae26f0271bee2539ca4acd6b646ad895a}
+
+
+Erzeugt ein \hyperlink{a00059}{Game\-Client\-Update} welches individuell für jeden Benutzer ist. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em player} & Dem Spieler \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00068_a4bc36d254178bf54e75fcdf472a5f863}{Server\-Ruleset}.
+
+
+
+\subsubsection{Dokumentation der Datenelemente}
+\hypertarget{a00069_afdd09d28760a65b79bafdb1551e30585}{\index{Ruleset\-::\-Server\-Wizard@{Ruleset\-::\-Server\-Wizard}!playing\-Rounds@{playing\-Rounds}}
+\index{playing\-Rounds@{playing\-Rounds}!Ruleset::ServerWizard@{Ruleset\-::\-Server\-Wizard}}
+\paragraph[{playing\-Rounds}]{\setlength{\rightskip}{0pt plus 5cm}int playing\-Rounds\hspace{0.3cm}{\ttfamily [private]}}}\label{a00069_afdd09d28760a65b79bafdb1551e30585}
+
+
+Die Anzahl an Runden die gespielt wird. 
+
+Ist abhaengig von der Spieleranzahl. 
+
+Wird benutzt von Server\-Wizard.\-getplaying\-Rounds() und Server\-Wizard.\-set\-Playing\-Rounds().
+

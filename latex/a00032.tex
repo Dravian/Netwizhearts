@@ -1,0 +1,128 @@
+\hypertarget{a00032}{\subsection{Com\-Init\-Lobby Klassenreferenz}
+\label{a00032}\index{Com\-Init\-Lobby@{Com\-Init\-Lobby}}
+}
+
+
+Abgeleitet von \hyperlink{a00037}{Com\-Object} und Serializable.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00032_a739c264cffc9883b63ea38438d5f3c34}{Com\-Init\-Lobby} (List$<$ String $>$ player\-List, Set game\-List)
+\item 
+List$<$ String $>$ \hyperlink{a00032_a806a371665b36cee69f0a49625a8c20d}{get\-Player\-List} ()
+\item 
+Set$<$ \hyperlink{a00073}{Game\-Server\-Representation} $>$ \hyperlink{a00032_a822c2e599facf6d9395cc799975c4ab1}{get\-Game\-List} ()
+\item 
+void \hyperlink{a00032_a758d7005755a181717f238f714d87dd2}{process} (\hyperlink{a00003}{Client\-Model} model)
+\item 
+void \hyperlink{a00032_ac67b5ce3ec03d48ef1e6caad6e49c902}{process} (\hyperlink{a00076}{Player} player, \hyperlink{a00077}{Server} server)
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00032_a2a62caed4423183b9e69deb6560b136f}{List$<$ String $>$ {\bfseries player\-List}}\label{a00032_a2a62caed4423183b9e69deb6560b136f}
+
+\item 
+\hypertarget{a00032_a3181880192ac35123553866694553d59}{Set$<$ \hyperlink{a00073}{Game\-Server\-Representation} $>$ {\bfseries game\-List}}\label{a00032_a3181880192ac35123553866694553d59}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Diese Klasse ist ein spezielles Kommunikations-\/\-Objekt. Sie synchronisiert den Client mit der Lobby, wenn er sich mit dem Server verbindet oder nach einem Spiel in die Lobby zurueckkehrt. Dazu enthaelt sie sowohl die player\-List, als auch die game\-List. 
+
+\subsubsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{a00032_a739c264cffc9883b63ea38438d5f3c34}{\index{Com\-Objects\-::\-Com\-Init\-Lobby@{Com\-Objects\-::\-Com\-Init\-Lobby}!Com\-Init\-Lobby@{Com\-Init\-Lobby}}
+\index{Com\-Init\-Lobby@{Com\-Init\-Lobby}!ComObjects::ComInitLobby@{Com\-Objects\-::\-Com\-Init\-Lobby}}
+\paragraph[{Com\-Init\-Lobby}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Com\-Init\-Lobby} (
+\begin{DoxyParamCaption}
+\item[{List$<$ String $>$}]{player\-List, }
+\item[{Set}]{game\-List}
+\end{DoxyParamCaption}
+)}}\label{a00032_a739c264cffc9883b63ea38438d5f3c34}
+
+
+Dies ist der Kontruktor fuer eine neue Com\-Init\-Lobby-\/\-Nachricht. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em player\-List} & ist die Liste der Spieler, die sich in der Lobby befinden. \\
+\hline
+{\em game\-List} & ist die Liste der Spiele, die existieren und in der Lobby angezeigt werden. \\
+\hline
+\end{DoxyParams}
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00032_a806a371665b36cee69f0a49625a8c20d}{\index{Com\-Objects\-::\-Com\-Init\-Lobby@{Com\-Objects\-::\-Com\-Init\-Lobby}!get\-Player\-List@{get\-Player\-List}}
+\index{get\-Player\-List@{get\-Player\-List}!ComObjects::ComInitLobby@{Com\-Objects\-::\-Com\-Init\-Lobby}}
+\paragraph[{get\-Player\-List}]{\setlength{\rightskip}{0pt plus 5cm}List$<$String$>$ get\-Player\-List (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00032_a806a371665b36cee69f0a49625a8c20d}
+
+
+Die Methode liefert die Liste aller Spieler, die in der Lobby sind. 
+
+\begin{DoxyReturn}{Rückgabe}
+die Liste der Spieler. 
+\end{DoxyReturn}
+\hypertarget{a00032_a822c2e599facf6d9395cc799975c4ab1}{\index{Com\-Objects\-::\-Com\-Init\-Lobby@{Com\-Objects\-::\-Com\-Init\-Lobby}!get\-Game\-List@{get\-Game\-List}}
+\index{get\-Game\-List@{get\-Game\-List}!ComObjects::ComInitLobby@{Com\-Objects\-::\-Com\-Init\-Lobby}}
+\paragraph[{get\-Game\-List}]{\setlength{\rightskip}{0pt plus 5cm}Set$<${\bf Game\-Server\-Representation}$>$ get\-Game\-List (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00032_a822c2e599facf6d9395cc799975c4ab1}
+
+
+Diese Methode liefert eine Liste aller Spiele, die erstellt wurden, damit sie in der Lobby angezeigt werden koennen. 
+
+\begin{DoxyReturn}{Rückgabe}
+die Liste der Spiele. 
+\end{DoxyReturn}
+\hypertarget{a00032_a758d7005755a181717f238f714d87dd2}{\index{Com\-Objects\-::\-Com\-Init\-Lobby@{Com\-Objects\-::\-Com\-Init\-Lobby}!process@{process}}
+\index{process@{process}!ComObjects::ComInitLobby@{Com\-Objects\-::\-Com\-Init\-Lobby}}
+\paragraph[{process}]{\setlength{\rightskip}{0pt plus 5cm}void process (
+\begin{DoxyParamCaption}
+\item[{{\bf Client\-Model}}]{model}
+\end{DoxyParamCaption}
+)}}\label{a00032_a758d7005755a181717f238f714d87dd2}
+
+
+Diese Methode ist noetig, damit der Client\-Listener\-Thread entscheiden kann welche Message das Object enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em model} & ist das Client\-Model, welches Ã¼bergeben wird, damit die ueberladene Methode richtig gewaehlt wird. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00037_a758d7005755a181717f238f714d87dd2}{Com\-Object}.
+
+\hypertarget{a00032_ac67b5ce3ec03d48ef1e6caad6e49c902}{\index{Com\-Objects\-::\-Com\-Init\-Lobby@{Com\-Objects\-::\-Com\-Init\-Lobby}!process@{process}}
+\index{process@{process}!ComObjects::ComInitLobby@{Com\-Objects\-::\-Com\-Init\-Lobby}}
+\paragraph[{process}]{\setlength{\rightskip}{0pt plus 5cm}void process (
+\begin{DoxyParamCaption}
+\item[{{\bf Player}}]{player, }
+\item[{{\bf Server}}]{server}
+\end{DoxyParamCaption}
+)}}\label{a00032_ac67b5ce3ec03d48ef1e6caad6e49c902}
+
+
+Diese Methode ist noetig, damit der Thread Player entscheiden kann welche Message das Object enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em player} & Der Client welcher den Aufruf startet. \\
+\hline
+{\em server} & Der Server an den sich das Com\-Objekt weitergibt. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00037_ac67b5ce3ec03d48ef1e6caad6e49c902}{Com\-Object}.
+

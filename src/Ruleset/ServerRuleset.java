@@ -11,7 +11,7 @@ import Server.GameServer;
 import ComObjects.MsgCard;
 import ComObjects.RulesetMessage;
 /** 
- * ServerRuleset. Das ServerRuleset ist eine akstrakte Klasse und fuer den Ablauf und die Einhaltung der Regeln eines Spiels zustaendig (/L280/). 
+ * ServerRuleset. Das ServerRuleset ist eine akstrakte Klasse und fuer den Ablauf und die Einhaltung der Regeln eines Spiels zustaendig. 
  * Das ServerRuleset wird im GameServer instanziert und verwaltet die Zustaende des GameStates im Server. 
  * Mit der Methode isValidMove() wird eine Eingabe eines Clients auf Regelkonformität ueberprueft und dann
  * das GameState veraendert. Ueber resolveMessage() kann eine GameServerinstanz eine RulesetMessage 

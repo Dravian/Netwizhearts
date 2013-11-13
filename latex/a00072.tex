@@ -1,0 +1,368 @@
+\hypertarget{a00072}{\subsection{Game\-Server Klassenreferenz}
+\label{a00072}\index{Game\-Server@{Game\-Server}}
+}
+
+
+Abgeleitet von \hyperlink{a00077}{Server}.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00072_ae17f12e5a1a3e12eef025dea863879ac}{Game\-Server} (\hyperlink{a00074}{Lobby\-Server} server, \hyperlink{a00076}{Player} game\-Master, String Game\-Name, \hyperlink{a00066}{Ruleset\-Type} \hyperlink{a00072_a67a78e259859051426c3ad7f1a67f143}{ruleset}, String \hyperlink{a00072_acbd76b816d055b7a642c219fd9751020}{password}, boolean \hyperlink{a00072_aeb207819150d367d4c5b73beaec78e52}{has\-Password})
+\item 
+\hyperlink{a00073}{Game\-Server\-Representation} \hyperlink{a00072_a3552c90bf00c53fb602150e1b5686eeb}{get\-Representation} ()
+\item 
+synchronized void \hyperlink{a00072_ac0a0163cec54e6202131c76962d7834b}{add\-Player} (\hyperlink{a00076}{Player} player)
+\item 
+synchronized void \hyperlink{a00072_a8b2712c19a20e54b3c5d99ce9d21112e}{remove\-Player} (\hyperlink{a00076}{Player} player)
+\item 
+void \hyperlink{a00072_a07aa6899fcfc25047d035eb18da2b4cf}{send\-Ruleset\-Message} (String player, Ruleset\-Message message)
+\item 
+void \hyperlink{a00072_a73d0d14c3d9e05fe191d56f3c2b49721}{broadcast\-Ruleset\-Message} (Ruleset\-Message message)
+\item 
+void \hyperlink{a00072_a0b77fc3205ccec25f53c3e75b22472e0}{receive\-Message} (\hyperlink{a00076}{Player} player, Com\-Kick\-Player\-Request kick\-Player)
+\item 
+void \hyperlink{a00072_a35ab43e0cc0ed85898cf687d29d79d82}{receive\-Message} (\hyperlink{a00076}{Player} player, Com\-Chat\-Message chat)
+\item 
+void \hyperlink{a00072_a52c32a89be29c3e3a2d4ea6df83517df}{receive\-Message} (\hyperlink{a00076}{Player} player, Com\-Client\-Leave leave)
+\item 
+void \hyperlink{a00072_a9d96ab623d7989576a1d610ec6efe98a}{receive\-Message} (\hyperlink{a00076}{Player} player, Com\-Client\-Quit quit)
+\item 
+void \hyperlink{a00072_a2b14aeb687a64757909eee2500e3ff82}{receive\-Message} (\hyperlink{a00076}{Player} player, Com\-Start\-Game start)
+\item 
+void \hyperlink{a00072_a0059ea63f742881760c30dbbc05e3ca4}{receive\-Message} (\hyperlink{a00076}{Player} player, Com\-Ruleset \hyperlink{a00072_a67a78e259859051426c3ad7f1a67f143}{ruleset})
+\item 
+Com\-Init\-Game\-Lobby \hyperlink{a00072_a3dd6393220c1b663119a5badf4d3de1a}{init\-Lobby} ()
+\item 
+void \hyperlink{a00072_af3ddb51daa156429385870eb04bd456e}{handle\-I\-O\-Exception} (\hyperlink{a00076}{Player} player)
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00072_a9cb4ab84f6237f795298724e3d6f4da8}{\hyperlink{a00074}{Lobby\-Server} \hyperlink{a00072_a9cb4ab84f6237f795298724e3d6f4da8}{lobby\-Server}}\label{a00072_a9cb4ab84f6237f795298724e3d6f4da8}
+
+\item 
+\hypertarget{a00072_ad3f74f58e5b41a74c02e21e0407280b8}{String \hyperlink{a00072_ad3f74f58e5b41a74c02e21e0407280b8}{game\-Master\-Name}}\label{a00072_ad3f74f58e5b41a74c02e21e0407280b8}
+
+\item 
+\hypertarget{a00072_a9a2326f35466e54c36c070829245c557}{String \hyperlink{a00072_a9a2326f35466e54c36c070829245c557}{name}}\label{a00072_a9a2326f35466e54c36c070829245c557}
+
+\item 
+String \hyperlink{a00072_acbd76b816d055b7a642c219fd9751020}{password}
+\item 
+\hypertarget{a00072_aa1b24fe78bd4f1d94890fc632e97151f}{int \hyperlink{a00072_aa1b24fe78bd4f1d94890fc632e97151f}{max\-Players}}\label{a00072_aa1b24fe78bd4f1d94890fc632e97151f}
+
+\item 
+\hypertarget{a00072_a2ea963db2aa2189f682df32952d4df12}{int \hyperlink{a00072_a2ea963db2aa2189f682df32952d4df12}{current\-Players}}\label{a00072_a2ea963db2aa2189f682df32952d4df12}
+
+\item 
+\hypertarget{a00072_aeb207819150d367d4c5b73beaec78e52}{boolean \hyperlink{a00072_aeb207819150d367d4c5b73beaec78e52}{has\-Password}}\label{a00072_aeb207819150d367d4c5b73beaec78e52}
+
+\item 
+\hypertarget{a00072_a0a553a9de1ac4995068c30b31ac472f4}{\hyperlink{a00066}{Ruleset\-Type} \hyperlink{a00072_a0a553a9de1ac4995068c30b31ac472f4}{ruleset\-Type}}\label{a00072_a0a553a9de1ac4995068c30b31ac472f4}
+
+\item 
+\hypertarget{a00072_a67a78e259859051426c3ad7f1a67f143}{\hyperlink{a00068}{Server\-Ruleset} \hyperlink{a00072_a67a78e259859051426c3ad7f1a67f143}{ruleset}}\label{a00072_a67a78e259859051426c3ad7f1a67f143}
+
+\end{DoxyCompactItemize}
+\subsubsection*{Weitere Geerbte Elemente}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Diese Klasse ist fuer die Verwaltung eines Spieles zustaendig. Sie verwaltet die Kommunikation zwischen den Clients waehrend eines Spieles. Die Game\-Server-\/\-Klasse erbt Methoden zur Kommunikation vom \hyperlink{a00077}{Server}. Der \hyperlink{a00072}{Game\-Server} tauscht Nachrichten zwischen Ruleset und \hyperlink{a00076}{Player} aus, um so den Spielablauf zu koordinieren. 
+
+\subsubsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{a00072_ae17f12e5a1a3e12eef025dea863879ac}{\index{Server\-::\-Game\-Server@{Server\-::\-Game\-Server}!Game\-Server@{Game\-Server}}
+\index{Game\-Server@{Game\-Server}!Server::GameServer@{Server\-::\-Game\-Server}}
+\paragraph[{Game\-Server}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Game\-Server} (
+\begin{DoxyParamCaption}
+\item[{{\bf Lobby\-Server}}]{server, }
+\item[{{\bf Player}}]{game\-Master, }
+\item[{String}]{Game\-Name, }
+\item[{{\bf Ruleset\-Type}}]{ruleset, }
+\item[{String}]{password, }
+\item[{boolean}]{has\-Password}
+\end{DoxyParamCaption}
+)}}\label{a00072_ae17f12e5a1a3e12eef025dea863879ac}
+
+
+Konstruktor des Game\-Servers. 
+
+Setzt die Attribute lobby\-Server, name, password, has\-Pasword und ruleset\-Type auf die uebergebenen Werte. Setzt den game\-Master\-Name auf den Namen des game\-Master und fuegt den game\-Master dem Set an Spielern hinzu. Bestimmt mithilfe des Enums Ruleset\-Type das Ruleset und erstellt es. Setzt current\-Players auf eins und max\-Players je nach Ruleset. 
+\begin{DoxyParams}{Parameter}
+{\em server} & ist der \hyperlink{a00074}{Lobby\-Server} der den \hyperlink{a00072}{Game\-Server} erstellt hat. \\
+\hline
+{\em game\-Master} & ist der Name des Spielleiters \\
+\hline
+{\em Game\-Name} & ist der Name des Spiels \\
+\hline
+{\em ruleset} & gibt an, welches Ruleset verwendet wird \\
+\hline
+{\em password} & speichert das Passwort des Spiels \\
+\hline
+{\em has\-Password} & gibt an, ob das Spiel ein Passwort hat \\
+\hline
+\end{DoxyParams}
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00072_a3552c90bf00c53fb602150e1b5686eeb}{\index{Server\-::\-Game\-Server@{Server\-::\-Game\-Server}!get\-Representation@{get\-Representation}}
+\index{get\-Representation@{get\-Representation}!Server::GameServer@{Server\-::\-Game\-Server}}
+\paragraph[{get\-Representation}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Game\-Server\-Representation} get\-Representation (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00072_a3552c90bf00c53fb602150e1b5686eeb}
+
+
+Erstellt eine neue \hyperlink{a00073}{Game\-Server\-Representation} und gibt sie zurueck. 
+
+\begin{DoxyReturn}{Rückgabe}
+Gibt die neue \hyperlink{a00073}{Game\-Server\-Representation} zurueck 
+\end{DoxyReturn}
+
+
+Benutzt Game\-Server.\-current\-Players, Game\-Server.\-game\-Master\-Name, Game\-Server.\-has\-Password, Game\-Server.\-max\-Players, Game\-Server.\-name und Game\-Server.\-ruleset\-Type.
+
+\hypertarget{a00072_ac0a0163cec54e6202131c76962d7834b}{\index{Server\-::\-Game\-Server@{Server\-::\-Game\-Server}!add\-Player@{add\-Player}}
+\index{add\-Player@{add\-Player}!Server::GameServer@{Server\-::\-Game\-Server}}
+\paragraph[{add\-Player}]{\setlength{\rightskip}{0pt plus 5cm}synchronized void add\-Player (
+\begin{DoxyParamCaption}
+\item[{{\bf Player}}]{player}
+\end{DoxyParamCaption}
+)}}\label{a00072_ac0a0163cec54e6202131c76962d7834b}
+
+
+Diese Methode fuegt einen \hyperlink{a00076}{Player} dem Set an Playern hinzu, welche der \hyperlink{a00077}{Server} verwaltet. 
+
+Es wird vorrausgesetzt, dass der \hyperlink{a00076}{Player} gueltig und noch nicht im Set vorhanden ist. Zusaetzlich wird die Zahl der current\-Players um eins Erhoeht. 
+\begin{DoxyParams}{Parameter}
+{\em player} & ist der \hyperlink{a00076}{Player}, der hinzugefuegt wird \\
+\hline
+\end{DoxyParams}
+
+
+Benutzt Game\-Server.\-current\-Players.
+
+\hypertarget{a00072_a8b2712c19a20e54b3c5d99ce9d21112e}{\index{Server\-::\-Game\-Server@{Server\-::\-Game\-Server}!remove\-Player@{remove\-Player}}
+\index{remove\-Player@{remove\-Player}!Server::GameServer@{Server\-::\-Game\-Server}}
+\paragraph[{remove\-Player}]{\setlength{\rightskip}{0pt plus 5cm}synchronized void remove\-Player (
+\begin{DoxyParamCaption}
+\item[{{\bf Player}}]{player}
+\end{DoxyParamCaption}
+)}}\label{a00072_a8b2712c19a20e54b3c5d99ce9d21112e}
+
+
+Diese Methode entfernt einen \hyperlink{a00076}{Player} aus dem Set an Playern, welche der \hyperlink{a00077}{Server} verwaltet. 
+
+Es wird vorrausgesetzt, dass der \hyperlink{a00076}{Player} gueltig und im Set vorhanden ist. Zusaetzlich wird die Zahl der current\-Players um eins Verringert. 
+\begin{DoxyParams}{Parameter}
+{\em player} & ist der \hyperlink{a00076}{Player}, der entfernt wird \\
+\hline
+\end{DoxyParams}
+
+
+Benutzt Game\-Server.\-current\-Players.
+
+\hypertarget{a00072_a07aa6899fcfc25047d035eb18da2b4cf}{\index{Server\-::\-Game\-Server@{Server\-::\-Game\-Server}!send\-Ruleset\-Message@{send\-Ruleset\-Message}}
+\index{send\-Ruleset\-Message@{send\-Ruleset\-Message}!Server::GameServer@{Server\-::\-Game\-Server}}
+\paragraph[{send\-Ruleset\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void send\-Ruleset\-Message (
+\begin{DoxyParamCaption}
+\item[{String}]{player, }
+\item[{Ruleset\-Message}]{message}
+\end{DoxyParamCaption}
+)}}\label{a00072_a07aa6899fcfc25047d035eb18da2b4cf}
+
+
+Diese Methode verpackt eine Ruleset\-Message in ein Com\-Object und verschickt es mit \hyperlink{a00077_ac90f610b90effa3a0cf572d3cbe270c3}{send\-To\-Player()} an einen bestimmten Spieler. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em player} & ist der Name des Spielers an den die Nachricht verschickt wird \\
+\hline
+{\em message} & ist die Ruleset Nachricht, die in ein Com\-Object verpackt wird \\
+\hline
+\end{DoxyParams}
+
+
+Benutzt Server.\-send\-To\-Player().
+
+\hypertarget{a00072_a73d0d14c3d9e05fe191d56f3c2b49721}{\index{Server\-::\-Game\-Server@{Server\-::\-Game\-Server}!broadcast\-Ruleset\-Message@{broadcast\-Ruleset\-Message}}
+\index{broadcast\-Ruleset\-Message@{broadcast\-Ruleset\-Message}!Server::GameServer@{Server\-::\-Game\-Server}}
+\paragraph[{broadcast\-Ruleset\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void broadcast\-Ruleset\-Message (
+\begin{DoxyParamCaption}
+\item[{Ruleset\-Message}]{message}
+\end{DoxyParamCaption}
+)}}\label{a00072_a73d0d14c3d9e05fe191d56f3c2b49721}
+
+
+Diese Methode verpackt eine Ruleset\-Message in ein Com\-Object und verschickt es mit \hyperlink{a00077_aa5dbc77abbcc945c59d4edc75e55e7cf}{broadcast()} an alle Spieler. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em message} & ist die Ruleset Nachricht, die in ein Com\-Object verpackt wird \\
+\hline
+\end{DoxyParams}
+
+
+Benutzt Server.\-broadcast().
+
+\hypertarget{a00072_a0b77fc3205ccec25f53c3e75b22472e0}{\index{Server\-::\-Game\-Server@{Server\-::\-Game\-Server}!receive\-Message@{receive\-Message}}
+\index{receive\-Message@{receive\-Message}!Server::GameServer@{Server\-::\-Game\-Server}}
+\paragraph[{receive\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void receive\-Message (
+\begin{DoxyParamCaption}
+\item[{{\bf Player}}]{player, }
+\item[{Com\-Kick\-Player\-Request}]{kick\-Player}
+\end{DoxyParamCaption}
+)}}\label{a00072_a0b77fc3205ccec25f53c3e75b22472e0}
+
+
+Diese Methode ist dafuer zustaendig zu ermitteln, was passiert wenn ein Spieler aus der Game\-Lobby geworfen wird. 
+
+Der \hyperlink{a00076}{Player} wird durch Aufruf von change\-Server an die Lobby zurueckgegeben. An diesen Spieler wird ein Com\-Init\-Lobby und ein Com\-Warning geschickt. Danach wird ein Com\-Update\-Playerlist Objekt mit broadcast an alle Clients im Spiel verschickt. 
+\begin{DoxyParams}{Parameter}
+{\em player} & ist der Thread der die Nachricht erhalten hat \\
+\hline
+{\em kicked} & ist das Com\-Object, das verarbeitet wird \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00072_a35ab43e0cc0ed85898cf687d29d79d82}{\index{Server\-::\-Game\-Server@{Server\-::\-Game\-Server}!receive\-Message@{receive\-Message}}
+\index{receive\-Message@{receive\-Message}!Server::GameServer@{Server\-::\-Game\-Server}}
+\paragraph[{receive\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void receive\-Message (
+\begin{DoxyParamCaption}
+\item[{{\bf Player}}]{player, }
+\item[{Com\-Chat\-Message}]{chat}
+\end{DoxyParamCaption}
+)}}\label{a00072_a35ab43e0cc0ed85898cf687d29d79d82}
+
+
+Diese Methode ist dafur zustaendig eine Chatnachricht an alle Clients im Spiel zu verschicken. 
+
+Dafuer wird die Com\-Chat\-Message mit broadcast an alle Spieler im player\-Set verteilt. 
+\begin{DoxyParams}{Parameter}
+{\em player} & ist der Thread der die Nachricht erhalten hat \\
+\hline
+{\em chat} & ist das Com\-Object, das die Chatnachricht enthaelt \\
+\hline
+\end{DoxyParams}
+
+
+Benutzt Server.\-broadcast().
+
+\hypertarget{a00072_a52c32a89be29c3e3a2d4ea6df83517df}{\index{Server\-::\-Game\-Server@{Server\-::\-Game\-Server}!receive\-Message@{receive\-Message}}
+\index{receive\-Message@{receive\-Message}!Server::GameServer@{Server\-::\-Game\-Server}}
+\paragraph[{receive\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void receive\-Message (
+\begin{DoxyParamCaption}
+\item[{{\bf Player}}]{player, }
+\item[{Com\-Client\-Leave}]{leave}
+\end{DoxyParamCaption}
+)}}\label{a00072_a52c32a89be29c3e3a2d4ea6df83517df}
+
+
+Diese Methode gibt einen \hyperlink{a00076}{Player}, der die Game\-Lobby verlassen will, durch Aufruf von change\-Server an die Server\-Lobby zurueck und schickt ihm ein Com\-Init\-Lobby. 
+
+Danach wird ein Com\-Update\-Playerlist Objekt mit broadcast an alle Clients im Spiel verschickt. 
+\begin{DoxyParams}{Parameter}
+{\em player} & ist der Thread der die Nachricht erhalten hat \\
+\hline
+{\em leave} & ist das Com\-Object, welches angibt, dass der Spieler in die Lobby zurueckkehrt \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00072_a9d96ab623d7989576a1d610ec6efe98a}{\index{Server\-::\-Game\-Server@{Server\-::\-Game\-Server}!receive\-Message@{receive\-Message}}
+\index{receive\-Message@{receive\-Message}!Server::GameServer@{Server\-::\-Game\-Server}}
+\paragraph[{receive\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void receive\-Message (
+\begin{DoxyParamCaption}
+\item[{{\bf Player}}]{player, }
+\item[{Com\-Client\-Quit}]{quit}
+\end{DoxyParamCaption}
+)}}\label{a00072_a9d96ab623d7989576a1d610ec6efe98a}
+
+
+Diese Methode behandelt den Fall, dass ein Spieler das laufende Spiel verlaesst. 
+
+Alle Spieler, die sich im Spiel befinden werden durch Aufruf von change\-Server an die Lobby zurueckgegeben und bekommen ein Com\-Init\-Lobby und ein Com\-Warning. Das Spiel wird aus dem game\-Server\-Set des Lobby\-Servers entfernt. 
+\begin{DoxyParams}{Parameter}
+{\em player} & ist der Thread der die Nachricht erhalten hat \\
+\hline
+{\em quit} & ist das Com\-Object, welches angibt, dass der Spieler das Spiel verlaesst \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00072_a2b14aeb687a64757909eee2500e3ff82}{\index{Server\-::\-Game\-Server@{Server\-::\-Game\-Server}!receive\-Message@{receive\-Message}}
+\index{receive\-Message@{receive\-Message}!Server::GameServer@{Server\-::\-Game\-Server}}
+\paragraph[{receive\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void receive\-Message (
+\begin{DoxyParamCaption}
+\item[{{\bf Player}}]{player, }
+\item[{Com\-Start\-Game}]{start}
+\end{DoxyParamCaption}
+)}}\label{a00072_a2b14aeb687a64757909eee2500e3ff82}
+
+
+Diese Methode sagt dem Ruleset, dass ein neues Spiel gestartet werden soll indem er dessen run\-Game Methode aufruft. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em player} & ist der Thread der die Nachricht erhalten hat \\
+\hline
+{\em start} & ist das Com\-Object, dass angibt, dass das Spiel gestartet werden soll \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00072_a0059ea63f742881760c30dbbc05e3ca4}{\index{Server\-::\-Game\-Server@{Server\-::\-Game\-Server}!receive\-Message@{receive\-Message}}
+\index{receive\-Message@{receive\-Message}!Server::GameServer@{Server\-::\-Game\-Server}}
+\paragraph[{receive\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void receive\-Message (
+\begin{DoxyParamCaption}
+\item[{{\bf Player}}]{player, }
+\item[{Com\-Ruleset}]{ruleset}
+\end{DoxyParamCaption}
+)}}\label{a00072_a0059ea63f742881760c30dbbc05e3ca4}
+
+
+Diese Methode gibt das erhaltene Com\-Ruleset durch einen Aufruf von resolve\-Message an das Ruleset weiter. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em player} & ist der Thread der die Nachricht erhalten hat \\
+\hline
+{\em ruleset} & ist das Com\-Object, das zeigt, dass das Object vom Ruleset bearbeitet werden muss \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00072_a3dd6393220c1b663119a5badf4d3de1a}{\index{Server\-::\-Game\-Server@{Server\-::\-Game\-Server}!init\-Lobby@{init\-Lobby}}
+\index{init\-Lobby@{init\-Lobby}!Server::GameServer@{Server\-::\-Game\-Server}}
+\paragraph[{init\-Lobby}]{\setlength{\rightskip}{0pt plus 5cm}Com\-Init\-Game\-Lobby init\-Lobby (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00072_a3dd6393220c1b663119a5badf4d3de1a}
+
+
+Baut ein neues Com\-Init\-Game\-Lobby Objekt und gibt es zurueck. 
+
+\begin{DoxyReturn}{Rückgabe}
+Gibt das Com\-Init\-Game\-Lobby Objekt zurueck 
+\end{DoxyReturn}
+\hypertarget{a00072_af3ddb51daa156429385870eb04bd456e}{\index{Server\-::\-Game\-Server@{Server\-::\-Game\-Server}!handle\-I\-O\-Exception@{handle\-I\-O\-Exception}}
+\index{handle\-I\-O\-Exception@{handle\-I\-O\-Exception}!Server::GameServer@{Server\-::\-Game\-Server}}
+\paragraph[{handle\-I\-O\-Exception}]{\setlength{\rightskip}{0pt plus 5cm}void handle\-I\-O\-Exception (
+\begin{DoxyParamCaption}
+\item[{{\bf Player}}]{player}
+\end{DoxyParamCaption}
+)}}\label{a00072_af3ddb51daa156429385870eb04bd456e}
+
+
+Diese Methode legt den Ablauf fest, was passiert, falls die Verbindung zu einem Client verloren gegangen ist. 
+
+Der uebergebene \hyperlink{a00076}{Player} wird aus dem player\-Set im \hyperlink{a00072}{Game\-Server}, sowie dem names Set im \hyperlink{a00074}{Lobby\-Server} entfernt. Alle Spieler, die sich im Spiel befinden werden durch Aufruf von change\-Server an die Lobby zurueckgegeben und bekommen ein Com\-Init\-Lobby und ein Com\-Warning. Das Spiel wird aus dem game\-Server\-Set des Lobby\-Servers entfernt. 
+\begin{DoxyParams}{Parameter}
+{\em player} & ist der Tread von dem die I\-O\-Exception kommt \\
+\hline
+\end{DoxyParams}
+
+
+\subsubsection{Dokumentation der Datenelemente}
+\hypertarget{a00072_acbd76b816d055b7a642c219fd9751020}{\index{Server\-::\-Game\-Server@{Server\-::\-Game\-Server}!password@{password}}
+\index{password@{password}!Server::GameServer@{Server\-::\-Game\-Server}}
+\paragraph[{password}]{\setlength{\rightskip}{0pt plus 5cm}String password\hspace{0.3cm}{\ttfamily [private]}}}\label{a00072_acbd76b816d055b7a642c219fd9751020}
+
+
+Das Passwort, das der Spielleiter beim erstellen gesetzt hat. 
+
+Ist N\-U\-L\-L, falls es kein Passwort gibt. 

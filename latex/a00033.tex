@@ -1,0 +1,133 @@
+\hypertarget{a00033}{\subsection{Com\-Join\-Request Klassenreferenz}
+\label{a00033}\index{Com\-Join\-Request@{Com\-Join\-Request}}
+}
+
+
+Abgeleitet von \hyperlink{a00037}{Com\-Object} und Serializable.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00033_a65c627c4c6752c8b94d729645b03846f}{Com\-Join\-Request} (String \hyperlink{a00033_ad3f74f58e5b41a74c02e21e0407280b8}{game\-Master\-Name}, String password)
+\item 
+String \hyperlink{a00033_a3acba35c72b8d4dcf49579142910672f}{get\-Game\-Master\-Name} ()
+\item 
+void \hyperlink{a00033_a758d7005755a181717f238f714d87dd2}{process} (\hyperlink{a00003}{Client\-Model} model)
+\item 
+void \hyperlink{a00033_ac67b5ce3ec03d48ef1e6caad6e49c902}{process} (\hyperlink{a00076}{Player} player, \hyperlink{a00077}{Server} server)
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+String \hyperlink{a00033_ad3f74f58e5b41a74c02e21e0407280b8}{game\-Master\-Name}
+\item 
+\hypertarget{a00033_acbd76b816d055b7a642c219fd9751020}{String {\bfseries password}}\label{a00033_acbd76b816d055b7a642c219fd9751020}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Diese Klasse ist ein spezielles Kommunikations-\/\-Objekt. Sie ist eine Nachricht, die an den Server gesendet wird, wenn der Spieler einem bestimmten Spiel beitreten will. Dazu enthaelt sie den Namen des Spielleiters als String und ein Passwort, falls dieses von Spielleiter gesetzt wurde. 
+
+\subsubsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{a00033_a65c627c4c6752c8b94d729645b03846f}{\index{Com\-Objects\-::\-Com\-Join\-Request@{Com\-Objects\-::\-Com\-Join\-Request}!Com\-Join\-Request@{Com\-Join\-Request}}
+\index{Com\-Join\-Request@{Com\-Join\-Request}!ComObjects::ComJoinRequest@{Com\-Objects\-::\-Com\-Join\-Request}}
+\paragraph[{Com\-Join\-Request}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Com\-Join\-Request} (
+\begin{DoxyParamCaption}
+\item[{String}]{game\-Master\-Name, }
+\item[{String}]{password}
+\end{DoxyParamCaption}
+)}}\label{a00033_a65c627c4c6752c8b94d729645b03846f}
+
+
+Dies ist der Kontruktor fuer eine neue Con\-Join\-Request-\/\-Nachricht. 
+
+Ein Spiel kann durch den eindeutigen Namen der Spielleiters identifiziert werden. 
+\begin{DoxyParams}{Parameter}
+{\em game\-Master\-Name} & ist der Name der Spielleiters. \\
+\hline
+{\em password} & fuer das Spiel. \\
+\hline
+\end{DoxyParams}
+
+
+Benutzt Com\-Join\-Request.\-game\-Master\-Name.
+
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00033_a3acba35c72b8d4dcf49579142910672f}{\index{Com\-Objects\-::\-Com\-Join\-Request@{Com\-Objects\-::\-Com\-Join\-Request}!get\-Game\-Master\-Name@{get\-Game\-Master\-Name}}
+\index{get\-Game\-Master\-Name@{get\-Game\-Master\-Name}!ComObjects::ComJoinRequest@{Com\-Objects\-::\-Com\-Join\-Request}}
+\paragraph[{get\-Game\-Master\-Name}]{\setlength{\rightskip}{0pt plus 5cm}String get\-Game\-Master\-Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00033_a3acba35c72b8d4dcf49579142910672f}
+
+
+Diese Methode gibt den Namen des Spielleiters zurueck. 
+
+Dieser ist eindeutig, so kann ein bestimmtes Spiel identifiziert werden. \begin{DoxyReturn}{Rückgabe}
+der Name des Spielleiters. 
+\end{DoxyReturn}
+
+
+Benutzt Com\-Join\-Request.\-game\-Master\-Name.
+
+\hypertarget{a00033_a758d7005755a181717f238f714d87dd2}{\index{Com\-Objects\-::\-Com\-Join\-Request@{Com\-Objects\-::\-Com\-Join\-Request}!process@{process}}
+\index{process@{process}!ComObjects::ComJoinRequest@{Com\-Objects\-::\-Com\-Join\-Request}}
+\paragraph[{process}]{\setlength{\rightskip}{0pt plus 5cm}void process (
+\begin{DoxyParamCaption}
+\item[{{\bf Client\-Model}}]{model}
+\end{DoxyParamCaption}
+)}}\label{a00033_a758d7005755a181717f238f714d87dd2}
+
+
+Diese Methode ist noetig, damit der Client\-Listener\-Thread entscheiden kann welche Message das Object enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em model} & ist das Client\-Model, welches Ã¼bergeben wird, damit die ueberladene Methode richtig gewaehlt wird. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00037_a758d7005755a181717f238f714d87dd2}{Com\-Object}.
+
+\hypertarget{a00033_ac67b5ce3ec03d48ef1e6caad6e49c902}{\index{Com\-Objects\-::\-Com\-Join\-Request@{Com\-Objects\-::\-Com\-Join\-Request}!process@{process}}
+\index{process@{process}!ComObjects::ComJoinRequest@{Com\-Objects\-::\-Com\-Join\-Request}}
+\paragraph[{process}]{\setlength{\rightskip}{0pt plus 5cm}void process (
+\begin{DoxyParamCaption}
+\item[{{\bf Player}}]{player, }
+\item[{{\bf Server}}]{server}
+\end{DoxyParamCaption}
+)}}\label{a00033_ac67b5ce3ec03d48ef1e6caad6e49c902}
+
+
+Diese Methode ist noetig, damit der Thread Player entscheiden kann welche Message das Object enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em player} & Der Client welcher den Aufruf startet. \\
+\hline
+{\em server} & Der Server an den sich das Com\-Objekt weitergibt. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00037_ac67b5ce3ec03d48ef1e6caad6e49c902}{Com\-Object}.
+
+
+
+\subsubsection{Dokumentation der Datenelemente}
+\hypertarget{a00033_ad3f74f58e5b41a74c02e21e0407280b8}{\index{Com\-Objects\-::\-Com\-Join\-Request@{Com\-Objects\-::\-Com\-Join\-Request}!game\-Master\-Name@{game\-Master\-Name}}
+\index{game\-Master\-Name@{game\-Master\-Name}!ComObjects::ComJoinRequest@{Com\-Objects\-::\-Com\-Join\-Request}}
+\paragraph[{game\-Master\-Name}]{\setlength{\rightskip}{0pt plus 5cm}String game\-Master\-Name\hspace{0.3cm}{\ttfamily [private]}}}\label{a00033_ad3f74f58e5b41a74c02e21e0407280b8}
+
+
+Der Name der Spielleiters muss enthalten sein um ein Spiel zuzuornen. 
+
+Der Spielname ist nicht eindeutig, aber der Spielleiter schon. Somit kann jedes Spiel mit Hilfe des Spielleiters identifiziert werden. 
+
+Wird benutzt von Com\-Join\-Request.\-Com\-Join\-Request() und Com\-Join\-Request.\-get\-Game\-Master\-Name().
+

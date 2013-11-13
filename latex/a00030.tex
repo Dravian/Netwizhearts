@@ -1,0 +1,128 @@
+\hypertarget{a00030}{\subsection{Com\-Game\-End Klassenreferenz}
+\label{a00030}\index{Com\-Game\-End@{Com\-Game\-End}}
+}
+
+
+Abgeleitet von \hyperlink{a00037}{Com\-Object} und Serializable.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00030_a226ed5c139cd4704d7713c774024b8fe}{Com\-Game\-End} (String winner, Map$<$ String, Integer $>$ points)
+\item 
+String \hyperlink{a00030_a159081d6eb49d67e8fe72bc03a47c336}{get\-Winner} ()
+\item 
+Map$<$ String, Integer $>$ \hyperlink{a00030_a6728b69386f5be617ae827369cc3cdd7}{get\-Points} ()
+\item 
+void \hyperlink{a00030_a758d7005755a181717f238f714d87dd2}{process} (\hyperlink{a00003}{Client\-Model} model)
+\item 
+void \hyperlink{a00030_ac67b5ce3ec03d48ef1e6caad6e49c902}{process} (\hyperlink{a00076}{Player} player, \hyperlink{a00077}{Server} server)
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00030_ab35aa0dc9c0abae0c68eac704e821d9c}{String {\bfseries winner}}\label{a00030_ab35aa0dc9c0abae0c68eac704e821d9c}
+
+\item 
+\hypertarget{a00030_a63905fe355f44800cedf835511d82d55}{Map$<$ String, Integer $>$ {\bfseries points}}\label{a00030_a63905fe355f44800cedf835511d82d55}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Diese Klasse ist ein spezielles Kommunikations-\/\-Objekt. Sie liefert den Gewinner eines Spiels und eine Auflistung der Spieler mit ihren erspielten Punkten und wird versendet, wenn ein Spiel zu Ende ist oder eine Runde. In diesem Fall wird der Gewinner einfach leer gelassen, da es noch keinen gibt. 
+
+\subsubsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{a00030_a226ed5c139cd4704d7713c774024b8fe}{\index{Com\-Objects\-::\-Com\-Game\-End@{Com\-Objects\-::\-Com\-Game\-End}!Com\-Game\-End@{Com\-Game\-End}}
+\index{Com\-Game\-End@{Com\-Game\-End}!ComObjects::ComGameEnd@{Com\-Objects\-::\-Com\-Game\-End}}
+\paragraph[{Com\-Game\-End}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Com\-Game\-End} (
+\begin{DoxyParamCaption}
+\item[{String}]{winner, }
+\item[{Map$<$ String, Integer $>$}]{points}
+\end{DoxyParamCaption}
+)}}\label{a00030_a226ed5c139cd4704d7713c774024b8fe}
+
+
+Dies ist der Kontruktor fuer eine neue Com\-Game\-End-\/\-Nachricht. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em winner} & ist der Gewinner des Spiels. \\
+\hline
+{\em points} & ist eine Auflistung der Spieler mit ihren Punkten. \\
+\hline
+\end{DoxyParams}
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00030_a159081d6eb49d67e8fe72bc03a47c336}{\index{Com\-Objects\-::\-Com\-Game\-End@{Com\-Objects\-::\-Com\-Game\-End}!get\-Winner@{get\-Winner}}
+\index{get\-Winner@{get\-Winner}!ComObjects::ComGameEnd@{Com\-Objects\-::\-Com\-Game\-End}}
+\paragraph[{get\-Winner}]{\setlength{\rightskip}{0pt plus 5cm}String get\-Winner (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00030_a159081d6eb49d67e8fe72bc03a47c336}
+
+
+Diese Methode gibt den Gewinner zurueck. 
+
+\begin{DoxyReturn}{Rückgabe}
+den Gewinner. 
+\end{DoxyReturn}
+\hypertarget{a00030_a6728b69386f5be617ae827369cc3cdd7}{\index{Com\-Objects\-::\-Com\-Game\-End@{Com\-Objects\-::\-Com\-Game\-End}!get\-Points@{get\-Points}}
+\index{get\-Points@{get\-Points}!ComObjects::ComGameEnd@{Com\-Objects\-::\-Com\-Game\-End}}
+\paragraph[{get\-Points}]{\setlength{\rightskip}{0pt plus 5cm}Map$<$String, Integer$>$ get\-Points (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00030_a6728b69386f5be617ae827369cc3cdd7}
+
+
+Diese Methode gibt die Auflistung der Spieler mit ihren zugehoerigen Punkten zurueck. 
+
+\begin{DoxyReturn}{Rückgabe}
+die Liste der Spieler mit ihren Punkten. 
+\end{DoxyReturn}
+\hypertarget{a00030_a758d7005755a181717f238f714d87dd2}{\index{Com\-Objects\-::\-Com\-Game\-End@{Com\-Objects\-::\-Com\-Game\-End}!process@{process}}
+\index{process@{process}!ComObjects::ComGameEnd@{Com\-Objects\-::\-Com\-Game\-End}}
+\paragraph[{process}]{\setlength{\rightskip}{0pt plus 5cm}void process (
+\begin{DoxyParamCaption}
+\item[{{\bf Client\-Model}}]{model}
+\end{DoxyParamCaption}
+)}}\label{a00030_a758d7005755a181717f238f714d87dd2}
+
+
+Diese Methode ist noetig, damit der Client\-Listener\-Thread entscheiden kann welche Message das Object enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em model} & ist das Client\-Model, welches Ã¼bergeben wird, damit die ueberladene Methode richtig gewaehlt wird. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00037_a758d7005755a181717f238f714d87dd2}{Com\-Object}.
+
+\hypertarget{a00030_ac67b5ce3ec03d48ef1e6caad6e49c902}{\index{Com\-Objects\-::\-Com\-Game\-End@{Com\-Objects\-::\-Com\-Game\-End}!process@{process}}
+\index{process@{process}!ComObjects::ComGameEnd@{Com\-Objects\-::\-Com\-Game\-End}}
+\paragraph[{process}]{\setlength{\rightskip}{0pt plus 5cm}void process (
+\begin{DoxyParamCaption}
+\item[{{\bf Player}}]{player, }
+\item[{{\bf Server}}]{server}
+\end{DoxyParamCaption}
+)}}\label{a00030_ac67b5ce3ec03d48ef1e6caad6e49c902}
+
+
+Diese Methode ist noetig, damit der Thread Player entscheiden kann welche Message das Object enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em player} & Der Client welcher den Aufruf startet. \\
+\hline
+{\em server} & Der Server an den sich das Com\-Objekt weitergibt. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00037_ac67b5ce3ec03d48ef1e6caad6e49c902}{Com\-Object}.
+

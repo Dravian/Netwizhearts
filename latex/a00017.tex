@@ -1,0 +1,144 @@
+\hypertarget{a00017}{\subsection{Login Klassenreferenz}
+\label{a00017}\index{Login@{Login}}
+}
+
+
+Abgeleitet von J\-Frame und Observer.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00017_a8db48c2902872da0ee80463db6696375}{\hyperlink{a00017_a8db48c2902872da0ee80463db6696375}{Login} ()}\label{a00017_a8db48c2902872da0ee80463db6696375}
+
+\item 
+void \hyperlink{a00017_aedb261b64a503ffc0e90c47a8ee9f266}{add\-Connect\-Button\-Listener} (Action\-Listener a)
+\item 
+void \hyperlink{a00017_ab8dff035c0ac307f7889ad8b3fba20bb}{add\-Language\-Selection\-Listener} (Item\-Listener i)
+\item 
+void \hyperlink{a00017_a9329ba7453dd661d50d2fb8024df3b2b}{set\-Language} (\hyperlink{a00015}{Language} l)
+\item 
+void \hyperlink{a00017_a2b67d42550fdf9ddd8f3878d0849965c}{update} (Observable o, Object arg)
+\end{DoxyCompactItemize}
+\subsubsection*{Öffentliche, statische Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00017_a8b260eecbaabcef8473fd87ada040682}{static void {\bfseries main} (String\mbox{[}$\,$\mbox{]} args)  throws I\-O\-Exception}\label{a00017_a8b260eecbaabcef8473fd87ada040682}
+
+\end{DoxyCompactItemize}
+\subsubsection*{Private Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00017_a74cba330cee84fa07487e12fdafe29aa}{void {\bfseries update\-Language} ()}\label{a00017_a74cba330cee84fa07487e12fdafe29aa}
+
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00017_aee369a2eca6b8f16ea106cddf68273e8}{J\-Panel {\bfseries content\-Pane}}\label{a00017_aee369a2eca6b8f16ea106cddf68273e8}
+
+\item 
+\hypertarget{a00017_a2b4470f7f3f7456c7e52d1604438a878}{J\-Text\-Field {\bfseries name\-Field}}\label{a00017_a2b4470f7f3f7456c7e52d1604438a878}
+
+\item 
+\hypertarget{a00017_a5818e0774952fcd296ac25bba2c3a412}{J\-Text\-Field {\bfseries server\-Field}}\label{a00017_a5818e0774952fcd296ac25bba2c3a412}
+
+\item 
+\hypertarget{a00017_a765c7bbc3bba7f753c749e8a28e36187}{J\-Combo\-Box$<$ \hyperlink{a00015}{Language} $>$ {\bfseries language\-Combo\-Box}}\label{a00017_a765c7bbc3bba7f753c749e8a28e36187}
+
+\item 
+\hypertarget{a00017_ab18336ae88c7162c8c822907337402f1}{J\-Button {\bfseries btn\-Connect}}\label{a00017_ab18336ae88c7162c8c822907337402f1}
+
+\item 
+\hypertarget{a00017_a430764470b3602491655161cdd67ee8c}{\hyperlink{a00015}{Language} {\bfseries lang}}\label{a00017_a430764470b3602491655161cdd67ee8c}
+
+\item 
+\hypertarget{a00017_a2e7306cda41914bf0580a04805d80157}{J\-Label {\bfseries lbl\-Nickname}}\label{a00017_a2e7306cda41914bf0580a04805d80157}
+
+\item 
+\hypertarget{a00017_a438c152380c37379e8dde366356504fb}{J\-Label {\bfseries lbl\-Host\-Ip}}\label{a00017_a438c152380c37379e8dde366356504fb}
+
+\item 
+\hypertarget{a00017_a9863d1276cc1eec382691217ac36d3aa}{J\-Label {\bfseries lbl\-Language}}\label{a00017_a9863d1276cc1eec382691217ac36d3aa}
+
+\end{DoxyCompactItemize}
+\subsubsection*{Statische, private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00017_a3238d314ecdee14d2966760945d00c3b}{static final long {\bfseries serial\-Version\-U\-I\-D} = -\/2516577977746181978\-L}\label{a00017_a3238d314ecdee14d2966760945d00c3b}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Das Login-\/\-Fenster repraesentiert den initialen Dialog zwischen Benutzer und Client. In diesem Fenster kann der Benutzer seinen Namen und die Adresse des Servers eingeben. Ausserdem ist ueber den \hyperlink{a00017}{Login} die Auswahl der Sprache moeglich. ueber den Login-\/\-Button wird die Verbindung zum Server hergestellt. 
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00017_aedb261b64a503ffc0e90c47a8ee9f266}{\index{Client\-::\-View\-::\-Login@{Client\-::\-View\-::\-Login}!add\-Connect\-Button\-Listener@{add\-Connect\-Button\-Listener}}
+\index{add\-Connect\-Button\-Listener@{add\-Connect\-Button\-Listener}!Client::View::Login@{Client\-::\-View\-::\-Login}}
+\paragraph[{add\-Connect\-Button\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}void add\-Connect\-Button\-Listener (
+\begin{DoxyParamCaption}
+\item[{Action\-Listener}]{a}
+\end{DoxyParamCaption}
+)}}\label{a00017_aedb261b64a503ffc0e90c47a8ee9f266}
+
+
+Fuegt einen Listener fuer den 'Connect' Button des \hyperlink{a00017}{Login} Fensters hinzu. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em a} & ein Action\-Listener \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00017_ab8dff035c0ac307f7889ad8b3fba20bb}{\index{Client\-::\-View\-::\-Login@{Client\-::\-View\-::\-Login}!add\-Language\-Selection\-Listener@{add\-Language\-Selection\-Listener}}
+\index{add\-Language\-Selection\-Listener@{add\-Language\-Selection\-Listener}!Client::View::Login@{Client\-::\-View\-::\-Login}}
+\paragraph[{add\-Language\-Selection\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}void add\-Language\-Selection\-Listener (
+\begin{DoxyParamCaption}
+\item[{Item\-Listener}]{i}
+\end{DoxyParamCaption}
+)}}\label{a00017_ab8dff035c0ac307f7889ad8b3fba20bb}
+
+
+Fuegt einen Listener fuer die Sprachauswahl des \hyperlink{a00017}{Login} Fensters hinzu. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em i} & ein Item\-Listener \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00017_a9329ba7453dd661d50d2fb8024df3b2b}{\index{Client\-::\-View\-::\-Login@{Client\-::\-View\-::\-Login}!set\-Language@{set\-Language}}
+\index{set\-Language@{set\-Language}!Client::View::Login@{Client\-::\-View\-::\-Login}}
+\paragraph[{set\-Language}]{\setlength{\rightskip}{0pt plus 5cm}void set\-Language (
+\begin{DoxyParamCaption}
+\item[{{\bf Language}}]{l}
+\end{DoxyParamCaption}
+)}}\label{a00017_a9329ba7453dd661d50d2fb8024df3b2b}
+
+
+Aendert die Sprache des Fensters. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em l} & Sprache in Form des Language-\/\-Enums \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00017_a2b67d42550fdf9ddd8f3878d0849965c}{\index{Client\-::\-View\-::\-Login@{Client\-::\-View\-::\-Login}!update@{update}}
+\index{update@{update}!Client::View::Login@{Client\-::\-View\-::\-Login}}
+\paragraph[{update}]{\setlength{\rightskip}{0pt plus 5cm}void update (
+\begin{DoxyParamCaption}
+\item[{Observable}]{o, }
+\item[{Object}]{arg}
+\end{DoxyParamCaption}
+)}}\label{a00017_a2b67d42550fdf9ddd8f3878d0849965c}
+
+
+Wird durch notify() im \hyperlink{a00003}{Client\-Model} aufgerufen. 
+
+Je nach dem in arg uebergebenen View\-Notification-\/\-Befehl wird ein Update des Fensters ausgefuehrt oder eine Fehlermeldung angezeigt.
+
+
+\begin{DoxyParams}{Parameter}
+{\em o} & erwartet ein Objekt von der Klasse \hyperlink{a00003}{Client\-Model} \\
+\hline
+{\em arg} & erwartet\-: login\-Successful \\
+\hline
+\end{DoxyParams}

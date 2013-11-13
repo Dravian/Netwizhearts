@@ -1,0 +1,106 @@
+\hypertarget{a00043}{\subsection{Msg\-Card Klassenreferenz}
+\label{a00043}\index{Msg\-Card@{Msg\-Card}}
+}
+
+
+Abgeleitet von \hyperlink{a00053}{Ruleset\-Message} und Serializable.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00043_a395d67537a7c1e878492b71b8c9fc386}{Msg\-Card} (\hyperlink{a00054}{Card} card)
+\item 
+\hyperlink{a00054}{Card} \hyperlink{a00043_ab17e889e2357b455b9f20caa950773f7}{get\-Card} ()
+\item 
+void \hyperlink{a00043_ab45288da8f64e79408f1effd5579b5c2}{visit} (\hyperlink{a00068}{Server\-Ruleset} server\-Ruleset, String name)
+\item 
+void \hyperlink{a00043_acb5be722a2d1c9110d39f31c6e18f6e7}{visit} (\hyperlink{a00056}{Client\-Ruleset} client\-Ruleset)
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00043_a51b891488326534fbcce638123baffae}{\hyperlink{a00054}{Card} {\bfseries card}}\label{a00043_a51b891488326534fbcce638123baffae}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Diese Klasse ist eine Verfeinerung der Ruleset\-Message-\/\-Klasse. Sie beinhaltet die ausgespielte Karte eines Spielers. 
+
+\subsubsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{a00043_a395d67537a7c1e878492b71b8c9fc386}{\index{Com\-Objects\-::\-Msg\-Card@{Com\-Objects\-::\-Msg\-Card}!Msg\-Card@{Msg\-Card}}
+\index{Msg\-Card@{Msg\-Card}!ComObjects::MsgCard@{Com\-Objects\-::\-Msg\-Card}}
+\paragraph[{Msg\-Card}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Msg\-Card} (
+\begin{DoxyParamCaption}
+\item[{{\bf Card}}]{card}
+\end{DoxyParamCaption}
+)}}\label{a00043_a395d67537a7c1e878492b71b8c9fc386}
+
+
+Dies ist der Kontruktor fuer eine neue Msg\-Card-\/\-Nachricht. 
+
+Diese enthaelt die Information, welche Karte von einem Spieler gespielt wurde. 
+\begin{DoxyParams}{Parameter}
+{\em card} & ist die Karte. \\
+\hline
+\end{DoxyParams}
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00043_ab17e889e2357b455b9f20caa950773f7}{\index{Com\-Objects\-::\-Msg\-Card@{Com\-Objects\-::\-Msg\-Card}!get\-Card@{get\-Card}}
+\index{get\-Card@{get\-Card}!ComObjects::MsgCard@{Com\-Objects\-::\-Msg\-Card}}
+\paragraph[{get\-Card}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Card} get\-Card (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00043_ab17e889e2357b455b9f20caa950773f7}
+
+
+Diese Methode gibt die ausgespielte Karte des Spielers zurueck. 
+
+\begin{DoxyReturn}{Rückgabe}
+die Karte. 
+\end{DoxyReturn}
+\hypertarget{a00043_ab45288da8f64e79408f1effd5579b5c2}{\index{Com\-Objects\-::\-Msg\-Card@{Com\-Objects\-::\-Msg\-Card}!visit@{visit}}
+\index{visit@{visit}!ComObjects::MsgCard@{Com\-Objects\-::\-Msg\-Card}}
+\paragraph[{visit}]{\setlength{\rightskip}{0pt plus 5cm}void visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Server\-Ruleset}}]{server\-Ruleset, }
+\item[{String}]{name}
+\end{DoxyParamCaption}
+)}}\label{a00043_ab45288da8f64e79408f1effd5579b5c2}
+
+
+Diese Methode ist noetig, damit das Server\-Ruleset entscheiden kann welche Message es enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em server\-Ruleset} & ist das Ruleset, welches Ã¼bergeben wird, damit die ueberladene Methode richtig gewaehlt wird. \\
+\hline
+{\em name} & ist der Name des Spielers. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00053_ab45288da8f64e79408f1effd5579b5c2}{Ruleset\-Message}.
+
+\hypertarget{a00043_acb5be722a2d1c9110d39f31c6e18f6e7}{\index{Com\-Objects\-::\-Msg\-Card@{Com\-Objects\-::\-Msg\-Card}!visit@{visit}}
+\index{visit@{visit}!ComObjects::MsgCard@{Com\-Objects\-::\-Msg\-Card}}
+\paragraph[{visit}]{\setlength{\rightskip}{0pt plus 5cm}void visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Client\-Ruleset}}]{client\-Ruleset}
+\end{DoxyParamCaption}
+)}}\label{a00043_acb5be722a2d1c9110d39f31c6e18f6e7}
+
+
+Diese Methode ist noetig, damit das Client\-Ruleset entscheiden kann welche Message es enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em client\-Ruleset} & ist das Ruleset, welches uebergeben wird, damit die ueberladene Methode richtig gewaehlt wird. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00053_acb5be722a2d1c9110d39f31c6e18f6e7}{Ruleset\-Message}.
+

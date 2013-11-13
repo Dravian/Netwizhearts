@@ -1,0 +1,39 @@
+\hypertarget{a00021}{\subsection{Score\-Window Klassenreferenz}
+\label{a00021}\index{Score\-Window@{Score\-Window}}
+}
+
+
+Abgeleitet von Observer.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{a00021_a2b67d42550fdf9ddd8f3878d0849965c}{update} (Observable o, Object arg)
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Dieses Fenster zeigt den momentanen Punktestand nach jeder Runde und den Gesamtpunktestand am Ende des Spieles an. 
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00021_a2b67d42550fdf9ddd8f3878d0849965c}{\index{Client\-::\-View\-::\-Score\-Window@{Client\-::\-View\-::\-Score\-Window}!update@{update}}
+\index{update@{update}!Client::View::ScoreWindow@{Client\-::\-View\-::\-Score\-Window}}
+\paragraph[{update}]{\setlength{\rightskip}{0pt plus 5cm}void update (
+\begin{DoxyParamCaption}
+\item[{Observable}]{o, }
+\item[{Object}]{arg}
+\end{DoxyParamCaption}
+)}}\label{a00021_a2b67d42550fdf9ddd8f3878d0849965c}
+
+
+Wird durch notify() im \hyperlink{a00003}{Client\-Model} aufgerufen. 
+
+Je nach dem in arg uebergebenen Befehl wird ein Update des Fensters ausgefuehrt oder eine Fehlermeldung angezeigt.
+
+
+\begin{DoxyParams}{Parameter}
+{\em o} & erwartet ein Objekt von der Klasse \hyperlink{a00003}{Client\-Model} \\
+\hline
+{\em arg} & erwartet\-: show\-Score \\
+\hline
+\end{DoxyParams}

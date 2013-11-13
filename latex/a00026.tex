@@ -1,0 +1,106 @@
+\hypertarget{a00026}{\subsection{Com\-Chat\-Message Klassenreferenz}
+\label{a00026}\index{Com\-Chat\-Message@{Com\-Chat\-Message}}
+}
+
+
+Abgeleitet von \hyperlink{a00037}{Com\-Object} und Serializable.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00026_a21a60af1a95931484e5802bb904ef5d5}{Com\-Chat\-Message} (String message)
+\item 
+String \hyperlink{a00026_a5c7e83aab44b6a6fe19f02ea831f134d}{get\-Chat\-Message} ()
+\item 
+void \hyperlink{a00026_a758d7005755a181717f238f714d87dd2}{process} (\hyperlink{a00003}{Client\-Model} model)
+\item 
+void \hyperlink{a00026_ac67b5ce3ec03d48ef1e6caad6e49c902}{process} (\hyperlink{a00076}{Player} player, \hyperlink{a00077}{Server} server)
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00026_a36925554bcf553be7b9b408466fe794c}{String {\bfseries chat\-Message}}\label{a00026_a36925554bcf553be7b9b408466fe794c}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Diese Klasse ist ein spezielles Kommunikations-\/\-Objekt. Sie enthaelt eine Chatnachricht in Form eines Strings. 
+
+\subsubsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{a00026_a21a60af1a95931484e5802bb904ef5d5}{\index{Com\-Objects\-::\-Com\-Chat\-Message@{Com\-Objects\-::\-Com\-Chat\-Message}!Com\-Chat\-Message@{Com\-Chat\-Message}}
+\index{Com\-Chat\-Message@{Com\-Chat\-Message}!ComObjects::ComChatMessage@{Com\-Objects\-::\-Com\-Chat\-Message}}
+\paragraph[{Com\-Chat\-Message}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Com\-Chat\-Message} (
+\begin{DoxyParamCaption}
+\item[{String}]{message}
+\end{DoxyParamCaption}
+)}}\label{a00026_a21a60af1a95931484e5802bb904ef5d5}
+
+
+Dies ist der Kontruktor fuer eine neue Com\-Chat\-Message-\/\-Nachricht. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em message} & ist die Chatnachricht, die versendet wird. \\
+\hline
+\end{DoxyParams}
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00026_a5c7e83aab44b6a6fe19f02ea831f134d}{\index{Com\-Objects\-::\-Com\-Chat\-Message@{Com\-Objects\-::\-Com\-Chat\-Message}!get\-Chat\-Message@{get\-Chat\-Message}}
+\index{get\-Chat\-Message@{get\-Chat\-Message}!ComObjects::ComChatMessage@{Com\-Objects\-::\-Com\-Chat\-Message}}
+\paragraph[{get\-Chat\-Message}]{\setlength{\rightskip}{0pt plus 5cm}String get\-Chat\-Message (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00026_a5c7e83aab44b6a6fe19f02ea831f134d}
+
+
+Hier kann die versendete Nachricht von anderen Klassen ausgelesen werden. 
+
+\begin{DoxyReturn}{Rückgabe}
+die Chatnachricht, die versendet wurde. 
+\end{DoxyReturn}
+\hypertarget{a00026_a758d7005755a181717f238f714d87dd2}{\index{Com\-Objects\-::\-Com\-Chat\-Message@{Com\-Objects\-::\-Com\-Chat\-Message}!process@{process}}
+\index{process@{process}!ComObjects::ComChatMessage@{Com\-Objects\-::\-Com\-Chat\-Message}}
+\paragraph[{process}]{\setlength{\rightskip}{0pt plus 5cm}void process (
+\begin{DoxyParamCaption}
+\item[{{\bf Client\-Model}}]{model}
+\end{DoxyParamCaption}
+)}}\label{a00026_a758d7005755a181717f238f714d87dd2}
+
+
+Diese Methode ist noetig, damit der Client\-Listener\-Thread entscheiden kann welche Message das Object enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em model} & ist das Client\-Model, welches Ã¼bergeben wird, damit die ueberladene Methode richtig gewaehlt wird. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00037_a758d7005755a181717f238f714d87dd2}{Com\-Object}.
+
+\hypertarget{a00026_ac67b5ce3ec03d48ef1e6caad6e49c902}{\index{Com\-Objects\-::\-Com\-Chat\-Message@{Com\-Objects\-::\-Com\-Chat\-Message}!process@{process}}
+\index{process@{process}!ComObjects::ComChatMessage@{Com\-Objects\-::\-Com\-Chat\-Message}}
+\paragraph[{process}]{\setlength{\rightskip}{0pt plus 5cm}void process (
+\begin{DoxyParamCaption}
+\item[{{\bf Player}}]{player, }
+\item[{{\bf Server}}]{server}
+\end{DoxyParamCaption}
+)}}\label{a00026_ac67b5ce3ec03d48ef1e6caad6e49c902}
+
+
+Diese Methode ist noetig, damit der Thread Player entscheiden kann welche Message das Object enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em player} & Der Client welcher den Aufruf startet. \\
+\hline
+{\em server} & Der Server an den sich das Com\-Objekt weitergibt. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00037_ac67b5ce3ec03d48ef1e6caad6e49c902}{Com\-Object}.
+

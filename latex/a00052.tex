@@ -1,0 +1,106 @@
+\hypertarget{a00052}{\subsection{Msg\-User Klassenreferenz}
+\label{a00052}\index{Msg\-User@{Msg\-User}}
+}
+
+
+Abgeleitet von \hyperlink{a00053}{Ruleset\-Message} und Serializable.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00052_a568aff9987cd1b6e28b97adbb4560549}{Msg\-User} (\hyperlink{a00059}{Game\-Client\-Update} game\-Client\-Update)
+\item 
+\hyperlink{a00059}{Game\-Client\-Update} \hyperlink{a00052_a8a7e688a3769896385a5290159969589}{get\-Game\-Client\-Update} ()
+\item 
+void \hyperlink{a00052_ab45288da8f64e79408f1effd5579b5c2}{visit} (\hyperlink{a00068}{Server\-Ruleset} server\-Ruleset, String name)
+\item 
+void \hyperlink{a00052_acb5be722a2d1c9110d39f31c6e18f6e7}{visit} (\hyperlink{a00056}{Client\-Ruleset} client\-Ruleset)
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00052_a3c999ce19f77dfe2e9326cb23393d6c7}{\hyperlink{a00059}{Game\-Client\-Update} {\bfseries game\-Client\-Update}}\label{a00052_a3c999ce19f77dfe2e9326cb23393d6c7}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Diese Klasse ist eine Verfeinerung der Ruleset\-Message-\/\-Klasse. Sie wird dem Client gesendet, um dem Client\-Ruleset den aktuellen Spielzustand in Form eines Game\-Client\-Update zu uebermitteln. 
+
+\subsubsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{a00052_a568aff9987cd1b6e28b97adbb4560549}{\index{Com\-Objects\-::\-Msg\-User@{Com\-Objects\-::\-Msg\-User}!Msg\-User@{Msg\-User}}
+\index{Msg\-User@{Msg\-User}!ComObjects::MsgUser@{Com\-Objects\-::\-Msg\-User}}
+\paragraph[{Msg\-User}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Msg\-User} (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\-Client\-Update}}]{game\-Client\-Update}
+\end{DoxyParamCaption}
+)}}\label{a00052_a568aff9987cd1b6e28b97adbb4560549}
+
+
+Dies ist der Konstruktor einer neuen Msg\-User-\/\-Nachricht. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em game\-Client\-Update} & ist der aktuelle Spielstand. \\
+\hline
+\end{DoxyParams}
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00052_a8a7e688a3769896385a5290159969589}{\index{Com\-Objects\-::\-Msg\-User@{Com\-Objects\-::\-Msg\-User}!get\-Game\-Client\-Update@{get\-Game\-Client\-Update}}
+\index{get\-Game\-Client\-Update@{get\-Game\-Client\-Update}!ComObjects::MsgUser@{Com\-Objects\-::\-Msg\-User}}
+\paragraph[{get\-Game\-Client\-Update}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Game\-Client\-Update} get\-Game\-Client\-Update (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00052_a8a7e688a3769896385a5290159969589}
+
+
+Diese Methode liefert den den aktuellen Spielzustand, der fuer ein Update benoetigt wird. 
+
+\begin{DoxyReturn}{Rückgabe}
+den aktuellen Spielzustand. 
+\end{DoxyReturn}
+\hypertarget{a00052_ab45288da8f64e79408f1effd5579b5c2}{\index{Com\-Objects\-::\-Msg\-User@{Com\-Objects\-::\-Msg\-User}!visit@{visit}}
+\index{visit@{visit}!ComObjects::MsgUser@{Com\-Objects\-::\-Msg\-User}}
+\paragraph[{visit}]{\setlength{\rightskip}{0pt plus 5cm}void visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Server\-Ruleset}}]{server\-Ruleset, }
+\item[{String}]{name}
+\end{DoxyParamCaption}
+)}}\label{a00052_ab45288da8f64e79408f1effd5579b5c2}
+
+
+Diese Methode ist noetig, damit das Server\-Ruleset entscheiden kann welche Message es enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em server\-Ruleset} & ist das Ruleset, welches Ã¼bergeben wird, damit die ueberladene Methode richtig gewaehlt wird. \\
+\hline
+{\em name} & ist der Name des Spielers. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00053_ab45288da8f64e79408f1effd5579b5c2}{Ruleset\-Message}.
+
+\hypertarget{a00052_acb5be722a2d1c9110d39f31c6e18f6e7}{\index{Com\-Objects\-::\-Msg\-User@{Com\-Objects\-::\-Msg\-User}!visit@{visit}}
+\index{visit@{visit}!ComObjects::MsgUser@{Com\-Objects\-::\-Msg\-User}}
+\paragraph[{visit}]{\setlength{\rightskip}{0pt plus 5cm}void visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Client\-Ruleset}}]{client\-Ruleset}
+\end{DoxyParamCaption}
+)}}\label{a00052_acb5be722a2d1c9110d39f31c6e18f6e7}
+
+
+Diese Methode ist noetig, damit das Client\-Ruleset entscheiden kann welche Message es enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em client\-Ruleset} & ist das Ruleset, welches uebergeben wird, damit die ueberladene Methode richtig gewaehlt wird. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00053_acb5be722a2d1c9110d39f31c6e18f6e7}{Ruleset\-Message}.
+

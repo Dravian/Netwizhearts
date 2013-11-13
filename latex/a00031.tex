@@ -1,0 +1,106 @@
+\hypertarget{a00031}{\subsection{Com\-Init\-Game\-Lobby Klassenreferenz}
+\label{a00031}\index{Com\-Init\-Game\-Lobby@{Com\-Init\-Game\-Lobby}}
+}
+
+
+Abgeleitet von \hyperlink{a00037}{Com\-Object} und Serializable.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00031_a6bd6086583fdd9b6fc25d1aabb9f1312}{Com\-Init\-Game\-Lobby} (List$<$ String $>$ player\-List)
+\item 
+List$<$ String $>$ \hyperlink{a00031_a806a371665b36cee69f0a49625a8c20d}{get\-Player\-List} ()
+\item 
+void \hyperlink{a00031_a758d7005755a181717f238f714d87dd2}{process} (\hyperlink{a00003}{Client\-Model} model)
+\item 
+void \hyperlink{a00031_ac67b5ce3ec03d48ef1e6caad6e49c902}{process} (\hyperlink{a00076}{Player} player, \hyperlink{a00077}{Server} server)
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00031_a2a62caed4423183b9e69deb6560b136f}{List$<$ String $>$ {\bfseries player\-List}}\label{a00031_a2a62caed4423183b9e69deb6560b136f}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Diese Klasse ist ein spezielles Kommunikations-\/\-Objekt. Sie liefert die Liste der Spieler, die sich bereits beim Betreten des Wartefensters darin befinden. 
+
+\subsubsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{a00031_a6bd6086583fdd9b6fc25d1aabb9f1312}{\index{Com\-Objects\-::\-Com\-Init\-Game\-Lobby@{Com\-Objects\-::\-Com\-Init\-Game\-Lobby}!Com\-Init\-Game\-Lobby@{Com\-Init\-Game\-Lobby}}
+\index{Com\-Init\-Game\-Lobby@{Com\-Init\-Game\-Lobby}!ComObjects::ComInitGameLobby@{Com\-Objects\-::\-Com\-Init\-Game\-Lobby}}
+\paragraph[{Com\-Init\-Game\-Lobby}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Com\-Init\-Game\-Lobby} (
+\begin{DoxyParamCaption}
+\item[{List$<$ String $>$}]{player\-List}
+\end{DoxyParamCaption}
+)}}\label{a00031_a6bd6086583fdd9b6fc25d1aabb9f1312}
+
+
+Dies ist der Kontruktor fuer eine neue Com\-Init\-Game\-Lobby-\/\-Nachricht. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em player\-List} & ist die Liste aller Player, die sich im Wartefenster befinden. \\
+\hline
+\end{DoxyParams}
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00031_a806a371665b36cee69f0a49625a8c20d}{\index{Com\-Objects\-::\-Com\-Init\-Game\-Lobby@{Com\-Objects\-::\-Com\-Init\-Game\-Lobby}!get\-Player\-List@{get\-Player\-List}}
+\index{get\-Player\-List@{get\-Player\-List}!ComObjects::ComInitGameLobby@{Com\-Objects\-::\-Com\-Init\-Game\-Lobby}}
+\paragraph[{get\-Player\-List}]{\setlength{\rightskip}{0pt plus 5cm}List$<$String$>$ get\-Player\-List (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00031_a806a371665b36cee69f0a49625a8c20d}
+
+
+Diese Methode liefert die Liste der Player, die sich beim Hinzufuegen eines weiteren Spielers bereits im Wartefenster befinden. 
+
+\begin{DoxyReturn}{Rückgabe}
+die Liste der Spieler, die im Wartefenster sind. 
+\end{DoxyReturn}
+\hypertarget{a00031_a758d7005755a181717f238f714d87dd2}{\index{Com\-Objects\-::\-Com\-Init\-Game\-Lobby@{Com\-Objects\-::\-Com\-Init\-Game\-Lobby}!process@{process}}
+\index{process@{process}!ComObjects::ComInitGameLobby@{Com\-Objects\-::\-Com\-Init\-Game\-Lobby}}
+\paragraph[{process}]{\setlength{\rightskip}{0pt plus 5cm}void process (
+\begin{DoxyParamCaption}
+\item[{{\bf Client\-Model}}]{model}
+\end{DoxyParamCaption}
+)}}\label{a00031_a758d7005755a181717f238f714d87dd2}
+
+
+Diese Methode ist noetig, damit der Client\-Listener\-Thread entscheiden kann welche Message das Object enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em model} & ist das Client\-Model, welches Ã¼bergeben wird, damit die ueberladene Methode richtig gewaehlt wird. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00037_a758d7005755a181717f238f714d87dd2}{Com\-Object}.
+
+\hypertarget{a00031_ac67b5ce3ec03d48ef1e6caad6e49c902}{\index{Com\-Objects\-::\-Com\-Init\-Game\-Lobby@{Com\-Objects\-::\-Com\-Init\-Game\-Lobby}!process@{process}}
+\index{process@{process}!ComObjects::ComInitGameLobby@{Com\-Objects\-::\-Com\-Init\-Game\-Lobby}}
+\paragraph[{process}]{\setlength{\rightskip}{0pt plus 5cm}void process (
+\begin{DoxyParamCaption}
+\item[{{\bf Player}}]{player, }
+\item[{{\bf Server}}]{server}
+\end{DoxyParamCaption}
+)}}\label{a00031_ac67b5ce3ec03d48ef1e6caad6e49c902}
+
+
+Diese Methode ist noetig, damit der Thread Player entscheiden kann welche Message das Object enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em player} & Der Client welcher den Aufruf startet. \\
+\hline
+{\em server} & Der Server an den sich das Com\-Objekt weitergibt. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00037_ac67b5ce3ec03d48ef1e6caad6e49c902}{Com\-Object}.
+

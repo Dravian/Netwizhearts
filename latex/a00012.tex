@@ -1,0 +1,197 @@
+\hypertarget{a00012}{\subsection{Game\-Lobby Klassenreferenz}
+\label{a00012}\index{Game\-Lobby@{Game\-Lobby}}
+}
+
+
+Abgeleitet von J\-Frame und Observer.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00012_af5c160b3c4448522e0d6e0002470c80e}{\hyperlink{a00012_af5c160b3c4448522e0d6e0002470c80e}{Game\-Lobby} ()}\label{a00012_af5c160b3c4448522e0d6e0002470c80e}
+
+\item 
+void \hyperlink{a00012_a865971050de64d103900e70b236a0b92}{add\-Start\-Button\-Listener} (Action\-Listener a)
+\item 
+void \hyperlink{a00012_ab66ade112f82eb29655a140d34bae4fd}{add\-Remove\-Button\-Listener} (Action\-Listener a)
+\item 
+void \hyperlink{a00012_aac8c97a2425ab3702a82bb0876aa3cc8}{add\-Leave\-Button\-Listener} (Action\-Listener a)
+\item 
+void \hyperlink{a00012_a1d0d058b74950bbf7305be79b1d60143}{add\-Chat\-Message\-Listener} (Key\-Listener k)
+\item 
+void \hyperlink{a00012_a9329ba7453dd661d50d2fb8024df3b2b}{set\-Language} (\hyperlink{a00015}{Language} l)
+\item 
+void \hyperlink{a00012_a2b67d42550fdf9ddd8f3878d0849965c}{update} (Observable o, Object arg)
+\item 
+void \hyperlink{a00012_a41caffb40957934b02960cf166c78494}{update} (Observable o, String arg)
+\end{DoxyCompactItemize}
+\subsubsection*{Öffentliche, statische Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00012_a8b260eecbaabcef8473fd87ada040682}{static void {\bfseries main} (String\mbox{[}$\,$\mbox{]} args)}\label{a00012_a8b260eecbaabcef8473fd87ada040682}
+
+\end{DoxyCompactItemize}
+\subsubsection*{Private Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00012_a74cba330cee84fa07487e12fdafe29aa}{void {\bfseries update\-Language} ()}\label{a00012_a74cba330cee84fa07487e12fdafe29aa}
+
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00012_aee369a2eca6b8f16ea106cddf68273e8}{J\-Panel {\bfseries content\-Pane}}\label{a00012_aee369a2eca6b8f16ea106cddf68273e8}
+
+\item 
+\hypertarget{a00012_aeaa6444a9657e78f8c42051d5f7b4ff6}{J\-Text\-Field {\bfseries message\-Field}}\label{a00012_aeaa6444a9657e78f8c42051d5f7b4ff6}
+
+\item 
+\hypertarget{a00012_a430764470b3602491655161cdd67ee8c}{\hyperlink{a00015}{Language} {\bfseries lang}}\label{a00012_a430764470b3602491655161cdd67ee8c}
+
+\item 
+\hypertarget{a00012_ad9e9e9e7b8ce2d427def6cc55ef526bd}{J\-Button {\bfseries btn\-Remove\-Player}}\label{a00012_ad9e9e9e7b8ce2d427def6cc55ef526bd}
+
+\item 
+\hypertarget{a00012_a1887f14b78aa91b00e5ce42aa504dbe2}{J\-Button {\bfseries btn\-Leave}}\label{a00012_a1887f14b78aa91b00e5ce42aa504dbe2}
+
+\item 
+\hypertarget{a00012_a12e216d7d1a56c6e799be1f874c7c82c}{J\-Text\-Area {\bfseries chatlog}}\label{a00012_a12e216d7d1a56c6e799be1f874c7c82c}
+
+\item 
+\hypertarget{a00012_a1ac11a30aed65ffc1a336a48515ea9de}{J\-Button {\bfseries btn\-Start\-Game}}\label{a00012_a1ac11a30aed65ffc1a336a48515ea9de}
+
+\end{DoxyCompactItemize}
+\subsubsection*{Statische, private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00012_a3238d314ecdee14d2966760945d00c3b}{static final long {\bfseries serial\-Version\-U\-I\-D} = -\/1899311213351027436\-L}\label{a00012_a3238d314ecdee14d2966760945d00c3b}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Die \hyperlink{a00012}{Game\-Lobby} modelliert das Wartefenster, in dem beigetretene Spieler auf den Start des Spieles durch den Spielleiter warten. Der Spielleiter kann Spieler mit dem Remove Player Button entfernen. ueber Leave kehren die Spieler in die \hyperlink{a00016}{Lobby} zurueck. Der spielinterne Chat ist ab hier verfuegbar. 
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00012_a865971050de64d103900e70b236a0b92}{\index{Client\-::\-View\-::\-Game\-Lobby@{Client\-::\-View\-::\-Game\-Lobby}!add\-Start\-Button\-Listener@{add\-Start\-Button\-Listener}}
+\index{add\-Start\-Button\-Listener@{add\-Start\-Button\-Listener}!Client::View::GameLobby@{Client\-::\-View\-::\-Game\-Lobby}}
+\paragraph[{add\-Start\-Button\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}void add\-Start\-Button\-Listener (
+\begin{DoxyParamCaption}
+\item[{Action\-Listener}]{a}
+\end{DoxyParamCaption}
+)}}\label{a00012_a865971050de64d103900e70b236a0b92}
+
+
+Fuegt einen Action\-Listener fuer den 'Start \hyperlink{a00011}{Game}' Button hinzu. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em a} & ein Action\-Listener \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00012_ab66ade112f82eb29655a140d34bae4fd}{\index{Client\-::\-View\-::\-Game\-Lobby@{Client\-::\-View\-::\-Game\-Lobby}!add\-Remove\-Button\-Listener@{add\-Remove\-Button\-Listener}}
+\index{add\-Remove\-Button\-Listener@{add\-Remove\-Button\-Listener}!Client::View::GameLobby@{Client\-::\-View\-::\-Game\-Lobby}}
+\paragraph[{add\-Remove\-Button\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}void add\-Remove\-Button\-Listener (
+\begin{DoxyParamCaption}
+\item[{Action\-Listener}]{a}
+\end{DoxyParamCaption}
+)}}\label{a00012_ab66ade112f82eb29655a140d34bae4fd}
+
+
+Fuegt einen Action\-Listener fuer den 'Remove Player' Button hinzu. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em a} & ein Action\-Listener \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00012_aac8c97a2425ab3702a82bb0876aa3cc8}{\index{Client\-::\-View\-::\-Game\-Lobby@{Client\-::\-View\-::\-Game\-Lobby}!add\-Leave\-Button\-Listener@{add\-Leave\-Button\-Listener}}
+\index{add\-Leave\-Button\-Listener@{add\-Leave\-Button\-Listener}!Client::View::GameLobby@{Client\-::\-View\-::\-Game\-Lobby}}
+\paragraph[{add\-Leave\-Button\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}void add\-Leave\-Button\-Listener (
+\begin{DoxyParamCaption}
+\item[{Action\-Listener}]{a}
+\end{DoxyParamCaption}
+)}}\label{a00012_aac8c97a2425ab3702a82bb0876aa3cc8}
+
+
+Fuegt einen Action\-Listener fuer den 'Leave' Button hinzu. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em a} & ein Action\-Listener \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00012_a1d0d058b74950bbf7305be79b1d60143}{\index{Client\-::\-View\-::\-Game\-Lobby@{Client\-::\-View\-::\-Game\-Lobby}!add\-Chat\-Message\-Listener@{add\-Chat\-Message\-Listener}}
+\index{add\-Chat\-Message\-Listener@{add\-Chat\-Message\-Listener}!Client::View::GameLobby@{Client\-::\-View\-::\-Game\-Lobby}}
+\paragraph[{add\-Chat\-Message\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}void add\-Chat\-Message\-Listener (
+\begin{DoxyParamCaption}
+\item[{Key\-Listener}]{k}
+\end{DoxyParamCaption}
+)}}\label{a00012_a1d0d058b74950bbf7305be79b1d60143}
+
+
+Fuet einen Key\-Listener fuer das Nachricht-\/\-Senden-\/\-Feld der \hyperlink{a00016}{Lobby} hinzu. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em k} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00012_a9329ba7453dd661d50d2fb8024df3b2b}{\index{Client\-::\-View\-::\-Game\-Lobby@{Client\-::\-View\-::\-Game\-Lobby}!set\-Language@{set\-Language}}
+\index{set\-Language@{set\-Language}!Client::View::GameLobby@{Client\-::\-View\-::\-Game\-Lobby}}
+\paragraph[{set\-Language}]{\setlength{\rightskip}{0pt plus 5cm}void set\-Language (
+\begin{DoxyParamCaption}
+\item[{{\bf Language}}]{l}
+\end{DoxyParamCaption}
+)}}\label{a00012_a9329ba7453dd661d50d2fb8024df3b2b}
+
+
+Aendert die Sprache des Fensters. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em l} & Sprache in Form des Language-\/\-Enums \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00012_a2b67d42550fdf9ddd8f3878d0849965c}{\index{Client\-::\-View\-::\-Game\-Lobby@{Client\-::\-View\-::\-Game\-Lobby}!update@{update}}
+\index{update@{update}!Client::View::GameLobby@{Client\-::\-View\-::\-Game\-Lobby}}
+\paragraph[{update}]{\setlength{\rightskip}{0pt plus 5cm}void update (
+\begin{DoxyParamCaption}
+\item[{Observable}]{o, }
+\item[{Object}]{arg}
+\end{DoxyParamCaption}
+)}}\label{a00012_a2b67d42550fdf9ddd8f3878d0849965c}
+
+
+Wird durch notify() im \hyperlink{a00003}{Client\-Model} aufgerufen. 
+
+Je nach dem in arg uebergebenen View\-Notification-\/\-Befehl wird ein Update des Fensters ausgefuehrt oder eine Fehlermeldung angezeigt.
+
+
+\begin{DoxyParams}{Parameter}
+{\em o} & erwartet ein Objekt von der Klasse \hyperlink{a00003}{Client\-Model} \\
+\hline
+{\em arg} & erwartet\-: join\-Game\-Successful, player\-List\-Update, window\-Change\-Forced, game\-Started \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00012_a41caffb40957934b02960cf166c78494}{\index{Client\-::\-View\-::\-Game\-Lobby@{Client\-::\-View\-::\-Game\-Lobby}!update@{update}}
+\index{update@{update}!Client::View::GameLobby@{Client\-::\-View\-::\-Game\-Lobby}}
+\paragraph[{update}]{\setlength{\rightskip}{0pt plus 5cm}void update (
+\begin{DoxyParamCaption}
+\item[{Observable}]{o, }
+\item[{String}]{arg}
+\end{DoxyParamCaption}
+)}}\label{a00012_a41caffb40957934b02960cf166c78494}
+
+
+Wird aufgerufen, wenn eine String-\/\-Nachricht im notify() uebergeben wird. 
+
+Dieser wird als Chatnachricht interpretiert und dem Chatlog angefuegt.
+
+
+\begin{DoxyParams}{Parameter}
+{\em o} & erwartet ein Objekt von der Klasse \hyperlink{a00003}{Client\-Model} \\
+\hline
+{\em arg} & erwartet einen String, der eine Chatnachricht darstellt \\
+\hline
+\end{DoxyParams}

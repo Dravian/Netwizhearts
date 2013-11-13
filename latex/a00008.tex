@@ -1,0 +1,163 @@
+\hypertarget{a00008}{\subsection{Create\-Game Klassenreferenz}
+\label{a00008}\index{Create\-Game@{Create\-Game}}
+}
+
+
+Abgeleitet von J\-Frame.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00008_a9c81ed380a56f523fd8a7b0c8fc349f7}{\hyperlink{a00008_a9c81ed380a56f523fd8a7b0c8fc349f7}{Create\-Game} ()}\label{a00008_a9c81ed380a56f523fd8a7b0c8fc349f7}
+
+\item 
+void \hyperlink{a00008_a0e4f14000bb92efe86644965867a5156}{add\-Panel\-Mouse\-Listener} (Mouse\-Listener m)
+\item 
+void \hyperlink{a00008_acf3b22c2ad67e52fbd300665503a0cb5}{add\-Ruleset\-Selection\-Listener} (Item\-Listener i)
+\item 
+void \hyperlink{a00008_a766141ddea860fac0deb3ceb1c65ed60}{add\-Create\-Button\-Listener} (Action\-Listener a)
+\item 
+void \hyperlink{a00008_aac8c97a2425ab3702a82bb0876aa3cc8}{add\-Leave\-Button\-Listener} (Action\-Listener a)
+\item 
+void \hyperlink{a00008_a9329ba7453dd661d50d2fb8024df3b2b}{set\-Language} (\hyperlink{a00015}{Language} l)
+\end{DoxyCompactItemize}
+\subsubsection*{Öffentliche, statische Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00008_a8b260eecbaabcef8473fd87ada040682}{static void {\bfseries main} (String\mbox{[}$\,$\mbox{]} args)}\label{a00008_a8b260eecbaabcef8473fd87ada040682}
+
+\end{DoxyCompactItemize}
+\subsubsection*{Private Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00008_a74cba330cee84fa07487e12fdafe29aa}{void {\bfseries update\-Language} ()}\label{a00008_a74cba330cee84fa07487e12fdafe29aa}
+
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00008_a430764470b3602491655161cdd67ee8c}{\hyperlink{a00015}{Language} {\bfseries lang}}\label{a00008_a430764470b3602491655161cdd67ee8c}
+
+\item 
+\hypertarget{a00008_a2b4470f7f3f7456c7e52d1604438a878}{J\-Text\-Field {\bfseries name\-Field}}\label{a00008_a2b4470f7f3f7456c7e52d1604438a878}
+
+\item 
+\hypertarget{a00008_a45e94f786577439d02e4f16aefa96717}{Buffered\-Image {\bfseries image}}\label{a00008_a45e94f786577439d02e4f16aefa96717}
+
+\item 
+\hypertarget{a00008_ab86817c3677c2dc422445fe8c0b5a404}{J\-Text\-Field {\bfseries password\-Field}}\label{a00008_ab86817c3677c2dc422445fe8c0b5a404}
+
+\item 
+\hypertarget{a00008_a8f4aaa528d2092952844a99aa948932f}{J\-Panel {\bfseries image\-Panel}}\label{a00008_a8f4aaa528d2092952844a99aa948932f}
+
+\item 
+\hypertarget{a00008_ac3a56e854d86f838fbfe3bad5fca49ea}{J\-Label {\bfseries lbl\-Select}}\label{a00008_ac3a56e854d86f838fbfe3bad5fca49ea}
+
+\item 
+\hypertarget{a00008_a7916a564649b0412714b6ea8c2251812}{J\-Combo\-Box$<$ String $>$ {\bfseries ruleset\-Box}}\label{a00008_a7916a564649b0412714b6ea8c2251812}
+
+\item 
+\hypertarget{a00008_a5df88a40b8ff9b13b83ca12563ba89c7}{J\-Check\-Box {\bfseries chckbx\-Password}}\label{a00008_a5df88a40b8ff9b13b83ca12563ba89c7}
+
+\item 
+\hypertarget{a00008_a1887f14b78aa91b00e5ce42aa504dbe2}{J\-Button {\bfseries btn\-Leave}}\label{a00008_a1887f14b78aa91b00e5ce42aa504dbe2}
+
+\item 
+\hypertarget{a00008_a69446706c0a5c7165a4de4f64d7b2261}{J\-Button {\bfseries btn\-Create}}\label{a00008_a69446706c0a5c7165a4de4f64d7b2261}
+
+\item 
+\hypertarget{a00008_a59c71155f1fd33a521bce1afebc0863b}{J\-Label {\bfseries lbl\-Game\-Name}}\label{a00008_a59c71155f1fd33a521bce1afebc0863b}
+
+\end{DoxyCompactItemize}
+\subsubsection*{Statische, private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00008_a3238d314ecdee14d2966760945d00c3b}{static final long {\bfseries serial\-Version\-U\-I\-D} = -\/2893031560688870723\-L}\label{a00008_a3238d314ecdee14d2966760945d00c3b}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Das Fenster \hyperlink{a00008}{Create\-Game} dient dem Benutzer zur Erstellung eines neuen Spieles. Es bietet alle Komponenten, um ein Regelwerk zu waehlen, einen Spielnamen festzulegen und das Spiel durch ein Passwort zu schuetzen. In der Spielerstellung wird ein Titelbild des ausgewaehlten Spiels und eine kurze Beschreibung angezeigt. ueber 'Leave' kehrt der Spieler in die \hyperlink{a00016}{Lobby} zurueck und mit 'Create' wird das Spiel erstellt. 
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00008_a0e4f14000bb92efe86644965867a5156}{\index{Client\-::\-View\-::\-Create\-Game@{Client\-::\-View\-::\-Create\-Game}!add\-Panel\-Mouse\-Listener@{add\-Panel\-Mouse\-Listener}}
+\index{add\-Panel\-Mouse\-Listener@{add\-Panel\-Mouse\-Listener}!Client::View::CreateGame@{Client\-::\-View\-::\-Create\-Game}}
+\paragraph[{add\-Panel\-Mouse\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}void add\-Panel\-Mouse\-Listener (
+\begin{DoxyParamCaption}
+\item[{Mouse\-Listener}]{m}
+\end{DoxyParamCaption}
+)}}\label{a00008_a0e4f14000bb92efe86644965867a5156}
+
+
+Fuegt einen Mouse\-Listener zum Image\-Panel des \hyperlink{a00008}{Create\-Game} Fensters hinzu, der zur Anzeige des Mouse\-Over-\/\-Texts verwendet wird. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em m} & ein Mouse\-Listener \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00008_acf3b22c2ad67e52fbd300665503a0cb5}{\index{Client\-::\-View\-::\-Create\-Game@{Client\-::\-View\-::\-Create\-Game}!add\-Ruleset\-Selection\-Listener@{add\-Ruleset\-Selection\-Listener}}
+\index{add\-Ruleset\-Selection\-Listener@{add\-Ruleset\-Selection\-Listener}!Client::View::CreateGame@{Client\-::\-View\-::\-Create\-Game}}
+\paragraph[{add\-Ruleset\-Selection\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}void add\-Ruleset\-Selection\-Listener (
+\begin{DoxyParamCaption}
+\item[{Item\-Listener}]{i}
+\end{DoxyParamCaption}
+)}}\label{a00008_acf3b22c2ad67e52fbd300665503a0cb5}
+
+
+Fuegt einen Listener fuer die Regelwerk-\/\-Auswahl des \hyperlink{a00008}{Create\-Game} Fensters hinzu. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em i} & ein Item\-Listener \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00008_a766141ddea860fac0deb3ceb1c65ed60}{\index{Client\-::\-View\-::\-Create\-Game@{Client\-::\-View\-::\-Create\-Game}!add\-Create\-Button\-Listener@{add\-Create\-Button\-Listener}}
+\index{add\-Create\-Button\-Listener@{add\-Create\-Button\-Listener}!Client::View::CreateGame@{Client\-::\-View\-::\-Create\-Game}}
+\paragraph[{add\-Create\-Button\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}void add\-Create\-Button\-Listener (
+\begin{DoxyParamCaption}
+\item[{Action\-Listener}]{a}
+\end{DoxyParamCaption}
+)}}\label{a00008_a766141ddea860fac0deb3ceb1c65ed60}
+
+
+Fuegt einen Action\-Listener fuer den 'Create' Button hinzu. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em a} & ein Action\-Listener \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00008_aac8c97a2425ab3702a82bb0876aa3cc8}{\index{Client\-::\-View\-::\-Create\-Game@{Client\-::\-View\-::\-Create\-Game}!add\-Leave\-Button\-Listener@{add\-Leave\-Button\-Listener}}
+\index{add\-Leave\-Button\-Listener@{add\-Leave\-Button\-Listener}!Client::View::CreateGame@{Client\-::\-View\-::\-Create\-Game}}
+\paragraph[{add\-Leave\-Button\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}void add\-Leave\-Button\-Listener (
+\begin{DoxyParamCaption}
+\item[{Action\-Listener}]{a}
+\end{DoxyParamCaption}
+)}}\label{a00008_aac8c97a2425ab3702a82bb0876aa3cc8}
+
+
+Fuegt einen Action\-Listener fuer den 'Leave' Button hinzu. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em a} & ein Action\-Listener \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00008_a9329ba7453dd661d50d2fb8024df3b2b}{\index{Client\-::\-View\-::\-Create\-Game@{Client\-::\-View\-::\-Create\-Game}!set\-Language@{set\-Language}}
+\index{set\-Language@{set\-Language}!Client::View::CreateGame@{Client\-::\-View\-::\-Create\-Game}}
+\paragraph[{set\-Language}]{\setlength{\rightskip}{0pt plus 5cm}void set\-Language (
+\begin{DoxyParamCaption}
+\item[{{\bf Language}}]{l}
+\end{DoxyParamCaption}
+)}}\label{a00008_a9329ba7453dd661d50d2fb8024df3b2b}
+
+
+Aendert die Sprache des Fensters. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em l} & Sprache in Form des Language-\/\-Enums \\
+\hline
+\end{DoxyParams}

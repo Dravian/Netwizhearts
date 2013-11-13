@@ -1,0 +1,74 @@
+\hypertarget{a00005}{\subsection{Message\-Listener\-Thread Klassenreferenz}
+\label{a00005}\index{Message\-Listener\-Thread@{Message\-Listener\-Thread}}
+}
+
+
+Abgeleitet von Thread.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00005_a90ebca0a8a2d843065708a4473f4428d}{\hyperlink{a00005_a90ebca0a8a2d843065708a4473f4428d}{Message\-Listener\-Thread} ()}\label{a00005_a90ebca0a8a2d843065708a4473f4428d}
+
+\item 
+void \hyperlink{a00005_a9b5e6f31c533ba11eada7bdd1767bf10}{start\-Connection} (\hyperlink{a00003}{Client\-Model} model, Socket connection)  throws Illegal\-Argument\-Exception, I\-O\-Exception 
+\item 
+\hypertarget{a00005_aaf912c696192e6a13eb70526891b4cd2}{void \hyperlink{a00005_aaf912c696192e6a13eb70526891b4cd2}{close\-Connection} ()}\label{a00005_aaf912c696192e6a13eb70526891b4cd2}
+
+\item 
+\hypertarget{a00005_afea035a8450d55661a10d4727154498d}{void \hyperlink{a00005_afea035a8450d55661a10d4727154498d}{send} (\hyperlink{a00037}{Com\-Object} object)}\label{a00005_afea035a8450d55661a10d4727154498d}
+
+\item 
+\hypertarget{a00005_a13a43e6d814de94978c515cb084873b1}{void \hyperlink{a00005_a13a43e6d814de94978c515cb084873b1}{run} ()}\label{a00005_a13a43e6d814de94978c515cb084873b1}
+
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00005_a5ea451c5997894ff409c7feb3ed28448}{Socket {\bfseries socket}}\label{a00005_a5ea451c5997894ff409c7feb3ed28448}
+
+\item 
+\hypertarget{a00005_af04a77f17fee54627c647f7d430fd7e4}{Object\-Input {\bfseries in}}\label{a00005_af04a77f17fee54627c647f7d430fd7e4}
+
+\item 
+\hypertarget{a00005_aaa47df5af3623385a32344b55b1aa173}{Object\-Output {\bfseries out}}\label{a00005_aaa47df5af3623385a32344b55b1aa173}
+
+\item 
+\hypertarget{a00005_acd2be1cfc258f9da5c30cf341d2a8804}{boolean {\bfseries run} = false}\label{a00005_acd2be1cfc258f9da5c30cf341d2a8804}
+
+\item 
+\hypertarget{a00005_a816de8cbcf19fd6762e3c5e5c66af478}{\hyperlink{a00003}{Client\-Model} {\bfseries model}}\label{a00005_a816de8cbcf19fd6762e3c5e5c66af478}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Diese Klasse implementiert die Netzwerkanbindung des Clients an den Server. Sie enthaelt den dazu noetigen Socket und Objekt\-Stream Reader und Writer. 
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00005_a9b5e6f31c533ba11eada7bdd1767bf10}{\index{Client\-::\-Message\-Listener\-Thread@{Client\-::\-Message\-Listener\-Thread}!start\-Connection@{start\-Connection}}
+\index{start\-Connection@{start\-Connection}!Client::MessageListenerThread@{Client\-::\-Message\-Listener\-Thread}}
+\paragraph[{start\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}void start\-Connection (
+\begin{DoxyParamCaption}
+\item[{{\bf Client\-Model}}]{model, }
+\item[{Socket}]{connection}
+\end{DoxyParamCaption}
+) throws Illegal\-Argument\-Exception, I\-O\-Exception}}\label{a00005_a9b5e6f31c533ba11eada7bdd1767bf10}
+
+
+Initialisiert die Object\-Streams und speichert den T\-C\-P Socket im Thread. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em model} & \hyperlink{a00003}{Client\-Model}, Das Model das den Spielablauf und Serverkommunikation steuert. \\
+\hline
+{\em connection} & Socket, der Socket über den die T\-C\-P Verbindung laeuft. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Ausnahmebehandlung}
+{\em Illegal\-Argument\-Exception} & Wird geworfen bei falschen \hyperlink{a00003}{Client\-Model} oder Socket Argumenten. \\
+\hline
+{\em I\-O\-Exception} & Wird geworfen beim fehlerbehafteten Erstellen der Object\-Streams. \\
+\hline
+\end{DoxyExceptions}

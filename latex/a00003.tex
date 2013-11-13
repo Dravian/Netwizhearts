@@ -1,0 +1,850 @@
+\hypertarget{a00003}{\subsection{Client\-Model Klassenreferenz}
+\label{a00003}\index{Client\-Model@{Client\-Model}}
+}
+
+
+Abgeleitet von Observable.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00003_a3ceb1e33662c266c7e69bd7bd4e7f68b}{Client\-Model} (\hyperlink{a00005}{Message\-Listener\-Thread} \hyperlink{a00003_a95e1dc2c60f1fe9bcaaba816079c9854}{net\-I\-O})  throws Illegal\-Argument\-Exception 
+\item 
+void \hyperlink{a00003_a04485ff586acf6bebed228486d575ec8}{leave\-Window} ()
+\item 
+\hypertarget{a00003_a0e04049aeb0da8dfc68c3dee2ee24098}{void \hyperlink{a00003_a0e04049aeb0da8dfc68c3dee2ee24098}{terminate\-Program} ()}\label{a00003_a0e04049aeb0da8dfc68c3dee2ee24098}
+
+\item 
+void \hyperlink{a00003_a07aee9bb24715762e17435d64403d638}{receive\-Message} (\hyperlink{a00026}{Com\-Chat\-Message} msg)
+\item 
+void \hyperlink{a00003_a57fa0509cf6dcf8e9ef762c117e0521d}{receive\-Message} (\hyperlink{a00032}{Com\-Init\-Lobby} msg)
+\item 
+void \hyperlink{a00003_acee963db7bc6d062b092bfb40e713459}{receive\-Message} (\hyperlink{a00031}{Com\-Init\-Game\-Lobby} msg)
+\item 
+void \hyperlink{a00003_a8f06e6959f3e1c3bcea87c8c9dc15685}{receive\-Message} (\hyperlink{a00038}{Com\-Ruleset} msg)
+\item 
+void \hyperlink{a00003_ae65b0a1a7898759025fba20de60c0d5f}{receive\-Message} (\hyperlink{a00039}{Com\-Server\-Acknowledgement} ack)
+\item 
+void \hyperlink{a00003_a2ac49a8d4b6df78c386c347f6cb22a10}{receive\-Message} (\hyperlink{a00025}{Com\-Been\-Kicked} msg)
+\item 
+void \hyperlink{a00003_a9aaedddc399107717ed8be7e536ffcbb}{receive\-Message} (\hyperlink{a00041}{Com\-Update\-Playerlist} update)
+\item 
+void \hyperlink{a00003_a574431d2f9f8ca6ec01023f4b5cd5518}{receive\-Message} (\hyperlink{a00035}{Com\-Lobby\-Update\-Gamelist} update)
+\item 
+void \hyperlink{a00003_a680d5eab630ce98d35cf0a05e4d8c1ac}{receive\-Message} (\hyperlink{a00037}{Com\-Object} com)
+\item 
+List$<$ String $>$ \hyperlink{a00003_a04dc864cba20400b253dd787e20d97b6}{get\-Playerlist} ()
+\item 
+List$<$ \hyperlink{a00073}{Game\-Server\-Representation} $>$ \hyperlink{a00003_a0f33c3ac883d05b27be54ebdae730d9b}{get\-Lobby\-Gamelist} ()
+\item 
+List$<$ \hyperlink{a00054}{Card} $>$ \hyperlink{a00003_a0146da6e5736418de59de4ce9ac28eff}{get\-Played\-Cards} ()
+\item 
+List$<$ \hyperlink{a00054}{Card} $>$ \hyperlink{a00003_a1b82d59f9b439be5785c6faffd4d3c05}{get\-Own\-Hand} ()
+\item 
+List$<$ String $>$ \hyperlink{a00003_abfb50b9812bdeca9c479fb071b36c365}{get\-Other\-Player\-Data} ()
+\item 
+int \hyperlink{a00003_a5a731ac22c3365c7c7f783d37ab15de7}{get\-Own\-Score} ()
+\item 
+void \hyperlink{a00003_a7464e992189497a4a9294b200522e84b}{set\-Language} (final \hyperlink{a00015}{Language} \hyperlink{a00003_a431aadd49e0ba3c9fb62b88ced697cc4}{language})
+\item 
+\hyperlink{a00015}{Language} \hyperlink{a00003_aa72e75463872de401983258a6554aad6}{get\-Language} ()
+\item 
+void \hyperlink{a00003_a99949d94213cba9f7f74c6673838fa03}{kick\-Player} (final String name)
+\item 
+void \hyperlink{a00003_a7878557a5c9e7d77766beeb3662934a4}{host\-Game} (String game\-Name, boolean has\-Password, String password, \hyperlink{a00066}{Ruleset\-Type} \hyperlink{a00003_a9c280012d0d8f96783ebdeee9c22b646}{ruleset})
+\item 
+void \hyperlink{a00003_afea035a8450d55661a10d4727154498d}{send} (\hyperlink{a00037}{Com\-Object} object)
+\item 
+void \hyperlink{a00003_a26c0fa3eb71d468c72e80f7cc05ae375}{send} (\hyperlink{a00053}{Ruleset\-Message} msg)
+\item 
+int \hyperlink{a00003_a257a047419807db825874e5a047ea014}{get\-Player\-Count} ()
+\item 
+String \hyperlink{a00003_abe9d18c5dad27296dcb59f4240a9f0ce}{get\-Window\-Text} ()
+\item 
+List$<$ \hyperlink{a00054}{Card} $>$ \hyperlink{a00003_a7ded1d3a4be43354c103da022b77bbc1}{get\-Choose\-Cards} ()
+\item 
+void \hyperlink{a00003_afb96022738b6f1ff57bde67d0d53ed99}{give\-Chosen\-Cards} (List$<$ \hyperlink{a00054}{Card} $>$ cards)
+\item 
+void \hyperlink{a00003_a81252c27707ce875ea36918d98e1ed86}{open\-Choose\-Cards} (List$<$ \hyperlink{a00054}{Card} $>$ cards, String text)
+\item 
+List$<$ Object $>$ \hyperlink{a00003_a550681b0f7b65985b5c01d0f177844b7}{get\-Choose\-Items} ()
+\item 
+void \hyperlink{a00003_ac1ce576e2e6ac7a32f46cf17cd018ef5}{give\-Chosen\-Item} (Object item)
+\item 
+void \hyperlink{a00003_a42c528c780b3d24d2c78346838b3750f}{open\-Choose\-Item} (List$<$ Object $>$ items, String text)
+\item 
+void \hyperlink{a00003_a8b05e745ce1cb7d38a171e5be7579fdd}{give\-Input\-Number} (int number)
+\item 
+void \hyperlink{a00003_ab654fcf26e04104bcb42ff6413af16cc}{open\-Input\-Number} (String text)
+\item 
+void \hyperlink{a00003_a88ce6a659f690c335b5172f4fc8d6692}{send\-Chat\-Message} (final String msg)
+\item 
+void \hyperlink{a00003_a0c256b4ccc940e2aee2365e06e9d9937}{join\-Game} (final String name, final String password)
+\item 
+void \hyperlink{a00003_ab1f321a2f17fa8ba0f5ab4e2621fd6d6}{start\-Game} ()
+\item 
+void \hyperlink{a00003_a41b6350a6a34cbcfd019774bec169e19}{make\-Move} (\hyperlink{a00054}{Card} card)
+\item 
+void \hyperlink{a00003_ab253c4c00d973c915dca29188fec7482}{create\-Connection} (final String username, final String server\-Adress, final int port)
+\item 
+String \hyperlink{a00003_aedbb05fd7520d0e0f5866447187b0536}{get\-Warning\-Text} ()
+\item 
+\hyperlink{a00066}{Ruleset\-Type}\mbox{[}$\,$\mbox{]} \hyperlink{a00003_a4ac4cd11b7f4bab99e8973f2a89cc5a1}{get\-Rulesets} ()
+\end{DoxyCompactItemize}
+\subsubsection*{Private Methoden}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{a00003_a486f7b71aa892de0f05c6187647613b9}{init\-Game} ()
+\item 
+void \hyperlink{a00003_a5f8e8b8e5973f9334c73bdecd8244818}{inform\-View} (\hyperlink{a00024}{View\-Notification} note)
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00003_a12adf3f64463f614eb3af6dd82414e0a}{String \hyperlink{a00003_a12adf3f64463f614eb3af6dd82414e0a}{player\-Name}}\label{a00003_a12adf3f64463f614eb3af6dd82414e0a}
+
+\item 
+\hypertarget{a00003_a9c280012d0d8f96783ebdeee9c22b646}{\hyperlink{a00056}{Client\-Ruleset} \hyperlink{a00003_a9c280012d0d8f96783ebdeee9c22b646}{ruleset}}\label{a00003_a9c280012d0d8f96783ebdeee9c22b646}
+
+\item 
+\hypertarget{a00003_a431aadd49e0ba3c9fb62b88ced697cc4}{\hyperlink{a00015}{Language} \hyperlink{a00003_a431aadd49e0ba3c9fb62b88ced697cc4}{language}}\label{a00003_a431aadd49e0ba3c9fb62b88ced697cc4}
+
+\item 
+\hypertarget{a00003_ab46b82250c6c463f6ce90486153cb55e}{\hyperlink{a00004}{Client\-State} \hyperlink{a00003_ab46b82250c6c463f6ce90486153cb55e}{state}}\label{a00003_ab46b82250c6c463f6ce90486153cb55e}
+
+\item 
+\hypertarget{a00003_a2a62caed4423183b9e69deb6560b136f}{List$<$ String $>$ {\bfseries player\-List}}\label{a00003_a2a62caed4423183b9e69deb6560b136f}
+
+\item 
+\hypertarget{a00003_a36925554bcf553be7b9b408466fe794c}{String {\bfseries chat\-Message}}\label{a00003_a36925554bcf553be7b9b408466fe794c}
+
+\item 
+\hypertarget{a00003_a3181880192ac35123553866694553d59}{Set$<$ \hyperlink{a00073}{Game\-Server\-Representation} $>$ {\bfseries game\-List}}\label{a00003_a3181880192ac35123553866694553d59}
+
+\item 
+\hypertarget{a00003_a95e1dc2c60f1fe9bcaaba816079c9854}{\hyperlink{a00005}{Message\-Listener\-Thread} \hyperlink{a00003_a95e1dc2c60f1fe9bcaaba816079c9854}{net\-I\-O}}\label{a00003_a95e1dc2c60f1fe9bcaaba816079c9854}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Das \hyperlink{a00003}{Client\-Model} ist die Schnittstelle zwischen dem \hyperlink{a00005}{Message\-Listener\-Thread}, dem Client\-Ruleset und der View. Das Model prüft Nachrichten, welche es vom \hyperlink{a00005}{Message\-Listener\-Thread} über die Methode \hyperlink{a00003_a07aee9bb24715762e17435d64403d638}{receive\-Message()} bekommt. Ruleset\-Messages werden an das Client\-Ruleset weitergeleitet. Weiterhin informiert es seine Observer über Veraenderungen und stellt ihnen Methoden zu Verfügung um spielrelevante Daten zu lesen. Weiterhin kann das \hyperlink{a00003}{Client\-Model} Com\-Messages and den Server schicken, um Kommandos des Client\-Rulesets oder Eingaben des Controllers weiterzugeben. 
+
+\subsubsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{a00003_a3ceb1e33662c266c7e69bd7bd4e7f68b}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!Client\-Model@{Client\-Model}}
+\index{Client\-Model@{Client\-Model}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{Client\-Model}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Client\-Model} (
+\begin{DoxyParamCaption}
+\item[{{\bf Message\-Listener\-Thread}}]{net\-I\-O}
+\end{DoxyParamCaption}
+) throws Illegal\-Argument\-Exception}}\label{a00003_a3ceb1e33662c266c7e69bd7bd4e7f68b}
+
+
+Erstellt ein \hyperlink{a00003}{Client\-Model} und erwartet als Argument einen \hyperlink{a00005}{Message\-Listener\-Thread} fuer die Netzwerkanbindung. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em net\-I\-O} & \hyperlink{a00005}{Message\-Listener\-Thread} fuer die Netzwerkverbindung. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Ausnahmebehandlung}
+{\em Illegal\-Argument\-Exception} & Wird geworfen bei fehlerhaftem \hyperlink{a00005}{Message\-Listener\-Thread} Argument. \\
+\hline
+\end{DoxyExceptions}
+
+
+Benutzt Client\-Model.\-net\-I\-O.
+
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00003_a04485ff586acf6bebed228486d575ec8}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!leave\-Window@{leave\-Window}}
+\index{leave\-Window@{leave\-Window}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{leave\-Window}]{\setlength{\rightskip}{0pt plus 5cm}void leave\-Window (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00003_a04485ff586acf6bebed228486d575ec8}
+
+
+Wird aufgerufen, wenn der User die Game\-Lobby verlaesst. 
+
+Der Client gelangt zurueck in die Lobby. \hypertarget{a00003_a07aee9bb24715762e17435d64403d638}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!receive\-Message@{receive\-Message}}
+\index{receive\-Message@{receive\-Message}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{receive\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void receive\-Message (
+\begin{DoxyParamCaption}
+\item[{{\bf Com\-Chat\-Message}}]{msg}
+\end{DoxyParamCaption}
+)}}\label{a00003_a07aee9bb24715762e17435d64403d638}
+
+
+Sendet eine eingehende Chatnachricht direkt an alle Observer weiter. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em msg} & die ankommende Com\-Chat\-Message Nachricht \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00003_a57fa0509cf6dcf8e9ef762c117e0521d}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!receive\-Message@{receive\-Message}}
+\index{receive\-Message@{receive\-Message}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{receive\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void receive\-Message (
+\begin{DoxyParamCaption}
+\item[{{\bf Com\-Init\-Lobby}}]{msg}
+\end{DoxyParamCaption}
+)}}\label{a00003_a57fa0509cf6dcf8e9ef762c117e0521d}
+
+
+Diese Methode wird aufgerufen, falls der Server den Spieler erfolgreich in die Lobby hinzugefügt hat. 
+
+Empfaengt die Com\-Init\-Game\-Lobby Nachricht, die eine Liste aller Spieler enthaelt, die sich in der Lobby befinden. Speichert diese Liste und benachrichtigt die Observer mit der login\-Succesful \hyperlink{a00024}{View\-Notification}.
+
+
+\begin{DoxyParams}{Parameter}
+{\em msg} & die ankommende Com\-Init\-Lobby Nachricht \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00003_acee963db7bc6d062b092bfb40e713459}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!receive\-Message@{receive\-Message}}
+\index{receive\-Message@{receive\-Message}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{receive\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void receive\-Message (
+\begin{DoxyParamCaption}
+\item[{{\bf Com\-Init\-Game\-Lobby}}]{msg}
+\end{DoxyParamCaption}
+)}}\label{a00003_acee963db7bc6d062b092bfb40e713459}
+
+
+Diese Methode wird aufgerufen, falls der Server den Spieler erfolgreich in die Game\-Lobby hinzugefuegt hat. 
+
+Empfaengt die Com\-Init\-Game\-Lobby Nachricht, die eine Liste aller Spieler enthaelt, die sich in der Game\-Lobby befinden. Speichert diese Liste und benachrichtigt die Observer mit der join\-Game\-Succesful \hyperlink{a00024}{View\-Notification}.
+
+
+\begin{DoxyParams}{Parameter}
+{\em msg} & die ankommende Com\-Init\-Game\-Lobby Nachricht \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00003_a8f06e6959f3e1c3bcea87c8c9dc15685}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!receive\-Message@{receive\-Message}}
+\index{receive\-Message@{receive\-Message}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{receive\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void receive\-Message (
+\begin{DoxyParamCaption}
+\item[{{\bf Com\-Ruleset}}]{msg}
+\end{DoxyParamCaption}
+)}}\label{a00003_a8f06e6959f3e1c3bcea87c8c9dc15685}
+
+
+Diese Methode wird aufgerufen, falls eine Nachricht für das Regelwerk ankommt. 
+
+Die darin enthaltene Ruleset\-Message wird dem Client\-Ruleset zur Verarbeitung uebergeben. 
+\begin{DoxyParams}{Parameter}
+{\em msg} & Die ankommende Com\-Ruleset Nachricht \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00003_ae65b0a1a7898759025fba20de60c0d5f}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!receive\-Message@{receive\-Message}}
+\index{receive\-Message@{receive\-Message}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{receive\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void receive\-Message (
+\begin{DoxyParamCaption}
+\item[{{\bf Com\-Server\-Acknowledgement}}]{ack}
+\end{DoxyParamCaption}
+)}}\label{a00003_ae65b0a1a7898759025fba20de60c0d5f}
+
+
+Diese Methode wird aufgerufen, falls ein Server Acknowledgement auftritt. 
+
+Dabei ist es von Bedeutung, in welchem Zustand sich der Client befindet.
+
+
+\begin{DoxyParams}{Parameter}
+{\em ack} & Eine Bestätigung durch den Server. \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00003_a2ac49a8d4b6df78c386c347f6cb22a10}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!receive\-Message@{receive\-Message}}
+\index{receive\-Message@{receive\-Message}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{receive\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void receive\-Message (
+\begin{DoxyParamCaption}
+\item[{{\bf Com\-Been\-Kicked}}]{msg}
+\end{DoxyParamCaption}
+)}}\label{a00003_a2ac49a8d4b6df78c386c347f6cb22a10}
+
+
+Diese Methode wird aufgerufen, falls der Spieler aus der Spiellobby durch einen Spielleiter entfernt wurde. 
+
+Der Client gelangt zurueck in die Lobby, die Observer werden mit window\-Change\-Forced benachrichtigt.
+
+
+\begin{DoxyParams}{Parameter}
+{\em msg} & die ankommende Com\-Been\-Kicked Nachricht \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00003_a9aaedddc399107717ed8be7e536ffcbb}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!receive\-Message@{receive\-Message}}
+\index{receive\-Message@{receive\-Message}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{receive\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void receive\-Message (
+\begin{DoxyParamCaption}
+\item[{{\bf Com\-Update\-Playerlist}}]{update}
+\end{DoxyParamCaption}
+)}}\label{a00003_a9aaedddc399107717ed8be7e536ffcbb}
+
+
+Diese Methode wird aufgerufen, falls auf dem Server ein neuer Spieler die Lobby/\-Game\-Lobby betreten hat oder sie von einem Spieler verlassen wurde. 
+
+Empfaengt die Com\-Update\-Playerlist Nachricht, die die Information enthaelt, ob und welcher Spieler hinzugefuegt oder entfernt werden muss. Die Spielerliste wird dementsprechend bearbeitet und die Observer mit player\-List\-Update informiert.
+
+
+\begin{DoxyParams}{Parameter}
+{\em update} & die ankommende Com\-Lobby\-Update\-Playerlist Nachricht \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00003_a574431d2f9f8ca6ec01023f4b5cd5518}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!receive\-Message@{receive\-Message}}
+\index{receive\-Message@{receive\-Message}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{receive\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void receive\-Message (
+\begin{DoxyParamCaption}
+\item[{{\bf Com\-Lobby\-Update\-Gamelist}}]{update}
+\end{DoxyParamCaption}
+)}}\label{a00003_a574431d2f9f8ca6ec01023f4b5cd5518}
+
+
+Diese Methode wird aufgerufen, falls auf dem Server ein neues Spiel erstellt wurde oder ein Spiel geschlossen/beendet wurde. 
+
+Empfaengt die Com\-Lobby\-Update\-Gamelist Nachricht, die die Information enthaelt, ob und welches Spiel hinzugefuegt oder entfernt werden muss. Die Spielliste wird dementsprechend bearbeitet und die Observer mit game\-List\-Update informiert.
+
+
+\begin{DoxyParams}{Parameter}
+{\em update} & die ankommende Com\-Lobby\-Update\-Gamelist Nachricht \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00003_a680d5eab630ce98d35cf0a05e4d8c1ac}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!receive\-Message@{receive\-Message}}
+\index{receive\-Message@{receive\-Message}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{receive\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void receive\-Message (
+\begin{DoxyParamCaption}
+\item[{{\bf Com\-Object}}]{com}
+\end{DoxyParamCaption}
+)}}\label{a00003_a680d5eab630ce98d35cf0a05e4d8c1ac}
+
+
+Standard receive\-Message Methode, die Com\-Objekte zur Weiterverarbeitung identifiziert. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em com} & Das auflaufende Com\-Objekt. \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00003_a04dc864cba20400b253dd787e20d97b6}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!get\-Playerlist@{get\-Playerlist}}
+\index{get\-Playerlist@{get\-Playerlist}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{get\-Playerlist}]{\setlength{\rightskip}{0pt plus 5cm}List$<$String$>$ get\-Playerlist (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00003_a04dc864cba20400b253dd787e20d97b6}
+
+
+Liefert eine Liste der Namen der Spieler in der Lobby oder Game\-Lobby. 
+
+\begin{DoxyReturn}{Rückgabe}
+Liste von Spielernamen 
+\end{DoxyReturn}
+\hypertarget{a00003_a0f33c3ac883d05b27be54ebdae730d9b}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!get\-Lobby\-Gamelist@{get\-Lobby\-Gamelist}}
+\index{get\-Lobby\-Gamelist@{get\-Lobby\-Gamelist}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{get\-Lobby\-Gamelist}]{\setlength{\rightskip}{0pt plus 5cm}List$<${\bf Game\-Server\-Representation}$>$ get\-Lobby\-Gamelist (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00003_a0f33c3ac883d05b27be54ebdae730d9b}
+
+
+Liefert eine Liste der Spiele, die aktuell auf dem Server offen sind oder gerade gespielt werden. 
+
+\begin{DoxyReturn}{Rückgabe}
+Liste aller Spiele der Lobby. 
+\end{DoxyReturn}
+\hypertarget{a00003_a0146da6e5736418de59de4ce9ac28eff}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!get\-Played\-Cards@{get\-Played\-Cards}}
+\index{get\-Played\-Cards@{get\-Played\-Cards}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{get\-Played\-Cards}]{\setlength{\rightskip}{0pt plus 5cm}List$<${\bf Card}$>$ get\-Played\-Cards (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00003_a0146da6e5736418de59de4ce9ac28eff}
+
+
+Gibt eine Liste aller bereits ausgespielten Karten zurueck. 
+
+\begin{DoxyReturn}{Rückgabe}
+List$<$\-Card$>$. Eine Liste der gespielten Karten. 
+\end{DoxyReturn}
+\hypertarget{a00003_a1b82d59f9b439be5785c6faffd4d3c05}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!get\-Own\-Hand@{get\-Own\-Hand}}
+\index{get\-Own\-Hand@{get\-Own\-Hand}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{get\-Own\-Hand}]{\setlength{\rightskip}{0pt plus 5cm}List$<${\bf Card}$>$ get\-Own\-Hand (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00003_a1b82d59f9b439be5785c6faffd4d3c05}
+
+
+Gibt eine Liste der Handkarten des Spielers zurueck. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em Liste} & aller Handkarten des Spielers \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00003_abfb50b9812bdeca9c479fb071b36c365}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!get\-Other\-Player\-Data@{get\-Other\-Player\-Data}}
+\index{get\-Other\-Player\-Data@{get\-Other\-Player\-Data}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{get\-Other\-Player\-Data}]{\setlength{\rightskip}{0pt plus 5cm}List$<$String$>$ get\-Other\-Player\-Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00003_abfb50b9812bdeca9c479fb071b36c365}
+
+
+Gibt zusaetzliche Daten der anderen Spieler zurueck. 
+
+\begin{DoxyReturn}{Rückgabe}
+Liste der Stringrepräsentationen der Other\-Data der Spieler 
+\end{DoxyReturn}
+\hypertarget{a00003_a5a731ac22c3365c7c7f783d37ab15de7}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!get\-Own\-Score@{get\-Own\-Score}}
+\index{get\-Own\-Score@{get\-Own\-Score}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{get\-Own\-Score}]{\setlength{\rightskip}{0pt plus 5cm}int get\-Own\-Score (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00003_a5a731ac22c3365c7c7f783d37ab15de7}
+
+
+Gibt den Punktestand des Spielers zurueck. 
+
+\begin{DoxyReturn}{Rückgabe}
+der eigene Punktestand. 
+\end{DoxyReturn}
+\hypertarget{a00003_a7464e992189497a4a9294b200522e84b}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!set\-Language@{set\-Language}}
+\index{set\-Language@{set\-Language}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{set\-Language}]{\setlength{\rightskip}{0pt plus 5cm}void set\-Language (
+\begin{DoxyParamCaption}
+\item[{final {\bf Language}}]{language}
+\end{DoxyParamCaption}
+)}}\label{a00003_a7464e992189497a4a9294b200522e84b}
+
+
+Setzt die Sprache der G\-U\-I. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em language} & Enumerator der die Spielsprache anzeigt. \\
+\hline
+\end{DoxyParams}
+
+
+Benutzt Client\-Model.\-language.
+
+\hypertarget{a00003_aa72e75463872de401983258a6554aad6}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!get\-Language@{get\-Language}}
+\index{get\-Language@{get\-Language}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{get\-Language}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Language} get\-Language (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00003_aa72e75463872de401983258a6554aad6}
+
+
+Liefert die Sprache der G\-U\-I. 
+
+\begin{DoxyReturn}{Rückgabe}
+language Enumerator der die Spielsprache anzeigt. 
+\end{DoxyReturn}
+
+
+Benutzt Client\-Model.\-language.
+
+\hypertarget{a00003_a99949d94213cba9f7f74c6673838fa03}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!kick\-Player@{kick\-Player}}
+\index{kick\-Player@{kick\-Player}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{kick\-Player}]{\setlength{\rightskip}{0pt plus 5cm}void kick\-Player (
+\begin{DoxyParamCaption}
+\item[{final String}]{name}
+\end{DoxyParamCaption}
+)}}\label{a00003_a99949d94213cba9f7f74c6673838fa03}
+
+
+Entfernt einen Spieler aus der Game\-Lobby. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em Name} & des Spielers, der enfernt werden soll \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00003_a7878557a5c9e7d77766beeb3662934a4}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!host\-Game@{host\-Game}}
+\index{host\-Game@{host\-Game}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{host\-Game}]{\setlength{\rightskip}{0pt plus 5cm}void host\-Game (
+\begin{DoxyParamCaption}
+\item[{String}]{game\-Name, }
+\item[{boolean}]{has\-Password, }
+\item[{String}]{password, }
+\item[{{\bf Ruleset\-Type}}]{ruleset}
+\end{DoxyParamCaption}
+)}}\label{a00003_a7878557a5c9e7d77766beeb3662934a4}
+
+
+Erstellt ein neues Spiel. 
+
+Sendet dazu eine Com\-Create\-Game\-Request Nachricht an den Server.
+
+
+\begin{DoxyParams}{Parameter}
+{\em game\-Name} & String Name des Spieles. \\
+\hline
+{\em has\-Password} & true, wenn das Spiel ein Passwort hat \\
+\hline
+{\em password} & String Passwort zum sichern des Spieles. \\
+\hline
+{\em ruleset} & das zu verwendende Regelwerk \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00003_afea035a8450d55661a10d4727154498d}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!send@{send}}
+\index{send@{send}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{send}]{\setlength{\rightskip}{0pt plus 5cm}void send (
+\begin{DoxyParamCaption}
+\item[{{\bf Com\-Object}}]{object}
+\end{DoxyParamCaption}
+)}}\label{a00003_afea035a8450d55661a10d4727154498d}
+
+
+Sendet erstellte Com\-Objects an den Server. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em object} & Com\-Object, das verschickt wird \\
+\hline
+\end{DoxyParams}
+
+
+Wird benutzt von Client\-Model.\-send() und Client\-Model.\-send\-Chat\-Message().
+
+\hypertarget{a00003_a26c0fa3eb71d468c72e80f7cc05ae375}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!send@{send}}
+\index{send@{send}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{send}]{\setlength{\rightskip}{0pt plus 5cm}void send (
+\begin{DoxyParamCaption}
+\item[{{\bf Ruleset\-Message}}]{msg}
+\end{DoxyParamCaption}
+)}}\label{a00003_a26c0fa3eb71d468c72e80f7cc05ae375}
+
+
+Sendet eine Ruleset\-Message an den Server. 
+
+Erstellt dazu eine Com\-Ruleset, die die Ruleset\-Message enthaelt.
+
+
+\begin{DoxyParams}{Parameter}
+{\em msg} & die Ruleset\-Message, die an den Server geschickt werden soll \\
+\hline
+\end{DoxyParams}
+
+
+Benutzt Client\-Model.\-send().
+
+\hypertarget{a00003_a257a047419807db825874e5a047ea014}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!get\-Player\-Count@{get\-Player\-Count}}
+\index{get\-Player\-Count@{get\-Player\-Count}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{get\-Player\-Count}]{\setlength{\rightskip}{0pt plus 5cm}int get\-Player\-Count (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00003_a257a047419807db825874e5a047ea014}
+
+
+Die die Anzahl der Spieler eines Spieles zurueck. 
+
+\begin{DoxyReturn}{Rückgabe}
+int Die Spielerzahl eines Spieles. 
+\end{DoxyReturn}
+\hypertarget{a00003_abe9d18c5dad27296dcb59f4240a9f0ce}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!get\-Window\-Text@{get\-Window\-Text}}
+\index{get\-Window\-Text@{get\-Window\-Text}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{get\-Window\-Text}]{\setlength{\rightskip}{0pt plus 5cm}String get\-Window\-Text (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00003_abe9d18c5dad27296dcb59f4240a9f0ce}
+
+
+Gibt den Text zurueck, der in einem Sonderfenster (Input\-Number, Choose\-Item, Choose\-Cards) angezeigt werden soll. 
+
+\begin{DoxyReturn}{Rückgabe}
+String 
+\end{DoxyReturn}
+\hypertarget{a00003_a7ded1d3a4be43354c103da022b77bbc1}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!get\-Choose\-Cards@{get\-Choose\-Cards}}
+\index{get\-Choose\-Cards@{get\-Choose\-Cards}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{get\-Choose\-Cards}]{\setlength{\rightskip}{0pt plus 5cm}List$<${\bf Card}$>$ get\-Choose\-Cards (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00003_a7ded1d3a4be43354c103da022b77bbc1}
+
+
+Gibt die Karten zurueck, aus denen gewaehlt werden soll. 
+
+\begin{DoxyReturn}{Rückgabe}
+Karten, aus denen gewahlt werden kann 
+\end{DoxyReturn}
+\hypertarget{a00003_afb96022738b6f1ff57bde67d0d53ed99}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!give\-Chosen\-Cards@{give\-Chosen\-Cards}}
+\index{give\-Chosen\-Cards@{give\-Chosen\-Cards}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{give\-Chosen\-Cards}]{\setlength{\rightskip}{0pt plus 5cm}void give\-Chosen\-Cards (
+\begin{DoxyParamCaption}
+\item[{List$<$ {\bf Card} $>$}]{cards}
+\end{DoxyParamCaption}
+)}}\label{a00003_afb96022738b6f1ff57bde67d0d53ed99}
+
+
+Uebergibt die Karten, die vom User gewahlt wurden. 
+
+Diese werden dann dem Regelwerk weitergegeben. Akzeptiert dieses die gewahlten Karten nicht, wird nochmal open\-Choose\-Cards aufgerufen.
+
+
+\begin{DoxyParams}{Parameter}
+{\em cards} & Karten, die der User gewahlt hat \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00003_a81252c27707ce875ea36918d98e1ed86}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!open\-Choose\-Cards@{open\-Choose\-Cards}}
+\index{open\-Choose\-Cards@{open\-Choose\-Cards}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{open\-Choose\-Cards}]{\setlength{\rightskip}{0pt plus 5cm}void open\-Choose\-Cards (
+\begin{DoxyParamCaption}
+\item[{List$<$ {\bf Card} $>$}]{cards, }
+\item[{String}]{text}
+\end{DoxyParamCaption}
+)}}\label{a00003_a81252c27707ce875ea36918d98e1ed86}
+
+
+Benachrichtigt die Observer mit der open\-Choose\-Cards \hyperlink{a00024}{View\-Notification} und speichert die Liste der Karten sowie den Anzeigetext des Regelwerks zwischen. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em cards} & Liste der Karten, von denen gewaehlt werden kann \\
+\hline
+{\em text} & Text, der dem User angezeigt werden soll \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00003_a550681b0f7b65985b5c01d0f177844b7}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!get\-Choose\-Items@{get\-Choose\-Items}}
+\index{get\-Choose\-Items@{get\-Choose\-Items}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{get\-Choose\-Items}]{\setlength{\rightskip}{0pt plus 5cm}List$<$Object$>$ get\-Choose\-Items (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00003_a550681b0f7b65985b5c01d0f177844b7}
+
+
+Gibt die Items zurueck, aus denen eines gewaehlt werden soll. 
+
+\begin{DoxyReturn}{Rückgabe}
+Items, aus denen gewahlt werden kann 
+\end{DoxyReturn}
+\hypertarget{a00003_ac1ce576e2e6ac7a32f46cf17cd018ef5}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!give\-Chosen\-Item@{give\-Chosen\-Item}}
+\index{give\-Chosen\-Item@{give\-Chosen\-Item}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{give\-Chosen\-Item}]{\setlength{\rightskip}{0pt plus 5cm}void give\-Chosen\-Item (
+\begin{DoxyParamCaption}
+\item[{Object}]{item}
+\end{DoxyParamCaption}
+)}}\label{a00003_ac1ce576e2e6ac7a32f46cf17cd018ef5}
+
+
+Uebergibt das Item, das vom User gewahlt wurden. 
+
+Dieses wird dann dem Regelwerk weitergegeben. Akzeptiert dieses das gewahlte Item nicht, wird nochmal open\-Choose\-Item aufgerufen.
+
+
+\begin{DoxyParams}{Parameter}
+{\em item} & Item, das der User gewahlt hat \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00003_a42c528c780b3d24d2c78346838b3750f}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!open\-Choose\-Item@{open\-Choose\-Item}}
+\index{open\-Choose\-Item@{open\-Choose\-Item}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{open\-Choose\-Item}]{\setlength{\rightskip}{0pt plus 5cm}void open\-Choose\-Item (
+\begin{DoxyParamCaption}
+\item[{List$<$ Object $>$}]{items, }
+\item[{String}]{text}
+\end{DoxyParamCaption}
+)}}\label{a00003_a42c528c780b3d24d2c78346838b3750f}
+
+
+Benachrichtigt die Observer mit der open\-Choose\-Item \hyperlink{a00024}{View\-Notification} und speichert die Liste der Items, von denen eines gewaehlt werden soll, sowie den Anzeigtetext des Regelwerks zwischen. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em items} & Liste der Items, von denen eines gewaehlt werden soll \\
+\hline
+{\em text} & Text, der dem User angezeigt werden soll \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00003_a8b05e745ce1cb7d38a171e5be7579fdd}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!give\-Input\-Number@{give\-Input\-Number}}
+\index{give\-Input\-Number@{give\-Input\-Number}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{give\-Input\-Number}]{\setlength{\rightskip}{0pt plus 5cm}void give\-Input\-Number (
+\begin{DoxyParamCaption}
+\item[{int}]{number}
+\end{DoxyParamCaption}
+)}}\label{a00003_a8b05e745ce1cb7d38a171e5be7579fdd}
+
+
+Uebergibt die Zahl, die vom User gewahlt wurde. 
+
+Diese wird dann dem Regelwerk weitergegeben. Akzeptiert dieses die gewaehlte Zahl nicht, wird nochmal open\-Input\-Number aufgerufen.
+
+
+\begin{DoxyParams}{Parameter}
+{\em number} & Zahl, die vom User gewahlt wurde \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00003_ab654fcf26e04104bcb42ff6413af16cc}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!open\-Input\-Number@{open\-Input\-Number}}
+\index{open\-Input\-Number@{open\-Input\-Number}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{open\-Input\-Number}]{\setlength{\rightskip}{0pt plus 5cm}void open\-Input\-Number (
+\begin{DoxyParamCaption}
+\item[{String}]{text}
+\end{DoxyParamCaption}
+)}}\label{a00003_ab654fcf26e04104bcb42ff6413af16cc}
+
+
+Benachrichtigt die Observer mit der open\-Input\-Number \hyperlink{a00024}{View\-Notification} und speichert den Anzeigetext des Regelwerks zwischen. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em text} & Text, der dem User angezeigt werden soll \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00003_a88ce6a659f690c335b5172f4fc8d6692}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!send\-Chat\-Message@{send\-Chat\-Message}}
+\index{send\-Chat\-Message@{send\-Chat\-Message}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{send\-Chat\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void send\-Chat\-Message (
+\begin{DoxyParamCaption}
+\item[{final String}]{msg}
+\end{DoxyParamCaption}
+)}}\label{a00003_a88ce6a659f690c335b5172f4fc8d6692}
+
+
+Nimmt vom \hyperlink{a00001}{Client\-Controller} eine Chatnachricht entgegen und sendet diese an den Server. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em msg} & die Chatnachricht, die an den Server geschickt werden soll \\
+\hline
+\end{DoxyParams}
+
+
+Benutzt Client\-Model.\-send().
+
+\hypertarget{a00003_a0c256b4ccc940e2aee2365e06e9d9937}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!join\-Game@{join\-Game}}
+\index{join\-Game@{join\-Game}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{join\-Game}]{\setlength{\rightskip}{0pt plus 5cm}void join\-Game (
+\begin{DoxyParamCaption}
+\item[{final String}]{name, }
+\item[{final String}]{password}
+\end{DoxyParamCaption}
+)}}\label{a00003_a0c256b4ccc940e2aee2365e06e9d9937}
+
+
+Versucht einem Spiel beizutreten. 
+
+Sendet dazu eine Com\-Join\-Request Nachricht an den Server. Wird diese bestaetigt, gelangt der Client in die Game\-Lobby. Wird die Nachricht nicht bestaetigt, wird eine Fehlermeldung ausgegeben und die Observer mit open\-Warning informiert.
+
+
+\begin{DoxyParams}{Parameter}
+{\em name} & String Der Name des Spiels. \\
+\hline
+{\em password} & String Passwort eines Spieles. \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00003_ab1f321a2f17fa8ba0f5ab4e2621fd6d6}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!start\-Game@{start\-Game}}
+\index{start\-Game@{start\-Game}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{start\-Game}]{\setlength{\rightskip}{0pt plus 5cm}void start\-Game (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00003_ab1f321a2f17fa8ba0f5ab4e2621fd6d6}
+
+
+Versucht das erstellte Spiel zu starten. 
+
+Sendet dazu eine Com\-Start\-Game an den Server. Wenn der Client der Spielleiter des Spiels ist, gelangt er ins Spiel. Wenn der Client nicht der Spielleiter des Spiels ist, wird eine Fehlermeldung ausgegeben. \hypertarget{a00003_a486f7b71aa892de0f05c6187647613b9}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!init\-Game@{init\-Game}}
+\index{init\-Game@{init\-Game}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{init\-Game}]{\setlength{\rightskip}{0pt plus 5cm}void init\-Game (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{a00003_a486f7b71aa892de0f05c6187647613b9}
+
+
+Diese Methode wird innerhalb des Client\-Models aufgerufen wenn ein Spiel vom Spielleiter gestartet wurde. 
+
+Der Client gelangt ins Spiel Die Observer werden über die game\-Started \hyperlink{a00024}{View\-Notification} benachrichtigt. \hypertarget{a00003_a41b6350a6a34cbcfd019774bec169e19}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!make\-Move@{make\-Move}}
+\index{make\-Move@{make\-Move}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{make\-Move}]{\setlength{\rightskip}{0pt plus 5cm}void make\-Move (
+\begin{DoxyParamCaption}
+\item[{{\bf Card}}]{card}
+\end{DoxyParamCaption}
+)}}\label{a00003_a41b6350a6a34cbcfd019774bec169e19}
+
+
+Versucht eine Karte auszuspielen. 
+
+Laesst dazu vom Client\-Ruleset ueberpruefen ob, die ausgewaehlte Karte gespielt werden darf. Wenn ja, wird sie im Client\-Ruleset weiterbehandelt. Wenn nein, wird eine Fehlermeldung ausgegeben und dazu die Observer mit open\-Warning informiert.
+
+
+\begin{DoxyParams}{Parameter}
+{\em die} & I\-D der gespielten Karte \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00003_a5f8e8b8e5973f9334c73bdecd8244818}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!inform\-View@{inform\-View}}
+\index{inform\-View@{inform\-View}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{inform\-View}]{\setlength{\rightskip}{0pt plus 5cm}void inform\-View (
+\begin{DoxyParamCaption}
+\item[{{\bf View\-Notification}}]{note}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{a00003_a5f8e8b8e5973f9334c73bdecd8244818}
+
+
+Hilfsmethode die alle verbundenen Observer der G\-U\-I kontaktiert. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em note} & Enum der die Art des Aufrufes bestimmt. \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00003_ab253c4c00d973c915dca29188fec7482}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!create\-Connection@{create\-Connection}}
+\index{create\-Connection@{create\-Connection}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{create\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}void create\-Connection (
+\begin{DoxyParamCaption}
+\item[{final String}]{username, }
+\item[{final String}]{server\-Adress, }
+\item[{final int}]{port}
+\end{DoxyParamCaption}
+)}}\label{a00003_ab253c4c00d973c915dca29188fec7482}
+
+
+Erstellt den \hyperlink{a00005}{Message\-Listener\-Thread} und fuehrt den Benutzerlogin durch. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em username} & String der eindeutige Benutzername der für den Login verwendet wird. \\
+\hline
+{\em server\-Adress} & String die Adresse des spielservers. \\
+\hline
+{\em port} & Integer der Port des Spielservers. \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00003_aedbb05fd7520d0e0f5866447187b0536}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!get\-Warning\-Text@{get\-Warning\-Text}}
+\index{get\-Warning\-Text@{get\-Warning\-Text}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{get\-Warning\-Text}]{\setlength{\rightskip}{0pt plus 5cm}String get\-Warning\-Text (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00003_aedbb05fd7520d0e0f5866447187b0536}
+
+
+Gibt den Text aus der bei einer Spielwarnung angezeigt wird. 
+
+\begin{DoxyReturn}{Rückgabe}
+String Text der Warnung. 
+\end{DoxyReturn}
+\hypertarget{a00003_a4ac4cd11b7f4bab99e8973f2a89cc5a1}{\index{Client\-::\-Client\-Model@{Client\-::\-Client\-Model}!get\-Rulesets@{get\-Rulesets}}
+\index{get\-Rulesets@{get\-Rulesets}!Client::ClientModel@{Client\-::\-Client\-Model}}
+\paragraph[{get\-Rulesets}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Ruleset\-Type} \mbox{[}$\,$\mbox{]} get\-Rulesets (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00003_a4ac4cd11b7f4bab99e8973f2a89cc5a1}
+
+
+Liefert ein Array mit allen implementierten Regelwerken. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em Ruleset\-Type\mbox{[}$\,$\mbox{]}} & Array von unterstützten Regelwerken. \\
+\hline
+\end{DoxyParams}

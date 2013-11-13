@@ -1,0 +1,118 @@
+\hypertarget{a00055}{\subsection{Client\-Hearts Klassenreferenz}
+\label{a00055}\index{Client\-Hearts@{Client\-Hearts}}
+}
+
+
+Abgeleitet von \hyperlink{a00056}{Client\-Ruleset}.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00055_ad8d72cec687ab04aa0ed6f2167b6dc33}{Client\-Hearts} (\hyperlink{a00003}{Client\-Model} \hyperlink{a00056_a937cb3d928d5cde5863e895e163b048e}{client})
+\item 
+boolean \hyperlink{a00055_aa58080772a961e1f9f88d766777f82ed}{is\-Valid\-Move} (\hyperlink{a00054}{Card} card)
+\item 
+void \hyperlink{a00055_ad32794205bdb1ca1a8760cea29d6b27a}{resolve\-Message} (\hyperlink{a00047}{Msg\-Multi\-Cards\-Request} msg\-Multi\-Cards\-Request)
+\item 
+boolean \hyperlink{a00055_a8f8cd3193789d852ab22bb9e858fa5c4}{are\-Valid\-Choosen\-Cards} (Set$<$ \hyperlink{a00054}{Card} $>$ cards)
+\end{DoxyCompactItemize}
+\subsubsection*{Statische, private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00055_a57fe2c01c4e61b1f0c44c70ccc75d903}{static final int \hyperlink{a00055_a57fe2c01c4e61b1f0c44c70ccc75d903}{M\-I\-N\-\_\-\-P\-L\-A\-Y\-E\-R\-S} = 4}\label{a00055_a57fe2c01c4e61b1f0c44c70ccc75d903}
+
+\item 
+\hypertarget{a00055_ae6ed433235a83c520ce79bee49bc2b01}{static final int \hyperlink{a00055_ae6ed433235a83c520ce79bee49bc2b01}{M\-A\-X\-\_\-\-P\-L\-A\-Y\-E\-R\-S} = 4}\label{a00055_ae6ed433235a83c520ce79bee49bc2b01}
+
+\item 
+\hypertarget{a00055_a3045f525de18ff0ad68134f0d512ea16}{static final \hyperlink{a00066}{Ruleset\-Type} \hyperlink{a00055_a3045f525de18ff0ad68134f0d512ea16}{R\-U\-L\-E\-S\-E\-T} = \hyperlink{a00066_a6e9f988fd4b1f5b39d289b0f44514af4}{Ruleset\-Type.\-Hearts}}\label{a00055_a3045f525de18ff0ad68134f0d512ea16}
+
+\end{DoxyCompactItemize}
+\subsubsection*{Weitere Geerbte Elemente}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Diese Klasse bildet das Regelwerk für den Clientmodel bei einer Partie Hearts 
+
+\subsubsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{a00055_ad8d72cec687ab04aa0ed6f2167b6dc33}{\index{Ruleset\-::\-Client\-Hearts@{Ruleset\-::\-Client\-Hearts}!Client\-Hearts@{Client\-Hearts}}
+\index{Client\-Hearts@{Client\-Hearts}!Ruleset::ClientHearts@{Ruleset\-::\-Client\-Hearts}}
+\paragraph[{Client\-Hearts}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Client\-Hearts} (
+\begin{DoxyParamCaption}
+\item[{{\bf Client\-Model}}]{client}
+\end{DoxyParamCaption}
+)}}\label{a00055_ad8d72cec687ab04aa0ed6f2167b6dc33}
+
+
+Erzeugt ein \hyperlink{a00055}{Client\-Hearts}. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em client} & Das Model auf dem gespielt wird \\
+\hline
+\end{DoxyParams}
+
+
+Benutzt Ruleset\-Type.\-Hearts, Client\-Hearts.\-M\-A\-X\-\_\-\-P\-L\-A\-Y\-E\-R\-S und Client\-Hearts.\-M\-I\-N\-\_\-\-P\-L\-A\-Y\-E\-R\-S.
+
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00055_aa58080772a961e1f9f88d766777f82ed}{\index{Ruleset\-::\-Client\-Hearts@{Ruleset\-::\-Client\-Hearts}!is\-Valid\-Move@{is\-Valid\-Move}}
+\index{is\-Valid\-Move@{is\-Valid\-Move}!Ruleset::ClientHearts@{Ruleset\-::\-Client\-Hearts}}
+\paragraph[{is\-Valid\-Move}]{\setlength{\rightskip}{0pt plus 5cm}boolean is\-Valid\-Move (
+\begin{DoxyParamCaption}
+\item[{{\bf Card}}]{card}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{a00055_aa58080772a961e1f9f88d766777f82ed}
+
+
+Prueft ob ein gemachter Zug in einem Spiel gueltig war. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em card} & Die Karte \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Rückgabe}
+true falls die Karte gueltig ist, false wenn nicht 
+\end{DoxyReturn}
+
+
+Implementiert \hyperlink{a00056_a48cc9b97dd2832c14668fac3a6f5be1a}{Client\-Ruleset}.
+
+\hypertarget{a00055_ad32794205bdb1ca1a8760cea29d6b27a}{\index{Ruleset\-::\-Client\-Hearts@{Ruleset\-::\-Client\-Hearts}!resolve\-Message@{resolve\-Message}}
+\index{resolve\-Message@{resolve\-Message}!Ruleset::ClientHearts@{Ruleset\-::\-Client\-Hearts}}
+\paragraph[{resolve\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void resolve\-Message (
+\begin{DoxyParamCaption}
+\item[{{\bf Msg\-Multi\-Cards\-Request}}]{msg\-Multi\-Cards\-Request}
+\end{DoxyParamCaption}
+)}}\label{a00055_ad32794205bdb1ca1a8760cea29d6b27a}
+
+
+Verarbeitet die Ruleset\-Message dass der Server von dem Spieler verlangt mehrere Karten anzugeben. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em msg\-Multi\-Cards\-Request} & Die Nachricht vom Server \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00055_a8f8cd3193789d852ab22bb9e858fa5c4}{\index{Ruleset\-::\-Client\-Hearts@{Ruleset\-::\-Client\-Hearts}!are\-Valid\-Choosen\-Cards@{are\-Valid\-Choosen\-Cards}}
+\index{are\-Valid\-Choosen\-Cards@{are\-Valid\-Choosen\-Cards}!Ruleset::ClientHearts@{Ruleset\-::\-Client\-Hearts}}
+\paragraph[{are\-Valid\-Choosen\-Cards}]{\setlength{\rightskip}{0pt plus 5cm}boolean are\-Valid\-Choosen\-Cards (
+\begin{DoxyParamCaption}
+\item[{Set$<$ {\bf Card} $>$}]{cards}
+\end{DoxyParamCaption}
+)}}\label{a00055_a8f8cd3193789d852ab22bb9e858fa5c4}
+
+
+Gibt zuueck ob die Karten die der Client tauschen will, gueltig sind. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em cards} & Die zu tauschenden Karten \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Rückgabe}
+true wenn Karten valide sind, false wenn nicht 
+\end{DoxyReturn}

@@ -1,0 +1,1125 @@
+\documentclass[twoside]{article}
+
+% Packages required by doxygen
+\usepackage{calc}
+\usepackage{doxygen}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{makeidx}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{textcomp}
+\usepackage[table]{xcolor}
+
+% NLS support packages
+\usepackage[ngerman]{babel}
+
+% Font selection
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage[scaled=.90]{helvet}
+\usepackage{courier}
+\usepackage{amssymb}
+\usepackage{sectsty}
+\renewcommand{\familydefault}{\sfdefault}
+\allsectionsfont{%
+  \fontseries{bc}\selectfont%
+  \color{darkgray}%
+}
+\renewcommand{\DoxyLabelFont}{%
+  \fontseries{bc}\selectfont%
+  \color{darkgray}%
+}
+
+% Java Code
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true
+  tabsize=3
+}
+
+% Page & text layout
+\usepackage{geometry}
+\geometry{%
+  a4paper,%
+  top=2.5cm,%
+  bottom=2.5cm,%
+  left=2.5cm,%
+  right=2.5cm%
+}
+\tolerance=750
+\hfuzz=15pt
+\hbadness=750
+\setlength{\emergencystretch}{15pt}
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.2cm}
+\makeatletter
+\renewcommand{\paragraph}{%
+  \@startsection{paragraph}{4}{0ex}{-1.0ex}{1.0ex}{%
+    \normalfont\normalsize\bfseries\SS@parafont%
+  }%
+}
+\renewcommand{\subparagraph}{%
+  \@startsection{subparagraph}{5}{0ex}{-1.0ex}{1.0ex}{%
+    \normalfont\normalsize\bfseries\SS@subparafont%
+  }%
+}
+\makeatother
+
+% Headers & footers
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\fancyhead[LE]{\fancyplain{}{\bfseries\thepage}}
+\fancyhead[CE]{\fancyplain{}{}}
+\fancyhead[RE]{\fancyplain{}{\bfseries\leftmark}}
+\fancyhead[LO]{\fancyplain{}{\bfseries\rightmark}}
+\fancyhead[CO]{\fancyplain{}{}}
+\fancyhead[RO]{\fancyplain{}{\bfseries\thepage}}
+\fancyfoot[LE]{\fancyplain{}{}}
+\fancyfoot[CE]{\fancyplain{}{}}
+\fancyfoot[RE]{\fancyplain{}{\bfseries\scriptsize Erzeugt am Die Nov 12 2013 22\-:53\-:00 für N\-E\-T-\/\-Wiz\-Hearts von Doxygen }}
+\fancyfoot[LO]{\fancyplain{}{\bfseries\scriptsize Erzeugt am Die Nov 12 2013 22\-:53\-:00 für N\-E\-T-\/\-Wiz\-Hearts von Doxygen }}
+\fancyfoot[CO]{\fancyplain{}{}}
+\fancyfoot[RO]{\fancyplain{}{}}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\sectionmark}[1]{%
+  \markright{\thesection\ #1}%
+}
+
+% Indices & bibliography
+\usepackage{natbib}
+\usepackage[titles]{tocloft}
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{5}
+\makeindex
+
+% Hyperlinks (required, but should be loaded last)
+\usepackage{ifpdf}
+\ifpdf
+  \usepackage[pdftex,pagebackref=true]{hyperref}
+\else
+  \usepackage[ps2pdf,pagebackref=true]{hyperref}
+\fi
+\hypersetup{%
+  colorlinks=true,%
+  linkcolor=blue,%
+  citecolor=blue,%
+  unicode%
+}
+
+% Custom commands
+\newcommand{\clearemptydoublepage}{%
+  \newpage{\pagestyle{empty}\cleardoublepage}%
+}
+
+
+%===== C O N T E N T S =====
+
+\begin{document}
+
+% Titlepage & ToC
+\hypersetup{pageanchor=false}
+\pagenumbering{roman}
+\begin{titlepage}
+\vspace*{2cm}
+\begin{center}%
+\textbf{\textsc{\LARGE Spezifikation}}
+
+{\large \today}
+
+\vspace{2cm}
+\includegraphics{kartenspiel}
+\ \\
+\ \\
+
+\textbf{\textsc{\LARGE NET-WizHearts}}
+\vspace{2cm}
+
+\begin{tabular}{|c|c|c|}\hline
+   Phase & Verantwortlicher & E-Mail \\ \hline\hline
+   Pflichtenheft & Alina Meixl &  alina@meixl.de \\ \hline
+   Entwurf & Viktoria Witka & witkaviktoria@freenet.de \\ \hline
+   Spezifikation & Daniel Riedl & dariedl14@yahoo.de \\ \hline
+   Implementation & Andreas Altenbuchner& a.andi007@gmail.com\\ \hline
+   Verifikation & Patrick Kubin & kubin@fim.uni-passau.de\\ \hline
+   Präsentation & w& w\\ \hline
+ \end{tabular}
+\end{center}
+\end{titlepage}
+\tableofcontents
+\pagenumbering{arabic}
+\hypersetup{pageanchor=true}
+
+\section{Einleitung}
+In diesem Dokument werden spezifische Angaben zu den bereits im Entwurf vorgestellten Klassen gemacht. Es werden im Folgenden Methoden und Attribute, sowie die Klassen genau beschrieben. Zunächst werden dazu die Änderungen vorgestellt, die seit dem Entwurf vorgenommen wurden. Des weiteren werden JUnit-Tests gezeigt, die zum Testen des späteren Programms essentiell sind. Zuletzt wird ein Implementierungsplan mit verschiedenen Milestones aufgezeigt. \\ \\
+
+\section{Änderungen im Vergleich zum Entwurf}
+\subsection{Server}
+\subsubsection{Server}
+Die Klasse Server war zuvor ein Interface und ist jetzt eine abstrakte Klasse von der der LobbyServer und der GameServer erben. So kann Codeduplikation vermieden werden.
+\subsection{Client}
+\subsubsection{Language}
+Das Enum Language wurde in das Packet ClientView verschoben, da es von der View benötigt wird um die richtige Sprache anzuzeigen.
+\subsubsection{MVMessage}
+Die MVMessages wurden gelöscht und durch ein Enum ViewNotification ersetzt. Der Observer bekommt Änderungen über die Notifications mitgeteilt. Dies macht eine weitere Einteilung in einzelnde Messages unnötig.
+\subsubsection{ClientState-Enum}
+Dieses Enum enthält jeden Status, den ein Client erreichen kann.
+\subsection{ClientView}
+\subsubsection{MVMessages}
+Dieses Interface wurde gelöscht, da es unnötig ist.
+\subsubsection{ViewCard}
+ViewCard ist die View-seitige Repräsentation einer Karte. Sie wird verwendet um einzelne Karten auf das Spielfeld zu zeichnen.
+\subsection{Ruleset}
+\subsubsection{ServerRuleset}
+Das ServerRuleset ist statt einem Interface nun eine abstrakte Klasse, von der die Klassen ServerHearts (vorher Hearts) und ServerWizard (vorherWizard) erben. Codeduplikation kann so vermieden werden.
+\subsubsection{ClientRuleset}
+Das ClientRuleset ist statt einem Interface nun eine abstrakte Klasse, von der die Klassen ClientWizard und ClientHearts erben. So kann Codeduplikation vermieden werden.
+\subsubsection{Card}
+Die vorher abstrakte Klasse Card ist nun ein Interface, das von HeartsCard und WizardCard implementiert wird. So können die Methoden der Klasse Card von den anderen beiden so implementiert werden, wie es für das Spiel nötig ist.
+\subsubsection{Colour}
+Ein Enum Colour wurde hinzugefügt. Dieses enthält alle Farben, die eine Karte haben kann unabhängig vom Regelwerk.
+\subsubsection{RulesetType}
+Ein Enum RulesetType wurde hinzugefügt. Dieses enthält die Typen der Regelwerke, also deren Namen. 
+\subsection{ComObjects}
+\subsubsection{ComObject}
+ComObject ist im Zuge des Einsetzens des VisitorPatterns von einer abstrakten Klassen zu einem Interface geändert worden.
+\subsubsection{RulesetMessage}
+RulesetMessage ist im Zuge des Einsetzens des VisitorPatterns von einer abstrakten Klassen zu einem Interface geändert worden.
+\subsubsection{ComLogin}
+Diese Klassen trägt den neuen Namen ComLoginRequest.
+\subsubsection{ComKickPlayer}
+Diese Klasse trägt den neuen Namen ComKickPlayerRequest.
+\subsubsection{GameClientUpdate}
+Diese Klasse wurde gelöscht, da sie unnötig ist.
+\subsubsection{commands}
+Dieses Enum wurde gelöscht, da es unnötig ist. An Stelle von diesem wurden weitere ComObjects hinzugefügt.
+\subsubsection{types}
+Dieses Enum wurde gelöscht, da es unnötig ist.
+\subsubsection{ComBeenKicked}
+Diese Klasse wurde zusätzlich hinzugefügt. Die Nachricht wird an einen Spieler gesendet, wenn er aus einem Spiel erntfernt wurde.
+\subsubsection{ComClientLeave}
+Diese Klasse wurde zusätzlich hinzugefügt. Sie wird zur Benachrichtigung gesendet, wenn ein Spieler ins nächste Fenster möchte und aus dem alten entfernt werden soll.
+\subsubsection{ComClientQuit}
+Diese Klasse wurde zusätzlich hinzugefügt. Die Nachricht wird verschickt, wenn der Spieler ein Fenster schließt.
+\subsubsection{ComCreateGameRequest}
+Diese Klasse wurde zusätzlich hinzugefügt. Diese Nachricht wird versendet, wenn ein neues Spiel erstellt werden soll.
+\subsubsection{ComGameEnd}
+Diese Klasse wurde zusätzlich hinzugefügt. Diese Nachricht wird versendet, wenn ein Spiel oder eine Runde zu Ende ist.
+\subsubsection{ComServerAcknowledgement}
+Diese Klasse wurde zusätzlich hinzugefügt. Diese Nachricht wird vom Server zur Bestätigung gesendet.
+\subsubsection{ComStartGame}
+Diese Klasse wurde zusätzlich hinzugefügt. Diese Nachricht wird versendet, wenn ein Spiel gestartet werden soll.
+\subsubsection{ComWarning}
+Diese Klasse wurde zusätzlich hinzugefügt. Diese Nachricht wird versendet, wenn ein Fehler passiert ist.
+\subsubsection{MsgCardRequest}
+Diese Klasse wurde zusätzlich hinzugefügt. Diese Nachricht wird von Server gesendet, um einem Spieler mitzuteilen, dass er das Spielen einer Karte erwartet.
+\subsubsection{MsgMultiCardsRequest}
+Diese Klasse wurde zusätzlich hinzugefügt.  Diese Nachricht wird gesendet, wenn die Auswahl mehrerer Karten vom Spieler gefordert werden soll.
+\subsubsection{MsgNumberRequest}
+Diese Klasse wurde zusätzlich hinzugefügt. Diese Nachricht wird gesendet, wenn die Eingabe einer Zahl gefordert werden soll.
+\subsubsection{MsgSelectionRequest}
+Diese Klasse wurde zusätzlich hinzugefügt. Diese Nachricht sendet der Server an einen Spieler, wenn er eine Farbauswahl von diesem erwartet.
+\subsubsection{ComObjects-Klassen allgemein}
+Da die ehemals abstrakten Klassen ComObject und RulesetMessage jetzt Interfaces sind, implementieren alle anderen Objekte diese statt von ihnen zu erben, des Weiteren implementieren alle Serializable.
+
+
+%--- Begin generated contents ---
+\section{Hierarchie-\/\-Verzeichnis}
+\input{hierarchy}
+\section{Klassen-\/\-Verzeichnis}
+\input{annotated}
+\section{Klassen-\/\-Dokumentation}
+\input{a00001}
+\input{a00002}
+\input{a00003}
+\input{a00004}
+\input{a00005}
+\input{a00006}
+\input{a00007}
+\input{a00008}
+\input{a00009}
+\input{a00010}
+\input{a00011}
+\input{a00012}
+\input{a00013}
+\input{a00014}
+\input{a00015}
+\input{a00016}
+\input{a00017}
+\input{a00018}
+\input{a00019}
+\input{a00020}
+\input{a00021}
+\input{a00022}
+\input{a00023}
+\input{a00024}
+\input{a00025}
+\input{a00026}
+\input{a00027}
+\input{a00028}
+\input{a00029}
+\input{a00030}
+\input{a00031}
+\input{a00032}
+\input{a00033}
+\input{a00034}
+\input{a00035}
+\input{a00036}
+\input{a00037}
+\input{a00038}
+\input{a00039}
+\input{a00040}
+\input{a00041}
+\input{a00042}
+\input{a00043}
+\input{a00044}
+\input{a00045}
+\input{a00046}
+\input{a00047}
+\input{a00048}
+\input{a00049}
+\input{a00050}
+\input{a00051}
+\input{a00052}
+\input{a00053}
+\input{a00054}
+\input{a00055}
+\input{a00056}
+\input{a00057}
+\input{a00058}
+\input{a00059}
+\input{a00060}
+\input{a00061}
+\input{a00062}
+\input{a00063}
+\input{a00064}
+\input{a00065}
+\input{a00066}
+\input{a00067}
+\input{a00068}
+\input{a00069}
+\input{a00070}
+\input{a00071}
+\input{a00072}
+\input{a00073}
+\input{a00074}
+\input{a00075}
+\input{a00076}
+\input{a00077}
+\input{a00078}
+%--- End generated contents ---
+\section{JUnit-Tests}
+JUnit-Tests werden für die folgenden Klassen geschrieben: ClientModel, LobbyServer,
+GameServer, ClientHearts, ClientWizard, ServerHearts und ServerWizard. Für die folgenden Fälle wurden bereits Tests implementiert.
+
+\subsection{isValidWizardMove}
+\begin{lstlisting}
+package Ruleset;
+
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import test.TestGameServer;
+import test.TestLobbyServer;
+import test.TestPlayer;
+
+import Server.GameServer;
+import Server.LobbyServer;
+import Server.Player;
+
+public class TestisValidMoveWizard {
+	
+	ServerRuleset ruleset;
+	
+	GameServer gameServer;
+	
+	LobbyServer lobbyServer;
+	
+	Player player;
+	String player1;
+	String player2;
+	String player3;
+	PlayerState playerState1;
+	PlayerState playerState2;
+	PlayerState playerState3;
+	
+	@Before
+	public void setUp() throws Exception {
+		player1 = "Tick";
+		player2 = "Trick";
+		player3 = "Track";
+		lobbyServer = new TestLobbyServer();
+		player = new TestPlayer(lobbyServer,null,null);
+		gameServer = new TestGameServer(lobbyServer,player,"Mein Spiel",RulesetType.Wizard, 
+				"",false);
+		ruleset = new ServerWizard(gameServer);
+		
+		ruleset.addPlayerToGame(player1);
+		ruleset.addPlayerToGame(player2);
+		ruleset.addPlayerToGame(player3);
+		
+		playerState1 = ruleset.getPlayerState(player1);
+		playerState2 = ruleset.getPlayerState(player2);
+		playerState3 = ruleset.getPlayerState(player3);
+		
+		ruleset.setFirstPlayer(ruleset.getPlayerState(player1));
+		ruleset.setTrumpCard(WizardCard.VierRot);
+		
+		ruleset.giveACard(playerState1, WizardCard.DreiGruen);
+		ruleset.giveACard(playerState1, WizardCard.ZaubererRot);
+		ruleset.givaACard(playerState1, WizardCard.ZweiBlau);
+		
+		ruleset.giveACard(playerState2, WizardCard.ZweiGruen);
+		ruleset.giveACard(playerState2, WizardCard.DreiRot);
+		ruleset.givaACard(playerState2, WizardCard.ZweiGelb);
+		
+		ruleset.giveACard(playerState3, WizardCard.NarrBlau);
+		ruleset.giveACard(playerState3, WizardCard.EinsGruen);
+		ruleset.giveACard(playerState3, WizardCard.ZweiRot);
+	}
+	
+	@Test
+	public void testSorcerer() {
+		ruleset.playCard(WizardCard.ZaubererRot);
+		ruleset.setCurrentPlayer(playerState2);
+		
+		boolean isValidMove = ruleset.isValidMove(WizardCard.DreiRot);
+		
+		assertTrue(isValidMove);
+	}
+	
+	@Test
+	public void testRed3OnGreen3() {
+		ruleset.playCard(WizardCard.DreiGruen);
+		ruleset.setCurrentPlayer(playerState2);
+		boolean isValidMove = ruleset.isValidMove(WizardCard.DreiRot);
+		
+		assertFalse(isValidMove);
+	}
+	
+	@Test
+	public void testGreen2OnGreen3() {
+		ruleset.playCard(WizardCard.DreiGruen);
+		ruleset.setCurrentPlayer(playerState2);
+		
+		boolean isValidMove = ruleset.isValidMove(WizardCard.ZweiGruen);
+		
+		assertTrue(isValidMove);
+	}
+	
+	@Test
+	public void testFoolBlueOnGreen2OnGreen3() {
+		ruleset.playCard(WizardCard.DreiGruen);
+		ruleset.setCurrentPlayer(playerState2);
+		
+		ruleset.playCard(WizardCard.ZweiGruen);
+		ruleset.setCurrentPlayer(playerState3);
+		
+		boolean isValidMove = ruleset.isValidMove(WizardCard.NarrBlau);
+		
+		assertTrue(isValidMove);
+	}
+
+}
+\end{lstlisting}
+
+\subsection{isValidHeartsMove}
+\begin{lstlisting}
+package Ruleset;
+
+
+import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import test.TestGameServer;
+import test.TestLobbyServer;
+import test.TestPlayer;
+
+import Server.GameServer;
+import Server.LobbyServer;
+import Server.Player;
+
+public class TestisValidMoveHearts {
+	ServerRuleset ruleset;
+	
+	GameServer gameServer;
+	
+	LobbyServer lobbyServer;
+	
+	Player player;
+	String player1;
+	String player2;
+	String player3;
+	String player4;
+	
+	PlayerState playerState1;
+	PlayerState playerState2;
+	PlayerState playerState3;
+	PlayerState playerState4;
+	
+	@Before
+	public void setUp() throws Exception {
+		player1 = "Tick";
+		player2 = "Trick";
+		player3 = "Track";
+		player3 = "Duck";
+		lobbyServer = new TestLobbyServer();
+		player = new TestPlayer(lobbyServer,null,null);
+		gameServer = new TestGameServer(lobbyServer,player,"Mein Spiel",
+				RulesetType.Hearts, "",false);
+		ruleset = new ServerHearts(gameServer);
+		
+		ruleset.addPlayerToGame(player1);
+        ruleset.addPlayerToGame(player2);
+        ruleset.addPlayerToGame(player3);
+        ruleset.addPlayerToGame(player4);
+        
+        playerState1 = ruleset.getPlayerState(player1);
+        playerState2 = ruleset.getPlayerState(player2);
+        playerState3 = ruleset.getPlayerState(player3);
+
+        ruleset.setFirstPlayer(playerState1);
+	}
+	
+	@Test
+	public void testIsValidMove() {
+		 ruleset.giveACard(playerState1, HeartsCard.Herz2);
+	     ruleset.giveACard(playerState1, HeartsCard.Kreuz9);
+	     ruleset.giveACard(playerState2, HeartsCard.Caro3);
+	     ruleset.giveACard(playerState2, HeartsCard.Caro6);
+	     ruleset.giveACard(playerState3, HeartsCard.Pik4);
+	     ruleset.giveACard(playerState3, HeartsCard.Pik5);
+         ruleset.giveACard(playerState4, HeartsCard.Pik1);
+	     ruleset.giveACard(playerState4, HeartsCard.Herz7);
+	     
+	     boolean isValidMove = ruleset.isValidMove(HeartsCard.Herz2);
+
+	     assertFalse(isValidMove);
+
+	     boolean isValidMove2 = ruleset.isValidMove(HeartsCard.Caro3);
+	     
+	     assertTrue(isValidMove2);
+	}
+	
+	@Test
+	public void testIsValidMoveOnlyHearts() {
+		 ruleset.giveACard(playerState1, HeartsCard.Herz2);
+	     ruleset.giveACard(playerState1, HeartsCard.Herz5);
+	     ruleset.giveACard(playerState2, HeartsCard.Caro3);
+	     ruleset.giveACard(playerState2, HeartsCard.Caro6);
+	     ruleset.giveACard(playerState3, HeartsCard.Pik4);
+	     ruleset.giveACard(playerState3, HeartsCard.Pik5);
+         ruleset.giveACard(playerState4, HeartsCard.Pik1);
+	     ruleset.giveACard(playerState4, HeartsCard.Herz7);
+	     
+	     boolean isValidMove = ruleset.isValidMove(HeartsCard.Herz2);
+
+	     assertTrue(isValidMove);
+
+	     boolean isValidMove2 = ruleset.isValidMove(HeartsCard.Herz5);
+	     
+	     assertTrue(isValidMove2);
+	}
+
+}
+\end{lstlisting}
+
+\subsection{getWinner}
+\begin{lstlisting}
+package Ruleset;
+
+import static org.junit.Assert.*;
+
+import java.util.List;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import testKlassen.TestPlayer;
+import ComObjects.ComObject;
+import ComObjects.ComRuleset;
+import ComObjects.MsgGameEnd;
+import Server.GameServer;
+import Server.LobbyServer;
+import Server.Player;
+
+public class TestHeartsWinner {
+
+LobbyServer lobbyServer;
+	
+	GameServer gameServer;
+	
+	ServerRuleset heartsServerRuleset;
+	
+	TestPlayer blue;
+	
+	TestPlayer white;
+	
+	TestPlayer orange;
+	
+	TestPlayer brown;
+	
+	List<ComObject> inputList;
+	
+	ComRuleset comObject;
+	
+	MsgGameEnd endMsg;
+	
+	String winner;
+	
+	@Before
+	public void setUp() {
+		lobbyServer = new LobbyServer();
+		blue = new TestPlayer(lobbyServer, null, null);
+		white = new TestPlayer(lobbyServer, null, null);
+		orange = new TestPlayer(lobbyServer, null, null);
+		brown = new TestPlayer(lobbyServer, null, null);
+	}
+	
+	@After
+	public void tearDown() {	
+		blue = null;
+		white = null;
+		orange = null;
+		brown = null;
+		lobbyServer = null;
+		gameServer = null;
+		inputList = null;
+		comObject = null;
+		endMsg = null;
+		winner = null;
+	}
+	
+	@Test
+	public void testGetWinner() {
+		
+		gameServer = new GameServer(lobbyServer, blue, "Test Game", RulesetType.Wizard, "", false);
+		gameServer.addPlayer(white);
+		gameServer.addPlayer(orange);
+		gameServer.addPlayer(brown);
+		
+		heartsServerRuleset = new ServerWizard(gameServer);
+		heartsServerRuleset.addPlayerToGame("Mr. Blue");
+		heartsServerRuleset.addPlayerToGame("Mr. White");
+		heartsServerRuleset.addPlayerToGame("Mr. Orange");
+		heartsServerRuleset.addPlayerToGame("Mr. Brown");
+		heartsServerRuleset.setPoints(heartsServerRuleset.getPlayerState("Mr. Blue"),80);
+		heartsServerRuleset.setPoints(heartsServerRuleset.getPlayerState("Mr. White"),20);
+		heartsServerRuleset.setPoints(heartsServerRuleset.getPlayerState("Mr. Orange"),60);
+		heartsServerRuleset.setPoints(heartsServerRuleset.getPlayerState("Mr. Brown"),110);
+		heartsServerRuleset.setGamePhase(GamePhase.Ending);
+		heartsServerRuleset.calculateRoundOutcome();
+		
+		assertTrue(heartsServerRuleset.getWinner().equals("Mr. Brown"));
+		
+		inputList = blue.getServerInput();
+		comObject = (ComRuleset) inputList.get(1);
+		endMsg = (MsgGameEnd) comObject.getRulesetMessage();
+		winner = endMsg.getWinner();
+		assertEquals("Nachricht an Blue", "Mr. Brown", winner);
+
+		inputList = white.getServerInput();
+		comObject = (ComRuleset) inputList.get(1);
+		endMsg = (MsgGameEnd) comObject.getRulesetMessage();
+		winner = endMsg.getWinner();
+		assertEquals("Nachricht an White", "Mr. Brown", winner);
+
+		inputList = orange.getServerInput();
+		comObject = (ComRuleset) inputList.get(1);
+		endMsg = (MsgGameEnd) comObject.getRulesetMessage();
+		winner = endMsg.getWinner();
+		assertEquals("Nachricht an Orange", "Mr. Brown", winner);
+	
+		inputList = brown.getServerInput();
+		comObject = (ComRuleset) inputList.get(1);
+		endMsg = (MsgGameEnd) comObject.getRulesetMessage();
+		winner = endMsg.getWinner();
+		assertEquals("Nachricht an Brown", "Mr. Brown", winner);
+	}
+}
+\end{lstlisting}
+
+\begin{lstlisting}
+package Ruleset;
+
+import static org.junit.Assert.*;
+
+import java.util.List;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import testKlassen.TestPlayer;
+import ComObjects.ComChatMessage;
+import ComObjects.ComObject;
+import ComObjects.ComRuleset;
+import ComObjects.MsgGameEnd;
+import Server.GameServer;
+import Server.LobbyServer;
+
+/**
+ * Testet ob der richtige Sieger ermittelt wird und ob jedem Mitspieler
+ * der richtige Sieger mitgeteilt wird
+ */
+public class TestWizardWinner {
+
+	LobbyServer lobbyServer;
+	
+	GameServer gameServer;
+	
+	ServerRuleset wizardServerRuleset;
+	
+	TestPlayer blue;
+	
+	TestPlayer white;
+	
+	TestPlayer orange;
+	
+	TestPlayer brown;
+	
+	List<ComObject> inputList;
+	
+	ComRuleset comObject;
+	
+	MsgGameEnd endMsg;
+	
+	String winner;
+	
+	@Before
+	public void setUp() {
+		lobbyServer = new LobbyServer();
+		blue = new TestPlayer(lobbyServer, null, null);
+		white = new TestPlayer(lobbyServer, null, null);
+		orange = new TestPlayer(lobbyServer, null, null);
+		brown = new TestPlayer(lobbyServer, null, null);
+	}
+	
+	@After
+	public void tearDown() {	
+		blue = null;
+		white = null;
+		orange = null;
+		brown = null;
+		lobbyServer = null;
+		gameServer = null;
+		inputList = null;
+		inputList = null;
+		comObject = null;
+		endMsg = null;
+		winner = null;
+	}
+	
+	@Test
+	public void testGetWinner() {
+		
+		gameServer = new GameServer(lobbyServer, blue, "Test Game", RulesetType.Wizard, "", false);
+		gameServer.addPlayer(white);
+		gameServer.addPlayer(orange);
+		gameServer.addPlayer(brown);
+		
+		wizardServerRuleset = new ServerWizard(gameServer);
+		wizardServerRuleset.addPlayerToGame("Mr. Blue");
+		wizardServerRuleset.addPlayerToGame("Mr. White");
+		wizardServerRuleset.addPlayerToGame("Mr. Orange");
+		wizardServerRuleset.addPlayerToGame("Mr. Brown");
+		wizardServerRuleset.setPoints(wizardServerRuleset.getPlayerState("Mr. Blue"),80);
+		wizardServerRuleset.setPoints(wizardServerRuleset.getPlayerState("Mr. White"),200);
+		wizardServerRuleset.setPoints(wizardServerRuleset.getPlayerState("Mr. Orange"),130);
+		wizardServerRuleset.setPoints(wizardServerRuleset.getPlayerState("Mr. Brown"),240);
+		wizardServerRuleset.setGamePhase(GamePhase.Ending);
+		wizardServerRuleset.calculateRoundOutcome();
+		
+		assertTrue(wizardServerRuleset.getWinner().equals("Mr. Brown"));
+		
+		inputList = blue.getServerInput();
+		comObject = (ComRuleset) inputList.get(1);
+		endMsg = (MsgGameEnd) comObject.getRulesetMessage();
+		winner = endMsg.getWinner();
+		assertEquals("Nachricht an Blue", "Mr. Brown", winner);
+
+		inputList = white.getServerInput();
+		comObject = (ComRuleset) inputList.get(1);
+		endMsg = (MsgGameEnd) comObject.getRulesetMessage();
+		winner = endMsg.getWinner();
+		assertEquals("Nachricht an White", "Mr. Brown", winner);
+
+		inputList = orange.getServerInput();
+		comObject = (ComRuleset) inputList.get(1);
+		endMsg = (MsgGameEnd) comObject.getRulesetMessage();
+		winner = endMsg.getWinner();
+		assertEquals("Nachricht an Orange", "Mr. Brown", winner);
+	
+		inputList = brown.getServerInput();
+		comObject = (ComRuleset) inputList.get(1);
+		endMsg = (MsgGameEnd) comObject.getRulesetMessage();
+		winner = endMsg.getWinner();
+		assertEquals("Nachricht an Brown", "Mr. Brown", winner);
+	}
+}
+
+\end{lstlisting}
+
+\subsection{QuitPlayer}
+\begin{lstlisting}
+ackage Server;
+
+
+import static org.junit.Assert.*;
+
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import test.TestGameServer;
+import test.TestLobbyServer;
+import test.TestPlayer;
+
+import ComObjects.*;
+import ComObjects.ComWarning;
+import Ruleset.RulesetType;
+
+public class QuitGameTest {
+
+	TestLobbyServer lobby;
+	
+	TestPlayer player1; 
+	
+	TestPlayer player2; 
+	TestPlayer player3;
+	TestPlayer player4;
+	
+	TestGameServer game;
+	
+	ComClientQuit quit;
+	
+	@Before
+	public void setUp() throws Exception {
+		lobby = new TestLobbyServer();
+		
+		player1 = new TestPlayer(lobby, null, null);
+		player1.setName("MrBlue");
+		lobby.addPlayer(player1);
+		
+		player2 = new TestPlayer(lobby, null, null);
+		player2.setName("MrWhite");
+		player3 = new TestPlayer(lobby, null, null);
+		player3.setName("MrPink");
+		player4 = new TestPlayer(lobby, null, null);
+		player4.setName("MrRed");
+		
+		game = new TestGameServer(lobby, player1, "MrBluesGame", RulesetType.Hearts, null, false);
+		
+		game.addPlayer(player2);
+		game.addPlayer(player3);
+		game.addPlayer(player4);
+		
+		quit = new ComClientQuit();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		lobby = null;
+		player1 = null;
+		player2 = null;
+		player3 = null;
+		player4 = null;
+		game = null;
+	}
+	
+	@Test
+	public void testPlayerQuitGame() throws IOException{ 
+		
+		player1.changeServer(game);
+		assertTrue(game.initLobby().getPlayerList().contains(player1.getName()));
+		
+		ComInitLobby initLobby = lobby.initLobby();
+		ComWarning warning = new ComWarning("Ein Spieler hat das Spiel verlassen");
+		
+		player1.injectComObject(quit);
+
+		assertFalse(lobby.initLobby().getGameList().contains(game));
+		assertTrue(lobby.initLobby().getPlayerList().contains(player1.getName()));
+		assertTrue(lobby.initLobby().getPlayerList().contains(player1.getName()));
+		assertTrue(lobby.initLobby().getPlayerList().contains(player1.getName()));
+		assertTrue(lobby.initLobby().getPlayerList().contains(player1.getName()));
+		
+		assertTrue(player1.getServerInput().get(0).getClass() == initLobby.getClass());
+		assertTrue(player1.getServerInput().get(1).getClass() == warning.getClass());
+		assertTrue(player2.getServerInput().get(0).getClass() == initLobby.getClass());
+		assertTrue(player2.getServerInput().get(1).getClass() == warning.getClass());
+		assertTrue(player3.getServerInput().get(0).getClass() == initLobby.getClass());
+		assertTrue(player3.getServerInput().get(1).getClass() == warning.getClass());
+		assertTrue(player4.getServerInput().get(0).getClass() == initLobby.getClass());
+		assertTrue(player4.getServerInput().get(1).getClass() == warning.getClass());
+	}
+}
+\end{lstlisting}
+
+\subsection{Chat}
+
+\begin{lstlisting}
+package chat;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+import org.junit.After;
+import org.junit.Before;
+
+import testKlassen.TestMessageListenerThread;
+import testKlassen.TestObserver;
+import Client.MessageListenerThread;
+import Client.ClientModel;
+import ComObjects.ComChatMessage;
+
+public class ClientModelChatTest {
+
+	ComChatMessage testMessage;
+	
+	ClientModel testModel;
+	
+	TestObserver testObserver;
+	
+	TestMessageListenerThread testNetIO;
+	
+	String testText;
+	
+	@Before  
+    public void setUp() {
+		testNetIO = new TestMessageListenerThread();
+		testObserver = new TestObserver();
+		testMessage = new ComChatMessage("Hello Test!");
+		testModel = new ClientModel((MessageListenerThread) testNetIO);
+		testNetIO.setModel(testModel);
+		testModel.addObserver(testObserver);
+    }  
+  
+    @After  
+    public void tearDown() { 
+    	testNetIO = null;
+    	testMessage = null;
+    	testModel = null;
+    	testObserver = null;
+    }  
+	
+	@Test
+	public void testSendChatMessage() {
+		String inputText = "Hello Test!";
+		testModel.sendChatMessage(inputText);
+		testText = ((ComChatMessage) testNetIO.getModelInput().get(0)).getChatMessage();
+		assertEquals("Vergleich der gesendeten Chatnachrichten", testText, inputText);
+	}
+	
+	@Test
+	public void testReceiveChatMessage() {
+		testNetIO.injectComObject(testMessage);
+		assertTrue("Vergleich der empfangenen Chatnachrichten", 
+				testObserver.getChatMessage().equals(testMessage.getChatMessage()));
+	}
+}
+\end{lstlisting}
+
+\begin{lstlisting}
+package chat;
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import testKlassen.TestPlayer;
+import Server.LobbyServer;
+import ComObjects.ComChatMessage;
+
+public class LobbyServerChatTest {
+
+	ComChatMessage testMessage;
+	
+	LobbyServer testServer;
+
+	TestPlayer player1;
+	
+	TestPlayer player2;
+	
+	TestPlayer player3;
+	
+	String testText1;
+	
+	String testText2;
+	
+	String testText3;
+
+	@Before
+	public void setUp() {
+		testMessage = new ComChatMessage("Hello Test!");
+		testServer = new LobbyServer();
+		player1 = new TestPlayer(testServer, null, null);
+		player2 = new TestPlayer(testServer, null, null);
+		player3 = new TestPlayer(testServer, null, null);
+	}
+
+	@After
+	public void tearDown() {
+		testMessage = null;
+		testServer = null;
+		player1 = null;
+		player2 = null;
+		player3 = null;
+		testText1 = null;
+		testText2 = null;
+		testText3 = null;
+	}
+
+	@Test
+	public void testReceiveMessagePlayerComChatMessage() {
+		String messageToMatch = testMessage.getChatMessage();
+		testServer.addPlayer(player1);
+		testServer.addPlayer(player2);
+		testServer.addPlayer(player3);
+		player1.injectComObject(testMessage);
+		testText1 = ((ComChatMessage) player1.getServerInput()).getChatMessage();
+		testText2 = ((ComChatMessage) player2.getServerInput()).getChatMessage();
+		testText3 = ((ComChatMessage) player3.getServerInput()).getChatMessage();
+		assertEquals("Nachricht an Spieler 1", messageToMatch, testText1);
+		assertEquals("Nachricht an Spieler 2", messageToMatch, testText2);
+		assertEquals("Nachricht an Spieler 3", messageToMatch, testText3);
+	}
+}
+
+\end{lstlisting}
+
+\section{Implementierungsplan}
+Es werden für jeden Milestone die einzelnen Arbeitspakete angegeben. Die angegebenen Klassen werden nicht sofort vollständig implmentiert, sondern mit den vom Arbeitspaket und Milestone verlangten Funktionen ausgestattet.\\
+
+\subsection{Milestone 1}
+Für den ersten Milestone werden folgende Funktionen angestrebt:\\
+Der Nutzer kann sich im Login-Fenster anmelden und die Lobby betreten. Er kann ein Spiel erstellen und offenen Spielen beitreten. Das wird in der Lobby angezeigt, man gelangt jedoch noch nicht ins Wartefenster. Nebenläufig dazu wird die Datenschicht der Regelwerke implementiert.\\ 
+\begin{itemize}
+\item View(Login+Lobby) Dauer: 8 Std. \\
+Klassen: Login, Lobby, Warning, ClientController
+\item Client(Login) Dauer 8 Std. \\
+Klassen: ClientMain, ClientModel, MessageListener Thread, ClientState, ViewNotification
+\item Server(Login) Dauer 16 Std. \\
+Klassen: Server, ServerMain, LobbyServer, Player, ClientListenerThread, ComObject, ComLoginRequest, ComClientQuit, ComServerAcknowledgement, ComWarning
+\item Ruleset(Daten) Dauer 20 Std. \\
+Klassen:  Card, Colour, HeartsCard, WizCard, OtherData, WizData, HeartsData, GameClientUpdate, GameState, PlayerState, RulesetType
+\item Client(Lobby) Dauer 8 Std. \\
+Klassen: ClientModel
+\item Server(Lobby) Dauer 8 Std. \\
+Klassen: LobbyServer, ComChatMessage, ComLobbyUpdateGamelist, ComJoinRequest, ComInitLobby, ComUpdatePlayerlist
+\item View(Create+Join) Dauer 8 Std. \\
+Klassen: Password, CreateGame, ClientController
+\item Client(Create+Join) Dauer 8 Std. \\
+Klassen: ClientModel
+\item Server(Create+Join) Dauer 12 Std. \\
+Klassen: LobbyServer, ComJoinRequest, ComCreateGameRequest
+\end{itemize}
+
+\subsection{Milestone 2}
+Für den zweiten Milestone werden folgende Funktionen angestrebt:\\
+Beim Beitreten oder Erstellen eines Spiels gelangt man ins Wartefenster. Der Spielleiter kannn hier Spieler entfernen. Diese gelangen zurück in die Lobby. Das Spiel kann noch nicht gestartet werden, aber das Regelwerk wird bereits serverseitig implementiert.\\
+\begin{itemize}
+\item Ruleset(Wizard-Server) Dauer 30 Std. \\
+Klassen: ServerRuleset, ServerWizard, RulesetMessage, MsgCard, MsgCardRequest, MsgGameEnd, MsgNumber, Msg NumberRequest, MsgSelection, MsgSelectionRequest, MsgUser
+\item View(GameLobby) Dauer 8 Std. \\
+Klassen: GameLobby, ClientController
+\item Client(GameLobby) Dauer 8 Std. \\
+Klassen: ClientModel
+\item Server(GameLobby) Dauer 10 Std. \\
+KLassen: LobbyServer, GameServer, ComBeenKicked, ComClientLeave, ComInitGameLobby, ComKickPlayerRequest, ComStartGame
+\item View(Game) Dauer 20 Std. \\
+Klassen: Game, GamePanel, OtherPlayer, OwnHand, ViewCard, DrawDeck, DiscardPile, ScoreWindow, ClientController
+\item Client(Game) Dauer 14 Std. \\
+Klassen: ClientModel
+\end{itemize}
+
+\subsection{Milestone 3}
+Für den dritten Milestone werden folgende Funktionen angestrebt:\\
+Es kann schon eine vollständige Partie Wizard gespielt werden.\\
+\begin{itemize}
+\item Server(Game) Dauer 4 Std. \\
+Klassen: GameServer, ComStartGame, ComRuleset, ComGameEnd
+\item Ruleset(Wizard-Client) Dauer 12 Std. \\
+Klassen: ClientWizard
+\item View(WizardWindows) Dauer 4 Std. \\
+Klassen: ChooseItem, InputNumber, ClientController
+\item Client(Wizard) Dauer 6 Std. \\
+Klassen: ClientModel
+\item View(HeartsWindows) Dauer 2 Std. \\
+Klassen: ChooseCards, ClientController
+\item Client(Hearts) Dauer 4 Std. \\
+Klassen: ClientModel
+\item Ruleset(Hearts-Server) Dauer 16 Std. \\
+Klassen: ServerHearts
+\end{itemize}
+
+\subsection{Finale Version}
+Die finale Version enthält die volle Funktionalität des Programs.
+Es können also sowohl Wizard als auch Hearts gespielt werden.\\
+\begin{itemize}
+\item Ruleset(Hearts-Client) Dauer 10Std. \\
+Klassen: ClientHearts
+\item ViewPolishing(evtl Tests) Dauer 10Std \\
+Verbesserungen an der bisherigen Implementierung. Gegebenfalls Schreiben von zusätzlichen Tests
+\item ClientPolishing(evtl Tests) Dauer 10Std \\
+Verbesserungen an der bisherigen Implementierung. Gegebenfalls Schreiben von zusätzlichen Tests
+\item ServerPolishing(evtl Tests) Dauer 10Std \\
+Verbesserungen an der bisherigen Implementierung. Gegebenfalls Schreiben von zusätzlichen Tests
+\item RulesetPolishing(evtl Tests) Dauer 10Std \\
+Verbesserungen an der bisherigen Implementierung. Gegebenfalls Schreiben von zusätzlichen Tests
+\end{itemize}
+\newpage
+
+\subsection{Gantt-Diagramme}
+\hspace*{-0.1\textwidth}Milestone 1: \\ \\
+\hspace*{-0.1\textwidth}\includegraphics[width=1.2\textwidth]{Milestone1} \\ \\
+
+\hspace*{-0.1\textwidth}Milestone 2: \\ \\
+\hspace*{-0.1\textwidth}\includegraphics[width=1.2\textwidth]{Milestone2} \\ \\
+
+\hspace*{-0.1\textwidth}Milestone 3: \\ \\
+\hspace*{-0.1\textwidth}\includegraphics[width=1.2\textwidth]{Milestone3} \\ \\
+
+\hspace*{-0.1\textwidth}Finale Version: \\ \\
+\hspace*{-0.1\textwidth}\includegraphics[width=1.2\textwidth]{Milestone4} \\ \\
+% Index
+\newpage
+\phantomsection
+\addcontentsline{toc}{part}{Index}
+\printindex
+
+\end{document}

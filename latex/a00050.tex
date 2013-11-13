@@ -1,0 +1,106 @@
+\hypertarget{a00050}{\subsection{Msg\-Selection Klassenreferenz}
+\label{a00050}\index{Msg\-Selection@{Msg\-Selection}}
+}
+
+
+Abgeleitet von \hyperlink{a00053}{Ruleset\-Message} und Serializable.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00050_ae235e5d0b7fe2131872304596d58c505}{Msg\-Selection} (\hyperlink{a00058}{Colour} selection)
+\item 
+\hyperlink{a00058}{Colour} \hyperlink{a00050_a8a4d9d241db3d77df7033bf8684b4c54}{get\-Selection} ()
+\item 
+void \hyperlink{a00050_ab45288da8f64e79408f1effd5579b5c2}{visit} (\hyperlink{a00068}{Server\-Ruleset} server\-Ruleset, String name)
+\item 
+void \hyperlink{a00050_acb5be722a2d1c9110d39f31c6e18f6e7}{visit} (\hyperlink{a00056}{Client\-Ruleset} client\-Ruleset)
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00050_a2eb44d24e6a391432522cbe2a4045f2e}{\hyperlink{a00058}{Colour} {\bfseries selection}}\label{a00050_a2eb44d24e6a391432522cbe2a4045f2e}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Diese Klasse ist eine Verfeinerung der Ruleset\-Message-\/\-Klasse. Diese Nachricht enthaelt eine Kartenfarbe, die der Spieler zuvor ausgewaehlt hat. 
+
+\subsubsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{a00050_ae235e5d0b7fe2131872304596d58c505}{\index{Com\-Objects\-::\-Msg\-Selection@{Com\-Objects\-::\-Msg\-Selection}!Msg\-Selection@{Msg\-Selection}}
+\index{Msg\-Selection@{Msg\-Selection}!ComObjects::MsgSelection@{Com\-Objects\-::\-Msg\-Selection}}
+\paragraph[{Msg\-Selection}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Msg\-Selection} (
+\begin{DoxyParamCaption}
+\item[{{\bf Colour}}]{selection}
+\end{DoxyParamCaption}
+)}}\label{a00050_ae235e5d0b7fe2131872304596d58c505}
+
+
+Dies ist der Kontruktor fuer eine neue Msg\-Selection-\/\-Nachricht. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em selection} & ist die Farbe der Karte, die der Spieler gewaehlt hat. \\
+\hline
+\end{DoxyParams}
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00050_a8a4d9d241db3d77df7033bf8684b4c54}{\index{Com\-Objects\-::\-Msg\-Selection@{Com\-Objects\-::\-Msg\-Selection}!get\-Selection@{get\-Selection}}
+\index{get\-Selection@{get\-Selection}!ComObjects::MsgSelection@{Com\-Objects\-::\-Msg\-Selection}}
+\paragraph[{get\-Selection}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Colour} get\-Selection (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00050_a8a4d9d241db3d77df7033bf8684b4c54}
+
+
+Diese Methode gibt die Farbe zurueck, die der Spieler gewaehlt hat. 
+
+\begin{DoxyReturn}{Rückgabe}
+die gewaehlte Farbe. 
+\end{DoxyReturn}
+\hypertarget{a00050_ab45288da8f64e79408f1effd5579b5c2}{\index{Com\-Objects\-::\-Msg\-Selection@{Com\-Objects\-::\-Msg\-Selection}!visit@{visit}}
+\index{visit@{visit}!ComObjects::MsgSelection@{Com\-Objects\-::\-Msg\-Selection}}
+\paragraph[{visit}]{\setlength{\rightskip}{0pt plus 5cm}void visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Server\-Ruleset}}]{server\-Ruleset, }
+\item[{String}]{name}
+\end{DoxyParamCaption}
+)}}\label{a00050_ab45288da8f64e79408f1effd5579b5c2}
+
+
+Diese Methode ist noetig, damit das Server\-Ruleset entscheiden kann welche Message es enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em server\-Ruleset} & ist das Ruleset, welches Ã¼bergeben wird, damit die ueberladene Methode richtig gewaehlt wird. \\
+\hline
+{\em name} & ist der Name des Spielers. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00053_ab45288da8f64e79408f1effd5579b5c2}{Ruleset\-Message}.
+
+\hypertarget{a00050_acb5be722a2d1c9110d39f31c6e18f6e7}{\index{Com\-Objects\-::\-Msg\-Selection@{Com\-Objects\-::\-Msg\-Selection}!visit@{visit}}
+\index{visit@{visit}!ComObjects::MsgSelection@{Com\-Objects\-::\-Msg\-Selection}}
+\paragraph[{visit}]{\setlength{\rightskip}{0pt plus 5cm}void visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Client\-Ruleset}}]{client\-Ruleset}
+\end{DoxyParamCaption}
+)}}\label{a00050_acb5be722a2d1c9110d39f31c6e18f6e7}
+
+
+Diese Methode ist noetig, damit das Client\-Ruleset entscheiden kann welche Message es enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em client\-Ruleset} & ist das Ruleset, welches uebergeben wird, damit die ueberladene Methode richtig gewaehlt wird. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00053_acb5be722a2d1c9110d39f31c6e18f6e7}{Ruleset\-Message}.
+

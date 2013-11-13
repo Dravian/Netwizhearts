@@ -8,7 +8,7 @@ import java.io.Serializable;
 /**
  * RulesetMessage.
  * Dieses Interface ist eine Verfeinerung der ComRuleset-Klasse.
- * Es enthält Methoden, die von speziellen RulesetMessages
+ * Es enthaelt Methoden, die von speziellen RulesetMessages
  * implementiert werden müssen.
  */
 public interface RulesetMessage {
@@ -16,7 +16,7 @@ public interface RulesetMessage {
     /**
      * Diese Methode ist noetig, damit das ServerRuleset entscheiden kann
      * welche Message es enthaelt und wie diese verarbeitet werden soll.
-     * @param serverRuleset ist das Ruleset, welches übergeben wird, damit
+     * @param serverRuleset ist das Ruleset, welches uebergeben wird, damit
      *                      die ueberladene Methode richtig gewaehlt wird.
      * @param name          ist der Name des Spielers.
      */

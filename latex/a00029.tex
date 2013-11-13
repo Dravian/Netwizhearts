@@ -1,0 +1,180 @@
+\hypertarget{a00029}{\subsection{Com\-Create\-Game\-Request Klassenreferenz}
+\label{a00029}\index{Com\-Create\-Game\-Request@{Com\-Create\-Game\-Request}}
+}
+
+
+Abgeleitet von \hyperlink{a00037}{Com\-Object} und Serializable.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00029_ae9a04ab3344ed723dd4806b20b6e6773}{Com\-Create\-Game\-Request} (String name, Enum ruleset, boolean has\-Password, String password)
+\item 
+String \hyperlink{a00029_ad95c81dd65ee13b7b9618f184cffb6e0}{get\-Game\-Name} ()
+\item 
+Enum \hyperlink{a00029_a0f314bfed7ed858eb5191afcdab16164}{get\-Ruleset} ()
+\item 
+boolean \hyperlink{a00029_a800382a70eb2844e6fd5aec28f26823e}{has\-Password} ()
+\item 
+String \hyperlink{a00029_a26b3c6f2d61d7d4bbe91a7deb815e86d}{get\-Password} ()
+\item 
+void \hyperlink{a00029_a758d7005755a181717f238f714d87dd2}{process} (\hyperlink{a00003}{Client\-Model} model)
+\item 
+void \hyperlink{a00029_ac67b5ce3ec03d48ef1e6caad6e49c902}{process} (\hyperlink{a00076}{Player} player, \hyperlink{a00077}{Server} server)
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00029_afb890aade38077b7965b541675500834}{String {\bfseries game\-Name}}\label{a00029_afb890aade38077b7965b541675500834}
+
+\item 
+\hypertarget{a00029_a04549609a9179f167b6be6870322cdc1}{Enum {\bfseries ruleset}}\label{a00029_a04549609a9179f167b6be6870322cdc1}
+
+\item 
+\hypertarget{a00029_aeb207819150d367d4c5b73beaec78e52}{boolean {\bfseries has\-Password}}\label{a00029_aeb207819150d367d4c5b73beaec78e52}
+
+\item 
+\hypertarget{a00029_acbd76b816d055b7a642c219fd9751020}{String {\bfseries password}}\label{a00029_acbd76b816d055b7a642c219fd9751020}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Diese Klasse ist ein spezielles Kommunikations-\/\-Objekt. Diese Nachricht wird versendet, wenn ein neues Spiel erstellt werden soll. 
+
+\subsubsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{a00029_ae9a04ab3344ed723dd4806b20b6e6773}{\index{Com\-Objects\-::\-Com\-Create\-Game\-Request@{Com\-Objects\-::\-Com\-Create\-Game\-Request}!Com\-Create\-Game\-Request@{Com\-Create\-Game\-Request}}
+\index{Com\-Create\-Game\-Request@{Com\-Create\-Game\-Request}!ComObjects::ComCreateGameRequest@{Com\-Objects\-::\-Com\-Create\-Game\-Request}}
+\paragraph[{Com\-Create\-Game\-Request}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Com\-Create\-Game\-Request} (
+\begin{DoxyParamCaption}
+\item[{String}]{name, }
+\item[{Enum}]{ruleset, }
+\item[{boolean}]{has\-Password, }
+\item[{String}]{password}
+\end{DoxyParamCaption}
+)}}\label{a00029_ae9a04ab3344ed723dd4806b20b6e6773}
+
+
+Dies ist der Kontruktor fuer eine neue Com\-Create\-Game\-Request-\/\-Nachricht. 
+
+Wurde kein Passwort gesetzt, bleibt dieses leer. 
+\begin{DoxyParams}{Parameter}
+{\em name} & ist der Name des Spiels. \\
+\hline
+{\em ruleset} & ist die der Spieltyp, der erstellt werden soll. \\
+\hline
+{\em has\-Password} & sagt, ob ein Passwort gesetzt wurde. \\
+\hline
+{\em password} & ist das Passwort, das gesetzt wurde. \\
+\hline
+\end{DoxyParams}
+
+
+Benutzt Com\-Create\-Game\-Request.\-has\-Password().
+
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00029_ad95c81dd65ee13b7b9618f184cffb6e0}{\index{Com\-Objects\-::\-Com\-Create\-Game\-Request@{Com\-Objects\-::\-Com\-Create\-Game\-Request}!get\-Game\-Name@{get\-Game\-Name}}
+\index{get\-Game\-Name@{get\-Game\-Name}!ComObjects::ComCreateGameRequest@{Com\-Objects\-::\-Com\-Create\-Game\-Request}}
+\paragraph[{get\-Game\-Name}]{\setlength{\rightskip}{0pt plus 5cm}String get\-Game\-Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00029_ad95c81dd65ee13b7b9618f184cffb6e0}
+
+
+Diese Methode gibt den Namen des Spiels zurueck. 
+
+\begin{DoxyReturn}{Rückgabe}
+den Spielnamen. 
+\end{DoxyReturn}
+\hypertarget{a00029_a0f314bfed7ed858eb5191afcdab16164}{\index{Com\-Objects\-::\-Com\-Create\-Game\-Request@{Com\-Objects\-::\-Com\-Create\-Game\-Request}!get\-Ruleset@{get\-Ruleset}}
+\index{get\-Ruleset@{get\-Ruleset}!ComObjects::ComCreateGameRequest@{Com\-Objects\-::\-Com\-Create\-Game\-Request}}
+\paragraph[{get\-Ruleset}]{\setlength{\rightskip}{0pt plus 5cm}Enum get\-Ruleset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00029_a0f314bfed7ed858eb5191afcdab16164}
+
+
+Diese Methode gibt das Regelwerk zurueck, das benutzt werden soll. 
+
+\begin{DoxyReturn}{Rückgabe}
+das Regelwerk, welches benutzt wird. 
+\end{DoxyReturn}
+\hypertarget{a00029_a800382a70eb2844e6fd5aec28f26823e}{\index{Com\-Objects\-::\-Com\-Create\-Game\-Request@{Com\-Objects\-::\-Com\-Create\-Game\-Request}!has\-Password@{has\-Password}}
+\index{has\-Password@{has\-Password}!ComObjects::ComCreateGameRequest@{Com\-Objects\-::\-Com\-Create\-Game\-Request}}
+\paragraph[{has\-Password}]{\setlength{\rightskip}{0pt plus 5cm}boolean has\-Password (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00029_a800382a70eb2844e6fd5aec28f26823e}
+
+
+Diese Methode gibt an, ob eine Passwort fuer ein Spiel gesetzt wurde. 
+
+\begin{DoxyReturn}{Rückgabe}
+ob es ein Passwort gibt. 
+\end{DoxyReturn}
+
+
+Wird benutzt von Com\-Create\-Game\-Request.\-Com\-Create\-Game\-Request().
+
+\hypertarget{a00029_a26b3c6f2d61d7d4bbe91a7deb815e86d}{\index{Com\-Objects\-::\-Com\-Create\-Game\-Request@{Com\-Objects\-::\-Com\-Create\-Game\-Request}!get\-Password@{get\-Password}}
+\index{get\-Password@{get\-Password}!ComObjects::ComCreateGameRequest@{Com\-Objects\-::\-Com\-Create\-Game\-Request}}
+\paragraph[{get\-Password}]{\setlength{\rightskip}{0pt plus 5cm}String get\-Password (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00029_a26b3c6f2d61d7d4bbe91a7deb815e86d}
+
+
+Gibt das Passwort zurueck. 
+
+Sollte keines gesetzt sein, wird null zurueck gegeben. \begin{DoxyReturn}{Rückgabe}
+das Passwort. 
+\end{DoxyReturn}
+\hypertarget{a00029_a758d7005755a181717f238f714d87dd2}{\index{Com\-Objects\-::\-Com\-Create\-Game\-Request@{Com\-Objects\-::\-Com\-Create\-Game\-Request}!process@{process}}
+\index{process@{process}!ComObjects::ComCreateGameRequest@{Com\-Objects\-::\-Com\-Create\-Game\-Request}}
+\paragraph[{process}]{\setlength{\rightskip}{0pt plus 5cm}void process (
+\begin{DoxyParamCaption}
+\item[{{\bf Client\-Model}}]{model}
+\end{DoxyParamCaption}
+)}}\label{a00029_a758d7005755a181717f238f714d87dd2}
+
+
+Diese Methode ist noetig, damit der Client\-Listener\-Thread entscheiden kann welche Message das Object enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em model} & ist das Client\-Model, welches Ã¼bergeben wird, damit die ueberladene Methode richtig gewaehlt wird. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00037_a758d7005755a181717f238f714d87dd2}{Com\-Object}.
+
+\hypertarget{a00029_ac67b5ce3ec03d48ef1e6caad6e49c902}{\index{Com\-Objects\-::\-Com\-Create\-Game\-Request@{Com\-Objects\-::\-Com\-Create\-Game\-Request}!process@{process}}
+\index{process@{process}!ComObjects::ComCreateGameRequest@{Com\-Objects\-::\-Com\-Create\-Game\-Request}}
+\paragraph[{process}]{\setlength{\rightskip}{0pt plus 5cm}void process (
+\begin{DoxyParamCaption}
+\item[{{\bf Player}}]{player, }
+\item[{{\bf Server}}]{server}
+\end{DoxyParamCaption}
+)}}\label{a00029_ac67b5ce3ec03d48ef1e6caad6e49c902}
+
+
+Diese Methode ist noetig, damit der Thread Player entscheiden kann welche Message das Object enthaelt und wie diese verarbeitet werden soll. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em player} & Der Client welcher den Aufruf startet. \\
+\hline
+{\em server} & Der Server an den sich das Com\-Objekt weitergibt. \\
+\hline
+\end{DoxyParams}
+
+
+Implementiert \hyperlink{a00037_ac67b5ce3ec03d48ef1e6caad6e49c902}{Com\-Object}.
+

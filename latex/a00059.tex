@@ -1,0 +1,180 @@
+\hypertarget{a00059}{\subsection{Game\-Client\-Update Klassenreferenz}
+\label{a00059}\index{Game\-Client\-Update@{Game\-Client\-Update}}
+}
+\subsubsection*{Geschützte Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00059_a5f144c1c37887ec0dc752d035a82f031}{Game\-Client\-Update} (\hyperlink{a00065}{Player\-State} \hyperlink{a00059_a714271f36dd46095e0a17c44fdd1cbab}{player\-State}, Map$<$ String, \hyperlink{a00054}{Card} $>$ \hyperlink{a00059_abf51aa3b896825ac08fa574e68701e86}{discard\-Pile}, Map$<$ String, \hyperlink{a00064}{Other\-Data} $>$ \hyperlink{a00059_aecd7d72c15fb82c72297bfe838053122}{other\-Player\-Data}, \hyperlink{a00065}{Player\-State} \hyperlink{a00059_aa84e85401d48f310ee9959621f6c4fba}{current\-Player}, \hyperlink{a00054}{Card} \hyperlink{a00059_ab25322829797b0de34227a8e2cdb1929}{trump\-Card})
+\item 
+List$<$ \hyperlink{a00054}{Card} $>$ \hyperlink{a00059_a1b82d59f9b439be5785c6faffd4d3c05}{get\-Own\-Hand} ()
+\item 
+Map$<$ String, \hyperlink{a00054}{Card} $>$ \hyperlink{a00059_afc0981320534aa4bae54fd59dcfcad1f}{get\-Played\-Cards} ()
+\item 
+\hyperlink{a00064}{Other\-Data} \hyperlink{a00059_a4173e0089631ea0b571bef5965547cf6}{get\-Own\-Data} ()
+\item 
+\hyperlink{a00064}{Other\-Data} \hyperlink{a00059_abb320c3a473c538ecee368f8cdd4e44b}{get\-Other\-Player\-Data} (String player)
+\item 
+\hyperlink{a00065}{Player\-State} \hyperlink{a00059_ad3e8a11e9c53ca1b4bb6e753e48ef5ed}{get\-Current\-Player} ()
+\item 
+\hyperlink{a00054}{Card} \hyperlink{a00059_a278ccc7c69243be691f69d421cf7420a}{get\-Trump\-Card} ()
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00059_a714271f36dd46095e0a17c44fdd1cbab}{\hyperlink{a00065}{Player\-State} \hyperlink{a00059_a714271f36dd46095e0a17c44fdd1cbab}{player\-State}}\label{a00059_a714271f36dd46095e0a17c44fdd1cbab}
+
+\item 
+\hypertarget{a00059_abf51aa3b896825ac08fa574e68701e86}{Map$<$ String, \hyperlink{a00054}{Card} $>$ \hyperlink{a00059_abf51aa3b896825ac08fa574e68701e86}{discard\-Pile}}\label{a00059_abf51aa3b896825ac08fa574e68701e86}
+
+\item 
+\hypertarget{a00059_aecd7d72c15fb82c72297bfe838053122}{Map$<$ String, \hyperlink{a00064}{Other\-Data} $>$ \hyperlink{a00059_aecd7d72c15fb82c72297bfe838053122}{other\-Player\-Data}}\label{a00059_aecd7d72c15fb82c72297bfe838053122}
+
+\item 
+\hypertarget{a00059_aa84e85401d48f310ee9959621f6c4fba}{\hyperlink{a00065}{Player\-State} \hyperlink{a00059_aa84e85401d48f310ee9959621f6c4fba}{current\-Player}}\label{a00059_aa84e85401d48f310ee9959621f6c4fba}
+
+\item 
+\hypertarget{a00059_ab25322829797b0de34227a8e2cdb1929}{\hyperlink{a00054}{Card} \hyperlink{a00059_ab25322829797b0de34227a8e2cdb1929}{trump\-Card}}\label{a00059_ab25322829797b0de34227a8e2cdb1929}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Das \hyperlink{a00059}{Game\-Client\-Update} wird vom Rule\-Set ueber den Game\-Server an den Client geschickt und enthaelt alle Aenderungen des \hyperlink{a00061}{Game\-State}, die für den Client relevant sind. Das waeren seine Spielhand, der Ablagestapel sowie die Otherdata von allen Spielern und die Trumpfkarte. 
+
+\subsubsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{a00059_a5f144c1c37887ec0dc752d035a82f031}{\index{Ruleset\-::\-Game\-Client\-Update@{Ruleset\-::\-Game\-Client\-Update}!Game\-Client\-Update@{Game\-Client\-Update}}
+\index{Game\-Client\-Update@{Game\-Client\-Update}!Ruleset::GameClientUpdate@{Ruleset\-::\-Game\-Client\-Update}}
+\paragraph[{Game\-Client\-Update}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Game\-Client\-Update} (
+\begin{DoxyParamCaption}
+\item[{{\bf Player\-State}}]{player\-State, }
+\item[{Map$<$ String, {\bf Card} $>$}]{discard\-Pile, }
+\item[{Map$<$ String, {\bf Other\-Data} $>$}]{other\-Player\-Data, }
+\item[{{\bf Player\-State}}]{current\-Player, }
+\item[{{\bf Card}}]{trump\-Card}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{a00059_a5f144c1c37887ec0dc752d035a82f031}
+
+
+Erstellt ein \hyperlink{a00059}{Game\-Client\-Update}. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em player\-State} & Der Spielerzustand des Client \\
+\hline
+{\em discard\-Pile} & Der Ablagestapel \\
+\hline
+{\em other\-Player\-Data} & Die Daten der anderen Spieler \\
+\hline
+{\em current\-Player} & Der momentan aktive Spieler \\
+\hline
+{\em trump\-Card} & Die Trumpffarbe \\
+\hline
+\end{DoxyParams}
+
+
+Benutzt Game\-Client\-Update.\-current\-Player, Game\-Client\-Update.\-discard\-Pile, Game\-Client\-Update.\-other\-Player\-Data, Game\-Client\-Update.\-player\-State und Game\-Client\-Update.\-trump\-Card.
+
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00059_a1b82d59f9b439be5785c6faffd4d3c05}{\index{Ruleset\-::\-Game\-Client\-Update@{Ruleset\-::\-Game\-Client\-Update}!get\-Own\-Hand@{get\-Own\-Hand}}
+\index{get\-Own\-Hand@{get\-Own\-Hand}!Ruleset::GameClientUpdate@{Ruleset\-::\-Game\-Client\-Update}}
+\paragraph[{get\-Own\-Hand}]{\setlength{\rightskip}{0pt plus 5cm}List$<${\bf Card}$>$ get\-Own\-Hand (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{a00059_a1b82d59f9b439be5785c6faffd4d3c05}
+
+
+Holt die Karten die der Client auf der Hand hat. 
+
+\begin{DoxyReturn}{Rückgabe}
+own\-Hand Die Hand des Clients 
+\end{DoxyReturn}
+\hypertarget{a00059_afc0981320534aa4bae54fd59dcfcad1f}{\index{Ruleset\-::\-Game\-Client\-Update@{Ruleset\-::\-Game\-Client\-Update}!get\-Played\-Cards@{get\-Played\-Cards}}
+\index{get\-Played\-Cards@{get\-Played\-Cards}!Ruleset::GameClientUpdate@{Ruleset\-::\-Game\-Client\-Update}}
+\paragraph[{get\-Played\-Cards}]{\setlength{\rightskip}{0pt plus 5cm}Map$<$String, {\bf Card}$>$ get\-Played\-Cards (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{a00059_afc0981320534aa4bae54fd59dcfcad1f}
+
+
+Holt die gespielten Karten auf dem Ablagestapel. 
+
+\begin{DoxyReturn}{Rückgabe}
+discard\-Pile Die gespielten Karten 
+\end{DoxyReturn}
+
+
+Benutzt Game\-Client\-Update.\-discard\-Pile.
+
+\hypertarget{a00059_a4173e0089631ea0b571bef5965547cf6}{\index{Ruleset\-::\-Game\-Client\-Update@{Ruleset\-::\-Game\-Client\-Update}!get\-Own\-Data@{get\-Own\-Data}}
+\index{get\-Own\-Data@{get\-Own\-Data}!Ruleset::GameClientUpdate@{Ruleset\-::\-Game\-Client\-Update}}
+\paragraph[{get\-Own\-Data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Other\-Data} get\-Own\-Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{a00059_a4173e0089631ea0b571bef5965547cf6}
+
+
+Holt die Otherdata des Client als String als Stringrepräsentation. 
+
+\begin{DoxyReturn}{Rückgabe}
+own\-Data Die Otherdata des Clients 
+\end{DoxyReturn}
+\hypertarget{a00059_abb320c3a473c538ecee368f8cdd4e44b}{\index{Ruleset\-::\-Game\-Client\-Update@{Ruleset\-::\-Game\-Client\-Update}!get\-Other\-Player\-Data@{get\-Other\-Player\-Data}}
+\index{get\-Other\-Player\-Data@{get\-Other\-Player\-Data}!Ruleset::GameClientUpdate@{Ruleset\-::\-Game\-Client\-Update}}
+\paragraph[{get\-Other\-Player\-Data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Other\-Data} get\-Other\-Player\-Data (
+\begin{DoxyParamCaption}
+\item[{String}]{player}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{a00059_abb320c3a473c538ecee368f8cdd4e44b}
+
+
+Holt die \hyperlink{a00064}{Other\-Data} eines anderen Spielers als Stringrepräsentation. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em player} & Der Name des Spielers \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Rückgabe}
+other\-Player\-Data Die \hyperlink{a00064}{Other\-Data} der anderen Spieler 
+\end{DoxyReturn}
+\hypertarget{a00059_ad3e8a11e9c53ca1b4bb6e753e48ef5ed}{\index{Ruleset\-::\-Game\-Client\-Update@{Ruleset\-::\-Game\-Client\-Update}!get\-Current\-Player@{get\-Current\-Player}}
+\index{get\-Current\-Player@{get\-Current\-Player}!Ruleset::GameClientUpdate@{Ruleset\-::\-Game\-Client\-Update}}
+\paragraph[{get\-Current\-Player}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Player\-State} get\-Current\-Player (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{a00059_ad3e8a11e9c53ca1b4bb6e753e48ef5ed}
+
+
+Gibt den Spieler der momentan am Zug ist zurück. 
+
+\begin{DoxyReturn}{Rückgabe}
+Der momentane Spieler 
+\end{DoxyReturn}
+
+
+Benutzt Game\-Client\-Update.\-current\-Player.
+
+\hypertarget{a00059_a278ccc7c69243be691f69d421cf7420a}{\index{Ruleset\-::\-Game\-Client\-Update@{Ruleset\-::\-Game\-Client\-Update}!get\-Trump\-Card@{get\-Trump\-Card}}
+\index{get\-Trump\-Card@{get\-Trump\-Card}!Ruleset::GameClientUpdate@{Ruleset\-::\-Game\-Client\-Update}}
+\paragraph[{get\-Trump\-Card}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Card} get\-Trump\-Card (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{a00059_a278ccc7c69243be691f69d421cf7420a}
+
+
+Holt die aufgedeckte Trumpfkarte. 
+
+\begin{DoxyReturn}{Rückgabe}
+trump\-Card Die Trumpfkarte 
+\end{DoxyReturn}
+
+
+Benutzt Game\-Client\-Update.\-trump\-Card.
+

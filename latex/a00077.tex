@@ -1,0 +1,152 @@
+\hypertarget{a00077}{\subsection{Server Klassenreferenz}
+\label{a00077}\index{Server@{Server}}
+}
+
+
+Basisklasse für \hyperlink{a00072}{Game\-Server} und \hyperlink{a00074}{Lobby\-Server}.
+
+\subsubsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{a00077_aab90f477a811b12d935c46ec7cbabb08}{receive\-Message} (\hyperlink{a00076}{Player} player, Com\-Object com)
+\item 
+synchronized void \hyperlink{a00077_ac90f610b90effa3a0cf572d3cbe270c3}{send\-To\-Player} (String name, Com\-Object com)
+\item 
+synchronized void \hyperlink{a00077_ac0a0163cec54e6202131c76962d7834b}{add\-Player} (\hyperlink{a00076}{Player} player)
+\item 
+synchronized void \hyperlink{a00077_a8b2712c19a20e54b3c5d99ce9d21112e}{remove\-Player} (\hyperlink{a00076}{Player} player)
+\item 
+synchronized void \hyperlink{a00077_aa5dbc77abbcc945c59d4edc75e55e7cf}{broadcast} (Com\-Object com)
+\item 
+void \hyperlink{a00077_af3ddb51daa156429385870eb04bd456e}{handle\-I\-O\-Exception} (\hyperlink{a00076}{Player} player)
+\end{DoxyCompactItemize}
+\subsubsection*{Geschützte Attribute}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{a00077_ab10ffe465a33e3a82e0132c97628b9a5}{Set$<$ \hyperlink{a00076}{Player} $>$ \hyperlink{a00077_ab10ffe465a33e3a82e0132c97628b9a5}{player\-Set}}\label{a00077_ab10ffe465a33e3a82e0132c97628b9a5}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Ausführliche Beschreibung}
+Ist eine abstrakte Klasse, von der die Klassen \hyperlink{a00074}{Lobby\-Server} und \hyperlink{a00072}{Game\-Server} erben. Es stellt Methoden zur Nachrichtenversendung und -\/verarbeitung bereit, sowie zur Verwaltung von Playern 
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{a00077_aab90f477a811b12d935c46ec7cbabb08}{\index{Server\-::\-Server@{Server\-::\-Server}!receive\-Message@{receive\-Message}}
+\index{receive\-Message@{receive\-Message}!Server::Server@{Server\-::\-Server}}
+\paragraph[{receive\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void receive\-Message (
+\begin{DoxyParamCaption}
+\item[{{\bf Player}}]{player, }
+\item[{Com\-Object}]{com}
+\end{DoxyParamCaption}
+)}}\label{a00077_aab90f477a811b12d935c46ec7cbabb08}
+
+
+Diese Methode dient zur Verarbeitung von eingehenden Com\-Objects. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em player} & ist der \hyperlink{a00076}{Player} von dem die Nachricht kommt \\
+\hline
+{\em com} & ist das Com\-Objekt vom Client verschickt wurde \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00077_ac90f610b90effa3a0cf572d3cbe270c3}{\index{Server\-::\-Server@{Server\-::\-Server}!send\-To\-Player@{send\-To\-Player}}
+\index{send\-To\-Player@{send\-To\-Player}!Server::Server@{Server\-::\-Server}}
+\paragraph[{send\-To\-Player}]{\setlength{\rightskip}{0pt plus 5cm}synchronized void send\-To\-Player (
+\begin{DoxyParamCaption}
+\item[{String}]{name, }
+\item[{Com\-Object}]{com}
+\end{DoxyParamCaption}
+)}}\label{a00077_ac90f610b90effa3a0cf572d3cbe270c3}
+
+
+Diese Methode wird genutzt, um ein Com\-Object an einen einzigen Client zu verschicken. 
+
+Der \hyperlink{a00076}{Player} der die Nachricht verschicken soll wird Anhand des uebergebenen Benutzernamens identifiziert. Es wird vorrausgesetzt, dass der Name und das Com\-Object gueltig sind. 
+\begin{DoxyParams}{Parameter}
+{\em name} & ist der Name des Clients, an den der \hyperlink{a00076}{Player} die Nachricht verschicken soll \\
+\hline
+{\em c} & ist das Com\-Object, dass verschickt werden soll \\
+\hline
+\end{DoxyParams}
+
+
+Benutzt Server.\-player\-Set.
+
+
+
+Wird benutzt von Game\-Server.\-send\-Ruleset\-Message().
+
+\hypertarget{a00077_ac0a0163cec54e6202131c76962d7834b}{\index{Server\-::\-Server@{Server\-::\-Server}!add\-Player@{add\-Player}}
+\index{add\-Player@{add\-Player}!Server::Server@{Server\-::\-Server}}
+\paragraph[{add\-Player}]{\setlength{\rightskip}{0pt plus 5cm}synchronized void add\-Player (
+\begin{DoxyParamCaption}
+\item[{{\bf Player}}]{player}
+\end{DoxyParamCaption}
+)}}\label{a00077_ac0a0163cec54e6202131c76962d7834b}
+
+
+Diese Methode fuegt einen \hyperlink{a00076}{Player} dem Set an Playern hinzu, welche der \hyperlink{a00077}{Server} verwaltet. 
+Es wird vorrausgesetzt, dass der \hyperlink{a00076}{Player} gueltig und noch nicht im Set vorhanden ist. 
+
+\begin{DoxyParams}{Parameter}
+{\em player} & ist der \hyperlink{a00076}{Player}, der hinzugefuegt wird \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00077_a8b2712c19a20e54b3c5d99ce9d21112e}{\index{Server\-::\-Server@{Server\-::\-Server}!remove\-Player@{remove\-Player}}
+\index{remove\-Player@{remove\-Player}!Server::Server@{Server\-::\-Server}}
+\paragraph[{remove\-Player}]{\setlength{\rightskip}{0pt plus 5cm}synchronized void remove\-Player (
+\begin{DoxyParamCaption}
+\item[{{\bf Player}}]{player}
+\end{DoxyParamCaption}
+)}}\label{a00077_a8b2712c19a20e54b3c5d99ce9d21112e}
+
+
+Diese Methode entfernt einen \hyperlink{a00076}{Player} aus dem Set an Playern, welche der \hyperlink{a00077}{Server} verwaltet. 
+
+Es wird vorrausgesetzt, dass der \hyperlink{a00076}{Player} gueltig und im Set vorhanden ist. 
+\begin{DoxyParams}{Parameter}
+{\em player} & ist der \hyperlink{a00076}{Player}, der entfernt wird \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00077_aa5dbc77abbcc945c59d4edc75e55e7cf}{\index{Server\-::\-Server@{Server\-::\-Server}!broadcast@{broadcast}}
+\index{broadcast@{broadcast}!Server::Server@{Server\-::\-Server}}
+\paragraph[{broadcast}]{\setlength{\rightskip}{0pt plus 5cm}synchronized void broadcast (
+\begin{DoxyParamCaption}
+\item[{Com\-Object}]{com}
+\end{DoxyParamCaption}
+)}}\label{a00077_aa5dbc77abbcc945c59d4edc75e55e7cf}
+
+
+Diese Methode wird genutzt, um ein Com\-Object an alle Clients, die vom \hyperlink{a00077}{Server} verwaltet werden, zu schicken. 
+
+Es wird vorrausgesetzt, dass das Com\-Object gueltig ist. 
+\begin{DoxyParams}{Parameter}
+{\em com} & ist das Com\-Object, dass verschickt werden soll \\
+\hline
+\end{DoxyParams}
+
+
+Benutzt Server.\-player\-Set.
+
+
+
+Wird benutzt von Game\-Server.\-broadcast\-Ruleset\-Message(), Lobby\-Server.\-receive\-Message() und Game\-Server.\-receive\-Message().
+
+\hypertarget{a00077_af3ddb51daa156429385870eb04bd456e}{\index{Server\-::\-Server@{Server\-::\-Server}!handle\-I\-O\-Exception@{handle\-I\-O\-Exception}}
+\index{handle\-I\-O\-Exception@{handle\-I\-O\-Exception}!Server::Server@{Server\-::\-Server}}
+\paragraph[{handle\-I\-O\-Exception}]{\setlength{\rightskip}{0pt plus 5cm}void handle\-I\-O\-Exception (
+\begin{DoxyParamCaption}
+\item[{{\bf Player}}]{player}
+\end{DoxyParamCaption}
+)}}\label{a00077_af3ddb51daa156429385870eb04bd456e}
+
+
+Diese Methode legt den Ablauf fest, was passiert, falls die Verbindung zu einem Client verloren gegangen ist. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em player} & ist der Tread von dem die I\-O\-Exception kommt \\
+\hline
+\end{DoxyParams}
