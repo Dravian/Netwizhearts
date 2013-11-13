@@ -172,8 +172,8 @@ public abstract class ClientRuleset {
 	}
 	
 	/**
-	 * Ruft beim Model die Methode announceWinner
-	 * @param winner
+	 * Ruft beim Model die Methode announceWinner, wenn es einem Gewinner gibt
+	 * @param winner Der Gewinner
 	 */
 	protected void announceWinner(String winner) {
 		
