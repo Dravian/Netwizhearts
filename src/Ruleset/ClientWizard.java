@@ -51,7 +51,7 @@ public class ClientWizard extends ClientRuleset {
 	}
 	
 	/**
-	 * Verarbeitet die RulesetMessage dass der Server von dem Spieler verlangt eine Farbe auszuwählen
+	 * Verarbeitet die RulesetMessage dass der Server von dem Spieler verlangt eine Farbe auszuwaehlen
 	 * @param msgSelection Die Nachricht vom Server
 	 */
 	public void resolveMessage(MsgSelectionRequest msgSelection) {
@@ -59,7 +59,7 @@ public class ClientWizard extends ClientRuleset {
 	}
 	
 	/**
-	 * Prüft ob die Anzahl der angesagten Stiche vom Spieler gültig sind
+	 * Prüft ob die Anzahl der angesagten Stiche vom Spieler gueltig sind
 	 * @param number Die Anzahl der angesagten Sticht
 	 * @return true falls die Anzahl der Stiche passen, false wenn nicht
 	 */

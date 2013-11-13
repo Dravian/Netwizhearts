@@ -115,7 +115,7 @@ public abstract class ClientRuleset {
 		
 	/** 
 	 * Holt die OtherData eines anderen Spielers 
-	 * @param Der Spielername
+	 * @param player Der Spielername
 	 * @return otherPlayerData Die OtherData 
 	 */
 	public OtherData getOtherPlayerData(String player) {
