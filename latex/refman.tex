@@ -168,6 +168,79 @@
 \pagenumbering{arabic}
 \hypersetup{pageanchor=true}
 
+\section{Einleitung}
+In diesem Dokument werden spezifische Angaben zu den bereits im Entwurf vorgestellten Klassen gemacht. Es werden im Folgenden Methoden und Attribute, sowie die Klassen genau beschrieben. Zunächst werden dazu die Änderungen vorgestellt, die seit dem Entwurf vorgenommen wurden. Des weiteren werden JUnit-Tests gezeigt, die zum Testen des späteren Programms essentiell sind. Zuletzt wird ein Implementierungsplan mit verschiedenen Milestones aufgezeigt. \\ \\
+
+\section{Änderungen im Vergleich zum Entwurf}
+\subsection{Server}
+\subsubsection{Server}
+Die Klasse Server war zuvor ein Interface und ist jetzt eine abstrakte Klasse von der der LobbyServer und der GameServer erben. So kann Codeduplikation vermieden werden.
+\subsection{Client}
+\subsubsection{Language}
+Das Enum Language wurde in das Packet ClientView verschoben, da es von der View benötigt wird um die richtige Sprache anzuzeigen.
+\subsubsection{MVMessage}
+Die MVMessages wurden gelöscht und durch ein Enum ViewNotification ersetzt. Der Observer bekommt Änderungen über die Notifications mitgeteilt. Dies macht eine weitere Einteilung in einzelnde Messages unnötig.
+\subsubsection{ClientState-Enum}
+Dieses Enum enthält jeden Status, den ein Client erreichen kann.
+\subsection{ClientView}
+\subsubsection{MVMessages}
+Dieses Interface wurde gelöscht, da es unnötig ist.
+\subsubsection{ViewCard}
+ViewCard ist die View-seitige Repräsentation einer Karte. Sie wird verwendet um einzelne Karten auf das Spielfeld zu zeichnen.
+\subsection{Ruleset}
+\subsubsection{ServerRuleset}
+Das ServerRuleset ist statt einem Interface nun eine abstrakte Klasse, von der die Klassen ServerHearts (vorher Hearts) und ServerWizard (vorherWizard) erben. Codeduplikation kann so vermieden werden.
+\subsubsection{ClientRuleset}
+Das ClientRuleset ist statt einem Interface nun eine abstrakte Klasse, von der die Klassen ClientWizard und ClientHearts erben. So kann Codeduplikation vermieden werden.
+\subsubsection{Card}
+Die vorher abstrakte Klasse Card ist nun ein Interface, das von HeartsCard und WizardCard implementiert wird. So können die Methoden der Klasse Card von den anderen beiden so implementiert werden, wie es für das Spiel nötig ist.
+\subsubsection{Colour}
+Ein Enum Colour wurde hinzugefügt. Dieses enthält alle Farben, die eine Karte haben kann unabhängig vom Regelwerk.
+\subsubsection{RulesetType}
+Ein Enum RulesetType wurde hinzugefügt. Dieses enthält die Typen der Regelwerke, also deren Namen. 
+\subsection{ComObjects}
+\subsubsection{ComObject}
+ComObject ist im Zuge des Einsetzens des VisitorPatterns von einer abstrakten Klassen zu einem Interface geändert worden.
+\subsubsection{RulesetMessage}
+RulesetMessage ist im Zuge des Einsetzens des VisitorPatterns von einer abstrakten Klassen zu einem Interface geändert worden.
+\subsubsection{ComLogin}
+Diese Klassen trägt den neuen Namen ComLoginRequest.
+\subsubsection{ComKickPlayer}
+Diese Klasse trägt den neuen Namen ComKickPlayerRequest.
+\subsubsection{GameClientUpdate}
+Diese Klasse wurde gelöscht, da sie unnötig ist.
+\subsubsection{commands}
+Dieses Enum wurde gelöscht, da es unnötig ist. An Stelle von diesem wurden weitere ComObjects hinzugefügt.
+\subsubsection{types}
+Dieses Enum wurde gelöscht, da es unnötig ist.
+\subsubsection{ComBeenKicked}
+Diese Klasse wurde zusätzlich hinzugefügt. Die Nachricht wird an einen Spieler gesendet, wenn er aus einem Spiel erntfernt wurde.
+\subsubsection{ComClientLeave}
+Diese Klasse wurde zusätzlich hinzugefügt. Sie wird zur Benachrichtigung gesendet, wenn ein Spieler ins nächste Fenster möchte und aus dem alten entfernt werden soll.
+\subsubsection{ComClientQuit}
+Diese Klasse wurde zusätzlich hinzugefügt. Die Nachricht wird verschickt, wenn der Spieler ein Fenster schließt.
+\subsubsection{ComCreateGameRequest}
+Diese Klasse wurde zusätzlich hinzugefügt. Diese Nachricht wird versendet, wenn ein neues Spiel erstellt werden soll.
+\subsubsection{ComGameEnd}
+Diese Klasse wurde zusätzlich hinzugefügt. Diese Nachricht wird versendet, wenn ein Spiel oder eine Runde zu Ende ist.
+\subsubsection{ComServerAcknowledgement}
+Diese Klasse wurde zusätzlich hinzugefügt. Diese Nachricht wird vom Server zur Bestätigung gesendet.
+\subsubsection{ComStartGame}
+Diese Klasse wurde zusätzlich hinzugefügt. Diese Nachricht wird versendet, wenn ein Spiel gestartet werden soll.
+\subsubsection{ComWarning}
+Diese Klasse wurde zusätzlich hinzugefügt. Diese Nachricht wird versendet, wenn ein Fehler passiert ist.
+\subsubsection{MsgCardRequest}
+Diese Klasse wurde zusätzlich hinzugefügt. Diese Nachricht wird von Server gesendet, um einem Spieler mitzuteilen, dass er das Spielen einer Karte erwartet.
+\subsubsection{MsgMultiCardsRequest}
+Diese Klasse wurde zusätzlich hinzugefügt.  Diese Nachricht wird gesendet, wenn die Auswahl mehrerer Karten vom Spieler gefordert werden soll.
+\subsubsection{MsgNumberRequest}
+Diese Klasse wurde zusätzlich hinzugefügt. Diese Nachricht wird gesendet, wenn die Eingabe einer Zahl gefordert werden soll.
+\subsubsection{MsgSelectionRequest}
+Diese Klasse wurde zusätzlich hinzugefügt. Diese Nachricht sendet der Server an einen Spieler, wenn er eine Farbauswahl von diesem erwartet.
+\subsubsection{ComObjects-Klassen allgemein}
+Da die ehemals abstrakten Klassen ComObject und RulesetMessage jetzt Interfaces sind, implementieren alle anderen Objekte diese statt von ihnen zu erben, des Weiteren implementieren alle Serializable.
+
+
 %--- Begin generated contents ---
 \section{Hierarchie-\/\-Verzeichnis}
 \input{hierarchy}
@@ -255,7 +328,7 @@
 %--- End generated contents ---
 \section{JUnit-Tests}
 JUnit-Tests werden für die folgenden Klassen geschrieben: ClientModel, LobbyServer,
-GameServer, ClientHearts, ClientWizard, ServerHearts und ServerWizard. Für die folgenden Fälle wurden bereits Tests implementier.
+GameServer, ClientHearts, ClientWizard, ServerHearts und ServerWizard. Für die folgenden Fälle wurden bereits Tests implementiert.
 
 \subsection{isValidWizardMove}
 \begin{lstlisting}

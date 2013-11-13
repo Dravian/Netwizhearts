@@ -24,7 +24,7 @@ public class MsgMultiCards implements RulesetMessage, Serializable {
     }
 
     /**
-     * Gibt die Liste der gewaehlten Karten zurück.
+     * Gibt die Liste der gewaehlten Karten zurueck.
      * @return die Liste der Karten.
      */
     public Set<Card> getCardList() {

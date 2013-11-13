@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.9.25)  12 NOV 2013 23:56
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.10.9)  13 NOV 2013 02:53
 entering extended mode
-**refman
-(C:\Users\Laptop\Desktop\Doxygen\latex\refman.tex
+**refman.tex
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\refman.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -13,9 +13,9 @@ german-x-2012-05-30, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
 ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
 an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
 ishmax, welsh, loaded.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\article.cls"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\size10.clo"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\size10.clo"
 File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -30,7 +30,7 @@ File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\calc.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\calc.sty"
 Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
 \calc@Acount=\count87
 \calc@Bcount=\count88
@@ -43,13 +43,13 @@ LaTeX Info: Redefining \addtolength on input line 77.
 \calc@Ccount=\count89
 \calc@Cskip=\skip45
 )
-(C:\Users\Laptop\Desktop\Doxygen\latex\doxygen.sty
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\doxygen.sty
 Package: doxygen 
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\alltt.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\alltt.sty"
 Package: alltt 1997/06/16 v2.0g defines alltt environment
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\array.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\array.sty"
 Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \col@sep=\dimen105
 \extrarowheight=\dimen106
@@ -57,7 +57,7 @@ Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \extratabsurround=\skip46
 \backup@length=\skip47
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\float\float.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\float\float.sty"
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count90
 \float@exts=\toks15
@@ -65,35 +65,35 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks16
 \@floatcapt=\box27
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty"
 Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\verbatim.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\verbatim.sty"
 Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
 \every@verbatim=\toks17
 \verbatim@line=\toks18
 \verbatim@in@stream=\read1
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty"
+(C:\Users\AlinaAdmin\AppData\Roaming\MiKTeX\2.9\tex\latex\xcolor\xcolor.sty
 Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+("C:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count91
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\colortbl\colortbl.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\colortbl\colortbl.sty"
 Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
 \everycr=\toks19
 \minrowclearance=\skip48
@@ -109,7 +109,7 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\xtab\xtab.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\xtab\xtab.sty"
 Package: xtab 2011/07/31 v2.3f Extended supertabular package
 \c@tracingst=\count93
 \PWSTcapht=\dimen107
@@ -142,20 +142,20 @@ Package: xtab 2011/07/31 v2.3f Extended supertabular package
 \xreflength=\skip52
 \tmplength=\skip53
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks20
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
 File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
@@ -163,19 +163,19 @@ Package graphics Info: Driver file: pdftex.def on input line 91.
 \Gin@req@height=\dimen122
 \Gin@req@width=\dimen123
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\inputenc.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty"
 Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks21
 \inpenc@posthook=\toks22
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\t1enc.dfu"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1enc.dfu"
 File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -325,7 +325,7 @@ File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ot1enc.dfu"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ot1enc.dfu"
 File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -356,7 +356,7 @@ File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omsenc.dfu"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omsenc.dfu"
 File: omsenc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
@@ -380,10 +380,10 @@ Now handling font encoding U ...
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
 ))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\makeidx.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\makeidx.sty"
 Package: makeidx 2000/03/29 v1.0m Standard LaTeX package
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\multicol.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\multicol.sty"
 Package: multicol 2011/06/27 v1.7a multicolumn formatting (FMi)
 \c@tracingmulticols=\count100
 \mult@box=\box30
@@ -431,10 +431,10 @@ Package: multicol 2011/06/27 v1.7a multicolumn formatting (FMi)
 \colbreak@box=\box55
 \multicol@sort@counter=\count108
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\multirow\multirow.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\multirow\multirow.sty"
 \bigstrutjot=\dimen132
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\textcomp.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\textcomp.sty"
 Package: textcomp 2005/09/27 v1.99g Standard LaTeX package
 Package textcomp Info: Sub-encoding information:
 (textcomp)               5 = only ISO-Adobe without \textcurrency
@@ -449,12 +449,12 @@ Package textcomp Info: Sub-encoding information:
 (textcomp)             See the documentation for details.
 Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 71.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ts1enc.def"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1enc.def"
 File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
 Now handling font encoding TS1 ...
 ... processing UTF-8 mapping file for font encoding TS1
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ts1enc.dfu"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1enc.dfu"
 File: ts1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A2 (decimal 162)
    defining Unicode char U+00A3 (decimal 163)
@@ -589,19 +589,19 @@ Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 338.
 Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 339.
 Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 340.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\babel\babel.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.sty"
 Package: babel 2008/07/08 v3.8m The Babel package
 
 *************************************
 * Local config file bblopts.cfg used
 *
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\bblopts.cfg"
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\bblopts.cfg"
 File: bblopts.cfg 2006/07/31 v1.0 MiKTeX 'babel' configuration
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\babel\ngermanb.ldf"
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\ngermanb.ldf"
 Language: ngermanb 2008/07/06 v2.6n new German support from the babel system
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\babel\babel.def"
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.def"
 File: babel.def 2008/07/08 v3.8m Babel common definitions
 \babel@savecnt=\count109
 \U@D=\dimen133
@@ -609,14 +609,14 @@ File: babel.def 2008/07/08 v3.8m Babel common definitions
 \l@naustrian = a dialect from \language\l@ngerman 
 Package babel Info: Making " an active character on input line 92.
 ))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\fontenc.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\fontenc.sty"
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\t1enc.def"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1enc.def"
 File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
 ))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\mathptmx.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\mathptmx.sty"
 Package: mathptmx 2005/04/12 PSNFSS-v9.2a Times w/ Math, improved (SPQR, WaS) 
 LaTeX Font Info:    Redeclaring symbol font `operators' on input line 28.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
@@ -652,16 +652,16 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmr/bx/it --> OT1/ptm/m/it on input line 35.
 LaTeX Info: Redefining \hbar on input line 50.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\helvet.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\helvet.sty"
 Package: helvet 2005/04/12 PSNFSS-v9.2a (WaS) 
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\courier.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\courier.sty"
 Package: courier 2005/04/12 PSNFSS-v9.2a (WaS) 
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \@emptytoks=\toks23
 \symAMSa=\mathgroup6
@@ -669,11 +669,11 @@ Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\sectsty\sectsty.sty"
+(C:\Users\AlinaAdmin\AppData\Roaming\MiKTeX\2.9\tex\latex\sectsty\sectsty.sty
 Package: sectsty 2002/02/25 v2.0.2 Commands to change all sectional heading sty
 les
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\listings.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.sty"
 \lst@mode=\count110
 \lst@gtempboxa=\box56
 \lst@token=\toks24
@@ -687,32 +687,32 @@ les
 \lst@lineno=\count115
 \lst@maxwidth=\dimen137
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
 File: lstmisc.sty 2013/08/26 1.5b (Carsten Heinz)
 \c@lstnumber=\count116
 \lst@skipnumbers=\count117
 \lst@framebox=\box57
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\listings.cfg"
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.cfg"
 File: listings.cfg 2013/08/26 1.5b listings configuration
 ))
 Package: listings 2013/08/26 1.5b (Carsten Heinz)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
 File: lstlang1.sty 2013/08/26 1.5b listings language file
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
 Package: geometry 2010/09/12 v5.6 Page Geometry
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
 Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
 Package ifpdf Info: pdfTeX in PDF mode is detected.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
 Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
 \Gm@cnth=\count118
@@ -728,8 +728,8 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layoutvoffset=\dimen145
 \Gm@dimlist=\toks25
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\fancyhdr\fancyhdr.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
+("C:\Program Files\MiKTeX 2.9\tex\latex\fancyhdr\fancyhdr.sty"
 \fancy@headwidth=\skip56
 \f@ncyO@elh=\skip57
 \f@ncyO@erh=\skip58
@@ -740,14 +740,14 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \f@ncyO@olf=\skip63
 \f@ncyO@orf=\skip64
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\natbib\natbib.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\natbib\natbib.sty"
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip65
 \bibsep=\skip66
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count121
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tocloft\tocloft.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\tocloft\tocloft.sty"
 Package: tocloft 2013/05/02 v2.3f parameterised ToC, etc., typesetting
 Package tocloft Info: The document has section divisions on input line 44.
 \cftparskip=\skip67
@@ -787,14 +787,14 @@ Package tocloft Info: The document has section divisions on input line 44.
 \@indexfile=\write3
 
 Writing index file refman.idx
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty"
 Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty"
 Package: hobsub-hyperref 2012/04/25 v1.12 Bundle oberdiek, subset hyperref (HO)
 
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty"
 Package: hobsub-generic 2012/04/25 v1.12 Bundle oberdiek, subset generic (HO)
 Package: hobsub 2012/04/25 v1.12 Construct package bundles (HO)
 Package hobsub Info: Skipping package `infwarerr' (already loaded).
@@ -833,24 +833,24 @@ Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
 Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
 Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\auxhook.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\auxhook.sty"
 Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
 Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
 )
 \@linkdim=\dimen146
 \Hy@linkcounter=\count124
 \Hy@pagecounter=\count125
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
+("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
 File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
 \Hy@SavedSpaceFactor=\count126
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
 Package hyperref Info: Hyper figures OFF on input line 4443.
@@ -861,17 +861,17 @@ Package hyperref Info: Backreferencing ON on input line 4461.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4688.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\backref.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\backref.sty"
 Package: backref 2012/07/25 v1.38 Bibliographical back referencing
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
 Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 ))
 \c@Hy@tempcnt=\count127
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ltxmisc\url.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\ltxmisc\url.sty"
 \Urlmuskip=\muskip10
 Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 )
@@ -896,7 +896,7 @@ LaTeX Info: Redefining \pageref on input line 6369.
 
 Package hyperref Message: Driver: hpdftex.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
+("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
 File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
 \Fld@listcount=\count132
 \c@bookmark@seq@number=\count133
@@ -905,12 +905,12 @@ File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
 Package hyperref Info: Option `colorlinks' set `true' on input line 126.
 Package hyperref Info: Option `unicode' set `true' on input line 126.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\puenc.def"
+("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\puenc.def"
 File: puenc.def 2012/11/06 v6.83m Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
 )
-(C:\Users\Laptop\Desktop\Doxygen\latex\refman.aux)
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\refman.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 136.
 LaTeX Font Info:    ... okay on input line 136.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 136.
@@ -927,7 +927,7 @@ LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 136.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 136.
 
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 136.
@@ -937,13 +937,13 @@ LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 136.
 LaTeX Font Info:    ... okay on input line 136.
 LaTeX Font Info:    Try loading font information for T1+phv on input line 136.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\t1phv.fd"
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\t1phv.fd"
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 8.99994pt on input line 136.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count134
 \scratchdimen=\dimen150
@@ -997,10 +997,10 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 \AtBeginShipoutBox=\box59
 Package backref Info: ** backref set up for natbib ** on input line 136.
 Package hyperref Info: Link coloring ON on input line 136.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count141
@@ -1009,8 +1009,8 @@ LaTeX Info: Redefining \ref on input line 136.
 LaTeX Info: Redefining \pageref on input line 136.
 LaTeX Info: Redefining \nameref on input line 136.
 
-(C:\Users\Laptop\Desktop\Doxygen\latex\refman.out)
-(C:\Users\Laptop\Desktop\Doxygen\latex\refman.out)
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\refman.out)
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\refman.out)
 \@outlinefile=\write4
 Package hyperref Info: Option `pageanchor' set `false' on input line 139.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10> not available
@@ -1028,7 +1028,7 @@ LaTeX Font Info:    Font shape `T1/phv/b/sc' will be
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 10.79993pt on input line 146.
 
-<kartenspiel.png, id=1103, 154.4169pt x 172.4844pt>
+<kartenspiel.png, id=1251, 154.4169pt x 172.4844pt>
 File: kartenspiel.png Graphic file (type png)
  <use kartenspiel.png>
 Package pdftex.def Info: kartenspiel.png used on input line 149.
@@ -1036,31 +1036,31 @@ Package pdftex.def Info: kartenspiel.png used on input line 149.
 LaTeX Font Info:    Try loading font information for OT1+ztmcm on input line 15
 6.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1ztmcm.fd"
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1ztmcm.fd"
 File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
 )
 LaTeX Font Info:    Try loading font information for OML+ztmcm on input line 15
 6.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omlztmcm.fd"
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omlztmcm.fd"
 File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
 )
 LaTeX Font Info:    Try loading font information for OMS+ztmcm on input line 15
 6.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omsztmcm.fd"
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omsztmcm.fd"
 File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
 )
 LaTeX Font Info:    Try loading font information for OMX+ztmcm on input line 15
 6.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omxztmcm.fd"
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omxztmcm.fd"
 File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
 )
 LaTeX Font Info:    Try loading font information for OT1+ptm on input line 156.
 
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
@@ -1071,8 +1071,8 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 156.
  [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/Laptop/Desktop/D
-oxygen/latex/kartenspiel.png>]
+{C:/Users/AlinaAdmin/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Use
+rs/AlinaAdmin/Documents/GitHub/sep13/latex/kartenspiel.png>]
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 12.9599pt on input line 167.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
@@ -1081,54 +1081,54 @@ LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 12.9599pt on input line 167.
 LaTeX Font Info:    Font shape `T1/phv/bc/n' will be
 (Font)              scaled to size 12.9599pt on input line 167.
- (C:\Users\Laptop\Desktop\Doxygen\latex\refman.toc
+
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\refman.toc
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <7> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 95.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 40.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 6.29996pt on input line 95.
- [2]
-[3] [4] [5] [6] [7]
-LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <12> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 617.
-LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 10.79993pt on input line 617.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 617.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 617.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 617.
-)
+(Font)              scaled to size 6.29996pt on input line 40.
+ [2] [3] [4]
+[5] [6] [7] [8])
 \tf@toc=\write5
 Package hyperref Info: Option `pageanchor' set `true' on input line 169.
 
-Underfull \vbox (badness 6792) has occurred while \output is active []
+Underfull \hbox (badness 10000) in paragraph at lines 172--173
 
- [1]
-(C:\Users\Laptop\Desktop\Doxygen\latex\hierarchy.tex
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 172--173
+
+ []
+
+[1]
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <12> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 175.
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 10.79993pt on input line 175.
 LaTeX Font Info:    Font shape `T1/phv/bc/n' will be
-(Font)              scaled to size 10.79993pt on input line 1.
- [2] [3])
-(C:\Users\Laptop\Desktop\Doxygen\latex\annotated.tex [4] [5] [6] [7])
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00001.tex
+(Font)              scaled to size 10.79993pt on input line 175.
 LaTeX Font Info:    Font shape `T1/phv/bc/n' will be
-(Font)              scaled to size 8.99994pt on input line 4.
+(Font)              scaled to size 8.99994pt on input line 176.
+ [2] [3] [4] (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\hierarchy.tex [5
+] [6]) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\annotated.tex
+[7] [8] [9] [10]) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00001.tex
 LaTeX Font Info:    Try loading font information for TS1+phv on input line 7.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ts1phv.fd"
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ts1phv.fd"
 File: ts1phv.fd 2001/06/04 scalable font definitions for TS1/phv.
 )
 LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
 (Font)              scaled to size 8.99994pt on input line 7.
-)
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00002.tex [8]
+ [11])
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00002.tex
 LaTeX Font Info:    Font shape `T1/phv/bc/it' in size <10> not available
 (Font)              Font shape `T1/phv/bc/sl' tried instead on input line 27.
 LaTeX Font Info:    Font shape `T1/phv/bc/sl' will be
 (Font)              scaled to size 8.99994pt on input line 27.
 LaTeX Font Info:    Try loading font information for T1+pcr on input line 27.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\t1pcr.fd"
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\t1pcr.fd"
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
 
@@ -1139,12 +1139,16 @@ LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
 (Font)              Font shape `T1/phv/m/sl' tried instead on input line 30.
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
 (Font)              scaled to size 8.99994pt on input line 30.
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00003.tex [9] [10] [11]
+) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00003.tex [12] [13]
+[14]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [15]
 Underfull \hbox (badness 10000) detected at line 340
 [][][]
  []
 
-[12]
+
 Underfull \hbox (badness 10000) detected at line 354
 [][][]
  []
@@ -1159,7 +1163,7 @@ Underfull \hbox (badness 10000) detected at line 398
 [][][]
  []
 
-
+[16]
 Underfull \hbox (badness 10000) detected at line 412
 [][][]
  []
@@ -1169,7 +1173,7 @@ Underfull \hbox (badness 10000) detected at line 446
 [][][]
  []
 
-[13]
+[17]
 Underfull \hbox (badness 10000) detected at line 549
 [][][]
  []
@@ -1184,57 +1188,54 @@ Underfull \hbox (badness 10000) detected at line 577
 [][][]
  []
 
-[14]
+
 Underfull \hbox (badness 10000) detected at line 628
 [][][]
  []
 
-[15] [16]
+[18] [19]
 Underfull \hbox (badness 10000) detected at line 832
 [][][]
  []
 
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00004.tex)
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00005.tex [17])
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00006.tex [18])
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00007.tex)
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00008.tex [19] [20])
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00009.tex)
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00010.tex)
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00011.tex [21] [22])
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00012.tex [23])
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00013.tex
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [24])
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00014.tex [25])
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00015.tex)
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00016.tex [26] [27])
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00017.tex [28] [29])
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00018.tex)
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00019.tex)
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00020.tex [30])
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00021.tex [31])
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00022.tex [32]
+[20]) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00004.tex)
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00005.tex [21])
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00006.tex)
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00007.tex [22])
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00008.tex [23])
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00009.tex [24])
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00010.tex)
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00011.tex [25])
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00012.tex [26] [27])
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00013.tex [28])
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00014.tex)
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00015.tex)
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00016.tex [29] [30] [31])
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00017.tex [32])
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00018.tex)
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00019.tex)
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00020.tex [33] [34])
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00021.tex)
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00022.tex [35]
 Underfull \hbox (badness 10000) detected at line 77
 [][][]
  []
 
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00023.tex [33])
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00024.tex)
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00025.tex [34]
+) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00023.tex [36])
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00024.tex)
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00025.tex [37]
 Underfull \hbox (badness 10000) detected at line 61
 [][][]
  []
 
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00026.tex [35]
+[38]) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00026.tex
 Underfull \hbox (badness 10000) detected at line 61
 [][][]
  []
 
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00027.tex [36])
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00028.tex [37])
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00029.tex [38]
+[39]) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00027.tex [40])
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00028.tex)
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00029.tex [41]
 Underfull \hbox (badness 10000) detected at line 89
 [][][]
  []
@@ -1249,27 +1250,27 @@ Underfull \hbox (badness 10000) detected at line 117
 [][][]
  []
 
-
+[42]
 Underfull \hbox (badness 10000) detected at line 135
 [][][]
  []
 
-[39]) (C:\Users\Laptop\Desktop\Doxygen\latex\a00030.tex
+) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00030.tex [43] [44]
 Underfull \hbox (badness 10000) detected at line 69
 [][][]
  []
 
-[40]
+
 Underfull \hbox (badness 10000) detected at line 83
 [][][]
  []
 
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00031.tex [41]
+) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00031.tex [45]
 Underfull \hbox (badness 10000) detected at line 61
 [][][]
  []
 
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00032.tex [42]
+) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00032.tex [46]
 Underfull \hbox (badness 10000) detected at line 69
 [][][]
  []
@@ -1279,32 +1280,32 @@ Underfull \hbox (badness 10000) detected at line 83
 [][][]
  []
 
-[43]) (C:\Users\Laptop\Desktop\Doxygen\latex\a00033.tex
+[47]) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00033.tex [48]
 Underfull \hbox (badness 10000) detected at line 70
 [][][]
  []
 
-[44] [45]) (C:\Users\Laptop\Desktop\Doxygen\latex\a00034.tex [46]
+) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00034.tex [49]
 Underfull \hbox (badness 10000) detected at line 65
 [][][]
  []
 
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00035.tex [47]
+[50]) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00035.tex
 Underfull \hbox (badness 10000) detected at line 69
 [][][]
  []
 
-
+[51]
 Underfull \hbox (badness 10000) detected at line 83
 [][][]
  []
 
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00036.tex [48]
+) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00036.tex [52]
 Underfull \hbox (badness 10000) detected at line 61
 [][][]
  []
 
-[49]) (C:\Users\Laptop\Desktop\Doxygen\latex\a00037.tex
+) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00037.tex [53] [54]
 Underfull \hbox (badness 3568) in paragraph at lines 39--40
 []\T1/phv/m/n/10 Implementiert in [][]Com-Create-Game-Request[][], [][]Com-Init
 -Lobby[][], [][]Com-Game-End[][], [][]Com-Join-Request[][], [][]Com-Update-
@@ -1330,14 +1331,14 @@ Player-Request[][], [][]Com-Init-Game-Lobby[][], [][]Com-Been-Kicked[][], [][]C
 om-
  []
 
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00038.tex [50]
+) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00038.tex [55]
 Underfull \hbox (badness 10000) detected at line 61
 [][][]
  []
 
-[51]) (C:\Users\Laptop\Desktop\Doxygen\latex\a00039.tex)
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00040.tex [52])
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00041.tex [53] [54]
+) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00039.tex [56])
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00040.tex)
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00041.tex [57]
 Underfull \hbox (badness 10000) detected at line 69
 [][][]
  []
@@ -1347,65 +1348,51 @@ Underfull \hbox (badness 10000) detected at line 83
 [][][]
  []
 
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00042.tex [55]
+[58]) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00042.tex [59]
 Underfull \hbox (badness 10000) detected at line 61
 [][][]
  []
 
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00043.tex [56]
+) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00043.tex [60]
 Underfull \hbox (badness 10000) detected at line 61
 [][][]
  []
 
-[57]) (C:\Users\Laptop\Desktop\Doxygen\latex\a00044.tex)
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00045.tex [58]
+) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00044.tex [61] [62])
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00045.tex [63]
 Underfull \hbox (badness 10000) detected at line 61
 [][][]
  []
 
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00046.tex [59]
+) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00046.tex [64]
 Underfull \hbox (badness 10000) detected at line 61
 [][][]
  []
 
-[60]) (C:\Users\Laptop\Desktop\Doxygen\latex\a00047.tex
+) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00047.tex [65]
 Underfull \hbox (badness 10000) detected at line 65
 [][][]
  []
 
-[61]) (C:\Users\Laptop\Desktop\Doxygen\latex\a00048.tex [62]
+) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00048.tex [66]
 Underfull \hbox (badness 10000) detected at line 61
 [][][]
  []
 
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00049.tex [63])
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00050.tex
+) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00049.tex [67])
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00050.tex [68]
 Underfull \hbox (badness 10000) detected at line 61
 [][][]
  []
 
-[64] [65]) (C:\Users\Laptop\Desktop\Doxygen\latex\a00051.tex [66])
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00052.tex
+) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00051.tex [69])
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00052.tex [70]
 Underfull \hbox (badness 10000) detected at line 61
 [][][]
  []
 
-[67]) (C:\Users\Laptop\Desktop\Doxygen\latex\a00053.tex
-
-! Package textcomp Error: Symbol \textcurrency not provided by
-(textcomp)                font family phv in TS1 encoding.
-(textcomp)                Default family used instead.
-
-See the textcomp package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.18 ...g der Com\-Ruleset-\/\-Klasse. Es enthÃ¤
-                                                  lt Methoden, die von spezi...
-
-? S
-OK, entering \scrollmode...
-[68]) (C:\Users\Laptop\Desktop\Doxygen\latex\a00054.tex
+) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00053.tex [71] [72])
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00054.tex
 Underfull \hbox (badness 10000) detected at line 32
 [][][]
  []
@@ -1415,17 +1402,17 @@ Underfull \hbox (badness 10000) detected at line 50
 [][][]
  []
 
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00055.tex [69]
+) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00055.tex [73]
 Underfull \hbox (badness 10000) detected at line 77
 [][][]
  []
 
-[70]
+[74]
 Underfull \hbox (badness 10000) detected at line 116
 [][][]
  []
 
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00056.tex [71]
+) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00056.tex [75]
 Underfull \hbox (badness 10000) detected at line 114
 [][][]
  []
@@ -1445,12 +1432,12 @@ Underfull \hbox (badness 10000) detected at line 168
 [][][]
  []
 
-
+[76]
 Underfull \hbox (badness 10000) detected at line 186
 [][][]
  []
 
-[72]
+
 Underfull \hbox (badness 10000) detected at line 200
 [][][]
  []
@@ -1470,17 +1457,17 @@ Underfull \hbox (badness 10000) detected at line 247
 [][][]
  []
 
-[73]
+[77]
 Underfull \hbox (badness 10000) detected at line 330
 [][][]
  []
 
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00057.tex [74] [75]
+) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00057.tex [78]
 Underfull \hbox (badness 10000) detected at line 81
 [][][]
  []
 
-
+[79]
 Underfull \hbox (badness 10000) detected at line 136
 [][][]
  []
@@ -1490,8 +1477,8 @@ Underfull \hbox (badness 10000) detected at line 155
 [][][]
  []
 
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00058.tex [76])
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00059.tex [77]
+) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00058.tex)
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00059.tex [80]
 Underfull \hbox (badness 1946) in paragraph at lines 75--76
 []\T1/phv/m/n/10 Benutzt Game-Client-Update.-current-Player, Game-Client-Update
 .-discard-Pile, Game-Client-Update.-other-Player-Data,
@@ -1512,7 +1499,7 @@ Underfull \hbox (badness 10000) detected at line 123
 [][][]
  []
 
-
+[81]
 Underfull \hbox (badness 10000) detected at line 142
 [][][]
  []
@@ -1522,18 +1509,18 @@ Underfull \hbox (badness 10000) detected at line 156
 [][][]
  []
 
-[78]
+
 Underfull \hbox (badness 10000) detected at line 174
 [][][]
  []
 
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00060.tex)
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00061.tex [79]
+) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00060.tex)
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00061.tex [82] [83]
 Underfull \hbox (badness 10000) detected at line 122
 [][][]
  []
 
-[80]
+
 Underfull \hbox (badness 10000) detected at line 160
 [][][]
  []
@@ -1553,12 +1540,12 @@ Underfull \hbox (badness 10000) detected at line 230
 [][][]
  []
 
-
+[84]
 Underfull \hbox (badness 10000) detected at line 253
 [][][]
  []
 
-[81]
+
 Underfull \hbox (badness 10000) detected at line 291
 [][][]
  []
@@ -1573,7 +1560,7 @@ Underfull \hbox (badness 10000) detected at line 327
 [][][]
  []
 
-
+[85]
 Underfull \hbox (badness 10000) detected at line 346
 [][][]
  []
@@ -1583,7 +1570,7 @@ Underfull \hbox (badness 10000) detected at line 369
 [][][]
  []
 
-[82]
+
 Underfull \hbox (badness 10000) detected at line 395
 [][][]
  []
@@ -1593,7 +1580,7 @@ Underfull \hbox (badness 10000) detected at line 414
 [][][]
  []
 
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00062.tex [83]
+) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00062.tex [86]
 Underfull \hbox (badness 10000) detected at line 80
 [][][]
  []
@@ -1603,8 +1590,8 @@ Underfull \hbox (badness 10000) detected at line 98
 [][][]
  []
 
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00063.tex)
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00064.tex [84]
+) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00063.tex [87])
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00064.tex [88]
 Underfull \hbox (badness 10000) detected at line 72
 [][][]
  []
@@ -1614,12 +1601,12 @@ Underfull \hbox (badness 10000) detected at line 90
 [][][]
  []
 
-[85]
+
 Underfull \hbox (badness 10000) detected at line 124
 [][][]
  []
 
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00065.tex [86]
+) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00065.tex [89]
 Underfull \hbox (badness 10000) detected at line 77
 [][][]
  []
@@ -1634,13 +1621,13 @@ Underfull \hbox (badness 10000) detected at line 105
 [][][]
  []
 
-
+[90]
 Underfull \hbox (badness 10000) detected at line 148
 [][][]
  []
 
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00066.tex)
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00067.tex [87]
+) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00066.tex)
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00067.tex [91]
 Underfull \hbox (badness 10000) detected at line 76
 [][][]
  []
@@ -1650,12 +1637,12 @@ Underfull \hbox (badness 10000) detected at line 94
 [][][]
  []
 
-[88]
+
 Underfull \hbox (badness 10000) detected at line 137
 [][][]
  []
 
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00068.tex [89] [90]
+[92]) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00068.tex [93]
 Underfull \hbox (badness 10000) detected at line 157
 [][][]
  []
@@ -1665,7 +1652,7 @@ Underfull \hbox (badness 10000) detected at line 171
 [][][]
  []
 
-
+[94]
 Underfull \hbox (badness 10000) detected at line 189
 [][][]
  []
@@ -1680,7 +1667,7 @@ Underfull \hbox (badness 10000) detected at line 241
 [][][]
  []
 
-[91]
+
 Underfull \hbox (badness 10000) detected at line 259
 [][][]
  []
@@ -1690,7 +1677,7 @@ Underfull \hbox (badness 10000) detected at line 297
 [][][]
  []
 
-
+[95]
 Underfull \hbox (badness 10000) detected at line 311
 [][][]
  []
@@ -1705,7 +1692,7 @@ Underfull \hbox (badness 10000) detected at line 349
 [][][]
  []
 
-[92]
+
 Underfull \hbox (badness 10000) detected at line 363
 [][][]
  []
@@ -1715,12 +1702,12 @@ Underfull \hbox (badness 10000) detected at line 398
 [][][]
  []
 
-
+[96]
 Underfull \hbox (badness 10000) detected at line 417
 [][][]
  []
 
-[93]
+[97]
 Underfull \hbox (badness 10000) detected at line 528
 [][][]
  []
@@ -1730,7 +1717,7 @@ Underfull \hbox (badness 10000) detected at line 551
 [][][]
  []
 
-[94]
+
 Underfull \hbox (badness 10000) detected at line 573
 [][][]
  []
@@ -1740,32 +1727,32 @@ Underfull \hbox (badness 10000) detected at line 592
 [][][]
  []
 
-
+[98]
 Underfull \hbox (badness 10000) detected at line 627
 [][][]
  []
 
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00069.tex [95]
+) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00069.tex [99]
 Underfull \hbox (badness 10000) detected at line 84
 [][][]
  []
 
-[96]
+
 Underfull \hbox (badness 10000) detected at line 122
 [][][]
  []
 
-
+[100]
 Underfull \hbox (badness 10000) detected at line 167
 [][][]
  []
 
-[97]
+
 Underfull \hbox (badness 10000) detected at line 208
 [][][]
  []
 
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00070.tex [98]
+) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00070.tex [101]
 Underfull \hbox (badness 10000) detected at line 98
 [][][]
  []
@@ -1775,245 +1762,239 @@ Underfull \hbox (badness 10000) detected at line 116
 [][][]
  []
 
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00071.tex [99]
+) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00071.tex [102]
 Underfull \hbox (badness 10000) detected at line 47
 [][][]
  []
 
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00072.tex [100]
+) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00072.tex [103] [104]
 Underfull \hbox (badness 10000) detected at line 120
 [][][]
  []
 
-[101] [102]
+[105] [106]
 Underfull \hbox (badness 10000) detected at line 339
 [][][]
  []
 
-[103]) (C:\Users\Laptop\Desktop\Doxygen\latex\a00073.tex)
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00074.tex [104] [105]
+) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00073.tex [107])
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00074.tex [108] [109]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [106]
+ [110]
 Underfull \hbox (badness 10000) detected at line 240
 [][][]
  []
 
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00075.tex)
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00076.tex [107] [108]
+) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00075.tex)
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00076.tex [111] [112]
 Underfull \hbox (badness 10000) detected at line 135
 [][][]
  []
 
-) (C:\Users\Laptop\Desktop\Doxygen\latex\a00077.tex [109] [110])
-(C:\Users\Laptop\Desktop\Doxygen\latex\a00078.tex)
-Underfull \hbox (badness 10000) in paragraph at lines 33--256
+) (C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00077.tex [113])
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\a00078.tex [114])
+Underfull \hbox (badness 10000) in paragraph at lines 33--329
 
  []
 
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 8.09995pt on input line 261.
-[111]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [112]
-[113]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [114]
+(Font)              scaled to size 8.09995pt on input line 334.
 [115]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [116]
+[117] [118]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [117]
+ [119]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [118]
-[119] [120]
-Overfull \hbox (41.5546pt too wide) in paragraph at lines 877--878
+ [120]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [121]
+[122]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [123]
+[124]
+Overfull \hbox (41.5546pt too wide) in paragraph at lines 950--951
 [][][][][][][][][][][][][][][][][][]  
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [121]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [122]
-Underfull \hbox (badness 10000) in paragraph at lines 953--954
+ [125]
+Underfull \hbox (badness 10000) in paragraph at lines 1026--1027
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 956--958
+Underfull \hbox (badness 10000) in paragraph at lines 1029--1031
+
+ []
+
+[126]
+Underfull \hbox (badness 10000) in paragraph at lines 1053--1055
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 980--982
+Underfull \hbox (badness 10000) in paragraph at lines 1071--1073
 
  []
 
-[123]
-Underfull \hbox (badness 10000) in paragraph at lines 998--1000
+[127]
+Underfull \hbox (badness 10000) in paragraph at lines 1091--1093
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 1018--1020
-
- []
-
-[124] <Milestone1.png, id=5417, 678.28406pt x 177.66376pt>
+[128] <Milestone1.png, id=5621, 678.28406pt x 177.66376pt>
 File: Milestone1.png Graphic file (type png)
 
 <use Milestone1.png>
-Package pdftex.def Info: Milestone1.png used on input line 1036.
+Package pdftex.def Info: Milestone1.png used on input line 1109.
 (pdftex.def)             Requested size: 546.29153pt x 143.09628pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1035--1037
+Underfull \hbox (badness 10000) in paragraph at lines 1108--1110
 
  []
 
 
-Overfull \hbox (45.52025pt too wide) in paragraph at lines 1035--1037
+Overfull \hbox (45.52025pt too wide) in paragraph at lines 1108--1110
 | [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1035--1037
+Underfull \hbox (badness 10000) in paragraph at lines 1108--1110
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1035--1037
+Underfull \hbox (badness 10000) in paragraph at lines 1108--1110
 
  []
 
-<Milestone2.png, id=5418, 702.37407pt x 130.23656pt>
+<Milestone2.png, id=5622, 702.37407pt x 130.23656pt>
 File: Milestone2.png Graphic file (type png)
  <use Milestone2.png>
-Package pdftex.def Info: Milestone2.png used on input line 1039.
+Package pdftex.def Info: Milestone2.png used on input line 1112.
 (pdftex.def)             Requested size: 546.29153pt x 101.30191pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1038--1040
+Underfull \hbox (badness 10000) in paragraph at lines 1111--1113
 
  []
 
 
-Overfull \hbox (45.52025pt too wide) in paragraph at lines 1038--1040
+Overfull \hbox (45.52025pt too wide) in paragraph at lines 1111--1113
 | [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1038--1040
+Underfull \hbox (badness 10000) in paragraph at lines 1111--1113
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1038--1040
+Underfull \hbox (badness 10000) in paragraph at lines 1111--1113
 
  []
 
-<Milestone3.png, id=5419, 602.25pt x 144.54pt>
+<Milestone3.png, id=5623, 602.25pt x 144.54pt>
 File: Milestone3.png Graphic file (type png)
  <use Milestone3.png>
-Package pdftex.def Info: Milestone3.png used on input line 1042.
+Package pdftex.def Info: Milestone3.png used on input line 1115.
 (pdftex.def)             Requested size: 546.29153pt x 131.12135pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1041--1043
+Underfull \hbox (badness 10000) in paragraph at lines 1114--1116
 
  []
 
 
-Overfull \hbox (45.52025pt too wide) in paragraph at lines 1041--1043
+Overfull \hbox (45.52025pt too wide) in paragraph at lines 1114--1116
 | [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1041--1043
+Underfull \hbox (badness 10000) in paragraph at lines 1114--1116
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1041--1043
+Underfull \hbox (badness 10000) in paragraph at lines 1114--1116
 
  []
 
-<Milestone4.png, id=5420, 504.38437pt x 114.4275pt>
+<Milestone4.png, id=5624, 504.38437pt x 114.4275pt>
 File: Milestone4.png Graphic file (type png)
  <use Milestone4.png>
-Package pdftex.def Info: Milestone4.png used on input line 1045.
+Package pdftex.def Info: Milestone4.png used on input line 1118.
 (pdftex.def)             Requested size: 546.29153pt x 123.93604pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1044--1047
+Underfull \hbox (badness 10000) in paragraph at lines 1117--1120
 
  []
 
 
-Overfull \hbox (45.52025pt too wide) in paragraph at lines 1044--1047
+Overfull \hbox (45.52025pt too wide) in paragraph at lines 1117--1120
 | [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1044--1047
+Underfull \hbox (badness 10000) in paragraph at lines 1117--1120
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1044--1047
+Underfull \hbox (badness 10000) in paragraph at lines 1117--1120
 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [125 <C:/Users/Laptop/Desktop/Doxygen/latex/Milestone1.png> <C:/Users/Laptop/D
-esktop/Doxygen/latex/Milestone2.png> <C:/Users/Laptop/Desktop/Doxygen/latex/Mil
-estone3.png>] [126 <C:/Users/Laptop/Desktop/Doxygen/latex/Milestone4.png>]
-(C:\Users\Laptop\Desktop\Doxygen\latex\refman.ind [127
-
-] [128] [129] [130]
-[131] [132] [133] [134
-
-])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1052.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1052.
- (C:\Users\Laptop\Desktop\Doxygen\latex\refman.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1052.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1052.
+ [129 <C:/Users/AlinaAdmin/Documents/GitHub/sep13/latex/Milestone1.png> <C:/Use
+rs/AlinaAdmin/Documents/GitHub/sep13/latex/Milestone2.png> <C:/Users/AlinaAdmin
+/Documents/GitHub/sep13/latex/Milestone3.png>] [130 <C:/Users/AlinaAdmin/Docume
+nts/GitHub/sep13/latex/Milestone4.png>]
+No file refman.ind.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1125.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1125.
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\latex\refman.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1125.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1125.
 
 Package rerunfilecheck Info: File `refman.out' has not changed.
-(rerunfilecheck)             Checksum: 358C4F0F351FA7093052D1AB8D764684;61697.
+(rerunfilecheck)             Checksum: 90549B38633E2D41E9E045B4EFF8AA41;66584.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1052.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1125.
  ) 
 Here is how much of TeX's memory you used:
- 17961 strings out of 493921
- 290449 string characters out of 3144873
- 358070 words of memory out of 3000000
- 18537 multiletter control sequences out of 15000+200000
- 69795 words of font info for 98 fonts, out of 3000000 for 9000
+ 17997 strings out of 493921
+ 292270 string characters out of 3147267
+ 355117 words of memory out of 3000000
+ 18545 multiletter control sequences out of 15000+200000
+ 59009 words of font info for 72 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 48i,13n,43p,1344b,1906s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\Users\Laptop\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600
-\tcrm1000.pk>{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc
-}<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
-C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Progra
-m Files (x86)/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Program Files 
-(x86)/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvb8ac.pfb><C:/Program Files (x86)/M
-iKTeX 2.9/fonts/type1/urw/helvetic/uhvbo8ac.pfb><C:/Program Files (x86)/MiKTeX 
-2.9/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
-s/type1/urw/helvetic/uhvro8a.pfb>
-Output written on refman.pdf (141 pages, 2815074 bytes).
+ 48i,13n,43p,1348b,1906s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program File
+s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX
+ 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
+1/urw/helvetic/uhvb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic
+/uhvb8ac.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvbo8ac.pfb
+><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Program F
+iles/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvro8a.pfb>
+Output written on refman.pdf (138 pages, 2713063 bytes).
 PDF statistics:
- 6641 PDF objects out of 7423 (max. 8388607)
- 2336 named destinations out of 2487 (max. 500000)
- 2226 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6142 PDF objects out of 6186 (max. 8388607)
+ 2368 named destinations out of 2487 (max. 500000)
+ 2522 words of extra memory for PDF output out of 10000 (max. 10000000)
 
