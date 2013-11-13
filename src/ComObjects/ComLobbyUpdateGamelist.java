@@ -30,7 +30,7 @@ public class ComLobbyUpdateGamelist implements ComObject, Serializable {
 
     /**
      * Diese Methode liefert, ob ein Spiel geloescht werden soll oder nicht.
-     * @return ob das Spiel gelöscht wird.
+     * @return ob das Spiel geloescht wird.
      */
     public boolean isRemoveFlag() {
         return removeFlag;

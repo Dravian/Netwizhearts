@@ -17,7 +17,7 @@ public interface ComObject {
     /**
      * Diese Methode ist noetig, damit der ClientListenerThread entscheiden kann
      * welche Message das Object enthaelt und wie diese verarbeitet werden soll.
-	 * @param model ist das ClientModel, welches übergeben wird, damit
+	 * @param model ist das ClientModel, welches uebergeben wird, damit
      *              die ueberladene Methode richtig gewaehlt wird.
 	 */
 	public void process(ClientModel model);
