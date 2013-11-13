@@ -9,6 +9,7 @@ import java.util.Map;
 import Client.ClientModel;
 import ComObjects.MsgCard;
 import ComObjects.MsgCardRequest;
+import ComObjects.MsgGameEnd;
 import ComObjects.MsgUser;
 import ComObjects.RulesetMessage;
 
@@ -159,6 +160,22 @@ public abstract class ClientRuleset {
 	 * @param msgCardRequest Die Nachricht vom Server
 	 */
 	public void resolveMessage(MsgCardRequest msgCardRequest) {
+		
+	}
+	
+	/**
+	 * Verarbeitet die RulesetMessage dass das Spiel zu Ende ist und das es einen Sieger gibt
+	 * @param msgCardRequest Die Nachricht vom Server
+	 */
+	public void resolveMessage(MsgGameEnd msgCardRequest) {
+		
+	}
+	
+	/**
+	 * Ruft beim Model die Methode announceWinner
+	 * @param winner
+	 */
+	protected void announceWinner(String winner) {
 		
 	}
 	
