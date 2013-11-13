@@ -14,7 +14,6 @@ public class TestPlayer extends Player {
 			ObjectInputStream input) {
 		super(lobbyServer, output, input);
 	}
-
 	private Server server;
 	
 	private List<ComObject> inputComObject;

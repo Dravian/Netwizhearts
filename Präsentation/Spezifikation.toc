@@ -1,0 +1,5 @@
+\beamer@endinputifotherversion {3.27pt}
+\select@language {ngerman}
+\beamer@sectionintoc {1}{Kurze Beschreibung der Klassen und Methoden f\IeC {\"u}r die Tests}{3}{0}{1}
+\beamer@sectionintoc {2}{DummyKlassen}{6}{0}{2}
+\beamer@sectionintoc {3}{Tests}{8}{0}{3}

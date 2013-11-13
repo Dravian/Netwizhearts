@@ -1,0 +1,14 @@
+\frametitle{ChatServer}
+\begin{lstlisting}
+@Test
+public void testReceiveMessagePlayerComChatMessage() {
+String messageToMatch = testMessage.getChatMessage();
+testServer.addPlayer(player1);
+testServer.addPlayer(player2);
+player1.injectComObject(testMessage);
+testText1 = ((ComChatMessage) player1.getServerInput(0)).getChatMessage();
+testText2 = ((ComChatMessage) player2.getServerInput(0)).getChatMessage();
+assertEquals("Nachricht an Spieler 1", messageToMatch, testText1);
+assertEquals("Nachricht an Spieler 2", messageToMatch, testText2);
+}
+\end{lstlisting}

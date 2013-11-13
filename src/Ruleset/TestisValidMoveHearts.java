@@ -66,8 +66,8 @@ public class TestisValidMoveHearts {
 	     ruleset.giveACard(playerState3, HeartsCard.Pik4);
 	     ruleset.giveACard(playerState3, HeartsCard.Pik5);
          ruleset.giveACard(playerState4, HeartsCard.Pik1);
-	     ruleset.giveACard(playerState4, HeartsCard.Herz7);
-	     
+	     ruleset.giveACard(playerState4, HeartsCard.Herz7);     
+	 
 	     boolean isValidMove = ruleset.isValidMove(HeartsCard.Herz2);
 
 	     assertFalse(isValidMove);

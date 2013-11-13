@@ -83,9 +83,9 @@ public class QuitGameTest {
 
 		assertFalse(lobby.initLobby().getGameList().contains(game));
 		assertTrue(lobby.initLobby().getPlayerList().contains(player1.getName()));
-		assertTrue(lobby.initLobby().getPlayerList().contains(player1.getName()));
-		assertTrue(lobby.initLobby().getPlayerList().contains(player1.getName()));
-		assertTrue(lobby.initLobby().getPlayerList().contains(player1.getName()));
+		assertTrue(lobby.initLobby().getPlayerList().contains(player2.getName()));
+		assertTrue(lobby.initLobby().getPlayerList().contains(player3.getName()));
+		assertTrue(lobby.initLobby().getPlayerList().contains(player4.getName()));
 		
 		assertTrue(player1.getServerInput().get(0).getClass() == initLobby.getClass());
 		assertTrue(player1.getServerInput().get(1).getClass() == warning.getClass());
