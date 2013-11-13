@@ -2,6 +2,7 @@ package test;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.List;
 
 import ComObjects.ComObject;
 import Server.Player;
@@ -16,10 +17,10 @@ public class TestPlayer extends Player {
 
 	private Server server;
 	
-	private ComObject inputComObject;
+	private List<ComObject> inputComObject;
 
 	
-	public ComObject getServerInput() {
+	public List<ComObject> getServerInput() {
 		return inputComObject;
 	}
 	
@@ -28,7 +29,7 @@ public class TestPlayer extends Player {
 	}
 	
 	public void send(ComObject com) {
-		inputComObject = com;
+		inputComObject.add(com);
 	}
 	
 	public void setServer(Server server) {
