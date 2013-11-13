@@ -242,7 +242,7 @@ public class ClientModel extends Observable{
 	/**
 	 * Gibt zusaetzliche Daten der anderen Spieler zurueck.
 	 * 
-	 * @return Liste der Stringrepräsentationen der OtherData der Spieler
+	 * @return Liste der Stringrepraesentationen der OtherData der Spieler
 	 */
 	public List<String> getOtherPlayerData() {
 		return null;
@@ -319,7 +319,7 @@ public class ClientModel extends Observable{
 	}
 	
 	/**
-	 * Die die Anzahl der Spieler eines Spieles zurueck.
+	 * Gibt die Anzahl der Spieler eines Spieles zurueck.
 	 * 
 	 * @return int Die Spielerzahl eines Spieles.
 	 */
@@ -341,7 +341,7 @@ public class ClientModel extends Observable{
 	/**
 	 * Gibt die Karten zurueck, aus denen gewaehlt werden soll.
 	 * 
-	 * @return Karten, aus denen gewahlt werden kann
+	 * @return Karten, aus denen gewaehlt werden kann
 	 */
 	public List<Card> getChooseCards() {
 		return null;
@@ -350,9 +350,9 @@ public class ClientModel extends Observable{
 	/**
 	 * Uebergibt die Karten, die vom User gewahlt wurden. Diese
 	 * werden dann dem Regelwerk weitergegeben. Akzeptiert dieses
-	 * die gewahlten Karten nicht, wird nochmal openChooseCards aufgerufen.
+	 * die gewaehlten Karten nicht, wird nochmal openChooseCards aufgerufen.
 	 * 
-	 * @param cards Karten, die der User gewahlt hat
+	 * @param cards Karten, die der User gewaehlt hat
 	 */
 	public void giveChosenCards(List<Card> cards) {
 		
@@ -382,7 +382,7 @@ public class ClientModel extends Observable{
 	/**
 	 * Uebergibt das Item, das vom User gewahlt wurden. Dieses
 	 * wird dann dem Regelwerk weitergegeben. Akzeptiert dieses
-	 * das gewahlte Item nicht, wird nochmal openChooseItem aufgerufen.
+	 * das gewaehlte Item nicht, wird nochmal openChooseItem aufgerufen.
 	 * 
 	 * @param item Item, das der User gewahlt hat
 	 */
@@ -470,7 +470,7 @@ public class ClientModel extends Observable{
 	 * Karte gespielt werden darf. Wenn ja, wird sie im ClientRuleset weiterbehandelt. Wenn nein,
 	 * wird eine Fehlermeldung ausgegeben und dazu die Observer mit openWarning informiert.
 	 * 
-	 * @param die ID der gespielten Karte
+	 * @param card Die gespielte Karte.
 	 */
 	public void makeMove(Card card) {
 		
