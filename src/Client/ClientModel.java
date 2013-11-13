@@ -475,6 +475,24 @@ public class ClientModel extends Observable{
 	public void makeMove(Card card) {
 		
 	}
+	
+	/**
+	 * Wird aufgerufen wenn das Ende einer Partie erreicht ist.
+	 * 
+	 * @param winner String der Gewinner der Partie.
+	 */
+	public void announceWinner(final String winner) {
+		
+	}
+	
+	/**
+	 * Liefert den Gewinner einer Partie.
+	 * 
+	 * @return String der Gewinner.
+	 */
+	public String getWinner() {
+		return null;
+	}
 
 	/** 
 	 * Hilfsmethode die alle verbundenen Observer der GUI kontaktiert.
@@ -507,11 +525,11 @@ public class ClientModel extends Observable{
 	}
 	
 	/**
-	 * Liefert ein Array mit allen implementierten Regelwerken.
+	 * Liefert eine Liste mit allen implementierten Regelwerken.
 	 * 
-	 * @param RulesetType[] Array von unterstützten Regelwerken.
+	 * @param List<RulesetType> Liste von unterstuetzten Regelwerken.
 	 */
-	public RulesetType[] getRulesets() {
+	public List<RulesetType> getRulesets() {
 		return null;
 	}
 }
