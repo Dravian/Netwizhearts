@@ -17,6 +17,9 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+
+import Client.ClientModel;
+import Client.ViewNotification;
 /**
  * Login. Das Login-Fenster repraesentiert den initialen Dialog zwischen Benutzer und Client.
  * In diesem Fenster kann der Benutzer seinen Namen und die Adresse des Servers eingeben. 
@@ -102,6 +105,24 @@ public class Login extends JFrame implements Observer{
 	}
 	
 	/**
+	 * Gibt den Namen zurueck, der im nameField eingegeben wurde
+	 * 
+	 * @return Name des Spielers
+	 */
+	public String getUsername() {
+		return nameField.getText();
+	}
+	
+	/**
+	 * Gibt die Adresse des Servers zurueck, die im serverField eingegeben wurde
+	 * 
+	 * @return IP Adresse des Servers als String
+	 */
+	public String getServerAdress() {
+		return serverField.getText();
+	}
+	
+	/**
 	 * Fuegt einen Listener fuer den 'Connect' Button des Login Fensters hinzu
 	 * 
 	 * @param a ein ActionListener
@@ -168,5 +189,14 @@ public class Login extends JFrame implements Observer{
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub		
+		ViewNotification message = (ViewNotification) arg;
+		ClientModel observed = (ClientModel) o;
+		switch (message) {
+		case loginSuccessful:
+			this.setVisible(false);
+			break;
+		default:
+			break;
+		}
 	}
 }

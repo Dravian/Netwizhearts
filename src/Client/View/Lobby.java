@@ -17,6 +17,9 @@ import javax.swing.JButton;
 import javax.swing.AbstractListModel;
 import javax.swing.ListSelectionModel;
 
+import Client.ClientModel;
+import Client.ViewNotification;
+
 /**
  * Lobby. Diese Klasse erzeugt die Ansicht der ServerLobby auf der Client Seite, 
  * in der die Spieler neue Spiele erstellen oder offenen beitreten koennen.
@@ -185,7 +188,18 @@ public class Lobby extends JFrame implements Observer{
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
-		
+		ViewNotification message = (ViewNotification) arg;
+		ClientModel observed = (ClientModel) o;
+		switch (message) {
+		case loginSuccessful:
+		case windowChangeForced:
+			this.setVisible(true);
+			break;
+		case playerListUpdate:
+			break;
+		default:
+			break;
+		}
 	}
 	
 	/**
@@ -198,5 +212,8 @@ public class Lobby extends JFrame implements Observer{
 	 */
 	public void update(Observable o, String arg) {
 		//TODO
+		if (this.isVisible()) {
+			chatlog.append(arg);;
+		}
 	}
 }

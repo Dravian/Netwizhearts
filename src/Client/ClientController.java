@@ -8,7 +8,9 @@ import Client.View.ScoreWindow;
 import Client.View.InputNumber;
 import Client.View.ChooseItem;
 import Client.View.Lobby;
+
 import java.util.Set;
+
 import Client.View.Login;
 import Client.View.CreateGame;
 import Client.View.GameLobby;
@@ -16,6 +18,11 @@ import Client.View.Game;
 import Client.View.Password;
 import Client.View.Language;
 import Client.View.Warning;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 /** 
  * ClientController. Der ClientController enthaelt alle ActionListener der View und 
@@ -45,7 +52,7 @@ public class ClientController {
 	private Lobby lobby;
 	/** 
 	 */
-	private Set<Login> login;
+	private Login login;
 	/** 
 	 */
 	private CreateGame createGame;
@@ -64,4 +71,35 @@ public class ClientController {
 	/** 
 	 */
 	private Set<Warning> warning;
+	
+	public ClientController() {
+		clientModel = new ClientModel(new MessageListenerThread());
+		
+		login = new Login();
+		login.addConnectButtonListener(new ConnectButtonListener());
+		login.addLanguageSelectionListener(new LanguageSelectionListener());
+		login.setVisible(true);
+	}
+	
+	
+	class LanguageSelectionListener implements ItemListener {
+
+		@Override
+		public void itemStateChanged(ItemEvent arg0) {
+			language = (Language) arg0.getItem();
+			clientModel.setLanguage(language);
+			login.setLanguage(language);
+		}
+		
+	}
+	
+	
+	class ConnectButtonListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			clientModel.createConnection(login.getUsername(), login.getServerAdress(), 1337);//FIXME Port hart codiert
+		}
+		
+	}
 }
