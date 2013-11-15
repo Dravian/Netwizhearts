@@ -85,7 +85,7 @@ public class GameServer extends Server {
 	 * Erstellt eine neue GameServerRepresentation und gibt sie zurueck
 	 * @return Gibt die neue GameServerRepresentation zurueck
 	 */
-	public GameServerRepresentation getRepresentation() {
+	public synchronized GameServerRepresentation getRepresentation() {
 		return new GameServerRepresentation(gameMasterName, name, maxPlayers, currentPlayers, rulesetType, hasPassword);
 	}
 	
@@ -140,7 +140,7 @@ public class GameServer extends Server {
 	 * @param player ist der Thread der die Nachricht erhalten hat
 	 * @param kicked ist das ComObject, das verarbeitet wird
 	 */
-	public void receiveMessage(Player player, ComKickPlayerRequest kickPlayer) {
+	public synchronized void receiveMessage(Player player, ComKickPlayerRequest kickPlayer) {
 		
 	}
 	
@@ -151,7 +151,7 @@ public class GameServer extends Server {
 	 * @param player ist der Thread der die Nachricht erhalten hat
 	 * @param chat ist das ComObject, das die Chatnachricht enthaelt
 	 */
-	public void receiveMessage(Player player, ComChatMessage chat){
+	public synchronized void receiveMessage(Player player, ComChatMessage chat){
 		broadcast(chat);
 	}
 	
@@ -164,7 +164,7 @@ public class GameServer extends Server {
 	 * @param leave ist das ComObject, welches angibt, dass der Spieler in die Lobby 
 	 * zurueckkehrt
 	 */
-	public void receiveMessage(Player player, ComClientLeave leave){
+	public synchronized void receiveMessage(Player player, ComClientLeave leave){
 	}
 	
 	/**
@@ -175,7 +175,7 @@ public class GameServer extends Server {
 	 * @param player ist der Thread der die Nachricht erhalten hat
 	 * @param quit ist das ComObject, welches angibt, dass der Spieler das Spiel verlaesst
 	 */
-	public void receiveMessage(Player player, ComClientQuit quit){
+	public synchronized void receiveMessage(Player player, ComClientQuit quit){
 
 	}
 	
@@ -185,7 +185,7 @@ public class GameServer extends Server {
 	 * @param player ist der Thread der die Nachricht erhalten hat
 	 * @param start ist das ComObject, dass angibt, dass das Spiel gestartet werden soll
 	 */
-	public void receiveMessage(Player player, ComStartGame start){
+	public synchronized void receiveMessage(Player player, ComStartGame start){
 		
 	}
 	
@@ -196,7 +196,7 @@ public class GameServer extends Server {
 	 * @param ruleset ist das ComObject, das zeigt, dass das Object
 	 * vom Ruleset bearbeitet werden muss
 	 */
-	public void receiveMessage(Player player, ComRuleset ruleset){
+	public synchronized void receiveMessage(Player player, ComRuleset ruleset){
 
 	}
 	
@@ -218,7 +218,7 @@ public class GameServer extends Server {
 	 * Das Spiel wird aus dem gameServerSet des LobbyServers entfernt.
 	 * @param player ist der Tread von dem die IOException kommt
 	 */
-	public void handleIOException(Player player) {
+	public synchronized void handleIOException(Player player) {
 		// TODO Automatisch erstellter Methoden-Stub
 		
 	}

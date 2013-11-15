@@ -3,8 +3,11 @@
  */
 package Server;
 
-import java.net.ServerSocket;
-import java.util.Set;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.*;
+import java.util.*;
 
 import ComObjects.*;
 
@@ -18,22 +21,22 @@ public class LobbyServer extends Server {
 	/** 
 	 * Ein Set der Benutzernamen aller Spieler, die in der Lobby oder einem Spiel sind
 	 */
-	private Set<String> names;
+	private Set<String> names = new HashSet<String>();
 	
 	/** 
 	 * Ein Set der Spieler, die noch keinen Namen haben und noch nicht in der Lobby sind
 	 */
-	private Set<Player> noNames;
+	private Set<Player> noNames = new HashSet<Player>();
 	
 	/** 
 	 * Ein Set an GameServern, die alle erstellten Spiele repraesentieren
 	 */
-	private Set<GameServer> gameServerSet;
+	private Set<GameServer> gameServerSet = new HashSet<GameServer>();
 	
 	/** 
 	 * Ein Thread, der fuer das Annehmen neuer Clientverbindungen zustaendig ist
 	 */
-	private ClientListenerThread clientListenerThread;
+	private Thread clientListenerThread;
 	
 	/**
 	 * Der Server Socket
@@ -41,10 +44,19 @@ public class LobbyServer extends Server {
 	private ServerSocket socket;
 
 	/**
-	 * Erstellt und Startet den ClientListenerThread
+	 * Erstellt und Startet den ClientListenerThread.
+	 * Faengt eine IOException und gibt eine Fehlermeldung aus
 	 */
 	public LobbyServer(){
-	
+		try {
+			socket = new ServerSocket(4567);
+		} catch (IOException e) {
+			System.out.println("Could not listen on port: 4567.");
+			e.printStackTrace();
+			System.exit(1);			
+		}
+		clientListenerThread = new Thread(new ClientListenerThread(this));
+		clientListenerThread.start();
 	}
 	/**
 	 * ClientListenerThread. Diese innere Klasse ist fuer das Zustandekommen 
@@ -57,22 +69,41 @@ public class LobbyServer extends Server {
 	public class ClientListenerThread implements Runnable {
 		
 		/**
+		 * Zeigt, ob der Tread auf verbindungen wartet
+		 */
+		private boolean waiting;
+		
+		private LobbyServer server;
+		
+		/**
 		 * Konstruktor des ClientListenerThreads
 		 */
-		public ClientListenerThread(){
-			
+		public ClientListenerThread(LobbyServer server){
+			waiting = true;
+			this.server = server;
 		}
 		
 		/**
 		 * Die run-Methode nimmt Clientverbinungen an, erstellt einen neuen Player 
 		 * und fuegt ihn in das noNames-Set ein
-		 * Faengt eine IOException ab und gibt eine Fehlermeldung aus.
+		 * Faengt IOExceptions ab und gibt Fehlermeldungen aus.
 		 */
+		@Override
 		public void run() {
-			// begin-user-code
-			// TODO Auto-generated method stub
-
-			// end-user-code
+			while(waiting){
+				Socket cSocket;
+				ObjectOutputStream out;
+				ObjectInputStream in;
+	        	try {
+					cSocket = socket.accept();
+					out = new ObjectOutputStream(cSocket.getOutputStream());
+					in = new ObjectInputStream(cSocket.getInputStream());
+					Player player = new Player(server, out, in);
+					server.addToNoNames(player);
+				} catch (IOException e) {
+					System.err.println("Couldn't connect with Socket");
+				}        	
+	        }
 		}
 	}
 	
@@ -82,7 +113,7 @@ public class LobbyServer extends Server {
 	 * vorhanden ist.
 	 * @param name ist der Name der eingefuegt wird
 	 */
-	public void addName(String name) {
+	public synchronized void addName(String name) {
 		names.add(name);
 	}
 
@@ -91,15 +122,36 @@ public class LobbyServer extends Server {
 	 * Es wird vorrausgesetzt, dass der Name im Set vorhanden ist.
 	 * @param name ist der Name der geloescht wird
 	 */
-	public void removeName(String name) {
+	public synchronized void removeName(String name) {
 		names.remove(name);
 	}
+	
+	/**
+	 * Diese Methode fuegt einen Player dem noNames Set hinzu, welche der
+	 * Server verwaltet. Es wird vorrausgesetzt, dass der Player gueltig und 
+	 * noch nicht im Set vorhanden ist.
+	 * @param player ist der Player, der hinzugefuegt wird
+	 */
+	public synchronized void  addToNoNames(Player player) {
+		noNames.add(player);
+	}
+
+	/**
+	 * Diese Methode entfernt einen Player aus dem noNames Set, welche der
+	 * Server verwaltet. Es wird vorrausgesetzt, dass der Player gueltig und 
+	 * im Set vorhanden ist.
+	 * @param player ist der Player, der entfernt wird
+	 */
+	public synchronized void removeFromNoNames(Player player) {
+		noNames.remove(player);
+	}
+
 
 	/**
 	 * Fuegt einen neuen GameServer in das gameServerSet ein.
 	 * @param game ist der GameServer der eingefuegt wird
 	 */
-	public void addGameServer(GameServer game) {
+	public synchronized void addGameServer(GameServer game) {
 		// begin-user-code
 		// TODO Auto-generated method stub
 
@@ -110,7 +162,7 @@ public class LobbyServer extends Server {
 	 * Loescht einen GameServer aus dem Gameserverset.
 	 * @param game ist der GameServer der geloescht wird
 	 */
-	public void removeGameServer(GameServer game) {
+	public synchronized void removeGameServer(GameServer game) {
 		// begin-user-code
 		// TODO Auto-generated method stub
 
@@ -124,7 +176,7 @@ public class LobbyServer extends Server {
 	 * @param player ist der Thread der die Nachricht erhalten hat
 	 * @param chat ist das ComObject, das die Chatnachricht enthaelt
 	 */
-	public void receiveMessage(Player player, ComChatMessage chat){
+	public synchronized void receiveMessage(Player player, ComChatMessage chat){
 		broadcast(chat);
 	}
 	/**
@@ -136,7 +188,7 @@ public class LobbyServer extends Server {
 	 * @param quit ist das ComObject, welches angibt, dass der Spieler das 
 	 * Spiel vollstaendig verlaesst
 	 */
-	public void receiveMessage(Player player, ComClientQuit quit){
+	public synchronized void receiveMessage(Player player, ComClientQuit quit){
 	}
 	
 	/**
@@ -150,7 +202,7 @@ public class LobbyServer extends Server {
 	 * @param create ist das ComObject, welches angibt, dass der Player 
 	 * ein neues Spiel erstellt hat
 	 */
-	public void receiveMessage(Player player, ComCreateGameRequest create){
+	public synchronized void receiveMessage(Player player, ComCreateGameRequest create){
 	}
 	
 	/**
@@ -165,7 +217,7 @@ public class LobbyServer extends Server {
 	 * @param player ist der Thread der die Nachricht erhalten hat
 	 * @param join ist das ComObject, welches angibt, dass der Player einem Spiel beitreten will
 	 */
-	public void receiveMessage(Player player, ComJoinRequest join){
+	public synchronized void receiveMessage(Player player, ComJoinRequest join){
 		
 	}
 	
@@ -179,8 +231,19 @@ public class LobbyServer extends Server {
 	 * @param player ist der Thread der die Nachricht erhalten hat
 	 * @param login ist das ComObject, dass den Benutzernamen des Clients enthält
 	 */
-	public void receiveMessage(Player player, ComLoginRequest login){
-		
+	public synchronized void receiveMessage(Player player, ComLoginRequest login){
+		String CheckName = login.getPlayerName();
+		if(playerSet.contains(CheckName)){
+			ComWarning warning = new ComWarning("Login Fehler!");
+			player.send(warning);
+		} else {
+			player.setName(CheckName);
+			removeFromNoNames(player);
+			addPlayer(player);
+			addName(CheckName);
+			ComInitLobby init = initLobby();
+			player.send(init);
+		}
 	}
 	
 	/**
@@ -188,7 +251,26 @@ public class LobbyServer extends Server {
 	 * @return Gibt das ComInitLobby Objekt zurueck
 	 */
 	public ComInitLobby initLobby(){
-		return null;
+		List<String> playerList = new ArrayList<String>();
+		Set<GameServerRepresentation> gameList = new HashSet<GameServerRepresentation>();
+		if(!playerSet.isEmpty()){
+			playerList = new ArrayList<String>();
+			for (Player player : playerSet) {
+				playerList.add(player.getName());
+			}
+		} else {
+			playerList = null;
+		}
+		if(!gameServerSet.isEmpty()){
+			gameList = new HashSet<GameServerRepresentation>();
+			for (GameServer game : gameServerSet) {
+				gameList.add(game.getRepresentation());
+			}
+		} else {
+			gameList = null;
+		}
+		ComInitLobby init = new ComInitLobby(playerList, gameList);
+		return init;
 	}
 	
 	/**
@@ -198,7 +280,7 @@ public class LobbyServer extends Server {
 	 * im LobbyServer entfernt.
 	 * @param player ist der Tread von dem die IOException kommt
 	 */
-	public void handleIOException(Player player) {
+	public synchronized void handleIOException(Player player) {
 		// TODO Automatisch erstellter Methoden-Stub
 		
 	}

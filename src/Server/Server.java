@@ -21,7 +21,7 @@ public abstract class Server {
 	/**
 	 * Ein Set an Spielern, welche momentan vom Server verwaltet werden
 	 */
-	protected Set<Player> playerSet;
+	protected Set<Player> playerSet = new HashSet<Player>();
 
 	
 	/**
@@ -29,7 +29,7 @@ public abstract class Server {
 	 * @param player ist der Player von dem die Nachricht kommt
 	 * @param com ist das ComObjekt vom Client verschickt wurde
 	 */
-	public void receiveMessage(Player player, ComObject com) {
+	public synchronized void receiveMessage(Player player, ComObject com) {
 		// begin-user-code
 		// TODO Auto-generated method stub
 
