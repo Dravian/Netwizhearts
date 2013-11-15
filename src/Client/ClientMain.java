@@ -11,7 +11,7 @@ public class ClientMain {
 	/** 
 	 * Haelt eine Referenz auf die Controller Klasse der View.
 	 */
-	private ClientController clientController;
+	private static ClientController clientController;
 	
 	/**
 	 * Diese Mainmethode wird beim Start des Programmes wie
@@ -22,5 +22,6 @@ public class ClientMain {
 	 * @param args Argumente die nicht verwendet werden.
 	 */
 	public static void main(final String[] args){
+		clientController = new ClientController();
 	}
 }
