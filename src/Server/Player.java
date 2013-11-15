@@ -41,6 +41,7 @@ public class Player implements Runnable{
 		server = lobbyServer;
 		comOut = output;
 		comIn = input;
+		name = null;
 	}
 	
 	/**
@@ -52,6 +53,7 @@ public class Player implements Runnable{
 	 * Faengt eine IOException ab und ruft im jeweiligen Server, dem er zugeteilt
 	 * ist die handleIOException Methode auf.
 	 */
+	@Override
 	public void run(){
 		boolean run = true;
 		ComObject object;
@@ -60,11 +62,11 @@ public class Player implements Runnable{
 				object = (ComObject) comIn.readObject();
 				object.process(this, server);
 			} catch (ClassNotFoundException e) {
-				// TODO Automatisch erstellter Catch-Block
+				System.out.println("Classpath was not found!");
+				System.exit(0);
 				e.printStackTrace();
 			} catch (IOException e) {
 				server.handleIOException(this);
-				// TODO Automatisch erstellter Catch-Block
 				e.printStackTrace();
 			}			
 		}
