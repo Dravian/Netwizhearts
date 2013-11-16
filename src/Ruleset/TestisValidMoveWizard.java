@@ -56,11 +56,11 @@ public class TestisValidMoveWizard {
 		
 		ruleset.giveACard(playerState1, WizardCard.DreiGruen);
 		ruleset.giveACard(playerState1, WizardCard.ZaubererRot);
-		ruleset.givaACard(playerState1, WizardCard.ZweiBlau);
+		ruleset.giveACard(playerState1, WizardCard.ZweiBlau);
 		
 		ruleset.giveACard(playerState2, WizardCard.ZweiGruen);
 		ruleset.giveACard(playerState2, WizardCard.DreiRot);
-		ruleset.givaACard(playerState2, WizardCard.ZweiGelb);
+		ruleset.giveACard(playerState2, WizardCard.ZweiGelb);
 		
 		ruleset.giveACard(playerState3, WizardCard.NarrBlau);
 		ruleset.giveACard(playerState3, WizardCard.EinsGruen);

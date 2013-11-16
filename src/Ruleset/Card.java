@@ -16,4 +16,10 @@ public interface Card {
 	 * @return Die Farbe der Karte
 	 */
 	public Colour getColour();
+	
+	/**
+	 * Gibt den Spieltyp der Karte zurück
+	 * @return
+	 */
+	public RulesetType getRuleset();
 }

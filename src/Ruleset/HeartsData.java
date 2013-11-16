@@ -7,13 +7,6 @@ package Ruleset;
  * HeartsData. Die Otherdata eines Spielers zum Spiel Hearts
  */
 public class HeartsData extends OtherData {
-
-	/**
-	 * Erstellt die OtherData eines Spielers zum Spiel Wizard
-	 */
-	protected HeartsData() {
-		super();
-	}
 	
 	@Override
 	public String toString() {
