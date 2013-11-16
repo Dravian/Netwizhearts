@@ -65,7 +65,7 @@ public class TestisValidMoveHearts {
 	     ruleset.giveACard(playerState2, HeartsCard.Caro6);
 	     ruleset.giveACard(playerState3, HeartsCard.Pik4);
 	     ruleset.giveACard(playerState3, HeartsCard.Pik5);
-         ruleset.giveACard(playerState4, HeartsCard.Pik1);
+         ruleset.giveACard(playerState4, HeartsCard.Pik2);
 	     ruleset.giveACard(playerState4, HeartsCard.Herz7);     
 	 
 	     boolean isValidMove = ruleset.isValidMove(HeartsCard.Herz2);
@@ -85,7 +85,7 @@ public class TestisValidMoveHearts {
 	     ruleset.giveACard(playerState2, HeartsCard.Caro6);
 	     ruleset.giveACard(playerState3, HeartsCard.Pik4);
 	     ruleset.giveACard(playerState3, HeartsCard.Pik5);
-         ruleset.giveACard(playerState4, HeartsCard.Pik1);
+         ruleset.giveACard(playerState4, HeartsCard.Pik2);
 	     ruleset.giveACard(playerState4, HeartsCard.Herz7);
 	     
 	     boolean isValidMove = ruleset.isValidMove(HeartsCard.Herz2);

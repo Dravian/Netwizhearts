@@ -3,6 +3,7 @@
  */
 package Ruleset;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -26,6 +27,8 @@ public abstract class OtherData {
 	 * Erzeugt die OtherData eines Spielers
 	 */
 	protected OtherData() {
+		madeTricks = new HashSet<Card>();
+		points = 0;
 	}
 	
 	/**
@@ -33,7 +36,7 @@ public abstract class OtherData {
 	 * @param tricks Die Stiche
 	 */
 	protected void madeTrick(Set<Card> tricks) {
-		
+		madeTricks.addAll(tricks);
 	}
 	
 	/**
@@ -43,6 +46,7 @@ public abstract class OtherData {
 	 */
 	protected List<Card> removeTricks() {
 		List<Card> returnedCards = new LinkedList<Card>(madeTricks);
+		madeTricks = new HashSet<Card>();
 		return returnedCards;
 	}
 	
@@ -51,7 +55,7 @@ public abstract class OtherData {
 	 * @return Die Anzahl der gemachten Stiche
 	 */
 	protected int getNumberOfTricks() {
-		return 0;
+		return madeTricks.size();
 	}
 	
 	/**
