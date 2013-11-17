@@ -96,6 +96,7 @@ public class GameServer extends Server {
 	 * Zusaetzlich wird die Zahl der currentPlayers um eins Erhoeht.
 	 * @param player ist der Player, der hinzugefuegt wird
 	 */
+	@Override
 	public synchronized void addPlayer(Player player) {
 		playerSet.add(player);
 		++currentPlayers;
@@ -107,6 +108,7 @@ public class GameServer extends Server {
 	 * Zusaetzlich wird die Zahl der currentPlayers um eins Verringert.
 	 * @param player ist der Player, der entfernt wird
 	 */
+	@Override
 	public synchronized void removePlayer(Player player) {
 		playerSet.remove(player);
 		--currentPlayers;
@@ -140,19 +142,9 @@ public class GameServer extends Server {
 	 * @param player ist der Thread der die Nachricht erhalten hat
 	 * @param kicked ist das ComObject, das verarbeitet wird
 	 */
+	@Override
 	public synchronized void receiveMessage(Player player, ComKickPlayerRequest kickPlayer) {
-		
-	}
-	
-	/**
-	 * Diese Methode ist dafur zustaendig eine Chatnachricht an alle Clients im
-	 * Spiel zu verschicken. Dafuer wird die ComChatMessage mit broadcast
-	 * an alle Spieler im playerSet verteilt.
-	 * @param player ist der Thread der die Nachricht erhalten hat
-	 * @param chat ist das ComObject, das die Chatnachricht enthaelt
-	 */
-	public synchronized void receiveMessage(Player player, ComChatMessage chat){
-		broadcast(chat);
+		// TODO Auto-generated method stub
 	}
 	
 	/**
@@ -164,7 +156,9 @@ public class GameServer extends Server {
 	 * @param leave ist das ComObject, welches angibt, dass der Spieler in die Lobby 
 	 * zurueckkehrt
 	 */
+	@Override
 	public synchronized void receiveMessage(Player player, ComClientLeave leave){
+		// TODO Auto-generated method stub
 	}
 	
 	/**
@@ -175,8 +169,9 @@ public class GameServer extends Server {
 	 * @param player ist der Thread der die Nachricht erhalten hat
 	 * @param quit ist das ComObject, welches angibt, dass der Spieler das Spiel verlaesst
 	 */
+	@Override
 	public synchronized void receiveMessage(Player player, ComClientQuit quit){
-
+		// TODO Auto-generated method stub
 	}
 	
 	/**
@@ -185,8 +180,9 @@ public class GameServer extends Server {
 	 * @param player ist der Thread der die Nachricht erhalten hat
 	 * @param start ist das ComObject, dass angibt, dass das Spiel gestartet werden soll
 	 */
+	@Override
 	public synchronized void receiveMessage(Player player, ComStartGame start){
-		
+		// TODO Auto-generated method stub
 	}
 	
 	/**
@@ -196,8 +192,9 @@ public class GameServer extends Server {
 	 * @param ruleset ist das ComObject, das zeigt, dass das Object
 	 * vom Ruleset bearbeitet werden muss
 	 */
+	@Override
 	public synchronized void receiveMessage(Player player, ComRuleset ruleset){
-
+		// TODO Auto-generated method stub
 	}
 	
 	/**
@@ -205,6 +202,7 @@ public class GameServer extends Server {
 	 * @return Gibt das ComInitGameLobby Objekt zurueck
 	 */
 	public ComInitGameLobby initLobby(){
+		// TODO Auto-generated method stub
 		return null;
 	}
 	
@@ -216,9 +214,10 @@ public class GameServer extends Server {
 	 * Alle Spieler, die sich im Spiel befinden werden durch Aufruf von changeServer an 
 	 * die Lobby zurueckgegeben und bekommen ein ComInitLobby und ein ComWarning.
 	 * Das Spiel wird aus dem gameServerSet des LobbyServers entfernt.
-	 * @param player ist der Tread von dem die IOException kommt
+	 * @param player ist der Tread von dem die Exception kommt
 	 */
-	public synchronized void handleIOException(Player player) {
+	@Override
+	public synchronized void handleException(Player player) {
 		// TODO Automatisch erstellter Methoden-Stub
 		
 	}

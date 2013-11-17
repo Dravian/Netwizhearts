@@ -3,12 +3,9 @@
  */
 package Server;
 
-import java.io.IOException;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
-import javax.activation.CommandObject;
 
 import ComObjects.*;
 
@@ -22,20 +19,52 @@ public abstract class Server {
 	 * Ein Set an Spielern, welche momentan vom Server verwaltet werden
 	 */
 	protected Set<Player> playerSet = new HashSet<Player>();
-
+	
+	
+	//test
+	public synchronized void receiveMessage(Player player, ComLoginRequest login){
+		System.out.println("Das ist die falsche Methode");		
+	}
 	
 	/**
-	 * Diese Methode dient zur Verarbeitung von eingehenden ComObjects 
-	 * @param player ist der Player von dem die Nachricht kommt
-	 * @param com ist das ComObjekt vom Client verschickt wurde
+	 * Diese Methode ist dafur zustaendig eine Chatnachricht an alle Clients
+	 * des Servers zu verschicken. Dafuer wird die ComChatMessage mit broadcast
+	 * an alle Spieler im playerSet verteilt.
+	 * @param player ist der Thread der die Nachricht erhalten hat
+	 * @param chat ist das ComObject, das die Chatnachricht enthaelt
 	 */
-	public synchronized void receiveMessage(Player player, ComObject com) {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	public void receiveMessage(Player player, ComChatMessage chat) {
+		broadcast(chat);		
 	}
 
+	public void receiveMessage(Player player, ComClientQuit quit) {
+		System.out.println("Das ist die falsche Methode");		
+	}
+
+	public void receiveMessage(Player player, ComCreateGameRequest create) {
+		System.out.println("Das ist die falsche Methode");			
+	}
+
+	public void receiveMessage(Player player, ComJoinRequest join) {
+		System.out.println("Das ist die falsche Methode");			
+	}
+
+	public void receiveMessage(Player player, ComKickPlayerRequest kickPlayer) {
+		System.out.println("Das ist die falsche Methode");			
+	}
+
+	public void receiveMessage(Player player, ComClientLeave leave) {
+		System.out.println("Das ist die falsche Methode");			
+	}
+
+	public void receiveMessage(Player player, ComStartGame start) {
+		System.out.println("Das ist die falsche Methode");			
+	}
+
+	public void receiveMessage(Player player, ComRuleset ruleset) {
+		System.out.println("Das ist die falsche Methode");			
+	}
+	
 	/**
 	 * Diese Methode wird genutzt, um ein ComObject an einen einzigen
 	 * Client zu verschicken. Der Player der die Nachricht verschicken soll
@@ -90,11 +119,13 @@ public abstract class Server {
 	/**
 	 * Diese Methode legt den Ablauf fest, was passiert, falls
 	 * die Verbindung zu einem Client verloren gegangen ist.
-	 * @param player ist der Tread von dem die IOException kommt
+	 * @param player ist der Tread von dem die Exception kommt
 	 */
-	public void handleIOException(Player player) {
+	public void handleException(Player player) {
 		// TODO Automatisch erstellter Methoden-Stub
 		
 	}
+
+	
 
 }
