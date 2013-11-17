@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.net.Socket;
 
 import org.junit.After;
 import org.junit.Before;
@@ -19,12 +20,13 @@ public class receiveTest {
 
 	Server lobby;
 	Player player;
+	Socket socket;
 	
 	@Before
 	public void setUp() throws Exception {
 		lobby = new LobbyServer();
-		player = new Player(lobby, new ObjectOutputStream(System.out), null);
-		lobby.addPlayer(player);
+		socket = new Socket();
+		player = new Player(lobby, socket);
 	}
 
 	@After

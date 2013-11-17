@@ -86,16 +86,13 @@ public class LobbyServer extends Server {
 		public void run() {
 			while(waiting){
 				Socket cSocket;
-				ObjectOutputStream out;
-				ObjectInputStream in;
 	        	try {
 					cSocket = socket.accept();
-					out = new ObjectOutputStream(cSocket.getOutputStream());
-					in = new ObjectInputStream(cSocket.getInputStream());
-					Player player = new Player(server, out, in);
+					Player player = new Player(server, cSocket);
 					player.start();
 				} catch (IOException e) {
 					System.err.println("Couldn't connect with Socket");
+					e.printStackTrace();
 				}        	
 	        }
 		}
@@ -153,6 +150,11 @@ public class LobbyServer extends Server {
 	 */
 	@Override
 	public synchronized void receiveMessage(Player player, ComClientQuit quit){
+		if(playerSet.contains(player)){
+		
+		} else {
+			System.out.println("Der Spieler wurde nicht ekannt!");
+		}
 		// TODO Auto-generated method stub
 	}
 	
@@ -169,6 +171,11 @@ public class LobbyServer extends Server {
 	 */
 	@Override
 	public synchronized void receiveMessage(Player player, ComCreateGameRequest create){
+		if(playerSet.contains(player)){
+			
+		} else {
+			System.out.println("Der Spieler wurde nicht ekannt!");
+		}
 		// TODO Auto-generated method stub
 	}
 	
@@ -186,6 +193,11 @@ public class LobbyServer extends Server {
 	 */
 	@Override
 	public synchronized void receiveMessage(Player player, ComJoinRequest join){
+		if(playerSet.contains(player)){
+			
+		} else {
+			System.out.println("Der Spieler wurde nicht ekannt!");
+		}
 		// TODO Auto-generated method stub
 		
 	}
@@ -204,7 +216,7 @@ public class LobbyServer extends Server {
 	public synchronized void receiveMessage(Player player, ComLoginRequest login){
 		System.out.println("login");
 		String CheckName = login.getPlayerName();
-		if(playerSet.contains(CheckName)){
+		if(names.contains(CheckName)){
 			ComWarning warning = new ComWarning("Login Fehler!");
 			player.send(warning);
 		} else {
