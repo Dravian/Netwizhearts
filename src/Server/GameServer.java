@@ -144,6 +144,11 @@ public class GameServer extends Server {
 	 */
 	@Override
 	public synchronized void receiveMessage(Player player, ComKickPlayerRequest kickPlayer) {
+		if(playerSet.contains(player)){
+			
+		} else {
+			System.out.println("Der Spieler wurde nicht ekannt!");
+		}
 		// TODO Auto-generated method stub
 	}
 	
@@ -158,6 +163,11 @@ public class GameServer extends Server {
 	 */
 	@Override
 	public synchronized void receiveMessage(Player player, ComClientLeave leave){
+		if(playerSet.contains(player)){
+			
+		} else {
+			System.out.println("Der Spieler wurde nicht ekannt!");
+		}
 		// TODO Auto-generated method stub
 	}
 	
@@ -171,6 +181,11 @@ public class GameServer extends Server {
 	 */
 	@Override
 	public synchronized void receiveMessage(Player player, ComClientQuit quit){
+		if(playerSet.contains(player)){
+			
+		} else {
+			System.out.println("Der Spieler wurde nicht ekannt!");
+		}
 		// TODO Auto-generated method stub
 	}
 	
@@ -182,6 +197,11 @@ public class GameServer extends Server {
 	 */
 	@Override
 	public synchronized void receiveMessage(Player player, ComStartGame start){
+		if(playerSet.contains(player)){
+			
+		} else {
+			System.out.println("Der Spieler wurde nicht ekannt!");
+		}
 		// TODO Auto-generated method stub
 	}
 	
@@ -194,6 +214,11 @@ public class GameServer extends Server {
 	 */
 	@Override
 	public synchronized void receiveMessage(Player player, ComRuleset ruleset){
+		if(playerSet.contains(player)){
+			
+		} else {
+			System.out.println("Der Spieler wurde nicht ekannt!");
+		}
 		// TODO Auto-generated method stub
 	}
 	

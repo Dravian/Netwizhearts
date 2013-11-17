@@ -3,6 +3,7 @@ package Server;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.Socket;
 
 import ComObjects.*;
 
@@ -20,6 +21,12 @@ public class Player extends Thread{
 	 * Der Server, an den eingehende ComObjects uebergeben werden sollen
 	 */
 	private Server server;
+	
+	/**
+	 * Socket des Clients
+	 */
+	private Socket connection;
+	
 	/**
 	 * ObjectOutputStream, um fuer Nachrichten an den Client zu Senden
 	 */
@@ -34,17 +41,28 @@ public class Player extends Thread{
 	private boolean run = false;
 
 	/**
-	 * Konstruktor des Players, in ihm werden die Attribute server, comOut und comIn mit
+	 * Konstruktor des Players, in ihm werden die Attribute server und connection mit
 	 * vom ClientListererThread uebergebenen Werten Instanziiert.
+	 * ComIn und comOut initialisiert.
 	 * @param lobbyServer ist der LobbyServer, der zu Beginn den Player verwaltet.
-	 * @param output ist der ObjectOutputStream an den entsprechenden Client
-	 * @param input ist der ObjectInputStream vom entsprechenden Client
+	 * @param socket ist der Socket des Clients
 	 */
-	public Player(Server lobbyServer, ObjectOutputStream output, ObjectInputStream input){
+	public Player(Server lobbyServer, Socket socket){
 		super("Player");
 		server = lobbyServer;
-		comOut = output;
-		comIn = input;
+		connection = socket;
+		try {
+			comOut = new ObjectOutputStream(connection.getOutputStream());
+		} catch (IOException e) {
+			System.err.println("Couldn't getOutputStream");
+			e.printStackTrace();
+		}
+		try {
+			comIn = new ObjectInputStream(connection.getInputStream());
+		} catch (IOException e) {
+			System.err.println("Couldn't getInputStream");
+			e.printStackTrace();
+		}
 		name = null;
 	}
 	
@@ -111,7 +129,6 @@ public class Player extends Thread{
 				// TODO Automatisch erstellter Catch-Block
 				e1.printStackTrace();
 			}
-			e.printStackTrace();
 			e.printStackTrace();
 		}
 	}

@@ -34,7 +34,11 @@ public abstract class Server {
 	 * @param chat ist das ComObject, das die Chatnachricht enthaelt
 	 */
 	public void receiveMessage(Player player, ComChatMessage chat) {
-		broadcast(chat);		
+		if(playerSet.contains(player)){
+			broadcast(chat);
+		} else {
+			System.out.println("Der Spieler wurde nicht ekannt!");
+		}			
 	}
 
 	public void receiveMessage(Player player, ComClientQuit quit) {
