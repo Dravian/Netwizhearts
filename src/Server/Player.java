@@ -53,6 +53,7 @@ public class Player extends Thread{
 		connection = socket;
 		try {
 			comOut = new ObjectOutputStream(connection.getOutputStream());
+			comOut.flush();
 		} catch (IOException e) {
 			System.err.println("Couldn't getOutputStream");
 			e.printStackTrace();
@@ -90,6 +91,7 @@ public class Player extends Thread{
 				try {
 					comIn.close();
 					comOut.close();
+					connection.close();
 				} catch (IOException e1) {
 					// TODO Automatisch erstellter Catch-Block
 					e1.printStackTrace();
@@ -101,6 +103,7 @@ public class Player extends Thread{
 				try {
 					comIn.close();
 					comOut.close();
+					connection.close();
 				} catch (IOException e1) {
 					// TODO Automatisch erstellter Catch-Block
 					e1.printStackTrace();
@@ -119,12 +122,14 @@ public class Player extends Thread{
 	public void send(ComObject com){
 		try {
 			comOut.writeObject(com);
+			comOut.flush();
 		} catch (IOException e) {
 			run = false;
 			server.handleException(this);
 			try {
 				comIn.close();
 				comOut.close();
+				connection.close();
 			} catch (IOException e1) {
 				// TODO Automatisch erstellter Catch-Block
 				e1.printStackTrace();
