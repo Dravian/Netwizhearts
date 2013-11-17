@@ -121,7 +121,10 @@ public class ClientModel extends Observable{
 	 * @param msg die ankommende ComInitLobby Nachricht
 	 */
 	public void receiveMessage(ComInitLobby msg) {
-		System.out.println("Lobby init empfangen");
+		if (state == ClientState.LOGIN) {
+			System.out.println("login successfull");
+			informView(ViewNotification.loginSuccessful);
+		}
 	}
 
 	/**
@@ -157,10 +160,7 @@ public class ClientModel extends Observable{
 	 *  @param ack Eine Bestätigung durch den Server.
 	 */
 	public void receiveMessage(ComServerAcknowledgement ack) {
-		if (state == ClientState.LOGIN) {
-			System.out.println("login successfull");
-			informView(ViewNotification.loginSuccessful);
-		}
+		
 	}
 
 	public void receiveMessage(ComWarning warning) {
