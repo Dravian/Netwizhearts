@@ -1,3 +1,89 @@
-\BOOKMARK [2][]{Outline0.1}{Kurze Beschreibung der Klassen und Methoden f\374r die Tests}{}% 1
-\BOOKMARK [2][]{Outline0.2}{DummyKlassen}{}% 2
-\BOOKMARK [2][]{Outline0.3}{Tests}{}% 3
+\BOOKMARK [1][-]{section.1}{Einleitung}{}% 1
+\BOOKMARK [1][-]{section.2}{Systemarchitektur}{}% 2
+\BOOKMARK [1][-]{section.3}{Klassendiagramm}{}% 3
+\BOOKMARK [2][-]{subsection.3.1}{Packages}{section.3}% 4
+\BOOKMARK [1][-]{section.4}{\304nderungen am Entwurf}{}% 5
+\BOOKMARK [2][-]{subsection.4.1}{Zus\344tzliche Pattern}{section.4}% 6
+\BOOKMARK [3][-]{subsubsection.4.1.1}{Factory Pattern}{subsection.4.1}% 7
+\BOOKMARK [3][-]{subsubsection.4.1.2}{Builder Pattern}{subsection.4.1}% 8
+\BOOKMARK [3][-]{subsubsection.4.1.3}{Visitor Pattern}{subsection.4.1}% 9
+\BOOKMARK [2][-]{subsection.4.2}{Server}{section.4}% 10
+\BOOKMARK [2][-]{subsection.4.3}{}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.4}{}{section.4}% 12
+\BOOKMARK [2][-]{subsection.4.5}{}{section.4}% 13
+\BOOKMARK [2][-]{subsection.4.6}{}{section.4}% 14
+\BOOKMARK [1][-]{section.5}{Spezifizierung der Klassen}{}% 15
+\BOOKMARK [2][-]{subsection.5.1}{Client}{section.5}% 16
+\BOOKMARK [3][-]{subsubsection.5.1.1}{ClientMain}{subsection.5.1}% 17
+\BOOKMARK [3][-]{subsubsection.5.1.2}{ClientController}{subsection.5.1}% 18
+\BOOKMARK [3][-]{subsubsection.5.1.3}{ClientModel}{subsection.5.1}% 19
+\BOOKMARK [3][-]{subsubsection.5.1.4}{MessageListenerThread}{subsection.5.1}% 20
+\BOOKMARK [3][-]{subsubsection.5.1.5}{MVMessage}{subsection.5.1}% 21
+\BOOKMARK [3][-]{subsubsection.5.1.6}{MVLobby}{subsection.5.1}% 22
+\BOOKMARK [3][-]{subsubsection.5.1.7}{MVGameLobby}{subsection.5.1}% 23
+\BOOKMARK [3][-]{subsubsection.5.1.8}{MVGame}{subsection.5.1}% 24
+\BOOKMARK [3][-]{subsubsection.5.1.9}{Window}{subsection.5.1}% 25
+\BOOKMARK [3][-]{subsubsection.5.1.10}{WizID}{subsection.5.1}% 26
+\BOOKMARK [3][-]{subsubsection.5.1.11}{HeartsID}{subsection.5.1}% 27
+\BOOKMARK [2][-]{subsection.5.2}{View}{section.5}% 28
+\BOOKMARK [3][-]{subsubsection.5.2.1}{Lobby}{subsection.5.2}% 29
+\BOOKMARK [3][-]{subsubsection.5.2.2}{GameLobby}{subsection.5.2}% 30
+\BOOKMARK [3][-]{subsubsection.5.2.3}{Game}{subsection.5.2}% 31
+\BOOKMARK [3][-]{subsubsection.5.2.4}{Password}{subsection.5.2}% 32
+\BOOKMARK [3][-]{subsubsection.5.2.5}{CreateGame}{subsection.5.2}% 33
+\BOOKMARK [3][-]{subsubsection.5.2.6}{Login}{subsection.5.2}% 34
+\BOOKMARK [3][-]{subsubsection.5.2.7}{ChooseItem}{subsection.5.2}% 35
+\BOOKMARK [3][-]{subsubsection.5.2.8}{Warning}{subsection.5.2}% 36
+\BOOKMARK [3][-]{subsubsection.5.2.9}{InputNumber}{subsection.5.2}% 37
+\BOOKMARK [3][-]{subsubsection.5.2.10}{MVMessages}{subsection.5.2}% 38
+\BOOKMARK [3][-]{subsubsection.5.2.11}{ScoreWindow}{subsection.5.2}% 39
+\BOOKMARK [3][-]{subsubsection.5.2.12}{ChooseCards}{subsection.5.2}% 40
+\BOOKMARK [3][-]{subsubsection.5.2.13}{GamePanel}{subsection.5.2}% 41
+\BOOKMARK [3][-]{subsubsection.5.2.14}{DiscardPile}{subsection.5.2}% 42
+\BOOKMARK [3][-]{subsubsection.5.2.15}{DrawDesk}{subsection.5.2}% 43
+\BOOKMARK [3][-]{subsubsection.5.2.16}{OtherPlayer}{subsection.5.2}% 44
+\BOOKMARK [3][-]{subsubsection.5.2.17}{OwnHand}{subsection.5.2}% 45
+\BOOKMARK [3][-]{subsubsection.5.2.18}{Language}{subsection.5.2}% 46
+\BOOKMARK [2][-]{subsection.5.3}{Ruleset}{section.5}% 47
+\BOOKMARK [3][-]{subsubsection.5.3.1}{ServerRuleset}{subsection.5.3}% 48
+\BOOKMARK [3][-]{subsubsection.5.3.2}{Wizard}{subsection.5.3}% 49
+\BOOKMARK [3][-]{subsubsection.5.3.3}{Hearts}{subsection.5.3}% 50
+\BOOKMARK [3][-]{subsubsection.5.3.4}{GameState}{subsection.5.3}% 51
+\BOOKMARK [3][-]{subsubsection.5.3.5}{GameClientUpdate}{subsection.5.3}% 52
+\BOOKMARK [3][-]{subsubsection.5.3.6}{HeartsData}{subsection.5.3}% 53
+\BOOKMARK [3][-]{subsubsection.5.3.7}{WizData}{subsection.5.3}% 54
+\BOOKMARK [3][-]{subsubsection.5.3.8}{PlayerState}{subsection.5.3}% 55
+\BOOKMARK [3][-]{subsubsection.5.3.9}{Card}{subsection.5.3}% 56
+\BOOKMARK [3][-]{subsubsection.5.3.10}{OtherData}{subsection.5.3}% 57
+\BOOKMARK [3][-]{subsubsection.5.3.11}{GamePhase}{subsection.5.3}% 58
+\BOOKMARK [3][-]{subsubsection.5.3.12}{WizardCard}{subsection.5.3}% 59
+\BOOKMARK [3][-]{subsubsection.5.3.13}{HeartsCard}{subsection.5.3}% 60
+\BOOKMARK [2][-]{subsection.5.4}{Server}{section.5}% 61
+\BOOKMARK [3][-]{subsubsection.5.4.1}{ServerMain}{subsection.5.4}% 62
+\BOOKMARK [3][-]{subsubsection.5.4.2}{LobbyServer}{subsection.5.4}% 63
+\BOOKMARK [3][-]{subsubsection.5.4.3}{GameServer}{subsection.5.4}% 64
+\BOOKMARK [3][-]{subsubsection.5.4.4}{ClientListenerThread}{subsection.5.4}% 65
+\BOOKMARK [3][-]{subsubsection.5.4.5}{GameServer}{subsection.5.4}% 66
+\BOOKMARK [3][-]{subsubsection.5.4.6}{Server}{subsection.5.4}% 67
+\BOOKMARK [3][-]{subsubsection.5.4.7}{Player}{subsection.5.4}% 68
+\BOOKMARK [3][-]{subsubsection.5.4.8}{GameServerRepr\344sentation}{subsection.5.4}% 69
+\BOOKMARK [2][-]{subsection.5.5}{ComObjects}{section.5}% 70
+\BOOKMARK [3][-]{subsubsection.5.5.1}{Ruleset}{subsection.5.5}% 71
+\BOOKMARK [3][-]{subsubsection.5.5.2}{ComObject}{subsection.5.5}% 72
+\BOOKMARK [3][-]{subsubsection.5.5.3}{Commands}{subsection.5.5}% 73
+\BOOKMARK [3][-]{subsubsection.5.5.4}{ComLogin}{subsection.5.5}% 74
+\BOOKMARK [3][-]{subsubsection.5.5.5}{ComUpdatePlayerlist}{subsection.5.5}% 75
+\BOOKMARK [3][-]{subsubsection.5.5.6}{ComInitGameLobby}{subsection.5.5}% 76
+\BOOKMARK [3][-]{subsubsection.5.5.7}{ComChatMessage}{subsection.5.5}% 77
+\BOOKMARK [3][-]{subsubsection.5.5.8}{ComPassword}{subsection.5.5}% 78
+\BOOKMARK [3][-]{subsubsection.5.5.9}{ComJoinRequest}{subsection.5.5}% 79
+\BOOKMARK [3][-]{subsubsection.5.5.10}{ComKicklayer}{subsection.5.5}% 80
+\BOOKMARK [3][-]{subsubsection.5.5.11}{ComInitGameLobby}{subsection.5.5}% 81
+\BOOKMARK [3][-]{subsubsection.5.5.12}{ComLobbyUpdateGamelist}{subsection.5.5}% 82
+\BOOKMARK [1][-]{section.6}{JUnit-Tests}{}% 83
+\BOOKMARK [1][-]{section.7}{Implementierungsplan}{}% 84
+\BOOKMARK [2][-]{subsection.7.1}{Milestone 1}{section.7}% 85
+\BOOKMARK [2][-]{subsection.7.2}{Milestone 2}{section.7}% 86
+\BOOKMARK [2][-]{subsection.7.3}{Milestone 3}{section.7}% 87
+\BOOKMARK [2][-]{subsection.7.4}{Finale Version}{section.7}% 88
+\BOOKMARK [2][-]{subsection.7.5}{Gantt-Diagramme}{section.7}% 89

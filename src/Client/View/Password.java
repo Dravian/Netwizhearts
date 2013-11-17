@@ -12,6 +12,9 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
+import Client.ClientModel;
+import Client.ViewNotification;
+
 /**
  * Password. Dieses Fenster ermoeglicht die Eingabe eines Passwortes 
  * um einem Passwortgeschuetztem Spiel beizutreten 
@@ -73,6 +76,15 @@ public class Password extends JFrame implements Observer{
 	}
 	
 	/**
+	 * Gibt das eingegebene Passwort zurueck.
+	 * 
+	 * @return das eingegebene Passwort
+	 */
+	public String getPassword() {
+		return textField.getText();
+	}
+	
+	/**
 	 * Fuegt einen ActionListener fuer den 'Join' Button hinzu
 	 * 
 	 * @param a ein ActionListener
@@ -101,11 +113,18 @@ public class Password extends JFrame implements Observer{
 	 * oder eine Fehlermeldung angezeigt.
 	 * 
 	 * @param o erwartet ein Objekt von der Klasse ClientModel
-	 * @param arg erwartet: openWarning, passwordAccepted
+	 * @param arg erwartet: passwordAccepted
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
+		ViewNotification message = (ViewNotification) arg;
+		switch (message) {
+		case passwordAccepted:
+			this.setVisible(false);
+			break;
+		default:
+			break;
+		}
 		
 	}
 }

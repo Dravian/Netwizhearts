@@ -3,6 +3,7 @@ package Client.View;
 import java.awt.EventQueue;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -17,6 +18,8 @@ import javax.swing.JButton;
 import javax.swing.AbstractListModel;
 import javax.swing.ListSelectionModel;
 
+import Ruleset.RulesetType;
+import Server.GameServerRepresentation;
 import Client.ClientModel;
 import Client.ViewNotification;
 
@@ -31,14 +34,14 @@ import Client.ViewNotification;
  */
 public class Lobby extends JFrame implements Observer{
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
+	
+	List<GameServerRepresentation> gameRepList;
 	private JPanel contentPane;
 	private JTextField messageField;
-	private JList playerList;
-	private JList gameList;
+	private JList<String> playerList;
+	private JList<String> gameList;
 	private JScrollPane scrollPane;
 	private JButton btnHostGame;
 	private JButton btnJoinGame;
@@ -62,7 +65,7 @@ public class Lobby extends JFrame implements Observer{
 	/**
 	 * Erstellt das Lobby-Fenster
 	 */
-	public Lobby() {
+	public Lobby() {		
 		setTitle("Server Lobby");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 596, 433);
@@ -71,37 +74,18 @@ public class Lobby extends JFrame implements Observer{
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		playerList = new JList(); //TODO
-		playerList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); 
-		playerList.setModel(new AbstractListModel() {
-			String[] values = new String[] {"Player1", "Player2", "Player3", "Player4"};
-			public int getSize() {
-				return values.length;
-			}
-			public Object getElementAt(int index) {
-				return values[index];
-			}
-		});
+		playerList = new JList<String>();
+		playerList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		playerList.setBounds(10, 11, 272, 191);
 		contentPane.add(playerList);
 		
 		chatlog = new JTextArea();
 		chatlog.setLineWrap(true);
 		chatlog.setEditable(false);
-		chatlog.setText("Spieler2: hello\r\nSpieler1: hi\r\nSpieler3: morning!\r\nSpieler2: wanna play a game of hearts?");
 		chatlog.setBounds(10, 213, 564, 94);
 		chatlog.setRows(5);
 		
-		gameList = new JList(); //TODO
-		gameList.setModel(new AbstractListModel() {
-			String[] values = new String[] {"Server1   (3/4)", "Server2   (2/6)"};
-			public int getSize() {
-				return values.length;
-			}
-			public Object getElementAt(int index) {
-				return values[index];
-			}
-		});
+		gameList = new JList<String>();
 		gameList.setBounds(292, 11, 282, 191);
 		contentPane.add(gameList);
 		
@@ -125,6 +109,24 @@ public class Lobby extends JFrame implements Observer{
 		btnLeave = new JButton("Leave");
 		btnLeave.setBounds(10, 364, 117, 25);
 		contentPane.add(btnLeave);
+	}
+	
+	/**
+	 * Gibt den Namen des Spielleiters, des ausgewählten Spiels zurueck
+	 * 
+	 * @return Name des Spielleiters
+	 */
+	public String getChosenGameName() {
+		return gameRepList.get(gameList.getSelectedIndex()).getGameMasterName();
+	}
+	
+	/**
+	 * Gibt die eingetippte Chatnachricht zurueck
+	 * 
+	 * @return Chatnachricht
+	 */
+	public String getChatMessage() {
+		return messageField.getText();
 	}
 	
 	/**
@@ -175,6 +177,20 @@ public class Lobby extends JFrame implements Observer{
 	private void updateLanguage() {
 		//TODO
 	}
+	
+	private void updateGameList(List<GameServerRepresentation> gameRepresentationList) {
+		int length = gameRepresentationList.size();
+		String[] games = new String[length];
+		for (int i = 0; i < length; i++) {
+			String s = "";
+			if (gameRepresentationList.get(i).isHasPassword()) {
+				s = "P";
+			}
+			games[i] = gameRepresentationList.get(i).getName() + " (" + gameRepresentationList.get(i).getCurrentPlayers()
+						+ "/" + gameRepresentationList.get(i).getMaxPlayers() + ") " + s;
+		}
+		gameList.setListData(games);
+	}
 
 	/**
 	 * Wird durch notify() im ClientModel aufgerufen. Je nach dem in arg
@@ -182,7 +198,7 @@ public class Lobby extends JFrame implements Observer{
 	 * oder eine Fehlermeldung angezeigt.
 	 * 
 	 * @param o erwartet ein Objekt von der Klasse ClientModel
-	 * @param arg erwartet: joinGameSuccessful, windowChangeForced,
+	 * @param arg erwartet: loginSuccessful, joinGameSuccessful, windowChangeForced,
 	 * 			  playerListUpdate, gameListUpdate, chatMessage
 	 */
 	@Override
@@ -196,6 +212,14 @@ public class Lobby extends JFrame implements Observer{
 			this.setVisible(true);
 			break;
 		case playerListUpdate:
+			playerList.setListData((String[]) observed.getPlayerlist().toArray());
+			break;
+		case gameListUpdate:
+			gameRepList = observed.getLobbyGamelist();
+			updateGameList(gameRepList);
+			break;
+		case joinGameSuccessful:
+			this.setVisible(false);
 			break;
 		default:
 			break;

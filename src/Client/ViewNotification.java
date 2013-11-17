@@ -25,7 +25,7 @@ public enum ViewNotification {
 	
 	loginSuccessful,
 	
-	joinGameSuccesful,
+	joinGameSuccessful,
 	
 	gameStarted,
 	

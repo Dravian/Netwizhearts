@@ -1,5 +1,90 @@
-\beamer@endinputifotherversion {3.27pt}
 \select@language {ngerman}
-\beamer@sectionintoc {1}{Kurze Beschreibung der Klassen und Methoden f\IeC {\"u}r die Tests}{3}{0}{1}
-\beamer@sectionintoc {2}{DummyKlassen}{6}{0}{2}
-\beamer@sectionintoc {3}{Tests}{8}{0}{3}
+\contentsline {section}{\numberline {1}Einleitung}{4}{section.1}
+\contentsline {section}{\numberline {2}Systemarchitektur}{5}{section.2}
+\contentsline {section}{\numberline {3}Klassendiagramm}{6}{section.3}
+\contentsline {subsection}{\numberline {3.1}Packages}{6}{subsection.3.1}
+\contentsline {section}{\numberline {4}\IeC {\"A}nderungen am Entwurf}{7}{section.4}
+\contentsline {subsection}{\numberline {4.1}Zus\IeC {\"a}tzliche Pattern}{7}{subsection.4.1}
+\contentsline {subsubsection}{\numberline {4.1.1}Factory Pattern}{7}{subsubsection.4.1.1}
+\contentsline {subsubsection}{\numberline {4.1.2}Builder Pattern}{7}{subsubsection.4.1.2}
+\contentsline {subsubsection}{\numberline {4.1.3}Visitor Pattern}{7}{subsubsection.4.1.3}
+\contentsline {subsection}{\numberline {4.2}Server}{7}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}}{7}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}}{7}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.5}}{7}{subsection.4.5}
+\contentsline {subsection}{\numberline {4.6}}{7}{subsection.4.6}
+\contentsline {section}{\numberline {5}Spezifizierung der Klassen}{8}{section.5}
+\contentsline {subsection}{\numberline {5.1}Client}{8}{subsection.5.1}
+\contentsline {subsubsection}{\numberline {5.1.1}ClientMain}{8}{subsubsection.5.1.1}
+\contentsline {subsubsection}{\numberline {5.1.2}ClientController}{8}{subsubsection.5.1.2}
+\contentsline {subsubsection}{\numberline {5.1.3}ClientModel}{8}{subsubsection.5.1.3}
+\contentsline {subsubsection}{\numberline {5.1.4}MessageListenerThread}{8}{subsubsection.5.1.4}
+\contentsline {subsubsection}{\numberline {5.1.5}MVMessage}{8}{subsubsection.5.1.5}
+\contentsline {subsubsection}{\numberline {5.1.6}MVLobby}{8}{subsubsection.5.1.6}
+\contentsline {subsubsection}{\numberline {5.1.7}MVGameLobby}{8}{subsubsection.5.1.7}
+\contentsline {subsubsection}{\numberline {5.1.8}MVGame}{8}{subsubsection.5.1.8}
+\contentsline {subsubsection}{\numberline {5.1.9}Window}{8}{subsubsection.5.1.9}
+\contentsline {subsubsection}{\numberline {5.1.10}WizID}{8}{subsubsection.5.1.10}
+\contentsline {subsubsection}{\numberline {5.1.11}HeartsID}{8}{subsubsection.5.1.11}
+\contentsline {subsection}{\numberline {5.2}View}{9}{subsection.5.2}
+\contentsline {subsubsection}{\numberline {5.2.1}Lobby}{9}{subsubsection.5.2.1}
+\contentsline {subsubsection}{\numberline {5.2.2}GameLobby}{9}{subsubsection.5.2.2}
+\contentsline {subsubsection}{\numberline {5.2.3}Game}{9}{subsubsection.5.2.3}
+\contentsline {subsubsection}{\numberline {5.2.4}Password}{9}{subsubsection.5.2.4}
+\contentsline {subsubsection}{\numberline {5.2.5}CreateGame}{9}{subsubsection.5.2.5}
+\contentsline {subsubsection}{\numberline {5.2.6}Login}{9}{subsubsection.5.2.6}
+\contentsline {subsubsection}{\numberline {5.2.7}ChooseItem}{9}{subsubsection.5.2.7}
+\contentsline {subsubsection}{\numberline {5.2.8}Warning}{9}{subsubsection.5.2.8}
+\contentsline {subsubsection}{\numberline {5.2.9}InputNumber}{9}{subsubsection.5.2.9}
+\contentsline {subsubsection}{\numberline {5.2.10}MVMessages}{9}{subsubsection.5.2.10}
+\contentsline {subsubsection}{\numberline {5.2.11}ScoreWindow}{9}{subsubsection.5.2.11}
+\contentsline {subsubsection}{\numberline {5.2.12}ChooseCards}{9}{subsubsection.5.2.12}
+\contentsline {subsubsection}{\numberline {5.2.13}GamePanel}{9}{subsubsection.5.2.13}
+\contentsline {subsubsection}{\numberline {5.2.14}DiscardPile}{9}{subsubsection.5.2.14}
+\contentsline {subsubsection}{\numberline {5.2.15}DrawDesk}{9}{subsubsection.5.2.15}
+\contentsline {subsubsection}{\numberline {5.2.16}OtherPlayer}{9}{subsubsection.5.2.16}
+\contentsline {subsubsection}{\numberline {5.2.17}OwnHand}{9}{subsubsection.5.2.17}
+\contentsline {subsubsection}{\numberline {5.2.18}Language}{9}{subsubsection.5.2.18}
+\contentsline {subsection}{\numberline {5.3}Ruleset}{10}{subsection.5.3}
+\contentsline {subsubsection}{\numberline {5.3.1}ServerRuleset}{10}{subsubsection.5.3.1}
+\contentsline {subsubsection}{\numberline {5.3.2}Wizard}{10}{subsubsection.5.3.2}
+\contentsline {subsubsection}{\numberline {5.3.3}Hearts}{10}{subsubsection.5.3.3}
+\contentsline {subsubsection}{\numberline {5.3.4}GameState}{10}{subsubsection.5.3.4}
+\contentsline {subsubsection}{\numberline {5.3.5}GameClientUpdate}{10}{subsubsection.5.3.5}
+\contentsline {subsubsection}{\numberline {5.3.6}HeartsData}{10}{subsubsection.5.3.6}
+\contentsline {subsubsection}{\numberline {5.3.7}WizData}{10}{subsubsection.5.3.7}
+\contentsline {subsubsection}{\numberline {5.3.8}PlayerState}{10}{subsubsection.5.3.8}
+\contentsline {subsubsection}{\numberline {5.3.9}Card}{10}{subsubsection.5.3.9}
+\contentsline {subsubsection}{\numberline {5.3.10}OtherData}{10}{subsubsection.5.3.10}
+\contentsline {subsubsection}{\numberline {5.3.11}GamePhase}{10}{subsubsection.5.3.11}
+\contentsline {subsubsection}{\numberline {5.3.12}WizardCard}{10}{subsubsection.5.3.12}
+\contentsline {subsubsection}{\numberline {5.3.13}HeartsCard}{10}{subsubsection.5.3.13}
+\contentsline {subsection}{\numberline {5.4}Server}{11}{subsection.5.4}
+\contentsline {subsubsection}{\numberline {5.4.1}ServerMain}{11}{subsubsection.5.4.1}
+\contentsline {subsubsection}{\numberline {5.4.2}LobbyServer}{11}{subsubsection.5.4.2}
+\contentsline {subsubsection}{\numberline {5.4.3}GameServer}{11}{subsubsection.5.4.3}
+\contentsline {subsubsection}{\numberline {5.4.4}ClientListenerThread}{11}{subsubsection.5.4.4}
+\contentsline {subsubsection}{\numberline {5.4.5}GameServer}{11}{subsubsection.5.4.5}
+\contentsline {subsubsection}{\numberline {5.4.6}Server}{11}{subsubsection.5.4.6}
+\contentsline {subsubsection}{\numberline {5.4.7}Player}{11}{subsubsection.5.4.7}
+\contentsline {subsubsection}{\numberline {5.4.8}GameServerRepr\IeC {\"a}sentation}{11}{subsubsection.5.4.8}
+\contentsline {subsection}{\numberline {5.5}ComObjects}{12}{subsection.5.5}
+\contentsline {subsubsection}{\numberline {5.5.1}Ruleset}{12}{subsubsection.5.5.1}
+\contentsline {subsubsection}{\numberline {5.5.2}ComObject}{12}{subsubsection.5.5.2}
+\contentsline {subsubsection}{\numberline {5.5.3}Commands}{12}{subsubsection.5.5.3}
+\contentsline {subsubsection}{\numberline {5.5.4}ComLogin}{12}{subsubsection.5.5.4}
+\contentsline {subsubsection}{\numberline {5.5.5}ComUpdatePlayerlist}{12}{subsubsection.5.5.5}
+\contentsline {subsubsection}{\numberline {5.5.6}ComInitGameLobby}{12}{subsubsection.5.5.6}
+\contentsline {subsubsection}{\numberline {5.5.7}ComChatMessage}{12}{subsubsection.5.5.7}
+\contentsline {subsubsection}{\numberline {5.5.8}ComPassword}{12}{subsubsection.5.5.8}
+\contentsline {subsubsection}{\numberline {5.5.9}ComJoinRequest}{12}{subsubsection.5.5.9}
+\contentsline {subsubsection}{\numberline {5.5.10}ComKicklayer}{12}{subsubsection.5.5.10}
+\contentsline {subsubsection}{\numberline {5.5.11}ComInitGameLobby}{12}{subsubsection.5.5.11}
+\contentsline {subsubsection}{\numberline {5.5.12}ComLobbyUpdateGamelist}{12}{subsubsection.5.5.12}
+\contentsline {section}{\numberline {6}JUnit-Tests}{13}{section.6}
+\contentsline {section}{\numberline {7}Implementierungsplan}{14}{section.7}
+\contentsline {subsection}{\numberline {7.1}Milestone 1}{14}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Milestone 2}{15}{subsection.7.2}
+\contentsline {subsection}{\numberline {7.3}Milestone 3}{15}{subsection.7.3}
+\contentsline {subsection}{\numberline {7.4}Finale Version}{16}{subsection.7.4}
+\contentsline {subsection}{\numberline {7.5}Gantt-Diagramme}{17}{subsection.7.5}

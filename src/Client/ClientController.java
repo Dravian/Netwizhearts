@@ -23,6 +23,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 /** 
  * ClientController. Der ClientController enthaelt alle ActionListener der View und 
@@ -79,6 +81,16 @@ public class ClientController {
 		login.addConnectButtonListener(new ConnectButtonListener());
 		login.addLanguageSelectionListener(new LanguageSelectionListener());
 		login.setVisible(true);
+		
+		lobby = new Lobby();
+		lobby.addJoinButtonListener(new JoinButtonListenerLobby());
+		lobby.addLeaveButtonListener(new LeaveButtonListenerLobby());
+		lobby.addHostButtonListener(new HostButtonListener());
+		
+		password = new Password();
+		password.addJoinButtonListener(new JoinButtonListenerPassword());
+		
+		createGame = new CreateGame();
 	}
 	
 	
@@ -89,16 +101,82 @@ public class ClientController {
 			language = (Language) arg0.getItem();
 			clientModel.setLanguage(language);
 			login.setLanguage(language);
+			lobby.setLanguage(language);
+			password.setLanguage(language);
 		}
 		
 	}
-	
 	
 	class ConnectButtonListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			clientModel.createConnection(login.getUsername(), login.getServerAdress(), 1337);//FIXME Port hart codiert
+		}
+		
+	}
+	
+	class JoinButtonListenerLobby implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			password.setVisible(true);
+			
+		}
+		
+	}
+	
+	class JoinButtonListenerPassword implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			clientModel.joinGame(lobby.getChosenGameName(), password.getPassword());
+		}
+		
+	}
+	
+	class LeaveButtonListenerLobby implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			clientModel.terminateProgram();;
+		}
+		
+	}
+	
+	class HostButtonListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			createGame.setVisible(true);			
+		}
+		
+	}
+	
+	class ChatListener implements KeyListener {
+
+		@Override
+		public void keyPressed(KeyEvent e) {
+			switch (e.getKeyCode()) {
+			case KeyEvent.VK_ENTER:
+				clientModel.sendChatMessage(lobby.getChatMessage());
+				break;
+			default:
+				break;
+			}
+			
+		}
+
+		@Override
+		public void keyReleased(KeyEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void keyTyped(KeyEvent e) {
+			// TODO Auto-generated method stub
+			
 		}
 		
 	}
