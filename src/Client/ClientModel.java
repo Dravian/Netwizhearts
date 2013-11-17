@@ -10,18 +10,23 @@ import ComObjects.ComChatMessage;
 import ComObjects.ComInitGameLobby;
 import ComObjects.ComInitLobby;
 import ComObjects.ComLobbyUpdateGamelist;
+import ComObjects.ComLoginRequest;
 import ComObjects.ComObject;
 import ComObjects.ComRuleset;
 import ComObjects.ComServerAcknowledgement;
 import ComObjects.ComUpdatePlayerlist;
+import ComObjects.ComWarning;
 import ComObjects.RulesetMessage;
 
+import java.io.IOException;
+import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.List;
 import java.util.Observable;
 import java.util.Set;
 
-/** 
- * ClientModel. Das ClientModel ist die Schnittstelle zwischen dem MessageListenerThread, 
+/**
+ * ClientModel. Das ClientModel ist die Schnittstelle zwischen dem MessageListenerThread,
  * dem ClientRuleset und der View. Das Model prüft Nachrichten, welche es vom
  * MessageListenerThread über die Methode receiveMessage() bekommt. RulesetMessages
  * werden an das ClientRuleset weitergeleitet. Weiterhin informiert es seine Observer über
@@ -30,33 +35,35 @@ import java.util.Set;
  * ClientRulesets oder Eingaben des Controllers weiterzugeben.
  */
 public class ClientModel extends Observable{
-	/** 
-	 * String der den eindeutigen Spielernamen repraesentiert.
+    /**
+     * String der den eindeutigen Spielernamen repraesentiert.
 	 */
 	private String playerName;
-	
-	/** 
+
+	/**
 	 * Referenz auf das Regelwerk des Spieles.
 	 */
 	private ClientRuleset ruleset;
 
-	/** 
+	/**
 	 * Die aktuelle Sprache der GUI.
 	 */
 	private Language language;
 
-	/** 
+	/**
 	 * Der Zustand indem sich der Client befindet.
 	 */
 	private ClientState state;
-	
+
 	private List<String> playerList;
-	
+
 	private String chatMessage;
 
 	private Set<GameServerRepresentation> gameList;
-	
-	/** 
+
+	private String warningText;
+
+	/**
 	 * Haelt den für die Netzwerkkomunikation zustaendigen Thread.
 	 */
 	private MessageListenerThread netIO;
@@ -69,67 +76,69 @@ public class ClientModel extends Observable{
 	 * @throws IllegalArgumentException Wird geworfen bei fehlerhaftem
 	 * MessageListenerThread Argument.
 	 */
-	public ClientModel(MessageListenerThread netIO) throws IllegalArgumentException {
+	public ClientModel(final MessageListenerThread netIO) throws IllegalArgumentException {
+		if (netIO == null) {
+			throw new IllegalArgumentException();
+		}
 		this.netIO = netIO;
 	}
-	
+
 	/**
-	 * Wird aufgerufen, wenn der User die GameLobby verlaesst. 
+	 * Wird aufgerufen, wenn der User die GameLobby verlaesst.
 	 * Der Client gelangt zurueck in die Lobby.
 	 */
 	public void leaveWindow() {
-		
+
 	}
-	
+
 	/**
 	 * Wird aufgerufen, wenn ein Fehler bei der Verbindung
 	 * zum Server auftritt und die korrekte Ausfuehrung des Programs
 	 * deswegen nicht mehr gewaerleistet werden kann.
 	 */
 	public void terminateProgram() {
-		
+
 	}
 
-	/** 
+	/**
 	 * Sendet eine eingehende Chatnachricht direkt an alle Observer weiter.
-	 * 
+	 *
 	 * @param msg die ankommende ComChatMessage Nachricht
 	 */
 	public void receiveMessage(ComChatMessage msg) {
-		this.chatMessage = msg.getChatMessage();
 		setChanged();
-		notifyObservers(chatMessage);
+		notifyObservers(msg.getChatMessage());
 	}
-	
-	/** 
+
+	/**
 	 * Diese Methode wird aufgerufen,
 	 * falls der Server den Spieler erfolgreich in die Lobby hinzugefügt hat.
 	 * Empfaengt die ComInitGameLobby Nachricht, die eine Liste aller
 	 * Spieler enthaelt, die sich in der Lobby befinden. Speichert
 	 * diese Liste und benachrichtigt die Observer mit der loginSuccesful
 	 * ViewNotification.
-	 * 
+	 *
 	 * @param msg die ankommende ComInitLobby Nachricht
 	 */
 	public void receiveMessage(ComInitLobby msg) {
-		
+		System.out.println("Lobby init empfangen");
 	}
-	
-	/** 
+
+	/**
 	 * Diese Methode wird aufgerufen,
 	 * falls der Server den Spieler erfolgreich in die GameLobby hinzugefuegt hat.
 	 * Empfaengt die ComInitGameLobby Nachricht, die eine Liste aller
 	 * Spieler enthaelt, die sich in der GameLobby befinden. Speichert
 	 * diese Liste und benachrichtigt die Observer mit der joinGameSuccesful
 	 * ViewNotification.
-	 * 
+	 *
 	 * @param msg die ankommende ComInitGameLobby Nachricht
 	 */
 	public void receiveMessage(ComInitGameLobby msg) {
-		
+
 	}
-	
-	/** 
+
+	/**
 	 * Diese Methode wird aufgerufen,
 	 * falls eine Nachricht für das Regelwerk ankommt. Die
 	 * darin enthaltene RulesetMessage wird dem ClientRuleset
@@ -137,32 +146,44 @@ public class ClientModel extends Observable{
 	 * @param msg Die ankommende ComRuleset Nachricht
 	 */
 	public void receiveMessage(ComRuleset msg) {
-		
+
 	}
-	
-	/** 
+
+	/**
 	 * Diese Methode wird aufgerufen,
 	 * falls ein Server Acknowledgement auftritt.
 	 * Dabei ist es von Bedeutung, in welchem Zustand sich der Client befindet.
-	 *  
+	 *
 	 *  @param ack Eine Bestätigung durch den Server.
 	 */
 	public void receiveMessage(ComServerAcknowledgement ack) {
-		
+		if (state == ClientState.LOGIN) {
+			System.out.println("login successfull");
+			informView(ViewNotification.loginSuccessful);
+		}
 	}
-	
-	/** 
+
+	public void receiveMessage(ComWarning warning) {
+		if (state == ClientState.LOGIN) {
+			System.out.println("login failed");
+			netIO.closeConnection();
+			warningText = "Username allready in use.";
+			informView(ViewNotification.openWarning);
+		}
+	}
+
+	/**
 	 * Diese Methode wird aufgerufen,
 	 * falls der Spieler aus der Spiellobby durch einen Spielleiter
 	 * entfernt wurde. Der Client gelangt zurueck in die Lobby,
 	 * die Observer werden mit windowChangeForced benachrichtigt.
-	 * 
+	 *
 	 * @param msg die ankommende ComBeenKicked Nachricht
 	 */
 	public void receiveMessage(ComBeenKicked msg) {
-		
+
 	}
-	
+
 	/**
 	 * Diese Methode wird aufgerufen,
 	 * falls auf dem Server ein neuer Spieler die Lobby/GameLobby
@@ -306,7 +327,7 @@ public class ClientModel extends Observable{
 	public void send(ComObject object) {
 		netIO.send(object);
 	}
-	
+
 	/**
 	 * Sendet eine RulesetMessage an den Server. Erstellt dazu eine
 	 * ComRuleset, die die RulesetMessage enthaelt.
@@ -335,7 +356,7 @@ public class ClientModel extends Observable{
 	 * @return String 
 	 */
 	public String getWindowText() {
-		return null;
+		return warningText;
 	}
 	
 	/**
@@ -500,33 +521,68 @@ public class ClientModel extends Observable{
 	 * @param note Enum der die Art des Aufrufes bestimmt.
 	 */
 	private void informView(ViewNotification note) {
-		
+		setChanged();
+		this.notifyObservers(note);
 	}
 	
 	/** 
 	 * Erstellt den MessageListenerThread und fuehrt den Benutzerlogin durch.
-	 * 
+	 *
 	 * @param username String der eindeutige Benutzername der für den Login verwendet wird.
-	 * @param serverAdress String die Adresse des spielservers.
+	 * @param host String die Adresse des spielservers.
 	 * @param port Integer der Port des Spielservers.
 	 */
-	public void createConnection(final String username, final String serverAdress, final int port) {
-		
+	public void createConnection(final String username, final String host, final int port) {
+		//TODO Fehlernachrichten mehrsprachig, eigene Klasse evtl.
+		System.out.println("do login");
+		state = ClientState.LOGIN;
+		boolean fault = false;
+		String warning = "Error(s) occurred:\n";
+		if (username == null) {
+			fault = true;
+			warning += "Emty Username.\n";
+		}
+		if (host == null) {
+			fault = true;
+			warning += "Emty Host Address.\n";
+		}
+		if (!fault) {
+			try {
+				//TODO Client und Serverport unterschiedlich hartcodiert...
+				Socket connection = new Socket("127.0.0.1", 4567);
+				netIO.startConnection(this, connection);
+				netIO.start();
+				netIO.send(new ComLoginRequest("Hans"));
+				System.out.println("login request send");
+			} catch (UnknownHostException e) {
+				warningText = warning + "Unknown Host.\n";
+				informView(ViewNotification.openWarning);
+			} catch (IllegalArgumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else {
+			warningText = warning;
+			informView(ViewNotification.openWarning);
+		}
 	}
-			
+
 	/**
 	 * Gibt den Text aus der bei einer Spielwarnung
 	 * angezeigt wird.
-	 * 
+	 *
 	 * @return String Text der Warnung.
 	 */
 	public String getWarningText() {
-		return null;
+		return warningText;
 	}
-	
+
 	/**
 	 * Liefert eine Liste mit allen implementierten Regelwerken.
-	 * 
+	 *
 	 * @param List<RulesetType> Liste von unterstuetzten Regelwerken.
 	 */
 	public List<RulesetType> getRulesets() {
