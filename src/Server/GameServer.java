@@ -132,6 +132,18 @@ public class GameServer extends Server {
 	public void broadcastRulesetMessage(RulesetMessage message){
 		broadcast(new ComRuleset(message));
 	}
+	
+	/**
+	 * Diese Methode ist dafur zustaendig eine Chatnachricht an alle Clients
+	 * des Servers zu verschicken. Dafuer wird die ComChatMessage mit broadcast
+	 * an alle Spieler im playerSet verteilt.
+	 * @param player ist der Thread der die Nachricht erhalten hat
+	 * @param chat ist das ComObject, das die Chatnachricht enthaelt
+	 */
+	public void receiveMessage(Player player, ComChatMessage chat) {
+			broadcast(chat);			
+	}
+	
 	/**
 	 * Diese Methode ist dafuer zustaendig zu ermitteln, was passiert wenn 
 	 * ein Spieler aus der GameLobby geworfen wird.
@@ -144,11 +156,6 @@ public class GameServer extends Server {
 	 */
 	@Override
 	public synchronized void receiveMessage(Player player, ComKickPlayerRequest kickPlayer) {
-		if(playerSet.contains(player)){
-			
-		} else {
-			System.out.println("Der Spieler wurde nicht ekannt!");
-		}
 		// TODO Auto-generated method stub
 	}
 	
@@ -163,29 +170,6 @@ public class GameServer extends Server {
 	 */
 	@Override
 	public synchronized void receiveMessage(Player player, ComClientLeave leave){
-		if(playerSet.contains(player)){
-			
-		} else {
-			System.out.println("Der Spieler wurde nicht ekannt!");
-		}
-		// TODO Auto-generated method stub
-	}
-	
-	/**
-	 * Diese Methode behandelt den Fall, dass ein Spieler das laufende Spiel verlaesst.
-	 * Alle Spieler, die sich im Spiel befinden werden durch Aufruf von changeServer an 
-	 * die Lobby zurueckgegeben und bekommen ein ComInitLobby und ein ComWarning.
-	 * Das Spiel wird aus dem gameServerSet des LobbyServers entfernt.
-	 * @param player ist der Thread der die Nachricht erhalten hat
-	 * @param quit ist das ComObject, welches angibt, dass der Spieler das Spiel verlaesst
-	 */
-	@Override
-	public synchronized void receiveMessage(Player player, ComClientQuit quit){
-		if(playerSet.contains(player)){
-			
-		} else {
-			System.out.println("Der Spieler wurde nicht ekannt!");
-		}
 		// TODO Auto-generated method stub
 	}
 	
@@ -197,11 +181,6 @@ public class GameServer extends Server {
 	 */
 	@Override
 	public synchronized void receiveMessage(Player player, ComStartGame start){
-		if(playerSet.contains(player)){
-			
-		} else {
-			System.out.println("Der Spieler wurde nicht ekannt!");
-		}
 		// TODO Auto-generated method stub
 	}
 	
@@ -214,11 +193,6 @@ public class GameServer extends Server {
 	 */
 	@Override
 	public synchronized void receiveMessage(Player player, ComRuleset ruleset){
-		if(playerSet.contains(player)){
-			
-		} else {
-			System.out.println("Der Spieler wurde nicht ekannt!");
-		}
 		// TODO Auto-generated method stub
 	}
 	
@@ -242,7 +216,7 @@ public class GameServer extends Server {
 	 * @param player ist der Tread von dem die Exception kommt
 	 */
 	@Override
-	public synchronized void handleException(Player player) {
+	public synchronized void disconnectPlayer(Player player) {
 		// TODO Automatisch erstellter Methoden-Stub
 		
 	}

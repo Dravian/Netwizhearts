@@ -22,51 +22,59 @@ public abstract class Server {
 	
 	
 	//test
-	public synchronized void receiveMessage(Player player, ComLoginRequest login){
-		System.out.println("Das ist die falsche Methode");		
+	public synchronized void receiveMessage(Player player, ComObject object){
+		System.err.println("Das ist die falsche Methode");
+		disconnectPlayer(player);
 	}
 	
-	/**
-	 * Diese Methode ist dafur zustaendig eine Chatnachricht an alle Clients
-	 * des Servers zu verschicken. Dafuer wird die ComChatMessage mit broadcast
-	 * an alle Spieler im playerSet verteilt.
-	 * @param player ist der Thread der die Nachricht erhalten hat
-	 * @param chat ist das ComObject, das die Chatnachricht enthaelt
-	 */
+	public synchronized void receiveMessage(Player player, ComLoginRequest login){
+		System.err.println("Das ist die falsche Methode");	
+		disconnectPlayer(player);
+	}
+	
 	public void receiveMessage(Player player, ComChatMessage chat) {
-		if(playerSet.contains(player)){
-			broadcast(chat);
-		} else {
-			System.out.println("Der Spieler wurde nicht ekannt!");
-		}			
+		System.err.println("Der Spieler wurde nicht ekannt!");	
+		disconnectPlayer(player);
 	}
 
-	public void receiveMessage(Player player, ComClientQuit quit) {
-		System.out.println("Das ist die falsche Methode");		
+	/**
+	 * Diese Methode schliesst die Verbindung, indem disconnectPlayer
+	 * mit dem entsprechenden Player übergeben, aufgerufen wird.
+	 * @param quit ist das ComObject, welches angibt, dass der Spieler das 
+	 * Spiel vollstaendig verlaesst
+	 */
+	public synchronized void receiveMessage(Player player, ComClientQuit quit){
+		disconnectPlayer(player);
 	}
 
 	public void receiveMessage(Player player, ComCreateGameRequest create) {
-		System.out.println("Das ist die falsche Methode");			
+		System.err.println("Das ist die falsche Methode");
+		disconnectPlayer(player);
 	}
 
 	public void receiveMessage(Player player, ComJoinRequest join) {
-		System.out.println("Das ist die falsche Methode");			
+		System.err.println("Das ist die falsche Methode");
+		disconnectPlayer(player);
 	}
 
 	public void receiveMessage(Player player, ComKickPlayerRequest kickPlayer) {
-		System.out.println("Das ist die falsche Methode");			
+		System.err.println("Das ist die falsche Methode");	
+		disconnectPlayer(player);
 	}
 
 	public void receiveMessage(Player player, ComClientLeave leave) {
-		System.out.println("Das ist die falsche Methode");			
+		System.err.println("Das ist die falsche Methode");	
+		disconnectPlayer(player);
 	}
 
 	public void receiveMessage(Player player, ComStartGame start) {
-		System.out.println("Das ist die falsche Methode");			
+		System.err.println("Das ist die falsche Methode");	
+		disconnectPlayer(player);
 	}
 
 	public void receiveMessage(Player player, ComRuleset ruleset) {
-		System.out.println("Das ist die falsche Methode");			
+		System.err.println("Das ist die falsche Methode");	
+		disconnectPlayer(player);
 	}
 	
 	/**
@@ -125,11 +133,9 @@ public abstract class Server {
 	 * die Verbindung zu einem Client verloren gegangen ist.
 	 * @param player ist der Tread von dem die Exception kommt
 	 */
-	public void handleException(Player player) {
+	public void disconnectPlayer(Player player) {
 		// TODO Automatisch erstellter Methoden-Stub
 		
 	}
-
-	
 
 }
