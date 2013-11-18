@@ -7,6 +7,7 @@ import Server.GameServerRepresentation;
 import Client.View.Language;
 import ComObjects.ComBeenKicked;
 import ComObjects.ComChatMessage;
+import ComObjects.ComClientQuit;
 import ComObjects.ComInitGameLobby;
 import ComObjects.ComInitLobby;
 import ComObjects.ComLobbyUpdateGamelist;
@@ -96,8 +97,16 @@ public class ClientModel extends Observable{
 	 * zum Server auftritt und die korrekte Ausfuehrung des Programs
 	 * deswegen nicht mehr gewaerleistet werden kann.
 	 */
-	public void terminateProgram() {
-
+	protected void terminateProgram() {
+		informView(ViewNotification.quitGame);
+	}
+	
+	/**
+	 * Wird aufgerufen, wenn der Spieler das Programm beendet.
+	 * Leitet den Verbindungsabbau zum Server ein.
+	 */
+	public void closeProgram() {
+		netIO.send(new ComClientQuit());
 	}
 
 	/**
@@ -319,29 +328,19 @@ public class ClientModel extends Observable{
 
 	}
 
-	/** 
-	 * Sendet erstellte ComObjects an den Server.
-	 * 
-	 * @param object ComObject, das verschickt wird
-	 */
-	public void send(ComObject object) {
-		netIO.send(object);
-	}
-
 	/**
 	 * Sendet eine RulesetMessage an den Server. Erstellt dazu eine
 	 * ComRuleset, die die RulesetMessage enthaelt.
-	 * 
+	 *
 	 * @param msg die RulesetMessage, die an den Server geschickt werden soll
 	 */
 	public void send(RulesetMessage msg) {
-		ComObject com = new ComRuleset(msg);
-		send(com);
+		netIO.send(new ComRuleset(msg));
 	}
-	
+
 	/**
 	 * Gibt die Anzahl der Spieler eines Spieles zurueck.
-	 * 
+	 *
 	 * @return int Die Spielerzahl eines Spieles.
 	 */
 	public int getPlayerCount() {
@@ -452,7 +451,7 @@ public class ClientModel extends Observable{
 	 * @param msg die Chatnachricht, die an den Server geschickt werden soll
 	 */
 	public void sendChatMessage(final String msg) {
-		send(new ComChatMessage(msg));
+		netIO.send(new ComChatMessage(msg));
 	}
 
 	/** 

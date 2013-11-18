@@ -14,7 +14,8 @@ import java.net.Socket;
 import ComObjects.ComObject;
 
 /**
- * MessageListenerThread. Diese Klasse implementiert die Netzwerkanbindung des Clients an den Server.
+ * MessageListenerThread.
+ * Diese Klasse implementiert die Netzwerkanbindung des Clients an den Server.
  * Sie enthaelt den dazu noetigen Socket und ObjektStream Reader und Writer.
  */
 public class MessageListenerThread extends Thread {
@@ -42,6 +43,7 @@ public class MessageListenerThread extends Thread {
 
 	/**
 	 * Initialisiert die ObjectStreams und speichert den TCP Socket im Thread.
+	 *
 	 * @param model ClientModel, Das Model das den Spielablauf und Serverkommunikation
 	 * steuert.
 	 * @param connection Socket, der Socket über den die TCP Verbindung laeuft.
@@ -84,13 +86,12 @@ public class MessageListenerThread extends Thread {
 	 * @param object Das zu Versendende ComObjekt.
 	 */
 	public void send(ComObject object) {
-		try {
-			if (run) {
+		if (run) {
+			try {
 				out.writeObject(object);
 				out.flush();
-			}
-		} catch (IOException e) {
-			if (run) {
+			} catch (IOException e) {
+				System.out.println("ERROR: Write to Object Stream failed.");
 				e.printStackTrace();
 			}
 		}
@@ -110,15 +111,18 @@ public class MessageListenerThread extends Thread {
 				object.process(model);
 			}
 		} catch (ClassNotFoundException e) {
+			System.err.println("ERROR: Unknown Object received.");
 			closeConnection();
 			e.printStackTrace();
 		} catch (EOFException e) {
 			if (run) {
+				System.err.println("ERROR: Object Stream emty.");
 				closeConnection();
 				e.printStackTrace();
 			}
 		} catch (IOException e) {
 			if (run) {
+				System.err.println("ERROR: Network IO failed.");
 				closeConnection();
 				e.printStackTrace();
 			}
