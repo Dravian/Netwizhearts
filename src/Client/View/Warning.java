@@ -6,23 +6,57 @@ package Client.View;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.JFrame;
+
+import Client.ClientModel;
+import Client.ViewNotification;
+
+import javax.swing.JLabel;
+import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;
+
+import java.awt.Font;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+
 /** 
  * Warning. Das Warning-Fenster zeigt dem Benutzer Fehlermeldungen bzw. Hinweise an, 
  * welche vom ClientModel uebergeben wurden. Es wird nur im Fehlerfall angezeigt.
  */
-public class Warning implements Observer{
+public class Warning extends JFrame implements Observer{
 	
-	private String warningText;
+	private JTextArea warningTextArea;
+	private JButton okButton;
+	
+	public Warning() {
+		setTitle("Warning");
+		getContentPane().setLayout(null);
+		
+		warningTextArea = new JTextArea();
+		warningTextArea.setFont(new Font("Arial", Font.PLAIN, 13));
+		warningTextArea.setEditable(false);
+		warningTextArea.setLineWrap(true);
+		warningTextArea.setBounds(10, 11, 406, 118);
+		getContentPane().add(warningTextArea);
+		
+		okButton = new JButton("OK");
+		okButton.setBounds(162, 140, 89, 23);
+		getContentPane().add(okButton);
+	}
+	
+	//setWarningText() entfernt
+	//setOKButtonListener() hinzugefügt
 	
 	/**
-	 * Setzt den Warnhinweis des Fensters.
+	 * Setzt den Listener für den OK Button des Fensters
 	 * 
-	 * @param text Warnhinweis, der angezeigt werden soll
+	 * @param a ActionListener
 	 */
-	public void setText(String text) {
-		warningText = text;
+	public void addOKButtonListener(ActionListener a) {
+		okButton.addActionListener(a);
 	}
-
+	
 	/**
 	 * Wird durch notify() im ClientModel aufgerufen. Je nach dem in arg
 	 * übergebenen Befehl wird ein Update des Fensters ausgeführt 
@@ -33,7 +67,22 @@ public class Warning implements Observer{
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
+		ViewNotification message = (ViewNotification) arg;
+		final ClientModel observed = (ClientModel) o;
+		switch (message) {
+		case openWarning:
+			SwingUtilities.invokeLater(new Runnable() {
+				
+				@Override
+				public void run() {
+					warningTextArea.setText(observed.getWarningText());
+				}
+			});
+			
+			this.setVisible(true);
+			break;
+		default:
+			break;
+		}
 	}
 }

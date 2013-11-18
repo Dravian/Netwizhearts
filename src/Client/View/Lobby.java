@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.AbstractListModel;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
 
 import Ruleset.RulesetType;
 import Server.GameServerRepresentation;
@@ -99,7 +100,7 @@ public class Lobby extends JFrame implements Observer{
 		messageField.setColumns(10);
 		
 		btnHostGame = new JButton("Host Game");
-		btnHostGame.setBounds(234, 363, 117, 25);
+		btnHostGame.setBounds(213, 363, 162, 25);
 		contentPane.add(btnHostGame);
 		
 		btnJoinGame = new JButton("Join Game");
@@ -171,11 +172,36 @@ public class Lobby extends JFrame implements Observer{
 	 */
 	public void setLanguage(Language l) {
 		lang = l;
-		updateLanguage();
+		SwingUtilities.invokeLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				updateLanguage();
+			}
+		});
 	}
 	
 	private void updateLanguage() {
-		//TODO
+		switch (lang) {
+		case German:
+			this.setTitle("Spielübersicht");
+			btnLeave.setText("Verlassen");
+			btnJoinGame.setText("Beitreten");
+			btnHostGame.setText("Erstellen");
+			break;
+		case English:
+			this.setTitle("Lobby");
+			btnLeave.setText("Leave");
+			btnJoinGame.setText("Join");
+			btnHostGame.setText("Host");
+			break;
+		case Bavarian:
+			this.setTitle("Wer do is und wos spuin");
+			btnLeave.setText("Wegadgeh");
+			btnJoinGame.setText("Midspuin");
+			btnHostGame.setText("Spui aufmacha");
+			break;
+		}		
 	}
 	
 	private void updateGameList(List<GameServerRepresentation> gameRepresentationList) {
@@ -205,18 +231,31 @@ public class Lobby extends JFrame implements Observer{
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
 		ViewNotification message = (ViewNotification) arg;
-		ClientModel observed = (ClientModel) o;
+		final ClientModel observed = (ClientModel) o;
 		switch (message) {
 		case loginSuccessful:
 		case windowChangeForced:
 			this.setVisible(true);
 			break;
 		case playerListUpdate:
-			playerList.setListData((String[]) observed.getPlayerlist().toArray());
+			SwingUtilities.invokeLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				playerList.setListData((String[]) observed.getPlayerlist().toArray());
+			}
+		});
 			break;
 		case gameListUpdate:
 			gameRepList = observed.getLobbyGamelist();
-			updateGameList(gameRepList);
+			SwingUtilities.invokeLater(new Runnable() {
+				
+				@Override
+				public void run() {
+					updateGameList(gameRepList);
+				}
+			});
+			
 			break;
 		case joinGameSuccessful:
 			this.setVisible(false);
