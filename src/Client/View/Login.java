@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.SwingUtilities;
 
 import Client.ClientModel;
 import Client.ViewNotification;
@@ -147,28 +148,35 @@ public class Login extends JFrame implements Observer{
 	 */
 	public void setLanguage(Language l) {
 		lang = l;
-		updateLanguage();
+		SwingUtilities.invokeLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				updateLanguage();
+			}
+		});
+		
 	}
 	
 	private void updateLanguage() {
 		switch (lang) {
 		case German: 
-			btnConnect.setText("Verbinden");
 			this.setTitle("Anmelden");
+			btnConnect.setText("Verbinden");
 			lblNickname.setText("Spitzname:");
 			lblHostIp.setText("Host IP:");
 			lblLanguage.setText("Sprache");
 			break;
 		case English:
-			btnConnect.setText("Connect");
 			this.setTitle("Login");
+			btnConnect.setText("Connect");
 			lblNickname.setText("Nickname:");
 			lblHostIp.setText("Host IP:");
 			lblLanguage.setText("Language");
 			break;
 		case Bavarian:
-			btnConnect.setText("Dua zua");
 			this.setTitle("Nam eigem und weidadrucka");
+			btnConnect.setText("Dua zua");
 			lblNickname.setText("Spidsnam:");
 			lblHostIp.setText("So a Nummer:");
 			lblLanguage.setText("Gschmatz");
@@ -190,7 +198,6 @@ public class Login extends JFrame implements Observer{
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub		
 		ViewNotification message = (ViewNotification) arg;
-		ClientModel observed = (ClientModel) o;
 		switch (message) {
 		case loginSuccessful:
 			this.setVisible(false);
