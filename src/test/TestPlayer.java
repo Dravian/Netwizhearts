@@ -1,7 +1,6 @@
 package test;
 
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.net.Socket;
 import java.util.List;
 
 import ComObjects.ComObject;
@@ -9,16 +8,14 @@ import Server.Player;
 import Server.Server;
 
 public class TestPlayer extends Player {
-
-	public TestPlayer(Server lobbyServer, ObjectOutputStream output,
-			ObjectInputStream input) {
-		super(lobbyServer, output, input);
+	
+	public TestPlayer(Server lobbyServer, Socket socket) {
+		super(lobbyServer, socket);
 	}
 	private Server server;
 	
 	private List<ComObject> inputComObject;
 
-	
 	public List<ComObject> getServerInput() {
 		return inputComObject;
 	}

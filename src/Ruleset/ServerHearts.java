@@ -87,9 +87,8 @@ public class ServerHearts extends ServerRuleset {
 	}
 
 	@Override
-	protected GameClientUpdate generateGameClientUpdate(String player) {
-		// TODO Automatisch erstellter Methoden-Stub
-		return null;
+	public void runGame() {
+		
 	}
 
 

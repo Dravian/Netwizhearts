@@ -26,19 +26,23 @@ public class PlayerState {
 	private OtherData otherData;
 	
 	/**
-	 * Erstellt einen PlayerState 
-	 * @param name Der Name des Spielers
-	 * @param ruleset Der Typ des Spiels
+	 * Erstellt einen Spielerzustand
+	 * @param name Der Name vom Spieler
+	 * @param ruleset Das Spiel das er spielt
+	 * @throws IllegalArgumentException falls der Regelwerk Typ nicht existiert
 	 */
-	public PlayerState(String name,RulesetType ruleset) {
+	public PlayerState(String name,RulesetType ruleset) throws IllegalArgumentException{
 		this.name = name;
 		
 		this.ownHand = new ArrayList<Card>();
 		
 		if(ruleset == RulesetType.Hearts) {
-			otherData = new HeartsData();
+			otherData = new HeartsData(name);
+		} else if(ruleset == RulesetType.Wizard){
+			otherData = new WizData(name);
 		} else {
-			otherData = new WizData();
+			throw new IllegalArgumentException("Regelwerk " + 
+		ruleset + "existiert nicht.");
 		}
 	}
 

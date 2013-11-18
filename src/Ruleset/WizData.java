@@ -15,8 +15,8 @@ public class WizData extends OtherData {
 	/**
 	 * Erstellt die OtherData eines Spielers zum Spiel Wizard
 	 */
-	protected WizData() {
-		super();
+	protected WizData(String name) {
+		super(name);
 		this.announcedTricks = 0;
 	}
 	

@@ -24,12 +24,19 @@ public abstract class OtherData {
 	private int points;
 	
 	/**
+	 * Der Name vom Spieler
+	 */
+	private String name;
+	
+	/**
 	 * Erzeugt die OtherData eines Spielers
 	 */
-	protected OtherData() {
+	protected OtherData(String name) {
+		this.name = name;
 		madeTricks = new HashSet<Card>();
 		points = 0;
 	}
+	
 	
 	/**
 	 * Gibt dem Spieler die Stichkarten die er gemacht
@@ -77,4 +84,12 @@ public abstract class OtherData {
 	 * Gibt die Stringrepraesentation der OtherData zurück
 	 */
 	public abstract String toString();
+
+	/**
+	 * Gibt den Namen des Spielers zurück
+	 * @return Der Name des Spielers
+	 */
+	public String getName() {
+		return name;
+	}
 }

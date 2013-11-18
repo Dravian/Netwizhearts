@@ -8,6 +8,10 @@ package Ruleset;
  */
 public class HeartsData extends OtherData {
 	
+	public HeartsData(String name) {
+		super(name);
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder otherData = new StringBuilder();
