@@ -29,6 +29,10 @@ public enum GamePhase {
 	 */
 	SelectionRequest,
 	/**
+	 * Der Zustand wenn eine Runde beginnt
+	 */
+	RoundStart,
+	/**
 	 * Der Zustand wenn eine Runde vorbei ist
 	 */
 	RoundEnd,

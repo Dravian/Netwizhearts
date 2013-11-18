@@ -6,9 +6,14 @@ package Ruleset;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
 
 import Server.GameServer;
 import ComObjects.MsgCard;
+import ComObjects.MsgMultiCards;
+import ComObjects.MsgNumber;
+import ComObjects.MsgSelection;
 import ComObjects.RulesetMessage;
 /** 
  * ServerRuleset. Das ServerRuleset ist eine akstrakte Klasse und fuer den Ablauf und die Einhaltung der Regeln eines Spiels zustaendig. 
@@ -75,6 +80,13 @@ public abstract class ServerRuleset {
 	}
 	
 	/**
+	 * Holt den aktuellen Spielzustand
+	 * @return Der Spielzustand
+	 */
+	protected GameState getGameState() {
+		return gameState;
+	}
+	/**
 	 * Gibt den Typ des Regelwerks zurueck
 	 * @return Der Typ vom Regelwerk
 	 */
@@ -135,12 +147,15 @@ public abstract class ServerRuleset {
 		}
 		return deck;
 	}
+	
+	protected List<PlayerState> getPlayers() {
+		return gameState.getPlayers();
+	}
 
 	/**
 	 * Startet das Spiel
 	 */
-	public void runGame() {
-	}
+	public abstract void runGame();
 	
 	/** 
 	 * Setzt den Spieler der als Erster am Zug ist, im Gamestate
@@ -217,7 +232,7 @@ public abstract class ServerRuleset {
 	 * @return Die Spielkarten des Spielers
 	 */
 	protected List<Card> getPlayerCards(PlayerState player) {
-		return gameState.getPlayerCards(player);
+		return player.getHand();
 	}
 	/**
 	 * Schickt eine Nachricht an einen Spieler, über den Gameserver
@@ -238,15 +253,6 @@ public abstract class ServerRuleset {
 	}
 	
 	/** 
-	 * Verarbeitet eine allgemeine RulesetMessage
-	 * @param msgCard Die Nachricht vom Client welche Karte gespielt wurde
-	 * @param name Der Name des Spielers
-	 */
-	public void resolveMessage(RulesetMessage message, String name) {
-		
-	}
-	
-	/** 
 	 * Verarbeitet die RulesetMessage dass eine Karte vom Spieler gespielt.
 	 * Die wird dann in isValidMove überprüft, bei falsche Eingabe wird´
 	 * eine MsgCardRequest an den selben Spieler geschickt. 
@@ -256,6 +262,39 @@ public abstract class ServerRuleset {
 	 */
 	public void resolveMessage(MsgCard msgCard, String name) {
 		
+	}
+	
+	/**
+	 * Bekommt eine MsgMultiCards Nachricht
+	 * @param msgMultiCard Die Nachricht vom Client
+	 * @param name Der Name vom Spieler
+	 * @throws IllegalArgumentException falls das ComObject im falschen Spiel benutzt wird
+	 */
+	public void resolveMessage(MsgMultiCards msgMultiCard, String name) throws IllegalArgumentException{
+		throw new IllegalArgumentException("Das ComObjekt MsgMultiCards findet " +
+				"keine Verwendung in diesem Spiel");
+	}
+	
+	/**
+	 * Bekommt eine MsgNumber Nachricht
+	 * @param msgNumber Die Nachricht vom Client
+	 * @param name Der Name des Spielers
+	 * @throws IllegalArgumentException wenn das ComObjekt im falschen Spiel benutzt wird
+	 */
+	public void resolveMessage(MsgNumber msgNumber, String name) throws IllegalArgumentException{
+		throw new IllegalArgumentException("Das ComObjekt MsgNumber findet " +
+				"keine Verwendung in diesem Spiel");
+	}
+	
+	/**
+	 * Bekommt eine MsgSelection Nachricht
+	 * @param msgSelection Die Nachricht vom Client
+	 * @param name Der Name vom Spieler
+	 * @throws IllegalArgumentException falls das ComObject im falschen Spiel benutz wird
+	 */
+	public void resolveMessage(MsgSelection msgSelection, String name) throws IllegalArgumentException{
+		throw new IllegalArgumentException("Das ComObjekt MsgSelection findet " +
+				"keine Verwendung in diesem Spiel");
 	}
 	
 	/**
@@ -341,5 +380,36 @@ public abstract class ServerRuleset {
 	 * Erzeugt ein GameClientUpdate welches individuell für jeden Benutzer ist
 	 * @param player Dem Spieler 
 	 */
-	protected abstract GameClientUpdate generateGameClientUpdate(String player);
+	protected GameClientUpdate generateGameClientUpdate(PlayerState player) {
+		List<PlayerState> players = getPlayers();
+		Map<String,Card> discardPile = gameState.getPlayedCards();	
+		int position = players.indexOf(player);
+		
+		ListIterator<PlayerState> i = players.listIterator(position);
+		List<OtherData> enemyData = new ArrayList<OtherData>();
+		
+		PlayerState firstPlayer = getFirstPlayer();
+		PlayerState currentPlayer = getCurrentPlayer();
+		Card trumpCard = gameState.getTrumpCard();
+		
+		/*
+		 * Fügt die OtherData der anderen Spieler in einer richtigen Reihenfolge 
+		 * ein.
+		 */
+		do {
+			if((!i.hasNext()) && (position == 0)) {
+				break;
+			}else if(!i.hasNext()) {
+				i = players.listIterator(0);
+				enemyData.add(players.get(0).getOtherData());
+			}
+			else {
+				enemyData.add(i.next().getOtherData());
+			}
+		} while(i.nextIndex() != position);
+		
+		return new GameClientUpdate(player,discardPile,enemyData, firstPlayer,
+				currentPlayer,trumpCard);
+		
+	}
 }

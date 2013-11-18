@@ -3,6 +3,7 @@
  */
 package Ruleset;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -65,6 +66,7 @@ public class GameState {
 		players = new LinkedList<PlayerState>();
 		discardPile = new HashMap<String,Card>();
 		this.deck = deck;
+		roundNumber = 1;
 		trumpCard = WizardCard.Empty;
 	}
 	
@@ -82,6 +84,14 @@ public class GameState {
 			players.add(player);
 			return true;
 		}
+	}
+
+	/**
+	 * Gibt die List von Spielern zurück
+	 * @return Die Liste von Spielern
+	 */
+	protected List<PlayerState> getPlayers() {
+		return players;
 	}
 	
 	/**
@@ -139,18 +149,22 @@ public class GameState {
 		return discardPile;
 	}
 	
-	/** 
-	 * Holt einen bestimmten Spieler
+	/**
+	 * Holt einen bestimmten Spielerzustand
 	 * @param name Der Name des Spielers
-	 * @return player Der Spielzustand des Spielers
+	 * @return Der Spielzustand des Spielers
+	 * @throws IllegalArgumentException falls der Spieler nicht existiert
 	 */
-	protected PlayerState getPlayerState(String name) {
+	protected PlayerState getPlayerState(String name) 
+			throws IllegalArgumentException{
 		for(PlayerState p : players) {
 			if(p.getName().equals(name)) {
 				return p;
 			} 
 		}
-		return null;
+		
+		throw new IllegalArgumentException("Spieler " + name + 
+				"existiert im GameState nicht");
 	}
 	
 	/**
@@ -186,22 +200,6 @@ public class GameState {
 	}
 	
 	/**
-	 * Holt die Karten eines Spielers
-	 * @param name Der Name vom Spieler 
-	 * @return Die Karten eines Spielers zurueck, wenn der Spieler nicht gefunden
-	 * wird, wird eine leere Liste zurückgegeben
-	 */
-	protected List<Card> getPlayerCards(PlayerState player) {
-		for(PlayerState p : players) {
-			if(p.getName().equals(player.getName())) {
-				return p.getHand();
-			}
-		}
-		List<Card> noPlayer = new LinkedList();
-		return noPlayer;
-	}
-	
-	/**
 	 * Mischt das Deck
 	 */
 	protected void shuffleDeck() {
@@ -222,10 +220,18 @@ public class GameState {
 		
 		for(PlayerState player : players) {
 			for(int i = 0; i < number; i++) {
-				player.addCard(((LinkedList<Card>) deck).pop());
+				player.addCard(getTopCard());
 			}
 		}
 		return true;
+	}
+	
+	/**
+	 * Holt die oberste Karte aus dem Kartendeck raus
+	 * @return Gibt die oberste Karte zurück
+	 */
+	protected Card getTopCard() {
+		return ((LinkedList<Card>) deck).pop();
 	}
 	
 	/**

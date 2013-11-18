@@ -46,10 +46,10 @@ public class TestWizardWinner {
 	@Before
 	public void setUp() {
 		lobbyServer = new LobbyServer();
-		blue = new TestPlayer(lobbyServer, null, null);
-		white = new TestPlayer(lobbyServer, null, null);
-		orange = new TestPlayer(lobbyServer, null, null);
-		brown = new TestPlayer(lobbyServer, null, null);
+		blue = new TestPlayer(lobbyServer, null);
+		white = new TestPlayer(lobbyServer, null);
+		orange = new TestPlayer(lobbyServer, null);
+		brown = new TestPlayer(lobbyServer, null);
 	}
 	
 	@After

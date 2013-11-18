@@ -40,15 +40,15 @@ public class QuitGameTest {
 	public void setUp() throws Exception {
 		lobby = new TestLobbyServer();
 		
-		player1 = new TestPlayer(lobby, null, null);
+		player1 = new TestPlayer(lobby, null);
 		player1.setName("MrBlue");
 		lobby.addPlayer(player1);
 		
-		player2 = new TestPlayer(lobby, null, null);
+		player2 = new TestPlayer(lobby, null);
 		player2.setName("MrWhite");
-		player3 = new TestPlayer(lobby, null, null);
+		player3 = new TestPlayer(lobby, null);
 		player3.setName("MrPink");
-		player4 = new TestPlayer(lobby, null, null);
+		player4 = new TestPlayer(lobby, null);
 		player4.setName("MrRed");
 		
 		game = new TestGameServer(lobby, player1, "MrBluesGame", RulesetType.Hearts, null, false);

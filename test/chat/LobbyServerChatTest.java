@@ -32,9 +32,9 @@ public class LobbyServerChatTest {
 	public void setUp() {
 		testMessage = new ComChatMessage("Hello Test!");
 		testServer = new LobbyServer();
-		player1 = new TestPlayer(testServer, null, null);
-		player2 = new TestPlayer(testServer, null, null);
-		player3 = new TestPlayer(testServer, null, null);
+		player1 = new TestPlayer(testServer, null);
+		player2 = new TestPlayer(testServer, null);
+		player3 = new TestPlayer(testServer, null);
 	}
 
 	@After

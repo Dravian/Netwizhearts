@@ -23,7 +23,12 @@ public class GameClientUpdate {
 	/** 
 	 * Die Spieldaten der anderen Spieler
 	 */
-	private Map<String,OtherData> otherPlayerData;
+	private List<OtherData> otherPlayerData;
+	
+	/**
+	 * Der Spieler der zuerst gespielt hat
+	 */
+	private PlayerState firstPlayer;
 	
 	/**
 	 * Der Spieler der grad am Zug ist
@@ -44,7 +49,7 @@ public class GameClientUpdate {
 	 * @param trumpCard Die Trumpffarbe
 	 */
 	protected GameClientUpdate(PlayerState playerState, Map<String,Card> discardPile,
-			Map<String,OtherData> otherPlayerData,  PlayerState currentPlayer,
+			List<OtherData> otherPlayerData,  PlayerState firstPlayer, PlayerState currentPlayer,
 			Card trumpCard) {
 		this.playerState = playerState;
 		this.discardPile = discardPile;
@@ -79,12 +84,12 @@ public class GameClientUpdate {
 	}
 	
 	/** 
-	 * Holt die OtherData eines anderen Spielers als Stringrepräsentation
+	 * Holt die OtherData aller Spieler als List
 	 * @param player Der Name des Spielers
 	 * @return otherPlayerData Die OtherData der anderen Spieler
 	 */
-	protected OtherData getOtherPlayerData(String player) {
-		return otherPlayerData.get(player);
+	protected List<OtherData> getOtherPlayerData() {
+		return otherPlayerData;
 	}
 	
 	/**
@@ -101,5 +106,13 @@ public class GameClientUpdate {
 	 */
 	protected Card getTrumpCard() {
 		return trumpCard;
+	}
+
+	/**
+	 * Holt den Spieler der zuerst eine Karte hingelegt hat
+	 * @return Den ersten Spieler
+	 */
+	protected PlayerState getFirstPlayer() {
+		return firstPlayer;
 	}
 }

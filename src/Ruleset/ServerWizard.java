@@ -1,10 +1,16 @@
 package Ruleset;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
+
 import Server.GameServer;
 import ComObjects.MsgNumber;
 import ComObjects.MsgNumberRequest;
 import ComObjects.MsgSelection;
 import ComObjects.MsgSelectionRequest;
+import ComObjects.MsgUser;
 
 /**
  * ServerWizard. Diese Klasse erstellt das Regelwerk zum Spiel Wizard. Sie enthaelt zudem weitere Methoden,
@@ -60,7 +66,7 @@ public class ServerWizard extends ServerRuleset {
 	 * Holt die Anzahl der Runden die gespielt werden
 	 * @return playingRounds Die Anzahl an Runden
 	 */
-	protected int getplayingRounds() {
+	protected int getPlayingRounds() {
 		return playingRounds;
 	}
 	/**
@@ -113,14 +119,62 @@ public class ServerWizard extends ServerRuleset {
 
 	@Override
 	protected String getWinner() {
-		// TODO Automatisch erstellter Methoden-Stub
 		return null;
 	}
 
 	@Override
-	protected GameClientUpdate generateGameClientUpdate(String player) {
-		// TODO Automatisch erstellter Methoden-Stub
-		return null;
+	public void runGame() throws RulesetException{
+		List<PlayerState> players = getPlayers();
+		int deckSize = WizardCard.values().length;
+	
+		if((players.size() < MIN_PLAYERS) || (players.size() > MAX_PLAYERS)
+				|| (players.size() == 0)) {
+			throw new RulesetException("The number of players are: " 
+		+ players.size());
+		} else {
+			int numberOfRounds = deckSize/players.size();
+			setPlayingRounds(numberOfRounds);
+		}	
+		
+		setFirstPlayer(players.get(0));
+		
+		startWizardRound();
+	}
+	
+	/**
+	 * Wird am Anfang jeder Runde aufgerufen. Mischt und verteilt Karten und schickt
+	 * Comobject mit Updates und Request für den Rundenanfang.
+	 */
+	private void startWizardRound() {
+		int valueOfSorcerer = 14;
+		List<PlayerState> players = getPlayers();
+		
+		setGamePhase(GamePhase.RoundStart);
+		
+		getGameState().shuffleDeck();
+		getGameState().dealCards(getGameState().getRoundNumber());
+		
+		Card trumpCard = getGameState().getTopCard();
+		getGameState().setTrumpCard(trumpCard);
+		
+		
+		for(PlayerState player : players) {
+			send(new MsgUser(generateGameClientUpdate(player)), player.getName());
+		}
+		
+		if(trumpCard.getValue() == valueOfSorcerer) {
+			setGamePhase(GamePhase.SelectionRequest);
+			
+			send(new MsgSelectionRequest(), getFirstPlayer().getName());	
+			
+		} else {
+			setGamePhase(GamePhase.TrickRequest);
+			
+			for(PlayerState player : players) {
+				send(new MsgNumberRequest(), player.getName());
+			}
+		}
+		System.out.println("End of Start");
 	}
 
 }
