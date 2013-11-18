@@ -8,23 +8,23 @@ package Client;
  * seine Observer geschickt wird, um mitzuteilen, welche Veraenderung
  * stattgefunden hat.
  */
-public enum ViewNotification {	
+public enum ViewNotification {
 	moveAcknowledged,
-	
+
 	chooseCardsSuccessful,
-	
+
 	InputNumberSuccessful,
-	
+
 	chooseItemSuccessful,
-	
+
 	playerListUpdate,
-	
+
 	gameListUpdate,
-	
+
 	chatMessage,
-	
+
 	loginSuccessful,
-	
+
 	joinGameSuccessful,
 	
 	gameStarted,
@@ -45,6 +45,7 @@ public enum ViewNotification {
 	
 	openWarning,
 	
-	showScore
+	showScore,
 	
+	quitGame
 }
