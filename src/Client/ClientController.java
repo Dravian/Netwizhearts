@@ -72,7 +72,7 @@ public class ClientController {
 	private Language language;
 	/** 
 	 */
-	private Set<Warning> warning;
+	private Warning warning;
 	
 	public ClientController() {
 		clientModel = new ClientModel(new MessageListenerThread());
@@ -81,14 +81,21 @@ public class ClientController {
 		login.addConnectButtonListener(new ConnectButtonListener());
 		login.addLanguageSelectionListener(new LanguageSelectionListener());
 		login.setVisible(true);
+		clientModel.addObserver(login);
 		
 		lobby = new Lobby();
 		lobby.addJoinButtonListener(new JoinButtonListenerLobby());
 		lobby.addLeaveButtonListener(new LeaveButtonListenerLobby());
 		lobby.addHostButtonListener(new HostButtonListener());
+		clientModel.addObserver(lobby);
 		
 		password = new Password();
 		password.addJoinButtonListener(new JoinButtonListenerPassword());
+		clientModel.addObserver(password);
+		
+		warning = new Warning();
+		warning.addOKButtonListener(new okButtonListener());
+		clientModel.addObserver(warning);
 		
 		createGame = new CreateGame();
 	}
@@ -149,6 +156,15 @@ public class ClientController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			createGame.setVisible(true);			
+		}
+		
+	}
+	
+	class okButtonListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			warning.setVisible(false);			
 		}
 		
 	}
