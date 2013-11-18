@@ -56,11 +56,23 @@ public class Player extends Thread{
 			comOut.flush();
 		} catch (IOException e) {
 			System.err.println("Couldn't getOutputStream");
+			try {
+				connection.close();
+			} catch (IOException e1) {
+				System.err.println("Closing Failed");
+				e1.printStackTrace();
+			}
 			e.printStackTrace();
 		}
 		try {
 			comIn = new ObjectInputStream(connection.getInputStream());
 		} catch (IOException e) {
+			try {
+				connection.close();
+			} catch (IOException e1) {
+				System.err.println("Closing Failed");
+				e1.printStackTrace();
+			}
 			System.err.println("Couldn't getInputStream");
 			e.printStackTrace();
 		}
@@ -86,33 +98,32 @@ public class Player extends Thread{
 				object.process(this, server);
 			} catch (ClassNotFoundException e) {
 				run = false;
-				System.out.println("Classpath was not found!");
-				server.handleException(this);
-				try {
-					comIn.close();
-					comOut.close();
-					connection.close();
-				} catch (IOException e1) {
-					// TODO Automatisch erstellter Catch-Block
-					e1.printStackTrace();
-				}
+				System.err.println("Classpath was not found!");
+				server.disconnectPlayer(this);
 				e.printStackTrace();
 			} catch (IOException e) {
 				run = false;
-				server.handleException(this);
-				try {
-					comIn.close();
-					comOut.close();
-					connection.close();
-				} catch (IOException e1) {
-					// TODO Automatisch erstellter Catch-Block
-					e1.printStackTrace();
-				}
+				System.err.println("Couldn't find Input/Output!");
+				server.disconnectPlayer(this);
 				e.printStackTrace();
 			}			
 		}
 	}
-
+	
+	/**
+	 * Diese Methode schlieﬂt den Socket, sowie comIn und comOut
+	 */
+	public void closeConnection(){
+		try {
+			comIn.close();
+			comOut.close();
+			connection.close();
+		} catch (IOException e) {
+			System.err.println("Closing Failed");
+			e.printStackTrace();
+		}
+	}
+	
 	/**
 	 * Diese Methode schickt ein ComObjekt an den Client.
 	 * Sie faengt eine IOException ab und ruft im jeweiligen Server, dem er zugeteilt
@@ -125,15 +136,7 @@ public class Player extends Thread{
 			comOut.flush();
 		} catch (IOException e) {
 			run = false;
-			server.handleException(this);
-			try {
-				comIn.close();
-				comOut.close();
-				connection.close();
-			} catch (IOException e1) {
-				// TODO Automatisch erstellter Catch-Block
-				e1.printStackTrace();
-			}
+			server.disconnectPlayer(this);
 			e.printStackTrace();
 		}
 	}
@@ -150,7 +153,7 @@ public class Player extends Thread{
 		server.removePlayer(this);
 		server = newServer;
 		server.addPlayer(this);
-		server.broadcast(new ComUpdatePlayerlist(this.getName(), false));	
+		server.broadcast(new ComUpdatePlayerlist(this.getPlayerName(), false));	
 	}
 	
 	/**

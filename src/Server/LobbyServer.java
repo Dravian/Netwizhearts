@@ -1,9 +1,6 @@
 package Server;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.net.*;
+
 import java.util.*;
 
 import ComObjects.*;
@@ -24,79 +21,14 @@ public class LobbyServer extends Server {
 	 * Ein Set an GameServern, die alle erstellten Spiele repraesentieren
 	 */
 	private Set<GameServer> gameServerSet = new HashSet<GameServer>();
-	
-	/** 
-	 * Ein Thread, der fuer das Annehmen neuer Clientverbindungen zustaendig ist
-	 */
-	private Thread clientListenerThread;
-	
-	/**
-	 * Der Server Socket
-	 */
-	private ServerSocket socket;
 
 	/**
-	 * Erstellt und Startet den ClientListenerThread.
-	 * Faengt eine IOException und gibt eine Fehlermeldung aus
+	 * Konstruktor des Lobby Servers
 	 */
 	public LobbyServer(){
-		try {
-			socket = new ServerSocket(4567);
-		} catch (IOException e) {
-			System.out.println("Could not listen on port: 4567.");
-			e.printStackTrace();
-			System.exit(1);			
-		}
-		clientListenerThread = new Thread(new ClientListenerThread(this));
-		clientListenerThread.start();
 	}
 	
-	/**
-	 * ClientListenerThread. Diese innere Klasse ist fuer das Zustandekommen 
-	 * von Clientverbindungen zustaendig. 
-	 * Der Thread wartet auf eingehende Clientverbindungen, stellt diese her und 
-	 * instanziiert fuer jede Verbindung eine Klasse Player. 
-	 * Dieser wird dann dem LobbyServer uebergeben.
-	 * 
-	 */
-	public class ClientListenerThread extends Thread {
-		
-		/**
-		 * Zeigt, ob der Tread auf verbindungen wartet
-		 */
-		private boolean waiting;
-		
-		private LobbyServer server;
-		
-		/**
-		 * Konstruktor des ClientListenerThreads
-		 */
-		public ClientListenerThread(LobbyServer server){
-			super("CLT");
-			waiting = true;
-			this.server = server;
-		}
-		
-		/**
-		 * Die run-Methode nimmt Clientverbinungen an, erstellt einen neuen Player 
-		 * und fuegt ihn in das noNames-Set ein
-		 * Faengt IOExceptions ab und gibt Fehlermeldungen aus.
-		 */
-		@Override
-		public void run() {
-			while(waiting){
-				Socket cSocket;
-	        	try {
-					cSocket = socket.accept();
-					Player player = new Player(server, cSocket);
-					player.start();
-				} catch (IOException e) {
-					System.err.println("Couldn't connect with Socket");
-					e.printStackTrace();
-				}        	
-	        }
-		}
-	}
+	
 	
 	/**
 	 * Fuegt einen neuen Benutzennamen in das Namensset ein.
@@ -105,7 +37,7 @@ public class LobbyServer extends Server {
 	 * @param name ist der Name der eingefuegt wird
 	 */
 	public synchronized void addName(String name) {
-		names.add(name);
+		getNames().add(name);
 	}
 
 	/**
@@ -114,7 +46,7 @@ public class LobbyServer extends Server {
 	 * @param name ist der Name der geloescht wird
 	 */
 	public synchronized void removeName(String name) {
-		names.remove(name);
+		getNames().remove(name);
 	}
 
 	/**
@@ -140,22 +72,14 @@ public class LobbyServer extends Server {
 	}
 	
 	/**
-	 * Diese ueberladene Methode schliesst die Verbindung, der Player wird aus dem playerSet 
-	 * (bzw. noNames Set) entfernt, der Name des Players wird aus dem Set names entfernt.
-	 * War der Spieler im playerSet, wird ein ComUpdatePlayerlist mit broadcast an alle 
-	 * Clients verschickt.
+	 * Diese Methode ist dafur zustaendig eine Chatnachricht an alle Clients
+	 * des Servers zu verschicken. Dafuer wird die ComChatMessage mit broadcast
+	 * an alle Spieler im playerSet verteilt.
 	 * @param player ist der Thread der die Nachricht erhalten hat
-	 * @param quit ist das ComObject, welches angibt, dass der Spieler das 
-	 * Spiel vollstaendig verlaesst
+	 * @param chat ist das ComObject, das die Chatnachricht enthaelt
 	 */
-	@Override
-	public synchronized void receiveMessage(Player player, ComClientQuit quit){
-		if(playerSet.contains(player)){
-		
-		} else {
-			System.out.println("Der Spieler wurde nicht ekannt!");
-		}
-		// TODO Auto-generated method stub
+	public void receiveMessage(Player player, ComChatMessage chat) {
+			broadcast(chat);			
 	}
 	
 	/**
@@ -170,12 +94,7 @@ public class LobbyServer extends Server {
 	 * ein neues Spiel erstellt hat
 	 */
 	@Override
-	public synchronized void receiveMessage(Player player, ComCreateGameRequest create){
-		if(playerSet.contains(player)){
-			
-		} else {
-			System.out.println("Der Spieler wurde nicht ekannt!");
-		}
+	public synchronized void receiveMessage(Player player, ComCreateGameRequest create){		
 		// TODO Auto-generated method stub
 	}
 	
@@ -192,40 +111,9 @@ public class LobbyServer extends Server {
 	 * @param join ist das ComObject, welches angibt, dass der Player einem Spiel beitreten will
 	 */
 	@Override
-	public synchronized void receiveMessage(Player player, ComJoinRequest join){
-		if(playerSet.contains(player)){
-			
-		} else {
-			System.out.println("Der Spieler wurde nicht ekannt!");
-		}
+	public synchronized void receiveMessage(Player player, ComJoinRequest join){		
 		// TODO Auto-generated method stub
 		
-	}
-	
-	/**
-	 * Diese ueberladene Methode ueberprueft, ob der Name im Set names vorhanden ist, 
-	 * falls ja, wird ein ComWarning an den Client geschickt, dass der Name bereits 
-	 * vergeben ist, falls nein, wird im Player setName aufgerufen.
-	 * Der Player wird in das playerSet eingefuegt.
-	 * Der Name wird in das Set names eingefuegt. Dem Client wird ein 
-	 * ComServerAcknowledgement geschickt.
-	 * @param player ist der Thread der die Nachricht erhalten hat
-	 * @param login ist das ComObject, dass den Benutzernamen des Clients enthält
-	 */
-	@Override
-	public synchronized void receiveMessage(Player player, ComLoginRequest login){
-		System.out.println("login");
-		String CheckName = login.getPlayerName();
-		if(names.contains(CheckName)){
-			ComWarning warning = new ComWarning("Login Fehler!");
-			player.send(warning);
-		} else {
-			player.setName(CheckName);
-			addPlayer(player);
-			addName(CheckName);
-			ComInitLobby init = initLobby();
-			player.send(init);
-		}
 	}
 	
 	/**
@@ -260,12 +148,23 @@ public class LobbyServer extends Server {
 	 * die Verbindung zu einem Client verloren gegangen ist.
 	 * Der uebergebene Player wird aus dem playerSet sowie dem names Set 
 	 * im LobbyServer entfernt.
+	 * Es wird ein ComUpdatePlayerlist mit broadcast an alle Clients verschickt.
 	 * @param player ist der Tread von dem die Exception kommt
 	 */
 	@Override
-	public synchronized void handleException(Player player) {
+	public synchronized void disconnectPlayer(Player player) {
 		removePlayer(player);
-		removeName(player.getPlayerName());	
+		removeName(player.getPlayerName());
+		player.closeConnection();
+		broadcast(new ComUpdatePlayerlist(player.getName(), false));
+	}
+
+	/**
+	 * Getter für das Set der Spielernamen
+	 * @return Gibt das names Set zurück
+	 */
+	public Set<String> getNames() {
+		return names;
 	}
 
 }
