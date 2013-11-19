@@ -3,22 +3,18 @@
  */
 package Client.View;
 
+import java.awt.Font;
+import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
-
-import Client.ClientModel;
-import Client.ViewNotification;
-
-import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 
-import java.awt.Font;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
+import Client.ClientModel;
+import Client.ViewNotification;
 
 /** 
  * Warning. Das Warning-Fenster zeigt dem Benutzer Fehlermeldungen bzw. Hinweise an, 
@@ -31,6 +27,7 @@ public class Warning extends JFrame implements Observer{
 	
 	public Warning() {
 		setTitle("Warning");
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		getContentPane().setLayout(null);
 		
 		warningTextArea = new JTextArea();
