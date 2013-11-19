@@ -10,7 +10,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-
+import java.net.SocketException;
 import ComObjects.ComObject;
 
 /**
@@ -18,7 +18,7 @@ import ComObjects.ComObject;
  * Diese Klasse implementiert die Netzwerkanbindung des Clients an den Server.
  * Sie enthaelt den dazu noetigen Socket und ObjektStream Reader und Writer.
  */
-public class MessageListenerThread extends Thread {
+public class MessageListenerThread implements Runnable {
 
 	private Socket connection;
 
@@ -26,11 +26,9 @@ public class MessageListenerThread extends Thread {
 
 	private ObjectOutput out;
 
-	private boolean run = false;
+	private boolean run;
 
 	private ClientModel model;
-
-	private boolean isConnected = false;
 
 	/**
 	 * Implementiert die Netzwerkverbindung
@@ -62,6 +60,7 @@ public class MessageListenerThread extends Thread {
 		out = new ObjectOutputStream(connection.getOutputStream());
 		out.flush();
 		in = new ObjectInputStream(connection.getInputStream());
+		run = true;
 	}
 
 	/**
@@ -104,7 +103,6 @@ public class MessageListenerThread extends Thread {
 	 */
 	public void run() {
 		try {
-			run = true;
 			ComObject object;
 			while (run) {
 				object = (ComObject) in.readObject();
@@ -112,20 +110,28 @@ public class MessageListenerThread extends Thread {
 			}
 		} catch (ClassNotFoundException e) {
 			System.err.println("ERROR: Unknown Object received.");
-			closeConnection();
 			e.printStackTrace();
+			closeConnection();
 		} catch (EOFException e) {
 			if (run) {
 				System.err.println("ERROR: Object Stream emty.");
-				closeConnection();
 				e.printStackTrace();
+				closeConnection();
+			}
+		} catch (SocketException e) {
+			if (run) {
+				System.err.println("ERROR: Connection reset.");
+				e.printStackTrace();
+				closeConnection();
 			}
 		} catch (IOException e) {
 			if (run) {
 				System.err.println("ERROR: Network IO failed.");
-				closeConnection();
 				e.printStackTrace();
+				closeConnection();
 			}
+		} finally {
+			//TODO terminateProgram und closeConnection einbauen.
 		}
 	}
   }
