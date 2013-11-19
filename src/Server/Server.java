@@ -129,8 +129,7 @@ public abstract class Server {
 	}
 	
 	/**
-	 * Diese Methode legt den Ablauf fest, was passiert, falls
-	 * die Verbindung zu einem Client verloren gegangen ist.
+	 * Diese Methode schliesst die Verbindung zu einem Client.
 	 * @param player ist der Tread von dem die Exception kommt
 	 */
 	public void disconnectPlayer(Player player) {

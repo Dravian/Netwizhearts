@@ -13,10 +13,12 @@ import ComObjects.*;
  * Sie verwaltet fuer die Dauer einer Serververbindung die Verbindung zu einem Client.
  */
 public class Player extends Thread{
+	
 	/**
 	 * Der eindeutige Benutzername des Spielers.
 	 */
 	private String name;
+	
 	/**
 	 * Der Server, an den eingehende ComObjects uebergeben werden sollen
 	 */
@@ -31,10 +33,12 @@ public class Player extends Thread{
 	 * ObjectOutputStream, um fuer Nachrichten an den Client zu Senden
 	 */
 	private ObjectOutputStream comOut;
+	
 	/**
 	 * ObjectInputStream, um fuer Nachrichten vom Client entgegenzunehmen
 	 */
 	private ObjectInputStream comIn;
+	
 	/**
 	 * Zeigt an, ob der Thread läuft
 	 */
@@ -77,6 +81,13 @@ public class Player extends Thread{
 			e.printStackTrace();
 		}
 		name = null;
+	}
+	
+	/**
+	 * Leerer Konstruktor (Tests)
+	 */
+	public Player(){
+		
 	}
 	
 	/**
@@ -145,15 +156,15 @@ public class Player extends Thread{
 	 * Diese Methode wechselt beim Player den Server an den er comObjects
 	 * weiterleiten soll. Dabei wird er aus dem playerSet des alten Servers
 	 * entfernt und in das playerSet des neuen Players eingefuegt. 
-	 * Danach wird vom neuen Server ein ComUpdatePlayerlist Objekt mit broadcast 
+	 * Vom neuen Server ein ComUpdatePlayerlist Objekt mit broadcast 
 	 * an alle Clients, die vom Server verwaltet werden, verschickt.
 	 * @param newServer ist der neue Server
 	 */
 	public void changeServer(Server newServer){
 		server.removePlayer(this);
 		server = newServer;
-		server.addPlayer(this);
 		server.broadcast(new ComUpdatePlayerlist(this.getPlayerName(), false));	
+		server.addPlayer(this);		
 	}
 	
 	/**

@@ -4,6 +4,7 @@ package Server;
 import java.util.*;
 
 import ComObjects.*;
+import Ruleset.RulesetType;
 
 /**
  * LobbyServer. Diese Klasse ist fuer die Verwaltung der Spiellobby auf dem Server verantwortlich.
@@ -12,6 +13,7 @@ import ComObjects.*;
  * Die LobbyServer-Klasse erbt Methoden zur Kommunikation vom Server.
  */
 public class LobbyServer extends Server {
+	
 	/** 
 	 * Ein Set der Benutzernamen aller Spieler, die in der Lobby oder einem Spiel sind
 	 */
@@ -27,8 +29,6 @@ public class LobbyServer extends Server {
 	 */
 	public LobbyServer(){
 	}
-	
-	
 	
 	/**
 	 * Fuegt einen neuen Benutzennamen in das Namensset ein.
@@ -54,10 +54,7 @@ public class LobbyServer extends Server {
 	 * @param game ist der GameServer der eingefuegt wird
 	 */
 	public synchronized void addGameServer(GameServer game) {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+		gameServerSet.add(game);
 	}
 
 	/**
@@ -65,10 +62,7 @@ public class LobbyServer extends Server {
 	 * @param game ist der GameServer der geloescht wird
 	 */
 	public synchronized void removeGameServer(GameServer game) {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+		gameServerSet.remove(game);
 	}
 	
 	/**
@@ -86,16 +80,27 @@ public class LobbyServer extends Server {
 	 * Diese ueberladene Methode erstellt einen neuen GameServer fuegt ihm den Player durch
 	 * Aufruf von dessen changeServer Methode hinzu.
 	 * Der neue GameServer wird in das gameServerSet eingefuegt.
-	 * Durch broadcast wird im LobbyServer sowohl ComUpdatePlayerlist als auch
-	 * ein ComLobbyUpdateGamelist verschickt.
-	 * Zusaetzlich wird dem Client mit sendToPlayer ein ComInitGameLobby geschickt.
+	 * Dem Client wird ein ComInitGameLobby geschickt.
+	 * Der Player wird aus der Playerlist entfernt.
+	 * Durch broadcast wird im LobbyServer sowohl ein ComUpdatePlayerlist
+	 * als auch ein ComLobbyUpdateGamelist verschickt.
 	 * @param player ist der Thread der die Nachricht erhalten hat
 	 * @param create ist das ComObject, welches angibt, dass der Player 
 	 * ein neues Spiel erstellt hat
 	 */
 	@Override
-	public synchronized void receiveMessage(Player player, ComCreateGameRequest create){		
-		// TODO Auto-generated method stub
+	public synchronized void receiveMessage(Player player, ComCreateGameRequest create){
+		String name = create.getGameName();
+		RulesetType ruleset = create.getRuleset();
+		String password = create.getPassword();
+		boolean hasPassword = create.hasPassword();
+		GameServer game = new GameServer(this, player.getPlayerName(), name, ruleset, password, hasPassword);
+		addGameServer(game);
+		ComInitGameLobby comInit = game.initLobby();
+		player.send(comInit);
+		removePlayer(player);
+		broadcast(new ComUpdatePlayerlist(player.getPlayerName(), true));
+		broadcast(new ComLobbyUpdateGamelist(false, game.getRepresentation()));
 	}
 	
 	/**
@@ -124,28 +129,21 @@ public class LobbyServer extends Server {
 		List<String> playerList = new ArrayList<String>();
 		Set<GameServerRepresentation> gameList = new HashSet<GameServerRepresentation>();
 		if(!playerSet.isEmpty()){
-			playerList = new ArrayList<String>();
 			for (Player player : playerSet) {
-				playerList.add(player.getName());
+				playerList.add(player.getPlayerName());
 			}
-		} else {
-			playerList = null;
 		}
 		if(!gameServerSet.isEmpty()){
-			gameList = new HashSet<GameServerRepresentation>();
 			for (GameServer game : gameServerSet) {
 				gameList.add(game.getRepresentation());
 			}
-		} else {
-			gameList = null;
 		}
 		ComInitLobby init = new ComInitLobby(playerList, gameList);
 		return init;
 	}
 	
 	/**
-	 * Diese Methode legt den Ablauf fest, was passiert, falls
-	 * die Verbindung zu einem Client verloren gegangen ist.
+	 * Diese Methode schliesst die Verbindung zu einem Client.
 	 * Der uebergebene Player wird aus dem playerSet sowie dem names Set 
 	 * im LobbyServer entfernt.
 	 * Es wird ein ComUpdatePlayerlist mit broadcast an alle Clients verschickt.
