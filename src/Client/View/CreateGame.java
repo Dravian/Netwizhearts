@@ -67,7 +67,7 @@ public class CreateGame extends JFrame{
 	 */
 	public CreateGame() {
 		setTitle("Game Creation");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 390, 279);
 		getContentPane().setLayout(null);
 		

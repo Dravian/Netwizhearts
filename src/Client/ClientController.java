@@ -25,6 +25,8 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 /** 
  * ClientController. Der ClientController enthaelt alle ActionListener der View und 
@@ -78,12 +80,14 @@ public class ClientController {
 		clientModel = new ClientModel(new MessageListenerThread());
 		
 		login = new Login();
+		login.addWindowListener(new windowCloseListener());
 		login.addConnectButtonListener(new ConnectButtonListener());
 		login.addLanguageSelectionListener(new LanguageSelectionListener());
 		login.setVisible(true);
 		clientModel.addObserver(login);
 		
 		lobby = new Lobby();
+		lobby.addWindowListener(new windowCloseListener());
 		lobby.addJoinButtonListener(new JoinButtonListenerLobby());
 		lobby.addLeaveButtonListener(new LeaveButtonListenerLobby());
 		lobby.addHostButtonListener(new HostButtonListener());
@@ -98,6 +102,52 @@ public class ClientController {
 		clientModel.addObserver(warning);
 		
 		createGame = new CreateGame();
+	}
+	
+	class windowCloseListener implements WindowListener {
+
+		@Override
+		public void windowActivated(WindowEvent arg0) {
+			// not needed
+			
+		}
+
+		@Override
+		public void windowClosed(WindowEvent arg0) {
+			clientModel.closeProgram();			
+			
+		}
+
+		@Override
+		public void windowClosing(WindowEvent arg0) {
+			// not needed
+			
+		}
+
+		@Override
+		public void windowDeactivated(WindowEvent arg0) {
+			// not needed
+			
+		}
+
+		@Override
+		public void windowDeiconified(WindowEvent arg0) {
+			// not needed
+			
+		}
+
+		@Override
+		public void windowIconified(WindowEvent arg0) {
+			// not needed
+			
+		}
+
+		@Override
+		public void windowOpened(WindowEvent arg0) {
+			// not needed
+			
+		}
+		
 	}
 	
 	
@@ -146,7 +196,7 @@ public class ClientController {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			clientModel.terminateProgram();;
+			clientModel.closeProgram();
 		}
 		
 	}
@@ -185,13 +235,13 @@ public class ClientController {
 
 		@Override
 		public void keyReleased(KeyEvent e) {
-			// TODO Auto-generated method stub
+			// not needed
 			
 		}
 
 		@Override
 		public void keyTyped(KeyEvent e) {
-			// TODO Auto-generated method stub
+			// not needed
 			
 		}
 		

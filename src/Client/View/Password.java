@@ -50,7 +50,7 @@ public class Password extends JFrame implements Observer{
 	 */
 	public Password() {
 		setTitle("Closed Game");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 286, 161);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

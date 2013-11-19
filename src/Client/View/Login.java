@@ -6,6 +6,7 @@ package Client.View;
 import java.awt.EventQueue;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemListener;
+import java.awt.event.WindowListener;
 import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
@@ -42,21 +43,6 @@ public class Login extends JFrame implements Observer{
 	private JLabel lblHostIp;
 	private JLabel lblLanguage;
 
-
-	
-	public static void main(String[] args) throws IOException{
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Login frame = new Login();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-	
 	/**
 	 * Erstellt das Login Fenster
 	 */
@@ -141,6 +127,7 @@ public class Login extends JFrame implements Observer{
 		languageComboBox.addItemListener(i);
 	}
 	
+		
 	/**
 	 * Aendert die Sprache des Fensters
 	 * 
