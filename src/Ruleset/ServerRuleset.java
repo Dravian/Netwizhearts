@@ -414,7 +414,7 @@ public abstract class ServerRuleset {
 	 * Beendet das Spiel
 	 */
 	protected void quitGame() {
-		
+		server.quitGame();
 	}
 	
 	/**

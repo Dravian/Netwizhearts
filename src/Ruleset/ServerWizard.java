@@ -239,8 +239,6 @@ public class ServerWizard extends ServerRuleset {
 			List<String> winners = getWinners();
 			broadcast(new MsgGameEnd(winners.get(0)));
 			//broadcast(new MsgGameEnd(winners));
-			quitGame();
-			
 		} else {
 			setCurrentPlayer(getFirstPlayer());
 			nextPlayer();
