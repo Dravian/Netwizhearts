@@ -21,6 +21,7 @@ import ComObjects.RulesetMessage;
 
 import java.io.IOException;
 import java.net.Socket;
+import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.List;
 import java.util.Observable;
@@ -63,6 +64,8 @@ public class ClientModel extends Observable{
 	private Set<GameServerRepresentation> gameList;
 
 	private String warningText;
+	
+	private Thread netIOThread;
 
 	/**
 	 * Haelt den für die Netzwerkkomunikation zustaendigen Thread.
@@ -107,6 +110,7 @@ public class ClientModel extends Observable{
 	 */
 	public void closeProgram() {
 		netIO.send(new ComClientQuit());
+		netIO.closeConnection();
 	}
 
 	/**
@@ -176,6 +180,7 @@ public class ClientModel extends Observable{
 		if (state == ClientState.LOGIN) {
 			System.out.println("login failed");
 			netIO.closeConnection();
+			netIOThread = null;
 			warningText = "Username allready in use.";
 			informView(ViewNotification.openWarning);
 		}
@@ -473,16 +478,16 @@ public class ClientModel extends Observable{
 	 * Wenn der Client nicht der Spielleiter des Spiels ist, wird eine Fehlermeldung ausgegeben.
 	 */
 	public void startGame() {
-	
+
 	}
 
-	/** 
+	/**
 	 * Diese Methode wird innerhalb des ClientModels aufgerufen wenn ein Spiel 
 	 * vom Spielleiter gestartet wurde. Der Client gelangt ins Spiel
 	 * Die Observer werden über die gameStarted ViewNotification benachrichtigt.
 	 */
 	private void initGame() {
-		
+
 	}
 
 	/** 
@@ -493,38 +498,38 @@ public class ClientModel extends Observable{
 	 * @param card Die gespielte Karte.
 	 */
 	public void makeMove(Card card) {
-		
+
 	}
-	
+
 	/**
 	 * Wird aufgerufen wenn das Ende einer Partie erreicht ist.
 	 * 
 	 * @param winner String der Gewinner der Partie.
 	 */
 	public void announceWinner(final String winner) {
-		
+
 	}
-	
+
 	/**
 	 * Liefert den Gewinner einer Partie.
-	 * 
+	 *
 	 * @return String der Gewinner.
 	 */
 	public String getWinner() {
 		return null;
 	}
 
-	/** 
+	/**
 	 * Hilfsmethode die alle verbundenen Observer der GUI kontaktiert.
-	 * 
+	 *
 	 * @param note Enum der die Art des Aufrufes bestimmt.
 	 */
 	private void informView(ViewNotification note) {
 		setChanged();
 		this.notifyObservers(note);
 	}
-	
-	/** 
+
+	/**
 	 * Erstellt den MessageListenerThread und fuehrt den Benutzerlogin durch.
 	 *
 	 * @param username String der eindeutige Benutzername der für den Login verwendet wird.
@@ -533,30 +538,30 @@ public class ClientModel extends Observable{
 	 */
 	public void createConnection(final String username, final String host, final int port) {
 		//TODO Fehlernachrichten mehrsprachig, eigene Klasse evtl.
-		System.out.println("do login");
 		state = ClientState.LOGIN;
 		boolean fault = false;
 		String warning = "Error(s) occurred:\n";
-		if (username == null) {
+		
+		if (username.isEmpty()) {
 			fault = true;
-			warning += "Emty Username.\n";
+			warning += "Empty Username.\n";
 		}
-		if (host == null) {
+		if (host.isEmpty()) {
 			fault = true;
-			warning += "Emty Host Address.\n";
+			warning += "Empty Host Address.\n";
 		}
 		if (!fault) {
 			try {
 				//TODO Client und Serverport unterschiedlich hartcodiert...
-				Socket connection = new Socket("127.0.0.1", 4567);
+				Socket connection = new Socket(username, 4567);
 				netIO.startConnection(this, connection);
-				netIO.start();
-				netIO.send(new ComLoginRequest("Hans"));
-				System.out.println("login request send");
+				netIOThread = new Thread(netIO);
+				netIOThread.start();
+				netIO.send(new ComLoginRequest(host));
 			} catch (UnknownHostException e) {
 				warningText = warning + "Unknown Host.\n";
 				informView(ViewNotification.openWarning);
-			} catch (IllegalArgumentException e) {
+			} catch (SocketException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IOException e) {
@@ -567,6 +572,14 @@ public class ClientModel extends Observable{
 			warningText = warning;
 			informView(ViewNotification.openWarning);
 		}
+	}
+	
+	private void setupConnection(final String username, final String host, final int port) {
+		
+	}
+	
+	private void resetNetIO() {
+		
 	}
 
 	/**
