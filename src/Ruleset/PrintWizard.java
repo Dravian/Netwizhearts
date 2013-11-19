@@ -28,7 +28,7 @@ public class PrintWizard extends ServerWizard{
 		List<PlayerState> players = getPlayers();
 		System.out.println("Runde: " + getGameState().getRoundNumber());
 		setFirstPlayer(players.get(0));
-		System.out.println(getFirstPlayer());
+		System.out.println(getFirstPlayer().getOtherData().toString());
 		startWizardRound();
 		
 	}
@@ -74,12 +74,16 @@ public class PrintWizard extends ServerWizard{
 			
 			System.out.println(player.getOtherData().getName());
 		}
+		
 		System.out.println("Stop");
 		GameClientUpdate game = ((MsgUser)input.get(1)).getGameClientUpdate();
-		System.out.println(game.getOwnData().getName());
-		System.out.println("Take");
-		for(OtherData d : game.getOtherPlayerData()) {
-			System.out.println(d.getName());
+		System.out.println(game.getOwnData().toString() + '\n');
+
+		System.out.println(game.getOtherPlayerData().isEmpty());
+		System.out.println("Take" + '\n');
+		
+		for(int i = 0; i < game.getOtherPlayerData().size(); i++) {
+			System.out.println(game.getOtherPlayerData().get(i).toString());
 		}
 		
 		if(trumpCard.getValue() == valueOfSorcerer) {

@@ -11,9 +11,15 @@ import java.util.Map;
 
 import Server.GameServer;
 import ComObjects.MsgCard;
+import ComObjects.MsgCardRequest;
+import ComObjects.MsgGameEnd;
 import ComObjects.MsgMultiCards;
+import ComObjects.MsgMultiCardsRequest;
 import ComObjects.MsgNumber;
+import ComObjects.MsgNumberRequest;
 import ComObjects.MsgSelection;
+import ComObjects.MsgSelectionRequest;
+import ComObjects.MsgUser;
 import ComObjects.RulesetMessage;
 /** 
  * ServerRuleset. Das ServerRuleset ist eine akstrakte Klasse und fuer den Ablauf und die Einhaltung der Regeln eines Spiels zustaendig. 
@@ -381,35 +387,75 @@ public abstract class ServerRuleset {
 	 * @param player Dem Spieler 
 	 */
 	protected GameClientUpdate generateGameClientUpdate(PlayerState player) {
-		List<PlayerState> players = getPlayers();
-		Map<String,Card> discardPile = gameState.getPlayedCards();	
-		int position = players.indexOf(player);
-		
-		ListIterator<PlayerState> i = players.listIterator(position);
-		List<OtherData> enemyData = new ArrayList<OtherData>();
-		
-		PlayerState firstPlayer = getFirstPlayer();
-		PlayerState currentPlayer = getCurrentPlayer();
-		Card trumpCard = gameState.getTrumpCard();
-		
-		/*
-		 * Fügt die OtherData der anderen Spieler in einer richtigen Reihenfolge 
-		 * ein.
-		 */
-		do {
-			if((!i.hasNext()) && (position == 0)) {
-				break;
-			}else if(!i.hasNext()) {
-				i = players.listIterator(0);
-				enemyData.add(players.get(0).getOtherData());
-			}
-			else {
-				enemyData.add(i.next().getOtherData());
-			}
-		} while(i.nextIndex() != position);
-		
-		return new GameClientUpdate(player,discardPile,enemyData, firstPlayer,
-				currentPlayer,trumpCard);
+		return new GameClientUpdate(player,
+				gameState.getPlayedCards(),
+				viewOfOtherPlayers(player), 
+				getFirstPlayer(),
+				getCurrentPlayer(),
+				gameState.getTrumpCard());
 		
 	}
+	
+	/**
+	 * Erzeugt eine Liste von OtherData mit der von einem bestimmten Spieler 
+	 * ausgesehen richtigen Reihenfolge von den anderen Spielern
+	 * @param player Der Spieler aus dessen Sicht die Liste gemacht wird
+	 * @return Gibt eine Liste von OtherData in einer bestimmten Reihenfolge zurück
+	 */
+	private List<OtherData> viewOfOtherPlayers(PlayerState player) {
+		List<PlayerState> players = getPlayers();
+		List<OtherData> enemyData = new ArrayList<OtherData>();
+		int iterator = players.indexOf(player);
+		
+		if(iterator == players.size()-1) {
+			iterator = 0;
+		} else {
+			iterator++;
+		}
+		
+		while(iterator != players.indexOf(player)) {
+			enemyData.add((players.get(iterator)).getOtherData());
+			if(iterator == players.size()-1) {
+				iterator = 0;
+			} else {
+				iterator++;
+			}
+		}
+		
+		return enemyData;
+	}
+
+	public void resolveMessage(MsgCardRequest msgCardRequest, String name) {
+		// TODO Automatisch erstellter Methoden-Stub
+		
+	}
+
+	public void resolveMessage(MsgGameEnd msgGameEnd, String name) {
+		// TODO Automatisch erstellter Methoden-Stub
+		
+	}
+
+	public void resolveMessage(MsgMultiCardsRequest msgMultiCardsRequest,
+			String name) {
+		// TODO Automatisch erstellter Methoden-Stub
+		
+	}
+
+	public void resolveMessage(MsgNumberRequest msgNumberRequest, String name) {
+		// TODO Automatisch erstellter Methoden-Stub
+		
+	}
+
+	public void resolveMessage(MsgSelectionRequest msgSelectionRequest,
+			String name) {
+		// TODO Automatisch erstellter Methoden-Stub
+		
+	}
+
+	public void resolveMessage(MsgUser msgUser, String name) {
+		// TODO Automatisch erstellter Methoden-Stub
+		
+	}
+
+	
 }
