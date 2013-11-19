@@ -95,7 +95,7 @@ public class GameServerRepresentation {
 	/**
 	 * Getter-Methode die zurueckgibt, ob es ein Passwort gibt
 	 */
-	public boolean isHasPassword() {
+	public boolean hasPassword() {
 		return hasPassword;
 	}	
 }

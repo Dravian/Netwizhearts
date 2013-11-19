@@ -96,13 +96,22 @@ public class LobbyServer extends Server {
 		boolean hasPassword = create.hasPassword();
 		GameServer game = new GameServer(this, player.getPlayerName(), name, ruleset, password, hasPassword);
 		addGameServer(game);
+		addPlayerToGame(player, game);
+		broadcast(new ComLobbyUpdateGamelist(false, game.getRepresentation()));
+	}
+	/**
+	 * Hilfsmethode, die einen Spieler zu einem Spiel hinzufuegt
+	 * @param player
+	 * @param game
+	 */
+	private void addPlayerToGame(Player player, GameServer game) {
+		player.changeServer(game);
 		ComInitGameLobby comInit = game.initLobby();
 		player.send(comInit);
 		removePlayer(player);
-		broadcast(new ComUpdatePlayerlist(player.getPlayerName(), true));
-		broadcast(new ComLobbyUpdateGamelist(false, game.getRepresentation()));
+		broadcast(new ComUpdatePlayerlist(player.getPlayerName(), true));	
 	}
-	
+
 	/**
 	 * Diese ueberladene Methode fuegt einen Player dem entsprechenden GameServer hinzu.
 	 * Falls das Passwort nicht leer ist wird geprueft, ob es mit dem Passwort
@@ -110,15 +119,38 @@ public class LobbyServer extends Server {
 	 * geschickt.
 	 * Ansonsten wird und der Player dem, durch Namen des Spielleiters identifizierten,
 	 * Gameserver, durch Aufruf von changeServer uebergeben.
-	 * Dem joinendenClient wird mit sendToPlayer ein ComInitGameLobby geschickt.
-	 * Durch broadcast wird sowohl im LobbyServer ein ComUpdatePlayerlist verschickt.
+	 * Dem joinendenClient wird ein ComInitGameLobby geschickt.
+	 * Durch broadcast wird im LobbyServer ein ComUpdatePlayerlist verschickt.
 	 * @param player ist der Thread der die Nachricht erhalten hat
 	 * @param join ist das ComObject, welches angibt, dass der Player einem Spiel beitreten will
 	 */
 	@Override
 	public synchronized void receiveMessage(Player player, ComJoinRequest join){		
-		// TODO Auto-generated method stub
-		
+		String master = join.getGameMasterName();
+		GameServer joinGame = null;
+		if(!gameServerSet.isEmpty()){
+			for (GameServer game : gameServerSet) {
+				if(game.getGameMasterName() == master){
+					joinGame = game;
+				}
+			}
+		} else {
+			System.err.println("Kein offenes Spiel!");
+		}
+		if(joinGame != null){
+			if(joinGame.getRepresentation().hasPassword()){
+				if(joinGame.getPassword() == join.getPassword()){
+					addPlayerToGame(player, joinGame);
+				} else {
+					ComWarning warning = new ComWarning("Wrong Password!");
+					player.send(warning);
+				}
+			} else {
+				addPlayerToGame(player, joinGame);
+			}
+		} else {
+			System.err.println("Spiel nicht vorhanden!");
+		}
 	}
 	
 	/**
