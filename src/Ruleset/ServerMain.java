@@ -5,6 +5,11 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import javax.net.SocketFactory;
+
+import ComObjects.ComRuleset;
+import ComObjects.RulesetMessage;
+
 import test.TestGameServer;
 import test.TestLobbyServer;
 import test.TestPlayer;
@@ -21,15 +26,16 @@ public class ServerMain {
 	 * @throws UnknownHostException 
 	 */
 	public static void main(String[] args) throws UnknownHostException, IOException {
-		System.out.println("Wieso?");
 		lobbyServer = new TestLobbyServer();
-		blue = new TestPlayer(lobbyServer, new Socket("127.0.0.1", 5001));
+		
+		blue = new TestPlayer(lobbyServer);
 		
 		
 		gameServer = new TestGameServer(lobbyServer,blue,"Mein Spiel",RulesetType.Wizard, 
 				"",false);
 		wizard = new PrintWizard(gameServer);
-		
+		RulesetMessage message =((ComRuleset)blue.getServerInput().get(0)).getRulesetMessage();
+		(MsgUser)message.getGameClientUpdate
 		wizard.runGame();
 	}
 
