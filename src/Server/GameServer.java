@@ -218,7 +218,7 @@ public class GameServer extends Server {
 	
 	/**
 	 * Diese Methode beendet das Spiel und gibt die Player
-	 * an die Lobby zurück
+	 * an den LobbyServer zurueck
 	 */
 	public void quitGame(){
 		for (Player player : playerSet) {
