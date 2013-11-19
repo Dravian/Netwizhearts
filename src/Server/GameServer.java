@@ -217,6 +217,17 @@ public class GameServer extends Server {
 	}
 	
 	/**
+	 * Diese Methode beendet das Spiel und gibt die Player
+	 * an die Lobby zurück
+	 */
+	public void quitGame(){
+		for (Player player : playerSet) {
+			player.changeServer(lobbyServer);
+		}
+		lobbyServer.removeGameServer(this);
+	}
+	
+	/**
 	 * Diese Methode schliesst die Verbindung zu einem Client.
 	 * Der uebergebene Player wird aus dem playerSet im GameServer, sowie 
 	 * dem names Set im LobbyServer entfernt.
@@ -227,8 +238,7 @@ public class GameServer extends Server {
 	 */
 	@Override
 	public synchronized void disconnectPlayer(Player player) {
-		// TODO Automatisch erstellter Methoden-Stub
-		
+		// TODO Automatisch erstellter Methoden-Stub		
 	}
 	
 	/**
