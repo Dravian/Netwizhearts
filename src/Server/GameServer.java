@@ -225,6 +225,7 @@ public class GameServer extends Server {
 			player.changeServer(lobbyServer);
 		}
 		lobbyServer.removeGameServer(this);
+		lobbyServer.broadcast(new ComLobbyUpdateGamelist(true, getRepresentation()));
 	}
 	
 	/**
