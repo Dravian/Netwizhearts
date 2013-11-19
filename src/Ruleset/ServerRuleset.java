@@ -181,11 +181,23 @@ public abstract class ServerRuleset {
 	}
 	
 	/**
-	 * Setzt den naechsten Spieler in der List als currentPlayer
-	 * @return true falls es ein anderer Spieler ist und false wenn es derselbe ist.
+	 * Setzt den naechsten Spieler in der Liste als currentPlayer
+	 * @return gibt false zurück wenn es der firstPlayer ist und true sonst
 	 */
 	protected boolean nextPlayer() {
-		return false;	
+		int iterator = getPlayers().indexOf(getCurrentPlayer());
+		
+		if(iterator == getPlayers().size()-1) {
+			iterator = 0;
+		} else {
+			iterator++;
+		}
+		
+		if(getPlayers().get(iterator) == getFirstPlayer()) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 	/** 
@@ -378,9 +390,11 @@ public abstract class ServerRuleset {
 	protected abstract void calculateRoundOutcome();
 
 	/**
-	 * Wird bei Spielende aufgerufen und gibt den Namen vom Sieger zurück
+	 * Wird bei Spielende aufgerufen und gibt die Namen der Sieger zurück,
+	 * nur mehr als einer falls es unentschieden steht.
+	 * @return den Namen vom Spieler
 	 */
-	protected abstract String getWinner();
+	protected abstract List<String> getWinners();
 	
 	/**
 	 * Erzeugt ein GameClientUpdate welches individuell für jeden Benutzer ist
@@ -426,35 +440,35 @@ public abstract class ServerRuleset {
 	}
 
 	public void resolveMessage(MsgCardRequest msgCardRequest, String name) {
-		// TODO Automatisch erstellter Methoden-Stub
-		
+		throw new IllegalArgumentException("Das ComObjekt MsgSelection findet " +
+				"keine Verwendung in diesem Spiel");
 	}
 
 	public void resolveMessage(MsgGameEnd msgGameEnd, String name) {
-		// TODO Automatisch erstellter Methoden-Stub
-		
+		throw new IllegalArgumentException("Das ComObjekt MsgSelection findet " +
+				"keine Verwendung in diesem Spiel");		
 	}
 
 	public void resolveMessage(MsgMultiCardsRequest msgMultiCardsRequest,
 			String name) {
-		// TODO Automatisch erstellter Methoden-Stub
-		
+		throw new IllegalArgumentException("Das ComObjekt MsgSelection findet " +
+				"keine Verwendung in diesem Spiel");		
 	}
 
 	public void resolveMessage(MsgNumberRequest msgNumberRequest, String name) {
-		// TODO Automatisch erstellter Methoden-Stub
-		
+		throw new IllegalArgumentException("Das ComObjekt MsgSelection findet " +
+				"keine Verwendung in diesem Spiel");		
 	}
 
 	public void resolveMessage(MsgSelectionRequest msgSelectionRequest,
 			String name) {
-		// TODO Automatisch erstellter Methoden-Stub
-		
+		throw new IllegalArgumentException("Das ComObjekt MsgSelection findet " +
+				"keine Verwendung in diesem Spiel");		
 	}
 
 	public void resolveMessage(MsgUser msgUser, String name) {
-		// TODO Automatisch erstellter Methoden-Stub
-		
+		throw new IllegalArgumentException("Das ComObjekt MsgSelection findet " +
+				"keine Verwendung in diesem Spiel");		
 	}
 
 	
