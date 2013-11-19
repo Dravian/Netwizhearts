@@ -66,7 +66,7 @@ public class GameState {
 		players = new LinkedList<PlayerState>();
 		discardPile = new HashMap<String,Card>();
 		this.deck = deck;
-		roundNumber = 1;
+		roundNumber = 0;
 		trumpCard = WizardCard.Empty;
 	}
 	
@@ -95,12 +95,20 @@ public class GameState {
 	}
 	
 	/**
-	 * Setzt einen neuen Spieler als firstPlayer
+	 * Setzt einen neuen Spieler als firstPlayer und erhöht die Rundennummer um eins
 	 * @param player Der neue firstPlayer
 	 */
 	protected void setFirstPlayer(PlayerState player) {
 		firstPlayer = player;
+		newRound();
+	}
 	
+	/**
+	 * Macht eine neue Runde, wird aufgerufen wenn ein neuer Spieler als firstPlayer
+	 * gesetzt wird.
+	 */
+	private void newRound() {
+		roundNumber++;
 	}
 
 	/** 
@@ -139,6 +147,14 @@ public class GameState {
 	 */
 	protected List<Card> getCardsLeftInDeck() {
 		return this.deck;
+	}
+	
+	/**
+	 * Stellt die Stiche die ein Spieler gemacht hat zurück in den Kartenstapel
+	 * @param player Der Spieler
+	 */
+	protected void putTricksBackInDeck(PlayerState player) {
+		deck.addAll(player.getOtherData().removeTricks());
 	}
 
 	/** 

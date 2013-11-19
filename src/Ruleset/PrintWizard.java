@@ -25,10 +25,14 @@ public class PrintWizard extends ServerWizard{
 
 	@Override
 	public void runGame() throws RulesetException{
-		List<PlayerState> players = getPlayers();
-		System.out.println("Runde: " + getGameState().getRoundNumber());
+		List<PlayerState> players = getPlayers();	
 		setFirstPlayer(players.get(0));
-		System.out.println(getFirstPlayer().getOtherData().toString());
+		setFirstPlayer(players.get(1));
+		setFirstPlayer(players.get(2));
+		
+		System.out.println("Runde: " + getGameState().getRoundNumber());
+		
+		System.out.println("Erster Spieler: " + getFirstPlayer().getOtherData().toString());
 		startWizardRound();
 		
 	}
@@ -46,25 +50,27 @@ public class PrintWizard extends ServerWizard{
 		getGameState().shuffleDeck();
 		getGameState().dealCards(getGameState().getRoundNumber());
 		
-		System.out.println("Blue: ");
+		System.out.println("Blue's Karten: ");
 			for(Card card : getPlayerState(blue).getHand()) {
-				System.out.print(card.getValue() + " " + card.getColour() + "&");
+				System.out.print(card.getValue() + " " + card.getColour() + " ");
 			}
 			System.out.println();
-		System.out.println("Red: ");
+			
+		System.out.println("Red's Karten: ");
 			for(Card card : getPlayerState(red).getHand()) {
-				System.out.print(card.getValue() + " " + card.getColour() + "&");
+				System.out.print(card.getValue() + " " + card.getColour() + " ");
 			}
 			System.out.println();
-		System.out.println("Green: ");
+			
+		System.out.println("Green's Karten: ");
 			for(Card card : getPlayerState(green).getHand()) {
-				System.out.print(card.getValue() + " " + card.getColour() + "&");
+				System.out.print(card.getValue() + " " + card.getColour() + " ");
 			}
 		System.out.println();
-		System.out.println("Trumpffarbe");
+		
 		Card trumpCard = getGameState().getTopCard();
 		getGameState().setTrumpCard(trumpCard);
-		System.out.println(trumpCard.getColour());
+		System.out.println("Trumpffarbe: " + trumpCard.getColour());
 		System.out.println();
 		System.out.println();
 		
@@ -72,15 +78,37 @@ public class PrintWizard extends ServerWizard{
 		for(PlayerState player : players) {
 			sendJo(new MsgUser(generateGameClientUpdate(player)), player.getName());
 			
-			System.out.println(player.getOtherData().getName());
+			System.out.println("Spieler im Spiel: " + player.getOtherData().getName());
 		}
 		
-		System.out.println("Stop");
+		System.out.println("Aus Sicht von Red:");
+		
 		GameClientUpdate game = ((MsgUser)input.get(1)).getGameClientUpdate();
-		System.out.println(game.getOwnData().toString() + '\n');
+		System.out.println(game.getOwnData().toString());
 
-		System.out.println(game.getOtherPlayerData().isEmpty());
-		System.out.println("Take" + '\n');
+		System.out.println();
+		
+		for(int i = 0; i < game.getOtherPlayerData().size(); i++) {
+			System.out.println(game.getOtherPlayerData().get(i).toString());
+		}
+		
+		System.out.println("Aus Sicht von Blue:");
+		
+		game = ((MsgUser)input.get(0)).getGameClientUpdate();
+		System.out.println(game.getOwnData().toString() );
+
+		System.out.println();
+		
+		for(int i = 0; i < game.getOtherPlayerData().size(); i++) {
+			System.out.println(game.getOtherPlayerData().get(i).toString());
+		}
+		
+		System.out.println("Aus Sicht von Green: ");
+		
+		game = ((MsgUser)input.get(2)).getGameClientUpdate();
+		System.out.println(game.getOwnData().toString());
+
+		System.out.println();
 		
 		for(int i = 0; i < game.getOtherPlayerData().size(); i++) {
 			System.out.println(game.getOtherPlayerData().get(i).toString());
@@ -90,7 +118,7 @@ public class PrintWizard extends ServerWizard{
 			setGamePhase(GamePhase.SelectionRequest);
 			
 			sendJo(new MsgSelectionRequest(), getFirstPlayer().getName());	
-			System.out.println(getFirstPlayer().getName());
+			System.out.println(getFirstPlayer().getName() + " darf eine TrumpFarbe waehlen.");
 		} else {
 			setGamePhase(GamePhase.TrickRequest);
 			
