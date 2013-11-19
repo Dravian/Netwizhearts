@@ -40,8 +40,8 @@ public class TestisValidMoveHearts {
 		player3 = "Track";
 		player3 = "Duck";
 		lobbyServer = new TestLobbyServer();
-		player = new TestPlayer(lobbyServer,null);
-		gameServer = new TestGameServer(lobbyServer,player,"Mein Spiel",
+		player = new TestPlayer(lobbyServer);
+		gameServer = new TestGameServer(lobbyServer,"Tick","Mein Spiel",
 				RulesetType.Hearts, "",false);
 		ruleset = new ServerHearts(gameServer);
 		

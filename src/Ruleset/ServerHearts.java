@@ -88,7 +88,7 @@ public class ServerHearts extends ServerRuleset {
 	}
 
 	@Override
-	public void runGame() {
+	public void runGame() throws IllegalNumberOfPlayersException{
 		
 	}
 
