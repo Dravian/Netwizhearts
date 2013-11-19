@@ -9,8 +9,8 @@ import Server.Server;
 
 public class TestPlayer extends Player {
 	
-	public TestPlayer(Server lobbyServer, Socket socket) {
-		super(lobbyServer, socket);
+	public TestPlayer(Server lobbyServer) {
+		super(lobbyServer);
 	}
 	private Server server;
 	
