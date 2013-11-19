@@ -1,6 +1,7 @@
 package ComObjects;
 
 import Client.ClientModel;
+import Ruleset.RulesetType;
 import Server.Player;
 import Server.Server;
 
@@ -16,7 +17,7 @@ public class ComCreateGameRequest implements ComObject, Serializable {
 
     private String gameName;
 
-    private Enum ruleset;
+    private RulesetType ruleset;
 
     private boolean hasPassword;
 
@@ -30,7 +31,7 @@ public class ComCreateGameRequest implements ComObject, Serializable {
      * @param hasPassword   sagt, ob ein Passwort gesetzt wurde.
      * @param password      ist das Passwort, das gesetzt wurde.
      */
-    public ComCreateGameRequest(String name, Enum ruleset, boolean hasPassword, String password) {
+    public ComCreateGameRequest(String name, RulesetType ruleset, boolean hasPassword, String password) {
         this.gameName = name;
         this.ruleset = ruleset;
         this.hasPassword = hasPassword;
@@ -49,7 +50,7 @@ public class ComCreateGameRequest implements ComObject, Serializable {
      * Diese Methode gibt das Regelwerk zurueck, das benutzt werden soll.
      * @return das Regelwerk, welches benutzt wird.
      */
-    public Enum getRuleset() {
+    public RulesetType getRuleset() {
         return ruleset;
     }
 
