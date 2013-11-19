@@ -38,7 +38,7 @@ public class TestStartWizard {
 		green = new TestPlayer(lobbyServer);
 		green.setPlayerName("Green");
 				
-		gameServer = new TestGameServer(lobbyServer,blue,"Mein Spiel",RulesetType.Wizard, 
+		gameServer = new TestGameServer(lobbyServer,"Blue","Mein Spiel",RulesetType.Wizard, 
 				"",false);
 		wizard = new ServerWizard(gameServer);
 		
@@ -53,8 +53,12 @@ public class TestStartWizard {
 	
 	@Test
 	public void testStartWizard() {
-		wizard.runGame();
-		assertTrue(wizard.getFirstPlayer() == wizard.getPlayerState("Blue"));
+		try {
+			wizard.runGame();
+			assertTrue(wizard.getFirstPlayer() == wizard.getPlayerState("Blue"));
+		}catch (Exception e){
+			e.printStackTrace();
+		}
 	}
 	
 	@After

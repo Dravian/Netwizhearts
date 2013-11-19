@@ -1,6 +1,7 @@
 package test;
 
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.List;
 
 import ComObjects.ComObject;
@@ -8,13 +9,13 @@ import Server.Player;
 import Server.Server;
 
 public class TestPlayer extends Player {
+	private Server server;
+	private List<ComObject> inputComObject;
 	
 	public TestPlayer(Server lobbyServer) {
 		super(lobbyServer);
+		inputComObject = new ArrayList<ComObject>();
 	}
-	private Server server;
-	
-	private List<ComObject> inputComObject;
 
 	public List<ComObject> getServerInput() {
 		return inputComObject;
