@@ -90,14 +90,13 @@ public class LoginServer extends Server {
 	 * Diese ueberladene Methode ueberprueft, ob der Name im Set names des LobbyServers 
 	 * vorhanden ist, falls ja, wird ein ComWarning an den Client geschickt,
 	 * dass der Name bereits vergeben ist, falls nein, wird im Player setName aufgerufen.
-	 * Der Player wecheslt auf den LobbyServer, sein Name wird in das names Set eingefügt. 
+	 * Der Player wecheselt auf den LobbyServer, sein Name wird in das names Set eingefügt. 
 	 * Dem Client wird ein ComInitLobby geschickt.
 	 * @param player ist der Thread der die Nachricht erhalten hat
 	 * @param login ist das ComObject, dass den Benutzernamen des Clients enthält
 	 */
 	@Override
 	public synchronized void receiveMessage(Player player, ComLoginRequest login){
-		System.out.println("login");
 		String CheckName = login.getPlayerName();
 		if(lobby.getNames().contains(CheckName)){
 			ComWarning warning = new ComWarning("Login Fehler!");
@@ -113,8 +112,7 @@ public class LoginServer extends Server {
 	}
 	
 	/**
-	 * Diese Methode legt den Ablauf fest, was passiert, falls
-	 * die Verbindung zu einem Client verloren gegangen ist.
+	 * Diese Methode schliesst die Verbindung zu einem Client.
 	 * Der uebergebene Player wird aus dem playerSet sowie dem names Set 
 	 * im LobbyServer entfernt.
 	 * @param player ist der Tread von dem die Exception kommt
