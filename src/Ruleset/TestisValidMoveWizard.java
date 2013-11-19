@@ -38,8 +38,8 @@ public class TestisValidMoveWizard {
 		player2 = "Trick";
 		player3 = "Track";
 		lobbyServer = new TestLobbyServer();
-		player = new TestPlayer(lobbyServer,null,null);
-		gameServer = new TestGameServer(lobbyServer,player,"Mein Spiel",RulesetType.Wizard, 
+		player = new TestPlayer(lobbyServer);
+		gameServer = new TestGameServer(lobbyServer,"Tick","Mein Spiel",RulesetType.Wizard, 
 				"",false);
 		ruleset = new ServerWizard(gameServer);
 		

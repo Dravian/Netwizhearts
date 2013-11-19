@@ -3,6 +3,11 @@
  */
 package Server;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import ComObjects.*;
 import Ruleset.RulesetType;
 import Ruleset.ServerRuleset;
@@ -74,7 +79,7 @@ public class GameServer extends Server {
 	 * @param password speichert das Passwort des Spiels
 	 * @param hasPassword gibt an, ob das Spiel ein Passwort hat
 	 */
-	public GameServer(LobbyServer server, Player gameMaster, String GameName, 
+	public GameServer(LobbyServer server, String gameMaster, String GameName, 
 			RulesetType ruleset, String password, boolean hasPassword) {
 		// begin-user-code
 		// TODO Auto-generated constructor stub
@@ -86,7 +91,7 @@ public class GameServer extends Server {
 	 * @return Gibt die neue GameServerRepresentation zurueck
 	 */
 	public synchronized GameServerRepresentation getRepresentation() {
-		return new GameServerRepresentation(gameMasterName, name, maxPlayers, currentPlayers, rulesetType, hasPassword);
+		return new GameServerRepresentation(getGameMasterName(), name, maxPlayers, currentPlayers, rulesetType, hasPassword);
 	}
 	
 	/**
@@ -201,13 +206,30 @@ public class GameServer extends Server {
 	 * @return Gibt das ComInitGameLobby Objekt zurueck
 	 */
 	public ComInitGameLobby initLobby(){
-		// TODO Auto-generated method stub
-		return null;
+		List<String> playerList = new ArrayList<String>();
+		if(!playerSet.isEmpty()){
+			for (Player player : playerSet) {
+				playerList.add(player.getPlayerName());
+			}
+		}
+		ComInitGameLobby init = new ComInitGameLobby(playerList);
+		return init;
 	}
 	
 	/**
-	 * Diese Methode legt den Ablauf fest, was passiert, falls
-	 * die Verbindung zu einem Client verloren gegangen ist.
+	 * Diese Methode beendet das Spiel und gibt die Player
+	 * an den LobbyServer zurueck
+	 */
+	public void quitGame(){
+		for (Player player : playerSet) {
+			player.changeServer(lobbyServer);
+		}
+		lobbyServer.removeGameServer(this);
+		lobbyServer.broadcast(new ComLobbyUpdateGamelist(true, getRepresentation()));
+	}
+	
+	/**
+	 * Diese Methode schliesst die Verbindung zu einem Client.
 	 * Der uebergebene Player wird aus dem playerSet im GameServer, sowie 
 	 * dem names Set im LobbyServer entfernt.
 	 * Alle Spieler, die sich im Spiel befinden werden durch Aufruf von changeServer an 
@@ -217,7 +239,23 @@ public class GameServer extends Server {
 	 */
 	@Override
 	public synchronized void disconnectPlayer(Player player) {
-		// TODO Automatisch erstellter Methoden-Stub
-		
+		// TODO Automatisch erstellter Methoden-Stub		
 	}
+	
+	/**
+	 * Getter fuer den Namen des Spielleiters
+	 * @return Gibt den gameMasterName zurueck
+	 */
+	public String getGameMasterName() {
+		return gameMasterName;
+	}
+	
+	/**
+	 * Getter fuer das Passwort
+	 * @return Gibt das Passwort des Spieles zurueck
+	 */
+	public String getPassword() {
+		return password;
+	}
+
 }

@@ -1,5 +1,6 @@
 package Ruleset;
 
+import java.util.List;
 import java.util.Set;
 
 import Server.GameServer;
@@ -82,14 +83,13 @@ public class ServerHearts extends ServerRuleset {
 	}
 
 	@Override
-	protected String getWinner() {
+	protected List<String> getWinners() {
 		return null;
 	}
 
 	@Override
-	protected GameClientUpdate generateGameClientUpdate(String player) {
-		// TODO Automatisch erstellter Methoden-Stub
-		return null;
+	public void runGame() {
+		
 	}
 
 

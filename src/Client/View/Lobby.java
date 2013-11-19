@@ -50,19 +50,6 @@ public class Lobby extends JFrame implements Observer{
 	private JTextArea chatlog;
 	private Language lang;
 	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Lobby frame = new Lobby();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	/**
 	 * Erstellt das Lobby-Fenster
 	 */

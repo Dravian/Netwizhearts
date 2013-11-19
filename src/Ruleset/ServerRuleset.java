@@ -6,9 +6,20 @@ package Ruleset;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
 
 import Server.GameServer;
 import ComObjects.MsgCard;
+import ComObjects.MsgCardRequest;
+import ComObjects.MsgGameEnd;
+import ComObjects.MsgMultiCards;
+import ComObjects.MsgMultiCardsRequest;
+import ComObjects.MsgNumber;
+import ComObjects.MsgNumberRequest;
+import ComObjects.MsgSelection;
+import ComObjects.MsgSelectionRequest;
+import ComObjects.MsgUser;
 import ComObjects.RulesetMessage;
 /** 
  * ServerRuleset. Das ServerRuleset ist eine akstrakte Klasse und fuer den Ablauf und die Einhaltung der Regeln eines Spiels zustaendig. 
@@ -75,6 +86,13 @@ public abstract class ServerRuleset {
 	}
 	
 	/**
+	 * Holt den aktuellen Spielzustand
+	 * @return Der Spielzustand
+	 */
+	protected GameState getGameState() {
+		return gameState;
+	}
+	/**
 	 * Gibt den Typ des Regelwerks zurueck
 	 * @return Der Typ vom Regelwerk
 	 */
@@ -135,12 +153,15 @@ public abstract class ServerRuleset {
 		}
 		return deck;
 	}
+	
+	protected List<PlayerState> getPlayers() {
+		return gameState.getPlayers();
+	}
 
 	/**
 	 * Startet das Spiel
 	 */
-	public void runGame() {
-	}
+	public abstract void runGame();
 	
 	/** 
 	 * Setzt den Spieler der als Erster am Zug ist, im Gamestate
@@ -160,11 +181,23 @@ public abstract class ServerRuleset {
 	}
 	
 	/**
-	 * Setzt den naechsten Spieler in der List als currentPlayer
-	 * @return true falls es ein anderer Spieler ist und false wenn es derselbe ist.
+	 * Setzt den naechsten Spieler in der Liste als currentPlayer
+	 * @return gibt false zurück wenn es der firstPlayer ist und true sonst
 	 */
 	protected boolean nextPlayer() {
-		return false;	
+		int iterator = getPlayers().indexOf(getCurrentPlayer());
+		
+		if(iterator == getPlayers().size()-1) {
+			iterator = 0;
+		} else {
+			iterator++;
+		}
+		
+		if(getPlayers().get(iterator) == getFirstPlayer()) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 	/** 
@@ -217,7 +250,7 @@ public abstract class ServerRuleset {
 	 * @return Die Spielkarten des Spielers
 	 */
 	protected List<Card> getPlayerCards(PlayerState player) {
-		return gameState.getPlayerCards(player);
+		return player.getHand();
 	}
 	/**
 	 * Schickt eine Nachricht an einen Spieler, über den Gameserver
@@ -238,15 +271,6 @@ public abstract class ServerRuleset {
 	}
 	
 	/** 
-	 * Verarbeitet eine allgemeine RulesetMessage
-	 * @param msgCard Die Nachricht vom Client welche Karte gespielt wurde
-	 * @param name Der Name des Spielers
-	 */
-	public void resolveMessage(RulesetMessage message, String name) {
-		
-	}
-	
-	/** 
 	 * Verarbeitet die RulesetMessage dass eine Karte vom Spieler gespielt.
 	 * Die wird dann in isValidMove überprüft, bei falsche Eingabe wird´
 	 * eine MsgCardRequest an den selben Spieler geschickt. 
@@ -256,6 +280,39 @@ public abstract class ServerRuleset {
 	 */
 	public void resolveMessage(MsgCard msgCard, String name) {
 		
+	}
+	
+	/**
+	 * Bekommt eine MsgMultiCards Nachricht
+	 * @param msgMultiCard Die Nachricht vom Client
+	 * @param name Der Name vom Spieler
+	 * @throws IllegalArgumentException falls das ComObject im falschen Spiel benutzt wird
+	 */
+	public void resolveMessage(MsgMultiCards msgMultiCard, String name) throws IllegalArgumentException{
+		throw new IllegalArgumentException("Das ComObjekt MsgMultiCards findet " +
+				"keine Verwendung in diesem Spiel");
+	}
+	
+	/**
+	 * Bekommt eine MsgNumber Nachricht
+	 * @param msgNumber Die Nachricht vom Client
+	 * @param name Der Name des Spielers
+	 * @throws IllegalArgumentException wenn das ComObjekt im falschen Spiel benutzt wird
+	 */
+	public void resolveMessage(MsgNumber msgNumber, String name) throws IllegalArgumentException{
+		throw new IllegalArgumentException("Das ComObjekt MsgNumber findet " +
+				"keine Verwendung in diesem Spiel");
+	}
+	
+	/**
+	 * Bekommt eine MsgSelection Nachricht
+	 * @param msgSelection Die Nachricht vom Client
+	 * @param name Der Name vom Spieler
+	 * @throws IllegalArgumentException falls das ComObject im falschen Spiel benutz wird
+	 */
+	public void resolveMessage(MsgSelection msgSelection, String name) throws IllegalArgumentException{
+		throw new IllegalArgumentException("Das ComObjekt MsgSelection findet " +
+				"keine Verwendung in diesem Spiel");
 	}
 	
 	/**
@@ -333,13 +390,86 @@ public abstract class ServerRuleset {
 	protected abstract void calculateRoundOutcome();
 
 	/**
-	 * Wird bei Spielende aufgerufen und gibt den Namen vom Sieger zurück
+	 * Wird bei Spielende aufgerufen und gibt die Namen der Sieger zurück,
+	 * nur mehr als einer falls es unentschieden steht.
+	 * @return den Namen vom Spieler
 	 */
-	protected abstract String getWinner();
+	protected abstract List<String> getWinners();
 	
 	/**
 	 * Erzeugt ein GameClientUpdate welches individuell für jeden Benutzer ist
 	 * @param player Dem Spieler 
 	 */
-	protected abstract GameClientUpdate generateGameClientUpdate(String player);
+	protected GameClientUpdate generateGameClientUpdate(PlayerState player) {
+		return new GameClientUpdate(player,
+				gameState.getPlayedCards(),
+				viewOfOtherPlayers(player), 
+				getFirstPlayer(),
+				getCurrentPlayer(),
+				gameState.getTrumpCard());
+		
+	}
+	
+	/**
+	 * Erzeugt eine Liste von OtherData mit der von einem bestimmten Spieler 
+	 * ausgesehen richtigen Reihenfolge von den anderen Spielern
+	 * @param player Der Spieler aus dessen Sicht die Liste gemacht wird
+	 * @return Gibt eine Liste von OtherData in einer bestimmten Reihenfolge zurück
+	 */
+	private List<OtherData> viewOfOtherPlayers(PlayerState player) {
+		List<PlayerState> players = getPlayers();
+		List<OtherData> enemyData = new ArrayList<OtherData>();
+		int iterator = players.indexOf(player);
+		
+		if(iterator == players.size()-1) {
+			iterator = 0;
+		} else {
+			iterator++;
+		}
+		
+		while(iterator != players.indexOf(player)) {
+			enemyData.add((players.get(iterator)).getOtherData());
+			if(iterator == players.size()-1) {
+				iterator = 0;
+			} else {
+				iterator++;
+			}
+		}
+		
+		return enemyData;
+	}
+
+	public void resolveMessage(MsgCardRequest msgCardRequest, String name) {
+		throw new IllegalArgumentException("Das ComObjekt MsgSelection findet " +
+				"keine Verwendung in diesem Spiel");
+	}
+
+	public void resolveMessage(MsgGameEnd msgGameEnd, String name) {
+		throw new IllegalArgumentException("Das ComObjekt MsgSelection findet " +
+				"keine Verwendung in diesem Spiel");		
+	}
+
+	public void resolveMessage(MsgMultiCardsRequest msgMultiCardsRequest,
+			String name) {
+		throw new IllegalArgumentException("Das ComObjekt MsgSelection findet " +
+				"keine Verwendung in diesem Spiel");		
+	}
+
+	public void resolveMessage(MsgNumberRequest msgNumberRequest, String name) {
+		throw new IllegalArgumentException("Das ComObjekt MsgSelection findet " +
+				"keine Verwendung in diesem Spiel");		
+	}
+
+	public void resolveMessage(MsgSelectionRequest msgSelectionRequest,
+			String name) {
+		throw new IllegalArgumentException("Das ComObjekt MsgSelection findet " +
+				"keine Verwendung in diesem Spiel");		
+	}
+
+	public void resolveMessage(MsgUser msgUser, String name) {
+		throw new IllegalArgumentException("Das ComObjekt MsgSelection findet " +
+				"keine Verwendung in diesem Spiel");		
+	}
+
+	
 }

@@ -15,8 +15,8 @@ public class WizData extends OtherData {
 	/**
 	 * Erstellt die OtherData eines Spielers zum Spiel Wizard
 	 */
-	protected WizData() {
-		super();
+	protected WizData(String name) {
+		super(name);
 		this.announcedTricks = 0;
 	}
 	
@@ -39,8 +39,9 @@ public class WizData extends OtherData {
 	@Override
 	public String toString() {
 		StringBuilder otherData = new StringBuilder();
-		otherData.append("Points: " + Integer.toString((this.getPoints())));
-		otherData.append("Number of Tricks: " + Integer.toString(this.getNumberOfTricks()));
+		otherData.append("Name: " + getName() + " ");
+		otherData.append("Points: " + Integer.toString((this.getPoints())) + " ");
+		otherData.append("Number of Tricks: " + Integer.toString(this.getNumberOfTricks()) + " ");
 		otherData.append("Announced Tricks: " + Integer.toString(this.getAnnouncedTricks()));
 		
 		return otherData.toString();
