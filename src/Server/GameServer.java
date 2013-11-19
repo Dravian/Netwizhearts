@@ -91,7 +91,7 @@ public class GameServer extends Server {
 	 * @return Gibt die neue GameServerRepresentation zurueck
 	 */
 	public synchronized GameServerRepresentation getRepresentation() {
-		return new GameServerRepresentation(gameMasterName, name, maxPlayers, currentPlayers, rulesetType, hasPassword);
+		return new GameServerRepresentation(getGameMasterName(), name, maxPlayers, currentPlayers, rulesetType, hasPassword);
 	}
 	
 	/**
@@ -230,4 +230,21 @@ public class GameServer extends Server {
 		// TODO Automatisch erstellter Methoden-Stub
 		
 	}
+	
+	/**
+	 * Getter fuer den Namen des Spielleiters
+	 * @return Gibt den gameMasterName zurueck
+	 */
+	public String getGameMasterName() {
+		return gameMasterName;
+	}
+	
+	/**
+	 * Getter fuer das Passwort
+	 * @return Gibt das Passwort des Spieles zurueck
+	 */
+	public String getPassword() {
+		return password;
+	}
+
 }

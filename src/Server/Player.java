@@ -43,7 +43,10 @@ public class Player extends Thread{
 	 * Zeigt an, ob der Thread läuft
 	 */
 	private boolean run = false;
-
+	
+	/**
+	 * (Konstruktor fuer Tests)
+	 */
 	public Player(Server lobbyServer) {
 		super("Player");
 	}
@@ -85,13 +88,6 @@ public class Player extends Thread{
 			e.printStackTrace();
 		}
 		name = null;
-	}
-	
-	/**
-	 * Leerer Konstruktor (Tests)
-	 */
-	public Player(){
-		
 	}
 	
 	/**

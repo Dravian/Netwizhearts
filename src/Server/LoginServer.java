@@ -99,7 +99,7 @@ public class LoginServer extends Server {
 	public synchronized void receiveMessage(Player player, ComLoginRequest login){
 		String CheckName = login.getPlayerName();
 		if(lobby.getNames().contains(CheckName)){
-			ComWarning warning = new ComWarning("Login Fehler!");
+			ComWarning warning = new ComWarning("Login Error!");
 			player.send(warning);
 			disconnectPlayer(player);
 		} else {
