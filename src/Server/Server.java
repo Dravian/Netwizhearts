@@ -88,7 +88,7 @@ public abstract class Server {
 	 */
 	public synchronized void sendToPlayer(String name, ComObject com){
 		for (Player player : playerSet) {
-			if(player.getName() == name){
+			if(player.getPlayerName().equals(name)){
 				player.send(com);
 			}
 		}
