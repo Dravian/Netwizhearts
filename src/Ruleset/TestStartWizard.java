@@ -3,6 +3,10 @@ package Ruleset;
 
 import static org.junit.Assert.*;
 
+import java.net.Socket;
+
+import javax.net.SocketFactory;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,23 +23,28 @@ public class TestStartWizard {
 	TestPlayer green;
 	TestGameServer gameServer;
 	TestLobbyServer lobbyServer;
-	TestServerWizard wizard;
+	ServerRuleset wizard;
 	
 	@Before
 	public void setUp() throws Exception {
 		lobbyServer = new TestLobbyServer();
-		blue = new TestPlayer(lobbyServer, null, "Blue");
-		red = new TestPlayer(lobbyServer, null, "Red");
-		green = new TestPlayer(lobbyServer,null, "Green");
 		
+		blue = new TestPlayer(lobbyServer);
+		blue.setPlayerName("Blue");
 		
+		red = new TestPlayer(lobbyServer);
+		red.setPlayerName("Red");
+		
+		green = new TestPlayer(lobbyServer);
+		green.setPlayerName("Green");
+				
 		gameServer = new TestGameServer(lobbyServer,blue,"Mein Spiel",RulesetType.Wizard, 
 				"",false);
-		wizard = new TestServerWizard(gameServer);
+		wizard = new ServerWizard(gameServer);
 		
+		gameServer.addPlayer(blue);
 		gameServer.addPlayer(red);
 		gameServer.addPlayer(green);
-		blue.changeServer(gameServer);
 		
 		wizard.addPlayerToGame("Blue");
 		wizard.addPlayerToGame("Red");
@@ -44,12 +53,8 @@ public class TestStartWizard {
 	
 	@Test
 	public void testStartWizard() {
-		wizard.startGame();
+		wizard.runGame();
 		assertTrue(wizard.getFirstPlayer() == wizard.getPlayerState("Blue"));
-		
-		wizard.start1();
-		assertTrue(wizard.getGameState().getRoundNumber() == 1);
-		assertTrue(wizard.getGameState().getTrumpCard() == wizard.getTrumpCard());
 	}
 	
 	@After

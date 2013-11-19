@@ -2,7 +2,6 @@ package Ruleset;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Map;
 
 import Server.GameServer;
@@ -174,7 +173,14 @@ public class ServerWizard extends ServerRuleset {
 				send(new MsgNumberRequest(), player.getName());
 			}
 		}
-		System.out.println("End of Start");
+	}
+	
+	/**
+	 * Holt die Trumpfkarte
+	 * @return 
+	 */
+	protected Card getTrumpCard() {
+		return getGameState().getTrumpCard();
 	}
 
 }

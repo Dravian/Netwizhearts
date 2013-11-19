@@ -44,6 +44,10 @@ public class Player extends Thread{
 	 */
 	private boolean run = false;
 
+	public Player(Server lobbyServer) {
+		super("Player");
+	}
+	
 	/**
 	 * Konstruktor des Players, in ihm werden die Attribute server und connection mit
 	 * vom ClientListererThread uebergebenen Werten Instanziiert.
