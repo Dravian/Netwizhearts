@@ -182,11 +182,12 @@ public abstract class ServerRuleset {
 	}
 	
 	/**
-	 * Setzt den naechsten Spieler in der Liste als currentPlayer
-	 * @return gibt false zurück wenn es der firstPlayer ist und true sonst
+	 * Gibt den aus der Sicht eines Spielers nächsten Spieler zurück
+	 * @param player Der aktuelle Spieler
+	 * @return Den nächsten Spieler
 	 */
-	protected boolean nextPlayer() {
-		int iterator = getPlayers().indexOf(getCurrentPlayer());
+	protected PlayerState nextPlayer(PlayerState player) {
+		int iterator = getPlayers().indexOf(player);
 		
 		if(iterator == getPlayers().size()-1) {
 			iterator = 0;
@@ -194,11 +195,7 @@ public abstract class ServerRuleset {
 			iterator++;
 		}
 		
-		if(getPlayers().get(iterator) == getFirstPlayer()) {
-			return false;
-		} else {
-			return true;
-		}
+		return getPlayers().get(iterator);
 	}
 
 	/** 
@@ -251,6 +248,14 @@ public abstract class ServerRuleset {
 	 */
 	protected List<Card> getPlayerCards(PlayerState player) {
 		return player.getHand();
+	}
+	
+	/**
+	 * Holt die gespielten Karten auf den Ablagestapel
+	 * @return Die Karten auf dem AblageStapel
+	 */
+	protected List<DiscardedCard> getPlayedCards() {
+		return gameState.getPlayedCards();
 	}
 	/**
 	 * Schickt eine Nachricht an einen Spieler, über den Gameserver
@@ -427,7 +432,12 @@ public abstract class ServerRuleset {
 		List<PlayerState> players = getPlayers();
 		List<OtherData> enemyData = new ArrayList<OtherData>();
 		int iterator = players.indexOf(player);
+		PlayerState it = player;
 		
+		while(nextPlayer(it) != player) {
+			enemyData.add((players.get(iterator)).getOtherData());
+		}
+		/*
 		if(iterator == players.size()-1) {
 			iterator = 0;
 		} else {
@@ -442,6 +452,7 @@ public abstract class ServerRuleset {
 				iterator++;
 			}
 		}
+		*/
 		
 		return enemyData;
 	}

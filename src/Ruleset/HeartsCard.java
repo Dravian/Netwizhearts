@@ -4,8 +4,7 @@ package Ruleset;
  * HeartsCard. Modelliert eine Heartskarte.
  */
 public enum HeartsCard implements Card{
-	Empty(0,Colour.NONE),
-	
+
 	Herz2(2,Colour.HEART),Herz3(3,Colour.HEART),Herz4(4,Colour.HEART),
 	Herz5(5,Colour.HEART), Herz6(6,Colour.HEART),Herz7(7,Colour.HEART),
 	Herz8(8,Colour.HEART), Herz9(9,Colour.HEART), Herz10(10,Colour.HEART),

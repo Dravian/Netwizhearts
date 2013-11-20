@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import Server.GameServer;
+import ComObjects.MsgCard;
+import ComObjects.MsgCardRequest;
 import ComObjects.MsgGameEnd;
 import ComObjects.MsgNumber;
 import ComObjects.MsgNumberRequest;
@@ -70,6 +72,34 @@ public class ServerWizard extends ServerRuleset {
 		return playingRounds;
 	}
 
+	@Override
+	public void resolveMessage(MsgCard msgCard, String name) throws IllegalArgumentException{
+		Card card = msgCard.getCard();
+		
+		if(getPlayerState(name) != getCurrentPlayer()) {
+			throw new IllegalArgumentException("Der Spieler " +name + " ist nicht am Zug!");
+		
+		} else if(card.getRuleset() != RulesetType.Wizard ||
+				card.getColour() == Colour.NONE){
+			throw new IllegalArgumentException("Die Karte " + card.getValue() + 
+					card.getColour() + " gehört nicht zum Spiel");		
+		
+		} else if(!isValidMove(card)) {
+			send(new MsgCardRequest(), name);
+			
+			throw new RulesetException("Der Spieler" + name + "hat die Karte " + 
+			card.getValue()+ card.getColour() + " gespielt, obwohl sie kein gültiger " +
+					"Zug ist. Es muss ein Fehler bei ClientWizard sein.");
+		
+		} else {
+			if(nextPlayer(getCurrentPlayer()) == getFirstPlayer()) {
+				calculateTricks();			
+			} else {
+				send(new MsgCardRequest(), getCurrentPlayer().getName());
+			}
+		}
+	}
+	
 	/**
 	 * Verarbeitet die RulesetMessage dass der Spieler eine Stichansage macht.
 	 * Die wird dann in isValidNumber überprüft, bei falsche Eingabe wird´ eine
@@ -124,12 +154,62 @@ public class ServerWizard extends ServerRuleset {
 	private boolean isValidColour(Colour colour, String name) {
 		return false;
 	}
-
+ 
 	@Override
 	protected void calculateTricks() {
-		// TODO Automatisch erstellter Methoden-Stub
-
+		int iterator = 0;
+		int valueOfFool = 0;
+		int valueOfSorcerer = 14;
+		
+		DiscardedCard startingCard = getPlayedCards().get(iterator);
+		DiscardedCard strongestCard = startingCard;
+		
+		while(startingCard.getCard().getValue() == valueOfFool &&
+				getPlayedCards().size() - 1  > iterator) {
+			iterator++;
+			startingCard = getPlayedCards().get(iterator);
+		}
+		
+		/*
+		 * Falls am Ablagestapel nur Narren liegen kriegt der erste Spieler
+		 *  den Stich
+		 */
+		if(startingCard.getCard().getValue() != valueOfFool) {
+			
+			while(iterator < getPlayedCards().size()) {
+				if(strongestCard.getCard().getValue() == valueOfSorcerer) {
+					break;
+				} else {
+					iterator++;
+					DiscardedCard nextCard = getPlayedCards().get(iterator);
+					
+					if(nextCard.getCard().getValue() == valueOfSorcerer) {
+						strongestCard = nextCard;
+						
+					} else {
+						if(nextCard.getCard().getValue() == valueOfSorcerer) {
+							strongestCard = nextCard;
+							
+						} else if(nextCard.getCard().getValue() > strongestCard.getCard().getValue() &&
+								nextCard.getCard().getColour() == strongestCard.getCard().getColour()) {
+							strongestCard = nextCard;
+					
+						} else if(nextCard.getCard().getColour() == getTrumpCard().getColour() &&
+								strongestCard.getCard().getColour() != getTrumpCard().getColour()) {
+							strongestCard = nextCard;
+						}
+							
+					}
+				}
+			}
+		} 
+		
 	}
+	
+	/*
+	private Card getPlayedCard(PlayerState player) {
+		return getGameState().getPlayedCards().ge;
+	}*/
 
 	/**
 	 * Holt die Trumpfkarte
@@ -167,7 +247,8 @@ public class ServerWizard extends ServerRuleset {
 	private void startWizardRound() {
 		int valueOfSorcerer = 14;
 		List<PlayerState> players = getPlayers();
-
+		
+		getGameState().newRound();
 		getGameState().shuffleDeck();
 		getGameState().dealCards(getGameState().getRoundNumber());
 
@@ -240,10 +321,11 @@ public class ServerWizard extends ServerRuleset {
 			broadcast(new MsgGameEnd(winners));
 		} else {
 			setCurrentPlayer(getFirstPlayer());
-			nextPlayer();
+			
 			setFirstPlayer(getCurrentPlayer());
 			
 			setGamePhase(GamePhase.RoundStart);
+			getGameState().newRound();
 			startWizardRound();
 		}
 

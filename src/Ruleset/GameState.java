@@ -27,7 +27,7 @@ public class GameState {
 	private RulesetType ruleset;
 	
 	/**
-	 * Der Spieler der als erste die Karte spielt
+	 * Der Spieler der am Anfang einer Runde anfängt
 	 */
 	private PlayerState firstPlayer;
 	
@@ -44,7 +44,7 @@ public class GameState {
 	/** 
 	 * Die Karten die gespielt wurden
 	 */
-	private Map<String,Card> discardPile;
+	private List<DiscardedCard> discardPile;
 	
 	/** 
 	 * Die Karten die noch im Aufnahmestapel sind
@@ -64,10 +64,10 @@ public class GameState {
 	protected GameState(RulesetType ruleset, List<Card> deck) {
 		this.ruleset = ruleset;
 		players = new LinkedList<PlayerState>();
-		discardPile = new HashMap<String,Card>();
+		discardPile = new ArrayList<DiscardedCard>();
 		this.deck = deck;
-		roundNumber = 0;
-		trumpCard = WizardCard.Empty;
+		roundNumber = 1;
+		trumpCard = EmptyCard.Empty;
 	}
 	
 	/**
@@ -102,14 +102,13 @@ public class GameState {
 	protected void setFirstPlayer(PlayerState player) {
 		firstPlayer = player;
 		currentPlayer = player;
-		newRound();
 	}
 	
 	/**
 	 * Macht eine neue Runde, wird aufgerufen wenn ein neuer Spieler als firstPlayer
 	 * gesetzt wird.
 	 */
-	private void newRound() {
+	protected void newRound() {
 		roundNumber++;
 	}
 
@@ -157,7 +156,7 @@ public class GameState {
 	 *Holt die gespielten Karten im Ablagestapel
 	 *@return discardPile Die gespielten Karten
 	 */
-	protected Map<String,Card> getPlayedCards() {
+	protected List<DiscardedCard> getPlayedCards() {
 		return discardPile;
 	}
 	
@@ -276,7 +275,7 @@ public class GameState {
 		isInHand = currentPlayer.removeCard(card);
 		
 		if(isInHand == true) {
-			discardPile.put(currentPlayer.getName(), card);
+			discardPile.add(new DiscardedCard(currentPlayer.getName(), card));
 		} 
 		
 		return isInHand;

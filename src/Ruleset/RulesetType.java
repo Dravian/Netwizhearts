@@ -10,6 +10,10 @@ public enum RulesetType {
 	/**
 	 * Der Typ zum Spiel Hearts.
 	 */
-	Hearts
+	Hearts,
+	/**
+	 * Der Typ zu keinem Spiel
+	 */
+	NONE;
 
 }
