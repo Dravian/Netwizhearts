@@ -71,7 +71,7 @@ public class GameClientUpdate {
 	 * Holt die gespielten Karten auf dem Ablagestapel
 	 * @return discardPile Die gespielten Karten
 	 */
-	protected Map<String, Card> getPlayedCards() {
+	protected List<DiscardedCard> getPlayedCards() {
 		return discardPile;
 	}
 
