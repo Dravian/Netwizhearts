@@ -80,7 +80,7 @@ public class ClientController {
 		clientModel = new ClientModel(new MessageListenerThread());
 		
 		login = new Login();
-		login.addWindowListener(new windowCloseListener());
+		//login.addWindowListener(new windowCloseListener());
 		login.addConnectButtonListener(new ConnectButtonListener());
 		login.addLanguageSelectionListener(new LanguageSelectionListener());
 		login.setVisible(true);
@@ -102,6 +102,8 @@ public class ClientController {
 		clientModel.addObserver(warning);
 		
 		createGame = new CreateGame();
+		createGame.setRulesetTypes(clientModel.getRulesets());
+		createGame.addCreateButtonListener(new CreateButtonListener());
 	}
 	
 	class windowCloseListener implements WindowListener {
@@ -114,13 +116,13 @@ public class ClientController {
 
 		@Override
 		public void windowClosed(WindowEvent arg0) {
-			clientModel.closeProgram();			
+			// not needed
 			
 		}
 
 		@Override
 		public void windowClosing(WindowEvent arg0) {
-			// not needed
+			clientModel.closeProgram();	
 			
 		}
 
@@ -160,6 +162,7 @@ public class ClientController {
 			login.setLanguage(language);
 			lobby.setLanguage(language);
 			password.setLanguage(language);
+			createGame.setLanguage(language);
 		}
 		
 	}
@@ -215,6 +218,17 @@ public class ClientController {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			warning.setVisible(false);			
+		}
+		
+	}
+	
+	class CreateButtonListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			clientModel.hostGame(createGame.getGameName(), createGame.hasPassword(), 
+						createGame.getPassword(), createGame.getSelectedRulesetType());
+			createGame.setVisible(false);
 		}
 		
 	}

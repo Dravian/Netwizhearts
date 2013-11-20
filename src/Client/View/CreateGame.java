@@ -13,6 +13,10 @@ import javax.swing.JComboBox;
 import javax.swing.JCheckBox;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
+
+import Ruleset.RulesetType;
+import Server.GameServerRepresentation;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -21,6 +25,7 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -43,8 +48,8 @@ public class CreateGame extends JFrame{
 	private JTextField passwordField;
 	private JPanel imagePanel;
 	private JLabel lblSelect;
-	private JComboBox<String> rulesetBox;
-	private JCheckBox chckbxPassword;
+	private JComboBox<RulesetType> rulesetBox;
+	private JCheckBox chboxPassword;
 	private JButton btnLeave;
 	private JButton btnCreate;
 	private JLabel lblGameName;
@@ -72,25 +77,20 @@ public class CreateGame extends JFrame{
 		getContentPane().setLayout(null);
 		
 		lblSelect = new JLabel("Select Game");
-		lblSelect.setBounds(12, 12, 95, 24);
+		lblSelect.setBounds(12, 12, 188, 24);
 		getContentPane().add(lblSelect);
 		
-		rulesetBox = new JComboBox<String>();
+		rulesetBox = new JComboBox<RulesetType>();
 		rulesetBox.setBounds(12, 39, 188, 24);
-		rulesetBox.addItem("Wizard");
-		rulesetBox.addItem("Hearts");
 		getContentPane().add(rulesetBox);
 		
-		chckbxPassword = new JCheckBox("Set Password:");
-		chckbxPassword.setBounds(12, 140, 128, 23);
-		getContentPane().add(chckbxPassword);
+		chboxPassword = new JCheckBox("Set Password:");
+		chboxPassword.setBounds(12, 140, 188, 23);
+		getContentPane().add(chboxPassword);
 		
 		btnLeave = new JButton("Leave");
-		btnLeave.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
 		btnLeave.setBounds(12, 215, 117, 25);
+		btnLeave.addActionListener(new LeaveButtonListener());
 		getContentPane().add(btnLeave);
 		
 		nameField = new JTextField();
@@ -120,13 +120,61 @@ public class CreateGame extends JFrame{
 		getContentPane().add(btnCreate);
 		
 		lblGameName = new JLabel("Game Name:");
-		lblGameName.setBounds(12, 75, 95, 24);
+		lblGameName.setBounds(12, 75, 188, 24);
 		getContentPane().add(lblGameName);
 		
 		passwordField = new JTextField();
 		passwordField.setBounds(12, 100, 188, 32);
 		getContentPane().add(passwordField);
 		passwordField.setColumns(10);
+	}
+	
+	/**
+	 * Setzt die Regelwerke, die in der Auswahlbox gezeigt werden
+	 * 
+	 * @param types Liste von Regelwerken
+	 */
+	public void setRulesetTypes(List<RulesetType> types) {
+		rulesetBox.removeAllItems();
+		for(RulesetType t : types) {
+			rulesetBox.addItem(t);
+		}
+	}
+	
+	/**
+	 * Gibt den gewaehlten Spielnamen zurueck
+	 * 
+	 * @return Spielname
+	 */
+	public String getGameName() {
+		return nameField.getText();
+	}
+	
+	/**
+	 * Gibt zurueck ob ein Passwort gewaehlt wurde
+	 * 
+	 * @return true, wenn ein Passwort gewaehlt wurde, false sonst
+	 */
+	public boolean hasPassword() {
+		return chboxPassword.isSelected();
+	}
+	
+	/**
+	 * Gibt das Passwort zurueck
+	 * 
+	 * @return Passwort
+	 */
+	public String getPassword() {
+		return passwordField.getText();
+	}
+	
+	/**
+	 * Gibt zurueck welches Regelwerk in der Auswahlbox ausgewaehlt wurde
+	 * 
+	 * @return Regelwerk
+	 */
+	public RulesetType getSelectedRulesetType() {
+		return (RulesetType) rulesetBox.getSelectedItem();
 	}
 	
 	/**
@@ -139,15 +187,7 @@ public class CreateGame extends JFrame{
 		imagePanel.addMouseListener(m);
 	}
 	
-	/**
-	 * Fuegt einen Listener fuer die Regelwerk-Auswahl des CreateGame Fensters hinzu.
-	 * 
-	 * @param i ein ItemListener
-	 */
-	public void addRulesetSelectionListener(ItemListener i) {
-		rulesetBox.addItemListener(i);
-	}
-	
+		
 	/**
 	 * Fuegt einen ActionListener fuer den 'Create' Button hinzu.
 	 * 
@@ -156,16 +196,7 @@ public class CreateGame extends JFrame{
 	public void addCreateButtonListener(ActionListener a) {
 		btnCreate.addActionListener(a);
 	}
-	
-	/**
-	 * Fuegt einen ActionListener fuer den 'Leave' Button hinzu.
-	 * 
-	 * @param a ein ActionListener
-	 */
-	public void addLeaveButtonListener(ActionListener a) {
-		btnLeave.addActionListener(a);
-	}
-	
+		
 	/**
 	 * Aendert die Sprache des Fensters
 	 * 
@@ -173,10 +204,54 @@ public class CreateGame extends JFrame{
 	 */
 	public void setLanguage(Language l) {
 		lang = l;
-		updateLanguage();
+		SwingUtilities.invokeLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				updateLanguage();
+			}
+		});
 	}
 	
 	private void updateLanguage() {
-		//TODO
+		switch (lang) {
+		case German:
+			setTitle("Spiel erstellen");
+			btnCreate.setText("Erstellen");
+			btnLeave.setText("Verlassen");
+			lblGameName.setText("Spielname");
+			lblSelect.setText("Wähle Spieltyp");
+			chboxPassword.setText("Passwort");
+			break;
+		case English:
+			setTitle("Game Creation");
+			btnCreate.setText("Create");
+			btnLeave.setText("Leave");
+			lblGameName.setText("Game Name");
+			lblSelect.setText("Select Gametype");
+			chboxPassword.setText("Password");
+			break;
+		case Bavarian:
+			setTitle("A Spui aufmacha");
+			btnCreate.setText("Mach auf");
+			btnLeave.setText("Wida geh");
+			lblGameName.setText("Spuinam");
+			lblSelect.setText("Suach da a Spui aus");
+			chboxPassword.setText("Ned für an jedn");
+			break;
+		default:
+			break;
+
+		}
+	}
+	
+	class LeaveButtonListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			setVisible(false);
+			
+		}
+		
 	}
 }

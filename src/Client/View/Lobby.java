@@ -196,7 +196,7 @@ public class Lobby extends JFrame implements Observer{
 		String[] games = new String[length];
 		for (int i = 0; i < length; i++) {
 			String s = "";
-			if (gameRepresentationList.get(i).isHasPassword()) {
+			if (gameRepresentationList.get(i).hasPassword()) {
 				s = "P";
 			}
 			games[i] = gameRepresentationList.get(i).getName() + " (" + gameRepresentationList.get(i).getCurrentPlayers()
