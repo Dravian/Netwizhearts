@@ -94,7 +94,7 @@ public class LobbyServer extends Server {
 		RulesetType ruleset = create.getRuleset();
 		String password = create.getPassword();
 		boolean hasPassword = create.hasPassword();
-		GameServer game = new GameServer(this, player.getPlayerName(), name, ruleset, password, hasPassword);
+		GameServer game = new GameServer(this, player, name, ruleset, password, hasPassword);
 		addGameServer(game);
 		addPlayerToGame(player, game);
 		broadcast(new ComLobbyUpdateGamelist(false, game.getRepresentation()));
