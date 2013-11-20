@@ -75,7 +75,7 @@ public class PlayerState {
 	 * @param card Die Karte die dem Spieler gegeben wird
 	 */
 	protected void addCard(Card card){
-		this.ownHand.add(card);
+		ownHand.add(card);
 	}
 	
 	/**

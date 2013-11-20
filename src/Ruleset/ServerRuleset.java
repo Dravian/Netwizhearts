@@ -182,12 +182,10 @@ public abstract class ServerRuleset {
 	}
 	
 	/**
-	 * Gibt den aus der Sicht eines Spielers nächsten Spieler zurück
-	 * @param player Der aktuelle Spieler
-	 * @return Den nächsten Spieler
+	 * Setzt den nächsten Spieler
 	 */
-	protected PlayerState nextPlayer(PlayerState player) {
-		int iterator = getPlayers().indexOf(player);
+	protected void nextPlayer() {
+		int iterator = getPlayers().indexOf(getCurrentPlayer());
 		
 		if(iterator == getPlayers().size()-1) {
 			iterator = 0;
@@ -195,7 +193,7 @@ public abstract class ServerRuleset {
 			iterator++;
 		}
 		
-		return getPlayers().get(iterator);
+		gameState.setCurrentPlayer(getPlayers().get(iterator));
 	}
 
 	/** 
@@ -338,14 +336,6 @@ public abstract class ServerRuleset {
 	protected int getPoints(PlayerState player) {
 		return (player.getOtherData()).getPoints();
 	}
-	/**
-	 * Verteilt eine bestimmte Anzahl an Karten an die Spieler
-	 * @param number Die Anzahl an Karten
-	 * @return Gibt true zurueck wenn ein Spieler keine Karten hat, false sonst
-	 */
-	protected boolean dealCards(int number) {
-		return false;	
-	}
 	
 	/**
 	 * Gibt einem Spieler eine bestimmte Karte
@@ -354,7 +344,7 @@ public abstract class ServerRuleset {
 	 * @return Gibt true zurück wenn die Karte im Deck ist, false sonst
 	 */
 	protected boolean giveACard(PlayerState player, Card card) {
-		return false;	
+		return gameState.giveACard(player,card);	
 	}
 	
 	/**
@@ -432,12 +422,7 @@ public abstract class ServerRuleset {
 		List<PlayerState> players = getPlayers();
 		List<OtherData> enemyData = new ArrayList<OtherData>();
 		int iterator = players.indexOf(player);
-		PlayerState it = player;
 		
-		while(nextPlayer(it) != player) {
-			enemyData.add((players.get(iterator)).getOtherData());
-		}
-		/*
 		if(iterator == players.size()-1) {
 			iterator = 0;
 		} else {
@@ -452,7 +437,6 @@ public abstract class ServerRuleset {
 				iterator++;
 			}
 		}
-		*/
 		
 		return enemyData;
 	}

@@ -6,10 +6,12 @@ package Ruleset;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
+import java.util.Set;
 
 /** 
  * GameState. Das GameState modelliert einen aktuellen Spielzustand, es wird vom GameServer instanziert und vom RuleSet bearbeitet. Es enthält die einzelnen PlayerStates, sowie Informationen 
@@ -141,7 +143,7 @@ public class GameState {
 	 * @return deck Holt die Karten die noch im Aufnahmestapel sind
 	 */
 	protected List<Card> getCardsLeftInDeck() {
-		return this.deck;
+		return deck;
 	}
 	
 	/**
@@ -261,7 +263,12 @@ public class GameState {
 	 * @return true falls die Karte im Stapel ist, false wenn nicht
 	 */
 	protected boolean giveACard(PlayerState player, Card card) {
-		return false;	
+		if(deck.contains(card)) {
+			player.addCard(card);	
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	/**
@@ -279,5 +286,21 @@ public class GameState {
 		} 
 		
 		return isInHand;
+	}
+	
+	/**
+	 * Entfernt die DiscardedCards im Ablagestapel und gibt ihre Karten als Set
+	 * einem Spieler in seine gemachten Stiche
+	 * @param Der Spieler der einen Stich gemacht hat
+	 */
+	protected void madeTrick(PlayerState player) {
+		Set<Card> madeTricks = new HashSet<Card>();
+		
+		for(DiscardedCard d : discardPile) {
+			madeTricks.add(d.getCard());
+		}
+		discardPile = new ArrayList<DiscardedCard>();
+		
+		player.getOtherData().madeTrick(madeTricks);
 	}
 }
