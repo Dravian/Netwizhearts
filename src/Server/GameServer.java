@@ -4,13 +4,12 @@
 package Server;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-
 import ComObjects.*;
 import Ruleset.RulesetType;
+import Ruleset.ServerHearts;
 import Ruleset.ServerRuleset;
+import Ruleset.ServerWizard;
 
 /**
  * GameServer. Diese Klasse ist fuer die Verwaltung eines Spieles zustaendig. 
@@ -67,7 +66,7 @@ public class GameServer extends Server {
 	private ServerRuleset ruleset;
 	
 	/**
-	 * Konstruktor des GameServers. Setzt die Attribute lobbyServer, name, password, hasPasword 
+	 * Konstruktor des GameServers. Setzt die Attribute lobbyServer, name, password, hasPassword 
 	 * und rulesetType auf die uebergebenen Werte. Setzt den gameMasterName auf den Namen des 
 	 * gameMaster und fuegt den gameMaster dem Set an Spielern hinzu.  
 	 * Bestimmt mithilfe des Enums RulesetType das Ruleset und erstellt es.
@@ -79,11 +78,28 @@ public class GameServer extends Server {
 	 * @param password speichert das Passwort des Spiels
 	 * @param hasPassword gibt an, ob das Spiel ein Passwort hat
 	 */
-	public GameServer(LobbyServer server, String gameMaster, String GameName, 
+	public GameServer(LobbyServer server, Player gameMaster, String GameName, 
 			RulesetType ruleset, String password, boolean hasPassword) {
-		// begin-user-code
-		// TODO Auto-generated constructor stub
-		// end-user-code
+		lobbyServer = server;
+		gameMasterName = gameMaster.getPlayerName();
+		name = GameName;
+		rulesetType = ruleset;
+		this.password = password;
+		this.hasPassword = hasPassword;
+		addPlayer(gameMaster);
+		currentPlayers = 1;
+		if (rulesetType == RulesetType.Hearts) {
+			this.ruleset = new ServerHearts(this);
+			maxPlayers = 4;
+		} else {
+			if (rulesetType == RulesetType.Wizard) {
+				this.ruleset = new ServerWizard(this) ;
+				maxPlayers = 6;
+			} else {
+				System.err.println("Unknown Ruleset!");
+				disconnectPlayer(gameMaster);
+			}
+		}	
 	}
 
 	/**
@@ -91,7 +107,8 @@ public class GameServer extends Server {
 	 * @return Gibt die neue GameServerRepresentation zurueck
 	 */
 	public synchronized GameServerRepresentation getRepresentation() {
-		return new GameServerRepresentation(getGameMasterName(), name, maxPlayers, currentPlayers, rulesetType, hasPassword);
+		return new GameServerRepresentation(getGameMasterName(), name, maxPlayers, 
+				currentPlayers, rulesetType, hasPassword);
 	}
 	
 	/**
@@ -198,7 +215,7 @@ public class GameServer extends Server {
 	 */
 	@Override
 	public synchronized void receiveMessage(Player player, ComRuleset ruleset){
-		// TODO Auto-generated method stub
+		ruleset.getRulesetMessage().visit(this.ruleset, player.getPlayerName());
 	}
 	
 	/**
@@ -239,7 +256,25 @@ public class GameServer extends Server {
 	 */
 	@Override
 	public synchronized void disconnectPlayer(Player player) {
-		// TODO Automatisch erstellter Methoden-Stub		
+		if(!playerSet.isEmpty()){
+			for (Player remove : playerSet) {
+				if (remove.getPlayerName().equals(player.getPlayerName())) {
+					removePlayer(remove);
+					lobbyServer.removeName(remove.getPlayerName());
+					remove.closeConnection();
+				}				
+			}
+		}
+		if(!playerSet.isEmpty()){
+			for (Player back : playerSet) {
+				back.changeServer(lobbyServer);
+				ComInitLobby comInit = lobbyServer.initLobby();			
+				back.send(comInit);
+				ComWarning warning = new ComWarning("Game Disbanded!");
+				back.send(warning);	
+			}
+		}
+		lobbyServer.removeGameServer(this);
 	}
 	
 	/**
