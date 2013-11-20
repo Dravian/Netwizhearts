@@ -95,39 +95,43 @@ public class TestWizardWinner {
 		
 		
 		wizardServerRuleset.setPoints(wizardServerRuleset.getPlayerState(Blue),80);
-		wizardServerRuleset.setPoints(wizardServerRuleset.getPlayerState(White),200);
+		wizardServerRuleset.setPoints(wizardServerRuleset.getPlayerState(White),240);
 		wizardServerRuleset.setPoints(wizardServerRuleset.getPlayerState(Orange),130);
 		wizardServerRuleset.setPoints(wizardServerRuleset.getPlayerState(Brown),240);
 		wizardServerRuleset.setGamePhase(GamePhase.Ending);
 		
 		wizardServerRuleset.calculateRoundOutcome();
 		
-		assertTrue((wizardServerRuleset.getWinners().get(0)).equals(Brown));
+		assertTrue(wizardServerRuleset.getWinners().size() == 2);
+		
+		assertTrue((wizardServerRuleset.getWinners().get(0)).equals(White));
+		assertTrue((wizardServerRuleset.getWinners().get(1).equals(Brown)));
 		
 		assertTrue(blue.getServerInput().size() == 2);
 		
 		inputList = blue.getServerInput();
 		comObject = (ComRuleset) inputList.get(1);
 		endMsg = (MsgGameEnd) comObject.getRulesetMessage();
-		winner = endMsg.getWinnerName();
+		winner = endMsg.getWinnerName().get(1);
 		assertEquals("Nachricht an Blue", "Mr. Brown", winner);
 
 		inputList = white.getServerInput();
 		comObject = (ComRuleset) inputList.get(1);
 		endMsg = (MsgGameEnd) comObject.getRulesetMessage();
-		winner = endMsg.getWinnerName();
+		winner = endMsg.getWinnerName().get(1);
 		assertEquals("Nachricht an White", "Mr. Brown", winner);
 
 		inputList = orange.getServerInput();
 		comObject = (ComRuleset) inputList.get(1);
 		endMsg = (MsgGameEnd) comObject.getRulesetMessage();
-		winner = endMsg.getWinnerName();
+		winner = endMsg.getWinnerName().get(1);
 		assertEquals("Nachricht an Orange", "Mr. Brown", winner);
 	
 		inputList = brown.getServerInput();
 		comObject = (ComRuleset) inputList.get(1);
 		endMsg = (MsgGameEnd) comObject.getRulesetMessage();
-		winner = endMsg.getWinnerName();
+		winner = endMsg.getWinnerName().get(1);
 		assertEquals("Nachricht an Brown", "Mr. Brown", winner);
+		
 	}
 }
