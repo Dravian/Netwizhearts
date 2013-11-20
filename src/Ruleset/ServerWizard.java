@@ -237,8 +237,7 @@ public class ServerWizard extends ServerRuleset {
 		
 		if(getGamePhase() == GamePhase.Ending) {
 			List<String> winners = getWinners();
-			broadcast(new MsgGameEnd(winners.get(0)));
-			//broadcast(new MsgGameEnd(winners));
+			broadcast(new MsgGameEnd(winners));
 		} else {
 			setCurrentPlayer(getFirstPlayer());
 			nextPlayer();
@@ -259,6 +258,7 @@ public class ServerWizard extends ServerRuleset {
 			if(player.getOtherData().getPoints() > maxPoints) {
 				leadingPlayers = new ArrayList<String>();
 				leadingPlayers.add(player.getName());
+				maxPoints = player.getOtherData().getPoints();
 				
 			} else if(player.getOtherData().getPoints() == maxPoints) {
 				leadingPlayers.add(player.getName());
