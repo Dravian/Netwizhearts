@@ -4,8 +4,7 @@ package Ruleset;
  * WizardCard. Modelliert eine Wizardkarte
  */
 public enum WizardCard implements Card{
-	Empty(0,Colour.NONE),
-	
+
 	NarrBlau(0,Colour.BLUE), EinsBlau(1,Colour.BLUE), ZweiBlau(2,Colour.BLUE),
 	DreiBlau(3,Colour.BLUE), VierBlau(4,Colour.BLUE), FuenfBlau(5,Colour.BLUE),
 	SechsBlau(6,Colour.BLUE), SiebenBlau(7,Colour.BLUE), AchtBlau(8,Colour.BLUE),

@@ -2,6 +2,7 @@ package ComObjects;
 
 import Ruleset.Card;
 import Ruleset.ClientRuleset;
+import Ruleset.RulesetType;
 import Ruleset.ServerRuleset;
 
 import java.io.Serializable;
