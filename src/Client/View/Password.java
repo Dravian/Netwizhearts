@@ -1,6 +1,7 @@
 package Client.View;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
@@ -11,6 +12,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.SwingUtilities;
 
 import Client.ClientModel;
 import Client.ViewNotification;
@@ -31,20 +33,6 @@ public class Password extends JFrame implements Observer{
 	private JButton btnLeave;
 	private Language lang;
 
-	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Password frame = new Password();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	/**
 	 * Erstellt das Passwort Fenster
 	 */
@@ -58,7 +46,7 @@ public class Password extends JFrame implements Observer{
 		contentPane.setLayout(null);
 		
 		lblEnterPasswordPlease = new JLabel("Enter Password:");
-		lblEnterPasswordPlease.setBounds(12, 12, 199, 22);
+		lblEnterPasswordPlease.setBounds(12, 12, 246, 22);
 		contentPane.add(lblEnterPasswordPlease);
 		
 		textField = new JTextField();
@@ -68,6 +56,7 @@ public class Password extends JFrame implements Observer{
 		
 		btnLeave = new JButton("Leave");
 		btnLeave.setBounds(12, 80, 117, 25);
+		btnLeave.addActionListener(new LeaveButtonListener());
 		contentPane.add(btnLeave);
 		
 		btnJoin = new JButton("Join");
@@ -100,11 +89,39 @@ public class Password extends JFrame implements Observer{
 	 */
 	public void setLanguage(Language l) {
 		lang = l;
-		updateLanguage();
+		SwingUtilities.invokeLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				updateLanguage();
+			}
+		});
 	}
 	
 	private void updateLanguage() {
-		//TODO
+		switch (lang) {
+		case German:
+			this.setTitle("Spiel ist Passwort-geschützt");
+			btnJoin.setText("Beitreten");
+			btnLeave.setText("Verlassen");
+			lblEnterPasswordPlease.setText("Passwort eingeben:");
+			break;
+		case English:
+			this.setTitle("Game is password protected");
+			btnJoin.setText("Join");
+			btnLeave.setText("Leave");
+			lblEnterPasswordPlease.setText("Enter Password:");
+			break;
+		case Bavarian:
+			this.setTitle("Do derf ned a jeda eine");
+			btnJoin.setText("Midspuin");
+			btnLeave.setText("Wida geh");
+			lblEnterPasswordPlease.setText("Gib as Geheimwort ei:");
+			break;
+		default:
+			break;
+
+		}
 	}
 
 	/**
@@ -124,6 +141,16 @@ public class Password extends JFrame implements Observer{
 			break;
 		default:
 			break;
+		}
+		
+	}
+	
+	class LeaveButtonListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			setVisible(false);
+			
 		}
 		
 	}

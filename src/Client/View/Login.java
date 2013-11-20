@@ -83,7 +83,6 @@ public class Login extends JFrame implements Observer{
 		contentPane.add(lblLanguage);
 		
 		languageComboBox = new JComboBox<Language>(new Language[] {Language.English, Language.German, Language.Bavarian});
-		//languageComboBox.setModel(new DefaultComboBoxModel(new String[] {"English", "Deutsch", "Boarisch"}));
 		languageComboBox.setSelectedIndex(0);
 		languageComboBox.setBounds(133, 7, 104, 24);
 		contentPane.add(languageComboBox);
