@@ -24,11 +24,12 @@ public class PrintWizard extends ServerWizard{
 	}
 
 	@Override
-	public void runGame() throws RulesetException{
+	public void runGame() {
 		List<PlayerState> players = getPlayers();	
-		setFirstPlayer(players.get(0));
 		setFirstPlayer(players.get(1));
-		setFirstPlayer(players.get(2));
+		getGameState().newRound();
+		getGameState().newRound();
+		
 		
 		System.out.println("Runde: " + getGameState().getRoundNumber());
 		

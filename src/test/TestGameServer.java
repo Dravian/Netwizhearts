@@ -17,7 +17,7 @@ import Server.Player;
 public class TestGameServer extends GameServer{
 	Set<TestPlayer> players;
 	
-	public TestGameServer(LobbyServer server, String gameMaster,
+	public TestGameServer(LobbyServer server, Player gameMaster,
 			String GameName, RulesetType ruleset, String password,
 			boolean hasPassword) {
 		super(server, gameMaster, GameName, ruleset, password, hasPassword);

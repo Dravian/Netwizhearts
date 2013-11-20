@@ -28,7 +28,7 @@ public class ServerMain {
 	 * @throws IOException 
 	 * @throws UnknownHostException 
 	 */
-	public static void main(String[] args) throws UnknownHostException, IOException {
+	public static void main(String[] args) throws UnknownHostException, IOException{
 		lobbyServer = new TestLobbyServer();
 		
 		blue = new TestPlayer(lobbyServer);	
@@ -38,10 +38,11 @@ public class ServerMain {
 		green = new TestPlayer(lobbyServer);	
 		green.setPlayerName("Green");
 		
-		gameServer = new TestGameServer(lobbyServer, "Blue" ,"Mein Spiel",RulesetType.Wizard, 
+		gameServer = new TestGameServer(lobbyServer, blue ,"Mein Spiel",RulesetType.Wizard, 
 				"",false);
 		wizard = new PrintWizard(gameServer);
 		wizard.runGame();
+		wizard.calculateRoundOutcome();
 	}
 
 }

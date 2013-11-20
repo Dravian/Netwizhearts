@@ -182,10 +182,9 @@ public abstract class ServerRuleset {
 	}
 	
 	/**
-	 * Setzt den naechsten Spieler in der Liste als currentPlayer
-	 * @return gibt false zurück wenn es der firstPlayer ist und true sonst
+	 * Setzt den nächsten Spieler
 	 */
-	protected boolean nextPlayer() {
+	protected void nextPlayer() {
 		int iterator = getPlayers().indexOf(getCurrentPlayer());
 		
 		if(iterator == getPlayers().size()-1) {
@@ -194,11 +193,7 @@ public abstract class ServerRuleset {
 			iterator++;
 		}
 		
-		if(getPlayers().get(iterator) == getFirstPlayer()) {
-			return false;
-		} else {
-			return true;
-		}
+		gameState.setCurrentPlayer(getPlayers().get(iterator));
 	}
 
 	/** 
@@ -251,6 +246,14 @@ public abstract class ServerRuleset {
 	 */
 	protected List<Card> getPlayerCards(PlayerState player) {
 		return player.getHand();
+	}
+	
+	/**
+	 * Holt die gespielten Karten auf den Ablagestapel
+	 * @return Die Karten auf dem AblageStapel
+	 */
+	protected List<DiscardedCard> getPlayedCards() {
+		return gameState.getPlayedCards();
 	}
 	/**
 	 * Schickt eine Nachricht an einen Spieler, über den Gameserver
@@ -333,14 +336,6 @@ public abstract class ServerRuleset {
 	protected int getPoints(PlayerState player) {
 		return (player.getOtherData()).getPoints();
 	}
-	/**
-	 * Verteilt eine bestimmte Anzahl an Karten an die Spieler
-	 * @param number Die Anzahl an Karten
-	 * @return Gibt true zurueck wenn ein Spieler keine Karten hat, false sonst
-	 */
-	protected boolean dealCards(int number) {
-		return false;	
-	}
 	
 	/**
 	 * Gibt einem Spieler eine bestimmte Karte
@@ -349,7 +344,7 @@ public abstract class ServerRuleset {
 	 * @return Gibt true zurück wenn die Karte im Deck ist, false sonst
 	 */
 	protected boolean giveACard(PlayerState player, Card card) {
-		return false;	
+		return gameState.giveACard(player,card);	
 	}
 	
 	/**

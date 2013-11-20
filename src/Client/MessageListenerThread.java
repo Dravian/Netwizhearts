@@ -27,6 +27,8 @@ public class MessageListenerThread implements Runnable {
 	private ObjectOutput out;
 
 	private boolean run;
+	
+	private boolean socketSet;
 
 	private ClientModel model;
 
@@ -61,6 +63,7 @@ public class MessageListenerThread implements Runnable {
 		out.flush();
 		in = new ObjectInputStream(connection.getInputStream());
 		run = true;
+		socketSet = true;
 	}
 
 	/**
@@ -68,14 +71,17 @@ public class MessageListenerThread implements Runnable {
 	 * und deren Ressourcen freigibt.
 	 */
 	public void closeConnection() {
-		try {
-			run = false;
-			out.close();
-			in.close();
-			connection.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		run = false;
+		if (socketSet) {
+			socketSet = false;
+			try {
+				out.close();
+				in.close();
+				connection.close();
+			} catch (IOException e) {
+				System.out.println("ERROR: While closing network ressources.");
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -92,6 +98,8 @@ public class MessageListenerThread implements Runnable {
 			} catch (IOException e) {
 				System.out.println("ERROR: Write to Object Stream failed.");
 				e.printStackTrace();
+				closeConnection();
+				model.closeView();
 			}
 		}
 	}
@@ -111,27 +119,26 @@ public class MessageListenerThread implements Runnable {
 		} catch (ClassNotFoundException e) {
 			System.err.println("ERROR: Unknown Object received.");
 			e.printStackTrace();
-			closeConnection();
 		} catch (EOFException e) {
 			if (run) {
 				System.err.println("ERROR: Object Stream emty.");
 				e.printStackTrace();
-				closeConnection();
 			}
 		} catch (SocketException e) {
 			if (run) {
 				System.err.println("ERROR: Connection reset.");
 				e.printStackTrace();
-				closeConnection();
 			}
 		} catch (IOException e) {
 			if (run) {
 				System.err.println("ERROR: Network IO failed.");
 				e.printStackTrace();
-				closeConnection();
 			}
 		} finally {
-			//TODO terminateProgram und closeConnection einbauen.
+			if(run) {
+				closeConnection();
+				model.closeView();
+			}
 		}
 	}
   }

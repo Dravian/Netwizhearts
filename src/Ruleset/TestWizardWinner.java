@@ -41,7 +41,8 @@ public class TestWizardWinner {
 	
 	MsgGameEnd endMsg;
 	
-	String winner;
+	String winner1;
+	String winner2;
 	
 	String Blue = "Mr. Blue";
 	String White = "Mr. White";
@@ -74,13 +75,14 @@ public class TestWizardWinner {
 		inputList = null;
 		comObject = null;
 		endMsg = null;
-		winner = null;
+		winner1 = null;
+		winner2 = null;
 	}
 	
 	@Test
 	public void testGetWinner() {
 		
-		gameServer = new TestGameServer(lobbyServer, Blue, "Test Game", RulesetType.Wizard, "", false);
+		gameServer = new TestGameServer(lobbyServer, blue, "Test Game", RulesetType.Wizard, "", false);
 		gameServer.addPlayer(blue);
 		gameServer.addPlayer(white);
 		gameServer.addPlayer(orange);
@@ -112,26 +114,34 @@ public class TestWizardWinner {
 		inputList = blue.getServerInput();
 		comObject = (ComRuleset) inputList.get(1);
 		endMsg = (MsgGameEnd) comObject.getRulesetMessage();
-		winner = endMsg.getWinnerName().get(1);
-		assertEquals("Nachricht an Blue", "Mr. Brown", winner);
+		winner1 = endMsg.getWinnerName().get(0);
+		winner2 = endMsg.getWinnerName().get(1);
+		assertEquals("Nachricht an Blue", "Mr. White", winner1);
+		assertEquals("Nachricht an Blue", "Mr. Brown", winner2);
 
 		inputList = white.getServerInput();
 		comObject = (ComRuleset) inputList.get(1);
 		endMsg = (MsgGameEnd) comObject.getRulesetMessage();
-		winner = endMsg.getWinnerName().get(1);
-		assertEquals("Nachricht an White", "Mr. Brown", winner);
+		winner2 = endMsg.getWinnerName().get(1);
+		winner1 = endMsg.getWinnerName().get(0);
+		assertEquals("Nachricht an White", "Mr. White", winner1);
+		assertEquals("Nachricht an White", "Mr. Brown", winner2);
 
 		inputList = orange.getServerInput();
 		comObject = (ComRuleset) inputList.get(1);
 		endMsg = (MsgGameEnd) comObject.getRulesetMessage();
-		winner = endMsg.getWinnerName().get(1);
-		assertEquals("Nachricht an Orange", "Mr. Brown", winner);
+		winner2 = endMsg.getWinnerName().get(1);
+		winner1 = endMsg.getWinnerName().get(0);
+		assertEquals("Nachricht an Orange", "Mr. White", winner1);
+		assertEquals("Nachricht an Orange", "Mr. Brown", winner2);
 	
 		inputList = brown.getServerInput();
 		comObject = (ComRuleset) inputList.get(1);
 		endMsg = (MsgGameEnd) comObject.getRulesetMessage();
-		winner = endMsg.getWinnerName().get(1);
-		assertEquals("Nachricht an Brown", "Mr. Brown", winner);
+		winner2 = endMsg.getWinnerName().get(1);
+		winner1 = endMsg.getWinnerName().get(0);
+		assertEquals("Nachricht an Brown", "Mr. White", winner1);
+		assertEquals("Nachricht an Brown", "Mr. Brown", winner2);
 		
 	}
 }

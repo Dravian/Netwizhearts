@@ -18,7 +18,7 @@ public class GameClientUpdate {
 	/** 
 	 * Die gespielten Karten auf dem Ablagestapel
 	 */
-	private Map<String,Card> discardPile;
+	private List<DiscardedCard> discardPile;
 	
 	/** 
 	 * Die Spieldaten der anderen Spieler
@@ -48,7 +48,7 @@ public class GameClientUpdate {
 	 * @param currentPlayer Der momentan aktive Spieler
 	 * @param trumpCard Die Trumpffarbe
 	 */
-	protected GameClientUpdate(PlayerState playerState, Map<String,Card> discardPile,
+	protected GameClientUpdate(PlayerState playerState, List<DiscardedCard> discardPile,
 			List<OtherData> otherPlayerData,  PlayerState firstPlayer, PlayerState currentPlayer,
 			Card trumpCard) {
 		this.playerState = playerState;
@@ -71,7 +71,7 @@ public class GameClientUpdate {
 	 * Holt die gespielten Karten auf dem Ablagestapel
 	 * @return discardPile Die gespielten Karten
 	 */
-	protected Map<String, Card> getPlayedCards() {
+	protected List<DiscardedCard> getPlayedCards() {
 		return discardPile;
 	}
 

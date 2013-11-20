@@ -20,9 +20,16 @@ import ComObjects.ComWarning;
 import ComObjects.RulesetMessage;
 
 import java.io.IOException;
+import java.net.ConnectException;
+import java.net.InetAddress;
 import java.net.Socket;
 import java.net.SocketException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.net.UnknownHostException;
+import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Set;
@@ -56,14 +63,14 @@ public class ClientModel extends Observable{
 	 * Der Zustand indem sich der Client befindet.
 	 */
 	private ClientState state;
+	
+	private List<RulesetType> supportetGames;
 
 	private List<String> playerList;
 
-	private String chatMessage;
-
 	private Set<GameServerRepresentation> gameList;
 
-	private String warningText;
+	private StringBuilder warningText = new StringBuilder();
 	
 	private Thread netIOThread;
 
@@ -100,7 +107,7 @@ public class ClientModel extends Observable{
 	 * zum Server auftritt und die korrekte Ausfuehrung des Programs
 	 * deswegen nicht mehr gewaerleistet werden kann.
 	 */
-	protected void terminateProgram() {
+	protected void closeView() {
 		informView(ViewNotification.quitGame);
 	}
 	
@@ -135,7 +142,7 @@ public class ClientModel extends Observable{
 	 */
 	public void receiveMessage(ComInitLobby msg) {
 		if (state == ClientState.LOGIN) {
-			System.out.println("login successfull");
+			System.out.println("<" + new Date() + "> " + "login successfull");
 			informView(ViewNotification.loginSuccessful);
 		}
 	}
@@ -178,10 +185,9 @@ public class ClientModel extends Observable{
 
 	public void receiveMessage(ComWarning warning) {
 		if (state == ClientState.LOGIN) {
-			System.out.println("login failed");
 			netIO.closeConnection();
 			netIOThread = null;
-			warningText = "Username allready in use.";
+			warningText.append("<" + new Date() + "> " + "Username already in use.");
 			informView(ViewNotification.openWarning);
 		}
 	}
@@ -206,13 +212,13 @@ public class ClientModel extends Observable{
 	 * enthaelt, ob und welcher Spieler hinzugefuegt oder entfernt werden muss.
 	 * Die Spielerliste wird dementsprechend bearbeitet und die Observer mit
 	 * playerListUpdate informiert.
-	 * 
+	 *
 	 * @param update die ankommende ComLobbyUpdatePlayerlist Nachricht
 	 */
 	public void receiveMessage(ComUpdatePlayerlist update) {
-		
+
 	}
-	
+
 	/**
 	 * Diese Methode wird aufgerufen,
 	 * falls auf dem Server ein neues Spiel erstellt wurde oder
@@ -221,109 +227,109 @@ public class ClientModel extends Observable{
 	 * enthaelt, ob und welches Spiel hinzugefuegt oder entfernt werden muss.
 	 * Die Spielliste wird dementsprechend bearbeitet und die Observer mit
 	 * gameListUpdate informiert.
-	 * 
+	 *
 	 * @param update die ankommende ComLobbyUpdateGamelist Nachricht
 	 */
 	public void receiveMessage(ComLobbyUpdateGamelist update) {
-		
+
 	}
-	
+
 	/**
 	 * Standard receiveMessage Methode, die ComObjekte
 	 * zur Weiterverarbeitung identifiziert.
 	 * @param com Das auflaufende ComObjekt.
 	 */
 	public void receiveMessage(ComObject com) {
-		
+
 	}
-	
+
 	/**
 	 * Liefert eine Liste der Namen der Spieler in der Lobby oder GameLobby.
-	 * 
+	 *
 	 * @return Liste von Spielernamen
 	 */
 	public List<String> getPlayerlist(){
 		return playerList;
 	}
-	
+
 	/**
 	 * Liefert eine Liste der Spiele, die aktuell auf dem Server offen sind
 	 * oder gerade gespielt werden.
-	 * 
+	 *
 	 * @return Liste aller Spiele der Lobby.
 	 */
 	public List<GameServerRepresentation> getLobbyGamelist(){
 		return null;
 	}
-	
+
 	/**
 	 * Gibt eine Liste aller bereits ausgespielten Karten zurueck.
-	 * 
+	 *
 	 * @return List<Card>. Eine Liste der gespielten Karten.
 	 */
 	public List<Card> getPlayedCards(){
 		return null;
 	}
-	
+
 	/**
 	 * Gibt eine Liste der Handkarten des Spielers zurueck.
-	 * 
+	 *
 	 * @param Liste aller Handkarten des Spielers
 	 */
 	public List<Card> getOwnHand() {
 		return null;
 	}
-	
+
 	/**
 	 * Gibt zusaetzliche Daten der anderen Spieler zurueck.
-	 * 
+	 *
 	 * @return Liste der Stringrepraesentationen der OtherData der Spieler
 	 */
 	public List<String> getOtherPlayerData() {
 		return null;
-		
+
 	}
-	
+
 	/**
 	 * Gibt den Punktestand des Spielers zurueck.
-	 * 
+	 *
 	 * @return der eigene Punktestand.
 	 */
 	public int getOwnScore() {
 		return 0;
 	}
-	
+
 	/**
 	 * Setzt die Sprache der GUI.
-	 * 
+	 *
 	 * @param language Enumerator der die Spielsprache anzeigt.
 	 */
 	public void setLanguage(final Language language) {
 		this.language = language;
 	}
-	
+
 	/**
 	 * Liefert die Sprache der GUI.
-	 * 
+	 *
 	 * @return language Enumerator der die Spielsprache anzeigt.
 	 */
 	public Language getLanguage() {
 		return language;
 	}
 
-	/** 
+	/**
 	 * Entfernt einen Spieler aus der GameLobby.
-	 * 
+	 *
 	 * @param Name des Spielers, der enfernt werden soll
 	 */
 	public void kickPlayer(final String name) {
-	
+
 	}
 
-	/** 
+	/**
 	 * Erstellt ein neues Spiel. Sendet dazu eine ComCreateGameRequest Nachricht
 	 * an den Server.
-	 * 
+	 *
 	 * @param gameName String Name des Spieles.
 	 * @param hasPassword true, wenn das Spiel ein Passwort hat
 	 * @param password String Passwort zum sichern des Spieles.
@@ -350,19 +356,19 @@ public class ClientModel extends Observable{
 	 */
 	public int getPlayerCount() {
 		return 0;
-		
+
 	}
-	
+
 	/**
 	 * Gibt den Text zurueck, der in einem Sonderfenster 
 	 * (InputNumber, ChooseItem, ChooseCards) angezeigt werden soll.
-	 * 
+	 *
 	 * @return String 
 	 */
 	public String getWindowText() {
-		return warningText;
+		return warningText.toString();
 	}
-	
+
 	/**
 	 * Gibt die Karten zurueck, aus denen gewaehlt werden soll.
 	 * 
@@ -371,39 +377,39 @@ public class ClientModel extends Observable{
 	public List<Card> getChooseCards() {
 		return null;
 	}
-	
+
 	/**
 	 * Uebergibt die Karten, die vom User gewahlt wurden. Diese
 	 * werden dann dem Regelwerk weitergegeben. Akzeptiert dieses
 	 * die gewaehlten Karten nicht, wird nochmal openChooseCards aufgerufen.
-	 * 
+	 *
 	 * @param cards Karten, die der User gewaehlt hat
 	 */
 	public void giveChosenCards(List<Card> cards) {
-		
+
 	}
-	
+
 	/**
 	 * Benachrichtigt die Observer mit der openChooseCards ViewNotification
 	 * und speichert die Liste der Karten sowie den Anzeigetext des Regelwerks
 	 * zwischen.
-	 * 
+	 *
 	 * @param cards Liste der Karten, von denen gewaehlt werden kann
 	 * @param text Text, der dem User angezeigt werden soll
 	 */
 	public void openChooseCards(List<Card> cards, String text) {
-		
+
 	}
-	
+
 	/**
 	 * Gibt die Items zurueck, aus denen eines gewaehlt werden soll.
-	 * 
+	 *
 	 * @return Items, aus denen gewahlt werden kann
 	 */
 	public List<Object> getChooseItems() {
 		return null;
 	}
-	
+
 	/**
 	 * Uebergibt das Item, das vom User gewahlt wurden. Dieses
 	 * wird dann dem Regelwerk weitergegeben. Akzeptiert dieses
@@ -412,67 +418,67 @@ public class ClientModel extends Observable{
 	 * @param item Item, das der User gewahlt hat
 	 */
 	public void giveChosenItem(Object item) {
-		
+
 	}
-	
+
 	/**
 	 * Benachrichtigt die Observer mit der openChooseItem ViewNotification
 	 * und speichert die Liste der Items, von denen eines gewaehlt werden soll,
 	 * sowie den Anzeigtetext des Regelwerks zwischen.
-	 * 
+	 *
 	 * @param items Liste der Items, von denen eines gewaehlt werden soll
 	 * @param text Text, der dem User angezeigt werden soll
 	 */
 	public void openChooseItem(List<Object> items, String text) {
-		
+
 	}
-	
+
 	/**
 	 * Uebergibt die Zahl, die vom User gewahlt wurde. Diese 
 	 * wird dann dem Regelwerk weitergegeben. Akzeptiert dieses
 	 * die gewaehlte Zahl nicht, wird nochmal openInputNumber
 	 * aufgerufen.
-	 * 
+	 *
 	 * @param number Zahl, die vom User gewahlt wurde
 	 */
 	public void giveInputNumber(int number) {
-		
+
 	}
-	
+
 	/**
 	 * Benachrichtigt die Observer mit der openInputNumber ViewNotification
 	 * und speichert den Anzeigetext des Regelwerks zwischen.
-	 * 
+	 *
 	 * @param text Text, der dem User angezeigt werden soll
 	 */
 	public void openInputNumber(String text) {
-		
+
 	}
-	
+
 	/**
 	 * Nimmt vom ClientController eine Chatnachricht entgegen
 	 * und sendet diese an den Server.
-	 * 
+	 *
 	 * @param msg die Chatnachricht, die an den Server geschickt werden soll
 	 */
 	public void sendChatMessage(final String msg) {
 		netIO.send(new ComChatMessage(msg));
 	}
 
-	/** 
+	/**
 	 * Versucht einem Spiel beizutreten. Sendet dazu eine ComJoinRequest Nachricht an
 	 * den Server. Wird diese bestaetigt, gelangt der Client in die GameLobby. Wird die
 	 * Nachricht nicht bestaetigt, wird eine Fehlermeldung ausgegeben und die Observer
 	 * mit openWarning informiert.
-	 * 
+	 *
 	 * @param name String Der Name des Spiels.
 	 * @param password String Passwort eines Spieles.
 	 */
 	public void joinGame(final String name, final String password) {
-	
+
 	}
 
-	/** 
+	/**
 	 * Versucht das erstellte Spiel zu starten. Sendet dazu eine ComStartGame an den Server.
 	 * Wenn der Client der Spielleiter des Spiels ist, gelangt er ins Spiel.
 	 * Wenn der Client nicht der Spielleiter des Spiels ist, wird eine Fehlermeldung ausgegeben.
@@ -526,7 +532,7 @@ public class ClientModel extends Observable{
 	 */
 	private void informView(ViewNotification note) {
 		setChanged();
-		this.notifyObservers(note);
+		notifyObservers(note);
 	}
 
 	/**
@@ -536,50 +542,74 @@ public class ClientModel extends Observable{
 	 * @param host String die Adresse des spielservers.
 	 * @param port Integer der Port des Spielservers.
 	 */
-	public void createConnection(final String username, final String host, final int port) {
-		//TODO Fehlernachrichten mehrsprachig, eigene Klasse evtl.
+	public void createConnection(String username,
+								 String host,
+								 int por)
+										 throws IllegalArgumentException {
 		state = ClientState.LOGIN;
+		URI uri = null;
+		int port = 4567;
 		boolean fault = false;
-		String warning = "Error(s) occurred:\n";
-		
+		if (username == null) {
+			throw new IllegalArgumentException();
+		}
+		if (host == null) {
+			throw new IllegalArgumentException();
+		}
 		if (username.isEmpty()) {
 			fault = true;
-			warning += "Empty Username.\n";
+			warningText.append("<" + new Date() + "> " + "Error: Empty Username.\n");
 		}
 		if (host.isEmpty()) {
 			fault = true;
-			warning += "Empty Host Address.\n";
-		}
-		if (!fault) {
-			try {
-				//TODO Client und Serverport unterschiedlich hartcodiert...
-				Socket connection = new Socket(username, 4567);
-				netIO.startConnection(this, connection);
-				netIOThread = new Thread(netIO);
-				netIOThread.start();
-				netIO.send(new ComLoginRequest(host));
-			} catch (UnknownHostException e) {
-				warningText = warning + "Unknown Host.\n";
-				informView(ViewNotification.openWarning);
-			} catch (SocketException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			warningText.append("<" + new Date() + "> " + "Error: Empty Host Address.\n");
 		} else {
-			warningText = warning;
-			informView(ViewNotification.openWarning);
+			try {
+				uri = new URI("http://" + host);
+				port = uri.getPort();
+				if (uri.getHost() == null) {
+					fault = true;
+					warningText.append("<" + new Date() + "> " + "Error: Unrecognizable Host Address.\n");
+				}
+				if (port == -1) {
+					//TODO standard port.
+					port = 4567;
+				} else if (port < 1025 || port > 49151) {
+					fault = true;
+					warningText.append("<" + new Date() + "> " + "Error: Portnumber out of Range.\n");
+				}
+			} catch (URISyntaxException e) {
+				fault = true;
+				warningText.append("<" + new Date() + "> " + "Error: Unrecognizable Host Address.\n");
+			}
 		}
+		if (fault) {
+			informView(ViewNotification.openWarning);
+		} else {
+			setupConnection(username, uri.getHost(), port);
+		}	
 	}
 	
-	private void setupConnection(final String username, final String host, final int port) {
-		
-	}
-	
-	private void resetNetIO() {
-		
+	private void setupConnection(String username, String host, int port ) {
+		try {
+			Socket connection = new Socket(host, port);
+			netIO.startConnection(this, connection);
+			netIOThread = new Thread(netIO);
+			netIOThread.start();
+			netIO.send(new ComLoginRequest(username));
+		} catch (ConnectException e) {
+			warningText.append("<" + new Date() + "> " + "Error: Unknown Host.\n");
+			informView(ViewNotification.openWarning);
+		} catch (SocketException e) {
+			System.err.println("<" + new Date() + "> " + "Error: At Socket.\n");
+			e.printStackTrace();
+		} catch (UnknownHostException e) {
+			warningText.append("<" + new Date() + "> " + "Error: Unknown Host.\n");
+			informView(ViewNotification.openWarning);
+		} catch (IOException e) {
+			System.err.println("<" + new Date() + "> " + "Error: At IO.\n");
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -589,7 +619,15 @@ public class ClientModel extends Observable{
 	 * @return String Text der Warnung.
 	 */
 	public String getWarningText() {
-		return warningText;
+		String text = warningText.toString();
+		warningText.delete(0, warningText.length());
+		return text;
+	}
+	
+	private void prepRulesetList() {
+		supportetGames = new LinkedList<RulesetType>();
+		supportetGames.add(RulesetType.Wizard);
+		supportetGames.add(RulesetType.Hearts);
 	}
 
 	/**
@@ -598,6 +636,7 @@ public class ClientModel extends Observable{
 	 * @param List<RulesetType> Liste von unterstuetzten Regelwerken.
 	 */
 	public List<RulesetType> getRulesets() {
-		return null;
+		prepRulesetList();
+		return supportetGames;
 	}
 }
