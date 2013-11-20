@@ -82,7 +82,7 @@ public class TestWizardWinner {
 	@Test
 	public void testGetWinner() {
 		
-		gameServer = new TestGameServer(lobbyServer, Blue, "Test Game", RulesetType.Wizard, "", false);
+		gameServer = new TestGameServer(lobbyServer, blue, "Test Game", RulesetType.Wizard, "", false);
 		gameServer.addPlayer(blue);
 		gameServer.addPlayer(white);
 		gameServer.addPlayer(orange);
