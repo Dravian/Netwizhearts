@@ -36,7 +36,7 @@ public class TestCalculateTricks {
 		player3 = "Track";
 		lobbyServer = new TestLobbyServer();
 		player = new TestPlayer(lobbyServer);
-		gameServer = new TestGameServer(lobbyServer,"Tick","Mein Spiel",RulesetType.Wizard, 
+		gameServer = new TestGameServer(lobbyServer,player,"Mein Spiel",RulesetType.Wizard, 
 				"",false);
 		ruleset = new ServerWizard(gameServer);
 		
@@ -92,7 +92,7 @@ public class TestCalculateTricks {
 		ruleset.calculateTricks();
 		
 		assertTrue(ruleset.getPlayedCards().size() == 0);
-		assertTrue(playerState1.getOtherData().getNumberOfTricks() == 3);
+		assertTrue(playerState1.getOtherData().getNumberOfTricks() == 1);
 		assertTrue(playerState2.getOtherData().getNumberOfTricks() == 0);
 		assertTrue(playerState3.getOtherData().getNumberOfTricks() == 0);
 	}
@@ -114,7 +114,7 @@ public class TestCalculateTricks {
 		ruleset.calculateTricks();
 		
 		assertTrue(ruleset.getPlayedCards().size() == 0);
-		assertTrue(playerState1.getOtherData().getNumberOfTricks() == 3);
+		assertTrue(playerState1.getOtherData().getNumberOfTricks() == 1);
 		assertTrue(playerState2.getOtherData().getNumberOfTricks() == 0);
 		assertTrue(playerState3.getOtherData().getNumberOfTricks() == 0);
 	}
@@ -138,7 +138,7 @@ public class TestCalculateTricks {
 		assertTrue(ruleset.getPlayedCards().size() == 0);
 		assertTrue(playerState1.getOtherData().getNumberOfTricks() == 0);
 		assertTrue(playerState2.getOtherData().getNumberOfTricks() == 0);
-		assertTrue(playerState3.getOtherData().getNumberOfTricks() == 3);
+		assertTrue(playerState3.getOtherData().getNumberOfTricks() == 1);
 	}
 	
 	@Test
@@ -159,7 +159,7 @@ public class TestCalculateTricks {
 		
 		assertTrue(ruleset.getPlayedCards().size() == 0);
 		assertTrue(playerState1.getOtherData().getNumberOfTricks() == 0);
-		assertTrue(playerState2.getOtherData().getNumberOfTricks() == 3);
+		assertTrue(playerState2.getOtherData().getNumberOfTricks() == 1);
 		assertTrue(playerState3.getOtherData().getNumberOfTricks() == 0);
 	}
 	
@@ -180,7 +180,7 @@ public class TestCalculateTricks {
 		ruleset.calculateTricks();
 		
 		assertTrue(ruleset.getPlayedCards().size() == 0);
-		assertTrue(playerState1.getOtherData().getNumberOfTricks() == 3);
+		assertTrue(playerState1.getOtherData().getNumberOfTricks() == 1);
 		assertTrue(playerState2.getOtherData().getNumberOfTricks() == 0);
 		assertTrue(playerState3.getOtherData().getNumberOfTricks() == 0);
 	}
