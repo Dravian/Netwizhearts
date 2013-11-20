@@ -95,11 +95,13 @@ public class GameState {
 	}
 	
 	/**
-	 * Setzt einen neuen Spieler als firstPlayer und erhöht die Rundennummer um eins
+	 * Setzt einen neuen Spieler als firstPlayer und als currentPlayer
+	 * und erhöht die Rundennummer um eins
 	 * @param player Der neue firstPlayer
 	 */
 	protected void setFirstPlayer(PlayerState player) {
 		firstPlayer = player;
+		currentPlayer = player;
 		newRound();
 	}
 	
@@ -123,14 +125,8 @@ public class GameState {
 	 * Setzt einen neuen Spieler als currentPlayer
 	 * @param player Der neue currentPlayer
 	 */
-	protected boolean setCurrentPlayer(PlayerState player) {
-		if(currentPlayer == player) {
-			this.currentPlayer = player;	
-			return true;
-		} else {
-			return false;
-		}
-		
+	protected void setCurrentPlayer(PlayerState player) {
+		this.currentPlayer = player;
 	}
 
 	/** 

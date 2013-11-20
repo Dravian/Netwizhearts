@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import Server.GameServer;
+import ComObjects.MsgGameEnd;
 import ComObjects.MsgNumber;
 import ComObjects.MsgNumberRequest;
 import ComObjects.MsgSelection;
@@ -140,13 +141,13 @@ public class ServerWizard extends ServerRuleset {
 	}
 
 	@Override
-	public void runGame() throws RulesetException {
+	public void runGame() throws IllegalNumberOfPlayersException {
 		List<PlayerState> players = getPlayers();
 		int deckSize = WizardCard.values().length;
 
 		if ((players.size() < MIN_PLAYERS) || (players.size() > MAX_PLAYERS)
 				|| (players.size() == 0)) {
-			throw new RulesetException("The number of players are: "
+			throw new IllegalNumberOfPlayersException("The number of players are: "
 					+ players.size());
 		} else {
 			int numberOfRounds = deckSize / players.size();
@@ -236,7 +237,8 @@ public class ServerWizard extends ServerRuleset {
 		
 		if(getGamePhase() == GamePhase.Ending) {
 			List<String> winners = getWinners();
-			
+			broadcast(new MsgGameEnd(winners.get(0)));
+			//broadcast(new MsgGameEnd(winners));
 		} else {
 			setCurrentPlayer(getFirstPlayer());
 			nextPlayer();

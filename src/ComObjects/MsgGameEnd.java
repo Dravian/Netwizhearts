@@ -5,6 +5,7 @@ import Ruleset.ServerRuleset;
 
 import java.io.Serializable;
 import java.lang.String;
+import java.util.List;
 
 /**
  * MsgGameEnd.
@@ -13,22 +14,23 @@ import java.lang.String;
  */
 public class MsgGameEnd implements RulesetMessage, Serializable {
 
-    private String winnerName;
+    private List<String> winnerNames;
 
     /**
      * Dies ist der Kontruktor fuer eine neue MsgGameEnd-Nachricht.
-     * @param name ist der Name des Gewinners.
+     * @param names sind die Namen der Gewinner.
      */
-    public MsgGameEnd(String name) {
-        this.winnerName = name;
+    public MsgGameEnd(List<String> names) {
+        this.winnerNames = names;
     }
 
     /**
      * Diese Methode liefert den Namen des Gewinners eines Spiels.
+     * Haben mehrere Leute gewonnen, enthält die Liste mehrere Namen.
      * @return  den Gewinnernamen.
      */
-    public String getWinnerName() {
-        return winnerName;
+    public List<String> getWinnerName() {
+        return winnerNames;
     }
 
     @Override

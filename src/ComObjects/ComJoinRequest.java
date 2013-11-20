@@ -5,6 +5,7 @@ import Server.Player;
 import Server.Server;
 
 import java.io.Serializable;
+import java.lang.String;
 
 /**
  * ComJoinRequest.
@@ -45,6 +46,15 @@ public class ComJoinRequest implements ComObject, Serializable {
      */
     public String getGameMasterName() {
         return gameMasterName;
+    }
+
+    /**
+     * Diese Methode liefert das Passwort, mit dem ein Spiel
+     * gesichert ist.
+     * @return das Passwort eines Spiels.
+     */
+    public String getPassword() {
+        return password;
     }
 
     @Override

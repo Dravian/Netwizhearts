@@ -121,7 +121,7 @@ public abstract class ServerRuleset {
 	 * @param phase Die neue Spielphase
 	 */
 	protected void setGamePhase(GamePhase phase) {
-		
+		gamePhase = phase;
 	}
 
 	/**
@@ -160,8 +160,9 @@ public abstract class ServerRuleset {
 
 	/**
 	 * Startet das Spiel
+	 * @throws IllegalNumberOfPlayersException Wird geworfen wenn die Spieleranzahl nicht stimmt
 	 */
-	public abstract void runGame();
+	public abstract void runGame() throws IllegalNumberOfPlayersException;
 	
 	/** 
 	 * Setzt den Spieler der als Erster am Zug ist, im Gamestate
@@ -203,10 +204,9 @@ public abstract class ServerRuleset {
 	/** 
 	 * Setzt den Spieler der am Naechsten am Zug ist, im Gamestate
 	 * @param player Der Playerstate eines Spielers
-	 * @return false wenn der selbe Spieler nochmal als currentPlayer gesetzt wird
 	 */
-	protected boolean setCurrentPlayer(PlayerState player) {
-		return setCurrentPlayer(player);
+	protected void setCurrentPlayer(PlayerState player) {
+		 gameState.setCurrentPlayer(player);
 	}
 	
 	/**
@@ -411,6 +411,13 @@ public abstract class ServerRuleset {
 	}
 	
 	/**
+	 * Beendet das Spiel
+	 */
+	protected void quitGame() {
+		server.quitGame();
+	}
+	
+	/**
 	 * Erzeugt eine Liste von OtherData mit der von einem bestimmten Spieler 
 	 * ausgesehen richtigen Reihenfolge von den anderen Spielern
 	 * @param player Der Spieler aus dessen Sicht die Liste gemacht wird
@@ -440,34 +447,34 @@ public abstract class ServerRuleset {
 	}
 
 	public void resolveMessage(MsgCardRequest msgCardRequest, String name) {
-		throw new IllegalArgumentException("Das ComObjekt MsgSelection findet " +
+		throw new IllegalArgumentException("Das ComObjekt MsgCardRequest findet " +
 				"keine Verwendung in diesem Spiel");
 	}
 
 	public void resolveMessage(MsgGameEnd msgGameEnd, String name) {
-		throw new IllegalArgumentException("Das ComObjekt MsgSelection findet " +
+		throw new IllegalArgumentException("Das ComObjekt MsgGameEnd findet " +
 				"keine Verwendung in diesem Spiel");		
 	}
 
 	public void resolveMessage(MsgMultiCardsRequest msgMultiCardsRequest,
 			String name) {
-		throw new IllegalArgumentException("Das ComObjekt MsgSelection findet " +
+		throw new IllegalArgumentException("Das ComObjekt MsgMultiCardsRequest findet " +
 				"keine Verwendung in diesem Spiel");		
 	}
 
 	public void resolveMessage(MsgNumberRequest msgNumberRequest, String name) {
-		throw new IllegalArgumentException("Das ComObjekt MsgSelection findet " +
+		throw new IllegalArgumentException("Das ComObjekt MsgNumberRequest findet " +
 				"keine Verwendung in diesem Spiel");		
 	}
 
 	public void resolveMessage(MsgSelectionRequest msgSelectionRequest,
 			String name) {
-		throw new IllegalArgumentException("Das ComObjekt MsgSelection findet " +
+		throw new IllegalArgumentException("Das ComObjekt MsgSelectionRequest findet " +
 				"keine Verwendung in diesem Spiel");		
 	}
 
 	public void resolveMessage(MsgUser msgUser, String name) {
-		throw new IllegalArgumentException("Das ComObjekt MsgSelection findet " +
+		throw new IllegalArgumentException("Das ComObjekt MsgUser findet " +
 				"keine Verwendung in diesem Spiel");		
 	}
 

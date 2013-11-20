@@ -130,7 +130,7 @@ public class LobbyServer extends Server {
 		GameServer joinGame = null;
 		if(!gameServerSet.isEmpty()){
 			for (GameServer game : gameServerSet) {
-				if(game.getGameMasterName() == master){
+				if(game.getGameMasterName().equals(master)){
 					joinGame = game;
 				}
 			}
@@ -139,7 +139,7 @@ public class LobbyServer extends Server {
 		}
 		if(joinGame != null){
 			if(joinGame.getRepresentation().hasPassword()){
-				if(joinGame.getPassword() == join.getPassword()){
+				if(joinGame.getPassword().equals(join.getPassword())){
 					addPlayerToGame(player, joinGame);
 				} else {
 					ComWarning warning = new ComWarning("Wrong Password!");
