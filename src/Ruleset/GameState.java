@@ -6,10 +6,12 @@ package Ruleset;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
+import java.util.Set;
 
 /** 
  * GameState. Das GameState modelliert einen aktuellen Spielzustand, es wird vom GameServer instanziert und vom RuleSet bearbeitet. Es enthält die einzelnen PlayerStates, sowie Informationen 
@@ -27,7 +29,7 @@ public class GameState {
 	private RulesetType ruleset;
 	
 	/**
-	 * Der Spieler der als erste die Karte spielt
+	 * Der Spieler der am Anfang einer Runde anfängt
 	 */
 	private PlayerState firstPlayer;
 	
@@ -44,7 +46,7 @@ public class GameState {
 	/** 
 	 * Die Karten die gespielt wurden
 	 */
-	private Map<String,Card> discardPile;
+	private List<DiscardedCard> discardPile;
 	
 	/** 
 	 * Die Karten die noch im Aufnahmestapel sind
@@ -64,10 +66,10 @@ public class GameState {
 	protected GameState(RulesetType ruleset, List<Card> deck) {
 		this.ruleset = ruleset;
 		players = new LinkedList<PlayerState>();
-		discardPile = new HashMap<String,Card>();
+		discardPile = new ArrayList<DiscardedCard>();
 		this.deck = deck;
-		roundNumber = 0;
-		trumpCard = WizardCard.Empty;
+		roundNumber = 1;
+		trumpCard = EmptyCard.Empty;
 	}
 	
 	/**
@@ -102,14 +104,13 @@ public class GameState {
 	protected void setFirstPlayer(PlayerState player) {
 		firstPlayer = player;
 		currentPlayer = player;
-		newRound();
 	}
 	
 	/**
 	 * Macht eine neue Runde, wird aufgerufen wenn ein neuer Spieler als firstPlayer
 	 * gesetzt wird.
 	 */
-	private void newRound() {
+	protected void newRound() {
 		roundNumber++;
 	}
 
@@ -142,7 +143,7 @@ public class GameState {
 	 * @return deck Holt die Karten die noch im Aufnahmestapel sind
 	 */
 	protected List<Card> getCardsLeftInDeck() {
-		return this.deck;
+		return deck;
 	}
 	
 	/**
@@ -157,7 +158,7 @@ public class GameState {
 	 *Holt die gespielten Karten im Ablagestapel
 	 *@return discardPile Die gespielten Karten
 	 */
-	protected Map<String,Card> getPlayedCards() {
+	protected List<DiscardedCard> getPlayedCards() {
 		return discardPile;
 	}
 	
@@ -262,7 +263,12 @@ public class GameState {
 	 * @return true falls die Karte im Stapel ist, false wenn nicht
 	 */
 	protected boolean giveACard(PlayerState player, Card card) {
-		return false;	
+		if(deck.contains(card)) {
+			player.addCard(card);	
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	/**
@@ -276,9 +282,25 @@ public class GameState {
 		isInHand = currentPlayer.removeCard(card);
 		
 		if(isInHand == true) {
-			discardPile.put(currentPlayer.getName(), card);
+			discardPile.add(new DiscardedCard(currentPlayer.getName(), card));
 		} 
 		
 		return isInHand;
+	}
+	
+	/**
+	 * Entfernt die DiscardedCards im Ablagestapel und gibt ihre Karten als Set
+	 * einem Spieler in seine gemachten Stiche
+	 * @param Der Spieler der einen Stich gemacht hat
+	 */
+	protected void madeTrick(PlayerState player) {
+		Set<Card> madeTricks = new HashSet<Card>();
+		
+		for(DiscardedCard d : discardPile) {
+			madeTricks.add(d.getCard());
+		}
+		discardPile = new ArrayList<DiscardedCard>();
+		
+		player.getOtherData().madeTrick(madeTricks);
 	}
 }

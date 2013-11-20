@@ -24,6 +24,11 @@ public abstract class OtherData {
 	private int points;
 	
 	/**
+	 * Die Anzahl der gemachten Stiche
+	 */
+	private int numberOfTricks;
+	
+	/**
 	 * Der Name vom Spieler
 	 */
 	private String name;
@@ -35,6 +40,7 @@ public abstract class OtherData {
 		this.name = name;
 		madeTricks = new HashSet<Card>();
 		points = 0;
+		numberOfTricks = 0;
 	}
 	
 	
@@ -44,6 +50,7 @@ public abstract class OtherData {
 	 */
 	protected void madeTrick(Set<Card> tricks) {
 		madeTricks.addAll(tricks);
+		numberOfTricks++;
 	}
 	
 	/**
@@ -54,6 +61,7 @@ public abstract class OtherData {
 	protected List<Card> removeTricks() {
 		List<Card> returnedCards = new LinkedList<Card>(madeTricks);
 		madeTricks = new HashSet<Card>();
+		numberOfTricks = 0;
 		return returnedCards;
 	}
 	
@@ -62,7 +70,7 @@ public abstract class OtherData {
 	 * @return Die Anzahl der gemachten Stiche
 	 */
 	protected int getNumberOfTricks() {
-		return madeTricks.size();
+		return numberOfTricks;
 	}
 	
 	/**
