@@ -34,8 +34,8 @@ public class Login extends JFrame implements Observer{
 	private static final long serialVersionUID = -2516577977746181978L;
 	
 	private JPanel contentPane;
-	private JTextField nameField;
 	private JTextField serverField;
+	private JTextField nameField;
 	private JComboBox<Language> languageComboBox;
 	private JButton btnConnect;
 	private Language lang;
@@ -59,19 +59,19 @@ public class Login extends JFrame implements Observer{
 		lblHostIp.setBounds(13, 71, 110, 23);
 		contentPane.add(lblHostIp);
 		
-		serverField = new JTextField();
-		serverField.setBounds(133, 44, 155, 20);
-		contentPane.add(serverField);
-		serverField.setColumns(10);
+		nameField = new JTextField();
+		nameField.setBounds(133, 44, 155, 20);
+		contentPane.add(nameField);
+		nameField.setColumns(10);
 		
 		lblNickname = new JLabel("Nickname:");
 		lblNickname.setBounds(13, 43, 110, 23);
 		contentPane.add(lblNickname);
 		
-		nameField = new JTextField();
-		nameField.setBounds(133, 72, 155, 20); 
-		contentPane.add(nameField);
-		nameField.setColumns(10);
+		serverField = new JTextField();
+		serverField.setBounds(133, 72, 155, 20); 
+		contentPane.add(serverField);
+		serverField.setColumns(10);
 		
 		btnConnect = new JButton("Connect");
 		btnConnect.setBounds(108, 103, 104, 23);
