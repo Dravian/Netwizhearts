@@ -106,6 +106,7 @@ public class Player extends Thread{
 		while(run) {
 			try {
 				object = (ComObject) comIn.readObject();
+				System.out.println(object);
 				object.process(this, server);
 			} catch (ClassNotFoundException e) {
 				run = false;
@@ -126,6 +127,7 @@ public class Player extends Thread{
 	 */
 	public void closeConnection(){
 		try {
+			run = false;
 			comIn.close();
 			comOut.close();
 			connection.close();
