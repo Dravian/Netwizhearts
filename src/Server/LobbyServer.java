@@ -182,7 +182,7 @@ public class LobbyServer extends Server {
 	 * @param player ist der Tread von dem die Exception kommt
 	 */
 	@Override
-	public synchronized void disconnectPlayer(Player player) {
+	public synchronized void disconnectPlayer(Player player) {		
 		removePlayer(player);
 		removeName(player.getPlayerName());
 		player.closeConnection();
