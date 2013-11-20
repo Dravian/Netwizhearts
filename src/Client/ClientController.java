@@ -80,7 +80,7 @@ public class ClientController {
 		clientModel = new ClientModel(new MessageListenerThread());
 		
 		login = new Login();
-		login.addWindowListener(new windowCloseListener());
+		//login.addWindowListener(new windowCloseListener());
 		login.addConnectButtonListener(new ConnectButtonListener());
 		login.addLanguageSelectionListener(new LanguageSelectionListener());
 		login.setVisible(true);
@@ -116,13 +116,13 @@ public class ClientController {
 
 		@Override
 		public void windowClosed(WindowEvent arg0) {
-			clientModel.closeProgram();			
+			// not needed
 			
 		}
 
 		@Override
 		public void windowClosing(WindowEvent arg0) {
-			// not needed
+			clientModel.closeProgram();	
 			
 		}
 
