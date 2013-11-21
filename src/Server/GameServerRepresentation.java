@@ -54,7 +54,12 @@ public class GameServerRepresentation {
 	 */
 	public GameServerRepresentation(String gameMaster, String gameName, int max, 
 			int current, RulesetType type, boolean password){
-		
+		gameMasterName = gameMaster;
+		name = gameName;
+		maxPlayers = max;
+		currentPlayers = current;
+		ruleset = type;
+		hasPassword = password;
 	}
 	
 	/**
