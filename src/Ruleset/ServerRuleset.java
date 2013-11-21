@@ -136,8 +136,9 @@ public abstract class ServerRuleset {
 	 * Erzeugt ein Kartendeck, abhängig von dem RulesetType
 	 * @return Gibt ein Kartendeck zurueck
 	 */
-	private List<Card> createDeck() {
+	protected List<Card> createDeck() {
 		List<Card> deck = new LinkedList<Card>();
+		
 		switch(RULESET) {
 		case Wizard: 
 			for(WizardCard wiz : WizardCard.values()) {
@@ -286,7 +287,7 @@ public abstract class ServerRuleset {
 	}
 	
 	/**
-	 * Bekommt eine MsgMultiCards Nachricht
+	 * Bekommt und verarbeitet eine MsgMultiCards Nachricht
 	 * @param msgMultiCard Die Nachricht vom Client
 	 * @param name Der Name vom Spieler
 	 * @throws IllegalArgumentException falls das ComObject im falschen Spiel benutzt wird
@@ -297,7 +298,7 @@ public abstract class ServerRuleset {
 	}
 	
 	/**
-	 * Bekommt eine MsgNumber Nachricht
+	 * Bekommt und verarbeitet eine MsgNumber Nachricht
 	 * @param msgNumber Die Nachricht vom Client
 	 * @param name Der Name des Spielers
 	 * @throws IllegalArgumentException wenn das ComObjekt im falschen Spiel benutzt wird
@@ -308,7 +309,7 @@ public abstract class ServerRuleset {
 	}
 	
 	/**
-	 * Bekommt eine MsgSelection Nachricht
+	 * Bekommt  und verarbeitet eine MsgSelection Nachricht
 	 * @param msgSelection Die Nachricht vom Client
 	 * @param name Der Name vom Spieler
 	 * @throws IllegalArgumentException falls das ComObject im falschen Spiel benutz wird
@@ -373,6 +374,12 @@ public abstract class ServerRuleset {
 	protected abstract boolean isValidMove(Card card);
 	
 	/**
+	 * Wird am Anfang jeder Runde aufgerufen. Mischt und verteilt Karten und
+	 * schickt Comobject mit Updates und Request für den Rundenanfang.
+	 */
+	protected abstract void startRound();
+	
+	/**
 	 * Berechnet und verteilt Stichpunkte an einzelne Spieler
 	 */
 	protected abstract void calculateTricks();
@@ -392,6 +399,16 @@ public abstract class ServerRuleset {
 	protected abstract List<String> getWinners();
 	
 	/**
+	 * Schickt an alle Spieler ein neues GameClientUpdate
+	 */
+	protected void updatePlayers() {
+		for (PlayerState player : getPlayers()) {
+			send(new MsgUser(generateGameClientUpdate(player)),
+					player.getName());
+		}
+	}
+
+	/**
 	 * Erzeugt ein GameClientUpdate welches individuell für jeden Benutzer ist
 	 * @param player Dem Spieler 
 	 */
@@ -403,13 +420,6 @@ public abstract class ServerRuleset {
 				getCurrentPlayer(),
 				gameState.getTrumpCard());
 		
-	}
-	
-	/**
-	 * Beendet das Spiel
-	 */
-	protected void quitGame() {
-		server.quitGame();
 	}
 	
 	/**
@@ -439,6 +449,13 @@ public abstract class ServerRuleset {
 		}
 		
 		return enemyData;
+	}
+
+	/**
+	 * Beendet das Spiel
+	 */
+	protected void quitGame() {
+		server.quitGame();
 	}
 
 	public void resolveMessage(MsgCardRequest msgCardRequest, String name) {
@@ -472,6 +489,4 @@ public abstract class ServerRuleset {
 		throw new IllegalArgumentException("Das ComObjekt MsgUser findet " +
 				"keine Verwendung in diesem Spiel");		
 	}
-
-	
 }

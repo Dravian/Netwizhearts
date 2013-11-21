@@ -4,7 +4,7 @@ package Ruleset;
  * Eine leere Karte die zu keinem Spiel gehört
  */
 public enum EmptyCard implements Card{
-	Empty(0,Colour.NONE);
+	Empty(-1,Colour.NONE);
 
 	private int value;
 	private Colour colour;

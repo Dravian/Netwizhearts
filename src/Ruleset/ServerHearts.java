@@ -51,14 +51,7 @@ public class ServerHearts extends ServerRuleset {
 		return ENDING_POINTS;
 	}
 		
-	/**
-	 * Verarbeitet die RulesetMessage dass mehrerer Karten vom Spieler uebergeben werden.
-	 * Die wird dann in areValidChoosenCards ueberprueft, bei falsche Eingabe wird´
-	 * eine MsgMultiCardsRequest an den selben Spieler gesendet. 
-	 * Bei richtiger Eingabe geht das Spiel weiter.
-	 * @param msgMultiCard Die Nachricht vom Client
-	 * @param name Der Name des Spielers
-	 */
+	@Override
 	public void resolveMessage(MsgMultiCards msgMultiCard, String name) {
 		
 	}
@@ -89,6 +82,12 @@ public class ServerHearts extends ServerRuleset {
 
 	@Override
 	public void runGame() throws IllegalNumberOfPlayersException{
+		
+	}
+
+	@Override
+	protected void startRound() {
+		// TODO Automatisch erstellter Methoden-Stub
 		
 	}
 
