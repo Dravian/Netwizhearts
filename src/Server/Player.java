@@ -49,6 +49,7 @@ public class Player extends Thread{
 	 */
 	public Player(Server lobbyServer) {
 		super("Player");
+		server = lobbyServer;
 	}
 	
 	/**
@@ -58,9 +59,9 @@ public class Player extends Thread{
 	 * @param lobbyServer ist der LobbyServer, der zu Beginn den Player verwaltet.
 	 * @param socket ist der Socket des Clients
 	 */
-	public Player(Server lobbyServer, Socket socket){
+	public Player(Server loginServer, Socket socket){
 		super("Player");
-		server = lobbyServer;
+		server = loginServer;
 		connection = socket;
 		try {
 			comOut = new ObjectOutputStream(connection.getOutputStream());
