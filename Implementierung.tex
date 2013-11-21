@@ -67,7 +67,17 @@ Hier kommt die Implementierung
 \subsection{Ruleset}
 
 \begin{itemize}
-\item 
+\item \textit{hinzugefügt} \textbf{DiscardedCard:} ;
+
+\item \textit{hinzugefügt} \textbf{EmptyCard:};
+
+\item \textbf{WizardCard:} \textit{hinzugefügt}: changeSorcererColour ();
+
+\item \textbf{GameState:} \textit{hinzugefügt}: madeTrick(), restartDeck ();
+
+\item \textbf{ServerWizard:} \textit{hinzugefügt}: updatePlayers (), getPlayedCards (),
+startRound(); 
+\textit{geändert}: getWinners(),  ;
 \end{itemize}
 
 \subsection{Server}
@@ -108,6 +118,11 @@ Begründung: Es waren noch Code-Teile aus der Pflichtenheft-Phase vorhanden.
 Begründung: Viele der ComObjects waren bereits fertig.
 \item \textbf{Server(Lobby):} ang. Dauer: 8 Stunden, tats. Dauer: bisher 2 Stunden 30 Minuten
 \item \textbf{Server(Create+Join):} ang. Dauer: 12 Stunden, tats. Dauer: bisher 2 Stunden 10 Minuten
+\item \textbf{Ruleset(Daten):} ang. Dauer: 20 Stunden, tats. Dauer: 5 Stunden
+Begründung: Wurde hauptsächlich schon in Spezifikationsphase implementiert
+
+\item \textbf{Ruleset(ServerWizard):} ang. Dauer: 30 Stunden, tats. Dauer: bisher 16 Stunden
+
 \end{itemize}
 
 \subsection{Milestone 2}
