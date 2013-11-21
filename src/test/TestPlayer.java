@@ -14,6 +14,7 @@ public class TestPlayer extends Player {
 	
 	public TestPlayer(Server lobbyServer) {
 		super(lobbyServer);
+		server = lobbyServer;
 		inputComObject = new ArrayList<ComObject>();
 	}
 
