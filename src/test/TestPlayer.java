@@ -34,6 +34,10 @@ public class TestPlayer extends Player {
 		this.server = server;
 	}
 	
+	public void closeConnection(){
+		
+	}
+	
 	public void run() {
 		
 	}
