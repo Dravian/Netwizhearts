@@ -33,7 +33,7 @@ public abstract class Server {
 	}
 	
 	public void receiveMessage(Player player, ComChatMessage chat) {
-		System.err.println("Der Spieler wurde nicht ekannt!");	
+		System.err.println("Das ist die falsche Methode");		
 		disconnectPlayer(player);
 	}
 
@@ -44,7 +44,11 @@ public abstract class Server {
 	 * Spiel vollstaendig verlaesst
 	 */
 	public synchronized void receiveMessage(Player player, ComClientQuit quit){
-		disconnectPlayer(player);
+		if(playerSet.contains(player)){
+			disconnectPlayer(player);
+		} else {
+			System.err.println("Player not found!");
+		}
 	}
 
 	public void receiveMessage(Player player, ComCreateGameRequest create) {

@@ -6,6 +6,7 @@ package Server;
 import java.util.ArrayList;
 import java.util.List;
 import ComObjects.*;
+import Ruleset.IllegalNumberOfPlayersException;
 import Ruleset.RulesetType;
 import Ruleset.ServerHearts;
 import Ruleset.ServerRuleset;
@@ -178,7 +179,27 @@ public class GameServer extends Server {
 	 */
 	@Override
 	public synchronized void receiveMessage(Player player, ComKickPlayerRequest kickPlayer) {
-		// TODO Auto-generated method stub
+		Player toBeKicked = null;
+		if(!playerSet.isEmpty()){
+			for (Player check : playerSet) {
+				if (check.getPlayerName().equals(kickPlayer.getPlayerName())){
+					toBeKicked = check;
+				}
+			}
+			if (toBeKicked != null){
+				toBeKicked.changeServer(lobbyServer);
+				ComInitLobby comInit = lobbyServer.initLobby();			
+				toBeKicked.send(comInit);
+				ComWarning warning = new ComWarning("Kicked out of Game!");
+				toBeKicked.send(warning);
+				ComUpdatePlayerlist update = new ComUpdatePlayerlist(toBeKicked.getPlayerName(), true);
+				broadcast(update);
+			} else {
+				System.err.println("Player not in Game!");
+			}
+		} else {
+			System.err.println("PlayerSet empty!");
+		}		
 	}
 	
 	/**
@@ -192,7 +213,55 @@ public class GameServer extends Server {
 	 */
 	@Override
 	public synchronized void receiveMessage(Player player, ComClientLeave leave){
-		// TODO Auto-generated method stub
+		Player leavingPlayer = player;
+		if(!playerSet.isEmpty()){
+			if (playerSet.contains(leavingPlayer)){
+				leavingPlayer.changeServer(lobbyServer);
+				ComInitLobby comInit = lobbyServer.initLobby();			
+				leavingPlayer.send(comInit);
+				ComUpdatePlayerlist update = new ComUpdatePlayerlist(leavingPlayer.getPlayerName(), true);
+				broadcast(update);
+			} else {
+				System.err.println("Player not in Game!");
+			}
+		} else {
+			System.err.println("PlayerSet empty!");
+		}	
+	}
+	
+	/**
+	 * Diese Methode beendet ein Spiel...
+	 * @param quit ist das ComObject, welches angibt, dass der Spieler das 
+	 * laufende Spiel verlaesst
+	 */
+	@Override
+	public synchronized void receiveMessage(Player player, ComClientQuit quit){
+		if(!playerSet.isEmpty()){
+			if (playerSet.contains(player)) {
+				player.changeServer(lobbyServer);
+				ComInitLobby comInit = lobbyServer.initLobby();			
+				player.send(comInit);
+				ComWarning warning = new ComWarning("You left the Game!");
+				player.send(warning);	
+			} else {
+				System.err.println("Player not in Game!");
+			}				
+		} else {
+			System.err.println("PlayerSet empty!");
+		}
+		if(!playerSet.isEmpty()){
+			for (Player back : playerSet) {
+				back.changeServer(lobbyServer);
+				ComInitLobby comInit = lobbyServer.initLobby();			
+				back.send(comInit);
+				ComWarning warning = new ComWarning(player.getPlayerName() + " left the Game");
+				back.send(warning);	
+			}		
+		} else {
+			System.err.println("PlayerSet empty!");
+		}
+		lobbyServer.removeGameServer(this);
+		lobbyServer.broadcast(new ComLobbyUpdateGamelist(true, getRepresentation()));
 	}
 	
 	/**
@@ -203,7 +272,13 @@ public class GameServer extends Server {
 	 */
 	@Override
 	public synchronized void receiveMessage(Player player, ComStartGame start){
-		// TODO Auto-generated method stub
+		try {
+			ruleset.runGame();
+		} catch (IllegalNumberOfPlayersException e) {
+			System.out.println("Number of Players not matching!");
+			quitGame();
+			e.printStackTrace();
+		}
 	}
 	
 	/**
@@ -240,6 +315,8 @@ public class GameServer extends Server {
 	public void quitGame(){
 		for (Player player : playerSet) {
 			player.changeServer(lobbyServer);
+			ComInitLobby comInit = lobbyServer.initLobby();			
+			player.send(comInit);
 		}
 		lobbyServer.removeGameServer(this);
 		lobbyServer.broadcast(new ComLobbyUpdateGamelist(true, getRepresentation()));
@@ -257,13 +334,15 @@ public class GameServer extends Server {
 	@Override
 	public synchronized void disconnectPlayer(Player player) {
 		if(!playerSet.isEmpty()){
-			for (Player remove : playerSet) {
-				if (remove.getPlayerName().equals(player.getPlayerName())) {
-					removePlayer(remove);
-					lobbyServer.removeName(remove.getPlayerName());
-					remove.closeConnection();
-				}				
+			if (playerSet.contains(player)) {
+				removePlayer(player);						
+			} else {
+				System.err.println("Player not in Game!");
 			}
+			lobbyServer.removeName(player.getPlayerName());	
+			player.closeConnection();
+		} else {
+			System.err.println("PlayerSet empty!");
 		}
 		if(!playerSet.isEmpty()){
 			for (Player back : playerSet) {
@@ -272,10 +351,14 @@ public class GameServer extends Server {
 				back.send(comInit);
 				ComWarning warning = new ComWarning("Game Disbanded!");
 				back.send(warning);	
-			}
+			}		
+		} else {
+			System.err.println("PlayerSet empty!");
 		}
 		lobbyServer.removeGameServer(this);
+		lobbyServer.broadcast(new ComLobbyUpdateGamelist(true, getRepresentation()));
 	}
+
 	
 	/**
 	 * Getter fuer den Namen des Spielleiters
