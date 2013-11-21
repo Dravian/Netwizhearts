@@ -216,11 +216,21 @@ public class GameServer extends Server {
 		Player leavingPlayer = player;
 		if(!playerSet.isEmpty()){
 			if (playerSet.contains(leavingPlayer)){
-				leavingPlayer.changeServer(lobbyServer);
-				ComInitLobby comInit = lobbyServer.initLobby();			
-				leavingPlayer.send(comInit);
-				ComUpdatePlayerlist update = new ComUpdatePlayerlist(leavingPlayer.getPlayerName(), true);
-				broadcast(update);
+				if(leavingPlayer.getPlayerName().equals(gameMasterName)){
+					for (Player back : playerSet) {
+						back.changeServer(lobbyServer);
+						ComInitLobby comInit = lobbyServer.initLobby();			
+						back.send(comInit);
+						ComWarning warning = new ComWarning("Game has been disbanded!");
+						back.send(warning);	
+					}
+				} else {
+					leavingPlayer.changeServer(lobbyServer);
+					ComInitLobby comInit = lobbyServer.initLobby();			
+					leavingPlayer.send(comInit);
+					ComUpdatePlayerlist update = new ComUpdatePlayerlist(leavingPlayer.getPlayerName(), true);
+					broadcast(update);
+				}				
 			} else {
 				System.err.println("Player not in Game!");
 			}
