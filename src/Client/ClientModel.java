@@ -7,6 +7,7 @@ import Server.GameServerRepresentation;
 import Client.View.Language;
 import ComObjects.ComBeenKicked;
 import ComObjects.ComChatMessage;
+import ComObjects.ComClientLeave;
 import ComObjects.ComClientQuit;
 import ComObjects.ComInitGameLobby;
 import ComObjects.ComInitLobby;
@@ -92,6 +93,7 @@ public class ClientModel extends Observable{
 			throw new IllegalArgumentException();
 		}
 		this.netIO = netIO;
+		state = ClientState.LOGIN;
 	}
 
 	/**
@@ -99,7 +101,11 @@ public class ClientModel extends Observable{
 	 * Der Client gelangt zurueck in die Lobby.
 	 */
 	public void leaveWindow() {
-
+		if (state == ClientState.GAMELOBBY) {
+			netIO.send(new ComClientLeave());
+		} else if (state == ClientState.GAME) {
+			netIO.send(new ComClientLeave());
+		}
 	}
 
 	/**
@@ -108,6 +114,10 @@ public class ClientModel extends Observable{
 	 * deswegen nicht mehr gewaerleistet werden kann.
 	 */
 	protected void closeView() {
+		//TODO oder mit Dialog.
+		warningText.append("<" + new Date() + "> " + "Error: Connection lost.\n");
+		informView(ViewNotification.openWarning);
+
 		informView(ViewNotification.quitGame);
 	}
 	
@@ -141,12 +151,50 @@ public class ClientModel extends Observable{
 	 * @param msg die ankommende ComInitLobby Nachricht
 	 */
 	public void receiveMessage(ComInitLobby msg) {
-		if (state == ClientState.LOGIN) {
-			System.out.println("<" + new Date() + "> " + "login successfull");
-			informView(ViewNotification.loginSuccessful);
+		//TODO Spielerliste ist eine Liste, aber Gameliste ist ein Set.
+		if (msg != null) {
+			if (state == ClientState.GAMELOBBY) {
+				state = ClientState.SERVERLOBBY;
+				if (msg.getPlayerList() != null) {
+					playerList = msg.getPlayerList();
+				}
+				if (msg.getGameList() != null) {
+					gameList = msg.getGameList();
+				}
+				//TODO Oder evtl. den Dialog.
+				warningText.append("<" + new Date() + "> " + "Game master has left the game.\n");
+				informView(ViewNotification.openWarning);
+				informView(ViewNotification.windowChangeForced);
+			} else if (state == ClientState.GAME) {
+				state = ClientState.SERVERLOBBY;
+				if (msg.getPlayerList() != null) {
+					playerList = msg.getPlayerList();
+				}
+				if (msg.getGameList() != null) {
+					gameList = msg.getGameList();
+				}
+				//TODO Oder evtl. den Dialog.
+				warningText.append("<" + new Date() + "> " + "Game has been closed unexpectedly.\n");
+				informView(ViewNotification.openWarning);
+				informView(ViewNotification.windowChangeForced);
+			} else if (state == ClientState.LOGIN) {
+				state = ClientState.SERVERLOBBY;
+				if (msg.getPlayerList() != null) {
+					playerList = msg.getPlayerList();
+				}
+				if (msg.getGameList() != null) {
+					gameList = msg.getGameList();
+				}
+				informView(ViewNotification.loginSuccessful);
+			}
 		}
 	}
-
+	
+	//TODO wird evtl für den Übergang der Fenster benötigt ?
+	public ClientState getClientState() {
+		return state;
+	}
+	
 	/**
 	 * Diese Methode wird aufgerufen,
 	 * falls der Server den Spieler erfolgreich in die GameLobby hinzugefuegt hat.
@@ -187,7 +235,7 @@ public class ClientModel extends Observable{
 		if (state == ClientState.LOGIN) {
 			netIO.closeConnection();
 			netIOThread = null;
-			warningText.append("<" + new Date() + "> " + "Username already in use.");
+			warningText.append("<" + new Date() + "> " + "Username already in use.\n");
 			informView(ViewNotification.openWarning);
 		}
 	}
@@ -216,7 +264,13 @@ public class ClientModel extends Observable{
 	 * @param update die ankommende ComLobbyUpdatePlayerlist Nachricht
 	 */
 	public void receiveMessage(ComUpdatePlayerlist update) {
-
+		if (update != null) {
+			if (update.getPlayerName() != null) {
+				if (!playerList.contains(update.getPlayerName())) {
+					playerList.add(update.getPlayerName());
+				}
+			}
+		}
 	}
 
 	/**
@@ -231,7 +285,13 @@ public class ClientModel extends Observable{
 	 * @param update die ankommende ComLobbyUpdateGamelist Nachricht
 	 */
 	public void receiveMessage(ComLobbyUpdateGamelist update) {
-
+		if (update != null) {
+			if (update.getGameServer() != null) {
+				if (!gameList.contains(update.getGameServer())) {
+					gameList.add(update.getGameServer());
+				}
+			}
+		}
 	}
 
 	/**
@@ -246,9 +306,9 @@ public class ClientModel extends Observable{
 	/**
 	 * Liefert eine Liste der Namen der Spieler in der Lobby oder GameLobby.
 	 *
-	 * @return Liste von Spielernamen
+	 * @return Liste von Spielernamen oder null wenn leer.
 	 */
-	public List<String> getPlayerlist(){
+	public List<String> getPlayerlist() {
 		return playerList;
 	}
 
@@ -256,9 +316,10 @@ public class ClientModel extends Observable{
 	 * Liefert eine Liste der Spiele, die aktuell auf dem Server offen sind
 	 * oder gerade gespielt werden.
 	 *
-	 * @return Liste aller Spiele der Lobby.
+	 * @return Liste aller Spiele der Lobby oder null wenn leer.
 	 */
-	public List<GameServerRepresentation> getLobbyGamelist(){
+	public List<GameServerRepresentation> getLobbyGamelist() {
+		//TODO GameList ist ein Set in der ComNachricht.
 		return null;
 	}
 
@@ -267,7 +328,7 @@ public class ClientModel extends Observable{
 	 *
 	 * @return List<Card>. Eine Liste der gespielten Karten.
 	 */
-	public List<Card> getPlayedCards(){
+	public List<Card> getPlayedCards() {
 		return null;
 	}
 
@@ -462,7 +523,11 @@ public class ClientModel extends Observable{
 	 * @param msg die Chatnachricht, die an den Server geschickt werden soll
 	 */
 	public void sendChatMessage(final String msg) {
-		netIO.send(new ComChatMessage(msg));
+		if (msg != null) {
+			if (!msg.isEmpty()) {
+				netIO.send(new ComChatMessage(msg));
+			}
+		}
 	}
 
 	/**
