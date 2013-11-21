@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import ComObjects.ComClientQuit;
+import ComObjects.ComUpdatePlayerlist;
 import test.TestPlayer;
 
 public class LobbyTest {
@@ -59,10 +60,28 @@ public class LobbyTest {
 	}
 
 	@Test
-	public void testLogin(){
+	public void testClientQuit(){
 		ComClientQuit quit = new ComClientQuit();
 		player1.injectComObject(quit);
 		assertFalse(lobby.playerSet.contains(player1));
 		assertFalse(lobby.getNames().contains(player1.getPlayerName()));
+		
+		ComUpdatePlayerlist update = new ComUpdatePlayerlist(player1.getName(), true);
+		assertTrue(player2.getServerInput().get(0).getClass().equals(update.getClass()));
+		assertTrue(player3.getServerInput().get(0).getClass().equals(update.getClass()));
+		assertTrue(player4.getServerInput().get(0).getClass().equals(update.getClass()));
+		
+		
+		ComUpdatePlayerlist fromPlayer2 = (ComUpdatePlayerlist) player2.getServerInput().get(0);
+		assertTrue(fromPlayer2.getPlayerName().equals(player1.getPlayerName()));
+		assertTrue(fromPlayer2.isRemoveFlag());
+		
+		ComUpdatePlayerlist fromPlayer3 = (ComUpdatePlayerlist) player3.getServerInput().get(0);
+		assertTrue(fromPlayer3.getPlayerName().equals(player1.getPlayerName()));
+		assertTrue(fromPlayer3.isRemoveFlag());
+		
+		ComUpdatePlayerlist fromPlayer4 = (ComUpdatePlayerlist) player4.getServerInput().get(0);
+		assertTrue(fromPlayer4.getPlayerName().equals(player1.getPlayerName()));
+		assertTrue(fromPlayer4.isRemoveFlag());
 	}
 }
