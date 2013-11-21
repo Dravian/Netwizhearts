@@ -27,9 +27,6 @@ public class PrintWizard extends ServerWizard{
 	public void runGame() {
 		List<PlayerState> players = getPlayers();	
 		setFirstPlayer(players.get(1));
-		getGameState().newRound();
-		getGameState().newRound();
-		
 		
 		System.out.println("Runde: " + getGameState().getRoundNumber());
 		
