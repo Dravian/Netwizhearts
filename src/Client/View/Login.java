@@ -182,7 +182,8 @@ public class Login extends JFrame implements Observer{
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub		
-		ViewNotification message = (ViewNotification) arg;
+		try {
+			ViewNotification message = (ViewNotification) arg;
 		switch (message) {
 		case loginSuccessful:
 			this.setVisible(false);
@@ -190,5 +191,9 @@ public class Login extends JFrame implements Observer{
 		default:
 			break;
 		}
+		} catch (ClassCastException e) {
+			
+		}
+		
 	}
 }

@@ -71,7 +71,6 @@ public class Lobby extends JFrame implements Observer{
 		chatlog.setLineWrap(true);
 		chatlog.setEditable(false);
 		chatlog.setBounds(10, 213, 564, 94);
-		chatlog.setRows(5);
 		
 		gameList = new JList<String>();
 		gameList.setBounds(292, 11, 282, 191);
@@ -114,7 +113,9 @@ public class Lobby extends JFrame implements Observer{
 	 * @return Chatnachricht
 	 */
 	public String getChatMessage() {
-		return messageField.getText();
+		String r = messageField.getText();
+		messageField.setText("");
+		return r;
 	}
 	
 	/**
@@ -204,6 +205,15 @@ public class Lobby extends JFrame implements Observer{
 		}
 		gameList.setListData(games);
 	}
+	
+	private void updatePlayerList(List<String> list) {
+		int length = list.size();
+		String[] players = new String[length];
+		for (int i = 0; i < length; i++) {
+			players[i] = list.get(i);
+		}
+		playerList.setListData(players);
+	}
 
 	/**
 	 * Wird durch notify() im ClientModel aufgerufen. Je nach dem in arg
@@ -217,21 +227,29 @@ public class Lobby extends JFrame implements Observer{
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
-		ViewNotification message = (ViewNotification) arg;
 		final ClientModel observed = (ClientModel) o;
+		try {
+			ViewNotification message = (ViewNotification) arg;
 		switch (message) {
 		case loginSuccessful:
 		case windowChangeForced:
+			SwingUtilities.invokeLater(new Runnable() {
+				
+				@Override
+				public void run() {
+					updatePlayerList(observed.getPlayerlist());
+				}
+			});
 			this.setVisible(true);
 			break;
 		case playerListUpdate:
 			SwingUtilities.invokeLater(new Runnable() {
-			
-			@Override
-			public void run() {
-				playerList.setListData((String[]) observed.getPlayerlist().toArray());
-			}
-		});
+				
+				@Override
+				public void run() {
+					updatePlayerList(observed.getPlayerlist());
+				}
+			});
 			break;
 		case gameListUpdate:
 			gameRepList = observed.getLobbyGamelist();
@@ -250,6 +268,9 @@ public class Lobby extends JFrame implements Observer{
 		default:
 			break;
 		}
+		} catch (ClassCastException e) {
+			this.update(observed, (String)arg);
+		}
 	}
 	
 	/**
@@ -263,7 +284,7 @@ public class Lobby extends JFrame implements Observer{
 	public void update(Observable o, String arg) {
 		//TODO
 		if (this.isVisible()) {
-			chatlog.append(arg);;
+			chatlog.append(arg);
 		}
 	}
 }

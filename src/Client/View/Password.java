@@ -134,7 +134,8 @@ public class Password extends JFrame implements Observer{
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
-		ViewNotification message = (ViewNotification) arg;
+		try {
+			ViewNotification message = (ViewNotification) arg;
 		switch (message) {
 		case passwordAccepted:
 			this.setVisible(false);
@@ -142,6 +143,9 @@ public class Password extends JFrame implements Observer{
 		default:
 			break;
 		}
+		} catch (ClassCastException e) {
+		}
+		
 		
 	}
 	

@@ -66,8 +66,10 @@ public class Warning extends JFrame implements Observer{
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
-		ViewNotification message = (ViewNotification) arg;
 		final ClientModel observed = (ClientModel) o;
+		try {
+			ViewNotification message = (ViewNotification) arg;
+		
 		switch (message) {
 		case openWarning:
 			SwingUtilities.invokeLater(new Runnable() {
@@ -83,5 +85,8 @@ public class Warning extends JFrame implements Observer{
 		default:
 			break;
 		}
+		} catch (ClassCastException e) {
+		}
+		
 	}
 }
