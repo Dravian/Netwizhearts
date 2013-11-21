@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-import ComObjects.ComClientQuit;
 import ComObjects.ComLoginRequest;
 
 import test.TestPlayer;
@@ -37,7 +36,7 @@ public class LoginTest {
 	public void testLogin(){
 		ComLoginRequest login = new ComLoginRequest("Klaus");
 		player.injectComObject(login);
-		assertTrue(player.getServerInput().get(0).getClass().equals( lobby.initLobby().getClass()));
+		assertTrue(player.getServerInput().get(0).getClass().equals(lobby.initLobby().getClass()));
 		assertTrue(lobby.playerSet.contains(player));
 		assertTrue(lobby.initLobby().getPlayerList().contains(player.getPlayerName()));
 		assertTrue(lobby.getNames().contains(player.getPlayerName()));
