@@ -73,7 +73,13 @@ Hier kommt die Implementierung
 \subsection{Server}
 
 \begin{itemize}
-\item 
+\item  \textbf{LoginServer:}  \textit{Neu hinzugefügte Klasse, erbt von Server}: Sie ist für das Zustabdekommen von Clientverbindungen zuständig. \textit{Attribute}:  Thread clientListenerThread,  LobbyServer lobby; \textit{Methoden}: receiveMessage(Player player, ComLoginRequest login), disconnectPlayer()
+\item  \textbf{GameServer:} \textit{hinzugefügt}: quitGame(), getGameMasterName(), getPassword()
+\item  \textbf{LobbyServer:} \textit{entfernt}: innere Klasse ClientListenerThread, Set<Player> noNames, ServerSocket socket, receiveMessage(Player player, ComClientQuit quit ), receiveMessage(Player player, ComLoginRequest login); \textit{hinzugefügt}: addPlayerToGame(Player player, GameServer game), getNames()
+\item  \textbf{ClientListenerThread:} erbt jetzt von Thread  \textit{hinzugefügt}: boolean waiting, ServerScocket socket, LoginServer server
+\item  \textbf{Player:}  erbt jetzt von Thread  \textit{hinzugefügt}: Socket connection, boolean run, closeConnection(); \textit{geändert}: getName() heißt getPlayerName(), setName() heißt setPlayerName()
+\item  \textbf{Server:} \textit{hinzugefügt}: eine receiveMessage Methode für jedes ComObject, das vom Server empfangen werden soll; \textit{geändert}: handleIOException heißt jetzt disconnectPlayer()
+\item  \textbf{ServerMain:} \textit{hinzugefügt}: Attribut LoginServer loginServer
 \end{itemize}
 
 \subsection{ComObjects}
@@ -98,6 +104,10 @@ Hier kommt die Implementierung
 \item \textbf{View(Login+Lobby):} ang. Dauer: 8 Stunden, tats. Dauer: 4 Stunden \\
 Begründung: Es waren noch Code-Teile aus der Pflichtenheft-Phase vorhanden.
 \item \textbf{View(Create+Join):} ang. Dauer: 8 Stunden, tats. Dauer: bisher 1 Stunde
+\item \textbf{Server(Login):} ang. Dauer: 16 Stunden, tats. Dauer: 6 Stunden \\
+Begründung: Viele der ComObjects waren bereits fertig.
+\item \textbf{Server(Lobby):} ang. Dauer: 8 Stunden, tats. Dauer: bisher 2 Stunden 30 Minuten
+\item \textbf{Server(Create+Join):} ang. Dauer: 12 Stunden, tats. Dauer: bisher 2 Stunden 10 Minuten
 \end{itemize}
 
 \subsection{Milestone 2}
