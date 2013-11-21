@@ -91,6 +91,7 @@ public class ClientController {
 		lobby.addJoinButtonListener(new JoinButtonListenerLobby());
 		lobby.addLeaveButtonListener(new LeaveButtonListenerLobby());
 		lobby.addHostButtonListener(new HostButtonListener());
+		lobby.addChatMessageListener(new ChatListener());
 		clientModel.addObserver(lobby);
 		
 		password = new Password();

@@ -29,6 +29,9 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.UnknownHostException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -69,7 +72,7 @@ public class ClientModel extends Observable{
 
 	private List<String> playerList;
 
-	private Set<GameServerRepresentation> gameList;
+	private ArrayList<GameServerRepresentation> gameList;
 
 	private StringBuilder warningText = new StringBuilder();
 	
@@ -159,7 +162,7 @@ public class ClientModel extends Observable{
 					playerList = msg.getPlayerList();
 				}
 				if (msg.getGameList() != null) {
-					gameList = msg.getGameList();
+					gameList = new ArrayList<GameServerRepresentation>(msg.getGameList());
 				}
 				//TODO Oder evtl. den Dialog.
 				warningText.append("<" + new Date() + "> " + "Game master has left the game.\n");
@@ -171,7 +174,7 @@ public class ClientModel extends Observable{
 					playerList = msg.getPlayerList();
 				}
 				if (msg.getGameList() != null) {
-					gameList = msg.getGameList();
+					gameList = new ArrayList<GameServerRepresentation>(msg.getGameList());
 				}
 				//TODO Oder evtl. den Dialog.
 				warningText.append("<" + new Date() + "> " + "Game has been closed unexpectedly.\n");
@@ -183,7 +186,7 @@ public class ClientModel extends Observable{
 					playerList = msg.getPlayerList();
 				}
 				if (msg.getGameList() != null) {
-					gameList = msg.getGameList();
+					gameList = new ArrayList<GameServerRepresentation>(msg.getGameList());
 				}
 				informView(ViewNotification.loginSuccessful);
 			}
@@ -266,9 +269,14 @@ public class ClientModel extends Observable{
 	public void receiveMessage(ComUpdatePlayerlist update) {
 		if (update != null) {
 			if (update.getPlayerName() != null) {
-				if (!playerList.contains(update.getPlayerName())) {
+				if (update.isRemoveFlag()) {
+					if (playerList.contains(update.getPlayerName())) {
+						playerList.remove(update.getPlayerName());
+					}
+				} else if (!playerList.contains(update.getPlayerName())) {
 					playerList.add(update.getPlayerName());
 				}
+				informView(ViewNotification.playerListUpdate);
 			}
 		}
 	}
@@ -287,9 +295,14 @@ public class ClientModel extends Observable{
 	public void receiveMessage(ComLobbyUpdateGamelist update) {
 		if (update != null) {
 			if (update.getGameServer() != null) {
-				if (!gameList.contains(update.getGameServer())) {
+				if (update.isRemoveFlag()) {
+					if (gameList.contains(update.getGameServer())) {
+						gameList.remove(update.getGameServer());
+					}
+				} else if (!gameList.contains(update.getGameServer())) {
 					gameList.add(update.getGameServer());
 				}
+				informView(ViewNotification.gameListUpdate);
 			}
 		}
 	}
@@ -319,8 +332,7 @@ public class ClientModel extends Observable{
 	 * @return Liste aller Spiele der Lobby oder null wenn leer.
 	 */
 	public List<GameServerRepresentation> getLobbyGamelist() {
-		//TODO GameList ist ein Set in der ComNachricht.
-		return null;
+		return gameList;
 	}
 
 	/**
@@ -525,7 +537,9 @@ public class ClientModel extends Observable{
 	public void sendChatMessage(final String msg) {
 		if (msg != null) {
 			if (!msg.isEmpty()) {
-				netIO.send(new ComChatMessage(msg));
+				SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+				String time = sdf.format(Calendar.getInstance().getTime());
+				netIO.send(new ComChatMessage(playerName + "(" + time + "): " + msg + "\n"));
 			}
 		}
 	}
@@ -651,6 +665,7 @@ public class ClientModel extends Observable{
 		if (fault) {
 			informView(ViewNotification.openWarning);
 		} else {
+			playerName = username;
 			setupConnection(username, uri.getHost(), port);
 		}	
 	}
