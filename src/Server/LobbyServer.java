@@ -186,7 +186,7 @@ public class LobbyServer extends Server {
 		removePlayer(player);
 		removeName(player.getPlayerName());
 		player.closeConnection();
-		broadcast(new ComUpdatePlayerlist(player.getName(), true));
+		broadcast(new ComUpdatePlayerlist(player.getPlayerName(), true));
 	}
 
 	/**
