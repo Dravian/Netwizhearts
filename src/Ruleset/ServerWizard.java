@@ -14,7 +14,6 @@ import ComObjects.MsgNumber;
 import ComObjects.MsgNumberRequest;
 import ComObjects.MsgSelection;
 import ComObjects.MsgSelectionRequest;
-import ComObjects.MsgUser;
 
 /**
  * ServerWizard. Diese Klasse erstellt das Regelwerk zum Spiel Wizard. Sie
@@ -49,12 +48,6 @@ public class ServerWizard extends ServerRuleset {
 		super(RULESET, MIN_PLAYERS, MAX_PLAYERS, s);
 	}
 
-	@Override
-	protected boolean isValidMove(Card card) {
-		boolean isValid = false;
-		return isValid;
-	}
-
 	/**
 	 * Setzt die Anzahl an Runden die es in diesem Spiel gibt
 	 * 
@@ -79,7 +72,12 @@ public class ServerWizard extends ServerRuleset {
 			throws IllegalArgumentException {
 		Card card = msgCard.getCard();
 
-		if (getPlayerState(name) != getCurrentPlayer()) {
+		if (getGamePhase() != GamePhase.CardRequest) {
+			throw new RulesetException(
+					"Es wird in dieser Phase keine Karte erwartet "
+							+ "vom Spieler " + name);
+
+		} else if (getPlayerState(name) != getCurrentPlayer()) {
 			throw new IllegalArgumentException("Der Spieler " + name
 					+ " ist nicht am Zug!");
 
@@ -89,7 +87,6 @@ public class ServerWizard extends ServerRuleset {
 					+ card.getColour() + " gehört nicht zum Spiel");
 
 		} else if (!isValidMove(card)) {
-			send(new MsgCardRequest(), name);
 
 			throw new RulesetException("Der Spieler" + name + "hat die Karte "
 					+ card.getValue() + card.getColour()
@@ -97,6 +94,8 @@ public class ServerWizard extends ServerRuleset {
 					+ "Zug ist. Es muss ein Fehler bei ClientWizard sein.");
 
 		} else {
+			updatePlayers();
+			
 			if (getGameState().getPlayedCards().size() == getPlayers().size()) {
 				calculateTricks();
 			} else {
@@ -107,46 +106,82 @@ public class ServerWizard extends ServerRuleset {
 		}
 	}
 
-	/**
-	 * Verarbeitet die RulesetMessage dass der Spieler eine Stichansage macht.
-	 * Die wird dann in isValidNumber überprüft, bei falsche Eingabe wird´ eine
-	 * MsgCardRequest an den selben Spieler geschickt. Bei richtiger Eingabe
-	 * geht das Spiel weiter.
-	 * 
-	 * @param msgNumber
-	 *            Die Nachricht vom Client
-	 * @param name
-	 *            Der Name des Spielers
-	 */
+	@Override
 	public void resolveMessage(MsgNumber msgNumber, String name) {
+		if(getGamePhase() != GamePhase.TrickRequest) {
+			throw new RulesetException("Es wird keine Zahl erwartet.");
+		
+		} else if(!getCurrentPlayer().getName().equals(name)) {
+			throw new RulesetException("Es wird keine Zahl von dem Spieler " +
+					name + " erwartet.");
+		
+		} else if(!isValidNumber(msgNumber.getNumber())){
+			throw new RulesetException("Die Zahl " + msgNumber.getNumber() +
+					" vom Spieler " + name + " ist nicht erlaubt.");
+		
+		} else {
+			updatePlayers();
+			
+			if(getCurrentPlayer() == getFirstPlayer()) {
+				nextPlayer();
+				setGamePhase(GamePhase.CardRequest);
+				
+				send(new MsgCardRequest(), getCurrentPlayer().getName());
+			} else {
+				nextPlayer();
+				
+				send(new MsgNumberRequest(), getCurrentPlayer().getName());
+			}
+		}
+		
+	}
+
+	@Override
+	public void resolveMessage(MsgSelection msgSelection, String name) {
+		if (getGamePhase() != GamePhase.SelectionRequest) {
+			throw new RulesetException("Es wird keine Trumpffarbe erwartet vom"
+					+ "Spieler " + name);
+		
+		} else if (!getFirstPlayer().getName().equals(name)) {
+			throw new RulesetException("Der Spieler " + name + " darf keine "
+					+ "Trumpfarbe auswählen.");
+		
+		} else {
+			Colour colour = msgSelection.getSelection();
+
+			if (!isValidColour(colour)) {
+				throw new RulesetException("Die Farbe " + colour
+						+ "existiert in Wizard nicht");
+			} else {
+				/*Soll in isValidColour rein
+				 * 
+				 */
+				((WizardCard) getTrumpCard()).changeSorcererColour(colour);
+
+				broadcast(new MsgSelection(colour));
+
+				setGamePhase(GamePhase.TrickRequest);
+				nextPlayer();
+				send(new MsgNumberRequest(), getCurrentPlayer().getName());
+			}
+		}
+	}
+
+	@Override
+	protected boolean isValidMove(Card card) {
+		
+		return true;
 	}
 
 	/**
-	 * Ueberprueft ob eine eingegebene Stichangabe eines Spielers gueltig ist.
+	 * Ueberprueft ob eine eingegebene Stichangabe eines Spielers gueltig ist
+	 * und setzt die Stichangabe für den aktuellen Spieler
 	 * 
-	 * @param number
-	 *            Die Stichangabe
-	 * @param name
-	 *            Der Name vom Spieler
+	 * @param number Die Stichangabe
 	 * @return true falls die Stichangabe gültig ist, false wenn nicht
 	 */
-	private boolean isValidNumber(int number, String name) {
-		return false;
-	}
-
-	/**
-	 * Verarbeitet die RulesetMessage dass mehrerer Karten vom Spieler
-	 * uebergeben werden. Die wird dann in isValidColour überprüft, bei falsche
-	 * Eingabe wird´ MsgMultiCardRequest an den selben Spieler geschickt. Bei
-	 * richtiger Eingabe geht das Spiel weiter.
-	 * 
-	 * @param msgSelection
-	 *            Die Nachricht vom Client
-	 * @param name
-	 *            Der Name des Spielers
-	 */
-	public void resolveMessage(MsgSelection msgSelection, String name) {
-
+	private boolean isValidNumber(int number) {
+		return true;
 	}
 
 	/**
@@ -154,12 +189,10 @@ public class ServerWizard extends ServerRuleset {
 	 * 
 	 * @param colour
 	 *            Die Trumpffarbe
-	 * @param name
-	 *            Der Name des Spielers
 	 * @return true falls die Farbe gueltig ist, false wenn nicht
 	 */
-	private boolean isValidColour(Colour colour, String name) {
-		return false;
+	private boolean isValidColour(Colour colour) {
+		return true;
 	}
 
 	@Override
@@ -169,54 +202,62 @@ public class ServerWizard extends ServerRuleset {
 
 		DiscardedCard strongestCard = getPlayedCards().get(0);
 
-		
-		for(int i = 0; i < getPlayedCards().size(); i++) {
+		for (int i = 0; i < getPlayedCards().size(); i++) {
 			DiscardedCard nextCard = getPlayedCards().get(i);
 
 			if (strongestCard.getCard().getValue() == valueOfSorcerer) {
+				break;
 
-			} else {
-				if (nextCard.getCard().getValue() == valueOfSorcerer) {		
+			} else if (nextCard.getCard().getValue() == valueOfSorcerer) {
 				strongestCard = nextCard;
-			
-				} else if (strongestCard.getCard().getValue() == valueOfFool
-					&& nextCard.getCard().getValue() > valueOfFool) {
-					strongestCard = nextCard;
+				break;
 
-				} else if (nextCard.getCard().getValue() > strongestCard.getCard()
+			} else if (strongestCard.getCard().getValue() == valueOfFool
+					&& nextCard.getCard().getValue() > valueOfFool) {
+				strongestCard = nextCard;
+
+			} else if (nextCard.getCard().getValue() > strongestCard.getCard()
 					.getValue()
 					&& nextCard.getCard().getColour() == strongestCard
 							.getCard().getColour()) {
 				strongestCard = nextCard;
 
-				} else if (nextCard.getCard().getColour() == getTrumpCard()
+			} else if (nextCard.getCard().getColour() == getTrumpCard()
 					.getColour()
 					&& (nextCard.getCard().getValue() != valueOfFool)
 					&& strongestCard.getCard().getColour() != getTrumpCard()
 							.getColour()) {
 				strongestCard = nextCard;
-				}
 			}
+
 		}
-			
 
 		PlayerState trickWinner = getPlayerState(strongestCard.getName());
 		getGameState().madeTrick(trickWinner);
+
+		updatePlayers();
 		
-		for (PlayerState player : getPlayers()) {
-			send(new MsgUser(generateGameClientUpdate(player)),
-					player.getName());
+		boolean noOneHasACard = true;
+		
+		for(PlayerState player : getPlayers()) {
+			if(!player.getHand().isEmpty()) {
+				noOneHasACard = false;
+			}
 		}
 		
-		setGamePhase(GamePhase.CardRequest);
-		setCurrentPlayer(trickWinner);
-		
-		send(new MsgCardRequest(), trickWinner.getName());
+		if(noOneHasACard) {
+			setGamePhase(GamePhase.RoundEnd);
+			calculateRoundOutcome();
+		} else {
+			setGamePhase(GamePhase.CardRequest);
+			setCurrentPlayer(trickWinner);
+
+			send(new MsgCardRequest(), trickWinner.getName());
+		}
 	}
 
 	/**
 	 * Holt die Trumpfkarte
-	 * 
 	 * @return Gibt die Trumpffarbe zurueck
 	 */
 	protected Card getTrumpCard() {
@@ -240,99 +281,112 @@ public class ServerWizard extends ServerRuleset {
 		setFirstPlayer(players.get(0));
 
 		setGamePhase(GamePhase.RoundStart);
-		startWizardRound();
+		startRound();
 	}
 
-	/**
-	 * Wird am Anfang jeder Runde aufgerufen. Mischt und verteilt Karten und
-	 * schickt Comobject mit Updates und Request für den Rundenanfang.
-	 */
-	private void startWizardRound() {
-		int valueOfSorcerer = 14;
-		List<PlayerState> players = getPlayers();
+	@Override
+	protected void startRound() {
 
-		getGameState().newRound();
-		getGameState().shuffleDeck();
-		getGameState().dealCards(getGameState().getRoundNumber());
+		if (getGamePhase() == GamePhase.RoundStart) {
+			int valueOfSorcerer = 14;
+			getGameState().shuffleDeck();
 
-		Card trumpCard = getGameState().getTopCard();
-		getGameState().setTrumpCard(trumpCard);
+			/*
+			 * Verteilt die Karten an Spieler. Wenn false zurück kommt wird ein
+			 * neues Deck erstellt und alle Karten im Spiel gelöscht. Wenn
+			 * nochmal ein Fehler kommt wirft es eine Exception
+			 */
+			if (!getGameState().dealCards(getGameState().getRoundNumber())) {
+				throw new RulesetException(
+						"Probleme beim Verteilen der Karten!");
 
-		for (PlayerState player : players) {
-			send(new MsgUser(generateGameClientUpdate(player)),
-					player.getName());
-		}
-
-		/*
-		 * Falls ein Zauberer aufgedeckt wird, darf der Spieler vor dem
-		 * firstPlayer entscheiden welche Farbe Trumpf ist.
-		 */
-		if (trumpCard.getValue() == valueOfSorcerer) {
-			setGamePhase(GamePhase.SelectionRequest);
-			PlayerState choosingPlayer;
-			int index;
-
-			if (players.indexOf(getFirstPlayer()) == 0) {
-				index = players.size() - 1;
-			} else {
-				index = players.indexOf(getFirstPlayer()) - 1;
 			}
 
-			choosingPlayer = players.get(index);
+			Card trumpCard = getGameState().getTopCard();
+			getGameState().setTrumpCard(trumpCard);
 
-			send(new MsgSelectionRequest(), choosingPlayer.getName());
+			updatePlayers();
+
+			/*
+			 * Falls ein Zauberer aufgedeckt wird, darf der Spieler vor dem
+			 * firstPlayer entscheiden welche Farbe Trumpf ist.
+			 */
+			if (trumpCard.getValue() == valueOfSorcerer) {
+				setGamePhase(GamePhase.SelectionRequest);
+
+				send(new MsgSelectionRequest(), getFirstPlayer().getName());
+
+			} else {
+				setGamePhase(GamePhase.TrickRequest);
+				nextPlayer();
+
+				send(new MsgNumberRequest(), getCurrentPlayer().getName());
+			}
 
 		} else {
-			setGamePhase(GamePhase.TrickRequest);
-
-			broadcast(new MsgNumberRequest());
+			throw new RulesetException("Das Spiel ist noch nicht am "
+					+ "Rundenanfang");
 		}
 	}
 
 	@Override
 	protected void calculateRoundOutcome() {
-		List<PlayerState> players = getPlayers();
+		if (getGamePhase() != GamePhase.RoundEnd
+				|| getGamePhase() != GamePhase.Ending) {
+			List<PlayerState> players = getPlayers();
 
-		/*
-		 * Verrechnet die Punkte für jeden Spieler
-		 */
-		for (PlayerState player : players) {
-			int announcedTricks = ((WizData) player.getOtherData())
-					.getAnnouncedTricks();
-			int madeTricks = ((WizData) player.getOtherData())
-					.getNumberOfTricks() / players.size();
-			int points = player.getOtherData().getPoints();
+			/*
+			 * Verrechnet die Punkte für jeden Spieler
+			 */
+			for (PlayerState player : players) {
+				int announcedTricks = ((WizData) player.getOtherData())
+						.getAnnouncedTricks();
 
-			getGameState().putTricksBackInDeck(player);
+				int madeTricks = ((WizData) player.getOtherData())
+						.getNumberOfTricks();
 
-			if (announcedTricks == madeTricks) {
-				points = points + 20 + 10 * madeTricks;
-			} else if (announcedTricks < madeTricks) {
-				points = points - 10 * (madeTricks - announcedTricks);
-			} else {
-				points = points - 10 * (announcedTricks - madeTricks);
+				int points = player.getOtherData().getPoints();
+
+				if (announcedTricks == madeTricks) {
+					points = points + 20 + 10 * madeTricks;
+
+				} else if (announcedTricks < madeTricks) {
+					points = points - 10 * (madeTricks - announcedTricks);
+
+				} else {
+					points = points - 10 * (announcedTricks - madeTricks);
+				}
+
+				player.getOtherData().setPoints(points);
 			}
-			player.getOtherData().setPoints(points);
-		}
 
-		for (PlayerState player : players) {
-			send(new MsgUser(generateGameClientUpdate(player)),
-					player.getName());
-		}
+			getGameState().restartDeck(createDeck());
 
-		if (getGamePhase() == GamePhase.Ending) {
-			List<String> winners = getWinners();
-			broadcast(new MsgGameEnd(winners));
+			updatePlayers();
+			
+			
+
+			if (getGameState().getRoundNumber() == playingRounds) {
+				setGamePhase(GamePhase.Ending);
+			}
+
+			if (getGamePhase() == GamePhase.Ending) {
+				List<String> winners = getWinners();
+				broadcast(new MsgGameEnd(winners));
+				// QuitGame
+			} else {
+				setCurrentPlayer(getFirstPlayer());
+
+				setFirstPlayer(getCurrentPlayer());
+
+				setGamePhase(GamePhase.RoundStart);
+				startRound();
+			}
+
 		} else {
-			setCurrentPlayer(getFirstPlayer());
-
-			setFirstPlayer(getCurrentPlayer());
-
-			setGamePhase(GamePhase.RoundStart);
-			getGameState().newRound();
-			startWizardRound();
+			throw new RulesetException(
+					"Das Spiel ist noch nicht am Rundenende.");
 		}
-
 	}
 
 	@Override

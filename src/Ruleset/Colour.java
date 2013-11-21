@@ -5,4 +5,5 @@ package Ruleset;
  */
 public enum Colour {
 	NONE,HEART,CLUB,SPADE,DIAMOND,BLUE,RED,YELLOW,GREEN;
+	
 }

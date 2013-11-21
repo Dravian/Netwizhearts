@@ -41,7 +41,7 @@ public enum WizardCard implements Card{
 	/**
 	 * Die Farbe der Wizardkarte
 	 */
-	private final Colour colour;
+	private Colour colour;
 	
 	/**
 	 * Das Spiel zu dem die Karte gehört
@@ -72,5 +72,17 @@ public enum WizardCard implements Card{
 	@Override
 	public RulesetType getRuleset() {
 		return ruleset;
+	}
+	
+	/**
+	 * Wechselt die Farbe einer Zaubererkarte
+	 * @param colour Die neue Farbe der Karte
+	 */
+	protected void changeSorcererColour(Colour colour) {
+		int valueOfSorcerer = 14;
+		
+		if(value == valueOfSorcerer) {
+			this.colour = colour;
+		}
 	}
 }
