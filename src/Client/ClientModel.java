@@ -138,8 +138,12 @@ public class ClientModel extends Observable{
 	 * @param msg die ankommende ComChatMessage Nachricht
 	 */
 	public void receiveMessage(ComChatMessage msg) {
-		setChanged();
-		notifyObservers(msg.getChatMessage());
+		if (msg != null) {
+			if (!msg.getChatMessage().isEmpty()) {
+				setChanged();
+				notifyObservers(msg.getChatMessage());
+			}
+		}
 	}
 
 	/**
