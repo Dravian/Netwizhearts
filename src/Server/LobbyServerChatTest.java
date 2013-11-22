@@ -1,4 +1,4 @@
-package chat;
+package Server;
 
 import static org.junit.Assert.*;
 
@@ -6,6 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import test.TestPlayer;
 import Server.LobbyServer;
 import ComObjects.ComChatMessage;
 
@@ -31,9 +32,9 @@ public class LobbyServerChatTest {
 	public void setUp() {
 		testMessage = new ComChatMessage("Hello Test!");
 		testServer = new LobbyServer();
-		player1 = new TestPlayer(testServer, null, null);
-		player2 = new TestPlayer(testServer, null, null);
-		player3 = new TestPlayer(testServer, null, null);
+		player1 = new TestPlayer(testServer);
+		player2 = new TestPlayer(testServer);
+		player3 = new TestPlayer(testServer);
 	}
 
 	@After
@@ -55,9 +56,9 @@ public class LobbyServerChatTest {
 		testServer.addPlayer(player2);
 		testServer.addPlayer(player3);
 		player1.injectComObject(testMessage);
-		testText1 = ((ComChatMessage) player1.getServerInput()).getChatMessage();
-		testText2 = ((ComChatMessage) player2.getServerInput()).getChatMessage();
-		testText3 = ((ComChatMessage) player3.getServerInput()).getChatMessage();
+		testText1 = ((ComChatMessage) player1.getServerInput().get(0)).getChatMessage();
+		testText2 = ((ComChatMessage) player2.getServerInput().get(0)).getChatMessage();
+		testText3 = ((ComChatMessage) player3.getServerInput().get(0)).getChatMessage();
 		assertEquals("Nachricht an Spieler 1", messageToMatch, testText1);
 		assertEquals("Nachricht an Spieler 2", messageToMatch, testText2);
 		assertEquals("Nachricht an Spieler 3", messageToMatch, testText3);
