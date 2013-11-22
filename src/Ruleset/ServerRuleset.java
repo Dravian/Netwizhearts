@@ -404,7 +404,7 @@ public abstract class ServerRuleset {
 	protected void updatePlayers() {
 		for (PlayerState player : getPlayers()) {
 			send(new MsgUser(generateGameClientUpdate(player)),
-					player.getName());
+					player.getPlayerStateName());
 		}
 	}
 

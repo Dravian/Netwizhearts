@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ComObjects.ComObject;
+import ComObjects.ComRuleset;
+import ComObjects.RulesetMessage;
 import Server.Player;
 import Server.Server;
 
@@ -27,6 +29,8 @@ public class TestPlayer extends Player {
 	}
 	
 	public void send(ComObject com) {
+		System.out.println(((ComRuleset) com).getRulesetMessage().getClass()
+				+ getPlayerName());
 		inputComObject.add(com);
 	}
 	

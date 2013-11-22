@@ -105,7 +105,7 @@ public class GameState {
 	 */
 	protected boolean addPlayerToGame(String name) {
 		for(PlayerState player : players) {
-			if(player.getName().equals(name)) {
+			if(player.getPlayerStateName().equals(name)) {
 				return false;
 			}
 		}
@@ -211,7 +211,7 @@ public class GameState {
 	protected PlayerState getPlayerState(String name)
 			throws IllegalArgumentException {
 		for (PlayerState p : players) {
-			if (p.getName().equals(name)) {
+			if (p.getPlayerStateName().equals(name)) {
 				return p;
 			}
 		}
@@ -344,7 +344,7 @@ public class GameState {
 		isInHand = currentPlayer.removeCard(card);
 
 		if (isInHand == true) {
-			discardPile.add(new DiscardedCard(currentPlayer.getName(), card));
+			discardPile.add(new DiscardedCard(currentPlayer.getPlayerStateName(), card));
 		}
 
 		return isInHand;

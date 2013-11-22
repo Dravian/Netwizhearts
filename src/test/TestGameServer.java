@@ -16,16 +16,21 @@ import Server.Player;
 
 public class TestGameServer extends GameServer{
 	Set<TestPlayer> players;
+	private ServerRuleset ruleset;
 	
 	public TestGameServer(LobbyServer server, Player gameMaster,
-			String GameName, RulesetType ruleset, String password,
+			String GameName, RulesetType rulesetType, String password,
 			boolean hasPassword) {
-		super(server, gameMaster, GameName, ruleset, password, hasPassword);
+		super(server, gameMaster, GameName, rulesetType, password, hasPassword);
 		players = new HashSet<TestPlayer>();
+		
+		addPlayer(gameMaster);
+		this.ruleset = new ServerWizard(this);
 	}
 
 	public void addPlayer(TestPlayer player) {
 		players.add(player);
+		player.setServer(this);
 	}
 	
 	public void sendRulesetMessage(String name, RulesetMessage message) {
@@ -44,5 +49,13 @@ public class TestGameServer extends GameServer{
 		}
 	}
 	
+	public ServerRuleset getRuleset() {
+		return ruleset;
+	}
+	
+	@Override
+	public void receiveMessage(Player player, ComRuleset ruleset){
+		ruleset.getRulesetMessage().visit(this.ruleset, player.getPlayerName());
+	}
 
 }

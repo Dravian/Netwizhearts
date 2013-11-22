@@ -74,9 +74,9 @@ public class PrintWizard extends ServerWizard{
 		
 		
 		for(PlayerState player : players) {
-			sendJo(new MsgUser(generateGameClientUpdate(player)), player.getName());
+			sendJo(new MsgUser(generateGameClientUpdate(player)), player.getPlayerStateName());
 			
-			System.out.println("Spieler im Spiel: " + player.getOtherData().getName());
+			System.out.println("Spieler im Spiel: " + player.getOtherData().getOtherDataName());
 		}
 		
 		System.out.println("Aus Sicht von Red:");
@@ -115,13 +115,13 @@ public class PrintWizard extends ServerWizard{
 		if(trumpCard.getValue() == valueOfSorcerer) {
 			setGamePhase(GamePhase.SelectionRequest);
 			
-			sendJo(new MsgSelectionRequest(), getFirstPlayer().getName());	
-			System.out.println(getFirstPlayer().getName() + " darf eine TrumpFarbe waehlen.");
+			sendJo(new MsgSelectionRequest(), getFirstPlayer().getPlayerStateName());	
+			System.out.println(getFirstPlayer().getPlayerStateName() + " darf eine TrumpFarbe waehlen.");
 		} else {
 			setGamePhase(GamePhase.TrickRequest);
 			
 			for(PlayerState player : players) {
-				sendJo(new MsgNumberRequest(), player.getName());
+				sendJo(new MsgNumberRequest(), player.getPlayerStateName());
 			}
 		}
 		System.out.println("End of Start");

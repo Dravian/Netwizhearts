@@ -15,7 +15,7 @@ public class HeartsData extends OtherData {
 	@Override
 	public String toString() {
 		StringBuilder otherData = new StringBuilder();
-		otherData.append("Name :" + getName() + "");
+		otherData.append("Name :" + getOtherDataName() + "");
 		otherData.append("Points: " + Integer.toString((this.getPoints())) + "");
 		otherData.append("Number of Tricks: " + Integer.toString(this.getNumberOfTricks()));
 		
