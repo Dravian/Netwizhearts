@@ -69,9 +69,9 @@ public class ClientModel extends Observable{
 
 	private List<RulesetType> supportetGames;
 
-	private List<String> playerList;
+	private List<String> playerList = new LinkedList<String>();
 
-	private ArrayList<GameServerRepresentation> gameList;
+	private List<GameServerRepresentation> gameList = new LinkedList<GameServerRepresentation>();
 
 	private StringBuilder warningText = new StringBuilder();
 
@@ -160,7 +160,7 @@ public class ClientModel extends Observable{
 					playerList = msg.getPlayerList();
 				}
 				if (msg.getGameList() != null) {
-					gameList = new ArrayList<GameServerRepresentation>(msg.getGameList());
+					gameList = new LinkedList<GameServerRepresentation>(msg.getGameList());
 				}
 				//TODO Oder evtl. den Dialog.
 				warningText.append("<" + new Date() + "> " + "Game master has left the game.\n");
@@ -172,7 +172,7 @@ public class ClientModel extends Observable{
 					playerList = msg.getPlayerList();
 				}
 				if (msg.getGameList() != null) {
-					gameList = new ArrayList<GameServerRepresentation>(msg.getGameList());
+					gameList = new LinkedList<GameServerRepresentation>(msg.getGameList());
 				}
 				//TODO Oder evtl. den Dialog.
 				warningText.append("<" + new Date() + "> " + "Game has been closed unexpectedly.\n");
@@ -184,7 +184,7 @@ public class ClientModel extends Observable{
 					playerList = msg.getPlayerList();
 				}
 				if (msg.getGameList() != null) {
-					gameList = new ArrayList<GameServerRepresentation>(msg.getGameList());
+					gameList = new LinkedList<GameServerRepresentation>(msg.getGameList());
 				}
 				informView(ViewNotification.loginSuccessful);
 			}
@@ -210,9 +210,15 @@ public class ClientModel extends Observable{
 		if (msg != null) {
 			if (state == ClientState.JOINREQUEST) {
 				state = ClientState.GAMELOBBY;
+				if (msg.getPlayerList() != null) {
+					playerList = msg.getPlayerList();
+				}
 				informView(ViewNotification.joinGameSuccessful);
 			} else if (state == ClientState.GAMECREATION) {
 				state = ClientState.GAMELOBBY;
+				if (msg.getPlayerList() != null) {
+					playerList = msg.getPlayerList();
+				}
 				informView(ViewNotification.joinGameSuccessful);
 			}
 		}
