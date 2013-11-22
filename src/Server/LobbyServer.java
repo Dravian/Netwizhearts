@@ -105,8 +105,7 @@ public class LobbyServer extends Server {
 							broadcast(new ComLobbyUpdateGamelist(false, game.getRepresentation()));
 						} else {
 							System.err.println("Password inconsistent!");
-							ComWarning warning = new ComWarning("Couldn't create game!");
-							player.send(warning);
+							disconnectPlayer(player);
 						}
 					} else {		
 						if(create.hasPassword()){
@@ -117,24 +116,20 @@ public class LobbyServer extends Server {
 							broadcast(new ComLobbyUpdateGamelist(false, game.getRepresentation()));
 						} else {
 							System.err.println("Password inconsistent!");
-							ComWarning warning = new ComWarning("Couldn't create game!");
-							player.send(warning);
+							disconnectPlayer(player);
 						}
 					}
 				} else {
 					System.err.println("Password null!");
-					ComWarning warning = new ComWarning("Couldn't create game!");
-					player.send(warning);
+					disconnectPlayer(player);
 				}			
 			} else {
 				System.err.println("Unbekanntes Ruleset");
-				ComWarning warning = new ComWarning("Couldn't create game!");
-				player.send(warning);
+				disconnectPlayer(player);
 			}
 		} else {
 			System.err.println("Game has no Name");
-			ComWarning warning = new ComWarning("Couldn't create game!");
-			player.send(warning);
+			disconnectPlayer(player);
 		}
 		
 	}
@@ -207,6 +202,7 @@ public class LobbyServer extends Server {
 			}
 		} else {
 			System.err.println("Kein GameMaster!");
+			disconnectPlayer(player);
 		}
 		
 	}
