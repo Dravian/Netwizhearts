@@ -3,6 +3,8 @@
  */
 package Server;
 
+import java.io.Serializable;
+
 import Ruleset.RulesetType;
 
 /**
@@ -11,7 +13,7 @@ import Ruleset.RulesetType;
  * Sie wird dem ComObjekt ComLobbyUpdateGameList angehaengt, um die Spielliste in der 
  * GameLobby aktualisieren zu koennen.
  */
-public class GameServerRepresentation {
+public class GameServerRepresentation implements Serializable{
 	/**
 	 * Der Benutzername des Spielleiters, der das Spiel erstellt hat
 	 */
