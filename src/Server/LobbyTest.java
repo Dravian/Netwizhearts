@@ -29,6 +29,7 @@ public class LobbyTest {
 	TestPlayer player2;
 	TestPlayer player3;
 	TestPlayer player4;
+	TestPlayer player5;
 
 	@Before
 	public void setUp() throws Exception {
@@ -51,6 +52,10 @@ public class LobbyTest {
 		player4.setPlayerName("Fritz");
 		player4.setServer(lobby);
 		
+		player5 = new TestPlayer(lobby);
+		player5.setPlayerName("Günther");
+		player5.setServer(lobby);
+		
 		lobby.addPlayer(player1);
 		lobby.addName(player1.getPlayerName());	
 		lobby.addPlayer(player2);
@@ -59,6 +64,8 @@ public class LobbyTest {
 		lobby.addName(player3.getPlayerName());
 		lobby.addPlayer(player4);
 		lobby.addName(player4.getPlayerName());	
+		lobby.addPlayer(player5);
+		lobby.addName(player5.getPlayerName());	
 	}
 
 	@After
@@ -68,6 +75,7 @@ public class LobbyTest {
 		player2 = null;
 		player3 = null;
 		player4 = null;
+		player5 = null;
 	}
 
 	@Test
@@ -271,5 +279,20 @@ public class LobbyTest {
 		
 		ComWarning warning = new ComWarning(new String());
 		assertTrue(player2.getServerInput().get(2).getClass().equals(warning.getClass()));	
+	}
+	
+	@Test
+	public void testJoinFullGame(){
+		ComCreateGameRequest create = new ComCreateGameRequest("Markus' Spiel", RulesetType.Hearts, false, new String());
+		player1.injectComObject(create);
+		
+		ComJoinRequest join = new ComJoinRequest("Markus", new String());
+		player2.injectComObject(join);
+		player3.injectComObject(join);
+		player4.injectComObject(join);
+		player5.injectComObject(join);
+		
+		ComWarning warning = new ComWarning(new String());
+		assertTrue(player5.getServerInput().get(5).getClass().equals(warning.getClass()));			
 	}
 }
