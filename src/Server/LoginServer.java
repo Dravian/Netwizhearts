@@ -124,7 +124,7 @@ public class LoginServer extends Server {
 	 * @param player ist der Tread von dem die Exception kommt
 	 */
 	@Override
-	public synchronized void disconnectPlayer(Player player) {
+	public synchronized void disconnectPlayer(Player player) {		
 		player.closeConnection();
 	}
 }
