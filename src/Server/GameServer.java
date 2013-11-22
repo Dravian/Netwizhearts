@@ -283,7 +283,7 @@ public class GameServer extends Server {
 	@Override
 	public synchronized void receiveMessage(Player player, ComStartGame start){
 		try {
-			ruleset.runGame();
+			ruleset.runGame();			
 		} catch (IllegalNumberOfPlayersException e) {
 			System.out.println("Number of Players not matching!");
 			quitGame();

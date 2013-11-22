@@ -3,6 +3,10 @@ package Server;
 
 import static org.junit.Assert.*;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,6 +14,7 @@ import org.junit.Test;
 import ComObjects.ComChatMessage;
 import ComObjects.ComClientQuit;
 import ComObjects.ComCreateGameRequest;
+import ComObjects.ComInitGameLobby;
 import ComObjects.ComLobbyUpdateGamelist;
 import ComObjects.ComUpdatePlayerlist;
 import Ruleset.RulesetType;
@@ -115,8 +120,17 @@ public class LobbyTest {
 	public void testCreateGame(){
 		ComCreateGameRequest create = new ComCreateGameRequest("Markus' Spiel", RulesetType.Hearts, false, null);
 		player1.injectComObject(create);
+		
 		assertFalse(lobby.playerSet.contains(player1));
 		assertTrue(lobby.getNames().contains(player1.getPlayerName()));
+		
+		List<String> playerList = new ArrayList<String>();
+		playerList.add(player1.getPlayerName());
+		ComInitGameLobby comInit = new ComInitGameLobby(playerList);
+		assertTrue(player1.getServerInput().get(1).getClass().equals(comInit.getClass()));
+		
+		ComInitGameLobby toPlayer1 = (ComInitGameLobby) player1.getServerInput().get(1);
+		assertTrue(toPlayer1.getPlayerList().get(0) ==  player1.getPlayerName());
 		
 		ComUpdatePlayerlist updatePlayer = new ComUpdatePlayerlist(player1.getName(), true);
 		assertTrue(player2.getServerInput().get(0).getClass().equals(updatePlayer.getClass()));
