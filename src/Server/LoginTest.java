@@ -41,5 +41,5 @@ public class LoginTest {
 		assertTrue(lobby.initLobby().getPlayerList().contains(player.getPlayerName()));
 		assertTrue(lobby.getNames().contains(player.getPlayerName()));
 	}
-	
+
 }
