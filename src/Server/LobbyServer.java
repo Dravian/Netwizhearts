@@ -90,7 +90,7 @@ public class LobbyServer extends Server {
 	 */
 	@Override
 	public synchronized void receiveMessage(Player player, ComCreateGameRequest create){
-		if (create.getGameName() != null){
+		if (create.getGameName() != null && create.getPassword() != null){
 			String name = create.getGameName();
 			if(create.getRuleset() == RulesetType.Hearts || create.getRuleset() == RulesetType.Wizard){		
 				RulesetType ruleset = create.getRuleset();
@@ -128,7 +128,7 @@ public class LobbyServer extends Server {
 				disconnectPlayer(player);
 			}
 		} else {
-			System.err.println("Game has no Name");
+			System.err.println("Invalid Input");
 			disconnectPlayer(player);
 		}
 		
