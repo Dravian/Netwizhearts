@@ -97,18 +97,24 @@ public class LoginServer extends Server {
 	 */
 	@Override
 	public synchronized void receiveMessage(Player player, ComLoginRequest login){
-		String CheckName = login.getPlayerName();
-		if(lobby.getNames().contains(CheckName)){
-			ComWarning warning = new ComWarning("Login Error!");
-			player.send(warning);
-			disconnectPlayer(player);
+		if (login.getPlayerName() != null){
+			String CheckName = login.getPlayerName();
+			if(lobby.getNames().contains(CheckName)){
+				ComWarning warning = new ComWarning("Login Error! Invalid Username!");
+				player.send(warning);
+				disconnectPlayer(player);
+			} else {
+				player.setPlayerName(CheckName);
+				lobby.addName(CheckName);
+				player.changeServer(lobby);			
+				ComInitLobby init = lobby.initLobby();
+				player.send(init);
+			}
 		} else {
-			player.setPlayerName(CheckName);
-			lobby.addName(CheckName);
-			player.changeServer(lobby);			
-			ComInitLobby init = lobby.initLobby();
-			player.send(init);
+			ComWarning warning = new ComWarning("Login Error! Invalid Username!");
+			player.send(warning);
 		}
+		
 	}
 	
 	/**

@@ -90,14 +90,47 @@ public class LobbyServer extends Server {
 	 */
 	@Override
 	public synchronized void receiveMessage(Player player, ComCreateGameRequest create){
-		String name = create.getGameName();
-		RulesetType ruleset = create.getRuleset();
-		String password = create.getPassword();
-		boolean hasPassword = create.hasPassword();
-		GameServer game = new GameServer(this, player, name, ruleset, password, hasPassword);
-		addGameServer(game);
-		addPlayerToGame(player, game);
-		broadcast(new ComLobbyUpdateGamelist(false, game.getRepresentation()));
+		if (create.getGameName() != null){
+			String name = create.getGameName();
+			if(create.getRuleset() == RulesetType.Hearts || create.getRuleset() == RulesetType.Wizard){		
+				RulesetType ruleset = create.getRuleset();
+				String password = create.getPassword();
+				if(password != null){
+					if(create.hasPassword()){
+						boolean hasPassword = create.hasPassword();
+						GameServer game = new GameServer(this, player, name, ruleset, password, hasPassword);
+						addGameServer(game);
+						addPlayerToGame(player, game);
+						broadcast(new ComLobbyUpdateGamelist(false, game.getRepresentation()));
+					} else {
+						System.err.println("Password inconsistent!");
+						ComWarning warning = new ComWarning("Couldn't create game!");
+						player.send(warning);
+					}
+				} else {
+					if(!create.hasPassword()){
+						boolean hasPassword = create.hasPassword();
+						GameServer game = new GameServer(this, player, name, ruleset, password, hasPassword);
+						addGameServer(game);
+						addPlayerToGame(player, game);
+						broadcast(new ComLobbyUpdateGamelist(false, game.getRepresentation()));
+					} else {
+						System.err.println("Password inconsistent!");
+						ComWarning warning = new ComWarning("Couldn't create game!");
+						player.send(warning);
+					}
+				}		
+			} else {
+				System.err.println("Unbekanntes Ruleset");
+				ComWarning warning = new ComWarning("Couldn't create game!");
+				player.send(warning);
+			}
+		} else {
+			System.err.println("Game has no Name");
+			ComWarning warning = new ComWarning("Couldn't create game!");
+			player.send(warning);
+		}
+		
 	}
 	/**
 	 * Hilfsmethode, die einen Spieler zu einem Spiel hinzufuegt
@@ -125,32 +158,51 @@ public class LobbyServer extends Server {
 	 * @param join ist das ComObject, welches angibt, dass der Player einem Spiel beitreten will
 	 */
 	@Override
-	public synchronized void receiveMessage(Player player, ComJoinRequest join){		
-		String master = join.getGameMasterName();
-		GameServer joinGame = null;
-		if(!gameServerSet.isEmpty()){
-			for (GameServer game : gameServerSet) {
-				if(game.getGameMasterName().equals(master)){
-					joinGame = game;
-				}
-			}
-		} else {
-			System.err.println("Kein offenes Spiel!");
-		}
-		if(joinGame != null){
-			if(joinGame.getRepresentation().hasPassword()){
-				if(joinGame.getPassword().equals(join.getPassword())){
-					addPlayerToGame(player, joinGame);
-				} else {
-					ComWarning warning = new ComWarning("Wrong Password!");
-					player.send(warning);
+	public synchronized void receiveMessage(Player player, ComJoinRequest join){
+		if(join.getGameMasterName() != null){
+			String master = join.getGameMasterName();
+			GameServer joinGame = null;
+			if(!gameServerSet.isEmpty()){
+				for (GameServer game : gameServerSet) {
+					if(game.getGameMasterName().equals(master)){
+						joinGame = game;
+					}
 				}
 			} else {
-				addPlayerToGame(player, joinGame);
+				System.err.println("Kein offenes Spiel!");
+				ComWarning warning = new ComWarning("Game doesn't exist!");
+				player.send(warning);
+			}
+			if(joinGame != null){
+				if(joinGame.getRepresentation().hasPassword()){
+					if(joinGame.getPassword().equals(join.getPassword())){
+						if(joinGame.getRepresentation().getCurrentPlayers() == joinGame.getRepresentation().getMaxPlayers()){
+							addPlayerToGame(player, joinGame);
+						} else {
+							ComWarning warning = new ComWarning("Game already full!");
+							player.send(warning);
+						}
+					} else {
+						ComWarning warning = new ComWarning("Wrong Password!");
+						player.send(warning);
+					}
+				} else {
+					if(joinGame.getRepresentation().getCurrentPlayers() < joinGame.getRepresentation().getMaxPlayers()){
+						addPlayerToGame(player, joinGame);
+					} else {
+						ComWarning warning = new ComWarning("Game already full!");
+						player.send(warning);
+					}			
+				}
+			} else {
+				System.err.println("Spiel nicht vorhanden!");
+				ComWarning warning = new ComWarning("Game doesn't exist!");
+				player.send(warning);
 			}
 		} else {
-			System.err.println("Spiel nicht vorhanden!");
+			System.err.println("Kein GameMaster!");
 		}
+		
 	}
 	
 	/**
