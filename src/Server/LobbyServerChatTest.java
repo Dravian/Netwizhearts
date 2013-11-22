@@ -59,8 +59,8 @@ public class LobbyServerChatTest {
 		testText1 = ((ComChatMessage) player1.getServerInput().get(0)).getChatMessage();
 		testText2 = ((ComChatMessage) player2.getServerInput().get(0)).getChatMessage();
 		testText3 = ((ComChatMessage) player3.getServerInput().get(0)).getChatMessage();
-		assertEquals("Nachricht an Spieler 1", messageToMatch, testText1);
-		assertEquals("Nachricht an Spieler 2", messageToMatch, testText2);
-		assertEquals("Nachricht an Spieler 3", messageToMatch, testText3);
+		assertTrue("Nachricht an Spieler 1", testText1.contains(messageToMatch));
+		assertTrue("Nachricht an Spieler 2", testText2.contains(messageToMatch));
+		assertTrue("Nachricht an Spieler 3", testText3.contains(messageToMatch));
 	}
 }

@@ -47,7 +47,7 @@ public class ClientModelChatTest {
 		String inputText = "Hello Test!";
 		testModel.sendChatMessage(inputText);
 		testText = ((ComChatMessage) testNetIO.getModelInput().get(0)).getChatMessage();
-		assertEquals("Vergleich der gesendeten Chatnachrichten", inputText, testText);
+		assertTrue("Vergleich der gesendeten Chatnachrichten", testText.contains(inputText));
 	}
 	
 	@Test
