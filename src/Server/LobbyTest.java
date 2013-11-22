@@ -120,7 +120,7 @@ public class LobbyTest {
 	
 	@Test
 	public void testCreateGame(){
-		ComCreateGameRequest create = new ComCreateGameRequest("Markus' Spiel", RulesetType.Hearts, false, null);
+		ComCreateGameRequest create = new ComCreateGameRequest("Markus' Spiel", RulesetType.Hearts, false, new String());
 		player1.injectComObject(create);
 		
 		assertFalse(lobby.playerSet.contains(player1));
@@ -187,7 +187,7 @@ public class LobbyTest {
 	
 	@Test
 	public void testJoinGame(){
-		ComCreateGameRequest create = new ComCreateGameRequest("Markus' Spiel", RulesetType.Hearts, false, null);
+		ComCreateGameRequest create = new ComCreateGameRequest("Markus' Spiel", RulesetType.Hearts, false, new String());
 		player1.injectComObject(create);
 		
 		ComJoinRequest join = new ComJoinRequest("Markus", null);
