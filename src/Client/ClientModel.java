@@ -24,12 +24,10 @@ import ComObjects.RulesetMessage;
 
 import java.io.IOException;
 import java.net.ConnectException;
-import java.net.InetAddress;
 import java.net.Socket;
 import java.net.SocketException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.net.UnknownHostException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -38,7 +36,6 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Observable;
-import java.util.Set;
 
 /**
  * ClientModel. Das ClientModel ist die Schnittstelle zwischen dem MessageListenerThread,
@@ -69,7 +66,7 @@ public class ClientModel extends Observable{
 	 * Der Zustand indem sich der Client befindet.
 	 */
 	private ClientState state;
-	
+
 	private List<RulesetType> supportetGames;
 
 	private List<String> playerList;
@@ -77,7 +74,7 @@ public class ClientModel extends Observable{
 	private ArrayList<GameServerRepresentation> gameList;
 
 	private StringBuilder warningText = new StringBuilder();
-	
+
 	private Thread netIOThread;
 
 	/**
@@ -125,7 +122,7 @@ public class ClientModel extends Observable{
 
 		informView(ViewNotification.quitGame);
 	}
-	
+
 	/**
 	 * Wird aufgerufen, wenn der Spieler das Programm beendet.
 	 * Leitet den Verbindungsabbau zum Server ein.
@@ -156,7 +153,6 @@ public class ClientModel extends Observable{
 	 * @param msg die ankommende ComInitLobby Nachricht
 	 */
 	public void receiveMessage(ComInitLobby msg) {
-		//TODO Spielerliste ist eine Liste, aber Gameliste ist ein Set.
 		if (msg != null) {
 			if (state == ClientState.GAMELOBBY) {
 				state = ClientState.SERVERLOBBY;
@@ -199,7 +195,7 @@ public class ClientModel extends Observable{
 	public ClientState getClientState() {
 		return state;
 	}
-	
+
 	/**
 	 * Diese Methode wird aufgerufen,
 	 * falls der Server den Spieler erfolgreich in die GameLobby hinzugefuegt hat.
@@ -211,7 +207,15 @@ public class ClientModel extends Observable{
 	 * @param msg die ankommende ComInitGameLobby Nachricht
 	 */
 	public void receiveMessage(ComInitGameLobby msg) {
-
+		if (msg != null) {
+			if (state == ClientState.JOINREQUEST) {
+				state = ClientState.GAMELOBBY;
+				informView(ViewNotification.joinGameSuccessful);
+			} else if (state == ClientState.GAMECREATION) {
+				state = ClientState.GAMELOBBY;
+				informView(ViewNotification.joinGameSuccessful);
+			}
+		}
 	}
 
 	/**
@@ -233,13 +237,7 @@ public class ClientModel extends Observable{
 	 *  @param ack Eine Bestätigung durch den Server.
 	 */
 	public void receiveMessage(ComServerAcknowledgement ack) {
-		if (state == ClientState.JOINREQUEST) {
-			state = ClientState.GAMELOBBY;
-			informView(ViewNotification.joinGameSuccessful);
-		} else if (state == ClientState.GAMECREATION) {
-			state = ClientState.GAMELOBBY;
-			informView(ViewNotification.joinGameSuccessful);
-		}
+		
 	}
 
 	public void receiveMessage(ComWarning warning) {
@@ -317,7 +315,6 @@ public class ClientModel extends Observable{
 	 * @param update die ankommende ComLobbyUpdateGamelist Nachricht
 	 */
 	public void receiveMessage(ComLobbyUpdateGamelist update) {
-		System.out.println("GameListUpdate erhalten");
 		if (update != null) {
 			if (update.getGameServer() != null) {
 				if (update.isRemoveFlag()) {
@@ -372,7 +369,7 @@ public class ClientModel extends Observable{
 	/**
 	 * Gibt eine Liste der Handkarten des Spielers zurueck.
 	 *
-	 * @param Liste aller Handkarten des Spielers
+	 * @return List<Card> aller Handkarten des Spielers
 	 */
 	public List<Card> getOwnHand() {
 		return null;
@@ -381,7 +378,7 @@ public class ClientModel extends Observable{
 	/**
 	 * Gibt zusaetzliche Daten der anderen Spieler zurueck.
 	 *
-	 * @return Liste der Stringrepraesentationen der OtherData der Spieler
+	 * @return List<String> der Stringrepraesentationen der OtherData der Spieler
 	 */
 	public List<String> getOtherPlayerData() {
 		return null;
@@ -391,7 +388,7 @@ public class ClientModel extends Observable{
 	/**
 	 * Gibt den Punktestand des Spielers zurueck.
 	 *
-	 * @return der eigene Punktestand.
+	 * @return int Der eigene Punktestand.
 	 */
 	public int getOwnScore() {
 		return 0;
@@ -432,6 +429,7 @@ public class ClientModel extends Observable{
 	 * @param hasPassword true, wenn das Spiel ein Passwort hat
 	 * @param password String Passwort zum sichern des Spieles.
 	 * @param game das zu verwendende Regelwerk
+	 * @throws IllegalArgumentException Wenn RulesetType null.
 	 */
 	public void hostGame(String gameName,
 						 boolean hasPassword, String password,
@@ -481,16 +479,16 @@ public class ClientModel extends Observable{
 	 * Gibt den Text zurueck, der in einem Sonderfenster 
 	 * (InputNumber, ChooseItem, ChooseCards) angezeigt werden soll.
 	 *
-	 * @return String 
+	 * @return String Text der Bildschirmmeldung.
 	 */
 	public String getWindowText() {
-		return warningText.toString();
+		return null;
 	}
 
 	/**
 	 * Gibt die Karten zurueck, aus denen gewaehlt werden soll.
 	 * 
-	 * @return Karten, aus denen gewaehlt werden kann
+	 * @return List<Card> Karten, aus denen gewaehlt werden kann
 	 */
 	public List<Card> getChooseCards() {
 		return null;
@@ -632,7 +630,7 @@ public class ClientModel extends Observable{
 
 	}
 
-	/** 
+	/**
 	 * Versucht eine Karte auszuspielen. Laesst dazu vom ClientRuleset ueberpruefen ob, die ausgewaehlte
 	 * Karte gespielt werden darf. Wenn ja, wird sie im ClientRuleset weiterbehandelt. Wenn nein,
 	 * wird eine Fehlermeldung ausgegeben und dazu die Observer mit openWarning informiert.
