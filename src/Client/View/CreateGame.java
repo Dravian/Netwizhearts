@@ -94,7 +94,7 @@ public class CreateGame extends JFrame{
 		getContentPane().add(btnLeave);
 		
 		nameField = new JTextField();
-		nameField.setBounds(12, 171, 188, 32);
+		nameField.setBounds(12, 100, 188, 32);
 		getContentPane().add(nameField);
 		nameField.setColumns(10);
 
@@ -124,7 +124,7 @@ public class CreateGame extends JFrame{
 		getContentPane().add(lblGameName);
 		
 		passwordField = new JTextField();
-		passwordField.setBounds(12, 100, 188, 32);
+		passwordField.setBounds(12, 171, 188, 32);
 		getContentPane().add(passwordField);
 		passwordField.setColumns(10);
 	}
