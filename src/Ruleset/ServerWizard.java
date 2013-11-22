@@ -208,13 +208,16 @@ public class ServerWizard extends ServerRuleset {
                                 || card1.getCard() == WizardCard.NarrRot) {
                             //tue nichts und suche weiter
                         } else {
+                            //wenn die farbe der zu spielenden entspricht
                             if (card.getColour() == card1.getCard().getColour()) {
                                 isValid = true;
                                 break findColour;
                             } else {
                                 //wenn die farbe von card1 nicht mehr auf der hand ist
-                                getCurrentPlayer().getHand().contains(card1.getCard().getColour());
-                                break findColour;
+                                if (!getCurrentPlayer().getHand().contains(card1.getCard().getColour())) {
+                                    isValid = true;
+                                    break findColour;
+                                }
                             }
                         }
                     }
@@ -232,7 +235,9 @@ public class ServerWizard extends ServerRuleset {
                         isValid = true;
                     // wenn karte nicht blau dann nur wenn keine blauen mehr auf der hand
                     } else {
-                        getCurrentPlayer().getHand().contains(Colour.BLUE);
+                        if (!getCurrentPlayer().getHand().contains(Colour.BLUE)) {
+                            isValid = true;
+                        }
                     }
                 } else if (firstCardColour == Colour.RED) {
                     // wenn karte rot kein problem
@@ -240,7 +245,9 @@ public class ServerWizard extends ServerRuleset {
                         isValid = true;
                         // wenn karte nicht rot dann nur wenn keine roten mehr auf der hand
                     } else {
-                        getCurrentPlayer().getHand().contains(Colour.RED);
+                        if (!getCurrentPlayer().getHand().contains(Colour.RED)) {
+                            isValid = true;
+                        }
                     }
                 } else if (firstCardColour == Colour.YELLOW) {
                     // wenn karte gelb kein problem
@@ -248,7 +255,9 @@ public class ServerWizard extends ServerRuleset {
                         isValid = true;
                         // wenn karte nicht gelb dann nur wenn keine gelben mehr auf der hand
                     } else {
-                        getCurrentPlayer().getHand().contains(Colour.YELLOW);
+                        if (!getCurrentPlayer().getHand().contains(Colour.YELLOW)) {
+                            isValid = true;
+                        }
                     }
                 } else if (firstCardColour == Colour.GREEN) {
                     // wenn karte grün kein problem
@@ -256,7 +265,9 @@ public class ServerWizard extends ServerRuleset {
                         isValid = true;
                         // wenn karte nicht grün dann nur wenn keine grünen mehr auf der hand
                     } else {
-                        getCurrentPlayer().getHand().contains(Colour.GREEN);
+                        if (!getCurrentPlayer().getHand().contains(Colour.GREEN) {
+                            isValid = true;
+                        }
                     }
                 }
             }
