@@ -199,6 +199,7 @@ public class GameServer extends Server {
 			}
 		} else {
 			System.err.println("PlayerSet empty!");
+			player.closeConnection();
 		}		
 	}
 	
@@ -236,6 +237,7 @@ public class GameServer extends Server {
 			}
 		} else {
 			System.err.println("PlayerSet empty!");
+			player.closeConnection();
 		}	
 	}
 	
@@ -258,6 +260,7 @@ public class GameServer extends Server {
 			}				
 		} else {
 			System.err.println("PlayerSet empty!");
+			player.closeConnection();
 		}
 		if(!playerSet.isEmpty()){
 			for (Player back : playerSet) {
@@ -269,6 +272,7 @@ public class GameServer extends Server {
 			}		
 		} else {
 			System.err.println("PlayerSet empty!");
+			player.closeConnection();
 		}
 		lobbyServer.removeGameServer(this);
 		lobbyServer.broadcast(new ComLobbyUpdateGamelist(true, getRepresentation()));
