@@ -97,7 +97,7 @@ public abstract class OtherData {
 	 * Gibt den Namen des Spielers zurück
 	 * @return Der Name des Spielers
 	 */
-	public String getName() {
+	public String getOtherDataName() {
 		return name;
 	}
 }
