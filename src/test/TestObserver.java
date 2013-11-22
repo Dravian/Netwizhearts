@@ -10,13 +10,13 @@ import Client.ViewNotification;
 public class TestObserver implements Observer {
 
 	private String chatMsg = new String();
-	
+
 	private List<ViewNotification> notificationList = new LinkedList<ViewNotification>();
 
 	public String getChatMessage() {
 		return chatMsg;
 	}
-	
+
 	public List<ViewNotification> getNotification() {
 		return notificationList;
 	}
@@ -24,10 +24,10 @@ public class TestObserver implements Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		if (arg != null) {
-			if (arg.getClass().equals(String.class)) {
-				chatMsg = (String) arg;	
-			} else if (arg.getClass().equals(ViewNotification.class)) {
-				notificationList.add((ViewNotification) arg); 
+			if (arg.getClass() == String.class) {
+				chatMsg = (String) arg;
+			} else if (arg.getClass() == ViewNotification.class) {
+				notificationList.add((ViewNotification) arg);
 			}
 		}
 	}
