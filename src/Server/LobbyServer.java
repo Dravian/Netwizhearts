@@ -94,32 +94,38 @@ public class LobbyServer extends Server {
 			String name = create.getGameName();
 			if(create.getRuleset() == RulesetType.Hearts || create.getRuleset() == RulesetType.Wizard){		
 				RulesetType ruleset = create.getRuleset();
-				String password = create.getPassword();
-				if(password != null){
-					if(create.hasPassword()){
-						boolean hasPassword = create.hasPassword();
-						GameServer game = new GameServer(this, player, name, ruleset, password, hasPassword);
-						addGameServer(game);
-						addPlayerToGame(player, game);
-						broadcast(new ComLobbyUpdateGamelist(false, game.getRepresentation()));
-					} else {
-						System.err.println("Password inconsistent!");
-						ComWarning warning = new ComWarning("Couldn't create game!");
-						player.send(warning);
+				if(create.getPassword() != null){
+					String password = create.getPassword();
+					if(password.isEmpty()){
+						if(!create.hasPassword()){
+							boolean hasPassword = create.hasPassword();
+							GameServer game = new GameServer(this, player, name, ruleset, password, hasPassword);
+							addGameServer(game);
+							addPlayerToGame(player, game);
+							broadcast(new ComLobbyUpdateGamelist(false, game.getRepresentation()));
+						} else {
+							System.err.println("Password inconsistent!");
+							ComWarning warning = new ComWarning("Couldn't create game!");
+							player.send(warning);
+						}
+					} else {		
+						if(create.hasPassword()){
+							boolean hasPassword = create.hasPassword();
+							GameServer game = new GameServer(this, player, name, ruleset, password, hasPassword);
+							addGameServer(game);
+							addPlayerToGame(player, game);
+							broadcast(new ComLobbyUpdateGamelist(false, game.getRepresentation()));
+						} else {
+							System.err.println("Password inconsistent!");
+							ComWarning warning = new ComWarning("Couldn't create game!");
+							player.send(warning);
+						}
 					}
 				} else {
-					if(!create.hasPassword()){
-						boolean hasPassword = create.hasPassword();
-						GameServer game = new GameServer(this, player, name, ruleset, password, hasPassword);
-						addGameServer(game);
-						addPlayerToGame(player, game);
-						broadcast(new ComLobbyUpdateGamelist(false, game.getRepresentation()));
-					} else {
-						System.err.println("Password inconsistent!");
-						ComWarning warning = new ComWarning("Couldn't create game!");
-						player.send(warning);
-					}
-				}		
+					System.err.println("Password null!");
+					ComWarning warning = new ComWarning("Couldn't create game!");
+					player.send(warning);
+				}			
 			} else {
 				System.err.println("Unbekanntes Ruleset");
 				ComWarning warning = new ComWarning("Couldn't create game!");
@@ -176,7 +182,7 @@ public class LobbyServer extends Server {
 			if(joinGame != null){
 				if(joinGame.getRepresentation().hasPassword()){
 					if(joinGame.getPassword().equals(join.getPassword())){
-						if(joinGame.getRepresentation().getCurrentPlayers() == joinGame.getRepresentation().getMaxPlayers()){
+						if(joinGame.getRepresentation().getCurrentPlayers() < joinGame.getRepresentation().getMaxPlayers()){
 							addPlayerToGame(player, joinGame);
 						} else {
 							ComWarning warning = new ComWarning("Game already full!");
