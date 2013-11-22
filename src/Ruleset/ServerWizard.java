@@ -95,13 +95,14 @@ public class ServerWizard extends ServerRuleset {
 
         } else {
             updatePlayers();
-
+            playCard(card);
+            
             if (getGameState().getPlayedCards().size() == getPlayers().size()) {
                 calculateTricks();
             } else {
                 nextPlayer();
                 setGamePhase(GamePhase.CardRequest);
-                send(new MsgCardRequest(), getCurrentPlayer().getName());
+                send(new MsgCardRequest(), getCurrentPlayer().getPlayerStateName());
             }
         }
     }
@@ -111,7 +112,7 @@ public class ServerWizard extends ServerRuleset {
         if (getGamePhase() != GamePhase.TrickRequest) {
             throw new RulesetException("Es wird keine Zahl erwartet.");
 
-        } else if (!getCurrentPlayer().getName().equals(name)) {
+        } else if (!getCurrentPlayer().getPlayerStateName().equals(name)) {
             throw new RulesetException("Es wird keine Zahl von dem Spieler " +
                     name + " erwartet.");
 
@@ -126,11 +127,11 @@ public class ServerWizard extends ServerRuleset {
                 nextPlayer();
                 setGamePhase(GamePhase.CardRequest);
 
-                send(new MsgCardRequest(), getCurrentPlayer().getName());
+                send(new MsgCardRequest(), getCurrentPlayer().getPlayerStateName());
             } else {
                 nextPlayer();
 
-                send(new MsgNumberRequest(), getCurrentPlayer().getName());
+                send(new MsgNumberRequest(), getCurrentPlayer().getPlayerStateName());
             }
         }
 
@@ -142,7 +143,7 @@ public class ServerWizard extends ServerRuleset {
             throw new RulesetException("Es wird keine Trumpffarbe erwartet vom"
                     + "Spieler " + name);
 
-        } else if (!getFirstPlayer().getName().equals(name)) {
+        } else if (!getFirstPlayer().getPlayerStateName().equals(name)) {
             throw new RulesetException("Der Spieler " + name + " darf keine "
                     + "Trumpfarbe ausw�hlen.");
 
@@ -162,7 +163,7 @@ public class ServerWizard extends ServerRuleset {
 
                 setGamePhase(GamePhase.TrickRequest);
                 nextPlayer();
-                send(new MsgNumberRequest(), getCurrentPlayer().getName());
+                send(new MsgNumberRequest(), getCurrentPlayer().getPlayerStateName());
             }
         }
     }
@@ -265,7 +266,7 @@ public class ServerWizard extends ServerRuleset {
                         isValid = true;
                         // wenn karte nicht grün dann nur wenn keine grünen mehr auf der hand
                     } else {
-                        if (!getCurrentPlayer().getHand().contains(Colour.GREEN) {
+                        if (!getCurrentPlayer().getHand().contains(Colour.GREEN)) {
                             isValid = true;
                         }
                     }
@@ -353,7 +354,7 @@ public class ServerWizard extends ServerRuleset {
             setGamePhase(GamePhase.CardRequest);
             setCurrentPlayer(trickWinner);
 
-            send(new MsgCardRequest(), trickWinner.getName());
+            send(new MsgCardRequest(), trickWinner.getPlayerStateName());
         }
     }
 
@@ -416,13 +417,13 @@ public class ServerWizard extends ServerRuleset {
             if (trumpCard.getValue() == valueOfSorcerer) {
                 setGamePhase(GamePhase.SelectionRequest);
 
-                send(new MsgSelectionRequest(), getFirstPlayer().getName());
+                send(new MsgSelectionRequest(), getFirstPlayer().getPlayerStateName());
 
             } else {
                 setGamePhase(GamePhase.TrickRequest);
                 nextPlayer();
 
-                send(new MsgNumberRequest(), getCurrentPlayer().getName());
+                send(new MsgNumberRequest(), getCurrentPlayer().getPlayerStateName());
             }
 
         } else {
@@ -498,11 +499,11 @@ public class ServerWizard extends ServerRuleset {
         for (PlayerState player : getPlayers()) {
             if (player.getOtherData().getPoints() > maxPoints) {
                 leadingPlayers = new ArrayList<String>();
-                leadingPlayers.add(player.getName());
+                leadingPlayers.add(player.getPlayerStateName());
                 maxPoints = player.getOtherData().getPoints();
 
             } else if (player.getOtherData().getPoints() == maxPoints) {
-                leadingPlayers.add(player.getName());
+                leadingPlayers.add(player.getPlayerStateName());
             }
         }
 

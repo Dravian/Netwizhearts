@@ -50,7 +50,7 @@ public class PlayerState {
 	 * Holt den Namen eines Spielers
 	 * @return name Der Name des Spielers
 	 */
-	protected String getName() {
+	protected String getPlayerStateName() {
 		return this.name;
 	}
 
