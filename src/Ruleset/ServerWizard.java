@@ -95,7 +95,8 @@ public class ServerWizard extends ServerRuleset {
 
         } else {
             updatePlayers();
-
+            playCard(card);
+            
             if (getGameState().getPlayedCards().size() == getPlayers().size()) {
                 calculateTricks();
             } else {
@@ -265,7 +266,7 @@ public class ServerWizard extends ServerRuleset {
                         isValid = true;
                         // wenn karte nicht grün dann nur wenn keine grünen mehr auf der hand
                     } else {
-                        if (!getCurrentPlayer().getHand().contains(Colour.GREEN) {
+                        if (!getCurrentPlayer().getHand().contains(Colour.GREEN)) {
                             isValid = true;
                         }
                     }
