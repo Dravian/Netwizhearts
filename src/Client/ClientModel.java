@@ -111,15 +111,14 @@ public class ClientModel extends Observable{
 	}
 
 	/**
-	 * Wird aufgerufen, wenn ein Fehler bei der Verbindung
-	 * zum Server auftritt und die korrekte Ausfuehrung des Programs
-	 * deswegen nicht mehr gewaerleistet werden kann.
+	 * Wird aufgerufen um die View zu beenden, wenn 
+	 * der Server die Verbindung beendet,
+	 * oder ein Netzwerkfehler auftritt.
 	 */
 	protected void closeView() {
 		//TODO oder mit Dialog.
 		warningText.append("<" + new Date() + "> " + "Error: Connection lost.\n");
 		informView(ViewNotification.openWarning);
-
 		informView(ViewNotification.quitGame);
 	}
 
@@ -336,6 +335,17 @@ public class ClientModel extends Observable{
 				}
 				informView(ViewNotification.gameListUpdate);
 			}
+		}
+	}
+	
+	public void receiveMessage(ComClientQuit quit) {
+		if (quit != null) {
+			if (state == ClientState.LOGIN) {
+				netIO.closeConnection();
+			} else {
+				netIO.closeConnection();
+				closeView();
+			}	
 		}
 	}
 
