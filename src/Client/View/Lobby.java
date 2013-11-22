@@ -240,7 +240,23 @@ public class Lobby extends JFrame implements Observer{
 					updatePlayerList(observed.getPlayerlist());
 				}
 			});
+			SwingUtilities.invokeLater(new Runnable() {
+				
+				@Override
+				public void run() {
+					updateGameList(observed.getLobbyGamelist());
+				}
+			});
 			this.setVisible(true);
+			break;
+		case gameListUpdate:
+			SwingUtilities.invokeLater(new Runnable() {
+				
+				@Override
+				public void run() {
+					updateGameList(observed.getLobbyGamelist());
+				}
+			});
 			break;
 		case playerListUpdate:
 			SwingUtilities.invokeLater(new Runnable() {
@@ -250,17 +266,6 @@ public class Lobby extends JFrame implements Observer{
 					updatePlayerList(observed.getPlayerlist());
 				}
 			});
-			break;
-		case gameListUpdate:
-			gameRepList = observed.getLobbyGamelist();
-			SwingUtilities.invokeLater(new Runnable() {
-				
-				@Override
-				public void run() {
-					updateGameList(gameRepList);
-				}
-			});
-			
 			break;
 		case joinGameSuccessful:
 			this.setVisible(false);
