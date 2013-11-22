@@ -182,7 +182,7 @@ public class LobbyServer extends Server {
 			if(joinGame != null){
 				if(joinGame.getRepresentation().hasPassword()){
 					if(joinGame.getPassword().equals(join.getPassword())){
-						if(joinGame.getRepresentation().getCurrentPlayers() == joinGame.getRepresentation().getMaxPlayers()){
+						if(joinGame.getRepresentation().getCurrentPlayers() < joinGame.getRepresentation().getMaxPlayers()){
 							addPlayerToGame(player, joinGame);
 						} else {
 							ComWarning warning = new ComWarning("Game already full!");
