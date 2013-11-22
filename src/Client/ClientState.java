@@ -22,9 +22,9 @@ public enum ClientState {
 	GAMECREATION,
 	
 	/** 
-	 * Der Benutzer wurde vom Server aufgefordert ein Passwort einzugeben.
+	 * Zeigt an, dass der Benutzer einem Spiel beitreten moechte.
 	 */
-	PASSWORDREQUEST,
+	JOINREQUEST,
 	
 	/** 
 	 * Zeigt an, dass sich der Client in der Spiellobby befindet.

@@ -9,8 +9,10 @@ import ComObjects.ComBeenKicked;
 import ComObjects.ComChatMessage;
 import ComObjects.ComClientLeave;
 import ComObjects.ComClientQuit;
+import ComObjects.ComCreateGameRequest;
 import ComObjects.ComInitGameLobby;
 import ComObjects.ComInitLobby;
+import ComObjects.ComJoinRequest;
 import ComObjects.ComLobbyUpdateGamelist;
 import ComObjects.ComLoginRequest;
 import ComObjects.ComObject;
@@ -192,7 +194,7 @@ public class ClientModel extends Observable{
 			}
 		}
 	}
-	
+
 	//TODO wird evtl für den Übergang der Fenster benötigt ?
 	public ClientState getClientState() {
 		return state;
@@ -231,15 +233,37 @@ public class ClientModel extends Observable{
 	 *  @param ack Eine Bestätigung durch den Server.
 	 */
 	public void receiveMessage(ComServerAcknowledgement ack) {
-		
+		if (state == ClientState.JOINREQUEST) {
+			state = ClientState.GAMELOBBY;
+			informView(ViewNotification.joinGameSuccessful);
+		} else if (state == ClientState.GAMECREATION) {
+			state = ClientState.GAMELOBBY;
+			informView(ViewNotification.joinGameSuccessful);
+		}
 	}
 
 	public void receiveMessage(ComWarning warning) {
-		if (state == ClientState.LOGIN) {
-			netIO.closeConnection();
-			netIOThread = null;
-			warningText.append("<" + new Date() + "> " + "Username already in use.\n");
-			informView(ViewNotification.openWarning);
+		if (warning != null) {
+			SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+			String time = sdf.format(Calendar.getInstance().getTime());
+			if (state == ClientState.LOGIN) {
+				netIO.closeConnection();
+				netIOThread = null;
+				warningText.append("<" + time + "> " + "Username already in use.\n");
+				informView(ViewNotification.openWarning);
+			} else if (state == ClientState.JOINREQUEST) {
+				//TODO Eindeutigkeit ob Spiel voll oder Passwort falsch nur mit
+				//String aus der Warnung abprüftbar ---> fehler enum einbauen?
+				state = ClientState.SERVERLOBBY;
+				warningText.append("<" + time + "> " + "Wrong password or Game full.\n");
+				informView(ViewNotification.openWarning);
+			} else if (state == ClientState.GAMECREATION) {
+				state = ClientState.SERVERLOBBY;
+				warningText.append("<" + time + "> " + "Cannot create game.\n");
+				informView(ViewNotification.openWarning);
+			}
+		} else {
+			//TODO Fehler in Kommunikation
 		}
 	}
 
@@ -293,6 +317,7 @@ public class ClientModel extends Observable{
 	 * @param update die ankommende ComLobbyUpdateGamelist Nachricht
 	 */
 	public void receiveMessage(ComLobbyUpdateGamelist update) {
+		System.out.println("GameListUpdate erhalten");
 		if (update != null) {
 			if (update.getGameServer() != null) {
 				if (update.isRemoveFlag()) {
@@ -406,10 +431,30 @@ public class ClientModel extends Observable{
 	 * @param gameName String Name des Spieles.
 	 * @param hasPassword true, wenn das Spiel ein Passwort hat
 	 * @param password String Passwort zum sichern des Spieles.
-	 * @param ruleset das zu verwendende Regelwerk
+	 * @param game das zu verwendende Regelwerk
 	 */
-	public void hostGame(String gameName, boolean hasPassword, String password, RulesetType ruleset) {
-
+	public void hostGame(String gameName,
+						 boolean hasPassword, String password,
+						 RulesetType game) throws IllegalArgumentException {
+		if (gameName == null) {
+			gameName = new String();
+		}
+		if (hasPassword) {
+			if (password == null) {
+				hasPassword = false;
+				password = new String();
+			} else if (password.isEmpty()) {
+				hasPassword = false;
+			}
+		} else {
+			password = new String();
+		}
+		if (game == null) {
+			throw new IllegalArgumentException();
+		} else {
+			state = ClientState.GAMECREATION;
+			netIO.send(new ComCreateGameRequest(gameName, game, hasPassword, password));
+		}
 	}
 
 	/**
@@ -552,9 +597,21 @@ public class ClientModel extends Observable{
 	 *
 	 * @param name String Der Name des Spiels.
 	 * @param password String Passwort eines Spieles.
+	 * @throws IllegalArgumentException Wird geworfen, wenn ein leerer
+	 * oder null Wert in name uebergeben wird.
 	 */
-	public void joinGame(final String name, final String password) {
-
+	public void joinGame(String name, String password) throws IllegalArgumentException {
+		if (password == null) {
+			password = new String();
+		}
+		if (name == null) {
+			throw new IllegalArgumentException();
+		} else if (name.isEmpty()) {
+			throw new IllegalArgumentException();
+		} else {
+			state = ClientState.JOINREQUEST;
+			netIO.send(new ComJoinRequest(name, password));
+		}
 	}
 
 	/**
@@ -667,9 +724,9 @@ public class ClientModel extends Observable{
 		} else {
 			playerName = username;
 			setupConnection(username, uri.getHost(), port);
-		}	
+		}
 	}
-	
+
 	private void setupConnection(String username, String host, int port ) {
 		try {
 			Socket connection = new Socket(host, port);
@@ -703,7 +760,7 @@ public class ClientModel extends Observable{
 		warningText.delete(0, warningText.length());
 		return text;
 	}
-	
+
 	private void prepRulesetList() {
 		supportetGames = new LinkedList<RulesetType>();
 		supportetGames.add(RulesetType.Wizard);
