@@ -71,7 +71,7 @@ public class GameServer extends Server {
 	 * und rulesetType auf die uebergebenen Werte. Setzt den gameMasterName auf den Namen des 
 	 * gameMaster und fuegt den gameMaster dem Set an Spielern hinzu.  
 	 * Bestimmt mithilfe des Enums RulesetType das Ruleset und erstellt es.
-	 * Setzt currentPlayers auf eins und maxPlayers je nach Ruleset.
+	 * Setzt currentPlayers auf 0 und maxPlayers je nach Ruleset.
 	 * @param server ist der LobbyServer der den GameServer erstellt hat.
 	 * @param gameMaster ist der Name des Spielleiters
 	 * @param GameName ist der Name des Spiels
@@ -88,7 +88,7 @@ public class GameServer extends Server {
 		this.password = password;
 		this.hasPassword = hasPassword;
 		addPlayer(gameMaster);
-		currentPlayers = 1;
+		currentPlayers = 0;
 		if (rulesetType == RulesetType.Hearts) {
 			this.ruleset = new ServerHearts(this);
 			maxPlayers = 4;
