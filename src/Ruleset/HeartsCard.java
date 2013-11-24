@@ -1,9 +1,11 @@
 package Ruleset;
 
+import java.io.Serializable;
+
 /**
  * HeartsCard. Modelliert eine Heartskarte.
  */
-public enum HeartsCard implements Card{
+public enum HeartsCard implements Card, Serializable{
 
 	Herz2(2,Colour.HEART),Herz3(3,Colour.HEART),Herz4(4,Colour.HEART),
 	Herz5(5,Colour.HEART), Herz6(6,Colour.HEART),Herz7(7,Colour.HEART),

@@ -1,11 +1,13 @@
 package Ruleset;
 
+import java.io.Serializable;
+
 /**
  * Eine Karte die von einem Spieler auf den Ablegestapel gelegt wird und als
  * Atrribute die Karte die gespielt wurde und den Spieler der sie gespielt hat 
  * enthält.
  */
-public class DiscardedCard {
+public class DiscardedCard implements Serializable{
 	private String name;
 	private Card card;
 	

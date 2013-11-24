@@ -7,8 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import Client.ClientModel;
-import ComObjects.MsgMultiCards;
-import ComObjects.MsgMultiCardsRequest;
+import ComObjects.*;
 
 /** 
  * ClientHearts. Diese Klasse bildet das Regelwerk für den Clientmodel bei einer Partie Hearts

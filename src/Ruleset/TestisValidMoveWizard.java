@@ -68,6 +68,12 @@ public class TestisValidMoveWizard {
 	}
 	
 	@Test
+	public void testFirstCard() {		
+		boolean isValidMove = ruleset.isValidMove(WizardCard.ZaubererRot);
+		
+		assertTrue(isValidMove);
+	}
+	@Test
 	public void testSorcerer() {
 		ruleset.playCard(WizardCard.ZaubererRot);
 		ruleset.setCurrentPlayer(playerState2);
@@ -107,6 +113,21 @@ public class TestisValidMoveWizard {
 		boolean isValidMove = ruleset.isValidMove(WizardCard.NarrBlau);
 		
 		assertTrue(isValidMove);
+	}
+	
+	@Test
+	public void testFool() {
+		ruleset.setCurrentPlayer(playerState3);
+		
+		ruleset.playCard(WizardCard.NarrBlau);
+		ruleset.setCurrentPlayer(playerState1);
+		
+		ruleset.playCard(WizardCard.DreiGruen);
+		ruleset.setCurrentPlayer(playerState2);
+		
+		boolean isValidMove = ruleset.isValidMove(WizardCard.DreiRot);
+		
+		assertFalse(isValidMove);
 	}
 
 }

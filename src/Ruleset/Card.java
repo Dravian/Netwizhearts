@@ -1,5 +1,7 @@
 package Ruleset;
 
+import java.io.Serializable;
+
 /**
  * Card. Dieses Interface modelliert eine Spielkarte
  */

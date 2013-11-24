@@ -3,6 +3,7 @@
  */
 package Ruleset;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +12,7 @@ import java.util.List;
  * im GameState gespeichert. Sie enthält den Namen des Spielers, seine Handkarten
  * und OtherData.
  */
-public class PlayerState {
+public class PlayerState implements Serializable{
 	/** 
 	 * Der Name des Spielers
 	 */

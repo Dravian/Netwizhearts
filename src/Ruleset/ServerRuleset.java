@@ -6,21 +6,9 @@ package Ruleset;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.ListIterator;
-import java.util.Map;
 
 import Server.GameServer;
-import ComObjects.MsgCard;
-import ComObjects.MsgCardRequest;
-import ComObjects.MsgGameEnd;
-import ComObjects.MsgMultiCards;
-import ComObjects.MsgMultiCardsRequest;
-import ComObjects.MsgNumber;
-import ComObjects.MsgNumberRequest;
-import ComObjects.MsgSelection;
-import ComObjects.MsgSelectionRequest;
-import ComObjects.MsgUser;
-import ComObjects.RulesetMessage;
+import ComObjects.*;
 /** 
  * ServerRuleset. Das ServerRuleset ist eine akstrakte Klasse und fuer den Ablauf und die Einhaltung der Regeln eines Spiels zustaendig. 
  * Das ServerRuleset wird im GameServer instanziert und verwaltet die Zustaende des GameStates im Server. 
