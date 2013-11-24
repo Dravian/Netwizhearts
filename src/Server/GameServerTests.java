@@ -1,0 +1,114 @@
+package Server;
+
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import ComObjects.ComChatMessage;
+import ComObjects.ComJoinRequest;
+import ComObjects.ComKickPlayerRequest;
+import Ruleset.RulesetType;
+
+import test.TestPlayer;
+
+public class GameServerTests {
+	
+	LobbyServer lobby;
+	GameServer game;
+	TestPlayer player1;
+	TestPlayer player2;
+	TestPlayer player3;
+	TestPlayer player4;
+	TestPlayer player5;
+	
+	@Before
+	public void setUp() throws Exception {
+		lobby = new LobbyServer();	
+		
+		player1 = new TestPlayer(lobby);
+		player1.setPlayerName("Markus");
+		player1.setServer(lobby);
+		
+		player2 = new TestPlayer(lobby);
+		player2.setPlayerName("Hans");
+		player2.setServer(lobby);
+		
+		player3 = new TestPlayer(lobby);
+		player3.setPlayerName("Klaus");
+		player3.setServer(lobby);
+		
+		player4 = new TestPlayer(lobby);
+		player4.setPlayerName("Fritz");
+		player4.setServer(lobby);
+		
+		player5 = new TestPlayer(lobby);
+		player5.setPlayerName("Günther");
+		player5.setServer(lobby);
+		
+		lobby.addPlayer(player1);
+		lobby.addName(player1.getPlayerName());	
+		lobby.addPlayer(player2);
+		lobby.addName(player2.getPlayerName());
+		lobby.addPlayer(player3);
+		lobby.addName(player3.getPlayerName());
+		lobby.addPlayer(player4);
+		lobby.addName(player4.getPlayerName());	
+		lobby.addPlayer(player5);
+		lobby.addName(player5.getPlayerName());
+		
+		game = new GameServer(lobby, player1, "Markus' Spiel", RulesetType.Hearts, "", false);
+		player1.setServer(game);
+		lobby.addGameServer(game);
+		
+		ComJoinRequest join = new ComJoinRequest("Markus", "");
+		player2.injectComObject(join);
+		player3.injectComObject(join);
+		player4.injectComObject(join);
+		
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		lobby = null;
+		game = null;
+		player1 = null;
+		player2 = null;
+		player3 = null;
+		player4 = null;
+		player5 = null;
+	}
+
+	@Test
+	public void testChat(){
+		ComChatMessage chat = new ComChatMessage("Hallo!");
+		player1.injectComObject(chat);
+
+		assertTrue(player1.getServerInput().get(6).getClass().equals(chat.getClass()));
+		assertTrue(player2.getServerInput().get(3).getClass().equals(chat.getClass()));
+		assertTrue(player3.getServerInput().get(3).getClass().equals(chat.getClass()));
+		assertTrue(player4.getServerInput().get(3).getClass().equals(chat.getClass()));
+		
+		ComChatMessage toPlayer1 = (ComChatMessage) player1.getServerInput().get(6);
+		assertTrue(toPlayer1.getChatMessage().equals("Hallo!"));
+		
+		ComChatMessage toPlayer2 = (ComChatMessage) player2.getServerInput().get(3);
+		assertTrue(toPlayer2.getChatMessage().equals("Hallo!"));
+		
+		ComChatMessage toPlayer3 = (ComChatMessage) player3.getServerInput().get(3);
+		assertTrue(toPlayer3.getChatMessage().equals("Hallo!"));
+		
+		ComChatMessage toPlayer4 = (ComChatMessage) player4.getServerInput().get(3);
+		assertTrue(toPlayer4.getChatMessage().equals("Hallo!"));
+	}
+	
+	@Test
+	public void testKickPlayer(){
+		ComKickPlayerRequest kick = new ComKickPlayerRequest("Klaus");
+		player1.injectComObject(kick);
+		assertTrue(lobby.playerSet.contains(player3));
+		//etc
+	}
+}

@@ -184,15 +184,23 @@ public class GameServer extends Server {
 				}
 			}
 			if (toBeKicked != null){
-				toBeKicked.changeServer(lobbyServer);
-				ComInitLobby comInit = lobbyServer.initLobby();			
-				toBeKicked.send(comInit);
-				ComWarning warning = new ComWarning("Kicked out of Game!");
-				toBeKicked.send(warning);
-				ComUpdatePlayerlist update = new ComUpdatePlayerlist(toBeKicked.getPlayerName(), true);
-				broadcast(update);
+				if(!toBeKicked.equals(gameMasterName)){
+					toBeKicked.changeServer(lobbyServer);
+					ComInitLobby comInit = lobbyServer.initLobby();			
+					toBeKicked.send(comInit);
+					ComWarning warning = new ComWarning("Kicked out of Game!");
+					toBeKicked.send(warning);
+					ComUpdatePlayerlist update = new ComUpdatePlayerlist(toBeKicked.getPlayerName(), true);
+					broadcast(update);
+				} else {
+					ComWarning warning = new ComWarning("Couldn't kick player!");
+					player.send(warning);	
+				}
+				
 			} else {
 				System.err.println("Player not in Game!");
+				ComWarning warning = new ComWarning("Couldn't kick player!");
+				player.send(warning);	
 			}
 		} else {
 			System.err.println("PlayerSet empty!");
@@ -292,6 +300,8 @@ public class GameServer extends Server {
 			ruleset.runGame();			
 		} catch (IllegalNumberOfPlayersException e) {
 			System.out.println("Number of Players not matching!");
+			ComWarning warning = new ComWarning("Couldn't start game!");
+			broadcast(warning);
 			quitGame();
 			e.printStackTrace();
 		}

@@ -37,7 +37,7 @@ public abstract class Server {
 	 * @param login ist das zu behandelnde Object
 	 */
 	public synchronized void receiveMessage(Player player, ComLoginRequest login){
-		System.err.println("Das ist die falsche Methode");	
+		System.err.println("Das ist die falsche login Methode");	
 		disconnectPlayer(player);
 	}
 	/**
@@ -46,7 +46,7 @@ public abstract class Server {
 	 * @param chat ist das zu behandelnde Object
 	 */
 	public void receiveMessage(Player player, ComChatMessage chat) {
-		System.err.println("Das ist die falsche Methode");		
+		System.err.println("Das ist die falsche chat Methode");		
 		disconnectPlayer(player);
 	}
 
@@ -71,7 +71,7 @@ public abstract class Server {
 	 * @param create ist das zu behandelnde Object
 	 */
 	public void receiveMessage(Player player, ComCreateGameRequest create) {
-		System.err.println("Das ist die falsche Methode");
+		System.err.println("Das ist die falsche create Methode");
 		disconnectPlayer(player);
 	}
 	/**
@@ -80,7 +80,7 @@ public abstract class Server {
 	 * @param join ist das zu behandelnde Object
 	 */
 	public void receiveMessage(Player player, ComJoinRequest join) {
-		System.err.println("Das ist die falsche Methode");
+		System.err.println("Das ist die falsche join Methode");
 		disconnectPlayer(player);
 	}
 	/**
@@ -89,7 +89,7 @@ public abstract class Server {
 	 * @param kickPlayer ist das zu behandelnde Object
 	 */
 	public void receiveMessage(Player player, ComKickPlayerRequest kickPlayer) {
-		System.err.println("Das ist die falsche Methode");	
+		System.err.println("Das ist die falsche kick Methode");	
 		disconnectPlayer(player);
 	}
 	/**
@@ -107,7 +107,7 @@ public abstract class Server {
 	 * @param start ist das zu behandelnde Object
 	 */
 	public void receiveMessage(Player player, ComStartGame start) {
-		System.err.println("Das ist die falsche Methode");	
+		System.err.println("Das ist die falsche start Methode");	
 		disconnectPlayer(player);
 	}
 	/**
@@ -116,7 +116,7 @@ public abstract class Server {
 	 * @param ruleset ist das zu behandelnde Object
 	 */
 	public void receiveMessage(Player player, ComRuleset ruleset) {
-		System.err.println("Das ist die falsche Methode");	
+		System.err.println("Das ist die falsche ruleset Methode");	
 		disconnectPlayer(player);
 	}
 	
