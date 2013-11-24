@@ -11,7 +11,6 @@ import Server.Player;
 import Server.Server;
 
 public class TestPlayer extends Player {
-	private Server server;
 	private List<ComObject> inputComObject;
 	
 	public TestPlayer(Server lobbyServer) {
@@ -29,8 +28,8 @@ public class TestPlayer extends Player {
 	}
 	
 	public void send(ComObject com) {
-		System.out.println(((ComRuleset) com).getRulesetMessage().getClass()
-				+ getPlayerName());
+		//System.out.println(((ComRuleset) com).getRulesetMessage().getClass()
+		//		+ getPlayerName());
 		inputComObject.add(com);
 	}
 	

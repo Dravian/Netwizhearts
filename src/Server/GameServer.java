@@ -1,6 +1,3 @@
-/**
- * 
- */
 package Server;
 
 import java.util.ArrayList;
@@ -187,15 +184,23 @@ public class GameServer extends Server {
 				}
 			}
 			if (toBeKicked != null){
-				toBeKicked.changeServer(lobbyServer);
-				ComInitLobby comInit = lobbyServer.initLobby();			
-				toBeKicked.send(comInit);
-				ComWarning warning = new ComWarning("Kicked out of Game!");
-				toBeKicked.send(warning);
-				ComUpdatePlayerlist update = new ComUpdatePlayerlist(toBeKicked.getPlayerName(), true);
-				broadcast(update);
+				if(!toBeKicked.equals(gameMasterName)){
+					toBeKicked.changeServer(lobbyServer);
+					ComInitLobby comInit = lobbyServer.initLobby();			
+					toBeKicked.send(comInit);
+					ComWarning warning = new ComWarning("Kicked out of Game!");
+					toBeKicked.send(warning);
+					ComUpdatePlayerlist update = new ComUpdatePlayerlist(toBeKicked.getPlayerName(), true);
+					broadcast(update);
+				} else {
+					ComWarning warning = new ComWarning("Couldn't kick player!");
+					player.send(warning);	
+				}
+				
 			} else {
 				System.err.println("Player not in Game!");
+				ComWarning warning = new ComWarning("Couldn't kick player!");
+				player.send(warning);	
 			}
 		} else {
 			System.err.println("PlayerSet empty!");
@@ -242,7 +247,12 @@ public class GameServer extends Server {
 	}
 	
 	/**
-	 * Diese Methode beendet ein Spiel...
+	 * Diese Methode beendet ein laufendes Spiel, wenn ein Spieler dieses
+	 * verlaesst. Dieser wird an den LobbyServer zurueckgegeben und erhaelt
+	 * ein ComInitLobby. Die anderen Spieler werden ebenfalls an den LobbyServer 
+	 * zurueckgegeben und erhalten sowohl ein ComInitLobby als auch ein ComWarning.
+	 * Der GameServer wird aus dem Set des LobbyServers entfernt und die Spieler in
+	 * der Lobby erhalten ein Gamelist Update.
 	 * @param quit ist das ComObject, welches angibt, dass der Spieler das 
 	 * laufende Spiel verlaesst
 	 */
@@ -253,8 +263,6 @@ public class GameServer extends Server {
 				player.changeServer(lobbyServer);
 				ComInitLobby comInit = lobbyServer.initLobby();			
 				player.send(comInit);
-				ComWarning warning = new ComWarning("You left the Game!");
-				player.send(warning);	
 			} else {
 				System.err.println("Player not in Game!");
 			}				
@@ -280,7 +288,9 @@ public class GameServer extends Server {
 	
 	/**
 	 * Diese Methode sagt dem Ruleset, dass ein neues Spiel gestartet werden soll
-	 * indem er dessen runGame Methode aufruft.
+	 * indem er dessen runGame Methode aufruft. Faengt eine IllegalNumberOfPlayersException
+	 * vom Ruleset, falls die Anzahl der Spieler nicht stimmt und beendet in dem
+	 * Fall das Spiel.
 	 * @param player ist der Thread der die Nachricht erhalten hat
 	 * @param start ist das ComObject, dass angibt, dass das Spiel gestartet werden soll
 	 */
@@ -290,6 +300,8 @@ public class GameServer extends Server {
 			ruleset.runGame();			
 		} catch (IllegalNumberOfPlayersException e) {
 			System.out.println("Number of Players not matching!");
+			ComWarning warning = new ComWarning("Couldn't start game!");
+			broadcast(warning);
 			quitGame();
 			e.printStackTrace();
 		}
@@ -323,8 +335,9 @@ public class GameServer extends Server {
 	}
 	
 	/**
-	 * Diese Methode beendet das Spiel und gibt die Player
-	 * an den LobbyServer zurueck
+	 * Diese Methode beendet das Spiel und gibt die Player an den LobbyServer
+	 * zurueck.Der GameServer wird aus dem Set des LobbyServers entfernt
+	 * und die Spieler in der Lobby erhalten ein Gamelist Update.
 	 */
 	public void quitGame(){
 		for (Player player : playerSet) {

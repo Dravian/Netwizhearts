@@ -22,7 +22,7 @@ public class Player extends Thread{
 	/**
 	 * Der Server, an den eingehende ComObjects uebergeben werden sollen
 	 */
-	private Server server;
+	protected Server server;
 	
 	/**
 	 * Socket des Clients

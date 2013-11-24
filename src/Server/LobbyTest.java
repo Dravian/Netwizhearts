@@ -43,7 +43,6 @@ public class LobbyTest {
 		player2.setPlayerName("Hans");
 		player2.setServer(lobby);
 		
-		
 		player3 = new TestPlayer(lobby);
 		player3.setPlayerName("Klaus");
 		player3.setServer(lobby);
@@ -113,7 +112,7 @@ public class LobbyTest {
 		assertTrue(player3.getServerInput().get(0).getClass().equals(chat.getClass()));
 		assertTrue(player4.getServerInput().get(0).getClass().equals(chat.getClass()));
 		
-		ComChatMessage toPlayer1 = (ComChatMessage) player2.getServerInput().get(0);
+		ComChatMessage toPlayer1 = (ComChatMessage) player1.getServerInput().get(0);
 		assertTrue(toPlayer1.getChatMessage().equals("Hallo!"));
 		
 		ComChatMessage toPlayer2 = (ComChatMessage) player2.getServerInput().get(0);
@@ -130,6 +129,8 @@ public class LobbyTest {
 	public void testCreateGame(){
 		ComCreateGameRequest create = new ComCreateGameRequest("Markus' Spiel", RulesetType.Hearts, false, new String());
 		player1.injectComObject(create);
+		
+		assertTrue(lobby.initLobby().getGameList().size() == 1);
 		
 		assertFalse(lobby.playerSet.contains(player1));
 		assertTrue(lobby.getNames().contains(player1.getPlayerName()));
