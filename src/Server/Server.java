@@ -21,17 +21,30 @@ public abstract class Server {
 	protected Set<Player> playerSet = new HashSet<Player>();
 	
 	
-	//test
+	/**
+	 * Diese Methode verarbeitet eine Nachricht, die von einem Client kommt
+	 * @param player ist der Thread von dem die Nachricht kommt
+	 * @param object ist das zu behandelnde Object
+	 */
 	public synchronized void receiveMessage(Player player, ComObject object){
 		System.err.println("Das ist die falsche Methode");
 		disconnectPlayer(player);
 	}
 	
+	/**
+	 * Diese Methode verarbeitet eine Nachricht, die von einem Client kommt
+	 * @param player ist der Thread von dem die Nachricht kommt
+	 * @param login ist das zu behandelnde Object
+	 */
 	public synchronized void receiveMessage(Player player, ComLoginRequest login){
 		System.err.println("Das ist die falsche Methode");	
 		disconnectPlayer(player);
 	}
-	
+	/**
+	 * Diese Methode verarbeitet eine Nachricht, die von einem Client kommt
+	 * @param player ist der Thread von dem die Nachricht kommt
+	 * @param chat ist das zu behandelnde Object
+	 */
 	public void receiveMessage(Player player, ComChatMessage chat) {
 		System.err.println("Das ist die falsche Methode");		
 		disconnectPlayer(player);
@@ -40,6 +53,7 @@ public abstract class Server {
 	/**
 	 * Diese Methode schliesst die Verbindung, indem disconnectPlayer
 	 * mit dem entsprechenden Player übergeben, aufgerufen wird.
+	 * @param player ist der Thread von dem die Nachricht kommt
 	 * @param quit ist das ComObject, welches angibt, dass der Spieler das 
 	 * Spiel vollstaendig verlaesst
 	 */
@@ -51,31 +65,56 @@ public abstract class Server {
 		}
 	}
 
+	/**
+	 * Diese Methode verarbeitet eine Nachricht, die von einem Client kommt
+	 * @param player ist der Thread von dem die Nachricht kommt
+	 * @param create ist das zu behandelnde Object
+	 */
 	public void receiveMessage(Player player, ComCreateGameRequest create) {
 		System.err.println("Das ist die falsche Methode");
 		disconnectPlayer(player);
 	}
-
+	/**
+	 * Diese Methode verarbeitet eine Nachricht, die von einem Client kommt
+	 * @param player ist der Thread von dem die Nachricht kommt
+	 * @param join ist das zu behandelnde Object
+	 */
 	public void receiveMessage(Player player, ComJoinRequest join) {
 		System.err.println("Das ist die falsche Methode");
 		disconnectPlayer(player);
 	}
-
+	/**
+	 * Diese Methode verarbeitet eine Nachricht, die von einem Client kommt
+	 * @param player ist der Thread von dem die Nachricht kommt
+	 * @param kickPlayer ist das zu behandelnde Object
+	 */
 	public void receiveMessage(Player player, ComKickPlayerRequest kickPlayer) {
 		System.err.println("Das ist die falsche Methode");	
 		disconnectPlayer(player);
 	}
-
+	/**
+	 * Diese Methode verarbeitet eine Nachricht, die von einem Client kommt
+	 * @param player ist der Thread von dem die Nachricht kommt
+	 * @param leave ist das zu behandelnde Object
+	 */
 	public void receiveMessage(Player player, ComClientLeave leave) {
 		System.err.println("Das ist die falsche Methode");	
 		disconnectPlayer(player);
 	}
-
+	/**
+	 * Diese Methode verarbeitet eine Nachricht, die von einem Client kommt
+	 * @param player ist der Thread von dem die Nachricht kommt
+	 * @param start ist das zu behandelnde Object
+	 */
 	public void receiveMessage(Player player, ComStartGame start) {
 		System.err.println("Das ist die falsche Methode");	
 		disconnectPlayer(player);
 	}
-
+	/**
+	 * Diese Methode verarbeitet eine Nachricht, die von einem Client kommt
+	 * @param player ist der Thread von dem die Nachricht kommt
+	 * @param ruleset ist das zu behandelnde Object
+	 */
 	public void receiveMessage(Player player, ComRuleset ruleset) {
 		System.err.println("Das ist die falsche Methode");	
 		disconnectPlayer(player);
