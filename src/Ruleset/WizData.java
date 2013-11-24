@@ -3,10 +3,12 @@
  */
 package Ruleset;
 
+import java.io.Serializable;
+
 /** 
  * WizData. Die Otherdata eines Spielers zum Spiel Wizard
  */
-public class WizData extends OtherData {
+public class WizData extends OtherData implements Serializable{
 	/** 
 	 * Die angesagten Stiche eines Spielers
 	 */

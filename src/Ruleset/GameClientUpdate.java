@@ -1,5 +1,6 @@
 package Ruleset;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
@@ -9,7 +10,7 @@ import java.util.Map;
  * Das waeren seine Spielhand, der Ablagestapel sowie die Otherdata von allen Spielern
  * und die Trumpfkarte.
  */
-public class GameClientUpdate {
+public class GameClientUpdate implements Serializable{
 	/** 
 	 * Der Spielerzustand vom Client
 	 */

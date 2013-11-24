@@ -1,20 +1,11 @@
 package Ruleset;
 
-import java.awt.*;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import Server.GameServer;
-import ComObjects.MsgCard;
-import ComObjects.MsgCardRequest;
-import ComObjects.MsgGameEnd;
-import ComObjects.MsgNumber;
-import ComObjects.MsgNumberRequest;
-import ComObjects.MsgSelection;
-import ComObjects.MsgSelectionRequest;
+import ComObjects.*;
 
 /**
  * ServerWizard. Diese Klasse erstellt das Regelwerk zum Spiel Wizard. Sie
@@ -475,7 +466,7 @@ public class ServerWizard extends ServerRuleset {
             if (getGamePhase() == GamePhase.Ending) {
                 List<String> winners = getWinners();
                 broadcast(new MsgGameEnd(winners));
-                // QuitGame
+                // TODO quitGame
             } else {
                 setCurrentPlayer(getFirstPlayer());
 

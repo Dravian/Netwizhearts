@@ -3,6 +3,7 @@
  */
 package Ruleset;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.Set;
  * OtherData. OtherData speichert alle Spielinformationen eines Spielers, 
  * auﬂer seiner eigenen Spielhand.
  */
-public abstract class OtherData {
+public abstract class OtherData implements Serializable{
 	/**
 	 * Die Stiche die ein Spieler in einer Runde gemacht hat
 	 */

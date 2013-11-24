@@ -4,10 +4,7 @@
 package Ruleset;
 
 import Client.ClientModel;
-import ComObjects.MsgNumber;
-import ComObjects.MsgNumberRequest;
-import ComObjects.MsgSelection;
-import ComObjects.MsgSelectionRequest;
+import ComObjects.*;
 
 /** 
  * ClientWizard. Diese Klasse bildet das Regelwerk fuer den Client bei einer Partie Wizard
@@ -40,6 +37,10 @@ public class ClientWizard extends ClientRuleset {
 	public boolean isValidMove(Card card) {
 		boolean isValid = false;
 		return isValid;		
+	}
+	
+	public void resolveMessage(MsgCard card) {
+		
 	}
 	
 	/**

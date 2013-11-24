@@ -3,10 +3,12 @@
  */
 package Ruleset;
 
+import java.io.Serializable;
+
 /** 
  * HeartsData. Die Otherdata eines Spielers zum Spiel Hearts
  */
-public class HeartsData extends OtherData {
+public class HeartsData extends OtherData implements Serializable {
 	
 	public HeartsData(String name) {
 		super(name);

@@ -4,14 +4,9 @@
 package Ruleset;
 
 import java.util.List;
-import java.util.Map;
 
 import Client.ClientModel;
-import ComObjects.MsgCard;
-import ComObjects.MsgCardRequest;
-import ComObjects.MsgGameEnd;
-import ComObjects.MsgUser;
-import ComObjects.RulesetMessage;
+import ComObjects.*;
 
 /** 
  * ClientRuleset. ClientRuleset ist eine abstrakte Klasse und wird zur Regelvorauswertung im Client verwendet. 
@@ -168,6 +163,46 @@ public abstract class ClientRuleset {
 	 * @param msgCardRequest Die Nachricht vom Server
 	 */
 	public void resolveMessage(MsgGameEnd msgCardRequest) {
+		
+	}
+	
+	public void resolveMessage(MsgCard card) {
+		
+	}
+	
+	public void resolveMessage(MsgNumber number) {
+		
+	}
+	
+	public void resolveMessage(MsgSelection selection) {
+		
+	}
+	
+	public void resolveMessage(MsgMultiCards mulit){
+		
+	}
+	
+	/**
+	 * Verarbeitet die RulesetMessage dass der Server von dem Spieler verlangt eine Stichanzahl anzugeben
+	 * @param msgNumber Die Nachricht vom Server
+	 */
+	public void resolveMessage(MsgNumberRequest msgNumber) {
+		
+	}
+	
+	/**
+	 * Verarbeitet die RulesetMessage dass der Server von dem Spieler verlangt eine Farbe auszuwaehlen
+	 * @param msgSelection Die Nachricht vom Server
+	 */
+	public void resolveMessage(MsgSelectionRequest msgSelection) {
+		
+	}
+	/**
+	 * Verarbeitet die RulesetMessage dass der Server von dem Spieler verlangt mehrere Karten anzugeben
+	 * @param msgMultiCardsRequest Die Nachricht vom Server
+	 */
+	public void resolveMessage(MsgMultiCardsRequest msgMultiCardsRequest) {
+		
 		
 	}
 	

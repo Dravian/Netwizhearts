@@ -1,9 +1,11 @@
 package Ruleset;
 
+import java.io.Serializable;
+
 /**
  * WizardCard. Modelliert eine Wizardkarte
  */
-public enum WizardCard implements Card{
+public enum WizardCard implements Card, Serializable{
 
 	NarrBlau(0,Colour.BLUE), EinsBlau(1,Colour.BLUE), ZweiBlau(2,Colour.BLUE),
 	DreiBlau(3,Colour.BLUE), VierBlau(4,Colour.BLUE), FuenfBlau(5,Colour.BLUE),
