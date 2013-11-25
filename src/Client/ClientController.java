@@ -28,6 +28,9 @@ import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
 /** 
  * ClientController. Der ClientController enthaelt alle ActionListener der View und 
  * leitet durch diese Benutzereingaben an das ClientModel weiter. Sobald der 
@@ -181,8 +184,12 @@ public class ClientController {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			password.setVisible(true);
-			
+			String selectedGame = lobby.getChosenGameName();
+			if (lobby.hasPWChosenGame()) {
+				password.setVisible(true);
+			} else {
+				clientModel.joinGame(selectedGame, null);
+			}
 		}
 		
 	}

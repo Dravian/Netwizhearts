@@ -38,6 +38,7 @@ public class Password extends JFrame implements Observer{
 	 */
 	public Password() {
 		setTitle("Closed Game");
+		lang = Language.English;
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 286, 161);
 		contentPane = new JPanel();
@@ -137,7 +138,7 @@ public class Password extends JFrame implements Observer{
 		try {
 			ViewNotification message = (ViewNotification) arg;
 		switch (message) {
-		case passwordAccepted:
+		case joinGameSuccessful:
 			this.setVisible(false);
 			break;
 		default:
