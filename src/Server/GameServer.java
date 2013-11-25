@@ -246,6 +246,7 @@ public class GameServer extends Server {
 			}
 		} else {
 			System.err.println("PlayerSet empty!");
+			player.send(new ComClientQuit());
 			player.closeConnection();
 		}	
 	}
@@ -273,6 +274,7 @@ public class GameServer extends Server {
 			}				
 		} else {
 			System.err.println("PlayerSet empty!");
+			player.send(new ComClientQuit());
 			player.closeConnection();
 		}
 		if(!playerSet.isEmpty()){
@@ -286,6 +288,7 @@ public class GameServer extends Server {
 			playerSet.clear();
 		} else {
 			System.err.println("PlayerSet empty!");
+			player.send(new ComClientQuit());
 			player.closeConnection();
 		}
 		lobbyServer.removeGameServer(this);
