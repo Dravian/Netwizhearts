@@ -136,9 +136,9 @@ public class LobbyTest {
 		assertTrue(lobby.getNames().contains(player1.getPlayerName()));
 		
 		ComInitGameLobby comInit = new ComInitGameLobby(null);
-		assertTrue(player1.getServerInput().get(1).getClass().equals(comInit.getClass()));
+		assertTrue(player1.getServerInput().get(0).getClass().equals(comInit.getClass()));
 		
-		ComInitGameLobby toPlayer1 = (ComInitGameLobby) player1.getServerInput().get(1);
+		ComInitGameLobby toPlayer1 = (ComInitGameLobby) player1.getServerInput().get(0);
 		assertTrue(toPlayer1.getPlayerList().get(0) ==  player1.getPlayerName());
 		
 		ComUpdatePlayerlist updatePlayer = new ComUpdatePlayerlist(player1.getName(), true);
@@ -206,26 +206,26 @@ public class LobbyTest {
 		
 		List<String> playerList = new ArrayList<String>();
 		ComInitGameLobby comInit = new ComInitGameLobby(playerList);
-		assertTrue(player2.getServerInput().get(2).getClass().equals(comInit.getClass()));
+		assertTrue(player2.getServerInput().get(3).getClass().equals(comInit.getClass()));
 		
-		ComInitGameLobby toPlayer2 = (ComInitGameLobby) player2.getServerInput().get(2);
+		ComInitGameLobby toPlayer2 = (ComInitGameLobby) player2.getServerInput().get(3);
 		assertTrue(toPlayer2.getPlayerList().contains(player1.getPlayerName()));
 		assertTrue(toPlayer2.getPlayerList().contains(player2.getPlayerName()));
 		
 		ComUpdatePlayerlist updatePlayer = new ComUpdatePlayerlist(null, true);
-		assertTrue(player1.getServerInput().get(2).getClass().equals(updatePlayer.getClass()));	
-		assertTrue(player3.getServerInput().get(2).getClass().equals(updatePlayer.getClass()));
-		assertTrue(player4.getServerInput().get(2).getClass().equals(updatePlayer.getClass()));
+		assertTrue(player1.getServerInput().get(1).getClass().equals(updatePlayer.getClass()));	
+		assertTrue(player3.getServerInput().get(3).getClass().equals(updatePlayer.getClass()));
+		assertTrue(player4.getServerInput().get(3).getClass().equals(updatePlayer.getClass()));
 		
-		ComUpdatePlayerlist toPlayer1 = (ComUpdatePlayerlist) player1.getServerInput().get(2);
+		ComUpdatePlayerlist toPlayer1 = (ComUpdatePlayerlist) player1.getServerInput().get(1);
 		assertTrue(toPlayer1.getPlayerName() == player2.getPlayerName());
 		assertFalse(toPlayer1.isRemoveFlag());
 		
-		ComUpdatePlayerlist toPlayer3 = (ComUpdatePlayerlist) player3.getServerInput().get(2);
+		ComUpdatePlayerlist toPlayer3 = (ComUpdatePlayerlist) player3.getServerInput().get(3);
 		assertTrue(toPlayer3.getPlayerName() == player2.getPlayerName());
 		assertTrue(toPlayer3.isRemoveFlag());
 		
-		ComUpdatePlayerlist toPlayer4 = (ComUpdatePlayerlist) player4.getServerInput().get(2);
+		ComUpdatePlayerlist toPlayer4 = (ComUpdatePlayerlist) player4.getServerInput().get(3);
 		assertTrue(toPlayer4.getPlayerName() == player2.getPlayerName());
 		assertTrue(toPlayer4.isRemoveFlag());		
 	}
@@ -243,26 +243,26 @@ public class LobbyTest {
 		
 		List<String> playerList = new ArrayList<String>();
 		ComInitGameLobby comInit = new ComInitGameLobby(playerList);
-		assertTrue(player2.getServerInput().get(2).getClass().equals(comInit.getClass()));
+		assertTrue(player2.getServerInput().get(3).getClass().equals(comInit.getClass()));
 		
-		ComInitGameLobby toPlayer2 = (ComInitGameLobby) player2.getServerInput().get(2);
+		ComInitGameLobby toPlayer2 = (ComInitGameLobby) player2.getServerInput().get(3);
 		assertTrue(toPlayer2.getPlayerList().contains(player1.getPlayerName()));
 		assertTrue(toPlayer2.getPlayerList().contains(player2.getPlayerName()));
 		
 		ComUpdatePlayerlist updatePlayer = new ComUpdatePlayerlist(null, true);
-		assertTrue(player1.getServerInput().get(2).getClass().equals(updatePlayer.getClass()));	
-		assertTrue(player3.getServerInput().get(2).getClass().equals(updatePlayer.getClass()));
-		assertTrue(player4.getServerInput().get(2).getClass().equals(updatePlayer.getClass()));
+		assertTrue(player1.getServerInput().get(1).getClass().equals(updatePlayer.getClass()));	
+		assertTrue(player3.getServerInput().get(3).getClass().equals(updatePlayer.getClass()));
+		assertTrue(player4.getServerInput().get(3).getClass().equals(updatePlayer.getClass()));
 		
-		ComUpdatePlayerlist toPlayer1 = (ComUpdatePlayerlist) player1.getServerInput().get(2);
+		ComUpdatePlayerlist toPlayer1 = (ComUpdatePlayerlist) player1.getServerInput().get(1);
 		assertTrue(toPlayer1.getPlayerName() == player2.getPlayerName());
 		assertFalse(toPlayer1.isRemoveFlag());
 		
-		ComUpdatePlayerlist toPlayer3 = (ComUpdatePlayerlist) player3.getServerInput().get(2);
+		ComUpdatePlayerlist toPlayer3 = (ComUpdatePlayerlist) player3.getServerInput().get(3);
 		assertTrue(toPlayer3.getPlayerName() == player2.getPlayerName());
 		assertTrue(toPlayer3.isRemoveFlag());
 		
-		ComUpdatePlayerlist toPlayer4 = (ComUpdatePlayerlist) player4.getServerInput().get(2);
+		ComUpdatePlayerlist toPlayer4 = (ComUpdatePlayerlist) player4.getServerInput().get(3);
 		assertTrue(toPlayer4.getPlayerName() == player2.getPlayerName());
 		assertTrue(toPlayer4.isRemoveFlag());		
 	}
@@ -278,7 +278,7 @@ public class LobbyTest {
 		assertTrue(lobby.playerSet.contains(player2));
 		
 		ComWarning warning = new ComWarning(new String());
-		assertTrue(player2.getServerInput().get(2).getClass().equals(warning.getClass()));	
+		assertTrue(player2.getServerInput().get(3).getClass().equals(warning.getClass()));	
 	}
 	
 	@Test
@@ -293,6 +293,6 @@ public class LobbyTest {
 		player5.injectComObject(join);
 		
 		ComWarning warning = new ComWarning(new String());
-		assertTrue(player5.getServerInput().get(5).getClass().equals(warning.getClass()));			
+		assertTrue(player5.getServerInput().get(9).getClass().equals(warning.getClass()));			
 	}
 }

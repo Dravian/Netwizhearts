@@ -142,7 +142,8 @@ public class LobbyServer extends Server {
 		ComInitGameLobby comInit = game.initLobby();
 		player.send(comInit);
 		removePlayer(player);
-		broadcast(new ComUpdatePlayerlist(player.getPlayerName(), true));	
+		broadcast(new ComUpdatePlayerlist(player.getPlayerName(), true));
+		broadcast(new ComLobbyUpdateGamelist(false, game.getRepresentation()));
 	}
 
 	/**
