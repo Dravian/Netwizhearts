@@ -128,7 +128,6 @@ public class Player extends Thread{
 	 */
 	public void closeConnection(){
 		try {
-			send(new ComClientQuit());
 			run = false;
 			comIn.close();
 			comOut.close();
