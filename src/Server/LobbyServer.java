@@ -104,6 +104,7 @@ public class LobbyServer extends Server {
 							broadcast(new ComLobbyUpdateGamelist(false, game.getRepresentation()));
 						} else {
 							System.err.println("Password inconsistent!");
+							player.send(new ComClientQuit());
 							disconnectPlayer(player);
 						}
 					} else {		
@@ -115,19 +116,23 @@ public class LobbyServer extends Server {
 							broadcast(new ComLobbyUpdateGamelist(false, game.getRepresentation()));
 						} else {
 							System.err.println("Password inconsistent!");
+							player.send(new ComClientQuit());
 							disconnectPlayer(player);
 						}
 					}
 				} else {
 					System.err.println("Password null!");
+					player.send(new ComClientQuit());
 					disconnectPlayer(player);
 				}			
 			} else {
 				System.err.println("Unbekanntes Ruleset");
+				player.send(new ComClientQuit());
 				disconnectPlayer(player);
 			}
 		} else {
 			System.err.println("Invalid Input");
+			player.send(new ComClientQuit());
 			disconnectPlayer(player);
 		}
 		
@@ -203,6 +208,7 @@ public class LobbyServer extends Server {
 			}
 		} else {
 			System.err.println("Kein GameMaster!");
+			player.send(new ComClientQuit());
 			disconnectPlayer(player);
 		}
 		
