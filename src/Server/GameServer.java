@@ -184,13 +184,14 @@ public class GameServer extends Server {
 			}
 			if (toBeKicked != null){
 				if(!toBeKicked.getPlayerName().equals(gameMasterName)){
+					lobbyServer.broadcast(new ComLobbyUpdateGamelist(false, this.getRepresentation()));
 					toBeKicked.changeServer(lobbyServer);
 					ComInitLobby comInit = lobbyServer.initLobby();			
 					toBeKicked.send(comInit);
 					ComWarning warning = new ComWarning("Kicked out of Game!");
 					toBeKicked.send(warning);
 					ComUpdatePlayerlist update = new ComUpdatePlayerlist(toBeKicked.getPlayerName(), true);
-					broadcast(update);
+					broadcast(update);					
 				} else {
 					ComWarning warning = new ComWarning("Couldn't kick player!");
 					player.send(warning);	
@@ -223,6 +224,7 @@ public class GameServer extends Server {
 			if (playerSet.contains(leavingPlayer)){
 				if(leavingPlayer.getPlayerName().equals(gameMasterName)){
 					for (Player back : playerSet) {
+						lobbyServer.broadcast(new ComLobbyUpdateGamelist(false, this.getRepresentation()));
 						back.changeServer(lobbyServer);
 						ComInitLobby comInit = lobbyServer.initLobby();			
 						back.send(comInit);

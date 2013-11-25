@@ -90,8 +90,8 @@ public class GameServerTests {
 
 		assertTrue(player1.getServerInput().get(3).getClass().equals(chat.getClass()));
 		assertTrue(player2.getServerInput().get(3).getClass().equals(chat.getClass()));
-		assertTrue(player3.getServerInput().get(3).getClass().equals(chat.getClass()));
-		assertTrue(player4.getServerInput().get(3).getClass().equals(chat.getClass()));
+		assertTrue(player3.getServerInput().get(4).getClass().equals(chat.getClass()));
+		assertTrue(player4.getServerInput().get(5).getClass().equals(chat.getClass()));
 		
 		ComChatMessage toPlayer1 = (ComChatMessage) player1.getServerInput().get(3);
 		assertTrue(toPlayer1.getChatMessage().equals("Hallo!"));
@@ -99,10 +99,10 @@ public class GameServerTests {
 		ComChatMessage toPlayer2 = (ComChatMessage) player2.getServerInput().get(3);
 		assertTrue(toPlayer2.getChatMessage().equals("Hallo!"));
 		
-		ComChatMessage toPlayer3 = (ComChatMessage) player3.getServerInput().get(3);
+		ComChatMessage toPlayer3 = (ComChatMessage) player3.getServerInput().get(4);
 		assertTrue(toPlayer3.getChatMessage().equals("Hallo!"));
 		
-		ComChatMessage toPlayer4 = (ComChatMessage) player4.getServerInput().get(3);
+		ComChatMessage toPlayer4 = (ComChatMessage) player4.getServerInput().get(5);
 		assertTrue(toPlayer4.getChatMessage().equals("Hallo!"));
 	}
 	
@@ -113,12 +113,12 @@ public class GameServerTests {
 		assertTrue(lobby.playerSet.contains(player3));
 		
 		ComInitLobby init = new ComInitLobby(null, null);
-		assertTrue(player3.getServerInput().get(3).getClass().equals(init.getClass()));
+		assertTrue(player3.getServerInput().get(4).getClass().equals(init.getClass()));
 		
 		ComWarning warning = new ComWarning("");
-		assertTrue(player3.getServerInput().get(4).getClass().equals(warning.getClass()));
+		assertTrue(player3.getServerInput().get(5).getClass().equals(warning.getClass()));
 		
-		ComWarning toPlayer2 = (ComWarning) player3.getServerInput().get(4);
+		ComWarning toPlayer2 = (ComWarning) player3.getServerInput().get(5);
 		assertTrue(toPlayer2.getWarning().equals("Kicked out of Game!"));
 	}
 	
