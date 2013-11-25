@@ -78,7 +78,7 @@ public class ServerWizard extends ServerRuleset {
                     + card.getColour() + " geh�rt nicht zum Spiel");
 
         } else if (!isValidMove(card)) {
-
+        	setGamePhase(GamePhase.CardRequest);
             throw new RulesetException("Der Spieler" + name + "hat die Karte "
                     + card.getValue() + card.getColour()
                     + " gespielt, obwohl sie kein g�ltiger "
@@ -86,6 +86,7 @@ public class ServerWizard extends ServerRuleset {
 
         } else {
             updatePlayers();
+            setGamePhase(GamePhase.Playing);
             playCard(card);
             
             if (getGameState().getPlayedCards().size() == getPlayers().size()) {
@@ -145,9 +146,6 @@ public class ServerWizard extends ServerRuleset {
                 throw new RulesetException("Die Farbe " + colour
                         + "existiert in Wizard nicht");
             } else {
-                /*Soll in isValidColour rein
-				 * 
-				 */
                 ((WizardCard) getTrumpCard()).changeSorcererColour(colour);
 
                 broadcast(new MsgSelection(colour));
@@ -163,6 +161,7 @@ public class ServerWizard extends ServerRuleset {
     protected boolean isValidMove(Card card) {
         int valueOfFool = 0;
     	int valueOfSorcerer = 14;
+    	setGamePhase(GamePhase.Playing);
     	
     	if(getPlayedCards().size() == getPlayers().size()) {
     		return false;
@@ -223,7 +222,11 @@ public class ServerWizard extends ServerRuleset {
      * @return true falls die Stichangabe g�ltig ist, false wenn nicht
      */
     private boolean isValidNumber(int number) {
-        return true;
+    	if(number < 0 || number > getRoundNumber()) {
+    		return false;
+    	}else {
+    		return true;
+    	}
     }
 
     /**
@@ -233,14 +236,27 @@ public class ServerWizard extends ServerRuleset {
      * @return true falls die Farbe gueltig ist, false wenn nicht
      */
     private boolean isValidColour(Colour colour) {
-        return true;
+    	if(colour == Colour.RED){
+    		return true;
+    	
+    	} else if(colour == Colour.GREEN) {
+    		return true;
+    	
+    	} else if(colour == Colour.BLUE) {
+    		return true;
+    	
+    	} else if(colour == Colour.YELLOW) {
+    		return true;
+    	
+    	} else {
+    		return false;
+    	}
     }
 
     @Override
     protected void calculateTricks() {
         int valueOfFool = 0;
         int valueOfSorcerer = 14;
-
         DiscardedCard strongestCard = getPlayedCards().get(0);
 
         for (int i = 0; i < getPlayedCards().size(); i++) {

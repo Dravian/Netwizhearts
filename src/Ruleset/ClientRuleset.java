@@ -86,6 +86,13 @@ public abstract class ClientRuleset {
 	}
 	
 	/**
+	 * Setzt die Spielphase neu
+	 * @param phase Die neue Spielphase
+	 */
+	protected void setGamePhase(GamePhase phase) {
+		gamePhase = phase;
+	}
+	/**
 	 * Gibt die momentane Spielphase zurück
 	 * @return gamePhase Die Spielphase
 	 */
@@ -134,11 +141,29 @@ public abstract class ClientRuleset {
 		return gameState.getTrumpCard();
 	}
 	
+	/**
+	 * Holt die Anzahl der gespielten Runden
+	 * @return Die Anzahl der Runden
+	 */
+	public int getRoundNumber() {
+		return gameState.getRoundNumber();
+	}
+	
+	/**
+	 * Holt die gespielten Karten auf dem Ablagestapel als DiscardedCards
+	 * @return Die gespielten Karten
+	 */
+	public List<DiscardedCard> getPlayedCards() {
+		return gameState.getPlayedCards();
+	}
+	
 	/** 
 	 * Verarbeitet eine RulesetMessage vom Server
 	 * @param clientUpdate Die Nachricht vom Server
 	 */
 	public void resolveMessage(RulesetMessage message) {
+		throw new RulesetException("Das Comobject RulesetMessage wird hier nicht" +
+				"gebraucht");
 	}
 	
 	/** 
@@ -155,7 +180,8 @@ public abstract class ClientRuleset {
 	 * @param msgCardRequest Die Nachricht vom Server
 	 */
 	public void resolveMessage(MsgCardRequest msgCardRequest) {
-		
+		throw new RulesetException("Das Comobject MsgCardRequest wird hier nicht" +
+				"gebraucht");
 	}
 	
 	/**
@@ -163,23 +189,28 @@ public abstract class ClientRuleset {
 	 * @param msgCardRequest Die Nachricht vom Server
 	 */
 	public void resolveMessage(MsgGameEnd msgCardRequest) {
-		
+		throw new RulesetException("Das Comobject MsgGameEnd wird hier nicht" +
+				"gebraucht");
 	}
 	
 	public void resolveMessage(MsgCard card) {
-		
+		throw new RulesetException("Das Comobject MsgCard wird hier nicht" +
+				"gebraucht");
 	}
 	
 	public void resolveMessage(MsgNumber number) {
-		
+		throw new RulesetException("Das Comobject MsgNumber wird hier nicht" +
+				"gebraucht");
 	}
 	
 	public void resolveMessage(MsgSelection selection) {
-		
+		throw new RulesetException("Das Comobject MsgSelection wird hier nicht" +
+				"gebraucht");
 	}
 	
 	public void resolveMessage(MsgMultiCards mulit){
-		
+		throw new RulesetException("Das Comobject MsgMultiCards wird hier nicht" +
+				"gebraucht");
 	}
 	
 	/**
@@ -187,7 +218,8 @@ public abstract class ClientRuleset {
 	 * @param msgNumber Die Nachricht vom Server
 	 */
 	public void resolveMessage(MsgNumberRequest msgNumber) {
-		
+		throw new RulesetException("Das Comobject MsgNumberRequest wird hier nicht" +
+				"gebraucht");
 	}
 	
 	/**
@@ -195,15 +227,17 @@ public abstract class ClientRuleset {
 	 * @param msgSelection Die Nachricht vom Server
 	 */
 	public void resolveMessage(MsgSelectionRequest msgSelection) {
-		
+		throw new RulesetException("Das Comobject MsgSelection wird hier nicht" +
+				"gebraucht");
 	}
+	
 	/**
 	 * Verarbeitet die RulesetMessage dass der Server von dem Spieler verlangt mehrere Karten anzugeben
 	 * @param msgMultiCardsRequest Die Nachricht vom Server
 	 */
-	public void resolveMessage(MsgMultiCardsRequest msgMultiCardsRequest) {
-		
-		
+	public void resolveMessage(MsgMultiCardsRequest msgMultiCardsRequest) {		
+		throw new RulesetException("Das Comobject MsgMultiCardsRequest wird hier nicht" +
+				"gebraucht");
 	}
 	
 	/**
@@ -211,7 +245,7 @@ public abstract class ClientRuleset {
 	 * @param winner Der Gewinner
 	 */
 	protected void announceWinner(String winner) {
-		
+		client.announceWinner(winner);
 	}
 	
 	/**
@@ -228,5 +262,5 @@ public abstract class ClientRuleset {
 	 * @param card Die Karte
 	 * @return true falls die Karte gueltig ist, false wenn nicht
 	 */
-	public abstract boolean isValidMove(Card card);
+	protected abstract boolean isValidMove(Card card);
 }
