@@ -129,6 +129,10 @@ public class ClientModel extends Observable{
 	public void closeProgram() {
 		netIO.send(new ComClientQuit());
 		netIO.closeConnection();
+		netIO = null;
+		warningText = null;
+		playerList = null;
+		gameList = null;
 	}
 
 	/**
