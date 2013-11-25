@@ -30,6 +30,8 @@ public class LobbyTest {
 	TestPlayer player3;
 	TestPlayer player4;
 	TestPlayer player5;
+	TestPlayer player6;
+	TestPlayer player7;
 
 	@Before
 	public void setUp() throws Exception {
@@ -55,6 +57,14 @@ public class LobbyTest {
 		player5.setPlayerName("Günther");
 		player5.setServer(lobby);
 		
+		player6 = new TestPlayer(lobby);
+		player6.setPlayerName("Anna");
+		player6.setServer(lobby);
+		
+		player7 = new TestPlayer(lobby);
+		player7.setPlayerName("Peter");
+		player7.setServer(lobby);
+		
 		lobby.addPlayer(player1);
 		lobby.addName(player1.getPlayerName());	
 		lobby.addPlayer(player2);
@@ -65,6 +75,11 @@ public class LobbyTest {
 		lobby.addName(player4.getPlayerName());	
 		lobby.addPlayer(player5);
 		lobby.addName(player5.getPlayerName());	
+		lobby.addPlayer(player6);
+		lobby.addName(player6.getPlayerName());
+		lobby.addPlayer(player7);
+		lobby.addName(player7.getPlayerName());
+		
 	}
 
 	@After
@@ -285,7 +300,7 @@ public class LobbyTest {
 	}
 	
 	@Test
-	public void testJoinFullGame(){
+	public void testJoinFullGameHearts(){
 		ComCreateGameRequest create = new ComCreateGameRequest("Markus' Spiel", RulesetType.Hearts, false, new String());
 		player1.injectComObject(create);
 		
@@ -296,6 +311,29 @@ public class LobbyTest {
 		player5.injectComObject(join);
 		
 		ComWarning warning = new ComWarning(new String());
-		assertTrue(player5.getServerInput().get(9).getClass().equals(warning.getClass()));			
+		assertTrue(player5.getServerInput().get(9).getClass().equals(warning.getClass()));
+		
+		ComWarning toPlayer5 = (ComWarning) player5.getServerInput().get(9);
+		assertTrue(toPlayer5.getWarning().equals("Game already full!"));
+	}
+	
+	@Test
+	public void testJoinFullGameWizard(){
+		ComCreateGameRequest create = new ComCreateGameRequest("Markus' Spiel", RulesetType.Wizard, false, new String());
+		player1.injectComObject(create);
+		
+		ComJoinRequest join = new ComJoinRequest("Markus", new String());
+		player2.injectComObject(join);
+		player3.injectComObject(join);
+		player4.injectComObject(join);
+		player5.injectComObject(join);
+		player6.injectComObject(join);
+		player7.injectComObject(join);
+		
+		ComWarning warning = new ComWarning(new String());
+		assertTrue(player7.getServerInput().get(13).getClass().equals(warning.getClass()));	
+		
+		ComWarning toPlayer7 = (ComWarning) player7.getServerInput().get(13);
+		assertTrue(toPlayer7.getWarning().equals("Game already full!"));
 	}
 }
