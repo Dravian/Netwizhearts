@@ -8,8 +8,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import ComObjects.ComChatMessage;
+import ComObjects.ComInitLobby;
 import ComObjects.ComJoinRequest;
 import ComObjects.ComKickPlayerRequest;
+import ComObjects.ComWarning;
 import Ruleset.RulesetType;
 
 import test.TestPlayer;
@@ -60,7 +62,7 @@ public class GameServerTests {
 		lobby.addName(player5.getPlayerName());
 		
 		game = new GameServer(lobby, player1, "Markus' Spiel", RulesetType.Hearts, "", false);
-		player1.setServer(game);
+		player1.changeServer(game);
 		lobby.addGameServer(game);
 		
 		ComJoinRequest join = new ComJoinRequest("Markus", "");
@@ -86,12 +88,12 @@ public class GameServerTests {
 		ComChatMessage chat = new ComChatMessage("Hallo!");
 		player1.injectComObject(chat);
 
-		assertTrue(player1.getServerInput().get(6).getClass().equals(chat.getClass()));
+		assertTrue(player1.getServerInput().get(3).getClass().equals(chat.getClass()));
 		assertTrue(player2.getServerInput().get(3).getClass().equals(chat.getClass()));
 		assertTrue(player3.getServerInput().get(3).getClass().equals(chat.getClass()));
 		assertTrue(player4.getServerInput().get(3).getClass().equals(chat.getClass()));
 		
-		ComChatMessage toPlayer1 = (ComChatMessage) player1.getServerInput().get(6);
+		ComChatMessage toPlayer1 = (ComChatMessage) player1.getServerInput().get(3);
 		assertTrue(toPlayer1.getChatMessage().equals("Hallo!"));
 		
 		ComChatMessage toPlayer2 = (ComChatMessage) player2.getServerInput().get(3);
@@ -109,6 +111,39 @@ public class GameServerTests {
 		ComKickPlayerRequest kick = new ComKickPlayerRequest("Klaus");
 		player1.injectComObject(kick);
 		assertTrue(lobby.playerSet.contains(player3));
-		//etc
+		
+		ComInitLobby init = new ComInitLobby(null, null);
+		assertTrue(player3.getServerInput().get(3).getClass().equals(init.getClass()));
+		
+		ComWarning warning = new ComWarning("");
+		assertTrue(player3.getServerInput().get(4).getClass().equals(warning.getClass()));
+		
+		ComWarning toPlayer2 = (ComWarning) player3.getServerInput().get(4);
+		assertTrue(toPlayer2.getWarning().equals("Kicked out of Game!"));
+	}
+	
+	@Test
+	public void testKickPlayerNotInGame(){
+		ComKickPlayerRequest kick = new ComKickPlayerRequest("Peter");
+		player1.injectComObject(kick);
+		
+		ComWarning warning = new ComWarning("");
+		assertTrue(player1.getServerInput().get(3).getClass().equals(warning.getClass()));
+		
+		ComWarning toPlayer1 = (ComWarning) player1.getServerInput().get(3);
+		assertTrue(toPlayer1.getWarning().equals("Couldn't kick player!"));
+	}
+	
+	@Test
+	public void testKickGameMaster(){
+		ComKickPlayerRequest kick = new ComKickPlayerRequest("Markus");
+		player1.injectComObject(kick);
+		assertFalse(lobby.playerSet.contains(player1));
+		
+		ComWarning warning = new ComWarning("");
+		assertTrue(player1.getServerInput().get(3).getClass().equals(warning.getClass()));
+		
+		ComWarning toPlayer1 = (ComWarning) player1.getServerInput().get(3);
+		assertTrue(toPlayer1.getWarning().equals("Couldn't kick player!"));
 	}
 }

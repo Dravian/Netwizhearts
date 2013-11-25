@@ -135,8 +135,7 @@ public class LobbyTest {
 		assertFalse(lobby.playerSet.contains(player1));
 		assertTrue(lobby.getNames().contains(player1.getPlayerName()));
 		
-		List<String> playerList = new ArrayList<String>();
-		ComInitGameLobby comInit = new ComInitGameLobby(playerList);
+		ComInitGameLobby comInit = new ComInitGameLobby(null);
 		assertTrue(player1.getServerInput().get(1).getClass().equals(comInit.getClass()));
 		
 		ComInitGameLobby toPlayer1 = (ComInitGameLobby) player1.getServerInput().get(1);
