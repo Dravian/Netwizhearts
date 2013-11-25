@@ -325,12 +325,17 @@ public class ClientModel extends Observable{
 	 */
 	public void receiveMessage(ComLobbyUpdateGamelist update) {
 		if (update != null) {
-			if (update.getGameServer() != null) {
-				if (update.isRemoveFlag()) {
-					if (gameList.contains(update.getGameServer())) {
-						gameList.remove(update.getGameServer());
+			GameServerRepresentation gameUpdate = update.getGameServer();
+			String gameMaster;
+			if (gameUpdate != null) {
+				for (GameServerRepresentation gameInList : gameList ) {
+					gameMaster = gameInList.getGameMasterName();
+					if (gameMaster.equals(gameUpdate.getGameMasterName())) {
+						gameList.remove(gameInList);
+						break;
 					}
-				} else if (!gameList.contains(update.getGameServer())) {
+				}
+				if (!update.isRemoveFlag()) {
 					gameList.add(update.getGameServer());
 				}
 				informView(ViewNotification.gameListUpdate);
