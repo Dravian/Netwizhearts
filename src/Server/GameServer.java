@@ -185,6 +185,7 @@ public class GameServer extends Server {
 			if (toBeKicked != null){
 				if(!toBeKicked.getPlayerName().equals(gameMasterName)){
 					lobbyServer.broadcast(new ComLobbyUpdateGamelist(false, this.getRepresentation()));
+					removePlayer(toBeKicked);
 					toBeKicked.changeServer(lobbyServer);
 					ComInitLobby comInit = lobbyServer.initLobby();			
 					toBeKicked.send(comInit);
@@ -223,15 +224,17 @@ public class GameServer extends Server {
 		if(!playerSet.isEmpty()){
 			if (playerSet.contains(leavingPlayer)){
 				if(leavingPlayer.getPlayerName().equals(gameMasterName)){
-					for (Player back : playerSet) {
-						lobbyServer.broadcast(new ComLobbyUpdateGamelist(false, this.getRepresentation()));
-						back.changeServer(lobbyServer);
-						ComInitLobby comInit = lobbyServer.initLobby();			
-						back.send(comInit);
-						ComWarning warning = new ComWarning("Game has been disbanded!");
-						back.send(warning);	
+					lobbyServer.broadcast(new ComLobbyUpdateGamelist(false, this.getRepresentation()));
+					for (Player back : playerSet) {	
+							back.changeServer(lobbyServer);
+							ComInitLobby comInit = lobbyServer.initLobby();			
+							back.send(comInit);
+							ComWarning warning = new ComWarning("Game has been disbanded!");
+							back.send(warning);	
 					}
+					playerSet.clear();
 				} else {
+					removePlayer(leavingPlayer);
 					leavingPlayer.changeServer(lobbyServer);
 					ComInitLobby comInit = lobbyServer.initLobby();			
 					leavingPlayer.send(comInit);
@@ -261,6 +264,7 @@ public class GameServer extends Server {
 	public synchronized void receiveMessage(Player player, ComClientQuit quit){
 		if(!playerSet.isEmpty()){
 			if (playerSet.contains(player)) {
+				removePlayer(player);
 				player.changeServer(lobbyServer);
 				ComInitLobby comInit = lobbyServer.initLobby();			
 				player.send(comInit);
@@ -278,7 +282,8 @@ public class GameServer extends Server {
 				back.send(comInit);
 				ComWarning warning = new ComWarning(player.getPlayerName() + " left the Game");
 				back.send(warning);	
-			}		
+			}	
+			playerSet.clear();
 		} else {
 			System.err.println("PlayerSet empty!");
 			player.closeConnection();
@@ -346,6 +351,7 @@ public class GameServer extends Server {
 			ComInitLobby comInit = lobbyServer.initLobby();			
 			player.send(comInit);
 		}
+		playerSet.clear();
 		lobbyServer.removeGameServer(this);
 		lobbyServer.broadcast(new ComLobbyUpdateGamelist(true, getRepresentation()));
 	}
@@ -379,7 +385,8 @@ public class GameServer extends Server {
 				back.send(comInit);
 				ComWarning warning = new ComWarning("Game Disbanded!");
 				back.send(warning);	
-			}		
+			}
+			playerSet.clear();
 		} else {
 			System.err.println("PlayerSet empty!");
 		}

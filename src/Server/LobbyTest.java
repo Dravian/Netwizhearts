@@ -159,7 +159,8 @@ public class LobbyTest {
 		assertTrue(to4player.getPlayerName().equals(player1.getPlayerName()));
 		assertTrue(to4player.isRemoveFlag());
 		
-		ComLobbyUpdateGamelist updateGame = new ComLobbyUpdateGamelist(false, new GameServerRepresentation(player1.getPlayerName(), "Markus' Spiel", 4, 1, RulesetType.Hearts, false));
+		ComLobbyUpdateGamelist updateGame = new ComLobbyUpdateGamelist(false, new GameServerRepresentation(player1.getPlayerName(), 
+				"Markus' Spiel", 4, 1, RulesetType.Hearts, false));
 		assertTrue(player2.getServerInput().get(1).getClass().equals(updateGame.getClass()));
 		assertTrue(player3.getServerInput().get(1).getClass().equals(updateGame.getClass()));
 		assertTrue(player4.getServerInput().get(1).getClass().equals(updateGame.getClass()));
@@ -195,7 +196,8 @@ public class LobbyTest {
 	
 	@Test
 	public void testJoinGame(){
-		ComCreateGameRequest create = new ComCreateGameRequest("Markus' Spiel", RulesetType.Hearts, false, new String());
+		ComCreateGameRequest create = new ComCreateGameRequest("Markus' Spiel",
+				RulesetType.Hearts, false, new String());
 		player1.injectComObject(create);
 		
 		ComJoinRequest join = new ComJoinRequest("Markus", new String());
@@ -232,7 +234,8 @@ public class LobbyTest {
 	
 	@Test
 	public void testJoinGameWithPassword(){
-		ComCreateGameRequest create = new ComCreateGameRequest("Markus' Spiel", RulesetType.Hearts, true, "Passwort");
+		ComCreateGameRequest create = new ComCreateGameRequest("Markus' Spiel", 
+				RulesetType.Hearts, true, "Passwort");
 		player1.injectComObject(create);
 		
 		ComJoinRequest join = new ComJoinRequest("Markus", "Passwort");
