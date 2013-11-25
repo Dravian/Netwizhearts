@@ -138,6 +138,7 @@ public class LobbyServer extends Server {
 	 * @param game
 	 */
 	private void addPlayerToGame(Player player, GameServer game) {
+		removePlayer(player);
 		player.changeServer(game);
 		ComInitGameLobby comInit = game.initLobby();
 		player.send(comInit);
