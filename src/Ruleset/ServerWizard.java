@@ -161,110 +161,58 @@ public class ServerWizard extends ServerRuleset {
 
     @Override
     protected boolean isValidMove(Card card) {
-        boolean isValid = false;
-        Colour firstCardColour = getPlayedCards().get(0).getCard().getColour();
-        Card firstCard = getPlayedCards().get(0).getCard();
-        //erste Karte ist mussFarbe, Narr, Zauberer
-        if (card == WizardCard.NarrBlau
-                || card == WizardCard.NarrRot
-                || card == WizardCard.NarrGelb
-                || card == WizardCard.NarrGruen
-                || card == WizardCard.ZaubererBlau
-                || card == WizardCard.ZaubererGelb
-                || card == WizardCard.ZaubererGruen
-                || card == WizardCard.ZaubererRot) {
-            isValid = true;
-        } else {
-            if (getPlayedCards().isEmpty()) {
-                isValid = true;
-            } else if (firstCard == WizardCard.NarrBlau
-                    || firstCard == WizardCard.NarrRot
-                    || firstCard == WizardCard.NarrGelb
-                    || firstCard == WizardCard.NarrGruen) {
-                //die nächste Karte bestimmt die Farbe
-                if (getPlayedCards().get(1) == null) { // größe der liste < 2???
-                    isValid = true;
-                } else {
-                    //laufe durch die liste auf der suche nach der ersten richtigen karte
-                    findColour:
-                    for (DiscardedCard card1 : getPlayedCards()) {
-                        if (card1.getCard() == WizardCard.ZaubererBlau
-                                || card1.getCard() == WizardCard.ZaubererGelb
-                                || card1.getCard() == WizardCard.ZaubererGruen
-                                || card1.getCard() == WizardCard.ZaubererRot) {
-                            isValid = true;
-                            break findColour;
-                        } else if (card1.getCard() == WizardCard.NarrBlau
-                                || card1.getCard() == WizardCard.NarrGruen
-                                || card1.getCard() == WizardCard.NarrGelb
-                                || card1.getCard() == WizardCard.NarrRot) {
-                            //tue nichts und suche weiter
-                        } else {
-                            //wenn die farbe der zu spielenden entspricht
-                            if (card.getColour() == card1.getCard().getColour()) {
-                                isValid = true;
-                                break findColour;
-                            } else {
-                                //wenn die farbe von card1 nicht mehr auf der hand ist
-                                if (!getCurrentPlayer().getHand().contains(card1.getCard().getColour())) {
-                                    isValid = true;
-                                    break findColour;
-                                }
-                            }
-                        }
-                    }
-                }
-            } else if (firstCard == WizardCard.ZaubererBlau
-                    || firstCard == WizardCard.ZaubererGelb
-                    || firstCard == WizardCard.ZaubererGruen
-                    || firstCard == WizardCard.ZaubererRot) {
-                //alles darf gelegt werden
-                isValid = true;
-            } else {
-                if (firstCardColour == Colour.BLUE) {
-                    // wenn karte blau kein problem
-                    if (card.getColour() == Colour.BLUE) {
-                        isValid = true;
-                    // wenn karte nicht blau dann nur wenn keine blauen mehr auf der hand
-                    } else {
-                        if (!getCurrentPlayer().getHand().contains(Colour.BLUE)) {
-                            isValid = true;
-                        }
-                    }
-                } else if (firstCardColour == Colour.RED) {
-                    // wenn karte rot kein problem
-                    if (card.getColour() == Colour.RED) {
-                        isValid = true;
-                        // wenn karte nicht rot dann nur wenn keine roten mehr auf der hand
-                    } else {
-                        if (!getCurrentPlayer().getHand().contains(Colour.RED)) {
-                            isValid = true;
-                        }
-                    }
-                } else if (firstCardColour == Colour.YELLOW) {
-                    // wenn karte gelb kein problem
-                    if (card.getColour() == Colour.YELLOW) {
-                        isValid = true;
-                        // wenn karte nicht gelb dann nur wenn keine gelben mehr auf der hand
-                    } else {
-                        if (!getCurrentPlayer().getHand().contains(Colour.YELLOW)) {
-                            isValid = true;
-                        }
-                    }
-                } else if (firstCardColour == Colour.GREEN) {
-                    // wenn karte grün kein problem
-                    if (card.getColour() == Colour.GREEN) {
-                        isValid = true;
-                        // wenn karte nicht grün dann nur wenn keine grünen mehr auf der hand
-                    } else {
-                        if (!getCurrentPlayer().getHand().contains(Colour.GREEN)) {
-                            isValid = true;
-                        }
-                    }
-                }
-            }
-        }
-        return isValid;
+        int valueOfFool = 0;
+    	int valueOfSorcerer = 14;
+    	
+    	if(getPlayedCards().size() == getPlayers().size()) {
+    		return false;
+    	
+    	}else if(getPlayedCards().size() == 0) {
+    		return true;
+    	
+    	} else  if(card.getValue() == valueOfFool) {
+    		return true;
+    	
+    	} else if(card.getValue() == valueOfSorcerer) {
+    		return true;
+    	}
+    	
+    	Card firstCard = getPlayedCards().get(0).getCard();
+    	
+    	if(firstCard.getValue() == valueOfSorcerer) {
+    		return true;
+    	}
+    	
+    	/* Falls die n�chste Karte Narr ist, wird die als n�chstgespielte
+    	* Karte als erste Karte gesetzt, au�er es liegen keine Karten mehr
+    	* im Ablagestapel
+    	*/
+    	for(int i = 1; i < getPlayedCards().size(); i++) {
+    		if(firstCard.getValue() == valueOfFool) {
+    			firstCard = getPlayedCards().get(i).getCard();
+    		} else {
+    			break;
+    		}  		
+    	}
+    	
+    	if(firstCard.getValue() == valueOfFool) {
+    		return true;
+    	
+    	} else if(card.getColour() == firstCard.getColour()) {
+    		return true;
+    	}
+    	
+    	List<Card> hand = getCurrentPlayer().getHand();
+    	
+    	for(Card handCard : hand) {
+    		if(handCard.getColour() == firstCard.getColour() && 
+    				handCard.getValue() != valueOfFool &&
+    				handCard.getValue() != valueOfSorcerer) {
+    			return false;
+    		}
+    	}
+    	
+    	return true;
     }
 
     /**
