@@ -164,8 +164,8 @@ public class Player extends Thread{
 	 * an alle Clients, die vom Server verwaltet werden, verschickt.
 	 * @param newServer ist der neue Server
 	 */
-	public void changeServer(Server newServer){
-		server.removePlayer(this);
+	public void  changeServer(Server newServer){
+		//server.removePlayer(this);
 		server = newServer;
 		server.broadcast(new ComUpdatePlayerlist(this.getPlayerName(), false));	
 		server.addPlayer(this);		

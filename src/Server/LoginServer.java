@@ -106,6 +106,7 @@ public class LoginServer extends Server {
 			} else {
 				player.setPlayerName(CheckName);
 				lobby.addName(CheckName);
+				removePlayer(player);
 				player.changeServer(lobby);			
 				ComInitLobby init = lobby.initLobby();
 				player.send(init);
