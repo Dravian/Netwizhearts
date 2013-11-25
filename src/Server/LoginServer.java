@@ -121,7 +121,7 @@ public class LoginServer extends Server {
 	 * Diese Methode schliesst die Verbindung zu einem Client.
 	 * Der uebergebene Player wird aus dem playerSet sowie dem names Set 
 	 * im LobbyServer entfernt.
-	 * @param player ist der Tread von dem die Exception kommt
+	 * @param player ist der Spieler der entfernt wird 
 	 */
 	@Override
 	public synchronized void disconnectPlayer(Player player) {		

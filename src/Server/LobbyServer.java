@@ -232,7 +232,7 @@ public class LobbyServer extends Server {
 	 * Der uebergebene Player wird aus dem playerSet sowie dem names Set 
 	 * im LobbyServer entfernt.
 	 * Es wird ein ComUpdatePlayerlist mit broadcast an alle Clients verschickt.
-	 * @param player ist der Tread von dem die Exception kommt
+	 * @param player ist der Spieler der entfernt wird 
 	 */
 	@Override
 	public synchronized void disconnectPlayer(Player player) {		

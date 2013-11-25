@@ -84,7 +84,6 @@ public class GameServer extends Server {
 		rulesetType = ruleset;
 		this.password = password;
 		this.hasPassword = hasPassword;
-		addPlayer(gameMaster);
 		currentPlayers = 0;
 		if (rulesetType == RulesetType.Hearts) {
 			this.ruleset = new ServerHearts(this);
@@ -180,11 +179,11 @@ public class GameServer extends Server {
 		if(!playerSet.isEmpty()){
 			for (Player check : playerSet) {
 				if (check.getPlayerName().equals(kickPlayer.getPlayerName())){
-					toBeKicked = check;
+					toBeKicked = check;				
 				}
 			}
 			if (toBeKicked != null){
-				if(!toBeKicked.equals(gameMasterName)){
+				if(!toBeKicked.getPlayerName().equals(gameMasterName)){
 					toBeKicked.changeServer(lobbyServer);
 					ComInitLobby comInit = lobbyServer.initLobby();			
 					toBeKicked.send(comInit);
@@ -356,7 +355,7 @@ public class GameServer extends Server {
 	 * Alle Spieler, die sich im Spiel befinden werden durch Aufruf von changeServer an 
 	 * die Lobby zurueckgegeben und bekommen ein ComInitLobby und ein ComWarning.
 	 * Das Spiel wird aus dem gameServerSet des LobbyServers entfernt.
-	 * @param player ist der Tread von dem die Exception kommt
+	 * @param player ist der Spieler der entfernt wird 
 	 */
 	@Override
 	public synchronized void disconnectPlayer(Player player) {

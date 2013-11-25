@@ -173,7 +173,7 @@ public abstract class Server {
 	
 	/**
 	 * Diese Methode schliesst die Verbindung zu einem Client.
-	 * @param player ist der Tread von dem die Exception kommt
+	 * @param player ist der Spieler der entfernt wird 
 	 */
 	public void disconnectPlayer(Player player) {
 		// TODO Automatisch erstellter Methoden-Stub
