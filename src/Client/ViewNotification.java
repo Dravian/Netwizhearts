@@ -29,8 +29,6 @@ public enum ViewNotification {
 	
 	gameStarted,
 	
-	passwordAccepted,
-	
 	playedCardsUpdate,
 	
 	otherDataUpdate,

@@ -50,7 +50,7 @@ public class GameLobby extends JFrame implements Observer{
 	 * Erstellt das GameLobby Fenster
 	 */
 	public GameLobby() {
-		setTitle("Game Lobby");
+		setTitle("GameLobby");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 403, 358);
 		contentPane = new JPanel();

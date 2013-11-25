@@ -20,6 +20,7 @@ import Server.GameServerRepresentation;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -53,6 +54,7 @@ public class CreateGame extends JFrame{
 	private JButton btnLeave;
 	private JButton btnCreate;
 	private JLabel lblGameName;
+	private static String IMAGEPATH = "src/";
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -72,8 +74,9 @@ public class CreateGame extends JFrame{
 	 */
 	public CreateGame() {
 		setTitle("Game Creation");
+		lang = Language.English;
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		setBounds(100, 100, 390, 279);
+		setBounds(100, 100, 403, 279);
 		getContentPane().setLayout(null);
 		
 		lblSelect = new JLabel("Select Game");
@@ -82,6 +85,7 @@ public class CreateGame extends JFrame{
 		
 		rulesetBox = new JComboBox<RulesetType>();
 		rulesetBox.setBounds(12, 39, 188, 24);
+		rulesetBox.addItemListener(new RulesetSelectionListener());
 		getContentPane().add(rulesetBox);
 		
 		chboxPassword = new JCheckBox("Set Password:");
@@ -98,16 +102,17 @@ public class CreateGame extends JFrame{
 		getContentPane().add(nameField);
 		nameField.setColumns(10);
 
-		try {
-	    image = ImageIO.read(new File("src/wizard.jpg"));
-		} catch (IOException e) {
-			//TODO
-		}
+
+		image = null;
 		
 		imagePanel = new JPanel() {
+			private static final long serialVersionUID = 1L;
+
 			protected void paintComponent(Graphics g) {
 			        super.paintComponent(g);
-			        g.drawImage(image, 0, 0, null);          
+			        if (image != null) {
+			        	g.drawImage(image, 0, 0, null);  
+			        }
 			    }
 		};
 		imagePanel.setToolTipText("Wizard is a trick-taking card game for 3 to 6 players.");
@@ -139,6 +144,7 @@ public class CreateGame extends JFrame{
 		for(RulesetType t : types) {
 			rulesetBox.addItem(t);
 		}
+		updateImage();
 	}
 	
 	/**
@@ -245,12 +251,38 @@ public class CreateGame extends JFrame{
 		}
 	}
 	
+	private void updateImage() {
+		SwingUtilities.invokeLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				try {
+					RulesetType t = (RulesetType)(rulesetBox.getSelectedItem());
+				    image = ImageIO.read(new File(IMAGEPATH + t.toString().toLowerCase() + ".jpg"));
+				    imagePanel.repaint();
+					} catch (IOException e) {
+						//TODO
+					}
+			}
+		});
+		
+	}
+	
 	class LeaveButtonListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			setVisible(false);
 			
+		}
+		
+	}
+	
+	class RulesetSelectionListener implements ItemListener {
+
+		@Override
+		public void itemStateChanged(ItemEvent e) {
+			updateImage();
 		}
 		
 	}
