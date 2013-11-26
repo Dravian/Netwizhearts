@@ -37,6 +37,11 @@ public class GameClientUpdate implements Serializable{
 	private PlayerState currentPlayer;
 	
 	/**
+	 * Die Anzahl der gespielten Runden
+	 */
+	private int roundNumber;
+	
+	/**
 	 * Die Trumpfkarte des Spiels
 	 */
 	private Card trumpCard;
@@ -51,11 +56,12 @@ public class GameClientUpdate implements Serializable{
 	 */
 	protected GameClientUpdate(PlayerState playerState, List<DiscardedCard> discardPile,
 			List<OtherData> otherPlayerData,  PlayerState firstPlayer, PlayerState currentPlayer,
-			Card trumpCard) {
+			int roundNumber, Card trumpCard) {
 		this.playerState = playerState;
 		this.discardPile = discardPile;
 		this.otherPlayerData = otherPlayerData;
 		this.currentPlayer = currentPlayer;
+		this.roundNumber = roundNumber;
 		this.trumpCard = trumpCard;
 	}
 
@@ -99,6 +105,14 @@ public class GameClientUpdate implements Serializable{
 	 */
 	protected PlayerState getCurrentPlayer() {
 		return currentPlayer;
+	}
+	
+	/**
+	 * Gibt die Rundenanzahl zurück
+	 * @return Die Rundenanzahl
+	 */
+	protected int getRoundNumber() {
+		return roundNumber;
 	}
 	
 	/**

@@ -406,6 +406,7 @@ public abstract class ServerRuleset {
 				viewOfOtherPlayers(player), 
 				getFirstPlayer(),
 				getCurrentPlayer(),
+				getRoundNumber(),
 				gameState.getTrumpCard());
 		
 	}

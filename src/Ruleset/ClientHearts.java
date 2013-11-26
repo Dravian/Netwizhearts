@@ -36,6 +36,7 @@ public class ClientHearts extends ClientRuleset {
 		super(RulesetType.Hearts, MIN_PLAYERS, MAX_PLAYERS,client);
 	}
 	
+
 	@Override
 	public boolean isValidMove(Card card) {
 		boolean isValid = false;
