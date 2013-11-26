@@ -108,6 +108,10 @@ public class ClientController {
 		createGame = new CreateGame();
 		createGame.setRulesetTypes(clientModel.getRulesets());
 		createGame.addCreateButtonListener(new CreateButtonListener());
+		
+		gameLobby = new GameLobby();
+		gameLobby.addWindowListener(new gameLobbyCloseListener());
+		clientModel.addObserver(gameLobby);
 	}
 	
 	class windowCloseListener implements WindowListener {
@@ -128,6 +132,51 @@ public class ClientController {
 		public void windowClosing(WindowEvent arg0) {
 			clientModel.closeProgram();	
 			
+		}
+
+		@Override
+		public void windowDeactivated(WindowEvent arg0) {
+			// not needed
+			
+		}
+
+		@Override
+		public void windowDeiconified(WindowEvent arg0) {
+			// not needed
+			
+		}
+
+		@Override
+		public void windowIconified(WindowEvent arg0) {
+			// not needed
+			
+		}
+
+		@Override
+		public void windowOpened(WindowEvent arg0) {
+			// not needed
+			
+		}
+		
+	}
+	
+	class gameLobbyCloseListener implements WindowListener {
+
+		@Override
+		public void windowActivated(WindowEvent arg0) {
+			// not needed
+			
+		}
+
+		@Override
+		public void windowClosed(WindowEvent arg0) {
+			// not needed
+			
+		}
+
+		@Override
+		public void windowClosing(WindowEvent arg0) {
+			clientModel.leaveWindow();
 		}
 
 		@Override
