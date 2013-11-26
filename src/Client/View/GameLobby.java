@@ -3,6 +3,7 @@ package Client.View;
 import java.awt.EventQueue;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -14,6 +15,11 @@ import javax.swing.AbstractListModel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
+
+import Client.ClientModel;
+import Client.ViewNotification;
 
 /**
  * GameLobby. Die GameLobby modelliert das Wartefenster, in dem beigetretene Spieler auf den Start 
@@ -32,6 +38,7 @@ public class GameLobby extends JFrame implements Observer{
 	private JButton btnLeave;
 	private JTextArea chatlog;
 	private JButton btnStartGame;
+	private JList<String> playerList;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -51,25 +58,16 @@ public class GameLobby extends JFrame implements Observer{
 	 */
 	public GameLobby() {
 		setTitle("GameLobby");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 403, 358);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		JList list = new JList();
-		list.setModel(new AbstractListModel() {
-			String[] values = new String[] {"Player1", "Player2", "Player3"};
-			public int getSize() {
-				return values.length;
-			}
-			public Object getElementAt(int index) {
-				return values[index];
-			}
-		});
-		list.setBounds(12, 12, 211, 130);
-		contentPane.add(list);
+		playerList = new JList<String>();
+		playerList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		playerList.setBounds(12, 12, 211, 130);
+		contentPane.add(playerList);
 		
 		chatlog = new JTextArea();
 		chatlog.setBounds(12, 154, 367, 84);
@@ -141,6 +139,22 @@ public class GameLobby extends JFrame implements Observer{
 	private void updateLanguage() {
 		//TODO
 	}
+	
+	private void updatePlayerList(final List<String> list) {
+		SwingUtilities.invokeLater(new Runnable() {
+
+			@Override
+			public void run() {
+				int length = list.size();
+				String[] players = new String[length];
+				for (int i = 0; i < length; i++) {
+					players[i] = list.get(i);
+				}
+				playerList.setListData(players);
+			}
+		});
+		
+	}
 
 	/**
 	 * Wird durch notify() im ClientModel aufgerufen. Je nach dem in arg
@@ -153,7 +167,26 @@ public class GameLobby extends JFrame implements Observer{
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
+		final ClientModel observed = (ClientModel) o;
+		try {
+			ViewNotification message = (ViewNotification) arg;
+		switch (message) {
+		case windowChangeForced:
+			//this.setVisible(false);
+			break;
+		case playerListUpdate:
+			updatePlayerList(observed.getPlayerlist());
+			break;
+		case joinGameSuccessful:
+			updatePlayerList(observed.getPlayerlist());
+			this.setVisible(true);
+			break;
+		default:
+			break;
+		}
+		} catch (ClassCastException e) {
+			this.update(observed, (String)arg);
+		}
 		
 	}
 	
@@ -166,6 +199,8 @@ public class GameLobby extends JFrame implements Observer{
 	 * @param arg erwartet einen String, der eine Chatnachricht darstellt
 	 */
 	public void update(Observable o, String arg) {
-		//TODO
+		if (this.isVisible()) {
+			chatlog.append(arg);
+		}
 	}
 }
