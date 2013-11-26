@@ -207,7 +207,7 @@ public class ClientController {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			clientModel.closeProgram();
+			lobby.dispatchEvent(new WindowEvent(lobby, WindowEvent.WINDOW_CLOSING));
 		}
 		
 	}
