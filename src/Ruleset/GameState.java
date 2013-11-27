@@ -15,7 +15,7 @@ import java.util.Set;
 
 /**
  * GameState. Das GameState modelliert einen aktuellen Spielzustand, es wird vom
- * GameServer instanziert und vom RuleSet bearbeitet. Es enthält die einzelnen
+ * GameServer instanziert und vom RuleSet bearbeitet. Es enthï¿½lt die einzelnen
  * PlayerStates, sowie Informationen zum Ablage-, Aufnahmestapel, Rundenanzahl,
  * den momentan aktiven Spieler sowie GamePhase.
  */
@@ -31,7 +31,7 @@ public class GameState {
 	private RulesetType ruleset;
 
 	/**
-	 * Der Spieler der am Anfang einer Runde anfängt
+	 * Der Spieler der am Anfang einer Runde anfï¿½ngt
 	 */
 	private PlayerState firstPlayer;
 
@@ -81,7 +81,7 @@ public class GameState {
 
 	/**
 	 * Wird aufgerufen um ein neues Deck zu erstellen und alle Karten die vorher
-	 * im Spiel waren zu löschen.
+	 * im Spiel waren zu lï¿½schen.
 	 * @param deck Das neue Kartendeck
 	 */
 	protected void restartDeck(List<Card> deck) {	
@@ -97,7 +97,7 @@ public class GameState {
 	}
 	
 	/**
-	 * Fügt den Spieler ins Spiel hinein, falls er nicht schon im Spiel ist
+	 * Fï¿½gt den Spieler ins Spiel hinein, falls er nicht schon im Spiel ist
 	 * 
 	 * @param name
 	 *            Der Name eines Spielers
@@ -116,7 +116,7 @@ public class GameState {
 	}
 
 	/**
-	 * Gibt die List von Spielern zurück
+	 * Gibt die List von Spielern zurï¿½ck
 	 * 
 	 * @return Die Liste von Spielern
 	 */
@@ -126,7 +126,7 @@ public class GameState {
 
 	/**
 	 * Setzt einen neuen Spieler als firstPlayer und als currentPlayer und
-	 * erhöht die Rundennummer um eins
+	 * erhÃ¶ht die Rundennummer um eins
 	 * 
 	 * @param player Der neue firstPlayer
 	 */
@@ -268,7 +268,7 @@ public class GameState {
 	 * Verteilt eine bestimmte Anzahl an Karten an die Spieler
 	 * 
 	 * @param number Die Anzahl an Karten
-	 * @return false wenn ein Spieler keine Karten hat oder wenn nicht genügend
+	 * @return false wenn ein Spieler keine Karten hat oder wenn nicht genÃ¼gend
 	 *         Karten im Deck sind
 	 */
 	protected boolean dealCards(int number) {
@@ -292,8 +292,7 @@ public class GameState {
 
 	/**
 	 * Holt die oberste Karte aus dem Kartendeck raus
-	 * 
-	 * @return Gibt die oberste Karte zurück
+	 * @return Gibt die oberste Karte zurÃ¼ck
 	 */
 	protected Card getTopCard() {
 		if (deck.isEmpty()) {
@@ -336,7 +335,7 @@ public class GameState {
 	 * 
 	 * @param card
 	 *            Die gespielte Karte
-	 * @return isInHand Gibt true zurück wenn die gespielte Karte auf der Hand
+	 * @return isInHand Gibt true zurï¿½ck wenn die gespielte Karte auf der Hand
 	 *         vom Spieler liegt und false sonst
 	 */
 	protected boolean playCard(Card card) {

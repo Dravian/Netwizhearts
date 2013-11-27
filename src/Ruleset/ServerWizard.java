@@ -81,7 +81,7 @@ public class ServerWizard extends ServerRuleset {
         	setGamePhase(GamePhase.CardRequest);
             throw new RulesetException("Der Spieler" + name + "hat die Karte "
                     + card.getValue() + card.getColour()
-                    + " gespielt, obwohl sie kein gï¿½ltiger "
+                    + " gespielt, obwohl sie kein gÃ¼ltiger "
                     + "Zug ist. Es muss ein Fehler bei ClientWizard sein.");
 
         } else {
@@ -137,7 +137,7 @@ public class ServerWizard extends ServerRuleset {
 
         } else if (!getFirstPlayer().getPlayerStateName().equals(name)) {
             throw new RulesetException("Der Spieler " + name + " darf keine "
-                    + "Trumpfarbe auswï¿½hlen.");
+                    + "Trumpfarbe auswÃ¤hlen.");
 
         } else {
             Colour colour = msgSelection.getSelection();
@@ -182,8 +182,8 @@ public class ServerWizard extends ServerRuleset {
     		return true;
     	}
     	
-    	/* Falls die nächste Karte Narr ist, wird die als nächstgespielte
-    	* Karte als erste Karte gesetzt, außer es liegen keine Karten mehr
+    	/* Falls die nï¿½chste Karte Narr ist, wird die als nï¿½chstgespielte
+    	* Karte als erste Karte gesetzt, auï¿½er es liegen keine Karten mehr
     	* im Ablagestapel
     	*/
     	for(int i = 1; i < getPlayedCards().size(); i++) {
@@ -350,8 +350,8 @@ public class ServerWizard extends ServerRuleset {
             getGameState().shuffleDeck();
 
 			/*
-			 * Verteilt die Karten an Spieler. Wenn false zurï¿½ck kommt wird ein
-			 * neues Deck erstellt und alle Karten im Spiel gelï¿½scht. Wenn
+			 * Verteilt die Karten an Spieler. Wenn false zurÃ¼ck kommt wird ein
+			 * neues Deck erstellt und alle Karten im Spiel gelÃ¶scht. Wenn
 			 * nochmal ein Fehler kommt wirft es eine Exception
 			 */
             if (!getGameState().dealCards(getGameState().getRoundNumber())) {
@@ -430,10 +430,10 @@ public class ServerWizard extends ServerRuleset {
             if (getGamePhase() == GamePhase.Ending) {
                 List<String> winners = getWinners();
                 broadcast(new MsgGameEnd(winners));
-                // TODO quitGame
+                quitGame();
             } else {
                 setCurrentPlayer(getFirstPlayer());
-
+                nextPlayer();
                 setFirstPlayer(getCurrentPlayer());
 
                 setGamePhase(GamePhase.RoundStart);
