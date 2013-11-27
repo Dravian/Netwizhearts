@@ -25,7 +25,7 @@ public class ClientModelChatTest {
 	String testText;
 	
 	@Before  
-    public void setUp() {
+    public void setUp() throws Exception {
 		testNetIO = new TestMessageListenerThread();
 		testObserver = new TestObserver();
 		testMessage = new ComChatMessage("Hello Test!");
@@ -35,7 +35,7 @@ public class ClientModelChatTest {
     }  
   
     @After  
-    public void tearDown() { 
+    public void tearDown() throws Exception { 
     	testNetIO = null;
     	testMessage = null;
     	testModel = null;

@@ -52,13 +52,14 @@ public class MessageListenerThread implements Runnable {
 	 * @throws IOException Wird geworfen beim fehlerbehafteten Erstellen der
 	 * ObjectStreams.
 	 */
-	public void startConnection(final ClientModel model,
-								final Socket connection) throws IllegalArgumentException, IOException {
-		if (model == null || connection == null) {
+	public void startConnection(ClientModel model,
+								String host,
+								int port) throws IllegalArgumentException, IOException {
+		if (model == null || host == null) {
 			throw new IllegalArgumentException();
 		}
 		this.model = model;
-		this.connection = connection;
+		this.connection = new Socket(host, port);
 		out = new ObjectOutputStream(connection.getOutputStream());
 		out.flush();
 		in = new ObjectInputStream(connection.getInputStream());

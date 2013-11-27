@@ -30,7 +30,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.UnknownHostException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
@@ -133,6 +132,7 @@ public class ClientModel extends Observable{
 		warningText = null;
 		playerList = null;
 		gameList = null;
+		System.exit(0);
 	}
 
 	/**
@@ -304,13 +304,10 @@ public class ClientModel extends Observable{
 	public void receiveMessage(ComUpdatePlayerlist update) {
 		if (update != null) {
 			if (update.getPlayerName() != null) {
-				if (update.isRemoveFlag()) {
-					if (playerList.contains(update.getPlayerName())) {
-						playerList.remove(update.getPlayerName());
-					}
-				} else if (!playerList.contains(update.getPlayerName())) {
+				playerList.remove(update.getPlayerName());
+				if (!update.isRemoveFlag()) {
 					playerList.add(update.getPlayerName());
-				}
+				} 
 				informView(ViewNotification.playerListUpdate);
 			}
 		}
@@ -756,8 +753,7 @@ public class ClientModel extends Observable{
 
 	private void setupConnection(String username, String host, int port ) {
 		try {
-			Socket connection = new Socket(host, port);
-			netIO.startConnection(this, connection);
+			netIO.startConnection(this, host, port);
 			netIOThread = new Thread(netIO);
 			netIOThread.start();
 			netIO.send(new ComLoginRequest(username));

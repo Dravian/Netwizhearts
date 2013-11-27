@@ -1,7 +1,6 @@
 package test;
 
-import java.net.Socket;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import Client.ClientModel;
@@ -10,7 +9,7 @@ import ComObjects.ComObject;
 
 public class TestMessageListenerThread extends MessageListenerThread{
 
-	List<ComObject> inputComObjectList = new ArrayList<ComObject>();
+	List<ComObject> inputComObjectList = new LinkedList<ComObject>();
 	
 	ClientModel model;
 	
@@ -18,7 +17,7 @@ public class TestMessageListenerThread extends MessageListenerThread{
 		inputComObjectList.add(com);
 	}
 	
-	public void startConnection(ClientModel model, Socket connection) {
+	public void startConnection(ClientModel model, String host, int port) {
 		this.model = model;
 	}
 	
