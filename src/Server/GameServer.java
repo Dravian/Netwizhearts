@@ -307,6 +307,10 @@ public class GameServer extends Server {
 	@Override
 	public synchronized void receiveMessage(Player player, ComStartGame start){
 		try {
+			for (Player back : playerSet) {
+				ruleset.addPlayerToGame(back.getPlayerName());
+			}
+			lobbyServer.broadcast(new ComLobbyUpdateGamelist(true, getRepresentation()));
 			ruleset.runGame();			
 		} catch (IllegalNumberOfPlayersException e) {
 			System.out.println("Number of Players not matching!");
