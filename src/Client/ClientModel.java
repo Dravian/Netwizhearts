@@ -304,10 +304,11 @@ public class ClientModel extends Observable{
 	public void receiveMessage(ComUpdatePlayerlist update) {
 		if (update != null) {
 			if (update.getPlayerName() != null) {
-				playerList.remove(update.getPlayerName());
-				if (!update.isRemoveFlag()) {
+				if (update.isRemoveFlag()) {
+					playerList.remove(update.getPlayerName());
+				} else {
 					playerList.add(update.getPlayerName());
-				} 
+				}
 				informView(ViewNotification.playerListUpdate);
 			}
 		}
