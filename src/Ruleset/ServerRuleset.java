@@ -12,7 +12,7 @@ import ComObjects.*;
 /** 
  * ServerRuleset. Das ServerRuleset ist eine akstrakte Klasse und fuer den Ablauf und die Einhaltung der Regeln eines Spiels zustaendig. 
  * Das ServerRuleset wird im GameServer instanziert und verwaltet die Zustaende des GameStates im Server. 
- * Mit der Methode isValidMove() wird eine Eingabe eines Clients auf Regelkonformität ueberprueft und dann
+ * Mit der Methode isValidMove() wird eine Eingabe eines Clients auf Regelkonformitï¿½t ueberprueft und dann
  * das GameState veraendert. Ueber resolveMessage() kann eine GameServerinstanz eine RulesetMessage 
  * vom Player an das Ruleset weiterleiten.
  */
@@ -89,7 +89,7 @@ public abstract class ServerRuleset {
 	}
 	
 	/**
-	 * Gibt die Mindestanzahl an Spielern zurueck für dieses Spiel
+	 * Gibt die Mindestanzahl an Spielern zurueck fï¿½r dieses Spiel
 	 * @return Die Mindestanzahl an Spielern
 	 */
 	public int getMinPlayers() {
@@ -121,7 +121,7 @@ public abstract class ServerRuleset {
 	}
 	
 	/**
-	 * Erzeugt ein Kartendeck, abhängig von dem RulesetType
+	 * Erzeugt ein Kartendeck, abhï¿½ngig von dem RulesetType
 	 * @return Gibt ein Kartendeck zurueck
 	 */
 	protected List<Card> createDeck() {
@@ -171,7 +171,7 @@ public abstract class ServerRuleset {
 	}
 	
 	/**
-	 * Setzt den nächsten Spieler
+	 * Setzt den nï¿½chsten Spieler
 	 */
 	protected void nextPlayer() {
 		int iterator = getPlayers().indexOf(getCurrentPlayer());
@@ -196,7 +196,7 @@ public abstract class ServerRuleset {
 	/**
 	 * Die OtherData eines Spielers
 	 * @param player Der Spielerzustand
-	 * @return Gibt OtherData zurück
+	 * @return Gibt OtherData zurï¿½ck
 	 */
 	protected OtherData getOtherData(PlayerState player) {
 		return player.getOtherData();
@@ -215,8 +215,13 @@ public abstract class ServerRuleset {
 	 * Fuegt einen Spieler ins Spiel ein
 	 * @param name Der name vom Spieler
 	 */
-	protected void addPlayerToGame(String name) {
-		gameState.addPlayerToGame(name);
+	public void addPlayerToGame(String name) {
+		if(gamePhase == GamePhase.Start) {
+			gameState.addPlayerToGame(name);
+		} else {
+			throw new RulesetException("Das Spiel hat bereits begonnen " + 
+						name + " kann nicht mehr hinzugefÃ¼gt werden.");
+		}
 	}
 
 	/** 
@@ -245,7 +250,7 @@ public abstract class ServerRuleset {
 		return gameState.getPlayedCards();
 	}
 	/**
-	 * Schickt eine Nachricht an einen Spieler, über den Gameserver
+	 * Schickt eine Nachricht an einen Spieler, ï¿½ber den Gameserver
 	 * @param message Die Nachricht vom Typ RulesetMessage
 	 * @param name Der Name vom Spieler
 	 */
@@ -264,7 +269,7 @@ public abstract class ServerRuleset {
 	
 	/** 
 	 * Verarbeitet die RulesetMessage dass eine Karte vom Spieler gespielt.
-	 * Die wird dann in isValidMove überprüft, bei falsche Eingabe wird´
+	 * Die wird dann in isValidMove ï¿½berprï¿½ft, bei falsche Eingabe wirdï¿½
 	 * eine MsgCardRequest an den selben Spieler geschickt. 
 	 * Bei richtiger Eingabe geht das Spiel weiter.
 	 * @param msgCard Die Nachricht vom Client welche Karte gespielt wurde
@@ -330,7 +335,7 @@ public abstract class ServerRuleset {
 	 * Gibt einem Spieler eine bestimmte Karte
 	 * @param player Der Name eines Spielers
 	 * @param card Eine Karte
-	 * @return Gibt true zurück wenn die Karte im Deck ist, false sonst
+	 * @return Gibt true zurï¿½ck wenn die Karte im Deck ist, false sonst
 	 */
 	protected boolean giveACard(PlayerState player, Card card) {
 		return gameState.giveACard(player,card);	
@@ -363,7 +368,7 @@ public abstract class ServerRuleset {
 	
 	/**
 	 * Wird am Anfang jeder Runde aufgerufen. Mischt und verteilt Karten und
-	 * schickt Comobject mit Updates und Request für den Rundenanfang.
+	 * schickt Comobject mit Updates und Request fï¿½r den Rundenanfang.
 	 */
 	protected abstract void startRound();
 	
@@ -374,13 +379,13 @@ public abstract class ServerRuleset {
 
 	/** 
 	 * Berechnet das Ergebnis einer Rundenberechnung und ist verantwortlich 
-	 * fuer das Setzten von Punkten beim Rundenende, sowie zur Überprüfung auf
+	 * fuer das Setzten von Punkten beim Rundenende, sowie zur ï¿½berprï¿½fung auf
 	 * Spielende. 
 	 */
 	protected abstract void calculateRoundOutcome();
 
 	/**
-	 * Wird bei Spielende aufgerufen und gibt die Namen der Sieger zurück,
+	 * Wird bei Spielende aufgerufen und gibt die Namen der Sieger zurï¿½ck,
 	 * nur mehr als einer falls es unentschieden steht.
 	 * @return den Namen vom Spieler
 	 */
@@ -397,7 +402,7 @@ public abstract class ServerRuleset {
 	}
 
 	/**
-	 * Erzeugt ein GameClientUpdate welches individuell für jeden Benutzer ist
+	 * Erzeugt ein GameClientUpdate welches individuell fï¿½r jeden Benutzer ist
 	 * @param player Dem Spieler 
 	 */
 	protected GameClientUpdate generateGameClientUpdate(PlayerState player) {
@@ -415,7 +420,7 @@ public abstract class ServerRuleset {
 	 * Erzeugt eine Liste von OtherData mit der von einem bestimmten Spieler 
 	 * ausgesehen richtigen Reihenfolge von den anderen Spielern
 	 * @param player Der Spieler aus dessen Sicht die Liste gemacht wird
-	 * @return Gibt eine Liste von OtherData in einer bestimmten Reihenfolge zurück
+	 * @return Gibt eine Liste von OtherData in einer bestimmten Reihenfolge zurï¿½ck
 	 */
 	private List<OtherData> viewOfOtherPlayers(PlayerState player) {
 		List<PlayerState> players = getPlayers();

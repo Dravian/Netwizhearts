@@ -109,8 +109,6 @@ public class TestWizardWinner {
 		assertTrue((wizardServerRuleset.getWinners().get(0)).equals(White));
 		assertTrue((wizardServerRuleset.getWinners().get(1).equals(Brown)));
 		
-		assertTrue(blue.getServerInput().size() == 2);
-		
 		inputList = blue.getServerInput();
 		comObject = (ComRuleset) inputList.get(1);
 		endMsg = (MsgGameEnd) comObject.getRulesetMessage();
