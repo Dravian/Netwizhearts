@@ -73,10 +73,12 @@ Hier kommt die Implementierung
 
 \item \textbf{WizardCard:} \textit{hinzugefügt}: changeSorcererColour ();
 
-\item \textbf{GameState:} \textit{hinzugefügt}: madeTrick(), restartDeck ();
+\item \textbf{GameState:} \textit{hinzugefügt}: madeTrick(), restartDeck (), newRound();
 
 \item \textbf{ServerWizard:} \textit{hinzugefügt}: updatePlayers (), getPlayedCards (),
 startRound(); 
+
+\item \textbf{ServerHearts:} \textit{hinzugefügt}: swapLeft(),swapRight(),swapAcross(), swap
 \textit{geändert}: getWinners(),  ;
 \end{itemize}
 
@@ -126,8 +128,9 @@ Begründung: Viele der ComObjects waren bereits fertig.
 \item \textbf{Ruleset(Daten):} ang. Dauer: 20 Stunden, tats. Dauer: 5 Stunden
 Begründung: Wurde hauptsächlich schon in Spezifikationsphase implementiert
 
-\item \textbf{Ruleset(ServerWizard):} ang. Dauer: 30 Stunden, tats. Dauer: bisher 16 Stunden
+\item \textbf{Ruleset(ServerWizard):} ang. Dauer: 30 Stunden, tats. Dauer: 20 Stunden
 
+\item \textbf{Ruleset(ServerHearts):} ang. Dauer: 30 Stunden, tats. Dauer: bisher 2 Stunden
 \end{itemize}
 
 \subsection{Milestone 2}

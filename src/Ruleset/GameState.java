@@ -74,7 +74,7 @@ public class GameState {
 		players = new LinkedList<PlayerState>();
 		discardPile = new ArrayList<DiscardedCard>();
 		this.deck = deck;
-		roundNumber = 0;
+		roundNumber = 1;
 		trumpCard = EmptyCard.Empty;
 	}
 	
@@ -116,7 +116,7 @@ public class GameState {
 	}
 
 	/**
-	 * Gibt die List von Spielern zur�ck
+	 * Gibt die List von Spielern zurück
 	 * 
 	 * @return Die Liste von Spielern
 	 */
@@ -133,6 +133,12 @@ public class GameState {
 	protected void setFirstPlayer(PlayerState player) {
 		firstPlayer = player;
 		currentPlayer = player;
+	}
+	
+	/**
+	 * Erhöht die Rundenzahl um eins
+	 */
+	protected void nextRound() {
 		roundNumber++;
 	}
 	

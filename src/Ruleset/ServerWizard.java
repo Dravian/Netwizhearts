@@ -182,8 +182,8 @@ public class ServerWizard extends ServerRuleset {
     		return true;
     	}
     	
-    	/* Falls die n�chste Karte Narr ist, wird die als n�chstgespielte
-    	* Karte als erste Karte gesetzt, au�er es liegen keine Karten mehr
+    	/* Falls die nächste Karte Narr ist, wird die als nächstgespielte
+    	* Karte als erste Karte gesetzt, außer es liegen keine Karten mehr
     	* im Ablagestapel
     	*/
     	for(int i = 1; i < getPlayedCards().size(); i++) {
@@ -216,7 +216,7 @@ public class ServerWizard extends ServerRuleset {
 
     /**
      * Ueberprueft ob eine eingegebene Stichangabe eines Spielers gueltig ist
-     * und setzt die Stichangabe f�r den aktuellen Spieler
+     * und setzt die Stichangabe für den aktuellen Spieler
      *
      * @param number Die Stichangabe
      * @return true falls die Stichangabe g�ltig ist, false wenn nicht
@@ -437,6 +437,7 @@ public class ServerWizard extends ServerRuleset {
                 setFirstPlayer(getCurrentPlayer());
 
                 setGamePhase(GamePhase.RoundStart);
+                getGameState().nextRound();
                 startRound();
             }
 

@@ -9,7 +9,7 @@ import java.util.List;
 
 /** 
  * PlayerState. Repraesentiert den Spielzustand eines Spielers, und wird unter anderem 
- * im GameState gespeichert. Sie enthält den Namen des Spielers, seine Handkarten
+ * im GameState gespeichert. Sie enthï¿½lt den Namen des Spielers, seine Handkarten
  * und OtherData.
  */
 public class PlayerState implements Serializable{
@@ -64,7 +64,7 @@ public class PlayerState implements Serializable{
 	}
 	
 	/**
-	 * Gibt die OtherData des Spielers zurück
+	 * Gibt die OtherData des Spielers zurï¿½ck
 	 * @return otherData Die OtherData eines Spielers
 	 */
 	protected OtherData getOtherData() {
