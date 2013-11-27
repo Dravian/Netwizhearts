@@ -336,4 +336,10 @@ public class LobbyTest {
 		ComWarning toPlayer7 = (ComWarning) player7.getServerInput().get(13);
 		assertTrue(toPlayer7.getWarning().equals("Game already full!"));
 	}
+	
+	@Test
+	public void testDisconnectPlayer(){
+		lobby.disconnectPlayer(player1);
+		assertFalse(lobby.playerSet.contains(player1));
+	}
 }

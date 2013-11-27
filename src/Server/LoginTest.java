@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import ComObjects.ComClientQuit;
 import ComObjects.ComLoginRequest;
 
 import test.TestPlayer;
@@ -41,5 +42,4 @@ public class LoginTest {
 		assertTrue(lobby.initLobby().getPlayerList().contains(player.getPlayerName()));
 		assertTrue(lobby.getNames().contains(player.getPlayerName()));
 	}
-
 }
