@@ -283,7 +283,7 @@ public class GameServer extends Server {
 				back.changeServer(lobbyServer);
 				ComInitLobby comInit = lobbyServer.initLobby();			
 				back.send(comInit);
-				ComWarning warning = new ComWarning(player.getPlayerName() + " left the Game");
+				ComWarning warning = new ComWarning(player.getPlayerName() + " left the Game!");
 				back.send(warning);	
 			}	
 			playerSet.clear();
