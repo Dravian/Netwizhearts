@@ -223,8 +223,7 @@ public class GameServer extends Server {
 		Player leavingPlayer = player;
 		if(!playerSet.isEmpty()){
 			if (playerSet.contains(leavingPlayer)){
-				if(leavingPlayer.getPlayerName().equals(gameMasterName)){
-					lobbyServer.broadcast(new ComLobbyUpdateGamelist(false, this.getRepresentation()));
+				if(leavingPlayer.getPlayerName().equals(gameMasterName)){			
 					for (Player back : playerSet) {	
 							back.changeServer(lobbyServer);
 							ComInitLobby comInit = lobbyServer.initLobby();			
@@ -233,6 +232,8 @@ public class GameServer extends Server {
 							back.send(warning);	
 					}
 					playerSet.clear();
+					lobbyServer.broadcast(new ComLobbyUpdateGamelist(false, this.getRepresentation()));
+					lobbyServer.removeGameServer(this);
 				} else {
 					removePlayer(leavingPlayer);
 					leavingPlayer.changeServer(lobbyServer);

@@ -85,6 +85,7 @@ public class GameServerTests {
 		player5 = null;
 	}
 
+	//GameLobbyTests
 	@Test
 	public void testChat(){
 		ComChatMessage chat = new ComChatMessage("Hallo!");
@@ -167,6 +168,7 @@ public class GameServerTests {
 		assertTrue(lobby.playerSet.contains(player2));
 		assertTrue(lobby.playerSet.contains(player3));
 		assertTrue(lobby.playerSet.contains(player4));
+		assertTrue(lobby.initLobby().getGameList().size() == 0);
 		
 		ComInitLobby init = new ComInitLobby(null, null);
 		assertTrue(player1.getServerInput().get(3).getClass().equals(init.getClass()));
@@ -192,4 +194,33 @@ public class GameServerTests {
 		ComWarning toPlayer4 = (ComWarning) player4.getServerInput().get(6);
 		assertTrue(toPlayer4.getWarning().equals("Game has been disbanded!"));
 	}
+	
+	@Test
+	public void testDisconnectPlayer(){
+		game.disconnectPlayer(player1);
+		assertFalse(lobby.playerSet.contains(player1));
+		assertFalse(lobby.getNames().contains(player1));
+		
+		assertTrue(lobby.playerSet.contains(player2));
+		assertTrue(lobby.playerSet.contains(player3));
+		assertTrue(lobby.playerSet.contains(player4));
+		
+		assertTrue(lobby.initLobby().getGameList().size() == 0);
+		
+		ComWarning warning = new ComWarning("");
+		assertTrue(player2.getServerInput().get(4).getClass().equals(warning.getClass()));
+		assertTrue(player3.getServerInput().get(5).getClass().equals(warning.getClass()));
+		assertTrue(player4.getServerInput().get(6).getClass().equals(warning.getClass()));
+		
+		ComWarning toPlayer2 = (ComWarning) player2.getServerInput().get(4);
+		assertTrue(toPlayer2.getWarning().equals("Game Disbanded!"));
+		
+		ComWarning toPlayer3 = (ComWarning) player3.getServerInput().get(5);
+		assertTrue(toPlayer3.getWarning().equals("Game Disbanded!"));
+		
+		ComWarning toPlayer4 = (ComWarning) player4.getServerInput().get(6);
+		assertTrue(toPlayer4.getWarning().equals("Game Disbanded!"));		
+	}
+	
+	//GameTests
 }
