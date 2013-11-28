@@ -418,11 +418,9 @@ public class ServerWizard extends ServerRuleset {
                 player.getOtherData().setPoints(points);
             }
 
-            getGameState().restartDeck(createDeck());
 
             updatePlayers();
-
-
+            
             if (getGameState().getRoundNumber() == playingRounds) {
                 setGamePhase(GamePhase.Ending);
             }
@@ -431,10 +429,13 @@ public class ServerWizard extends ServerRuleset {
                 List<String> winners = getWinners();
                 broadcast(new MsgGameEnd(winners));
                 quitGame();
+           
             } else {
-                setCurrentPlayer(getFirstPlayer());
-                nextPlayer();
-                setFirstPlayer(getCurrentPlayer());
+            	getGameState().restartDeck(createDeck());
+               
+            	setCurrentPlayer(getFirstPlayer());             
+            	nextPlayer();
+            	setFirstPlayer(getCurrentPlayer());
 
                 setGamePhase(GamePhase.RoundStart);
                 getGameState().nextRound();

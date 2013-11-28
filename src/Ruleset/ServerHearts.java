@@ -129,7 +129,7 @@ public class ServerHearts extends ServerRuleset {
 	
 	
 	/**
-	 * Tauscht bei jedem Spieler die Karten nach rechts
+	 * Tauscht bei jedem Spieler die Karten gegenüber
 	 */
 	private void swapAcross() {
 		for(int i = 0; i < getPlayers().size(); i++) {
@@ -194,12 +194,98 @@ public class ServerHearts extends ServerRuleset {
 
 	@Override
 	protected void calculateRoundOutcome() {
+		if(getGamePhase() == GamePhase.RoundEnd  ||
+				getGamePhase() == GamePhase.Ending) {
+			
+			for(PlayerState player : getPlayers()) {
+				int points = 0;
+				
+				for(Card card : player.getHand()) {
+					if(card.getColour() == Colour.SPADE && card.getValue() == 12) {
+						points = points + 13;
+					
+					} else if(card.getColour() == Colour.HEART) {
+						points = points + 1;
+					}
+				}
+				
+				if(points == 26) {
+					for(PlayerState playerGetsPoints : getPlayers()) {
+						
+						if(!playerGetsPoints.getPlayerStateName().equals(player.getPlayerStateName())) {
+							playerGetsPoints.getOtherData().setPoints(points);
+						}
+				
+					}
+					break;
+				} else {
+					player.getOtherData().setPoints(points);
+				}
+			}
+			
+			updatePlayers();
+			
+			for(PlayerState player : getPlayers()) {
+				if(player.getOtherData().getPoints() >= 100) {
+					setGamePhase(GamePhase.Ending);
+					break;
+				}
+			}
+			
+			if(getGamePhase() == GamePhase.Ending) {
+				List<String> winners = getWinners();
+                broadcast(new MsgGameEnd(winners));
+                quitGame();
+			
+			} else {
+				getGameState().restartDeck(createDeck());
+
+                setGamePhase(GamePhase.RoundStart);
+                getGameState().nextRound();
+                startRound();
+			}
 		
+		} else {
+			throw new RulesetException(
+                    "Das Spiel ist noch nicht am Rundenende.");
+		}
 	}
 
 	@Override
 	protected void calculateTricks() {
+		DiscardedCard strongestCard = getPlayedCards().get(0);
 		
+		for(int i = 1; i < getPlayedCards().size(); i++) {
+			DiscardedCard nextCard = getPlayedCards().get(i);
+			
+			if(nextCard.getCard().getColour() == strongestCard.getCard().getColour() &&
+					nextCard.getCard().getValue() > strongestCard.getCard().getValue()) {
+				nextCard = strongestCard;
+			}
+		}
+		
+		PlayerState trickWinner = getPlayerState(strongestCard.getName());
+        getGameState().madeTrick(trickWinner);
+
+        updatePlayers();
+
+        boolean noOneHasACard = true;
+
+        for (PlayerState player : getPlayers()) {
+            if (!player.getHand().isEmpty()) {
+                noOneHasACard = false;
+            }
+        }
+
+        if (noOneHasACard) {
+            setGamePhase(GamePhase.RoundEnd);
+            calculateRoundOutcome();
+        } else {
+            setGamePhase(GamePhase.CardRequest);
+            setCurrentPlayer(trickWinner);
+
+            send(new MsgCardRequest(), trickWinner.getPlayerStateName());
+        }
 	}
 
 	@Override
