@@ -8,42 +8,42 @@ import java.net.Socket;
 import ComObjects.*;
 
 /**
- * Player. Die Player-Klasse wird zum Versenden von Java Serializable Objects, sowie zum
- * Annehmen solcher verwendet.
- * Sie verwaltet fuer die Dauer einer Serververbindung die Verbindung zu einem Client.
+ * Player. Die Player-Klasse wird zum Versenden von Java Serializable Objects,
+ * sowie zum Annehmen solcher verwendet. Sie verwaltet fuer die Dauer einer
+ * Serververbindung die Verbindung zu einem Client.
  */
-public class Player extends Thread{
-	
+public class Player extends Thread {
+
 	/**
 	 * Der eindeutige Benutzername des Spielers.
 	 */
 	private String name;
-	
+
 	/**
 	 * Der Server, an den eingehende ComObjects uebergeben werden sollen
 	 */
 	protected Server server;
-	
+
 	/**
 	 * Socket des Clients
 	 */
 	private Socket connection;
-	
+
 	/**
 	 * ObjectOutputStream, um fuer Nachrichten an den Client zu Senden
 	 */
 	private ObjectOutputStream comOut;
-	
+
 	/**
 	 * ObjectInputStream, um fuer Nachrichten vom Client entgegenzunehmen
 	 */
 	private ObjectInputStream comIn;
-	
+
 	/**
 	 * Zeigt an, ob der Thread l‰uft
 	 */
 	private boolean run = false;
-	
+
 	/**
 	 * (Konstruktor fuer Tests)
 	 */
@@ -51,15 +51,18 @@ public class Player extends Thread{
 		super("Player");
 		server = lobbyServer;
 	}
-	
+
 	/**
-	 * Konstruktor des Players, in ihm werden die Attribute server und connection mit
-	 * vom ClientListererThread uebergebenen Werten Instanziiert.
+	 * Konstruktor des Players, in ihm werden die Attribute server und
+	 * connection mit vom ClientListererThread uebergebenen Werten Instanziiert.
 	 * ComIn und comOut initialisiert.
-	 * @param lobbyServer ist der LobbyServer, der zu Beginn den Player verwaltet.
-	 * @param socket ist der Socket des Clients
+	 * 
+	 * @param lobbyServer
+	 *            ist der LobbyServer, der zu Beginn den Player verwaltet.
+	 * @param socket
+	 *            ist der Socket des Clients
 	 */
-	public Player(Server loginServer, Socket socket){
+	public Player(Server loginServer, Socket socket) {
 		super("Player");
 		server = loginServer;
 		connection = socket;
@@ -90,21 +93,20 @@ public class Player extends Thread{
 		}
 		name = null;
 	}
-	
+
 	/**
 	 * Die run-Methode des Thread nimmt eingehende Nachrichten des Client
-	 * entgegen und uebergibt diese an den Server durch Aufruf der Methode 
-	 * resolveMessage()
-	 * Faengt eine ClassNotFoundException ab, falls die Klasse nicht gefunden
-	 * werden kann und gibt einen Fehler aus.
-	 * Faengt eine IOException ab und ruft im jeweiligen Server, dem er zugeteilt
-	 * ist die handleIOException Methode auf.
+	 * entgegen und uebergibt diese an den Server durch Aufruf der Methode
+	 * resolveMessage() Faengt eine ClassNotFoundException ab, falls die Klasse
+	 * nicht gefunden werden kann und gibt einen Fehler aus. Faengt eine
+	 * IOException ab und ruft im jeweiligen Server, dem er zugeteilt ist die
+	 * handleIOException Methode auf.
 	 */
 	@Override
-	public void run(){
+	public void run() {
 		run = true;
 		ComObject object;
-		while(run) {
+		while (run) {
 			try {
 				object = (ComObject) comIn.readObject();
 				System.out.println(object);
@@ -119,14 +121,14 @@ public class Player extends Thread{
 				System.err.println("Couldn't find Input/Output!");
 				server.disconnectPlayer(this);
 				e.printStackTrace();
-			}			
+			}
 		}
 	}
-	
+
 	/**
 	 * Diese Methode schlieﬂt den Socket, sowie comIn und comOut
 	 */
-	public void closeConnection(){
+	public void closeConnection() {
 		try {
 			run = false;
 			comIn.close();
@@ -137,14 +139,16 @@ public class Player extends Thread{
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
-	 * Diese Methode schickt ein ComObjekt an den Client.
-	 * Sie faengt eine IOException ab und ruft im jeweiligen Server, dem er zugeteilt
-	 * ist die handleIOException Methode auf.
-	 * @param com ist das ComObject das verschickt wird
+	 * Diese Methode schickt ein ComObjekt an den Client. Sie faengt eine
+	 * IOException ab und ruft im jeweiligen Server, dem er zugeteilt ist die
+	 * handleIOException Methode auf.
+	 * 
+	 * @param com
+	 *            ist das ComObject das verschickt wird
 	 */
-	public void send(ComObject com){
+	public void send(ComObject com) {
 		try {
 			comOut.writeObject(com);
 			comOut.flush();
@@ -158,31 +162,36 @@ public class Player extends Thread{
 	/**
 	 * Diese Methode wechselt beim Player den Server an den er comObjects
 	 * weiterleiten soll. Dabei wird er aus dem playerSet des alten Servers
-	 * entfernt und in das playerSet des neuen Players eingefuegt. 
-	 * Vom neuen Server ein ComUpdatePlayerlist Objekt mit broadcast 
-	 * an alle Clients, die vom Server verwaltet werden, verschickt.
-	 * @param newServer ist der neue Server
+	 * entfernt und in das playerSet des neuen Players eingefuegt. Vom neuen
+	 * Server ein ComUpdatePlayerlist Objekt mit broadcast an alle Clients, die
+	 * vom Server verwaltet werden, verschickt.
+	 * 
+	 * @param newServer
+	 *            ist der neue Server
 	 */
-	public void  changeServer(Server newServer){
-		//server.removePlayer(this);
+	public void changeServer(Server newServer) {
+		// server.removePlayer(this);
 		server = newServer;
-		server.broadcast(new ComUpdatePlayerlist(this.getPlayerName(), false));	
-		server.addPlayer(this);		
+		server.broadcast(new ComUpdatePlayerlist(this.getPlayerName(), false));
+		server.addPlayer(this);
 	}
-	
+
 	/**
 	 * Getter-Methode fuer den Benutzernamen.
+	 * 
 	 * @return gibt den Benutzernamen des Spielers zurueck
 	 */
-	public String getPlayerName(){
+	public String getPlayerName() {
 		return name;
 	}
-	
+
 	/**
 	 * Setter-Methode fuer den Benutzernamen.
-	 * @param newName ist der neue Name
+	 * 
+	 * @param newName
+	 *            ist der neue Name
 	 */
-	public void setPlayerName(String newName){
+	public void setPlayerName(String newName) {
 		name = newName;
 	}
 }

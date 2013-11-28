@@ -1,6 +1,5 @@
 package Server;
 
-
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -23,7 +22,7 @@ public class LoginTestNegativ {
 	@Before
 	public void setUp() throws Exception {
 		lobby = new LobbyServer();
-		login = new LoginServer(lobby);		
+		login = new LoginServer(lobby);
 		player = new TestPlayer(login);
 		player.setServer(login);
 		player2 = new TestPlayer(login);
@@ -35,19 +34,20 @@ public class LoginTestNegativ {
 	@After
 	public void tearDown() throws Exception {
 		lobby = null;
-		login = null;		
+		login = null;
 		player = null;
 		player2 = null;
 	}
-	
+
 	@Test
-	public void testLoginUsedName(){
+	public void testLoginUsedName() {
 		ComLoginRequest login = new ComLoginRequest("Klaus");
 		player.injectComObject(login);
 		player2.injectComObject(login);
-		
+
 		ComWarning warning = new ComWarning(new String());
-		assertTrue(player2.getServerInput().get(0).getClass().equals(warning.getClass()));	
+		assertTrue(player2.getServerInput().get(0).getClass()
+				.equals(warning.getClass()));
 		assertFalse(lobby.playerSet.contains(player2));
 		assertFalse(lobby.getNames().contains(player2.getPlayerName()));
 	}
