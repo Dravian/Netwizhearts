@@ -93,7 +93,7 @@ public class ServerHearts extends ServerRuleset {
         		updatePlayers(); 		
         		
         		for(PlayerState player : getPlayers()) {
-        			if(player.getHand().contains(HeartsCard.Pik2)) {
+        			if(player.getHand().contains(HeartsCard.Kreuz2)) {
         				setFirstPlayer(player);
         				break;
         			}
@@ -106,6 +106,9 @@ public class ServerHearts extends ServerRuleset {
          }
 	}
 	
+	/**
+	 * Tauscht bei jedem Spieler die Karten nach links
+	 */
 	private void swapLeft() {
 		
 		for(int i = 0; i < getPlayers().size(); i++) {
@@ -124,6 +127,10 @@ public class ServerHearts extends ServerRuleset {
 		swap = new Hashtable<String,Set<Card>>();
 	}
 	
+	
+	/**
+	 * Tauscht bei jedem Spieler die Karten nach rechts
+	 */
 	private void swapAcross() {
 		for(int i = 0; i < getPlayers().size(); i++) {
 			PlayerState giver = getPlayers().get(i);
@@ -143,6 +150,9 @@ public class ServerHearts extends ServerRuleset {
 		swap = new Hashtable<String,Set<Card>>();
 	}
 	
+	/**
+	 * Tauscht bei jedem Spieler die Karten nach rechts
+	 */
 	private void swapRight() {
 		for(int i = 0; i < getPlayers().size(); i++) {
 			PlayerState giver = getPlayers().get(i);
