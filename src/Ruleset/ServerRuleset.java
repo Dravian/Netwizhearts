@@ -121,7 +121,7 @@ public abstract class ServerRuleset {
 	}
 	
 	/**
-	 * Erzeugt ein Kartendeck, abh�ngig von dem RulesetType
+	 * Erzeugt ein Kartendeck, abhängig von dem RulesetType
 	 * @return Gibt ein Kartendeck zurueck
 	 */
 	protected List<Card> createDeck() {
@@ -143,6 +143,10 @@ public abstract class ServerRuleset {
 		return deck;
 	}
 	
+	/**
+	 * Holt die Spieler zurück
+	 * @return 
+	 */
 	protected List<PlayerState> getPlayers() {
 		return gameState.getPlayers();
 	}

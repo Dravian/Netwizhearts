@@ -25,7 +25,11 @@ public class TestGameServer extends GameServer{
 		players = new HashSet<TestPlayer>();
 		
 		addPlayer(gameMaster);
-		this.ruleset = new ServerWizard(this);
+		if(rulesetType == RulesetType.Wizard) {
+			ruleset = new ServerWizard(this);
+		} else {
+			ruleset = new ServerHearts(this);
+		}
 	}
 
 	public void addPlayer(TestPlayer player) {
