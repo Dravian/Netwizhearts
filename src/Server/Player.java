@@ -109,7 +109,6 @@ public class Player extends Thread {
 		while (run) {
 			try {
 				object = (ComObject) comIn.readObject();
-				System.out.println(object);
 				object.process(this, server);
 			} catch (ClassNotFoundException e) {
 				run = false;
@@ -170,7 +169,6 @@ public class Player extends Thread {
 	 *            ist der neue Server
 	 */
 	public void changeServer(Server newServer) {
-		// server.removePlayer(this);
 		server = newServer;
 		server.broadcast(new ComUpdatePlayerlist(this.getPlayerName(), false));
 		server.addPlayer(this);
