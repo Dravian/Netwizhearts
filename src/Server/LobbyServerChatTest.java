@@ -13,19 +13,19 @@ import ComObjects.ComChatMessage;
 public class LobbyServerChatTest {
 
 	ComChatMessage testMessage;
-	
+
 	LobbyServer testServer;
 
 	TestPlayer player1;
-	
+
 	TestPlayer player2;
-	
+
 	TestPlayer player3;
-	
+
 	String testText1;
-	
+
 	String testText2;
-	
+
 	String testText3;
 
 	@Before
@@ -56,9 +56,12 @@ public class LobbyServerChatTest {
 		testServer.addPlayer(player2);
 		testServer.addPlayer(player3);
 		player1.injectComObject(testMessage);
-		testText1 = ((ComChatMessage) player1.getServerInput().get(0)).getChatMessage();
-		testText2 = ((ComChatMessage) player2.getServerInput().get(0)).getChatMessage();
-		testText3 = ((ComChatMessage) player3.getServerInput().get(0)).getChatMessage();
+		testText1 = ((ComChatMessage) player1.getServerInput().get(0))
+				.getChatMessage();
+		testText2 = ((ComChatMessage) player2.getServerInput().get(0))
+				.getChatMessage();
+		testText3 = ((ComChatMessage) player3.getServerInput().get(0))
+				.getChatMessage();
 		assertTrue("Nachricht an Spieler 1", testText1.contains(messageToMatch));
 		assertTrue("Nachricht an Spieler 2", testText2.contains(messageToMatch));
 		assertTrue("Nachricht an Spieler 3", testText3.contains(messageToMatch));
