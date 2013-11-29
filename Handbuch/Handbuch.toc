@@ -1,11 +1,16 @@
 \select@language {ngerman}
 \contentsline {section}{\numberline {1}Einleitung}{2}{section.1}
-\contentsline {section}{\numberline {2}Installation}{2}{section.2}
-\contentsline {section}{\numberline {3}Spiel}{2}{section.3}
-\contentsline {subsection}{\numberline {3.1}Einloggen}{2}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Spiel betreten}{2}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}Spiel erstellen}{2}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}Spiel spielen}{2}{subsection.3.4}
-\contentsline {subsubsection}{\numberline {3.4.1}Wizard}{2}{subsubsection.3.4.1}
-\contentsline {subsubsection}{\numberline {3.4.2}Hearts}{2}{subsubsection.3.4.2}
-\contentsline {section}{\numberline {4}Glossar}{2}{section.4}
+\contentsline {section}{\numberline {2}Systemvoraussetzungen}{2}{section.2}
+\contentsline {section}{\numberline {3}Installation}{2}{section.3}
+\contentsline {section}{\numberline {4}Haftungsausschluss}{2}{section.4}
+\contentsline {section}{\numberline {5}Spiel}{2}{section.5}
+\contentsline {subsection}{\numberline {5.1}Beschreibung der Oberfl\IeC {\"a}che und Bedienung}{2}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Einloggen}{2}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Spiel betreten}{2}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}Spiel erstellen}{2}{subsection.5.4}
+\contentsline {subsection}{\numberline {5.5}Spiel spielen}{2}{subsection.5.5}
+\contentsline {subsubsection}{\numberline {5.5.1}Wizard}{2}{subsubsection.5.5.1}
+\contentsline {subsubsection}{\numberline {5.5.2}Hearts}{2}{subsubsection.5.5.2}
+\contentsline {section}{\numberline {6}Fehlermeldungen und Behebung}{2}{section.6}
+\contentsline {section}{\numberline {7}Entwicklung eines neuen Regelwerkes}{2}{section.7}
+\contentsline {section}{\numberline {8}Glossar}{2}{section.8}
