@@ -17,6 +17,7 @@ import ComObjects.ComJoinRequest;
 import ComObjects.ComLobbyUpdateGamelist;
 import ComObjects.ComUpdatePlayerlist;
 import ComObjects.ComWarning;
+import ComObjects.WarningMsg;
 import Ruleset.RulesetType;
 import test.TestPlayer;
 
@@ -345,7 +346,7 @@ public class LobbyTest {
 
 		assertTrue(lobby.playerSet.contains(player2));
 
-		ComWarning warning = new ComWarning(new String());
+		ComWarning warning = new ComWarning(null);
 		assertTrue(player2.getServerInput().get(3).getClass()
 				.equals(warning.getClass()));
 	}
@@ -362,12 +363,12 @@ public class LobbyTest {
 		player4.injectComObject(join);
 		player5.injectComObject(join);
 
-		ComWarning warning = new ComWarning(new String());
+		ComWarning warning = new ComWarning(null);
 		assertTrue(player5.getServerInput().get(9).getClass()
 				.equals(warning.getClass()));
 
 		ComWarning toPlayer5 = (ComWarning) player5.getServerInput().get(9);
-		assertTrue(toPlayer5.getWarning().equals("Game already full!"));
+		assertTrue(toPlayer5.getWarning().equals(WarningMsg.GameFull));
 	}
 
 	@Test
@@ -384,12 +385,12 @@ public class LobbyTest {
 		player6.injectComObject(join);
 		player7.injectComObject(join);
 
-		ComWarning warning = new ComWarning(new String());
+		ComWarning warning = new ComWarning(null);
 		assertTrue(player7.getServerInput().get(13).getClass()
 				.equals(warning.getClass()));
 
 		ComWarning toPlayer7 = (ComWarning) player7.getServerInput().get(13);
-		assertTrue(toPlayer7.getWarning().equals("Game already full!"));
+		assertTrue(toPlayer7.getWarning().equals(WarningMsg.GameFull));
 	}
 
 	@Test
