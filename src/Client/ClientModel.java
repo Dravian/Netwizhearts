@@ -1,7 +1,9 @@
 package Client;
 
 import Ruleset.Card;
+import Ruleset.ClientHearts;
 import Ruleset.ClientRuleset;
+import Ruleset.ClientWizard;
 import Ruleset.RulesetType;
 import Server.GameServerRepresentation;
 import Client.View.Language;
@@ -13,11 +15,13 @@ import ComObjects.ComCreateGameRequest;
 import ComObjects.ComInitGameLobby;
 import ComObjects.ComInitLobby;
 import ComObjects.ComJoinRequest;
+import ComObjects.ComKickPlayerRequest;
 import ComObjects.ComLobbyUpdateGamelist;
 import ComObjects.ComLoginRequest;
 import ComObjects.ComObject;
 import ComObjects.ComRuleset;
 import ComObjects.ComServerAcknowledgement;
+import ComObjects.ComStartGame;
 import ComObjects.ComUpdatePlayerlist;
 import ComObjects.ComWarning;
 import ComObjects.RulesetMessage;
@@ -49,12 +53,16 @@ public class ClientModel extends Observable{
     /**
      * String der den eindeutigen Spielernamen repraesentiert.
 	 */
-	private String playerName;
+	private String playerName = new String();
+	
+	private String gameMaster = new String();
 
 	/**
 	 * Referenz auf das Regelwerk des Spieles.
 	 */
 	private ClientRuleset ruleset;
+	
+	private RulesetType gameType;
 
 	/**
 	 * Die aktuelle Sprache der GUI.
@@ -104,8 +112,12 @@ public class ClientModel extends Observable{
 	public void leaveWindow() {
 		if (state == ClientState.GAMELOBBY) {
 			netIO.send(new ComClientLeave());
+			/*state = ClientState.SERVERLOBBY;
+			informView(ViewNotification.windowChangeForced); */
 		} else if (state == ClientState.GAME) {
 			netIO.send(new ComClientLeave());
+			/*state = ClientState.SERVERLOBBY;
+			informView(ViewNotification.windowChangeForced);*/
 		}
 	}
 
@@ -170,9 +182,12 @@ public class ClientModel extends Observable{
 					gameList = new LinkedList<GameServerRepresentation>(msg.getGameList());
 				}
 				//TODO Oder evtl. den Dialog.
-				warningText.append("<" + new Date() + "> " + "Game master has left the game.\n");
-				informView(ViewNotification.openWarning);
 				informView(ViewNotification.windowChangeForced);
+				if (gameMaster.equals(playerName)) {
+					warningText.append("<" + new Date() + "> " + "Game master has left the game.\n");
+					informView(ViewNotification.openWarning);
+				}
+				gameMaster = new String();
 			} else if (state == ClientState.GAME) {
 				state = ClientState.SERVERLOBBY;
 				if (msg.getPlayerList() != null) {
@@ -182,9 +197,10 @@ public class ClientModel extends Observable{
 					gameList = new LinkedList<GameServerRepresentation>(msg.getGameList());
 				}
 				//TODO Oder evtl. den Dialog.
+				informView(ViewNotification.windowChangeForced);
 				warningText.append("<" + new Date() + "> " + "Game has been closed unexpectedly.\n");
 				informView(ViewNotification.openWarning);
-				informView(ViewNotification.windowChangeForced);
+				gameMaster = new String();
 			} else if (state == ClientState.LOGIN) {
 				state = ClientState.SERVERLOBBY;
 				if (msg.getPlayerList() != null) {
@@ -258,6 +274,7 @@ public class ClientModel extends Observable{
 			SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
 			String time = sdf.format(Calendar.getInstance().getTime());
 			if (state == ClientState.LOGIN) {
+				playerName = new String();
 				netIO.closeConnection();
 				netIOThread = null;
 				warningText.append("<" + time + "> " + "Username already in use.\n");
@@ -266,10 +283,12 @@ public class ClientModel extends Observable{
 				//TODO Eindeutigkeit ob Spiel voll oder Passwort falsch nur mit
 				//String aus der Warnung abprüftbar ---> fehler enum einbauen?
 				state = ClientState.SERVERLOBBY;
+				gameMaster = new String();
 				warningText.append("<" + time + "> " + "Wrong password or Game full.\n");
 				informView(ViewNotification.openWarning);
 			} else if (state == ClientState.GAMECREATION) {
 				state = ClientState.SERVERLOBBY;
+				gameMaster = new String();
 				warningText.append("<" + time + "> " + "Cannot create game.\n");
 				informView(ViewNotification.openWarning);
 			}
@@ -287,7 +306,34 @@ public class ClientModel extends Observable{
 	 * @param msg die ankommende ComBeenKicked Nachricht
 	 */
 	public void receiveMessage(ComBeenKicked msg) {
-
+		if (msg != null) {
+			if (state == ClientState.GAMELOBBY) {
+				state = ClientState.SERVERLOBBY;
+				gameMaster = new String();
+				SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+				String time = sdf.format(Calendar.getInstance().getTime());
+				warningText.append("<" + time + ">" + "You have been removed from the game.\n");
+				informView(ViewNotification.windowChangeForced);
+				informView(ViewNotification.openWarning);
+			}
+		}
+	}
+	
+	/**
+	 * 
+	 */
+	public void receiveMessage(ComStartGame msg) {
+		if (msg != null) {
+			if (state == ClientState.GAMELOBBY) {
+				state = ClientState.GAME;
+				if (gameType == RulesetType.Wizard) {
+					ruleset = new ClientWizard(this);
+				} else if (gameType == RulesetType.Hearts) {
+					ruleset = new ClientHearts(this);
+				}
+				informView(ViewNotification.gameStarted);
+			} 
+		}
 	}
 
 	/**
@@ -411,6 +457,10 @@ public class ClientModel extends Observable{
 		return null;
 
 	}
+	
+	public String getGameMaster() {
+		return gameMaster;
+	}
 
 	/**
 	 * Gibt den Punktestand des Spielers zurueck.
@@ -444,8 +494,18 @@ public class ClientModel extends Observable{
 	 *
 	 * @param Name des Spielers, der enfernt werden soll
 	 */
-	public void kickPlayer(final String name) {
-
+	public void kickPlayer(final String name) throws IllegalArgumentException {
+		if (name == null) {
+			throw new IllegalArgumentException();
+		}
+		if (name.isEmpty()) {
+			throw new IllegalArgumentException();
+		}
+		if (state == ClientState.GAMELOBBY) {
+			if(gameMaster.equals(playerName)) {
+				netIO.send(new ComKickPlayerRequest(name));
+			}
+		}
 	}
 
 	/**
@@ -478,6 +538,7 @@ public class ClientModel extends Observable{
 			throw new IllegalArgumentException();
 		} else {
 			state = ClientState.GAMECREATION;
+			gameMaster = playerName;
 			netIO.send(new ComCreateGameRequest(gameName, game, hasPassword, password));
 		}
 	}
@@ -620,7 +681,7 @@ public class ClientModel extends Observable{
 	 * Nachricht nicht bestaetigt, wird eine Fehlermeldung ausgegeben und die Observer
 	 * mit openWarning informiert.
 	 *
-	 * @param name String Der Name des Spiels.
+	 * @param name String Der Name des Spielleiters.
 	 * @param password String Passwort eines Spieles.
 	 * @throws IllegalArgumentException Wird geworfen, wenn ein leerer
 	 * oder null Wert in name uebergeben wird.
@@ -635,6 +696,7 @@ public class ClientModel extends Observable{
 			throw new IllegalArgumentException();
 		} else {
 			state = ClientState.JOINREQUEST;
+			gameMaster = name; 
 			netIO.send(new ComJoinRequest(name, password));
 		}
 	}
@@ -645,7 +707,10 @@ public class ClientModel extends Observable{
 	 * Wenn der Client nicht der Spielleiter des Spiels ist, wird eine Fehlermeldung ausgegeben.
 	 */
 	public void startGame() {
-
+		if (state == ClientState.GAMECREATION) {
+			if (gameMaster.equals(playerName))
+			netIO.send(new ComStartGame());
+		}
 	}
 
 	/**
@@ -654,7 +719,7 @@ public class ClientModel extends Observable{
 	 * Die Observer werden über die gameStarted ViewNotification benachrichtigt.
 	 */
 	private void initGame() {
-
+		
 	}
 
 	/**
@@ -711,6 +776,8 @@ public class ClientModel extends Observable{
 		URI uri = null;
 		int port = 4567;
 		boolean fault = false;
+		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+		String time = sdf.format(Calendar.getInstance().getTime());
 		if (username == null) {
 			throw new IllegalArgumentException();
 		}
@@ -719,29 +786,29 @@ public class ClientModel extends Observable{
 		}
 		if (username.isEmpty()) {
 			fault = true;
-			warningText.append("<" + new Date() + "> " + "Error: Empty Username.\n");
+			warningText.append("<" + time + "> " + "Error: Empty Username.\n");
 		}
 		if (host.isEmpty()) {
 			fault = true;
-			warningText.append("<" + new Date() + "> " + "Error: Empty Host Address.\n");
+			warningText.append("<" + time + "> " + "Error: Empty Host Address.\n");
 		} else {
 			try {
 				uri = new URI("http://" + host);
 				port = uri.getPort();
 				if (uri.getHost() == null) {
 					fault = true;
-					warningText.append("<" + new Date() + "> " + "Error: Unrecognizable Host Address.\n");
+					warningText.append("<" + time + "> " + "Error: Unrecognizable Host Address.\n");
 				}
 				if (port == -1) {
 					//TODO standard port.
 					port = 4567;
 				} else if (port < 1025 || port > 49151) {
 					fault = true;
-					warningText.append("<" + new Date() + "> " + "Error: Portnumber out of Range.\n");
+					warningText.append("<" + time + "> " + "Error: Portnumber out of Range.\n");
 				}
 			} catch (URISyntaxException e) {
 				fault = true;
-				warningText.append("<" + new Date() + "> " + "Error: Unrecognizable Host Address.\n");
+				warningText.append("<" + time + "> " + "Error: Unrecognizable Host Address.\n");
 			}
 		}
 		if (fault) {
@@ -753,22 +820,24 @@ public class ClientModel extends Observable{
 	}
 
 	private void setupConnection(String username, String host, int port ) {
+		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+		String time = sdf.format(Calendar.getInstance().getTime());
 		try {
 			netIO.startConnection(this, host, port);
 			netIOThread = new Thread(netIO);
 			netIOThread.start();
 			netIO.send(new ComLoginRequest(username));
 		} catch (ConnectException e) {
-			warningText.append("<" + new Date() + "> " + "Error: Unknown Host.\n");
+			warningText.append("<" + time + "> " + "Error: Unknown Host.\n");
 			informView(ViewNotification.openWarning);
 		} catch (SocketException e) {
-			System.err.println("<" + new Date() + "> " + "Error: At Socket.\n");
+			System.err.println("<" + time + "> " + "Error: At Socket.\n");
 			e.printStackTrace();
 		} catch (UnknownHostException e) {
-			warningText.append("<" + new Date() + "> " + "Error: Unknown Host.\n");
+			warningText.append("<" + time + "> " + "Error: Unknown Host.\n");
 			informView(ViewNotification.openWarning);
 		} catch (IOException e) {
-			System.err.println("<" + new Date() + "> " + "Error: At IO.\n");
+			System.err.println("<" + time + "> " + "Error: At IO.\n");
 			e.printStackTrace();
 		}
 	}
