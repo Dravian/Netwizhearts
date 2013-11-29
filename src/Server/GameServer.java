@@ -413,7 +413,13 @@ public class GameServer extends Server {
 	 */
 	@Override
 	public synchronized void receiveMessage(Player player, ComRuleset ruleset) {
-		ruleset.getRulesetMessage().visit(this.ruleset, player.getPlayerName());
+		try {
+			ruleset.getRulesetMessage().visit(this.ruleset, player.getPlayerName());	
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+			player.send(new ComClientQuit());
+			disconnectPlayer(player);
+		}		
 	}
 
 	/**
