@@ -45,7 +45,7 @@ public class LoginTestNegativ {
 		player.injectComObject(login);
 		player2.injectComObject(login);
 
-		ComWarning warning = new ComWarning(new String());
+		ComWarning warning = new ComWarning(null);
 		assertTrue(player2.getServerInput().get(0).getClass()
 				.equals(warning.getClass()));
 		assertFalse(lobby.playerSet.contains(player2));

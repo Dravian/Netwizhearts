@@ -14,7 +14,7 @@ import java.io.Serializable;
  */
 public class ComWarning implements ComObject, Serializable {
 
-    private String warning;
+    private WarningMsg warning;
 
     /**
      * Dies ist der Konstruktor einer neuen ComWarning-Nachricht.
@@ -22,7 +22,7 @@ public class ComWarning implements ComObject, Serializable {
      * passiert.
      * @param warning ist die Warnung, die der Spieler erhaelt.
      */
-    public ComWarning(String warning) {
+    public ComWarning(WarningMsg warning) {
         this.warning = warning;
     }
 
@@ -31,7 +31,7 @@ public class ComWarning implements ComObject, Serializable {
      * den Fehler mitteilt.
      * @return die Warnnachricht.
      */
-    public String getWarning() {
+    public WarningMsg getWarning() {
         return warning;
     }
 
