@@ -7,6 +7,9 @@ import java.util.List;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import test.TestGameServer;
+import test.TestLobbyServer;
 import test.TestPlayer;
 import ComObjects.ComObject;
 import ComObjects.ComRuleset;
@@ -17,9 +20,9 @@ import Server.Player;
 
 public class TestHeartsWinner {
 
-LobbyServer lobbyServer;
+TestLobbyServer lobbyServer;
 	
-	GameServer gameServer;
+	TestGameServer gameServer;
 	
 	ServerRuleset heartsServerRuleset;
 	
@@ -37,15 +40,26 @@ LobbyServer lobbyServer;
 	
 	MsgGameEnd endMsg;
 	
-	String winner;
+	String winner1;
+	String winner2;
+	
+	String Blue = "Mr. Blue";
+	String White = "Mr. White";
+	String Orange = "Mr. Orange";
+	String Brown = "Mr. Brown";
 	
 	@Before
 	public void setUp() {
-		lobbyServer = new LobbyServer();
+		lobbyServer = new TestLobbyServer();
+		
 		blue = new TestPlayer(lobbyServer);
+		blue.setPlayerName(Blue);
 		white = new TestPlayer(lobbyServer);
+		white.setPlayerName(White);
 		orange = new TestPlayer(lobbyServer);
+		orange.setPlayerName(Orange);
 		brown = new TestPlayer(lobbyServer);
+		brown.setPlayerName(Brown);
 	}
 	
 	@After
@@ -57,29 +71,36 @@ LobbyServer lobbyServer;
 		lobbyServer = null;
 		gameServer = null;
 		inputList = null;
+		inputList = null;
 		comObject = null;
 		endMsg = null;
-		winner = null;
+		winner1 = null;
+		winner2 = null;
 	}
 	
 	@Test
 	public void testGetWinner() {
 		
-		gameServer = new GameServer(lobbyServer, blue, "Test Game", RulesetType.Hearts, "", false);
+		gameServer = new TestGameServer(lobbyServer, blue, "Test Game", RulesetType.Hearts, "", false);
+		gameServer.addPlayer(blue);
 		gameServer.addPlayer(white);
 		gameServer.addPlayer(orange);
 		gameServer.addPlayer(brown);
 		
-		heartsServerRuleset = new ServerHearts(gameServer);
-		heartsServerRuleset.addPlayerToGame("Mr. Blue");
-		heartsServerRuleset.addPlayerToGame("Mr. White");
-		heartsServerRuleset.addPlayerToGame("Mr. Orange");
-		heartsServerRuleset.addPlayerToGame("Mr. Brown");
-		heartsServerRuleset.setPoints(heartsServerRuleset.getPlayerState("Mr. Blue"),80);
-		heartsServerRuleset.setPoints(heartsServerRuleset.getPlayerState("Mr. White"),20);
-		heartsServerRuleset.setPoints(heartsServerRuleset.getPlayerState("Mr. Orange"),60);
-		heartsServerRuleset.setPoints(heartsServerRuleset.getPlayerState("Mr. Brown"),110);
-		heartsServerRuleset.setGamePhase(GamePhase.Ending);
+		heartsServerRuleset = gameServer.getRuleset();
+		heartsServerRuleset.addPlayerToGame(Blue);
+		heartsServerRuleset.addPlayerToGame(White);
+		heartsServerRuleset.addPlayerToGame(Orange);
+		heartsServerRuleset.addPlayerToGame(Brown);
+		heartsServerRuleset.setFirstPlayer(heartsServerRuleset.getPlayerState(Blue));
+		
+		
+		heartsServerRuleset.setPoints(heartsServerRuleset.getPlayerState(Blue),102);
+		heartsServerRuleset.setPoints(heartsServerRuleset.getPlayerState(White),88);
+		heartsServerRuleset.setPoints(heartsServerRuleset.getPlayerState(Orange),90);
+		heartsServerRuleset.setPoints(heartsServerRuleset.getPlayerState(Brown),88);
+		heartsServerRuleset.setGamePhase(GamePhase.RoundEnd);
+		
 		heartsServerRuleset.calculateRoundOutcome();
 		
 		assertTrue(heartsServerRuleset.getWinners().get(0).equals("Mr. White"));
@@ -87,25 +108,33 @@ LobbyServer lobbyServer;
 		inputList = blue.getServerInput();
 		comObject = (ComRuleset) inputList.get(1);
 		endMsg = (MsgGameEnd) comObject.getRulesetMessage();
-		winner = endMsg.getWinnerName().get(0);
-		assertEquals("Nachricht an Blue", "Mr. White", winner);
-
+		winner1 = endMsg.getWinnerName().get(0);
+		winner2 = endMsg.getWinnerName().get(1);
+		assertEquals("Nachricht an Blue", "Mr. White", winner1);
+		assertEquals("Nachricht an Blue", "Mr. Brown", winner2);
+		
 		inputList = white.getServerInput();
 		comObject = (ComRuleset) inputList.get(1);
 		endMsg = (MsgGameEnd) comObject.getRulesetMessage();
-		winner = endMsg.getWinnerName().get(0);
-		assertEquals("Nachricht an White", "Mr. White", winner);
+		winner2 = endMsg.getWinnerName().get(1);
+		winner1 = endMsg.getWinnerName().get(0);
+		assertEquals("Nachricht an White", "Mr. White", winner1);
+		assertEquals("Nachricht an White", "Mr. Brown", winner2);
 
 		inputList = orange.getServerInput();
 		comObject = (ComRuleset) inputList.get(1);
 		endMsg = (MsgGameEnd) comObject.getRulesetMessage();
-		winner = endMsg.getWinnerName().get(0);
-		assertEquals("Nachricht an Orange", "Mr. White", winner);
+		winner2 = endMsg.getWinnerName().get(1);
+		winner1 = endMsg.getWinnerName().get(0);
+		assertEquals("Nachricht an Orange", "Mr. White", winner1);
+		assertEquals("Nachricht an Orange", "Mr. Brown", winner2);
 	
 		inputList = brown.getServerInput();
 		comObject = (ComRuleset) inputList.get(1);
 		endMsg = (MsgGameEnd) comObject.getRulesetMessage();
-		winner = endMsg.getWinnerName().get(0);
-		assertEquals("Nachricht an Brown", "Mr. White", winner);
+		winner2 = endMsg.getWinnerName().get(1);
+		winner1 = endMsg.getWinnerName().get(0);
+		assertEquals("Nachricht an Brown", "Mr. White", winner1);
+		assertEquals("Nachricht an Brown", "Mr. Brown", winner2);
 	}
 }
