@@ -268,7 +268,7 @@ public abstract class ServerRuleset {
 	 * @param name Der Name vom Spieler
 	 */
 	protected void send(WarningMsg message, String name) {
-		
+		server.sendWarning(name, message);
 	}
 	
 	/**

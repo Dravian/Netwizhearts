@@ -268,7 +268,7 @@ public class ServerWizard extends ServerRuleset {
         int valueOfSorcerer = 14;
         DiscardedCard strongestCard = getPlayedCards().get(0);
 
-        for (int i = 0; i < getPlayedCards().size(); i++) {
+        for (int i = 1; i < getPlayedCards().size(); i++) {
             DiscardedCard nextCard = getPlayedCards().get(i);
 
             if (strongestCard.getCard().getValue() == valueOfSorcerer) {

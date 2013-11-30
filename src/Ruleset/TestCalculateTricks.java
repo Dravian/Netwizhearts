@@ -36,9 +36,9 @@ public class TestCalculateTricks {
 		player1 = "Tick";
 		player2 = "Trick";
 		player3 = "Track";
-		lobbyServer = new TestLobbyServer();
+		lobbyServer = new LobbyServer();
 		player = new TestPlayer(lobbyServer);
-		gameServer = new TestGameServer(lobbyServer,player,"Mein Spiel",RulesetType.Wizard, 
+		gameServer = new GameServer(lobbyServer,player,"Mein Spiel",RulesetType.Wizard, 
 				"",false);
 		ruleset = new ServerWizard(gameServer);
 		
@@ -79,9 +79,6 @@ public class TestCalculateTricks {
 
 	@Test
 	public void testCalculateTricks() {
-		Card card = WizardCard.AchtBlau;
-		RulesetMessage message = new MsgCard(card);
-		ruleset.resolveMessage(message, "hsd");
 		ruleset.setFirstPlayer(playerState1);	
 		assertTrue(ruleset.playCard(WizardCard.ZaubererRot));
 		
