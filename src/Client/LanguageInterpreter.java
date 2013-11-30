@@ -60,6 +60,30 @@ public class LanguageInterpreter {
 		case WrongPassword:
 			ret = "Zutritt verweigert. Das Passwort ist inkorrekt.";
 			break;
+		case UnvalidMove:
+			ret = "Der Zug ist nicht gültig!";
+			break;
+		case WrongCard:
+			ret = "Diese Karte gehört nicht zum Spiel.";
+			break;
+		case WrongPhase:
+			ret = "Deine Aktion stimmt nicht mit der momentanen Spielphase überein.";
+			break;
+		case WrongNumber:
+			ret = "Diese Zahl ist nicht erlaubt.";
+			break;
+		case WrongColour:
+			ret = "Diese Farbe ist nicht vorhanden.";
+			break;
+		case WrongTradeCards:
+			ret = "Du kannst diese Karten nicht tauschen.";
+			break;
+		case WrongMethodCalled:
+			ret = "Diese Aktion ist in disem Spiel nicht gültig.";
+			break;
+		case WrongPlayer:
+			ret = "Du bist nicht am Zug!";
+			break;
 		default:
 			IllegalArgumentException e = new IllegalArgumentException();
 			throw e;
@@ -93,6 +117,30 @@ public class LanguageInterpreter {
 			break;
 		case WrongPassword:
 			ret = "Joining failed. Password is incorrekt.";
+			break;
+		case UnvalidMove:
+			ret = "This move is not valid!";
+			break;
+		case WrongCard:
+			ret = "This Card isn't in the game.";
+			break;
+		case WrongPhase:
+			ret = "Your action does not match with the gamephase.";
+			break;
+		case WrongNumber:
+			ret = "Your number is not valid.";
+			break;
+		case WrongColour:
+			ret = "This colour is not valid.";
+			break;
+		case WrongTradeCards:
+			ret = "You cannot switch these cards.";
+			break;
+		case WrongMethodCalled:
+			ret = "This action is not valid in this game.";
+			break;
+		case WrongPlayer:
+			ret = "It is not your move!";
 			break;
 		default:
 			IllegalArgumentException e = new IllegalArgumentException();
@@ -128,6 +176,30 @@ public class LanguageInterpreter {
 			break;
 		case WrongPassword:
 			ret = "Zutritt verweigert. Das Passwort ist inkorrekt.";
+			break;
+		case UnvalidMove:
+			ret = "Der Zug ist nicht gültig!";
+			break;
+		case WrongCard:
+			ret = "Diese Karte gehört nicht zum Spiel.";
+			break;
+		case WrongPhase:
+			ret = "Deine Aktion stimmt nicht mit der momentanen Spielphase überein.";
+			break;
+		case WrongNumber:
+			ret = "Diese Zahl ist nicht erlaubt.";
+			break;
+		case WrongColour:
+			ret = "Diese Farbe ist nicht vorhanden.";
+			break;
+		case WrongTradeCards:
+			ret = "Du kannst diese Karten nicht tauschen.";
+			break;
+		case WrongMethodCalled:
+			ret = "Diese Aktion ist in disem Spiel nicht gültig.";
+			break;
+		case WrongPlayer:
+			ret = "Du bist nicht am Zug!";
 			break;
 		default:
 			IllegalArgumentException e = new IllegalArgumentException();

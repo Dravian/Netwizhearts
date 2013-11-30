@@ -161,7 +161,6 @@ public class GameServer extends Server {
 	/**
 	 * Diese Methode verpackt eine RulesetMessage in ein ComObject und
 	 * verschickt es mit sendToPlayer() an einen bestimmten Spieler.
-	 * 
 	 * @param player
 	 *            ist der Name des Spielers an den die Nachricht verschickt wird
 	 * @param message
@@ -174,14 +173,34 @@ public class GameServer extends Server {
 	/**
 	 * Diese Methode verpackt eine RulesetMessage in ein ComObject und
 	 * verschickt es mit broadcast() an alle Spieler.
-	 * 
+	 * @param message
+	 *            ist die Ruleset Nachricht, die in ein ComObject verpackt wird
+	 */
+	public void broadcastWarning(WarningMsg warning) {
+		broadcast(new ComWarning(warning));
+	}
+	
+	/**
+	 * Diese Methode verschickt ein ComWarning mit sendToPlayer() an einen bestimmten Spieler.
+	 * @param player
+	 *            ist der Name des Spielers an den die Nachricht verschickt wird
+	 * @param message
+	 *            ist die Ruleset Nachricht, die in ein ComObject verpackt wird
+	 */
+	public void sendWarning(String player, WarningMsg warning) {
+		sendToPlayer(player, new ComWarning(warning));
+	}
+
+	/**
+	 * Diese Methode verschickt ComWarning mit der übergebenen Warnung 
+	 * mit broadcast() an alle Spieler.
 	 * @param message
 	 *            ist die Ruleset Nachricht, die in ein ComObject verpackt wird
 	 */
 	public void broadcastRulesetMessage(RulesetMessage message) {
 		broadcast(new ComRuleset(message));
 	}
-
+	
 	/**
 	 * Diese Methode ist dafur zustaendig eine Chatnachricht an alle Clients des
 	 * Servers zu verschicken. Dafuer wird die ComChatMessage mit broadcast an
