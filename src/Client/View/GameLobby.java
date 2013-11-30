@@ -180,6 +180,12 @@ public class GameLobby extends JFrame implements Observer{
 		
 	}
 	
+	/**
+	 * Macht Kick und Start Game Buttons sichtbar oder unsichtbar
+	 * 
+	 * @param gm Name des Spielleiters
+	 * @param pl Name des Spielers
+	 */
 	private void updateUI(final String gm, final String pl) {
 		SwingUtilities.invokeLater(new Runnable() {
 
@@ -219,7 +225,7 @@ public class GameLobby extends JFrame implements Observer{
 			updatePlayerList(observed.getPlayerlist());
 			break;
 		case joinGameSuccessful:
-			updateUI(observed.getGameMaster(), "Andi"); //TODO entweder getPlayerName() oder isGameMaster() im  Client
+			updateUI(observed.getGameMaster(), observed.getPlayerName()); //TODO entweder getPlayerName() oder isGameMaster() im  Client
 			updatePlayerList(observed.getPlayerlist());
 			this.setVisible(true);
 			break;
