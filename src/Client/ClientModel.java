@@ -109,7 +109,7 @@ public class ClientModel extends Observable{
 	 * Wird aufgerufen, wenn der User die GameLobby verlaesst.
 	 * Der Client gelangt zurueck in die Lobby.
 	 */
-	public void leaveWindow() {
+	public void leaveGameLobby() {
 		if (state == ClientState.GAMELOBBY) {
 			netIO.send(new ComClientLeave());
 			/*state = ClientState.SERVERLOBBY;
@@ -459,7 +459,11 @@ public class ClientModel extends Observable{
 	}
 	
 	public String getGameMaster() {
-		return gameMaster;
+		return gameMaster == null ? new String() : gameMaster;
+	}
+
+	public String getPlayerName() {
+		return playerName == null ? new String() : playerName;
 	}
 
 	/**
@@ -668,9 +672,7 @@ public class ClientModel extends Observable{
 	public void sendChatMessage(final String msg) {
 		if (msg != null) {
 			if (!msg.isEmpty()) {
-				SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-				String time = sdf.format(Calendar.getInstance().getTime());
-				netIO.send(new ComChatMessage(playerName + "(" + time + "): " + msg + "\n"));
+				netIO.send(new ComChatMessage(msg));
 			}
 		}
 	}
