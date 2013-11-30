@@ -1,6 +1,5 @@
 package Client.View;
 
-import java.awt.EventQueue;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.util.List;
@@ -11,7 +10,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JList;
-import javax.swing.AbstractListModel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -39,19 +37,6 @@ public class GameLobby extends JFrame implements Observer{
 	private JTextArea chatlog;
 	private JButton btnStartGame;
 	private JList<String> playerList;
-	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					GameLobby frame = new GameLobby();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Erstellt das GameLobby Fenster
@@ -59,7 +44,7 @@ public class GameLobby extends JFrame implements Observer{
 	public GameLobby() {
 		setTitle("GameLobby");
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		setBounds(100, 100, 403, 358);
+		setBounds(100, 100, 438, 358);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -70,16 +55,16 @@ public class GameLobby extends JFrame implements Observer{
 		contentPane.add(playerList);
 		
 		chatlog = new JTextArea();
-		chatlog.setBounds(12, 154, 367, 84);
+		chatlog.setBounds(12, 154, 400, 84);
 		contentPane.add(chatlog);
 		
 		messageField = new JTextField();
-		messageField.setBounds(12, 250, 367, 31);
+		messageField.setBounds(12, 250, 400, 31);
 		contentPane.add(messageField);
 		messageField.setColumns(10);
 		
-		btnRemovePlayer = new JButton("Remove Player");
-		btnRemovePlayer.setBounds(235, 117, 138, 25);
+		btnRemovePlayer = new JButton("Kick Player");
+		btnRemovePlayer.setBounds(235, 117, 177, 25);
 		contentPane.add(btnRemovePlayer);
 		
 		btnLeave = new JButton("Leave");
@@ -87,8 +72,28 @@ public class GameLobby extends JFrame implements Observer{
 		contentPane.add(btnLeave);
 		
 		btnStartGame = new JButton("Start Game");
-		btnStartGame.setBounds(262, 293, 117, 25);
+		btnStartGame.setBounds(295, 293, 117, 25);
 		contentPane.add(btnStartGame);
+	}
+	
+	/**
+	 * Gibt den Spieler zurueck, der in der Spielerliste ausgewaehlt ist
+	 * 
+	 * @return Name des Spielers
+	 */
+	public String getSelectedPlayer() {
+		return playerList.getSelectedValue();
+	}
+	
+	/**
+	 * Gibt die eingetippte Chatnachricht zurueck
+	 * 
+	 * @return Chatnachricht
+	 */
+	public String getChatMessage() {
+		String r = messageField.getText();
+		messageField.setText("");
+		return r;
 	}
 
 	/**
@@ -135,9 +140,28 @@ public class GameLobby extends JFrame implements Observer{
 		lang = l;
 		updateLanguage();
 	}
-	
+		
 	private void updateLanguage() {
-		//TODO
+		switch (lang) {
+		case German:
+			this.setTitle("Wartefenster");
+			btnLeave.setText("Verlassen");
+			btnStartGame.setText("Spiel Starten");
+			btnRemovePlayer.setText("Spieler entfernen");
+			break;
+		case English:
+			this.setTitle("Gamelobby");
+			btnLeave.setText("Leave");
+			btnStartGame.setText("Start Game");
+			btnRemovePlayer.setText("Kick Player");
+			break;
+		case Bavarian:
+			this.setTitle("Miasma nu auf den andan wartn");
+			btnLeave.setText("Wida geh");
+			btnStartGame.setText("Spui afanga");
+			btnRemovePlayer.setText("Gschwerl rausschmeiﬂn");
+			break;
+		}		
 	}
 	
 	private void updatePlayerList(final List<String> list) {
@@ -151,6 +175,23 @@ public class GameLobby extends JFrame implements Observer{
 					players[i] = list.get(i);
 				}
 				playerList.setListData(players);
+			}
+		});
+		
+	}
+	
+	private void updateUI(final String gm, final String pl) {
+		SwingUtilities.invokeLater(new Runnable() {
+
+			@Override
+			public void run() {
+				if (gm.compareTo(pl) == 0) {
+					btnRemovePlayer.setVisible(true);
+					btnStartGame.setVisible(true);
+				} else {
+					btnRemovePlayer.setVisible(false);
+					btnStartGame.setVisible(false);
+				}
 			}
 		});
 		
@@ -172,12 +213,13 @@ public class GameLobby extends JFrame implements Observer{
 			ViewNotification message = (ViewNotification) arg;
 		switch (message) {
 		case windowChangeForced:
-			//this.setVisible(false);
+			this.setVisible(false);
 			break;
 		case playerListUpdate:
 			updatePlayerList(observed.getPlayerlist());
 			break;
 		case joinGameSuccessful:
+			updateUI(observed.getGameMaster(), "Andi"); //TODO entweder getPlayerName() oder isGameMaster() im  Client
 			updatePlayerList(observed.getPlayerlist());
 			this.setVisible(true);
 			break;

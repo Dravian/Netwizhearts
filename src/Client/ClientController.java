@@ -83,7 +83,6 @@ public class ClientController {
 		clientModel = new ClientModel(new MessageListenerThread());
 		
 		login = new Login();
-		//login.addWindowListener(new windowCloseListener());
 		login.addConnectButtonListener(new ConnectButtonListener());
 		login.addLanguageSelectionListener(new LanguageSelectionListener());
 		login.setVisible(true);
@@ -94,7 +93,7 @@ public class ClientController {
 		lobby.addJoinButtonListener(new JoinButtonListenerLobby());
 		lobby.addLeaveButtonListener(new LeaveButtonListenerLobby());
 		lobby.addHostButtonListener(new HostButtonListener());
-		lobby.addChatMessageListener(new ChatListener());
+		lobby.addChatMessageListener(new ChatListenerLobby());
 		clientModel.addObserver(lobby);
 		
 		password = new Password();
@@ -111,6 +110,10 @@ public class ClientController {
 		
 		gameLobby = new GameLobby();
 		gameLobby.addWindowListener(new gameLobbyCloseListener());
+		gameLobby.addLeaveButtonListener(new LeaveButtonListenerGameLobby());
+		gameLobby.addStartButtonListener(new StartGameButtonListener());
+		gameLobby.addRemoveButtonListener(new KickPlayerButtonListener());
+		gameLobby.addChatMessageListener(new ChatListenerGameLobby());
 		clientModel.addObserver(gameLobby);
 	}
 	
@@ -216,6 +219,7 @@ public class ClientController {
 			lobby.setLanguage(language);
 			password.setLanguage(language);
 			createGame.setLanguage(language);
+			gameLobby.setLanguage(language);
 		}
 		
 	}
@@ -224,7 +228,11 @@ public class ClientController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			clientModel.createConnection(login.getUsername(), login.getServerAdress(), 1337);//FIXME Port hart codiert
+			try {
+				clientModel.createConnection(login.getUsername(), login.getServerAdress(), 1337);//FIXME Port hart codiert
+			} catch (IllegalArgumentException i) {
+				//TODO
+			}
 		}
 		
 	}
@@ -237,7 +245,11 @@ public class ClientController {
 			if (lobby.hasPWChosenGame()) {
 				password.setVisible(true);
 			} else {
-				clientModel.joinGame(selectedGame, null);
+				try {
+					clientModel.joinGame(selectedGame, null);
+				} catch (IllegalArgumentException i) {
+					//TODO
+				}
 			}
 		}
 		
@@ -247,7 +259,11 @@ public class ClientController {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			clientModel.joinGame(lobby.getChosenGameName(), password.getPassword());
+			try {
+				clientModel.joinGame(lobby.getChosenGameName(), password.getPassword());
+			} catch (IllegalArgumentException i) {
+				//TODO
+			}			
 		}
 		
 	}
@@ -283,14 +299,18 @@ public class ClientController {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			clientModel.hostGame(createGame.getGameName(), createGame.hasPassword(), 
+			try {
+				clientModel.hostGame(createGame.getGameName(), createGame.hasPassword(), 
 						createGame.getPassword(), createGame.getSelectedRulesetType());
-			createGame.setVisible(false);
+				createGame.setVisible(false);
+			} catch (IllegalArgumentException i) {
+				//TODO
+			}			
 		}
 		
 	}
 	
-	class ChatListener implements KeyListener {
+	class ChatListenerLobby implements KeyListener {
 
 		@Override
 		public void keyPressed(KeyEvent e) {
@@ -317,4 +337,67 @@ public class ClientController {
 		}
 		
 	}
+	
+	class ChatListenerGameLobby implements KeyListener {
+
+		@Override
+		public void keyPressed(KeyEvent e) {
+			switch (e.getKeyCode()) {
+			case KeyEvent.VK_ENTER:
+				clientModel.sendChatMessage(gameLobby.getChatMessage());
+				break;
+			default:
+				break;
+			}
+			
+		}
+
+		@Override
+		public void keyReleased(KeyEvent e) {
+			// not needed
+			
+		}
+
+		@Override
+		public void keyTyped(KeyEvent e) {
+			// not needed
+			
+		}
+		
+	}
+	
+	class LeaveButtonListenerGameLobby implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			clientModel.leaveWindow();
+			gameLobby.setVisible(false);
+		}
+		
+	}
+	
+	class StartGameButtonListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			clientModel.startGame();
+			
+		}
+		
+	}
+	
+	class KickPlayerButtonListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			try {
+				clientModel.kickPlayer(gameLobby.getSelectedPlayer());
+			} catch (IllegalArgumentException i) {
+				//TODO
+			}
+		}
+
+	}
+	
+	
 }

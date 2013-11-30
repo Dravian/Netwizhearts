@@ -154,52 +154,52 @@ public class LanguageInterpreter {
 		String ret;
 		switch (warning) {
 		case LoginError:
-			ret = "Login fehlgeschlagen. Der Benutzername ist bereits vergeben.";
+			ret = "Den Nam hod scho eba gnumma. Muasd da an andern aussuacha.";
 			break;
 		case GameNotExistent:
-			ret = "Beitreten fehlgeschlagen. Das Spiel existiert nicht mehr.";
+			ret = "Des Spui in des du geh woidst gibts nimma. Muasd in a andas geh.";
 			break;
 		case GameDisbanded:
-			ret = "Das Spiel wurde aufgelöst.";
+			ret = "De andern draun se olle ned mit dir zum spuin.";
 			break;
 		case GameFull:
-			ret = "Beitreten fehlgeschlagen. Das Spiel ist bereits voll.";
+			ret = "Do ko koaner mehr midspuin, weil koa Stui mehr frei is.";
 			break;
 		case CouldntKick:
-			ret = "Du kannst diesen Spieler nicht entfernen.";
+			ret = "Bist du depperd und mechsd di seiba auseschmeißn oder wos?";
 			break;
 		case CouldntStart:
-			ret = "Das Spiel konnte nicht gestartet werden.";
+			ret = "Du kosd nuned afanga, hetz ned aso.";
 			break;
 		case BeenKicked:
-			ret = "Du wurdest aus dem Spiel geworfen.";
+			ret = "Der Hund hod di einfach ausegschmissn, wersd wida recht bläd dahergred hom.";
 			break;
 		case WrongPassword:
-			ret = "Zutritt verweigert. Das Passwort ist inkorrekt.";
+			ret = "Des is ned des Geheimwort des hom meng.";
 			break;
 		case UnvalidMove:
-			ret = "Der Zug ist nicht gültig!";
+			ret = "Des kannst ned spuin.";
 			break;
 		case WrongCard:
-			ret = "Diese Karte gehört nicht zum Spiel.";
+			ret = "De Karten bassd jetzt überhaupt ned.";
 			break;
 		case WrongPhase:
-			ret = "Deine Aktion stimmt nicht mit der momentanen Spielphase überein.";
+			ret = "Du bist a weng duracheinand ha? Des is jetzt nuned dra.";
 			break;
 		case WrongNumber:
-			ret = "Diese Zahl ist nicht erlaubt.";
+			ret = "De Zoi gehd neda.";
 			break;
 		case WrongColour:
-			ret = "Diese Farbe ist nicht vorhanden.";
+			ret = "De Farb gibts goned.";
 			break;
 		case WrongTradeCards:
-			ret = "Du kannst diese Karten nicht tauschen.";
+			ret = "Du kosd de Kartn ned dauschn.";
 			break;
 		case WrongMethodCalled:
-			ret = "Diese Aktion ist in disem Spiel nicht gültig.";
+			ret = "Wos treibstn du überhaupt für an Grampf?";
 			break;
 		case WrongPlayer:
-			ret = "Du bist nicht am Zug!";
+			ret = "Du bisd do überhaupt ned dra.";
 			break;
 		default:
 			IllegalArgumentException e = new IllegalArgumentException();
