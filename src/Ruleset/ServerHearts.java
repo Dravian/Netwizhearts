@@ -63,10 +63,12 @@ public class ServerHearts extends ServerRuleset {
 		Set<Card> cards = msgMultiCard.getCardList();
 		
 		 if (getGamePhase() != GamePhase.MultipleCardRequest) {
+			 send(WarningMsg.WrongPhase, name);
 	            throw new RulesetException(
 	                    "Es werden in dieser Phase werden keine Tauschkarten erwartet.");
 
 	     } else if(!areValidChoosenCards(cards,name)) {
+	    	 send(WarningMsg.WrongTradeCards, name);
 	        	throw new RulesetException("Die übergebenen Karten vom Spieler "+ name +" sind falsch");
 	        
 	     }  else {
@@ -171,9 +173,9 @@ public class ServerHearts extends ServerRuleset {
 	}
 	
 	/**
-	 * Ueberprueft ob eine uebergebenes Kartenset von einem Spieler gültig ist
+	 * Überprüft ob eine übergebenes Kartenset von einem Spieler gültig ist
 	 * @param cards Ein Kartenset
-	 * @return true falls das Kartenset gueltig ist, false wenn nicht
+	 * @return true falls das Kartenset gültig ist, false wenn nicht
 	 */
 	private boolean areValidChoosenCards(Set<Card> cards, String name) {
 		int numberOfSwappingCards = 3;

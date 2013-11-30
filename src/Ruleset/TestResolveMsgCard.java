@@ -33,7 +33,7 @@ public class TestResolveMsgCard {
 	
 	@Before
 	public void setUp() throws Exception {		
-		lobbyServer = new TestLobbyServer();
+		lobbyServer = new LobbyServer();
 		player1 = new TestPlayer(lobbyServer);
 		player2 = new TestPlayer(lobbyServer);
 		player3 = new TestPlayer(lobbyServer);

@@ -53,7 +53,7 @@ Hier kommt die Implementierung
 \subsection{Client}
 
 \begin{itemize}
-\item 
+\item  \textbf{LanguageInterpreter:}  \textit{Neu hinzugefügte Klasse}: Wird verwendet, um Fehlermeldungen, die vom Server gesendet werden zu interpretieren und in der korrekten Sprache auszugeben.
 \end{itemize}
 
 \subsection{View}
@@ -62,6 +62,7 @@ Hier kommt die Implementierung
 \item \textbf{Login:} \textit{hinzugefügt}: getUsername(), getServerAdress()
 \item \textbf{Lobby:} \textit{hinzugefügt}: getChosenGameName(), getChatMessage(), hasPWChosenGame()
 \item \textbf{CreateWindow:} \textit{entfernt}: addLeaveButtonListener(), addRulesetSelectionListener(); \textit{hizugefügt}: setRulesetTypes(), getGameName(), hasPassword(), getPassword(), getSelectedRulesetType()
+\item \textbf{GameLobby:} \textit{hinzugefügt}: getChatMessage(), getSelectedPlayer()
 \end{itemize}
 
 \subsection{Ruleset}
@@ -116,7 +117,8 @@ startRound();
 \begin{itemize}
 \item \textbf{View(Login+Lobby):} ang. Dauer: 8 Stunden, tats. Dauer: 4 Stunden \\
 Begründung: Es waren noch Code-Teile aus der Pflichtenheft-Phase vorhanden. \\
-\item \textbf{View(Create+Join):} ang. Dauer: 8 Stunden, tats. Dauer: bisher 3 Stunden \\
+\item \textbf{View(Create+Join):} ang. Dauer: 8 Stunden, tats. Dauer: 4 Stunden \\
+\item \textbf{View(GameLobby):} ang. Dauer: 8 Stunden, tats. Dauer: bisher 3 Stunden \\
 \item \textbf{Model(Login):} ang. Dauer: 8 Stunden, tats. Dauer: bisher 8.5 Stunden \\
 Begründung: Login mehrmals umgebaut um die Tests aus dem Pflichtenheft zu erfüllen. \\
 \item \textbf{Model(Lobby):} ang. Dauer: 8 Stunden, tats. Dauer: bisher 6.5 Stunden \\

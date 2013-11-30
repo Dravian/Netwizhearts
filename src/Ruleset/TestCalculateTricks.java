@@ -10,6 +10,8 @@ import test.TestGameServer;
 import test.TestLobbyServer;
 import test.TestPlayer;
 
+import ComObjects.MsgCard;
+import ComObjects.RulesetMessage;
 import Server.GameServer;
 import Server.LobbyServer;
 import Server.Player;
@@ -34,9 +36,9 @@ public class TestCalculateTricks {
 		player1 = "Tick";
 		player2 = "Trick";
 		player3 = "Track";
-		lobbyServer = new TestLobbyServer();
+		lobbyServer = new LobbyServer();
 		player = new TestPlayer(lobbyServer);
-		gameServer = new TestGameServer(lobbyServer,player,"Mein Spiel",RulesetType.Wizard, 
+		gameServer = new GameServer(lobbyServer,player,"Mein Spiel",RulesetType.Wizard, 
 				"",false);
 		ruleset = new ServerWizard(gameServer);
 		

@@ -54,7 +54,7 @@ public class CreateGame extends JFrame{
 	private JButton btnLeave;
 	private JButton btnCreate;
 	private JLabel lblGameName;
-	private static String IMAGEPATH = "src/";
+	private static String IMAGEPATH = "Data/";
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

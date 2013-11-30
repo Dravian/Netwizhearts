@@ -254,7 +254,7 @@ public abstract class ServerRuleset {
 		return gameState.getPlayedCards();
 	}
 	/**
-	 * Schickt eine Nachricht an einen Spieler, �ber den Gameserver
+	 * Schickt eine Spielnachricht an einen Spieler, über den Gameserver
 	 * @param message Die Nachricht vom Typ RulesetMessage
 	 * @param name Der Name vom Spieler
 	 */
@@ -262,6 +262,14 @@ public abstract class ServerRuleset {
 		server.sendRulesetMessage(name,message);
 	}
 	
+	/**
+	 * Schickt eine Warnung für eine falsche Aktion an einem Spieler
+	 * @param message Die Warnung
+	 * @param name Der Name vom Spieler
+	 */
+	protected void send(WarningMsg message, String name) {
+		server.sendWarning(name, message);
+	}
 	
 	/**
 	 * Schickt eine Nachricht an alle Spieler
@@ -273,14 +281,16 @@ public abstract class ServerRuleset {
 	
 	/** 
 	 * Verarbeitet die RulesetMessage dass eine Karte vom Spieler gespielt.
-	 * Die wird dann in isValidMove �berpr�ft, bei falsche Eingabe wird�
+	 * Die wird dann in isValidMove überprüft, bei falscher Eingabe wird
 	 * eine MsgCardRequest an den selben Spieler geschickt. 
 	 * Bei richtiger Eingabe geht das Spiel weiter.
 	 * @param msgCard Die Nachricht vom Client welche Karte gespielt wurde
 	 * @param name Der Name des Spielers
 	 */
 	public void resolveMessage(MsgCard msgCard, String name) {
-		
+		send(WarningMsg.WrongMethodCalled, name);
+		throw new IllegalArgumentException("Das ComObjekt MsgCard findet " +
+				"keine Verwendung in diesem Spiel");
 	}
 	
 	/**
@@ -290,6 +300,7 @@ public abstract class ServerRuleset {
 	 * @throws IllegalArgumentException falls das ComObject im falschen Spiel benutzt wird
 	 */
 	public void resolveMessage(MsgMultiCards msgMultiCard, String name) throws IllegalArgumentException{
+		send(WarningMsg.WrongMethodCalled, name);
 		throw new IllegalArgumentException("Das ComObjekt MsgMultiCards findet " +
 				"keine Verwendung in diesem Spiel");
 	}
@@ -301,6 +312,7 @@ public abstract class ServerRuleset {
 	 * @throws IllegalArgumentException wenn das ComObjekt im falschen Spiel benutzt wird
 	 */
 	public void resolveMessage(MsgNumber msgNumber, String name) throws IllegalArgumentException{
+		send(WarningMsg.WrongMethodCalled, name);
 		throw new IllegalArgumentException("Das ComObjekt MsgNumber findet " +
 				"keine Verwendung in diesem Spiel");
 	}
@@ -312,6 +324,7 @@ public abstract class ServerRuleset {
 	 * @throws IllegalArgumentException falls das ComObject im falschen Spiel benutz wird
 	 */
 	public void resolveMessage(MsgSelection msgSelection, String name) throws IllegalArgumentException{
+		send(WarningMsg.WrongMethodCalled, name);
 		throw new IllegalArgumentException("Das ComObjekt MsgSelection findet " +
 				"keine Verwendung in diesem Spiel");
 	}
@@ -339,7 +352,7 @@ public abstract class ServerRuleset {
 	 * Gibt einem Spieler eine bestimmte Karte
 	 * @param player Der Name eines Spielers
 	 * @param card Eine Karte
-	 * @return Gibt true zur�ck wenn die Karte im Deck ist, false sonst
+	 * @return Gibt true zurück wenn die Karte im Deck ist, false sonst
 	 */
 	protected boolean giveACard(PlayerState player, Card card) {
 		return gameState.giveACard(player,card);	
@@ -457,34 +470,47 @@ public abstract class ServerRuleset {
 	}
 
 	public void resolveMessage(MsgCardRequest msgCardRequest, String name) {
+		send(WarningMsg.WrongMethodCalled, name);
 		throw new IllegalArgumentException("Das ComObjekt MsgCardRequest findet " +
 				"keine Verwendung in diesem Spiel");
 	}
 
 	public void resolveMessage(MsgGameEnd msgGameEnd, String name) {
+		send(WarningMsg.WrongMethodCalled, name);
 		throw new IllegalArgumentException("Das ComObjekt MsgGameEnd findet " +
 				"keine Verwendung in diesem Spiel");		
 	}
 
 	public void resolveMessage(MsgMultiCardsRequest msgMultiCardsRequest,
 			String name) {
+		send(WarningMsg.WrongMethodCalled, name);
 		throw new IllegalArgumentException("Das ComObjekt MsgMultiCardsRequest findet " +
 				"keine Verwendung in diesem Spiel");		
 	}
 
 	public void resolveMessage(MsgNumberRequest msgNumberRequest, String name) {
+		send(WarningMsg.WrongMethodCalled, name);
 		throw new IllegalArgumentException("Das ComObjekt MsgNumberRequest findet " +
 				"keine Verwendung in diesem Spiel");		
 	}
 
 	public void resolveMessage(MsgSelectionRequest msgSelectionRequest,
 			String name) {
+		send(WarningMsg.WrongMethodCalled, name);
 		throw new IllegalArgumentException("Das ComObjekt MsgSelectionRequest findet " +
 				"keine Verwendung in diesem Spiel");		
 	}
 
 	public void resolveMessage(MsgUser msgUser, String name) {
+		send(WarningMsg.WrongMethodCalled, name);
 		throw new IllegalArgumentException("Das ComObjekt MsgUser findet " +
 				"keine Verwendung in diesem Spiel");		
+	}
+
+	public void resolveMessage(RulesetMessage message, String name) {
+		send(WarningMsg.WrongMethodCalled, name);
+		throw new IllegalArgumentException("Das allgemeine Rulesetmessage findet " +
+				"keine Verwendung.");	
+		
 	}
 }

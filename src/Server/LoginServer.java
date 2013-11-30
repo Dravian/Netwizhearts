@@ -104,8 +104,7 @@ public class LoginServer extends Server {
 		if (login.getPlayerName() != null) {
 			String CheckName = login.getPlayerName();
 			if (lobby.getNames().contains(CheckName)) {
-				ComWarning warning = new ComWarning(
-						"Login Error! Invalid Username!");
+				ComWarning warning = new ComWarning(WarningMsg.LoginError);
 				player.send(warning);
 				disconnectPlayer(player);
 			} else {
@@ -117,8 +116,7 @@ public class LoginServer extends Server {
 				player.send(init);
 			}
 		} else {
-			ComWarning warning = new ComWarning(
-					"Login Error! Invalid Username!");
+			ComWarning warning = new ComWarning(WarningMsg.LoginError);
 			player.send(warning);
 		}
 
