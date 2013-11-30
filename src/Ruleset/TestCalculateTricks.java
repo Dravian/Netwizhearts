@@ -10,6 +10,8 @@ import test.TestGameServer;
 import test.TestLobbyServer;
 import test.TestPlayer;
 
+import ComObjects.MsgCard;
+import ComObjects.RulesetMessage;
 import Server.GameServer;
 import Server.LobbyServer;
 import Server.Player;
@@ -77,6 +79,9 @@ public class TestCalculateTricks {
 
 	@Test
 	public void testCalculateTricks() {
+		Card card = WizardCard.AchtBlau;
+		RulesetMessage message = new MsgCard(card);
+		ruleset.resolveMessage(message, "hsd");
 		ruleset.setFirstPlayer(playerState1);	
 		assertTrue(ruleset.playCard(WizardCard.ZaubererRot));
 		

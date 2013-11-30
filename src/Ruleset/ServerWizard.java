@@ -59,26 +59,29 @@ public class ServerWizard extends ServerRuleset {
     }
 
     @Override
-    public void resolveMessage(MsgCard msgCard, String name)
-            throws IllegalArgumentException {
+    public void resolveMessage(MsgCard msgCard, String name) {
         Card card = msgCard.getCard();
 
         if (getGamePhase() != GamePhase.CardRequest) {
+        	send(WarningMsg.WrongPhase, name);
             throw new RulesetException(
                     "Es wird in dieser Phase keine Karte erwartet "
                             + "vom Spieler " + name);
 
         } else if (getPlayerState(name) != getCurrentPlayer()) {
+        	send(WarningMsg.WrongPlayer, name);
             throw new IllegalArgumentException("Der Spieler " + name
                     + " ist nicht am Zug!");
 
         } else if (card.getRuleset() != RulesetType.Wizard
                 || card.getColour() == Colour.NONE) {
+        	send(WarningMsg.WrongCard, name);
             throw new IllegalArgumentException("Die Karte " + card.getValue()
-                    + card.getColour() + " geh�rt nicht zum Spiel");
+                    + card.getColour() + " gehört nicht zum Spiel");
 
         } else if (!isValidMove(card)) {
         	setGamePhase(GamePhase.CardRequest);
+        	send(WarningMsg.UnvalidMove, name);
             throw new RulesetException("Der Spieler" + name + "hat die Karte "
                     + card.getValue() + card.getColour()
                     + " gespielt, obwohl sie kein gültiger "
@@ -102,13 +105,16 @@ public class ServerWizard extends ServerRuleset {
     @Override
     public void resolveMessage(MsgNumber msgNumber, String name) {
         if (getGamePhase() != GamePhase.TrickRequest) {
+        	send(WarningMsg.WrongPhase, name);
             throw new RulesetException("Es wird keine Zahl erwartet.");
 
         } else if (!getCurrentPlayer().getPlayerStateName().equals(name)) {
+        	send(WarningMsg.WrongPlayer, name);
             throw new RulesetException("Es wird keine Zahl von dem Spieler " +
                     name + " erwartet.");
 
         } else if (!isValidNumber(msgNumber.getNumber())) {
+        	send(WarningMsg.WrongNumber, name);
             throw new RulesetException("Die Zahl " + msgNumber.getNumber() +
                     " vom Spieler " + name + " ist nicht erlaubt.");
 
@@ -132,10 +138,12 @@ public class ServerWizard extends ServerRuleset {
     @Override
     public void resolveMessage(MsgSelection msgSelection, String name) {
         if (getGamePhase() != GamePhase.SelectionRequest) {
+        	send(WarningMsg.WrongPhase, name);
             throw new RulesetException("Es wird keine Trumpffarbe erwartet vom"
                     + "Spieler " + name);
 
         } else if (!getFirstPlayer().getPlayerStateName().equals(name)) {
+        	send(WarningMsg.WrongPlayer, name);
             throw new RulesetException("Der Spieler " + name + " darf keine "
                     + "Trumpfarbe auswählen.");
 
@@ -143,6 +151,7 @@ public class ServerWizard extends ServerRuleset {
             Colour colour = msgSelection.getSelection();
 
             if (!isValidColour(colour)) {
+            	send(WarningMsg.WrongColour, name);
                 throw new RulesetException("Die Farbe " + colour
                         + "existiert in Wizard nicht");
             } else {
