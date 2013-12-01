@@ -179,7 +179,7 @@ public class ClientController {
 
 		@Override
 		public void windowClosing(WindowEvent arg0) {
-			clientModel.leaveWindow();
+			clientModel.leaveGameLobby();
 		}
 
 		@Override
@@ -370,7 +370,7 @@ public class ClientController {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			clientModel.leaveWindow();
+			clientModel.leaveGameLobby();
 			gameLobby.setVisible(false);
 		}
 		
