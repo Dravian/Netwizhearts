@@ -56,6 +56,7 @@ public class GameLobby extends JFrame implements Observer{
 		
 		chatlog = new JTextArea();
 		chatlog.setBounds(12, 154, 400, 84);
+		chatlog.setEditable(false);
 		contentPane.add(chatlog);
 		
 		messageField = new JTextField();
