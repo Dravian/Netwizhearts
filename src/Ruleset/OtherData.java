@@ -11,7 +11,7 @@ import java.util.Set;
 
 /** 
  * OtherData. OtherData speichert alle Spielinformationen eines Spielers, 
- * außer seiner eigenen Spielhand.
+ * auï¿½er seiner eigenen Spielhand.
  */
 public abstract class OtherData implements Serializable{
 	/**
@@ -82,7 +82,7 @@ public abstract class OtherData implements Serializable{
 		this.points = points;
 	}
 	/**
-	 * Gibt den Punktestand eines Spielers zurück
+	 * Gibt den Punktestand eines Spielers zurÃ¼ck
 	 * @return Der Punktestand
 	 */
 	protected int getPoints() {
@@ -90,12 +90,12 @@ public abstract class OtherData implements Serializable{
 	}
 	
 	/**
-	 * Gibt die Stringrepraesentation der OtherData zurück
+	 * Gibt die Stringrepraesentation der OtherData zurÃ¼ck
 	 */
 	public abstract String toString();
 
 	/**
-	 * Gibt den Namen des Spielers zurück
+	 * Gibt den Namen des Spielers zurï¿½ck
 	 * @return Der Name des Spielers
 	 */
 	public String getOtherDataName() {

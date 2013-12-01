@@ -217,7 +217,7 @@ public abstract class ServerRuleset {
 	
 	/**
 	 * Fuegt einen Spieler ins Spiel ein
-	 * @param name Der name vom Spieler
+	 * @param name Der nNme vom Spieler
 	 */
 	public void addPlayerToGame(String name) {
 		if(gamePhase == GamePhase.Start) {
