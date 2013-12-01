@@ -8,20 +8,20 @@ import java.io.Serializable;
 public interface Card {
 	
 	/**
-	 * Gibt den Wert der Karte zurück
+	 * Gibt den Wert der Karte zurÃ¼ck
 	 * @return Der Wert der Karte
 	 */
 	public int getValue();
 	
 	/**
-	 * Gibt die Farbe der Karte zurück 
+	 * Gibt die Farbe der Karte zurÃ¼ck 
 	 * @return Die Farbe der Karte
 	 */
 	public Colour getColour();
 	
 	/**
-	 * Gibt den Spieltyp der Karte zurück
-	 * @return
+	 * Gibt den Spieltyp der Karte zurÃ¼ck
+	 * @return Den Spieltyp zu dem die Karte gehÃ¶rt
 	 */
 	public RulesetType getRuleset();
 }

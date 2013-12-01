@@ -10,7 +10,7 @@ import Client.ClientModel;
 import ComObjects.*;
 
 /** 
- * ClientHearts. Diese Klasse bildet das Regelwerk für den Clientmodel bei einer Partie Hearts
+ * ClientHearts. Diese Klasse bildet das Regelwerk fï¿½r den Clientmodel bei einer Partie Hearts
  */
 public class ClientHearts extends ClientRuleset {
 	/**
@@ -48,8 +48,7 @@ public class ClientHearts extends ClientRuleset {
 	 * @param msgMultiCardsRequest Die Nachricht vom Server
 	 */
 	public void resolveMessage(MsgMultiCardsRequest msgMultiCardsRequest) {
-		
-		
+		setGamePhase(GamePhase.MultipleCardRequest);
 	}
 	
 	/**

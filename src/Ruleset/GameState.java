@@ -15,7 +15,7 @@ import java.util.Set;
 
 /**
  * GameState. Das GameState modelliert einen aktuellen Spielzustand, es wird vom
- * GameServer instanziert und vom RuleSet bearbeitet. Es enth�lt die einzelnen
+ * GameServer instanziert und vom RuleSet bearbeitet. Es enthält die einzelnen
  * PlayerStates, sowie Informationen zum Ablage-, Aufnahmestapel, Rundenanzahl,
  * den momentan aktiven Spieler sowie GamePhase.
  */
@@ -31,7 +31,7 @@ public class GameState {
 	private RulesetType ruleset;
 
 	/**
-	 * Der Spieler der am Anfang einer Runde anf�ngt
+	 * Der Spieler der am Anfang einer Runde anfängt
 	 */
 	private PlayerState firstPlayer;
 
@@ -81,7 +81,7 @@ public class GameState {
 
 	/**
 	 * Wird aufgerufen um ein neues Deck zu erstellen und alle Karten die vorher
-	 * im Spiel waren zu l�schen.
+	 * im Spiel waren zu löschen.
 	 * @param deck Das neue Kartendeck
 	 */
 	protected void restartDeck(List<Card> deck) {	
@@ -143,15 +143,6 @@ public class GameState {
 	}
 	
 	/**
-	 * Macht eine neue Runde, wird aufgerufen wenn ein neuer Spieler als
-	 * firstPlayer gesetzt wird.
-	 */
-	/*protected void newRound() {
-		roundNumber++;
-	}
-	*/
-	
-	/**
 	 * Holt den Spieler der als erster am Zug war
 	 * 
 	 * @return firstPlayer Der Spielzustand des Spielers der als erster am Zug
@@ -188,7 +179,6 @@ public class GameState {
 
 	/**
 	 * Holt die Karten die noch im Aufnahmestapel sind
-	 * 
 	 * @return deck Holt die Karten die noch im Aufnahmestapel sind
 	 */
 	protected List<Card> getCardsLeftInDeck() {
@@ -252,15 +242,6 @@ public class GameState {
 	 */
 	protected int getRoundNumber() {
 		return roundNumber;
-	}
-
-	/**
-	 * Holt die Anzahl der gespielten Karten
-	 * 
-	 * @return Die Anzahl der gespielten Karten
-	 */
-	protected int getNumberOfPlayedCards() {
-		return discardPile.size();
 	}
 
 	/**

@@ -64,7 +64,7 @@ public class PlayerState implements Serializable{
 	}
 	
 	/**
-	 * Gibt die OtherData des Spielers zur�ck
+	 * Gibt die OtherData des Spielers zurück
 	 * @return otherData Die OtherData eines Spielers
 	 */
 	protected OtherData getOtherData() {

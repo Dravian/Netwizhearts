@@ -72,6 +72,7 @@ public class ClientWizard extends ClientRuleset {
 		
 	}
 	
+	@Override
 	public void resolveMessage(MsgGameEnd gameEnd) {
 		setGamePhase(GamePhase.Ending);
 		//TODO Die Liste von Winners
@@ -106,8 +107,8 @@ public class ClientWizard extends ClientRuleset {
 			return true;
 		}
 		
-		/* Falls die nächste Karte Narr ist, wird die als nächstgespielte
-		* Karte als erste Karte gesetzt, außer es liegen keine Karten mehr
+		/* Falls die nï¿½chste Karte Narr ist, wird die als nï¿½chstgespielte
+		* Karte als erste Karte gesetzt, auï¿½er es liegen keine Karten mehr
 		* im Ablagestapel
 		*/
 		for(int i = 1; i < getPlayedCards().size(); i++) {
@@ -142,7 +143,7 @@ public class ClientWizard extends ClientRuleset {
 	}
 
 	/**
-	 * Prüft ob die Anzahl der angesagten Stiche vom Spieler gueltig sind
+	 * Prï¿½ft ob die Anzahl der angesagten Stiche vom Spieler gueltig sind
 	 * @param number Die Anzahl der angesagten Sticht
 	 * @return true falls die Anzahl der Stiche passen, false wenn nicht
 	 */
@@ -158,7 +159,7 @@ public class ClientWizard extends ClientRuleset {
 	}
 	
 	/**
-	 * Prüft ob die angesagte Trumpffarbe richtig
+	 * Prï¿½ft ob die angesagte Trumpffarbe richtig
 	 * @param colour Die angesagte Trumpffarbe
 	 * @return true falls die Farbe in Ordnung ist, false wenn nicht
 	 */
