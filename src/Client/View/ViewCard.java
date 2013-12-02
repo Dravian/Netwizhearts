@@ -11,6 +11,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+import Ruleset.Card;
 import Ruleset.RulesetType;
 
 /** 
@@ -25,39 +26,37 @@ public class ViewCard extends JPanel{
 	private static String DATAPATH = "Data/";
 	
 	private RulesetType ruleset;
-	private int id;
+	private Card card;
 	private BufferedImage face;
 	private int xPos;
 	private int yPos;
 	
 	/**
 	 * Erstellt eine neue Karte fuer die Anzeige und zeichnet dafuer
-	 * das Bild, das durch das Regelwerk r und seine Kardinaliaet n 
-	 * im Ordner mit dem Namen des Regelwerks angegeben ist.
+	 * das Bild
 	 * 
-	 * @param r Regelwerk
-	 * @param n ID der Karte
+	 * @param c Karte
 	 */
-	public ViewCard(RulesetType r, int n) {
+	public ViewCard(Card c) {
 		//TODO
-		ruleset = r;
-		id = n;
+		ruleset = c.getRuleset();
+		card = c;
 		xPos = 0;
 		yPos = 0;
 		try {                
-	          face = ImageIO.read(new File(DATAPATH + ruleset.toString().toLowerCase() + "/card (" + id +" ).jpg"));
+	          face = ImageIO.read(new File(DATAPATH + ruleset.toString().toLowerCase() + "/"+  c.toString() +".jpg"));
 	       } catch (IOException ex) {
 	            //TODO
 	       }
 	}
 	
 	/**
-	 * Gibt die ID der Karte zurueck
+	 * Gibt die Karte zurueck
 	 * 
-	 * @return ID der Karte
+	 * @return Karte
 	 */
-	public int getID() {
-		return id;
+	public Card getCard() {
+		return card;
 	}
 	
 	/**

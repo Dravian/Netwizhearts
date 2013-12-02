@@ -15,6 +15,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import Ruleset.Card;
+import Ruleset.HeartsCard;
 import Ruleset.RulesetType;
 
 /** 
@@ -50,7 +51,16 @@ public class GamePanel extends JPanel{
 	 */
 	public GamePanel(List<String> names, List<String> infos) {
 		ownHand = new OwnHand();
-				
+		
+		//Test
+		List<Card> karten = new LinkedList<Card>();
+		karten.add(HeartsCard.Herz2);
+		karten.add(HeartsCard.HerzAss);
+		karten.add(HeartsCard.Herz4);
+		ownHand.setHand(karten);		
+		
+		//
+		
 		otherHands = new LinkedList<OtherPlayer>();
 		for (int i = 0; i < names.size(); i++) {
 			otherHands.add(i, new OtherPlayer(names.get(i), infos.get(i)));

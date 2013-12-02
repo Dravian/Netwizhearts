@@ -6,6 +6,7 @@ package Client.View;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -24,6 +25,7 @@ public class OwnHand extends JPanel{
 	private List<ViewCard> hand;
 	
 	public OwnHand() {
+		hand = new LinkedList<ViewCard>();
 	}
 	
 	/**
@@ -35,7 +37,9 @@ public class OwnHand extends JPanel{
 		hand.clear();
 		for (int i = 0; i < cards.size(); i++) {
 			Card c = cards.get(i);
-			//hand.add(i, new ViewCard(c.getRuleset(), c.getID())); //TODO getID
+			ViewCard vc = new ViewCard(c);
+			vc.setPosition(10+i*75, 440);
+			hand.add(i, vc); //TODO 
 		}
 	}
 	
