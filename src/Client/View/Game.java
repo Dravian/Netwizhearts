@@ -4,9 +4,12 @@ import java.awt.EventQueue;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -21,6 +24,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+import Client.ClientModel;
 import Client.ViewNotification;
 
 import java.awt.Color;
@@ -36,11 +40,15 @@ public class Game extends JFrame implements Observer{
 	private static final long serialVersionUID = -2655520138213745249L;
 	
 	private JPanel contentPane;
-	private JTextField textField;
-	private GamePanel panel;
-
+	private JTextField messageField;
+	private JScrollPane scrollPane;
+	private JTextArea chatlog;
+	private GamePanel gamePanel;
 	
-	public static void main(String[] args) throws IOException{
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -56,85 +64,91 @@ public class Game extends JFrame implements Observer{
 	/**
 	 * Erstellt das Game Fenster
 	 * 
-	 * @throws IOException 
 	 */
-	public Game() throws IOException {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 800, 600);
+	public Game() {
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //TODO change after testing
+		setBounds(100, 100, 1024, 768);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		panel = new GamePanel();
-		panel.setBounds(10, 11, 764, 370);
-		panel.setOpaque(false);
-		contentPane.add(panel); 
+		//Test
+		LinkedList<String> players = new LinkedList<String>();
+		players.add("Mr. Blue");
+		players.add("Mr. White");
+		players.add("Mr. Orange");
+		players.add("Mr. Pink");
+		players.add("Mr. Brown");
+		LinkedList<String> data = new LinkedList<String>();
+		data.add("2 Stiche");
+		data.add("3 Stiche2");
+		data.add("8 Stiche");
+		data.add("8 Stiche");
+		data.add("8 Stiche");
+		gamePanel = new GamePanel(players, data);
+		gamePanel.setBounds(10, 11, 998, 547);
+		gamePanel.setOpaque(false);
+		contentPane.add(gamePanel);		
+		//
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 391, 764, 105);
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 569, 998, 105);
+		scrollPane.setViewportView(chatlog);
 		contentPane.add(scrollPane);
 		
-		JTextArea txtrSpielerHfGl = new JTextArea();
-		txtrSpielerHfGl.setLineWrap(true);
-		txtrSpielerHfGl.setText("Meow: hf gl\r\nDoc Holliday: u2\r\nMark: gl gl");
-		txtrSpielerHfGl.setEditable(false);
-		scrollPane.setViewportView(txtrSpielerHfGl);
+		chatlog = new JTextArea();
+		chatlog.setEditable(false);
+		chatlog.setLineWrap(true);
 		
-		textField = new JTextField();
-		textField.setBounds(10, 507, 764, 44);
-		contentPane.add(textField);
-		textField.setColumns(10);
-		
-		//ImageIcon image = new ImageIcon(getClass().getResource("kartenspiel.png"));
-		//JLabel lblNewLabel_1 = new JLabel(new ImageIcon("./src/game.png"));
-		//lblNewLabel_1.setBounds(10, 11, 764, 369);
-		//lblNewLabel_1.setOpaque(false);
-		
-		
-		JLabel lblNewLabel = new JLabel("Score    106");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(768, 373, 56, 55);
-		//lblNewLabel_1.add(lblNewLabel);
-		//lblNewLabel_1.add(button);
-	//contentPane.add(lblNewLabel_1);
+		messageField = new JTextField();
+		messageField.setBounds(10, 685, 998, 44);
+		contentPane.add(messageField);
+		messageField.setColumns(10);
+	}
 	
-/*	JButton btnNewButton = new JButton("New button");
-	btnNewButton.setBounds(237, 183, 89, 23);
-	lblNewLabel_1.add(btnNewButton);
+	/**
+	 * Gibt die eingetippte Chatnachricht zurueck
+	 * 
+	 * @return Chatnachricht
+	 */
+	public String getChatMessage() {
+		String r = messageField.getText();
+		messageField.setText("");
+		return r;
+	}
 	
-	JLabel lblNewLabel_2 = new JLabel("SCORE 106");
-	lblNewLabel_2.setBackground(new Color(192, 192, 192));
-	lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-	lblNewLabel_2.setBounds(69, 102, 70, 70);
-	lblNewLabel_2.setOpaque(false);
-	contentPane.add(lblNewLabel_2); */
+	/**
+	 * Fuegt einen KeyListener fuer das Nachricht-Senden-Feld der Lobby hinzu
+	 * @param k
+	 */
+	public void addChatMessageListener(KeyListener k) {
+		messageField.addKeyListener(k);
 	}
 	
 	/**
 	 * Arrangiert die Elemente der Spielfeld-Oberflaeche für ein Kartenspiel, 
 	 * bei dem Stiche gemacht werden. Hierfuer hat jeder Spieler einen eigenen
-	 * Ablagestapel vor sich. Es koennen 3, 4, 5, oder 6 Spieler gewaehlt werden.
+	 * Ablagestapel vor sich.
 	 * 
-	 * @param playercount Anzahl der Spieler, wobei 3 <= playercount <=6 einzuhalten ist
+	 * @param players Liste der Spieler
+	 * @param data Liste der Spielerdaten
 	 */
-	public void makeTrickGameBoard(int playercount) {
-		switch (playercount) {
-		case 3:
-			panel.makeTrickGameBoardThreePlayers();
-			break;
-		case 4:
-			panel.makeTrickGameBoardFourPlayers();
-			break;
-		case 5:
-			panel.makeTrickGameBoardFivePlayers();
-			break;
-		case 6:
-			panel.makeTrickGameBoardSixPlayers();
-			break;
-		default:
-			break;
-		}
+	public void makeTrickGameBoard(final List<String> players, final List<String> data) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					gamePanel = new GamePanel(players, data);
+					gamePanel.setBounds(10, 11, 998, 547);
+					gamePanel.setOpaque(false);
+					contentPane.add(gamePanel);
+				} catch (Exception e) {
+					//TODO
+				}
+			}
+		});
+		
 	}
 	
 	/**
@@ -148,7 +162,27 @@ public class Game extends JFrame implements Observer{
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
+		final ClientModel observed = (ClientModel) o;
+		try {
+			ViewNotification message = (ViewNotification) arg;
+		switch (message) {
+		case gameStarted:
+			List<String> players = observed.getPlayerlist();
+			players.remove(observed.getPlayerName());
+			makeTrickGameBoard(players, observed.getOtherPlayerData());
+			break;
+		case playedCardsUpdate:
+			gamePanel.updateCardsPlayed(observed.getPlayedCards());
+			break;
+		case otherDataUpdate:
+			gamePanel.updateOtherData(observed.getOtherPlayerData());
+			break;
+		default:
+			break;
+		}
+		} catch (ClassCastException e) {
+			this.update(observed, (String) arg);
+		}
 		
 	}
 	
