@@ -106,6 +106,10 @@ public class Game extends JFrame implements Observer{
 		messageField.setBounds(10, 685, 998, 44);
 		contentPane.add(messageField);
 		messageField.setColumns(10);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(-10, 11, 62, 96);
+		contentPane.add(panel);
 	}
 	
 	/**
