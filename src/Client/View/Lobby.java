@@ -51,7 +51,8 @@ public class Lobby extends JFrame implements Observer{
 	/**
 	 * Erstellt das Lobby-Fenster
 	 */
-	public Lobby() {		
+	public Lobby() {
+		setResizable(false);		
 		setTitle("Server Lobby");
 		lang = Language.English;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

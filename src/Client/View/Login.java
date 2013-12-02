@@ -48,6 +48,7 @@ public class Login extends JFrame implements Observer{
 	 */
 	public Login() {
 		lang = Language.English;
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 314, 169);
 		contentPane = new JPanel();

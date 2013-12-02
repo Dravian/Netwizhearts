@@ -11,6 +11,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+import Ruleset.RulesetType;
+
 /** 
  * ViewCard. ViewCard ist die View-seitige Repraesentation einer Karte. 
  * Sie wird verwendet um einzelne Karten auf das Spielfeld zu zeichnen.
@@ -20,26 +22,30 @@ import javax.swing.JPanel;
 public class ViewCard extends JPanel{
 
 	private static final long serialVersionUID = 8733682958484899430L;
+	private static String DATAPATH = "Data/";
 	
-	private String path;
+	private RulesetType ruleset;
 	private int id;
 	private BufferedImage face;
+	private int xPos;
+	private int yPos;
 	
 	/**
 	 * Erstellt eine neue Karte fuer die Anzeige und zeichnet dafuer
-	 * das Bild, das durch die Pfadangabe s und seine Kardinaliaet n 
-	 * im Ordner angegeben ist. Die Pfadangabe wird durch das Regelwerk
-	 * bestimmt.
+	 * das Bild, das durch das Regelwerk r und seine Kardinaliaet n 
+	 * im Ordner mit dem Namen des Regelwerks angegeben ist.
 	 * 
-	 * @param s Pfadangabe zum zu zeichnenden Bild
+	 * @param r Regelwerk
 	 * @param n ID der Karte
 	 */
-	public ViewCard(String s, int n) {
+	public ViewCard(RulesetType r, int n) {
 		//TODO
-		path = s;
+		ruleset = r;
 		id = n;
+		xPos = 0;
+		yPos = 0;
 		try {                
-	          face = ImageIO.read(new File(path + "/Karte" + id));//TODO
+	          face = ImageIO.read(new File(DATAPATH + ruleset.toString().toLowerCase() + "/card (" + id +" ).jpg"));
 	       } catch (IOException ex) {
 	            //TODO
 	       }
@@ -54,11 +60,21 @@ public class ViewCard extends JPanel{
 		return id;
 	}
 	
+	/**
+	 * Setzt die Position des Objekts
+	 * 
+	 * @param x X-Position
+	 * @param y Y-Position
+	 */
+	public void setPosition(int x, int y) {
+		xPos = x;
+		yPos = y;
+	}
+	
 	@Override
-	public void paintComponent(Graphics g) {
+	public void paint(Graphics g) {
         //TODO
-		//super.paintComponent(g);
-        g.drawImage(face, 0, 0, null); // see javadoc for more info on the parameters 
-        super.paintComponent(g);
+        g.drawImage(face, xPos, yPos, null);
+        super.paint(g);
     }
 }
