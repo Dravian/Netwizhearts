@@ -64,7 +64,7 @@ public class ServerWizard extends ServerRuleset {
 
         if (getGamePhase() != GamePhase.CardRequest) {
         	send(WarningMsg.WrongPhase, name);
-            throw new RulesetException(
+            throw new IllegalStateException(
                     "Es wird in dieser Phase keine Karte erwartet "
                             + "vom Spieler " + name);
 
@@ -82,7 +82,7 @@ public class ServerWizard extends ServerRuleset {
         } else if (!isValidMove(card)) {
         	setGamePhase(GamePhase.CardRequest);
         	send(WarningMsg.UnvalidMove, name);
-            throw new RulesetException("Der Spieler" + name + "hat die Karte "
+            throw new IllegalArgumentException("Der Spieler" + name + "hat die Karte "
                     + card.getValue() + card.getColour()
                     + " gespielt, obwohl sie kein gültiger "
                     + "Zug ist. Es muss ein Fehler bei ClientWizard sein.");
@@ -106,16 +106,16 @@ public class ServerWizard extends ServerRuleset {
     public void resolveMessage(MsgNumber msgNumber, String name) {
         if (getGamePhase() != GamePhase.TrickRequest) {
         	send(WarningMsg.WrongPhase, name);
-            throw new RulesetException("Es wird keine Zahl erwartet.");
+            throw new IllegalStateException("Es wird keine Zahl erwartet.");
 
         } else if (!getCurrentPlayer().getPlayerStateName().equals(name)) {
         	send(WarningMsg.WrongPlayer, name);
-            throw new RulesetException("Es wird keine Zahl von dem Spieler " +
+            throw new IllegalArgumentException("Es wird keine Zahl von dem Spieler " +
                     name + " erwartet.");
 
         } else if (!isValidNumber(msgNumber.getNumber())) {
         	send(WarningMsg.WrongNumber, name);
-            throw new RulesetException("Die Zahl " + msgNumber.getNumber() +
+            throw new IllegalArgumentException("Die Zahl " + msgNumber.getNumber() +
                     " vom Spieler " + name + " ist nicht erlaubt.");
 
         } else {
@@ -139,12 +139,12 @@ public class ServerWizard extends ServerRuleset {
     public void resolveMessage(MsgSelection msgSelection, String name) {
         if (getGamePhase() != GamePhase.SelectionRequest) {
         	send(WarningMsg.WrongPhase, name);
-            throw new RulesetException("Es wird keine Trumpffarbe erwartet vom"
+            throw new IllegalStateException("Es wird keine Trumpffarbe erwartet vom"
                     + "Spieler " + name);
 
         } else if (!getFirstPlayer().getPlayerStateName().equals(name)) {
         	send(WarningMsg.WrongPlayer, name);
-            throw new RulesetException("Der Spieler " + name + " darf keine "
+            throw new IllegalArgumentException("Der Spieler " + name + " darf keine "
                     + "Trumpfarbe auswählen.");
 
         } else {
@@ -152,7 +152,7 @@ public class ServerWizard extends ServerRuleset {
 
             if (!isValidColour(colour)) {
             	send(WarningMsg.WrongColour, name);
-                throw new RulesetException("Die Farbe " + colour
+                throw new IllegalArgumentException("Die Farbe " + colour
                         + "existiert in Wizard nicht");
             } else {
                 ((WizardCard) getTrumpCard()).changeSorcererColour(colour);
@@ -391,7 +391,7 @@ public class ServerWizard extends ServerRuleset {
             }
 
         } else {
-            throw new RulesetException("Das Spiel ist noch nicht am "
+            throw new IllegalStateException("Das Spiel ist noch nicht am "
                     + "Rundenanfang");
         }
     }
@@ -403,7 +403,7 @@ public class ServerWizard extends ServerRuleset {
             List<PlayerState> players = getPlayers();
 
 			/*
-			 * Verrechnet die Punkte f�r jeden Spieler
+			 * Verrechnet die Punkte für jeden Spieler
 			 */
             for (PlayerState player : players) {
                 int announcedTricks = ((WizData) player.getOtherData())
@@ -452,7 +452,7 @@ public class ServerWizard extends ServerRuleset {
             }
 
         } else {
-            throw new RulesetException(
+            throw new IllegalStateException(
                     "Das Spiel ist noch nicht am Rundenende.");
         }
     }

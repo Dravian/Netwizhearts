@@ -6,14 +6,37 @@ import java.util.Calendar;
 import Client.View.Language;
 import ComObjects.WarningMsg;
 
+/**
+ * Diese Klasse ist dafuer zustaendig, je nach Sprache eine entsprechende
+ * Warnmeldung zu generieren
+ */
 public class LanguageInterpreter {
-
+	/**
+	 * Die Sprache in der das Spiel laufen soll
+	 */
 	private Language language;
 
+	/**
+	 * Konstruktor des LanguageInterpreter, die Sprache language wird mit dem
+	 * uebergebenen Wert initialisiert
+	 * 
+	 * @param lang
+	 *            ist die Sprache, die für das Spiel ausgewählt wurde
+	 */
 	public LanguageInterpreter(Language lang) {
 		language = lang;
 	}
 
+	/**
+	 * Erhaelt einen Warntyp und gibt je nach Sprache eine Stringmeldung
+	 * zurueck, die in einem Warnfenster ausgegeben werden kann
+	 * 
+	 * @param warning
+	 *            ist der Typ der Warnung, die aufgetreten ist
+	 * @return gibt eine entsprechende Stringmeldung zurück
+	 * @throws IllegalArgumentException
+	 *             falls es eine unbekannte Warnmeldung bekommt
+	 */
 	public String resolveWarning(WarningMsg warning)
 			throws IllegalArgumentException {
 		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
@@ -32,6 +55,16 @@ public class LanguageInterpreter {
 		return ret;
 	}
 
+	/**
+	 * Hilfsmethode, für den Fall, dass die Sprache Deutsch ist
+	 * 
+	 * @param warning
+	 *            ist der Typ der Warnung, die aufgetreten ist
+	 * 
+	 * @return gibt eine entsprechende Stringmeldung zurück
+	 * @throws IllegalArgumentException
+	 *             falls es eine unbekannte Warnmeldung bekommt
+	 */
 	private String germanWarning(WarningMsg warning)
 			throws IllegalArgumentException {
 		String ret;
@@ -91,6 +124,16 @@ public class LanguageInterpreter {
 		return ret;
 	}
 
+	/**
+	 * Hilfsmethode, für den Fall, dass die Sprache Englisch ist
+	 * 
+	 * @param warning
+	 *            ist der Typ der Warnung, die aufgetreten ist
+	 * 
+	 * @return gibt eine entsprechende Stringmeldung zurück
+	 * @throws IllegalArgumentException
+	 *             falls es eine unbekannte Warnmeldung bekommt
+	 */
 	private String englishWarning(WarningMsg warning) {
 		String ret;
 		switch (warning) {
@@ -149,8 +192,17 @@ public class LanguageInterpreter {
 		return ret;
 	}
 
+	/**
+	 * Hilfsmethode, für den Fall, dass die Sprache Bayerisch ist
+	 * 
+	 * @param warning
+	 *            ist der Typ der Warnung, die aufgetreten ist
+	 * 
+	 * @return gibt eine entsprechende Stringmeldung zurück
+	 * @throws IllegalArgumentException
+	 *             falls es eine unbekannte Warnmeldung bekommt
+	 */
 	private String bavarianWarning(WarningMsg warning) {
-		// TODO Ich kann kein Bayerisch!
 		String ret;
 		switch (warning) {
 		case LoginError:

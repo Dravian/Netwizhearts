@@ -159,6 +159,16 @@ public class GameServer extends Server {
 	}
 
 	/**
+	 * Diese Methode verschickt ComWarning mit der übergebenen Warnung 
+	 * mit broadcast() an alle Spieler.
+	 * @param message
+	 *            ist die Ruleset Nachricht, die in ein ComObject verpackt wird
+	 */
+	public void broadcastRulesetMessage(RulesetMessage message) {
+		broadcast(new ComRuleset(message));
+	}
+	
+	/**
 	 * Diese Methode verpackt eine RulesetMessage in ein ComObject und
 	 * verschickt es mit sendToPlayer() an einen bestimmten Spieler.
 	 * @param player
@@ -189,16 +199,6 @@ public class GameServer extends Server {
 	 */
 	public void sendWarning(String player, WarningMsg warning) {
 		sendToPlayer(player, new ComWarning(warning));
-	}
-
-	/**
-	 * Diese Methode verschickt ComWarning mit der übergebenen Warnung 
-	 * mit broadcast() an alle Spieler.
-	 * @param message
-	 *            ist die Ruleset Nachricht, die in ein ComObject verpackt wird
-	 */
-	public void broadcastRulesetMessage(RulesetMessage message) {
-		broadcast(new ComRuleset(message));
 	}
 	
 	/**
@@ -432,13 +432,7 @@ public class GameServer extends Server {
 	 */
 	@Override
 	public synchronized void receiveMessage(Player player, ComRuleset ruleset) {
-		try {
-			ruleset.getRulesetMessage().visit(this.ruleset, player.getPlayerName());	
-		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
-			player.send(new ComClientQuit());
-			disconnectPlayer(player);
-		}		
+		ruleset.getRulesetMessage().visit(this.ruleset, player.getPlayerName());			
 	}
 
 	/**

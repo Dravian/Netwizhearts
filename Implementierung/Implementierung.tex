@@ -74,7 +74,7 @@ Hier kommt die Implementierung
 
 \item \textbf{WizardCard:} \textit{hinzugefügt}: changeSorcererColour ();
 
-\item \textbf{GameState:} \textit{hinzugefügt}: madeTrick(), restartDeck (), newRound();
+\item \textbf{GameState:} \textit{hinzugefügt}: madeTrick(), restartDeck (), newRound(); \textit{gelöscht}:getNumberOfPlayedCards(), getCardsLeftInDeck()
 
 \item \textbf{ServerWizard:} \textit{hinzugefügt}: updatePlayers (), getPlayedCards (),
 startRound(); 
@@ -87,7 +87,7 @@ startRound();
 
 \begin{itemize}
 \item  \textbf{LoginServer:}  \textit{Neu hinzugefügte Klasse, erbt von Server}: Sie ist für das Zustabdekommen von Clientverbindungen zuständig. \textit{Attribute}:  Thread clientListenerThread,  LobbyServer lobby; \textit{Methoden}: receiveMessage(Player player, ComLoginRequest login), disconnectPlayer()
-\item  \textbf{GameServer:} \textit{hinzugefügt}: quitGame(), getGameMasterName(), getPassword()
+\item  \textbf{GameServer:} \textit{hinzugefügt}: quitGame(), getGameMasterName(), getPassword(), sendRulesetMessage(String player, RulesetMessage message), broadcastRulesetMessage(RulesetMessage message), sendWarning(String player, WarningMsg warning), broadcastWarning(WarningMsg warning)
 \item  \textbf{GameServerRepresentation:} \textit{implementiert jetzt Serializable}
 \item  \textbf{LobbyServer:} \textit{entfernt}: innere Klasse ClientListenerThread, Set<Player> noNames, ServerSocket socket, receiveMessage(Player player, ComClientQuit quit ), receiveMessage(Player player, ComLoginRequest login); \textit{hinzugefügt}: addPlayerToGame(Player player, GameServer game), getNames()
 \item  \textbf{ClientListenerThread:} erbt jetzt von Thread  \textit{hinzugefügt}: boolean waiting, ServerScocket socket, LoginServer server
@@ -132,13 +132,17 @@ Begründung: Wurde hauptsächlich schon in Spezifikationsphase implementiert
 
 \item \textbf{Ruleset(ServerWizard):} ang. Dauer: 30 Stunden, tats. Dauer: 20 Stunden
 
-\item \textbf{Ruleset(ServerHearts):} ang. Dauer: 30 Stunden, tats. Dauer: bisher 2 Stunden
+\item \textbf{Ruleset(ServerHearts):} ang. Dauer: 30 Stunden, tats. Dauer: bisher 6 Stunden
+\item \textbf{Ruleset(ClientWizard):} ang. Dauer:6 Stunden, tats. 
+Dauer: bisher 3 Stunden
 \end{itemize}
 
 \subsection{Milestone 2}
+\item \textbf{Server(GameLobby):} ang. Dauer: 10 Stunden, tats. Dauer: 5 Stunden 
 
 \subsection{Milestone 3}
-
+\item \textbf{Server(Game):} ang. Dauer: 4 Stunden, tats. Dauer: 2 Stunden 30 Minuten
+ 
 \subsection{Finale Phase}
 
 
