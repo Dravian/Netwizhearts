@@ -125,27 +125,27 @@ public class GameServerTests {
 
 		ComChatMessage toPlayer1 = (ComChatMessage) player1.getServerInput()
 				.get(5);
-		assertTrue(toPlayer1.getChatMessage().equals("Hallo!"));
+		assertTrue(toPlayer1.getChatMessage().contains("Hallo!"));
 
 		ComChatMessage toPlayer2 = (ComChatMessage) player2.getServerInput()
 				.get(5);
-		assertTrue(toPlayer2.getChatMessage().equals("Hallo!"));
+		assertTrue(toPlayer2.getChatMessage().contains("Hallo!"));
 
 		ComChatMessage toPlayer3 = (ComChatMessage) player3.getServerInput()
 				.get(6);
-		assertTrue(toPlayer3.getChatMessage().equals("Hallo!"));
+		assertTrue(toPlayer3.getChatMessage().contains("Hallo!"));
 
 		ComChatMessage toPlayer4 = (ComChatMessage) player4.getServerInput()
 				.get(7);
-		assertTrue(toPlayer4.getChatMessage().equals("Hallo!"));
+		assertTrue(toPlayer4.getChatMessage().contains("Hallo!"));
 
 		ComChatMessage toPlayer5 = (ComChatMessage) player5.getServerInput()
 				.get(8);
-		assertTrue(toPlayer5.getChatMessage().equals("Hallo!"));
+		assertTrue(toPlayer5.getChatMessage().contains("Hallo!"));
 
 		ComChatMessage toPlayer6 = (ComChatMessage) player6.getServerInput()
 				.get(9);
-		assertTrue(toPlayer6.getChatMessage().equals("Hallo!"));
+		assertTrue(toPlayer6.getChatMessage().contains("Hallo!"));
 	}
 
 	@Test
