@@ -87,7 +87,7 @@ startRound();
 
 \begin{itemize}
 \item  \textbf{LoginServer:}  \textit{Neu hinzugefügte Klasse, erbt von Server}: Sie ist für das Zustabdekommen von Clientverbindungen zuständig. \textit{Attribute}:  Thread clientListenerThread,  LobbyServer lobby; \textit{Methoden}: receiveMessage(Player player, ComLoginRequest login), disconnectPlayer()
-\item  \textbf{GameServer:} \textit{hinzugefügt}: quitGame(), getGameMasterName(), getPassword()
+\item  \textbf{GameServer:} \textit{hinzugefügt}: quitGame(), getGameMasterName(), getPassword(), sendRulesetMessage(String player, RulesetMessage message), broadcastRulesetMessage(RulesetMessage message), sendWarning(String player, WarningMsg warning), broadcastWarning(WarningMsg warning)
 \item  \textbf{GameServerRepresentation:} \textit{implementiert jetzt Serializable}
 \item  \textbf{LobbyServer:} \textit{entfernt}: innere Klasse ClientListenerThread, Set<Player> noNames, ServerSocket socket, receiveMessage(Player player, ComClientQuit quit ), receiveMessage(Player player, ComLoginRequest login); \textit{hinzugefügt}: addPlayerToGame(Player player, GameServer game), getNames()
 \item  \textbf{ClientListenerThread:} erbt jetzt von Thread  \textit{hinzugefügt}: boolean waiting, ServerScocket socket, LoginServer server
@@ -138,9 +138,11 @@ Dauer: bisher 3 Stunden
 \end{itemize}
 
 \subsection{Milestone 2}
+\item \textbf{Server(GameLobby):} ang. Dauer: 10 Stunden, tats. Dauer: 5 Stunden 
 
 \subsection{Milestone 3}
-
+\item \textbf{Server(Game):} ang. Dauer: 4 Stunden, tats. Dauer: 2 Stunden 30 Minuten
+ 
 \subsection{Finale Phase}
 
 
