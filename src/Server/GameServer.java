@@ -131,7 +131,7 @@ public class GameServer extends Server {
 	 * @return Gibt die neue GameServerRepresentation zurueck
 	 */
 	public synchronized GameServerRepresentation getRepresentation() {
-		return new GameServerRepresentation(getGameMasterName(), name,
+		return new GameServerRepresentation(getGameMasterName(), name, 
 				maxPlayers, minPlayers, currentPlayers, rulesetType, hasPassword);
 	}
 
