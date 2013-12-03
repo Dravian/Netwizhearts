@@ -269,7 +269,6 @@ public class ClientModel extends Observable{
 	 * @param msg Die ankommende ComRuleset Nachricht
 	 */
 	public void receiveMessage(ComRuleset msg) {
-		
 		if (state == ClientState.GAME) {
 			if (ruleset != null) {
 				if (msg != null) {
@@ -731,8 +730,24 @@ public class ClientModel extends Observable{
 	 */
 	public void startGame() {
 		if (state == ClientState.GAMELOBBY) {
-			if (gameMaster.equals(playerName)) {
-				netIO.send(new ComStartGame());
+			if (!gameMaster.isEmpty()) {
+				if (gameMaster.equals(playerName)) {
+					for (GameServerRepresentation game : gameList) {
+						if (gameMaster.equals(game.getGameMasterName())) {
+							if ((game.getCurrentPlayers()
+								  >= game.getMinPlayers())
+									   && (game.getCurrentPlayers()
+									   <= game.getMaxPlayers())) {
+								netIO.send(new ComStartGame());
+							} else {
+								//TODO Warnung evtl noch einbauen 
+							}
+							break;
+						}
+					}
+				}
+			} else {
+				throw new IllegalArgumentException();
 			}
 		}
 	}
