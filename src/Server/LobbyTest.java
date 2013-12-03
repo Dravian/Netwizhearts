@@ -198,7 +198,7 @@ public class LobbyTest {
 
 		ComLobbyUpdateGamelist updateGame = new ComLobbyUpdateGamelist(false,
 				new GameServerRepresentation(player1.getPlayerName(),
-						"Markus' Spiel", 4, 1, RulesetType.Hearts, false));
+						"Markus' Spiel", 4, 4, 1, RulesetType.Hearts, false));
 		assertTrue(player2.getServerInput().get(1).getClass()
 				.equals(updateGame.getClass()));
 		assertTrue(player3.getServerInput().get(1).getClass()
