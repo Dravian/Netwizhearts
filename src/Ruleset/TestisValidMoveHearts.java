@@ -38,7 +38,7 @@ public class TestisValidMoveHearts {
 		player1 = "Tick";
 		player2 = "Trick";
 		player3 = "Track";
-		player3 = "Duck";
+		player4 = "Duck";
 		lobbyServer = new TestLobbyServer();
 		player = new TestPlayer(lobbyServer);
 		gameServer = new TestGameServer(lobbyServer,player,"Mein Spiel",
@@ -53,6 +53,8 @@ public class TestisValidMoveHearts {
         playerState1 = ruleset.getPlayerState(player1);
         playerState2 = ruleset.getPlayerState(player2);
         playerState3 = ruleset.getPlayerState(player3);
+        playerState4 = ruleset.getPlayerState(player4);
+
 
         ruleset.setFirstPlayer(playerState1);
 	}
