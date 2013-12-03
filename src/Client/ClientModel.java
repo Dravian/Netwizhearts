@@ -222,7 +222,6 @@ public class ClientModel extends Observable{
 				if (msg.getGameList() != null) {
 					gameList = new LinkedList<GameServerRepresentation>(msg.getGameList());
 				}
-				informView(ViewNotification.loginSuccessful);
 				informView(ViewNotification.windowChangeForced);
 			}
 		} else {
@@ -270,16 +269,13 @@ public class ClientModel extends Observable{
 	 * @param msg Die ankommende ComRuleset Nachricht
 	 */
 	public void receiveMessage(ComRuleset msg) {
-		System.out.println("ComRuleset empfangen");
+		
 		if (state == ClientState.GAME) {
 			if (ruleset != null) {
 				if (msg != null) {
 					if (msg.getRulesetMessage() != null) {
 						msg.getRulesetMessage().visit(ruleset);
-						if (ruleset.getGamePhase() == GamePhase.Start) {
-							System.out.println("Spielstart");
-							informView(ViewNotification.gameStarted);
-						}
+						System.out.println("Ruleset");
 					}
 				}
 			}
@@ -332,6 +328,7 @@ public class ClientModel extends Observable{
 				} else if (gameType == RulesetType.Hearts) {
 					ruleset = new ClientHearts(this);
 				}
+				informView(ViewNotification.gameStarted);
 			} 
 		} else {
 			throw new IllegalArgumentException();
