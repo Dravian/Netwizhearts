@@ -31,8 +31,23 @@ description={Derjenige, der das Spiel erstellt hat}}
 \newglossaryentry{Wartefenster}{name={Wartefenster},
 description={Fenster in welchem man sich befndet, während man darauf wartet, dass die Mindestteilemerzahl erfüllt ist und das Spiel gestartet wird}}
 
+\newglossaryentry{Stich}{name={Stich},
+description={Gewonnene Spielrunde}}
+
+\newglossaryentry{Spielrunde}{name={Spielrunde},
+description={Eine Spielrunde endet, wenn jeder Spieler eine Karte gelegt hat}}
+
+\newglossaryentry{Partie}{name={Partie},
+description={Eine Partie endet, wenn alle Karten gespielt wurden}}
+
+\newglossaryentry{Farbzwang}{name={Farbzwang},
+description={Wenn man eine Karte der gleichen Farbe auf der Hand hat, wie die erste ausgespielte Karte, so muss diese gespielt werden}}
+
+\newglossaryentry{Trumpf}{name={Trumpf},
+description={Die Farbe die in der Partie am meisten Wert ist}}
+
 \newglossaryentry{IP-Adresse}{name={IP-Adresse},
-description={}}
+description={Internet Adresse um der Server zu lokalisieren}}
 
 \title{Handbuch}
 \date{\today{}, Passau}
@@ -141,9 +156,53 @@ In der Lobby können Sie ein neues Spiel erstellen indem Sie auf den Erstellen-K
 \end{itemize}
 
 \subsection{Spiel spielen}
+
 Nachdem das Spiel im \gls{Wartefenster} gestartet wurde, befinden Sie sich nun im Spielfenster.
+\begin{itemize}
+	\item \textbf{1) Spiefeld:} Hier läuft das Spiel ab.
+	\item \textbf{2) Eingabefeld für den Chat:} In dieses Feld geben Sie ihre Chatnachrichten ein. Mit ENTER werden Sie versendet.
+	\item \textbf{3) Chatverlauf:} Hier sehen Sie Ihre Chatnachrichten und die der anderen Nutzer
+	\item \textbf{4) Eigene Hand:} Hier sehen Sie Ihre eigenen Karten. Mit einem einfachen Klick wählen Sie eine Karte aus. Wenn Sie ein zweites Mal auf die markierte Karte klicken, spielen Sie diese.
+	\item \textbf{5) Eigenes Anzeigefeld:} Hier sehen Sie je nach Regelwerk relevante Informationen über Ihren Punktestand bzw. Ihre gemachte Stiche
+	\item \textbf{6) Andere Spieler:} Es werden Informationen zu Ihren Mitspielern angezeigt
+	\item \textbf{7) Ablagestapel:} Hier sehen Sie die bereits gespielten Karten
+	\item \textbf{8) Aufnahmestapel:} Von diesem Stapel werden Karten gezogen. Beim Spiel Wizard sieht man dort die Trumpffarbe.
+	\item \textbf{9) Hintergrundbild-Auswahl:} Hier können Sie einen Pfad zu einem Bild eingeben, das Sie als Hintergrunbild haben möchten
+\end{itemize}
 \subsubsection{Wizard}
+Wizard ist ein Stichbasiertes Kartenspiel, bei dem es darum geht, die Stiche die man pro Runde macht so genau wie möglich vorherzusagen und so Punkte zu gewinnen. 
+\begin{itemize}
+	\item \textbf{Anzahl der Spieler:} 3-6 Spieler
+	\item \textbf{Karten:}  60 Spielkarten (davon 52 :Blau, Rot, Grün, Gelb; Werte 1-13; sowie 8 Sonderkarten: 4 Zauberer und 4 Narren)
+	\item \textbf{Auslegen:} Das Spiel wird in mehreren Partien gespielt, wobei die Anzahl von der Spielerzahl abhängt. In der ersten Partie erhält jeder Spieler eine Karte, in jeder weiteren Partie erhöht sich die Kartenanzahl, die jeder Spieler erhält, um eins. In der letzten Partie werden alle Karten gleichmäßig an die Spieler verteilt.
+	\item \textbf{Spielende:} Das Spiel endet, sobald die letzte Partie gespielt wurde.
+	\item \textbf{Spielverlauf:} Nachdem die Karten verteilt wurden, wird eine Karte auf dem Ablagestapel umgedreht, die die \gls{Trumpf}farbe angibt. Wird ein Zauberer umgedreht, so bestimmt der ausgebende Spieler die \gls{Trumpf}farbe.
+	\begin{itemize}
+		\item \textbf{Stichansage:} Zu Beginn jeder Partie müssen die Spieler schätzen, wie viele Stiche sie in dieser machen werden.
+		\item \textbf{Spiel:} Im Uhrzigersinn werden Karten gespielt. Dabei herrscht \gls{Farbzwang}.Allerdings kann eine weiße Karte (Zauberer oder Narr) unabhängig davon, immer gespielt werden. War die erste Karte ein Narr, so entscheidet die nächste farbige Karte, welche Farbe gespielt werden muss. War die erste Karte ein Zauberer, so kann jeder Spieler eine beliebige Karte spielen. Nach einer \gls{Spielrunde} erhält der Spieler mit der hochsten Karte den Stich. Dabei gilt:
+		\begin{enumerate}
+			\item Der erste gespielte Zauberer sticht über alle anderen Karten.
+			\item Ist kein Zauberer gespielt worden, so sticht der höchste \gls{Trumpf} über die anderen Karten.
+			\item Ist kein Zauberer und kein \gls{Trumpf} gespielt worden, so bekommt derjenige Spieler den \gls{Stich}, der die höchste Karte der geforderten Farbe gespielt hat.
+			\item Ein Narr macht keinen \gls{Stich}, es sei denn, in einem \gls{Stich} werden nur Narren gespielt. In diesem Fall 'gewinnt' der erste Narr den Stich.
+		\end{enumerate}
+	\end{itemize}
+	\item \textbf{Punkteauswertung:} Stimmt die Anzahl der gamachten Stiche mit der Anzahl der vorhergesagten Stiche überein, so bekommt der Spieler 20 Punkte für die richtige Prognose sowie 10 Punkte für jeden Stich. Stimmt sie nicht überein, bekommt er für jeden Stich Abweichung 10 Minuspunkte. Gewinner ist derjenige mit den meisten Punkten am Ende des Spiels.
+\end{itemize}
 \subsubsection{Hearts}
+Hearts ist ein Stichbasiertes Kartenspiel, bei dem es darum geht, so wenig Punkte wie möglich zu machen.
+\begin{itemize}
+	\item \textbf{Anzahl der Spieler:} 4 Spieler
+	\item \textbf{Karten:}  52 Spielkarten (Kreuz, Pik, Herz, Karo; 2–10, Bube/Bauer, Dame, König, Ass)
+	\item \textbf{Auslegen:} Die Karten werden gleichmäßig an alle Spieler verteilt. Jeder erhält 13 Karten.
+	\item \textbf{Spielende:} Sobald ein Spieler 100 Punkte erreicht hat, endet das Spiel
+	\item \textbf{Spielverlauf:}
+	\begin{itemize}
+		\item \textbf{Kartentausch:} Zu Beginn der ersten  \gls{Partie} wählt jeder Spieler drei Karten aus und gibt Sie seinem linken Nachbarn. In der zweiten  \gls{Partie} werden die drei Karten nach rechts gegeben. In der dritten  \gls{Partie} werden drei Karten mit dem Gegenüber getauscht. In der vierten  \gls{Partie} wird nicht getauscht. Danach beginnt es wieder von vorne.
+		\item \textbf{Spiel:} Der Spieler, der die Kreuz 2 auf der Hand hat beginnt die \gls{Partie}, indem er diese legt. Im Uhrzeigersinn müssen die anderen Spieler nun Karten dazugeben. Dabei herrscht \gls{Farbzwang}. Außerem darf im ersten Zug weder Herz noch die Pik Dame gelegt werden, es sei denn der Spieler hat nichts anderes auf der Hand. Wenn die \gls{Spielrunde} vorbei ist, erhält der Spieler den \gls{Stich}, der die höchste Karte in der Farbe der zuerst ausgespielten Karte gespielt hat. Der Spieler, der den \gls{Stich} gemacht hat eröffnet die nächste  \gls{Spielrunde} indem er eine Karte legt. Diese darf nur dann eine Herzkarte sein, wenn zuvor eine Herzkarte ausgespielt wurde.
+	\end{itemize}
+	\item \textbf{Punkteauswertung:} Nach einer \gls{Partie}  werden die Punkte der \gls{Stich}e gezählt. Pro Herz gibt es einen Punkt und für die Pik Dame 13 Punkte. Hat ein Spieler in einer \gls{Partie}  alle Herzkarten sowie die Pik Dame gestochen, so erhalten seine Mitspieler 26 Punkte und er selbst gar keine. Die Punkte pro Partie werden aufsummiert. Gewinner ist derjenige mit den wenigsten Punkten am Ende des Spiels.
+\end{itemize}
 
 \section{Fehlermeldungen und Behebung}
 
