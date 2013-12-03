@@ -4,11 +4,11 @@ import Ruleset.Card;
 import Ruleset.ClientHearts;
 import Ruleset.ClientRuleset;
 import Ruleset.ClientWizard;
+import Ruleset.GamePhase;
 import Ruleset.OtherData;
 import Ruleset.RulesetType;
 import Server.GameServerRepresentation;
 import Client.View.Language;
-import ComObjects.ComBeenKicked;
 import ComObjects.ComChatMessage;
 import ComObjects.ComClientLeave;
 import ComObjects.ComClientQuit;
@@ -30,14 +30,10 @@ import ComObjects.WarningMsg;
 
 import java.io.IOException;
 import java.net.ConnectException;
-import java.net.Socket;
 import java.net.SocketException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.UnknownHostException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Observable;
@@ -128,7 +124,7 @@ public class ClientModel extends Observable{
 	 */
 	protected void closeView() {
 		//TODO oder mit Dialog.
-		warningText.append("<" + new Date() + "> " + "Error: Connection lost.\n");
+		warningText.append(warningBuilder.resolveWarning(WarningMsg.ConnectionLost));
 		informView(ViewNotification.openWarning);
 		informView(ViewNotification.quitGame);
 	}
@@ -270,10 +266,24 @@ public class ClientModel extends Observable{
 	 * falls eine Nachricht für das Regelwerk ankommt. Die
 	 * darin enthaltene RulesetMessage wird dem ClientRuleset
 	 * zur Verarbeitung uebergeben.
+	 *
 	 * @param msg Die ankommende ComRuleset Nachricht
 	 */
 	public void receiveMessage(ComRuleset msg) {
-
+		System.out.println("ComRuleset empfangen");
+		if (state == ClientState.GAME) {
+			if (ruleset != null) {
+				if (msg != null) {
+					if (msg.getRulesetMessage() != null) {
+						msg.getRulesetMessage().visit(ruleset);
+						if (ruleset.getGamePhase() == GamePhase.Start) {
+							System.out.println("Spielstart");
+							informView(ViewNotification.gameStarted);
+						}
+					}
+				}
+			}
+		}
 	}
 
 	/**
@@ -322,7 +332,6 @@ public class ClientModel extends Observable{
 				} else if (gameType == RulesetType.Hearts) {
 					ruleset = new ClientHearts(this);
 				}
-				informView(ViewNotification.gameStarted);
 			} 
 		} else {
 			throw new IllegalArgumentException();
@@ -451,7 +460,19 @@ public class ClientModel extends Observable{
 	 * @return List<String> der Stringrepraesentationen der OtherData der Spieler
 	 */
 	public List<String> getOtherPlayerData() {
-		return null;
+		List<String>  otherPlayerData = new LinkedList<String>();
+		if (state == ClientState.GAME) {
+			if (ruleset != null) {
+				for (OtherData data : ruleset.getOtherPlayerData()) {
+					otherPlayerData.add(data.toString());
+				}
+			} else {
+				throw new IllegalArgumentException();
+			}
+		} else {
+			throw new IllegalArgumentException();
+		}
+		return otherPlayerData;
 	}
 	
 	public String getGameMaster() {
@@ -773,8 +794,6 @@ public class ClientModel extends Observable{
 		URI uri = null;
 		int port = 4567;
 		boolean fault = false;
-		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-		String time = sdf.format(Calendar.getInstance().getTime());
 		if (username == null) {
 			throw new IllegalArgumentException();
 		}
@@ -783,29 +802,29 @@ public class ClientModel extends Observable{
 		}
 		if (username.isEmpty()) {
 			fault = true;
-			warningText.append("<" + time + "> " + "Error: Empty Username.\n");
+			warningText.append(warningBuilder.resolveWarning(WarningMsg.EmptyUsername));
 		}
 		if (host.isEmpty()) {
 			fault = true;
-			warningText.append("<" + time + "> " + "Error: Empty Host Address.\n");
+			warningText.append(warningBuilder.resolveWarning(WarningMsg.EmptyAddress));
 		} else {
 			try {
 				uri = new URI("http://" + host);
 				port = uri.getPort();
 				if (uri.getHost() == null) {
 					fault = true;
-					warningText.append("<" + time + "> " + "Error: Unrecognizable Host Address.\n");
+					warningText.append(warningBuilder.resolveWarning(WarningMsg.WrongAddress));
 				}
 				if (port == -1) {
 					//TODO standard port.
 					port = 4567;
 				} else if (port < 1025 || port > 49151) {
 					fault = true;
-					warningText.append("<" + time + "> " + "Error: Portnumber out of Range.\n");
+					warningText.append(warningBuilder.resolveWarning(WarningMsg.Portnumber));
 				}
 			} catch (URISyntaxException e) {
 				fault = true;
-				warningText.append("<" + time + "> " + "Error: Unrecognizable Host Address.\n");
+				warningText.append(warningBuilder.resolveWarning(WarningMsg.WrongAddress));
 			}
 		}
 		if (fault) {
@@ -817,24 +836,22 @@ public class ClientModel extends Observable{
 	}
 
 	private void setupConnection(String username, String host, int port ) {
-		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-		String time = sdf.format(Calendar.getInstance().getTime());
 		try {
 			netIO.startConnection(this, host, port);
 			netIOThread = new Thread(netIO);
 			netIOThread.start();
 			netIO.send(new ComLoginRequest(username));
 		} catch (ConnectException e) {
-			warningText.append("<" + time + "> " + "Error: Unknown Host.\n");
+			warningText.append(warningBuilder.resolveWarning(WarningMsg.UnknownHost));
 			informView(ViewNotification.openWarning);
 		} catch (SocketException e) {
-			System.err.println("<" + time + "> " + "Error: At Socket.\n");
+			System.err.println("ERROR: Network IO");
 			e.printStackTrace();
 		} catch (UnknownHostException e) {
-			warningText.append("<" + time + "> " + "Error: Unknown Host.\n");
+			warningText.append(warningBuilder.resolveWarning(WarningMsg.UnknownHost));
 			informView(ViewNotification.openWarning);
 		} catch (IOException e) {
-			System.err.println("<" + time + "> " + "Error: At IO.\n");
+			System.err.println("ERROR: Network IO");
 			e.printStackTrace();
 		}
 	}
