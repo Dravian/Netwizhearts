@@ -168,7 +168,7 @@ public class LanguageInterpreter {
 			ret = "Joining failed. Game is already full";
 			break;
 		case CouldntKick:
-			ret = "Du kannst diesen Spieler nicht entfernen.";
+			ret = "You cannot kick this Player.";
 			break;
 		case CouldntStart:
 			ret = "Couldn't start Game.";
