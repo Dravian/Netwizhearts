@@ -42,6 +42,7 @@ public class GameLobby extends JFrame implements Observer{
 	 * Erstellt das GameLobby Fenster
 	 */
 	public GameLobby() {
+		setResizable(false);
 		setTitle("GameLobby");
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 438, 358);
@@ -56,6 +57,7 @@ public class GameLobby extends JFrame implements Observer{
 		
 		chatlog = new JTextArea();
 		chatlog.setBounds(12, 154, 400, 84);
+		chatlog.setEditable(false);
 		contentPane.add(chatlog);
 		
 		messageField = new JTextField();

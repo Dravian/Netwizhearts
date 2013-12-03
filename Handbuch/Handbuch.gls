@@ -1,0 +1,26 @@
+\glossarysection[\glossarytoctitle]{\glossarytitle}\glossarypreamble
+\begin{theglossary}\glossaryheader
+\glsgroupheading{E}\relax \glsresetentrylist %
+\glossaryentryfield{Erstellungsfenster}{\glsnamefont{Erstellungsfenster}}{Fenster in welchem der Spielleiter die Eigenschaften des Spiels festlegt}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{4}}}\glsgroupskip
+\glsgroupheading{I}\relax \glsresetentrylist %
+\glossaryentryfield{IP-Adresse}{\glsnamefont{IP-Adresse}}{}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{3}}}\glsgroupskip
+\glsgroupheading{L}\relax \glsresetentrylist %
+\glossaryentryfield{Lobby}{\glsnamefont{Lobby}}{Ort, an dem Spieler ein neues Spiel erstellen oder einem Spiel beitreten können}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{3\delimN 4}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{6}}}\glsgroupskip
+\glsgroupheading{R}\relax \glsresetentrylist %
+\glossaryentryfield{Regelwerk}{\glsnamefont{Regelwerk}}{Ein bestimmtes Kartenspiel, bzw. die Regeln und Eigenschaften von diesem}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{1\delimN 2}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{5}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{7}}}\glsgroupskip
+\glsgroupheading{S}\relax \glsresetentrylist %
+\glossaryentryfield{Server}{\glsnamefont{Server}}{Der zentral ausgeführte Teil der Software, der die Kommunikation und Interaktion mit den Clients verwaltet sowie erstellte Spiele verwaltet und die Einhaltung der Regeln in diesen gewährleistet.}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{2\delimN 3}}}%
+\glossaryentryfield{Spielleiter}{\glsnamefont{Spielleiter}}{Derjenige, der das Spiel erstellt hat}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{6}}}\glsgroupskip
+\glsgroupheading{W}\relax \glsresetentrylist %
+\glossaryentryfield{Wartefenster}{\glsnamefont{Wartefenster}}{Fenster in welchem man sich befndet, während man darauf wartet, dass die Mindestteilemerzahl erfüllt ist und das Spiel gestartet wird}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{4\delimR 6}}}%
+\end{theglossary}\glossarypostamble

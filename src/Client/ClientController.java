@@ -115,6 +115,10 @@ public class ClientController {
 		gameLobby.addRemoveButtonListener(new KickPlayerButtonListener());
 		gameLobby.addChatMessageListener(new ChatListenerGameLobby());
 		clientModel.addObserver(gameLobby);
+		
+		game = new Game();
+		game.addChatMessageListener(new ChatListenerGame());
+		clientModel.addObserver(game);
 	}
 	
 	class windowCloseListener implements WindowListener {
@@ -345,6 +349,34 @@ public class ClientController {
 			switch (e.getKeyCode()) {
 			case KeyEvent.VK_ENTER:
 				clientModel.sendChatMessage(gameLobby.getChatMessage());
+				break;
+			default:
+				break;
+			}
+			
+		}
+
+		@Override
+		public void keyReleased(KeyEvent e) {
+			// not needed
+			
+		}
+
+		@Override
+		public void keyTyped(KeyEvent e) {
+			// not needed
+			
+		}
+		
+	}
+	
+	class ChatListenerGame implements KeyListener {
+
+		@Override
+		public void keyPressed(KeyEvent e) {
+			switch (e.getKeyCode()) {
+			case KeyEvent.VK_ENTER:
+				clientModel.sendChatMessage(game.getChatMessage());
 				break;
 			default:
 				break;
