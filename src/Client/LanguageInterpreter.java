@@ -117,6 +117,24 @@ public class LanguageInterpreter {
 		case WrongPlayer:
 			ret = "Du bist nicht am Zug!";
 			break;
+		case EmptyUsername:
+			ret = "Bitte gib einen Benutzernamen ein.";
+			break;
+		case EmptyAddress:
+			ret = "Bitte gib eine gültige IP-Adresse ein.";
+			break;
+		case WrongAddress:
+			ret = "Diese Adresse ist unbekannt.";
+			break;
+		case Portnumber:
+			ret = "Portnummer außer Reichweite.";
+			break;
+		case UnknownHost:
+			ret = "Der Host ist unbekannt.";
+			break;
+		case ConnectionLost:
+			ret = "Die Verbindung zum Server ist verlorengegangen!";
+			break;
 		default:
 			IllegalArgumentException e = new IllegalArgumentException();
 			throw e;
@@ -185,6 +203,24 @@ public class LanguageInterpreter {
 		case WrongPlayer:
 			ret = "It is not your move!";
 			break;
+		case EmptyUsername:
+			ret = "Please input a username.";
+			break;
+		case EmptyAddress:
+			ret = "Please input a valid Host Adress.";
+			break;
+		case WrongAddress:
+			ret = "This Host Address is unrecognizable .";
+			break;
+		case Portnumber:
+			ret = "Portnumber out of Range.";
+			break;
+		case UnknownHost:
+			ret = "Unknown Host.";
+			break;
+		case ConnectionLost:
+			ret = "Lost connection to the Server!";
+			break;
 		default:
 			IllegalArgumentException e = new IllegalArgumentException();
 			throw e;
@@ -252,6 +288,25 @@ public class LanguageInterpreter {
 			break;
 		case WrongPlayer:
 			ret = "Du bisd do überhaupt ned dra.";
+			break;
+			//TODO: Bayerisch...
+		case EmptyUsername:
+			ret = "Bitte gib einen Benutzernamen ein.";
+			break;
+		case EmptyAddress:
+			ret = "Bitte gib eine gültige IP-Adresse ein.";
+			break;
+		case WrongAddress:
+			ret = "Diese Adresse ist unbekannt.";
+			break;
+		case Portnumber:
+			ret = "Portnummer außer Reichweite.";
+			break;
+		case UnknownHost:
+			ret = "Der Host ist unbekannt.";
+			break;
+		case ConnectionLost:
+			ret = "Die Verbindung zum Server ist verlorengegangen!";
 			break;
 		default:
 			IllegalArgumentException e = new IllegalArgumentException();
