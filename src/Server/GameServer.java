@@ -46,7 +46,12 @@ public class GameServer extends Server {
 	 * Regelwerk abhaengig
 	 */
 	private int maxPlayers;
-
+	
+	/**
+	 * Die minmale Anzahl an Spielern, die dem Spiel beitreten koennen, vom
+	 * Regelwerk abhaengig
+	 */
+	private int minPlayers;
 	/**
 	 * Die Anzahl der Spielern, die dem Spiel beitreten sind
 	 */
@@ -78,7 +83,7 @@ public class GameServer extends Server {
 	 * password, hasPassword und rulesetType auf die uebergebenen Werte. Setzt
 	 * den gameMasterName auf den Namen des gameMaster und fuegt den gameMaster
 	 * dem Set an Spielern hinzu. Bestimmt mithilfe des Enums RulesetType das
-	 * Ruleset und erstellt es. Setzt currentPlayers auf 0 und maxPlayers je
+	 * Ruleset und erstellt es. Setzt currentPlayers auf 0 und max- und minPlayers je
 	 * nach Ruleset.
 	 * 
 	 * @param server
@@ -107,10 +112,12 @@ public class GameServer extends Server {
 		if (rulesetType == RulesetType.Hearts) {
 			this.ruleset = new ServerHearts(this);
 			maxPlayers = 4;
+			minPlayers = 4;
 		} else {
 			if (rulesetType == RulesetType.Wizard) {
 				this.ruleset = new ServerWizard(this);
 				maxPlayers = 6;
+				minPlayers = 3;
 			} else {
 				System.err.println("Unknown Ruleset!");
 				disconnectPlayer(gameMaster);
@@ -125,7 +132,7 @@ public class GameServer extends Server {
 	 */
 	public synchronized GameServerRepresentation getRepresentation() {
 		return new GameServerRepresentation(getGameMasterName(), name,
-				maxPlayers, currentPlayers, rulesetType, hasPassword);
+				maxPlayers, minPlayers, currentPlayers, rulesetType, hasPassword);
 	}
 
 	/**
