@@ -231,6 +231,9 @@ public class GameLobby extends JFrame implements Observer{
 			updatePlayerList(observed.getPlayerlist());
 			this.setVisible(true);
 			break;
+		case gameStarted:
+			this.setVisible(false);
+			break;
 		default:
 			break;
 		}

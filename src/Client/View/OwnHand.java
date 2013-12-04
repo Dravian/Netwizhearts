@@ -6,6 +6,8 @@ package Client.View;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -23,9 +25,17 @@ import Ruleset.Colour;
 public class OwnHand extends JPanel{
 		
 	private List<ViewCard> hand;
+	private JPanel contentPane;
 	
-	public OwnHand() {
+	public OwnHand(JPanel cP) {
 		hand = new LinkedList<ViewCard>();
+		for (int i = 0; i < 10; i++) {
+			hand.add(new ViewCard(null));
+			ViewCard vc = hand.get(i);
+			//vc.setBounds(0, 0, vc.getWidth(), vc.getHeight());
+			this.add(vc);
+		}
+		contentPane = cP;
 	}
 	
 	/**
@@ -34,20 +44,38 @@ public class OwnHand extends JPanel{
 	 * @param cards
 	 */
 	public void setHand(List<Card> cards) {
-		hand.clear();
 		for (int i = 0; i < cards.size(); i++) {
-			Card c = cards.get(i);
-			ViewCard vc = new ViewCard(c);
-			vc.setPosition(10+i*75, 440);
-			hand.add(i, vc); //TODO 
+			hand.get(i).setCard(cards.get(i));
+			 //TODO 
+		}
+	}
+	
+	/**
+	 * Fuegt jeder Handkarte einen MouseListener hinzu
+	 * 
+	 * @param m ein MouseListener
+	 */
+	public void addCardMouseListener(MouseListener m) {
+		for (ViewCard c : hand) {
+			c.addMouseListener(m);
+		}
+	}
+	
+	/**
+	 * Setzt alle Handkarten auf 'nicht angeklickt'.
+	 * Ruft dazu setClicked(false) in allen ViewCards der Hand auf.
+	 */
+	public void unclickAll() {
+		for (ViewCard c : hand) {
+			c.setClicked(false);
 		}
 	}
 	
 	@Override
-	public void paint(Graphics g) {
-		for (ViewCard c : hand) {
-			c.paint(g);
+	public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        for (ViewCard c : hand) {
+			//c.paintComponent(g);
 		}
-        super.paint(g);
     }
 }
