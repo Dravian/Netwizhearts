@@ -400,7 +400,7 @@ public class GameServer extends Server {
 	@Override
 	public synchronized void receiveMessage(Player player, ComStartGame start) {
 		if (player.getPlayerName().equals(gameMasterName)) {
-			if(!hasStarted){
+			if(!isHasStarted()){
 				try {
 					for (Player back : playerSet) {
 						ruleset.addPlayerToGame(back.getPlayerName());
@@ -488,7 +488,7 @@ public class GameServer extends Server {
 	 */
 	@Override
 	public synchronized void disconnectPlayer(Player player) {
-		if(hasStarted || player.getPlayerName().equals(gameMasterName)){
+		if(isHasStarted() || player.getPlayerName().equals(gameMasterName)){
 			if (!playerSet.isEmpty()) {
 				if (playerSet.contains(player)) {
 					removePlayer(player);
@@ -549,5 +549,13 @@ public class GameServer extends Server {
 	 */
 	public String getPassword() {
 		return password;
+	}
+
+	/**
+	 * Gibt zurück, ob das SPiel bereits gestartet ist
+	 * @return
+	 */
+	public boolean isHasStarted() {
+		return hasStarted;
 	}
 }
