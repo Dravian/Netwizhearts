@@ -258,7 +258,9 @@ public class LobbyServer extends Server {
 		}
 		if (!gameServerSet.isEmpty()) {
 			for (GameServer game : gameServerSet) {
-				gameList.add(game.getRepresentation());
+				if(!game.isHasStarted()){
+					gameList.add(game.getRepresentation());				
+				}
 			}
 		}
 		ComInitLobby init = new ComInitLobby(playerList, gameList);
