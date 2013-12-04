@@ -221,14 +221,16 @@ public class GameLobby extends JFrame implements Observer{
 			ViewNotification message = (ViewNotification) arg;
 		switch (message) {
 		case windowChangeForced:
+			chatlog.setText("");
 			this.setVisible(false);
 			break;
 		case playerListUpdate:
 			updatePlayerList(observed.getPlayerlist());
 			break;
 		case joinGameSuccessful:
-			updateUI(observed.getGameMaster(), observed.getPlayerName()); //TODO entweder getPlayerName() oder isGameMaster() im  Client
+			updateUI(observed.getGameMaster(), observed.getPlayerName());
 			updatePlayerList(observed.getPlayerlist());
+			chatlog.setText("");
 			this.setVisible(true);
 			break;
 		case gameStarted:

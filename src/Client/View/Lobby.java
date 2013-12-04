@@ -273,6 +273,7 @@ public class Lobby extends JFrame implements Observer{
 		switch (message) {
 		case loginSuccessful:
 		case windowChangeForced:
+			chatlog.setText("");
 			updatePlayerList(observed.getPlayerlist());
 			updateGameList(observed.getLobbyGamelist());
 			this.setVisible(true);
