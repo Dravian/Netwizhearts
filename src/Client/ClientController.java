@@ -20,6 +20,7 @@ import Client.View.Language;
 import Client.View.ViewCard;
 import Client.View.Warning;
 
+import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -422,8 +423,7 @@ public class ClientController {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			clientModel.startGame();
-			
+			clientModel.startGame();			
 		}
 		
 	}
@@ -470,13 +470,23 @@ public class ClientController {
 		@Override
 		public void mouseReleased(MouseEvent arg0) {
 			//TODO
-			ViewCard vc = (ViewCard)arg0.getSource();
+			final ViewCard vc = (ViewCard)arg0.getSource();
 			if (vc.isClicked()) {
-				//clientModel.giveCard(vc.getCard);
+				clientModel.makeMove(vc.getCard());
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						vc.setClicked(false);
+						game.repaint();
+					}
+				});
 			} else {
-				game.unclickAll();
-				vc.setClicked(true);
-				game.repaint();
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						game.unclickAll();
+						vc.setClicked(true);
+						game.repaint();
+					}
+				});
 			}
 			
 		}

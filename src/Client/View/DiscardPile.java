@@ -27,6 +27,7 @@ public class DiscardPile extends JPanel{
 		playedCards = new LinkedList<Card>();
 		topCard = new ViewCard(null);
 		this.add(topCard);
+		this.setLayout(null);
 	}
 	
 	@Override
@@ -38,11 +39,19 @@ public class DiscardPile extends JPanel{
 		return topCard.getHeight();
 	}
 	
+	/**
+	 * Legt eine Karte auf den Ablagestapel
+	 * 
+	 * @param card die Karte
+	 */
 	public void addCard(Card card) {
 		playedCards.add(topCard.getCard());
 		topCard.setCard(card);
 	}
 	
+	/**
+	 * Leert den Ablagestapel
+	 */
 	public void clearPile() {
 		playedCards = new LinkedList<Card>();
 		topCard.setCard(null);
