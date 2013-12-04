@@ -701,7 +701,6 @@ public class ClientModel extends Observable{
 	public void startGame() {
 		if (!gameMaster.isEmpty()) {
 			if (gameMaster.equals(playerName)) {
-				System.out.println("sende start");
 				netIO.send(new ComStartGame());
 			}
 		}
