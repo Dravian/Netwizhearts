@@ -16,283 +16,407 @@ import ComObjects.*;
  * der Stichpunkten.
  */
 public class ServerHearts extends ServerRuleset {
-	/**
-	 * Die Minimale Anzahl an Spielern im Spiel Hearts
-	 */
-	private final static int MIN_PLAYERS = 4;
-	/**
-	 * Die maximale Anzahl an Spielern im Spiel Wizard
-	 */
-	private final static int MAX_PLAYERS = 4;
-	/**
-	 * Der Typ des Ruleset
-	 */
-	private final static RulesetType RULESET = RulesetType.Hearts;
-	/**
-	 * Die Punktanzahl eines Spielers ab der das Spiel zu Ende ist
-	 */
-	private final static int ENDING_POINTS = 100;
 
-	/**
-	 * Darin wird gespeichert wer welche Karten tauscht
-	 */
-	private Map<String, Set<Card>> swap;
+    /**
+     * Die Minimale Anzahl an Spielern im Spiel Hearts
+     */
+    private final static int MIN_PLAYERS = 4;
+    /**
+     * Die maximale Anzahl an Spielern im Spiel Wizard
+     */
+    private final static int MAX_PLAYERS = 4;
+    /**
+     * Der Typ des Ruleset
+     */
+    private final static RulesetType RULESET = RulesetType.Hearts;
+    /**
+     * Die Punktanzahl eines Spielers ab der das Spiel zu Ende ist
+     */
+    private final static int ENDING_POINTS = 100;
 
-	/**
-	 * Erstellt das Regelwerk zum Spiel Hearts
-	 */
-	public ServerHearts(GameServer s) {
-		super(RULESET, MIN_PLAYERS, MAX_PLAYERS, s);
-		swap = new Hashtable<String, Set<Card>>();
-	}
+    /**
+     * Darin wird gespeichert wer welche Karten tauscht
+     */
+    private Map<String, Set<Card>> swap;
 
-	@Override
-	protected boolean isValidMove(Card card) {
-		boolean isValid = false;
-		return isValid;
-	}
+    /**
+     * Gibt an, ob Herz schon ausgespielt werden darf.
+     */
+    private boolean heartBroken = false;
 
+    private int circles = 1;
 
-	@Override
-	public void resolveMessage(MsgMultiCards msgMultiCard, String name) {
-		Set<Card> cards = msgMultiCard.getCardList();
+    /**
+     * Erstellt das Regelwerk zum Spiel Hearts
+     */
+    public ServerHearts(GameServer s) {
+        super(RULESET, MIN_PLAYERS, MAX_PLAYERS, s);
+        swap = new Hashtable<String, Set<Card>>();
+    }
 
-		if (getGamePhase() != GamePhase.MultipleCardRequest) {
-			send(WarningMsg.WrongPhase, name);
-			throw new IllegalStateException(
-					"Es werden in dieser Phase werden keine Tauschkarten erwartet.");
+    @Override
+    protected boolean isValidMove(Card card) {
+        setGamePhase(GamePhase.Playing);
 
-		} else if (!areValidChoosenCards(cards, name)) {
-			send(WarningMsg.WrongTradeCards, name);
-			throw new IllegalArgumentException("Die übergebenen Karten vom Spieler "
-					+ name + " sind falsch");
+        // Jeder Spieler hat bereits eine Karte gespielt
+        if (getPlayedCards().size() == getPlayers().size()) {
+            return false;
+            // Die Spieler befinden sich in der ersten Runde
+        } else if (circles == 1) {
+            // Noch kein Spieler hat eine Karte gespielt
+            if (getPlayedCards().size() == 0) {
+                // Die erste Karte jeder Runde muss die Kreu2 sein.
+                if (card != HeartsCard.Kreuz2) {
+                    return false;
+                } else {
+                    return true;
+                }
+                // Es wurden bereits Karten gespielt
+            } else {
+                // In der ersten Runde darf kein Herz und nicht die Kreuz2 gespielt werden
+                if (card.getColour() == Colour.HEART || card == HeartsCard.PikDame) {
+                    return false;
+                } else {
+                    testOtherHandCards(card);
+                }
+            }
+            // Die Spieler befinden sich nicht mehr im ersten Umlauf
+        } else if (circles > 1) {
+            // In diesem Umlauf wurde noch keine Karte gespielt
+            if (getPlayedCards().size() == 0) {
+                // Die Karte, die gespielt werden soll, hat die Farbe Herz
+                if (card.getColour() == Colour.HEART) {
+                    // Wurde Herz schon einmal gespielt
+                    if (heartBroken == true) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                    // Die Karte hat nicht die Farbe Herz
+                } else {
+                    return true;
+                }
+                // Es wurden schon Karten gespielt
+            } else {
+                testOtherHandCards(card);
+            }
+        }
+        return true;
+    }
 
-		} else {
-			getPlayerState(name).getHand().removeAll(cards);
-			swap.put(name, cards);
+    private boolean testOtherHandCards(Card card) {
+        Card firstCard = getPlayedCards().get(0).getCard();
+        // Die Karte hat die selbe Farbe, wie die erste ausgespielte Karte der Runde
+        if (card.getColour() == firstCard.getColour()) {
+            return true;
+            // Die Karte hat eine andere Farbe als die erste gespielte Karte der Runde
+        }
 
-			if (swap.size() == 4) {
-				setGamePhase(GamePhase.Playing);
+        List<Card> hand = getCurrentPlayer().getHand();
+        // Ist die Karte zu diesem Zeitpunkt schon nicht mehr in der Hand?? --> sonst falsch
+        for (Card handCard : hand) {
+            // Es gibt eine Karte auf der Hand, die die Farbe der erstgepielten Karte hat
+            if (handCard.getColour() == firstCard.getColour()) {
+                return false;
+                // Die Hand enthält keine Karte der Farbe der erstgespielten Karte
+            }
+        }
 
-				int roundNumber = getRoundNumber();
+        // Die zu spielende Karte hat die Farbe Herz
+        if (card.getColour() == Colour.HEART) {
+            heartBroken = true;
+        }
+        return true;
+    }
 
-				if (roundNumber % 4 == 1) {
-					swapLeft();
+    @Override
+    public void resolveMessage(MsgCard msgCard, String name) {
+        Card card = msgCard.getCard();
 
-				} else if (roundNumber % 4 == 2) {
-					swapAcross();
+        if (getGamePhase() != GamePhase.CardRequest) {
+            send(WarningMsg.WrongPhase, name);
+            throw new IllegalStateException(
+                    "Es wird in dieser Phase keine Karte erwartet "
+                            + "vom Spieler " + name);
 
-				} else if (roundNumber % 4 == 3) {
-					swapRight();
-				
-				} else {
-					throw new RulesetException("Fehler beim Tauschen.");
-				}
+        } else if (getPlayerState(name) != getCurrentPlayer()) {
+            send(WarningMsg.WrongPlayer, name);
+            throw new IllegalArgumentException("Der Spieler " + name
+                    + " ist nicht am Zug!");
 
-				updatePlayers();
+        } else if (card.getRuleset() != RulesetType.Hearts
+                || card.getColour() == Colour.NONE) {
+            send(WarningMsg.WrongCard, name);
+            throw new IllegalArgumentException("Die Karte " + card.getValue()
+                    + card.getColour() + " gehört nicht zum Spiel");
 
-				for (PlayerState player : getPlayers()) {
-					if (player.getHand().contains(HeartsCard.Kreuz2)) {
-						setFirstPlayer(player);
-						break;
-					}
-				}
+        } else if (!isValidMove(card)) {
+            setGamePhase(GamePhase.CardRequest);
+            send(WarningMsg.UnvalidMove, name);
+            throw new IllegalArgumentException("Der Spieler" + name + "hat die Karte "
+                    + card.getValue() + card.getColour()
+                    + " gespielt, obwohl sie kein gültiger "
+                    + "Zug ist. Es muss ein Fehler bei ClientWizard sein.");
 
-				setGamePhase(GamePhase.CardRequest);
-				send(new MsgCardRequest(), getFirstPlayer()
-						.getPlayerStateName());
+        } else {
+            updatePlayers();
+            setGamePhase(GamePhase.Playing);
+            playCard(card);
 
-			}
-		}
-	}
+            if (getGameState().getPlayedCards().size() == getPlayers().size()) {
+                calculateTricks();
+            } else {
+                nextPlayer();
+                setGamePhase(GamePhase.CardRequest);
+                send(new MsgCardRequest(), getCurrentPlayer().getPlayerStateName());
+            }
+        }
+    }
 
-	/**
-	 * Tauscht bei jedem Spieler die Karten nach links
-	 */
-	private void swapLeft() {
+    private void setNextCircle() {
+        circles++;
+    }
 
-		for (int i = 0; i < getPlayers().size(); i++) {
-			PlayerState giver = getPlayers().get(i);
-			PlayerState taker;
+    @Override
+    public void resolveMessage(MsgMultiCards msgMultiCard, String name) {
+        Set<Card> cards = msgMultiCard.getCardList();
 
-			if (i == getPlayers().size() - 1) {
-				taker = getPlayers().get(0);
-			} else {
-				taker = getPlayers().get(i + 1);
-			}
+        if (getGamePhase() != GamePhase.MultipleCardRequest) {
+            send(WarningMsg.WrongPhase, name);
+            throw new IllegalStateException(
+                    "Es werden in dieser Phase werden keine Tauschkarten erwartet.");
 
-			taker.getHand().addAll(swap.get(giver.getPlayerStateName()));
-		}
+        } else if (!areValidChoosenCards(cards, name)) {
+            send(WarningMsg.WrongTradeCards, name);
+            throw new IllegalArgumentException("Die übergebenen Karten vom Spieler "
+                    + name + " sind falsch");
 
-		swap = new Hashtable<String, Set<Card>>();
-	}
+        } else {
+            getPlayerState(name).getHand().removeAll(cards);
+            swap.put(name, cards);
 
-	/**
-	 * Tauscht bei jedem Spieler die Karten gegenüber
-	 */
-	private void swapAcross() {
-		for (int i = 0; i < getPlayers().size(); i++) {
-			PlayerState giver = getPlayers().get(i);
-			PlayerState taker;
+            if (swap.size() == 4) {
+                setGamePhase(GamePhase.Playing);
 
-			if (i == getPlayers().size() - 2) {
-				taker = getPlayers().get(0);
-			} else if (i == getPlayers().size() - 1) {
-				taker = getPlayers().get(1);
-			} else {
-				taker = getPlayers().get(i + 2);
-			}
+                int roundNumber = getRoundNumber();
 
-			taker.getHand().addAll(swap.get(giver.getPlayerStateName()));
-		}
+                if (roundNumber % 4 == 1) {
+                    swapLeft();
 
-		swap = new Hashtable<String, Set<Card>>();
-	}
+                } else if (roundNumber % 4 == 2) {
+                    swapAcross();
 
-	/**
-	 * Tauscht bei jedem Spieler die Karten nach rechts
-	 */
-	private void swapRight() {
-		for (int i = 0; i < getPlayers().size(); i++) {
-			PlayerState giver = getPlayers().get(i);
-			PlayerState taker;
+                } else if (roundNumber % 4 == 3) {
+                    swapRight();
 
-			if (i == 0) {
-				taker = getPlayers().get(getPlayers().size() - 1);
-			} else {
-				taker = getPlayers().get(i - 1);
-			}
+                } else {
+                    throw new RulesetException("Fehler beim Tauschen.");
+                }
 
-			taker.getHand().addAll(swap.get(giver.getPlayerStateName()));
-		}
+                updatePlayers();
 
-		swap = new Hashtable<String, Set<Card>>();
-	}
+                for (PlayerState player : getPlayers()) {
+                    if (player.getHand().contains(HeartsCard.Kreuz2)) {
+                        setFirstPlayer(player);
+                        break;
+                    }
+                }
 
-	/**
-	 * Überprüft ob eine übergebenes Kartenset von einem Spieler gültig ist
-	 * 
-	 * @param cards
-	 *            Ein Kartenset
-	 * @return true falls das Kartenset gültig ist, false wenn nicht
-	 */
-	private boolean areValidChoosenCards(Set<Card> cards, String name) {
-		int numberOfSwappingCards = 3;
+                setGamePhase(GamePhase.CardRequest);
+                send(new MsgCardRequest(), getFirstPlayer()
+                        .getPlayerStateName());
 
-		if (cards.size() != numberOfSwappingCards) {
-			return false;
+            }
+        }
+    }
 
-		} else if (swap.containsKey(name)) {
-			return false;
+    /**
+     * Tauscht bei jedem Spieler die Karten nach links
+     */
+    private void swapLeft() {
 
-		} else if (!getPlayerState(name).getHand().containsAll(cards)) {
-			return false;
+        for (int i = 0; i < getPlayers().size(); i++) {
+            PlayerState giver = getPlayers().get(i);
+            PlayerState taker;
 
-		} else {
-			return true;
-		}
-	}
+            if (i == getPlayers().size() - 1) {
+                taker = getPlayers().get(0);
+            } else {
+                taker = getPlayers().get(i + 1);
+            }
 
-	@Override
-	protected void calculateTricks() {
-		DiscardedCard strongestCard = getPlayedCards().get(0);
+            taker.getHand().addAll(swap.get(giver.getPlayerStateName()));
+        }
 
-		for (int i = 1; i < getPlayedCards().size(); i++) {
-			DiscardedCard nextCard = getPlayedCards().get(i);
+        swap = new Hashtable<String, Set<Card>>();
+    }
 
-			if (nextCard.getCard().getColour() == strongestCard.getCard()
-					.getColour()
-					&& nextCard.getCard().getValue() > strongestCard.getCard()
-							.getValue()) {
-				nextCard = strongestCard;
-			}
-		}
+    /**
+     * Tauscht bei jedem Spieler die Karten gegenüber
+     */
+    private void swapAcross() {
+        for (int i = 0; i < getPlayers().size(); i++) {
+            PlayerState giver = getPlayers().get(i);
+            PlayerState taker;
 
-		PlayerState trickWinner = getPlayerState(strongestCard.getName());
-		getGameState().madeTrick(trickWinner);
+            if (i == getPlayers().size() - 2) {
+                taker = getPlayers().get(0);
+            } else if (i == getPlayers().size() - 1) {
+                taker = getPlayers().get(1);
+            } else {
+                taker = getPlayers().get(i + 2);
+            }
 
-		updatePlayers();
+            taker.getHand().addAll(swap.get(giver.getPlayerStateName()));
+        }
 
-		boolean noOneHasACard = true;
+        swap = new Hashtable<String, Set<Card>>();
+    }
 
-		for (PlayerState player : getPlayers()) {
-			if (!player.getHand().isEmpty()) {
-				noOneHasACard = false;
-			}
-		}
+    /**
+     * Tauscht bei jedem Spieler die Karten nach rechts
+     */
+    private void swapRight() {
+        for (int i = 0; i < getPlayers().size(); i++) {
+            PlayerState giver = getPlayers().get(i);
+            PlayerState taker;
 
-		if (noOneHasACard) {
-			setGamePhase(GamePhase.RoundEnd);
-			calculateRoundOutcome();
-		} else {
-			setGamePhase(GamePhase.CardRequest);
-			setCurrentPlayer(trickWinner);
+            if (i == 0) {
+                taker = getPlayers().get(getPlayers().size() - 1);
+            } else {
+                taker = getPlayers().get(i - 1);
+            }
 
-			send(new MsgCardRequest(), trickWinner.getPlayerStateName());
-		}
-	}
+            taker.getHand().addAll(swap.get(giver.getPlayerStateName()));
+        }
 
-	@Override
-	protected void calculateRoundOutcome() {
-		if (getGamePhase() == GamePhase.RoundEnd
-				|| getGamePhase() == GamePhase.Ending) {
-	
-			for (PlayerState player : getPlayers()) {
-				int points = player.getOtherData().getPoints();;
-				
-				for (Card card : player.getOtherData().removeTricks()) {
-					if (card.getColour() == Colour.SPADE
-							&& card.getValue() == 12) {
-						points = points + 13;
-	
-					} else if (card.getColour() == Colour.HEART) {
-						points = points + 1;
-					}
-				}
-	
-				if (points == 26) {
-					for (PlayerState playerGetsPoints : getPlayers()) {
-	
-						if (!playerGetsPoints.getPlayerStateName().equals(
-								player.getPlayerStateName())) {
-							playerGetsPoints.getOtherData().setPoints(points);
-						}
-	
-					}
-					break;
-				} else {
-					player.getOtherData().setPoints(points);
-				}
-			}
-	
-			updatePlayers();
-	
-			for (PlayerState player : getPlayers())  {
-				if (player.getOtherData().getPoints() >= ENDING_POINTS) {
-					setGamePhase(GamePhase.Ending);
-					break;
-				}
-			}
-	
-			if (getGamePhase() == GamePhase.Ending) {
-				List<String> winners = getWinners();
-				broadcast(new MsgGameEnd(winners));
-				quitGame();
-	
-			} else {
-				getGameState().restartDeck(createDeck());
-	
-				setGamePhase(GamePhase.RoundStart);
-				getGameState().nextRound();
-				startRound();
-			}
-	
-		} 
-	}
+        swap = new Hashtable<String, Set<Card>>();
+    }
 
-	@Override
-	protected List<String> getWinners() {
-		int minPoints = 1000;
+    /**
+     * Überprüft ob eine übergebenes Kartenset von einem Spieler gültig ist
+     *
+     * @param cards Ein Kartenset
+     * @return true falls das Kartenset gültig ist, false wenn nicht
+     */
+    private boolean areValidChoosenCards(Set<Card> cards, String name) {
+        int numberOfSwappingCards = 3;
+
+        if (cards.size() != numberOfSwappingCards) {
+            return false;
+
+        } else if (swap.containsKey(name)) {
+            return false;
+
+        } else if (!getPlayerState(name).getHand().containsAll(cards)) {
+            return false;
+
+        } else {
+            return true;
+        }
+    }
+
+    @Override
+    protected void calculateTricks() {
+        setNextCircle();
+        DiscardedCard strongestCard = getPlayedCards().get(0);
+
+        for (int i = 1; i < getPlayedCards().size(); i++) {
+            DiscardedCard nextCard = getPlayedCards().get(i);
+
+            if (nextCard.getCard().getColour() == strongestCard.getCard()
+                    .getColour()
+                    && nextCard.getCard().getValue() > strongestCard.getCard()
+                    .getValue()) {
+                nextCard = strongestCard;
+            }
+        }
+
+        PlayerState trickWinner = getPlayerState(strongestCard.getName());
+        getGameState().madeTrick(trickWinner);
+
+        updatePlayers();
+
+        boolean noOneHasACard = true;
+
+        for (PlayerState player : getPlayers()) {
+            if (!player.getHand().isEmpty()) {
+                noOneHasACard = false;
+            }
+        }
+
+        if (noOneHasACard) {
+            setGamePhase(GamePhase.RoundEnd);
+            calculateRoundOutcome();
+        } else {
+            setGamePhase(GamePhase.CardRequest);
+            setCurrentPlayer(trickWinner);
+
+            send(new MsgCardRequest(), trickWinner.getPlayerStateName());
+        }
+    }
+
+    @Override
+    protected void calculateRoundOutcome() {
+        if (getGamePhase() == GamePhase.RoundEnd
+                || getGamePhase() == GamePhase.Ending) {
+
+            for (PlayerState player : getPlayers()) {
+                int points = player.getOtherData().getPoints();
+
+                for (Card card : player.getOtherData().removeTricks()) {
+                    if (card.getColour() == Colour.SPADE
+                            && card.getValue() == 12) {
+                        points = points + 13;
+
+                    } else if (card.getColour() == Colour.HEART) {
+                        points = points + 1;
+                    }
+                }
+
+                if (points == 26) {
+                    for (PlayerState playerGetsPoints : getPlayers()) {
+
+                        if (!playerGetsPoints.getPlayerStateName().equals(
+                                player.getPlayerStateName())) {
+                            playerGetsPoints.getOtherData().setPoints(points);
+                        }
+
+                    }
+                    break;
+                } else {
+                    player.getOtherData().setPoints(points);
+                }
+            }
+
+            updatePlayers();
+
+            for (PlayerState player : getPlayers()) {
+                if (player.getOtherData().getPoints() >= ENDING_POINTS) {
+                    setGamePhase(GamePhase.Ending);
+                    break;
+                }
+            }
+
+            if (getGamePhase() == GamePhase.Ending) {
+                List<String> winners = getWinners();
+                broadcast(new MsgGameEnd(winners));
+                quitGame();
+
+            } else {
+                getGameState().restartDeck(createDeck());
+
+                setGamePhase(GamePhase.RoundStart);
+                getGameState().nextRound();
+                startRound();
+            }
+
+        }
+    }
+
+    @Override
+    protected List<String> getWinners() {
+        int minPoints = 1000;
         List<String> leadingPlayers = new ArrayList<String>();
 
         for (PlayerState player : getPlayers()) {
@@ -307,26 +431,44 @@ public class ServerHearts extends ServerRuleset {
         }
 
         return leadingPlayers;
-	}
+    }
 
-	@Override
-	public void runGame() throws IllegalNumberOfPlayersException {
-		List<PlayerState> players = getPlayers();
+    @Override
+    public void runGame() throws IllegalNumberOfPlayersException {
+        List<PlayerState> players = getPlayers();
 
-		if ((players.size() < MIN_PLAYERS) || (players.size() > MAX_PLAYERS)
-				|| (players.size() == 0)) {
-			throw new IllegalNumberOfPlayersException(
-					"The number of players are: " + players.size());
-		}
+        if ((players.size() < MIN_PLAYERS) || (players.size() > MAX_PLAYERS)
+                || (players.size() == 0)) {
+            throw new IllegalNumberOfPlayersException(
+                    "The number of players are: " + players.size());
+        }
 
-		setGamePhase(GamePhase.RoundStart);
-		startRound();
-	}
+        setGamePhase(GamePhase.RoundStart);
+        startRound();
+    }
 
-	@Override
-	protected void startRound() {
-		// TODO Automatisch erstellter Methoden-Stub
+    @Override
+    protected void startRound() {
+        if (getGamePhase() == GamePhase.RoundStart) {
+            getGameState().shuffleDeck();
 
-	}
+			/*
+             * Verteilt die Karten an Spieler. Wenn false zurück kommt wird ein
+			 * neues Deck erstellt und alle Karten im Spiel gelöscht. Wenn
+			 * nochmal ein Fehler kommt wirft es eine Exception
+			 */
+            if (!getGameState().dealCards(getGameState().getRoundNumber())) {
+                throw new RulesetException(
+                        "Probleme beim Verteilen der Karten!");
+            }
+            updatePlayers();
+            setGamePhase(GamePhase.MultipleCardRequest);
+            //sendet nachricht an alle Spieler
+            broadcast(new MsgMultiCardsRequest(3));
+        } else {
+            throw new RulesetException("Das Spiel ist noch nicht am "
+                    + "Rundenanfang");
+        }
+    }
 
 }

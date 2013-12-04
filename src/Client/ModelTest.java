@@ -57,13 +57,13 @@ public class ModelTest {
 		List<String> players = new LinkedList<String>();
 		players.add("Player2");
 		Set<GameServerRepresentation> games = new HashSet<GameServerRepresentation>();
-		GameServerRepresentation game = new GameServerRepresentation("Peter", "Mein Spiel", 6, 1, RulesetType.Wizard, false);
+		GameServerRepresentation game = new GameServerRepresentation("Peter", "Mein Spiel", 6, 3, 1, RulesetType.Wizard, false);
 		games.add(game);
 	
 		ComInitLobby testInitLobby = new ComInitLobby(players, games);
 		testNetIO.injectComObject(testInitLobby);
 		
-		assertEquals("Observer Update", ViewNotification.loginSuccessful, testObserver.getNotification().remove(0));
+		assertEquals("Observer Update", ViewNotification.windowChangeForced, testObserver.getNotification().remove(0));
 		assertEquals("Spielerliste", players.get(0), testModel.getPlayerlist().get(0));
 		assertEquals("Spielliste", games.contains(game), testModel.getLobbyGamelist().contains(game));
 	}
@@ -80,13 +80,13 @@ public class ModelTest {
 		assertEquals("Observer Update", ViewNotification.playerListUpdate, testObserver.getNotification().remove(0));
 		assertFalse("Hans nicht mehr in Liste", testModel.getPlayerlist().contains("Hans"));
 		
-		GameServerRepresentation game = new GameServerRepresentation("Peter", "Mein Spiel", 6, 1, RulesetType.Wizard, false);
+		GameServerRepresentation game = new GameServerRepresentation("Peter", "Mein Spiel", 6, 3, 1, RulesetType.Wizard, false);
 		ComLobbyUpdateGamelist updateGameList = new ComLobbyUpdateGamelist(false, game);
 		testNetIO.injectComObject(updateGameList);
 		assertEquals("Observer Update", ViewNotification.gameListUpdate, testObserver.getNotification().remove(0));
 		assertTrue("Spiel in Liste", testModel.getLobbyGamelist().contains(game));
 		
-		game = new GameServerRepresentation("Peter", "Mein Spiel", 6, 1, RulesetType.Wizard, false);
+		game = new GameServerRepresentation("Peter", "Mein Spiel", 6, 3, 1, RulesetType.Wizard, false);
 		updateGameList = new ComLobbyUpdateGamelist(true, game);
 		testNetIO.injectComObject(updateGameList);
 		assertEquals("Observer Update", ViewNotification.gameListUpdate, testObserver.getNotification().remove(0));
@@ -114,6 +114,9 @@ public class ModelTest {
 	@Test
 	public void joinGameTest() {
 		ComJoinRequest testJoinRequest;
+		GameServerRepresentation game = new GameServerRepresentation("Peter", "Mein Spiel", 6, 3, 1, RulesetType.Wizard, false);
+		ComLobbyUpdateGamelist updateGameList = new ComLobbyUpdateGamelist(false, game);
+		testNetIO.injectComObject(updateGameList);
 		testModel.joinGame("Peter", "");
 		testJoinRequest = (ComJoinRequest) testNetIO.getModelInput().remove(0);
 		assertEquals("Game Master", "Peter", testJoinRequest.getGameMasterName());
@@ -123,7 +126,7 @@ public class ModelTest {
 		players.add("Player1");
 		ComInitGameLobby gameLobbyInit = new ComInitGameLobby(players);
 		testNetIO.injectComObject(gameLobbyInit);
-		assertEquals("ObserverUpdate", ViewNotification.joinGameSuccessful, testObserver.getNotification().remove(0));
+		assertEquals("ObserverUpdate", ViewNotification.joinGameSuccessful, testObserver.getNotification().remove(1));
 		assertEquals("Spielerliste", players, testModel.getPlayerlist());
 	}
 }

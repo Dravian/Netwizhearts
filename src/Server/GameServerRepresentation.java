@@ -26,6 +26,12 @@ public class GameServerRepresentation implements Serializable {
 	 * Regelwerk abhaengig
 	 */
 	private int maxPlayers;
+	
+	/**
+	 * Die minimale Anzahl an Spielern, die dem Spiel beitreten koennen, vom
+	 * Regelwerk abhaengig
+	 */
+	private int minPlayers;
 
 	/**
 	 * Die Anzahl der Spielern, die dem Spiel beigetreten sind
@@ -59,13 +65,21 @@ public class GameServerRepresentation implements Serializable {
 	 *            ob das Spiel ein Passwort hat
 	 */
 	public GameServerRepresentation(String gameMaster, String gameName,
-			int max, int current, RulesetType type, boolean password) {
+			int max, int min, int current, RulesetType type, boolean password) {
 		gameMasterName = gameMaster;
 		name = gameName;
 		maxPlayers = max;
+		minPlayers = min;
 		currentPlayers = current;
 		ruleset = type;
 		hasPassword = password;
+	}
+	
+	/**
+	 * Getter-Methode fuer die minimale Anzahl an Spielern
+	 */
+	public int getMinPlayers() {
+		return minPlayers;
 	}
 
 	/**

@@ -16,15 +16,7 @@ public enum ClientState {
 	 */
 	SERVERLOBBY,
 	
-	/** 
-	 * Zeigt an, dass der Client sich in der Spielerstellung befindet.
-	 */
-	GAMECREATION,
-	
-	/** 
-	 * Zeigt an, dass der Benutzer einem Spiel beitreten moechte.
-	 */
-	JOINREQUEST,
+	ENTERGAMELOBBY,
 	
 	/** 
 	 * Zeigt an, dass sich der Client in der Spiellobby befindet.
