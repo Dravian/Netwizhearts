@@ -77,25 +77,28 @@ public class GameState {
 		roundNumber = 1;
 		trumpCard = EmptyCard.Empty;
 	}
-	
 
 	/**
 	 * Wird aufgerufen um ein neues Deck zu erstellen und alle Karten die vorher
 	 * im Spiel waren zu löschen.
-	 * @param deck Das neue Kartendeck
+	 * 
+	 * @param deck
+	 *            Das neue Kartendeck
 	 */
-	protected void restartDeck(List<Card> deck) {	
-		for(PlayerState player : players) {
-			for(Card card : player.getHand()) {
-				player.getHand().remove(card);
+	protected void restartDeck(List<Card> deck) {
+		for (PlayerState player : players) {
+			if (!player.getHand().isEmpty()) {
+				for (Card card : player.getHand()) {
+					player.getHand().remove(card);
+				}
 			}
 			player.getOtherData().removeTricks();
 		}
-		
+
 		this.deck = deck;
 		discardPile = new ArrayList<DiscardedCard>();
 	}
-	
+
 	/**
 	 * F�gt den Spieler ins Spiel hinein, falls er nicht schon im Spiel ist
 	 * 
@@ -104,12 +107,12 @@ public class GameState {
 	 * @return true falls der Spieler noch nicht im Spiel ist, und false sonst
 	 */
 	protected boolean addPlayerToGame(String name) {
-		for(PlayerState player : players) {
-			if(player.getPlayerStateName().equals(name)) {
+		for (PlayerState player : players) {
+			if (player.getPlayerStateName().equals(name)) {
 				return false;
 			}
 		}
-		
+
 		PlayerState player = new PlayerState(name, ruleset);
 		players.add(player);
 		return true;
@@ -128,20 +131,21 @@ public class GameState {
 	 * Setzt einen neuen Spieler als firstPlayer und als currentPlayer und
 	 * erhöht die Rundennummer um eins
 	 * 
-	 * @param player Der neue firstPlayer
+	 * @param player
+	 *            Der neue firstPlayer
 	 */
 	protected void setFirstPlayer(PlayerState player) {
 		firstPlayer = player;
 		currentPlayer = player;
 	}
-	
+
 	/**
 	 * Erhöht die Rundenzahl um eins
 	 */
 	protected void nextRound() {
 		roundNumber++;
 	}
-	
+
 	/**
 	 * Holt den Spieler der als erster am Zug war
 	 * 
@@ -149,7 +153,7 @@ public class GameState {
 	 *         war
 	 */
 	protected PlayerState getFirstPlayer() {
-		if(firstPlayer == null) {
+		if (firstPlayer == null) {
 			throw new RulesetException("Der firstPlayer existiert noch nicht");
 		}
 		return firstPlayer;
@@ -171,7 +175,7 @@ public class GameState {
 	 * @return currentPlayer Der Spielzustand des Spielers der grad am Zug ist
 	 */
 	protected PlayerState getCurrentPlayer() {
-		if(currentPlayer == null) {
+		if (currentPlayer == null) {
 			throw new RulesetException("Der currentPlayer existiert noch nicht");
 		}
 		return currentPlayer;
@@ -179,12 +183,12 @@ public class GameState {
 
 	/**
 	 * Holt die Karten die noch im Aufnahmestapel sind
+	 * 
 	 * @return deck Holt die Karten die noch im Aufnahmestapel sind
 	 */
 	protected List<Card> getCardsLeftInDeck() {
 		return deck;
 	}
-
 
 	/**
 	 * Holt die gespielten Karten im Ablagestapel
@@ -228,6 +232,7 @@ public class GameState {
 
 	/**
 	 * Holt die momentane Trumpfkarte im Spiel
+	 * 
 	 * @return trumpCard Die momentane Trumpfkarte
 	 */
 	protected Card getTrumpCard() {
@@ -236,6 +241,7 @@ public class GameState {
 
 	/**
 	 * Holt die Anzahl an Runden
+	 * 
 	 * @return Die Anzahl der Runden
 	 */
 	protected int getRoundNumber() {
@@ -252,12 +258,13 @@ public class GameState {
 	/**
 	 * Verteilt eine bestimmte Anzahl an Karten an die Spieler
 	 * 
-	 * @param number Die Anzahl an Karten
+	 * @param number
+	 *            Die Anzahl an Karten
 	 * @return false wenn ein Spieler keine Karten hat oder wenn nicht genügend
 	 *         Karten im Deck sind
 	 */
 	protected boolean dealCards(int number) {
-		if (deck.size() < number*players.size()) {
+		if (deck.size() < number * players.size()) {
 			return false;
 		} else {
 			for (PlayerState player : players) {
@@ -277,6 +284,7 @@ public class GameState {
 
 	/**
 	 * Holt die oberste Karte aus dem Kartendeck raus
+	 * 
 	 * @return Gibt die oberste Karte zurück
 	 */
 	protected Card getTopCard() {
@@ -328,7 +336,8 @@ public class GameState {
 		isInHand = currentPlayer.getHand().remove(card);
 
 		if (isInHand == true) {
-			discardPile.add(new DiscardedCard(currentPlayer.getPlayerStateName(), card));
+			discardPile.add(new DiscardedCard(currentPlayer
+					.getPlayerStateName(), card));
 		}
 
 		return isInHand;
