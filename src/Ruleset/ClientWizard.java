@@ -13,16 +13,6 @@ import ComObjects.*;
  */
 public class ClientWizard extends ClientRuleset {
 	/**
-	 * Die Mindestanzahl an Spielern die Wizard spielen koennen
-	 */
-	private static final int MIN_PLAYERS = 3;
-	
-	/**
-	 * Die Maximale Anzahl an Spielern die Wizard spielen koennen
-	 */
-	private static final int MAX_PLAYERS = 6; 
-	
-	/**
 	 * Der RulesetTyp des Spiels
 	 */
 	private static final RulesetType RULESET = RulesetType.Wizard;
@@ -32,7 +22,7 @@ public class ClientWizard extends ClientRuleset {
 	 * @param client Das Model auf dem gespielt wird
 	 */
 	public ClientWizard(ClientModel client) {
-		super(RULESET, MIN_PLAYERS, MAX_PLAYERS, client);
+		super(RULESET, client);
 	}
 
 	@Override

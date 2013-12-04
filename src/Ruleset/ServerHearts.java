@@ -18,14 +18,6 @@ import ComObjects.*;
 public class ServerHearts extends ServerRuleset {
 
     /**
-     * Die Minimale Anzahl an Spielern im Spiel Hearts
-     */
-    private final static int MIN_PLAYERS = 4;
-    /**
-     * Die maximale Anzahl an Spielern im Spiel Wizard
-     */
-    private final static int MAX_PLAYERS = 4;
-    /**
      * Der Typ des Ruleset
      */
     private final static RulesetType RULESET = RulesetType.Hearts;
@@ -49,8 +41,8 @@ public class ServerHearts extends ServerRuleset {
     /**
      * Erstellt das Regelwerk zum Spiel Hearts
      */
-    public ServerHearts(GameServer s) {
-        super(RULESET, MIN_PLAYERS, MAX_PLAYERS, s);
+    public ServerHearts(GameServer server) {
+        super(RULESET, server);
         swap = new Hashtable<String, Set<Card>>();
     }
 
@@ -187,6 +179,7 @@ public class ServerHearts extends ServerRuleset {
                     "Es werden in dieser Phase werden keine Tauschkarten erwartet.");
 
         } else if (!areValidChoosenCards(cards, name)) {
+        	setGamePhase(GamePhase.MultipleCardRequest);
             send(WarningMsg.WrongTradeCards, name);
             throw new IllegalArgumentException("Die übergebenen Karten vom Spieler "
                     + name + " sind falsch");
@@ -196,8 +189,6 @@ public class ServerHearts extends ServerRuleset {
             swap.put(name, cards);
 
             if (swap.size() == 4) {
-                setGamePhase(GamePhase.Playing);
-
                 int roundNumber = getRoundNumber();
 
                 if (roundNumber % 4 == 1) {
@@ -213,15 +204,16 @@ public class ServerHearts extends ServerRuleset {
                     throw new RulesetException("Fehler beim Tauschen.");
                 }
 
-                updatePlayers();
 
                 for (PlayerState player : getPlayers()) {
                     if (player.getHand().contains(HeartsCard.Kreuz2)) {
-                        setFirstPlayer(player);
+                        setCurrentPlayer(player);
                         break;
                     }
                 }
-
+                
+                updatePlayers();
+                
                 setGamePhase(GamePhase.CardRequest);
                 send(new MsgCardRequest(), getFirstPlayer()
                         .getPlayerStateName());
@@ -301,6 +293,7 @@ public class ServerHearts extends ServerRuleset {
      */
     private boolean areValidChoosenCards(Set<Card> cards, String name) {
         int numberOfSwappingCards = 3;
+        setGamePhase(GamePhase.Playing);
 
         if (cards.size() != numberOfSwappingCards) {
             return false;
@@ -321,6 +314,7 @@ public class ServerHearts extends ServerRuleset {
         setNextCircle();
         DiscardedCard strongestCard = getPlayedCards().get(0);
 
+        
         for (int i = 1; i < getPlayedCards().size(); i++) {
             DiscardedCard nextCard = getPlayedCards().get(i);
 
@@ -437,7 +431,7 @@ public class ServerHearts extends ServerRuleset {
     public void runGame() throws IllegalNumberOfPlayersException {
         List<PlayerState> players = getPlayers();
 
-        if ((players.size() < MIN_PLAYERS) || (players.size() > MAX_PLAYERS)
+        if ((players.size() < RULESET.getMinPlayer()) || (players.size() > RULESET.getMaxPlayer())
                 || (players.size() == 0)) {
             throw new IllegalNumberOfPlayersException(
                     "The number of players are: " + players.size());

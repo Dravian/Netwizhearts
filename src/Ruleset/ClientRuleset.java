@@ -30,16 +30,6 @@ public abstract class ClientRuleset {
 	 */
 	private final RulesetType RULESET;
 	
-	/**
-	 * Die Mindestanzahl an Spielern
-	 */
-	private final int MIN_PLAYERS;
-	
-	/**
-	 * Die Maximale Anzahl an Spielern
-	 */
-	private final int MAX_PLAYERS;
-	
 	/** 
 	 * Die momentane Spielphase
 	 */
@@ -52,11 +42,8 @@ public abstract class ClientRuleset {
 	 * @param maxPlayers Die maximale Spieleranzahl
 	 * @param client Das ClientModel auf dem gespielt wird
 	 */
-	public ClientRuleset(RulesetType ruleset, int minPlayers, 
-			int maxPlayers,ClientModel client) {
+	public ClientRuleset(RulesetType ruleset, ClientModel client) {
 		RULESET = ruleset;
-		MIN_PLAYERS = minPlayers;
-		MAX_PLAYERS = maxPlayers;
 		gamePhase = GamePhase.Start;
 		this.client = client;
 	}
@@ -70,22 +57,6 @@ public abstract class ClientRuleset {
 	}
 	
 	/**
-	 * Gibt die Mindestanzahl an Spielern zurueck für dieses Spiel
-	 * @return Die Mindestanzahl an Spielern
-	 */
-	public int getMinPlayers() {
-		return MIN_PLAYERS;
-	}
-	
-	/**
-	 * Gibt die Maximale Anzahl an Spielern zurueck
-	 * @return Die maximale Anzahl an Spielern
-	 */
-	public int getMaxPlayers() {
-		return MAX_PLAYERS;
-	}
-	
-	/**
 	 * Setzt die Spielphase neu
 	 * @param phase Die neue Spielphase
 	 */
@@ -93,11 +64,19 @@ public abstract class ClientRuleset {
 		gamePhase = phase;
 	}
 	/**
-	 * Gibt die momentane Spielphase zurück
+	 * Gibt die momentane Spielphase zurï¿½ck
 	 * @return gamePhase Die Spielphase
 	 */
 	public GamePhase getGamePhase() {
 		return gamePhase;
+	}
+	
+	/**
+	 * Gibt den Spielzustand zurÃ¼ck
+	 * @return den Spielzustand
+	 */
+	public GameClientUpdate getGameState() {
+		return gameState;
 	}
 
 	/**

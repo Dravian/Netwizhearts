@@ -87,7 +87,7 @@ public class GameState {
 	protected void restartDeck(List<Card> deck) {	
 		for(PlayerState player : players) {
 			for(Card card : player.getHand()) {
-				player.removeCard(card);
+				player.getHand().remove(card);
 			}
 			player.getOtherData().removeTricks();
 		}
@@ -228,7 +228,6 @@ public class GameState {
 
 	/**
 	 * Holt die momentane Trumpfkarte im Spiel
-	 * 
 	 * @return trumpCard Die momentane Trumpfkarte
 	 */
 	protected Card getTrumpCard() {
@@ -237,7 +236,6 @@ public class GameState {
 
 	/**
 	 * Holt die Anzahl an Runden
-	 * 
 	 * @return Die Anzahl der Runden
 	 */
 	protected int getRoundNumber() {
@@ -270,7 +268,7 @@ public class GameState {
 
 			for (PlayerState player : players) {
 				for (int i = 0; i < number; i++) {
-					player.addCard(getTopCard());
+					player.getHand().add(getTopCard());
 				}
 			}
 			return true;
@@ -309,7 +307,7 @@ public class GameState {
 	 */
 	protected boolean giveACard(PlayerState player, Card card) {
 		if (deck.contains(card)) {
-			player.addCard(card);
+			player.getHand().add(card);
 			return true;
 		} else {
 			return false;
@@ -322,12 +320,12 @@ public class GameState {
 	 * 
 	 * @param card
 	 *            Die gespielte Karte
-	 * @return isInHand Gibt true zur�ck wenn die gespielte Karte auf der Hand
+	 * @return isInHand Gibt true zurück wenn die gespielte Karte auf der Hand
 	 *         vom Spieler liegt und false sonst
 	 */
 	protected boolean playCard(Card card) {
 		boolean isInHand;
-		isInHand = currentPlayer.removeCard(card);
+		isInHand = currentPlayer.getHand().remove(card);
 
 		if (isInHand == true) {
 			discardPile.add(new DiscardedCard(currentPlayer.getPlayerStateName(), card));
