@@ -48,6 +48,7 @@ public class Game extends JFrame implements Observer{
 	private JScrollPane scrollPane;
 	private JTextArea chatlog;
 	private GamePanel gamePanel;
+	private MouseListener cardMouseListener;
 	
 //	/**
 //	 * Launch the application.
@@ -147,7 +148,7 @@ public class Game extends JFrame implements Observer{
 	 * @param m  ein MouseListener
 	 */
 	public void addCardMouseListener(MouseListener m) {
-		gamePanel.addCardMouseListener(m);
+		cardMouseListener = m;
 	}
 	
 	/**
@@ -172,6 +173,7 @@ public class Game extends JFrame implements Observer{
 				try {
 					gamePanel = new GamePanel(players, data, contentPane);
 					gamePanel.setBounds(10, 11, 998, 547);
+					gamePanel.addCardMouseListener(cardMouseListener);
 					contentPane.add(gamePanel);
 				} catch (Exception e) {
 					//TODO
