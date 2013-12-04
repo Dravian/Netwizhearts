@@ -405,8 +405,8 @@ public class GameServer extends Server {
 					for (Player back : playerSet) {
 						ruleset.addPlayerToGame(back.getPlayerName());
 					}
-					lobbyServer.broadcast(new ComLobbyUpdateGamelist(true,
-							getRepresentation()));
+					//lobbyServer.broadcast(new ComLobbyUpdateGamelist(true,
+					//		getRepresentation()));
 					ruleset.runGame();
 					hasStarted = true;
 				} catch (IllegalNumberOfPlayersException e) {

@@ -213,8 +213,21 @@ public class LobbyServer extends Server {
 				ComWarning warning = new ComWarning(WarningMsg.GameNotExistent);
 				player.send(warning);
 			}
-			if (joinGame.getRepresentation().hasPassword()) {
-				if (joinGame.getPassword().equals(join.getPassword())) {
+			if(!joinGame.isHasStarted()){
+				if (joinGame.getRepresentation().hasPassword()) {
+					if (joinGame.getPassword().equals(join.getPassword())) {
+						if (joinGame.getRepresentation().getCurrentPlayers() < joinGame
+								.getRepresentation().getMaxPlayers()) {
+							addPlayerToGame(player, joinGame);
+						} else {
+							ComWarning warning = new ComWarning(WarningMsg.GameFull);
+							player.send(warning);
+						}
+					} else {
+						ComWarning warning = new ComWarning(WarningMsg.WrongPassword);
+						player.send(warning);
+					}
+				} else {
 					if (joinGame.getRepresentation().getCurrentPlayers() < joinGame
 							.getRepresentation().getMaxPlayers()) {
 						addPlayerToGame(player, joinGame);
@@ -222,19 +235,11 @@ public class LobbyServer extends Server {
 						ComWarning warning = new ComWarning(WarningMsg.GameFull);
 						player.send(warning);
 					}
-				} else {
-					ComWarning warning = new ComWarning(WarningMsg.WrongPassword);
-					player.send(warning);
 				}
 			} else {
-				if (joinGame.getRepresentation().getCurrentPlayers() < joinGame
-						.getRepresentation().getMaxPlayers()) {
-					addPlayerToGame(player, joinGame);
-				} else {
-					ComWarning warning = new ComWarning(WarningMsg.GameFull);
-					player.send(warning);
-				}
-			}
+				ComWarning warning = new ComWarning(WarningMsg.CouldntJoin);
+				player.send(warning);
+			}	
 		} else {
 			System.err.println("Kein GameMaster!");
 			player.send(new ComClientQuit());
@@ -258,9 +263,7 @@ public class LobbyServer extends Server {
 		}
 		if (!gameServerSet.isEmpty()) {
 			for (GameServer game : gameServerSet) {
-				if(!game.isHasStarted()){
-					gameList.add(game.getRepresentation());				
-				}
+				gameList.add(game.getRepresentation());							
 			}
 		}
 		ComInitLobby init = new ComInitLobby(playerList, gameList);
