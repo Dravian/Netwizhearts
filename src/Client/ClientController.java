@@ -93,7 +93,7 @@ public class ClientController {
 		clientModel.addObserver(login);
 		
 		lobby = new Lobby();
-		lobby.addWindowListener(new windowCloseListener());
+		lobby.addWindowListener(new LobbyCloseListener());
 		lobby.addJoinButtonListener(new JoinButtonListenerLobby());
 		lobby.addLeaveButtonListener(new LeaveButtonListenerLobby());
 		lobby.addHostButtonListener(new HostButtonListener());
@@ -105,7 +105,7 @@ public class ClientController {
 		clientModel.addObserver(password);
 		
 		warning = new Warning();
-		warning.addOKButtonListener(new okButtonListenerWarning());
+		warning.addOKButtonListener(new OKButtonListenerWarning());
 		clientModel.addObserver(warning);
 		
 		createGame = new CreateGame();
@@ -113,7 +113,7 @@ public class ClientController {
 		createGame.addCreateButtonListener(new CreateButtonListener());
 		
 		gameLobby = new GameLobby();
-		gameLobby.addWindowListener(new gameLobbyCloseListener());
+		gameLobby.addWindowListener(new GameLobbyCloseListener());
 		gameLobby.addLeaveButtonListener(new LeaveButtonListenerGameLobby());
 		gameLobby.addStartButtonListener(new StartGameButtonListener());
 		gameLobby.addRemoveButtonListener(new KickPlayerButtonListener());
@@ -123,14 +123,15 @@ public class ClientController {
 		game = new Game();
 		game.addChatMessageListener(new ChatListenerGame());
 		game.addCardMouseListener(new CardMouseListener());
+		game.addWindowListener(new GameCloseListener());
 		clientModel.addObserver(game);
 		
 		inputNumber = new InputNumber();
-		inputNumber.addOKButtonListener(new okButtonListenerInputNumber());
+		inputNumber.addOKButtonListener(new OKButtonListenerInputNumber());
 		clientModel.addObserver(inputNumber);
 	}
 	
-	class windowCloseListener implements WindowListener {
+	class LobbyCloseListener implements WindowListener {
 
 		@Override
 		public void windowActivated(WindowEvent arg0) {
@@ -176,7 +177,7 @@ public class ClientController {
 		
 	}
 	
-	class gameLobbyCloseListener implements WindowListener {
+	class GameLobbyCloseListener implements WindowListener {
 
 		@Override
 		public void windowActivated(WindowEvent arg0) {
@@ -193,6 +194,51 @@ public class ClientController {
 		@Override
 		public void windowClosing(WindowEvent arg0) {
 			clientModel.leaveGameLobby();
+		}
+
+		@Override
+		public void windowDeactivated(WindowEvent arg0) {
+			// not needed
+			
+		}
+
+		@Override
+		public void windowDeiconified(WindowEvent arg0) {
+			// not needed
+			
+		}
+
+		@Override
+		public void windowIconified(WindowEvent arg0) {
+			// not needed
+			
+		}
+
+		@Override
+		public void windowOpened(WindowEvent arg0) {
+			// not needed
+			
+		}
+		
+	}
+	
+	class GameCloseListener implements WindowListener {
+
+		@Override
+		public void windowActivated(WindowEvent arg0) {
+			// not needed
+			
+		}
+
+		@Override
+		public void windowClosed(WindowEvent arg0) {
+			// not needed
+			
+		}
+
+		@Override
+		public void windowClosing(WindowEvent arg0) {
+			//clientModel.leaveGameLobby();//TODO ClientModel
 		}
 
 		@Override
@@ -305,7 +351,7 @@ public class ClientController {
 		
 	}
 	
-	class okButtonListenerWarning implements ActionListener {
+	class OKButtonListenerWarning implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
@@ -497,7 +543,7 @@ public class ClientController {
 		
 	}
 	
-	class okButtonListenerInputNumber implements ActionListener {
+	class OKButtonListenerInputNumber implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
