@@ -43,10 +43,6 @@ public class Warning extends JFrame implements Observer{
 		okButton.setBounds(162, 140, 89, 23);
 		getContentPane().add(okButton);
 	}
-	
-	//setWarningText() entfernt
-	//setOKButtonListener() hinzugefügt
-	
 	/**
 	 * Setzt den Listener für den OK Button des Fensters
 	 * 

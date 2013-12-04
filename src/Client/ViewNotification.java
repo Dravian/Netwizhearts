@@ -13,7 +13,7 @@ public enum ViewNotification {
 
 	chooseCardsSuccessful,
 
-	InputNumberSuccessful,
+	inputNumberSuccessful,
 
 	chooseItemSuccessful,
 
