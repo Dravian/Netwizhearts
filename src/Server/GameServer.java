@@ -552,8 +552,8 @@ public class GameServer extends Server {
 	}
 
 	/**
-	 * Gibt zurück, ob das SPiel bereits gestartet ist
-	 * @return
+	 * Gibt zurück, ob das Spiel bereits gestartet ist
+	 * @return den Wert von hasStarted
 	 */
 	public boolean isHasStarted() {
 		return hasStarted;
