@@ -135,6 +135,9 @@ public class LanguageInterpreter {
 		case ConnectionLost:
 			ret = "Die Verbindung zum Server ist verlorengegangen!";
 			break;
+		case CouldntJoin:
+			ret = "Du kannst diesem Spiel nicht beitreten!";
+			break;	
 		default:
 			IllegalArgumentException e = new IllegalArgumentException();
 			throw e;
@@ -221,6 +224,9 @@ public class LanguageInterpreter {
 		case ConnectionLost:
 			ret = "Lost connection to the Server!";
 			break;
+		case CouldntJoin:
+			ret = "You cannot join this Game!";
+			break;	
 		default:
 			IllegalArgumentException e = new IllegalArgumentException();
 			throw e;
@@ -308,6 +314,9 @@ public class LanguageInterpreter {
 		case ConnectionLost:
 			ret = "Die Verbindung zum Server ist verlorengegangen!";
 			break;
+		case CouldntJoin:
+			ret = "Du kannst diesem Spiel nicht beitreten!";
+			break;	
 		default:
 			IllegalArgumentException e = new IllegalArgumentException();
 			throw e;
