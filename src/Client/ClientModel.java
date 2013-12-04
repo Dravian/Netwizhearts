@@ -167,48 +167,7 @@ public class ClientModel extends Observable{
 	 *
 	 * @param msg die ankommende ComInitLobby Nachricht
 	 */
-	public void receiveMessage(ComInitLobby msg) {
-	/*	if (msg != null) {
-			if (state == ClientState.GAMELOBBY) {
-				state = ClientState.SERVERLOBBY;
-				if (msg.getPlayerList() != null) {
-					playerList = msg.getPlayerList();
-				}
-				if (msg.getGameList() != null) {
-					gameList = new LinkedList<GameServerRepresentation>(msg.getGameList());
-				}
-				//TODO Oder evtl. den Dialog.
-				informView(ViewNotification.windowChangeForced);
-			/*	if (gameMaster.equals(playerName)) {
-					warningText.append("<" + new Date() + "> " + "Game master has left the game.\n");
-					informView(ViewNotification.openWarning);
-				} */ /*
-				gameMaster = new String();
-			} else if (state == ClientState.GAME) {
-				state = ClientState.SERVERLOBBY;
-				if (msg.getPlayerList() != null) {
-					playerList = msg.getPlayerList();
-				}
-				if (msg.getGameList() != null) {
-					gameList = new LinkedList<GameServerRepresentation>(msg.getGameList());
-				}
-				//TODO Oder evtl. den Dialog.
-				informView(ViewNotification.windowChangeForced);
-				warningText.append("<" + new Date() + "> " + "Game has been closed unexpectedly.\n");
-				informView(ViewNotification.openWarning);
-				gameMaster = new String();
-			} else if (state == ClientState.LOGIN) {
-				state = ClientState.SERVERLOBBY;
-				if (msg.getPlayerList() != null) {
-					playerList = msg.getPlayerList();
-				}
-				if (msg.getGameList() != null) {
-					gameList = new LinkedList<GameServerRepresentation>(msg.getGameList());
-				}
-				informView(ViewNotification.loginSuccessful);
-			}
-		}  */
-		
+	public void receiveMessage(ComInitLobby msg) {	
 		if (msg != null) {
 			if (state != ClientState.ENTERGAMELOBBY) {
 				state = ClientState.SERVERLOBBY;
@@ -269,14 +228,20 @@ public class ClientModel extends Observable{
 	 * @param msg Die ankommende ComRuleset Nachricht
 	 */
 	public void receiveMessage(ComRuleset msg) {
-		if (state == ClientState.GAME) {
-			if (ruleset != null) {
-				if (msg != null) {
-					if (msg.getRulesetMessage() != null) {
-						msg.getRulesetMessage().visit(ruleset);
-						System.out.println("Ruleset");
-					}
-				}
+		if (state == ClientState.GAMELOBBY) {
+			state = ClientState.GAME;
+			if (gameType == RulesetType.Wizard) {
+				ruleset = new ClientWizard(this);
+			} else if (gameType == RulesetType.Hearts) {
+				ruleset = new ClientHearts(this);
+			}
+		} 
+		if (msg != null) {
+			if (msg.getRulesetMessage() != null) {
+				msg.getRulesetMessage().visit(ruleset);
+			}
+			if (state == ClientState.GAME) {
+			informView(ViewNotification.gameStarted);
 			}
 		}
 	}
@@ -349,8 +314,13 @@ public class ClientModel extends Observable{
 		if (update != null) {
 			if (update.getPlayerName() != null) {
 				if (update.isRemoveFlag()) {
-					playerList.remove(update.getPlayerName());
+					if (playerList.remove(update.getPlayerName()) == false) {
+						throw new IllegalArgumentException();
+					}
 				} else {
+					if (playerList.remove(update.getPlayerName()) == true) {
+						throw new IllegalArgumentException();
+					}
 					playerList.add(update.getPlayerName());
 				}
 				informView(ViewNotification.playerListUpdate);
@@ -729,25 +699,10 @@ public class ClientModel extends Observable{
 	 * Wenn der Client nicht der Spielleiter des Spiels ist, wird eine Fehlermeldung ausgegeben.
 	 */
 	public void startGame() {
-		if (state == ClientState.GAMELOBBY) {
-			if (!gameMaster.isEmpty()) {
-				if (gameMaster.equals(playerName)) {
-					for (GameServerRepresentation game : gameList) {
-						if (gameMaster.equals(game.getGameMasterName())) {
-							if ((game.getCurrentPlayers()
-								  >= game.getMinPlayers())
-									   && (game.getCurrentPlayers()
-									   <= game.getMaxPlayers())) {
-								netIO.send(new ComStartGame());
-							} else {
-								//TODO Warnung evtl noch einbauen 
-							}
-							break;
-						}
-					}
-				}
-			} else {
-				throw new IllegalArgumentException();
+		if (!gameMaster.isEmpty()) {
+			if (gameMaster.equals(playerName)) {
+				System.out.println("sende start");
+				netIO.send(new ComStartGame());
 			}
 		}
 	}
@@ -817,9 +772,11 @@ public class ClientModel extends Observable{
 			warningText.append(warningBuilder.resolveWarning(WarningMsg.EmptyUsername));
 		}
 		if (host.isEmpty()) {
-			fault = true;
-			warningText.append(warningBuilder.resolveWarning(WarningMsg.EmptyAddress));
-		} else {
+			//fault = true;
+			host = "localhost";
+			//warningText.append(warningBuilder.resolveWarning(WarningMsg.EmptyAddress));
+		} 
+		if (!fault) {
 			try {
 				uri = new URI("http://" + host);
 				port = uri.getPort();
@@ -839,11 +796,11 @@ public class ClientModel extends Observable{
 				warningText.append(warningBuilder.resolveWarning(WarningMsg.WrongAddress));
 			}
 		}
-		if (fault) {
-			informView(ViewNotification.openWarning);
-		} else {
+		if (!fault) {
 			playerName = username;
 			setupConnection(username, uri.getHost(), port);
+		} else {
+			informView(ViewNotification.openWarning);
 		}
 	}
 
