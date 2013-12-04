@@ -202,6 +202,7 @@ public class Game extends JFrame implements Observer{
 			List<String> players = observed.getPlayerlist();
 			players.remove(observed.getPlayerName());
 			makeTrickGameBoard(players, observed.getOtherPlayerData());
+			chatlog.setText("");
 			this.setVisible(true);
 			break;
 		case playedCardsUpdate:

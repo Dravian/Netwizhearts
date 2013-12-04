@@ -1,7 +1,5 @@
 package Client.View;
 
-import java.awt.EventQueue;
-
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -12,23 +10,22 @@ import java.awt.Graphics;
 import javax.swing.JComboBox;
 import javax.swing.JCheckBox;
 import javax.swing.JButton;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 import Ruleset.RulesetType;
-import Server.GameServerRepresentation;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
 
 /**
  * CreateGame. Das Fenster CreateGame dient dem Benutzer zur Erstellung eines neuen Spieles.
@@ -54,20 +51,8 @@ public class CreateGame extends JFrame{
 	private JButton btnLeave;
 	private JButton btnCreate;
 	private JLabel lblGameName;
+	private JTextArea tooltipArea;
 	private static String IMAGEPATH = "Data/";
-	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CreateGame frame = new CreateGame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Erstellt das CreateGame Fenster
@@ -102,23 +87,7 @@ public class CreateGame extends JFrame{
 		getContentPane().add(nameField);
 		nameField.setColumns(10);
 
-
 		image = null;
-		
-		imagePanel = new JPanel() {
-			private static final long serialVersionUID = 1L;
-
-			protected void paintComponent(Graphics g) {
-			        super.paintComponent(g);
-			        if (image != null) {
-			        	g.drawImage(image, 0, 0, null);  
-			        }
-			    }
-		};
-		imagePanel.setToolTipText("Wizard is a trick-taking card game for 3 to 6 players.");
-
-		imagePanel.setBounds(235, 12, 139, 171);
-		getContentPane().add(imagePanel);
 		
 		btnCreate = new JButton("Create");
 		btnCreate.setBounds(257, 215, 117, 25);
@@ -132,6 +101,28 @@ public class CreateGame extends JFrame{
 		passwordField.setBounds(12, 171, 188, 32);
 		getContentPane().add(passwordField);
 		passwordField.setColumns(10);
+		
+				tooltipArea = new JTextArea();
+				tooltipArea.setBounds(210, 12, 177, 192);
+				getContentPane().add(tooltipArea);
+				tooltipArea.setLineWrap(true);
+				
+				imagePanel = new JPanel() {
+					private static final long serialVersionUID = 1L;
+
+					protected void paintComponent(Graphics g) {
+					        super.paintComponent(g);
+					        if (image != null) {
+					        	g.drawImage(image, 0, 0, null); 
+					        }
+					    }
+				};
+				
+						imagePanel.setBounds(235, 12, 139, 171);
+						imagePanel.addMouseListener(new MouseOverListener());
+						getContentPane().add(imagePanel);
+				tooltipArea.setVisible(false);
+				tooltipArea.addMouseListener(new MouseOverListener());
 	}
 	
 	/**
@@ -215,6 +206,7 @@ public class CreateGame extends JFrame{
 			@Override
 			public void run() {
 				updateLanguage();
+				updateImage();
 			}
 		});
 	}
@@ -251,6 +243,54 @@ public class CreateGame extends JFrame{
 		}
 	}
 	
+	private String getTooltip(RulesetType ruleset) {
+		String ret = "";
+		switch (ruleset) {
+		case Wizard:
+			switch (lang) {
+			case German:
+				ret = "Bei Wizard geht es darum vor jeder Runde richtig anzusagen "
+						+ "wie viele Stiche man machen wird. Nur wenn die angesagt Anzahl "
+						+ "der Stiche genau stimmt, bekommt man Punkte. Ansonsten verliert man "
+						+ "so viele Punkte, wie man daneben gelegen hat";
+				break;
+			case English:
+				ret = "In Wizard you try to correctly announce the amount of tricks "
+						+ "you will make in the upcoming round. Only if you predict the exact "
+						+ "amount you will receive points. Otherwise you lose as many points "
+						+ "as you were off.";
+				break;
+			case Bavarian:
+				ret = "Eiso, Wizard is eigntlich fast wia Schofkopfa, bloß dass jeda oiwei a Solo "
+						+ "spuid und es geht drum, dassd  genau de richtige Zoi an Stich asogst, "
+						+ "des moansd dassd machsd. Bloß wennsd de genau richtig asogst griagst "
+						+ "Aung, sunst griagst sovui Aung obzogn wiasd damengleng bisd.";
+				break;
+			default:
+				break;
+			}
+			break;
+		case Hearts:
+			switch (lang) {
+			case German:
+				ret = "Bei Hearts geht es darum möglichst wenige Stiche zu machen. %)";
+				break;
+			case English:
+				ret = "In Hearts you try to get as few tricks as possible. %)";
+				break;
+			case Bavarian:
+				ret = "Ja, des is a bissal wia Ramsch beim Schofkopfa.";
+				break;
+			default:
+				break;
+			}
+			break;
+		default:
+			break;
+		}
+		return ret;
+	}
+	
 	private void updateImage() {
 		SwingUtilities.invokeLater(new Runnable() {
 			
@@ -259,6 +299,7 @@ public class CreateGame extends JFrame{
 				try {
 					RulesetType t = (RulesetType)(rulesetBox.getSelectedItem());
 				    image = ImageIO.read(new File(IMAGEPATH + t.toString().toLowerCase() + ".jpg"));
+				    tooltipArea.setText(getTooltip(t));
 				    imagePanel.repaint();
 					} catch (IOException e) {
 						//TODO
@@ -283,6 +324,41 @@ public class CreateGame extends JFrame{
 		@Override
 		public void itemStateChanged(ItemEvent e) {
 			updateImage();
+		}
+		
+	}
+	
+	class MouseOverListener implements MouseListener {
+
+		@Override
+		public void mouseClicked(MouseEvent arg0) {
+			//not needed
+			
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent arg0) {
+			tooltipArea.setVisible(true);
+			//repaint();
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent arg0) {
+			tooltipArea.setVisible(false);
+			//repaint();
+		}
+
+		@Override
+		public void mousePressed(MouseEvent arg0) {
+			//not needed
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent arg0) {
+			//not needed
+			
 		}
 		
 	}
