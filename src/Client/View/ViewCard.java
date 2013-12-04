@@ -39,15 +39,24 @@ public class ViewCard extends JPanel{
 	 */
 	public ViewCard(Card c) {
 		//TODO
-		
-		ruleset = c.getRuleset();
-		card = c;
 		clicked = false;
+		
+		if (c != null) {
+		card = c;
+		ruleset = card.getRuleset();
 		try {                
 	          face = ImageIO.read(new File(DATAPATH + ruleset.toString().toLowerCase() + "/"+  card.toString() +".jpg"));
 	       } catch (IOException ex) {
 	            //TODO
-	       }
+	       }	
+		} else {
+			try {                
+		          face = ImageIO.read(new File(DATAPATH + "backside.jpg"));
+		       } catch (IOException ex) {
+		            //TODO
+		       }	
+		}
+		
 	}
 	
 	/**
@@ -75,6 +84,25 @@ public class ViewCard extends JPanel{
 	public Card getCard() {
 		return card;
 	}
+	
+	public void setCard(Card c) {
+		if (c != null) {
+			card = c;
+			ruleset = card.getRuleset();
+			try {                
+		          face = ImageIO.read(new File(DATAPATH + ruleset.toString().toLowerCase() + "/"+  card.toString() +".jpg"));
+		       } catch (IOException ex) {
+		            //TODO
+		       }	
+			} else {
+				try {                
+			          face = ImageIO.read(new File(DATAPATH + "backside.jpg"));
+			       } catch (IOException ex) {
+			            //TODO
+			       }	
+			}
+	}
+	
 	@Override
 	public int getWidth() {
 		return face.getWidth();

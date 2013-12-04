@@ -59,7 +59,7 @@ public class GamePanel extends JPanel{
 			background = null;
 		}
 		ownHand = new OwnHand(contentPane);
-		ownHand.setBounds(10, 440, 900, 105);
+		ownHand.setBounds(10, 440, 800, 105);
 		//ownHand.setOpaque(true);
 		contentPane.add(ownHand);
 		
@@ -96,14 +96,14 @@ public class GamePanel extends JPanel{
 	 * 
 	 * @param cards Handkarten des Spielers
 	 */
-	public void updateOwnCards(final List<Card> cards, final MouseListener m) {
+	public void updateOwnCards(final List<Card> cards) {
 		SwingUtilities.invokeLater(new Runnable() {
 
 			@Override
 			public void run() {
-				ownHand.setHand(cards, m);
-				ownHand.setOpaque(true);
-				repaint();
+				ownHand.setHand(cards);
+				//ownHand.setOpaque(true);
+				//repaint();
 			}
 		});
 		
@@ -111,9 +111,7 @@ public class GamePanel extends JPanel{
 	
 	public void updateCardsPlayed(List<Card> cards) {
 		for (int i = 0; i < cards.size(); i++) {
-			LinkedList<Card> singleCard = new LinkedList<Card>();
-			singleCard.add(cards.get(i));
-			discardPiles.get(i).setCards(singleCard);
+			discardPiles.get(i).addCard(cards.get(i));
 		}
 	}
 	

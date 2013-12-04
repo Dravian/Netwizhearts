@@ -249,6 +249,7 @@ public class ClientController {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
+			try {
 			String selectedGame = lobby.getChosenGameName();
 			if (lobby.hasPWChosenGame()) {
 				password.setVisible(true);
@@ -258,6 +259,9 @@ public class ClientController {
 				} catch (IllegalArgumentException i) {
 					//TODO
 				}
+			}
+			} catch (IndexOutOfBoundsException e) {
+				//TODO
 			}
 		}
 		
@@ -441,15 +445,7 @@ public class ClientController {
 
 		@Override
 		public void mouseClicked(MouseEvent arg0) {
-			//TODO
-			ViewCard vc = (ViewCard)arg0.getSource();
-			if (vc.isClicked()) {
-				//clientModel.giveCard(vc.getCard);
-			} else {
-				game.unclickAll();
-				vc.setClicked(true);
-				game.repaint();
-			}
+			//not needed
 			
 		}
 
@@ -473,7 +469,15 @@ public class ClientController {
 
 		@Override
 		public void mouseReleased(MouseEvent arg0) {
-			//not needed
+			//TODO
+			ViewCard vc = (ViewCard)arg0.getSource();
+			if (vc.isClicked()) {
+				//clientModel.giveCard(vc.getCard);
+			} else {
+				game.unclickAll();
+				vc.setClicked(true);
+				game.repaint();
+			}
 			
 		}
 		

@@ -29,6 +29,12 @@ public class OwnHand extends JPanel{
 	
 	public OwnHand(JPanel cP) {
 		hand = new LinkedList<ViewCard>();
+		for (int i = 0; i < 10; i++) {
+			hand.add(new ViewCard(null));
+			ViewCard vc = hand.get(i);
+			//vc.setBounds(0, 0, vc.getWidth(), vc.getHeight());
+			this.add(vc);
+		}
 		contentPane = cP;
 	}
 	
@@ -37,24 +43,9 @@ public class OwnHand extends JPanel{
 	 * 
 	 * @param cards
 	 */
-	public void setHand(List<Card> cards, MouseListener m) {
+	public void setHand(List<Card> cards) {
 		for (int i = 0; i < cards.size(); i++) {
-			Card c = cards.get(i);
-			if (i < hand.size() && hand.get(i) != null) {
-				this.remove(hand.get(i));
-				hand.remove(i);
-				ViewCard vc = new ViewCard(c);
-				//vc.setBounds(10+i*75, 0, vc.getWidth(), vc.getHeight());
-				vc.addMouseListener(m);
-				hand.add(i, vc);
-				this.add(vc);
-			} else {
-				ViewCard vc = new ViewCard(c);
-				//vc.setBounds(10+i*75, 0, vc.getWidth(), vc.getHeight());
-				vc.addMouseListener(m);
-				hand.add(i, vc);
-				this.add(vc);
-			}
+			hand.get(i).setCard(cards.get(i));
 			 //TODO 
 		}
 	}

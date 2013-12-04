@@ -78,34 +78,34 @@ public class Game extends JFrame implements Observer{
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		//TEST
-		LinkedList<String> players = new LinkedList<String>();
-		players.add("Mr. Blue");
-		players.add("Mr. White");
-		players.add("Mr. Orange");
-		players.add("Mr. Pink");
-		players.add("Mr. Brown");
-		LinkedList<String> data = new LinkedList<String>();
-		data.add("1 Stiche");
-		data.add("2 Stiche");
-		data.add("3 Stiche");
-		data.add("4 Stiche");
-		data.add("5 Stiche");
-		List<Card> karten = new LinkedList<Card>();
-		karten.add(HeartsCard.HerzAss);
-		karten.add(HeartsCard.Herz2);
-		karten.add(HeartsCard.Herz3);
-		karten.add(HeartsCard.Herz4);
-		karten.add(HeartsCard.Herz5);
-		karten.add(HeartsCard.Herz6);
-		
-		gamePanel = new GamePanel(players, data, contentPane);
-		gamePanel.setBounds(10, 11, 998, 547);
-		gamePanel.updateCardsPlayed(karten);
-		gamePanel.updateOwnCards(karten, new CardMouseListener());
-		//gamePanel.setOpaque(true);
-		contentPane.add(gamePanel);
-		//TEST
+//		// TEST
+//		LinkedList<String> players = new LinkedList<String>();
+//		players.add("Mr. Blue");
+//		players.add("Mr. White");
+//		players.add("Mr. Orange");
+//		players.add("Mr. Pink");
+//		players.add("Mr. Brown");
+//		LinkedList<String> data = new LinkedList<String>();
+//		data.add("1 Stiche");
+//		data.add("2 Stiche");
+//		data.add("3 Stiche");
+//		data.add("4 Stiche");
+//		data.add("5 Stiche");
+//		List<Card> karten = new LinkedList<Card>();
+//		karten.add(HeartsCard.HerzAss);
+//		karten.add(HeartsCard.Herz2);
+//		karten.add(HeartsCard.Herz3);
+//		karten.add(HeartsCard.Herz4);
+//		karten.add(HeartsCard.Herz5);
+//		karten.add(HeartsCard.Herz6);
+//
+//		gamePanel = new GamePanel(players, data, contentPane);
+//		gamePanel.setBounds(10, 11, 998, 547);
+//		gamePanel.updateCardsPlayed(karten);
+//		gamePanel.updateOwnCards(karten, new CardMouseListener());
+//		// gamePanel.setOpaque(true);
+//		contentPane.add(gamePanel);
+//		// TEST
 		
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 569, 998, 105);
@@ -173,7 +173,6 @@ public class Game extends JFrame implements Observer{
 				try {
 					gamePanel = new GamePanel(players, data, contentPane);
 					gamePanel.setBounds(10, 11, 998, 547);
-					gamePanel.setOpaque(false);
 					contentPane.add(gamePanel);
 				} catch (Exception e) {
 					//TODO
@@ -211,7 +210,7 @@ public class Game extends JFrame implements Observer{
 			gamePanel.updateOtherData(observed.getOtherPlayerData());
 			break;
 		case moveAcknowledged:
-			gamePanel.updateOwnCards(observed.getOwnHand(), new CardMouseListener());
+			gamePanel.updateOwnCards(observed.getOwnHand());
 			gamePanel.updateCardsPlayed(observed.getPlayedCards());
 			break;
 		case windowChangeForced:
@@ -237,47 +236,5 @@ public class Game extends JFrame implements Observer{
 		if (this.isVisible()) {
 			chatlog.append(arg);
 		}
-	}
-	
-	class CardMouseListener implements MouseListener {
-
-		@Override
-		public void mouseClicked(MouseEvent arg0) {
-			//not needed
-			
-		}
-
-		@Override
-		public void mouseEntered(MouseEvent arg0) {
-			//not needed
-			
-		}
-
-		@Override
-		public void mouseExited(MouseEvent arg0) {
-			//not needed
-			
-		}
-
-		@Override
-		public void mousePressed(MouseEvent arg0) {
-			//not needed
-			
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent arg0) {
-			System.out.println("funzt");
-//			ViewCard vc = (ViewCard) arg0.getSource();
-//			if (vc.isClicked()) {
-//				// clientModel.giveCard(vc.getCard);
-//			} else {
-//				unclickAll();
-//				vc.setClicked(true);
-//				repaint();
-//			}
-			
-		}
-		
 	}
 }
