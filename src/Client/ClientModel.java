@@ -103,6 +103,7 @@ public class ClientModel extends Observable{
 		}
 		this.netIO = netIO;
 		state = ClientState.LOGIN;
+		prepRulesetList();
 	}
 
 	/**
@@ -699,9 +700,16 @@ public class ClientModel extends Observable{
 	 * Wenn der Client nicht der Spielleiter des Spiels ist, wird eine Fehlermeldung ausgegeben.
 	 */
 	public void startGame() {
+		
 		if (!gameMaster.isEmpty()) {
 			if (gameMaster.equals(playerName)) {
-				netIO.send(new ComStartGame());
+				int playerCount = playerList.size();
+				if (playerCount >= gameType.getMinPlayer() &&
+						playerCount <= gameType.getMaxPlayer()) {
+					netIO.send(new ComStartGame());
+				} else {
+					//TODO Warnung einbauen "Spielerzahl"...
+				}
 			}
 		}
 	}
@@ -848,7 +856,6 @@ public class ClientModel extends Observable{
 	 * @param List<RulesetType> Liste von unterstuetzten Regelwerken.
 	 */
 	public List<RulesetType> getRulesets() {
-		prepRulesetList();
 		return supportetGames;
 	}
 }
