@@ -105,7 +105,7 @@ public class ClientController {
 		clientModel.addObserver(password);
 		
 		warning = new Warning();
-		warning.addOKButtonListener(new okButtonListener());
+		warning.addOKButtonListener(new okButtonListenerWarning());
 		clientModel.addObserver(warning);
 		
 		createGame = new CreateGame();
@@ -124,6 +124,10 @@ public class ClientController {
 		game.addChatMessageListener(new ChatListenerGame());
 		game.addCardMouseListener(new CardMouseListener());
 		clientModel.addObserver(game);
+		
+		inputNumber = new InputNumber();
+		inputNumber.addOKButtonListener(new okButtonListenerInputNumber());
+		clientModel.addObserver(inputNumber);
 	}
 	
 	class windowCloseListener implements WindowListener {
@@ -301,7 +305,7 @@ public class ClientController {
 		
 	}
 	
-	class okButtonListener implements ActionListener {
+	class okButtonListenerWarning implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
@@ -487,6 +491,19 @@ public class ClientController {
 						game.repaint();
 					}
 				});
+			}
+			
+		}
+		
+	}
+	
+	class okButtonListenerInputNumber implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			int n = inputNumber.getUserInput();
+			if (n != -1) {
+				clientModel.giveInputNumber(n); 
 			}
 			
 		}
