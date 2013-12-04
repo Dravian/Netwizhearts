@@ -11,6 +11,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 import Ruleset.Card;
 import Ruleset.RulesetType;
@@ -66,6 +67,11 @@ public class ViewCard extends JPanel{
 	 */
 	public void setClicked(boolean b) {
 		clicked = b;
+		if (clicked) {
+		this.setBorder(new LineBorder(Color.ORANGE, 3));
+		} else {
+			this.setBorder(null);
+		}
 	}
 	
 	/**
@@ -117,10 +123,6 @@ public class ViewCard extends JPanel{
         //TODO
 		super.paintComponent(g);
         g.drawImage(face, 0, 0, null);
-        if (clicked) {
-        	g.setColor(Color.YELLOW);
-        	g.fillRect(0, 0, face.getWidth()-1, face.getHeight()-1);
-        }
         
     }
 }

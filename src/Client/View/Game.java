@@ -49,21 +49,21 @@ public class Game extends JFrame implements Observer{
 	private JTextArea chatlog;
 	private GamePanel gamePanel;
 	
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Game frame = new Game();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	/**
+//	 * Launch the application.
+//	 */
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					Game frame = new Game();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Erstellt das Game Fenster
@@ -102,8 +102,7 @@ public class Game extends JFrame implements Observer{
 //		gamePanel = new GamePanel(players, data, contentPane);
 //		gamePanel.setBounds(10, 11, 998, 547);
 //		gamePanel.updateCardsPlayed(karten);
-//		gamePanel.updateOwnCards(karten, new CardMouseListener());
-//		// gamePanel.setOpaque(true);
+//		gamePanel.updateOwnCards(karten);
 //		contentPane.add(gamePanel);
 //		// TEST
 		
@@ -148,7 +147,7 @@ public class Game extends JFrame implements Observer{
 	 * @param m  ein MouseListener
 	 */
 	public void addCardMouseListener(MouseListener m) {
-		//gamePanel.addCardMouseListener(m);
+		gamePanel.addCardMouseListener(m);
 	}
 	
 	/**
@@ -237,4 +236,6 @@ public class Game extends JFrame implements Observer{
 			chatlog.append(arg);
 		}
 	}
+	
+	
 }

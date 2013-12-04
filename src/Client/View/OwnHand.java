@@ -32,8 +32,9 @@ public class OwnHand extends JPanel{
 		for (int i = 0; i < 10; i++) {
 			hand.add(new ViewCard(null));
 			ViewCard vc = hand.get(i);
-			//vc.setBounds(0, 0, vc.getWidth(), vc.getHeight());
+			vc.setBounds(2+i*75, 0, vc.getWidth(), vc.getHeight());
 			this.add(vc);
+			this.setLayout(null);
 		}
 		contentPane = cP;
 	}
@@ -74,8 +75,5 @@ public class OwnHand extends JPanel{
 	@Override
 	public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        for (ViewCard c : hand) {
-			//c.paintComponent(g);
-		}
     }
 }

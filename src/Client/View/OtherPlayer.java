@@ -91,14 +91,4 @@ public class OtherPlayer extends JPanel{
 		g.drawString(name, 40, 50);
         g.drawString(info, 40, 70);        
     }
-//
-//	@Override
-//	public void paint(Graphics g) {
-//		g.drawImage(image, this.getX(), this.getY(), null);
-//		Font font = new Font("Arial", Font.BOLD, 16);
-//		g.setColor(Color.white);
-//		g.setFont(font);
-//		g.drawString(name, this.getX() + 40, this.getY() + 50);
-//		g.drawString(info, this.getX() + 40, this.getY() + 70);
-//	}
 }
