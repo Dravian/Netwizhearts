@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Eine Karte die von einem Spieler auf den Ablegestapel gelegt wird und als
  * Atrribute die Karte die gespielt wurde und den Spieler der sie gespielt hat 
- * enthält.
+ * enthÃ¤lt.
  */
 public class DiscardedCard implements Serializable{
 	private String name;
@@ -22,7 +22,7 @@ public class DiscardedCard implements Serializable{
 	}
 	
 	/**
-	 * Holt den Namen des Spielers zurück
+	 * Holt den Namen des Spielers zurÃ¼ck
 	 * @return Der Name vom Spieler
 	 */
 	protected String getName() {

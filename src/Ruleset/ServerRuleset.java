@@ -37,15 +37,6 @@ public abstract class ServerRuleset {
 	 */
 	private final RulesetType RULESET;
 	
-	/**
-	 * Die Mindestanzahl an Spielern
-	 */
-	private final int MIN_PLAYERS;
-	
-	/**
-	 * Die Maximale Anzahl an Spielern
-	 */
-	private final int MAX_PLAYERS;
 	
 	/**
 	 * Erstellt ein ServerRuleset und erzeugt ein GameState
@@ -54,11 +45,8 @@ public abstract class ServerRuleset {
 	 * @param max Die maximale Anzahl an Spielern
 	 * @param server Der Server auf dem gespielt wird
 	 */
-	public ServerRuleset(RulesetType ruleset, int min, int max, 
-			GameServer server) {
+	public ServerRuleset(RulesetType ruleset, GameServer server) {
 		RULESET = ruleset;
-		MIN_PLAYERS = min;
-		MAX_PLAYERS = max;
 		List<Card> deck = createDeck();
 		gameState = new GameState(ruleset,deck);
 		gamePhase = GamePhase.Start;
@@ -88,21 +76,6 @@ public abstract class ServerRuleset {
 		return RULESET;
 	}
 	
-	/**
-	 * Gibt die Mindestanzahl an Spielern zurueck f�r dieses Spiel
-	 * @return Die Mindestanzahl an Spielern
-	 */
-	public int getMinPlayers() {
-		return MIN_PLAYERS;
-	}
-	
-	/**
-	 * Gibt die Maximale Anzahl an Spielern zurueck
-	 * @return Die maximale Anzahl an Spielern
-	 */
-	public int getMaxPlayers() {
-		return MAX_PLAYERS;
-	}
 	
 	/**
 	 * Aendert den momentanen Spielphase

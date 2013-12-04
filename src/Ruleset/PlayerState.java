@@ -71,22 +71,8 @@ public class PlayerState implements Serializable{
 		return otherData;
 	}
 	
-	/**
-	 * Gibt dem Spieler eine Karte 
-	 * @param card Die Karte die dem Spieler gegeben wird
-	 */
-	protected void addCard(Card card){
-		ownHand.add(card);
-	}
 	
-	/**
-	 * Entfernt eine Karte aus der Hand des Spielers 
-	 * @param card
-	 * @return Gibt true zurueck wenn die Karte in der Hand ist
-	 * 								und false sonst
-	 */
-	protected boolean removeCard(Card card) {
-		 return ownHand.remove(card);
-	}
+	
+	
 	
 }

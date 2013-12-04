@@ -15,14 +15,6 @@ import ComObjects.*;
  */
 public class ServerWizard extends ServerRuleset {
     /**
-     * Die minimale Anzahl an Spielern in Wizard
-     */
-    private static final int MIN_PLAYERS = 3;
-    /**
-     * Die maximal Anzahl an Spielern in Hearts
-     */
-    private static final int MAX_PLAYERS = 6;
-    /**
      * Der Ruleset Typ des Spiels
      */
     private final static RulesetType RULESET = RulesetType.Wizard;
@@ -36,8 +28,8 @@ public class ServerWizard extends ServerRuleset {
     /**
      * Erstellt das Regelwerk zum Spiel Wizard
      */
-    public ServerWizard(GameServer s) {
-        super(RULESET, MIN_PLAYERS, MAX_PLAYERS, s);
+    public ServerWizard(GameServer server) {
+        super(RULESET, server);
     }
 
     /**
@@ -88,9 +80,7 @@ public class ServerWizard extends ServerRuleset {
                     + "Zug ist. Es muss ein Fehler bei ClientWizard sein.");
 
         } else {
-            updatePlayers();
-            setGamePhase(GamePhase.Playing);
-            playCard(card);
+            updatePlayers();      
             
             if (getGameState().getPlayedCards().size() == getPlayers().size()) {
                 calculateTricks();
@@ -114,6 +104,7 @@ public class ServerWizard extends ServerRuleset {
                     name + " erwartet.");
 
         } else if (!isValidNumber(msgNumber.getNumber())) {
+        	setGamePhase(GamePhase.SelectionRequest);
         	send(WarningMsg.WrongNumber, name);
             throw new IllegalArgumentException("Die Zahl " + msgNumber.getNumber() +
                     " vom Spieler " + name + " ist nicht erlaubt.");
@@ -151,11 +142,12 @@ public class ServerWizard extends ServerRuleset {
             Colour colour = msgSelection.getSelection();
 
             if (!isValidColour(colour)) {
+            	setGamePhase(GamePhase.SelectionRequest);
             	send(WarningMsg.WrongColour, name);
                 throw new IllegalArgumentException("Die Farbe " + colour
                         + "existiert in Wizard nicht");
             } else {
-                ((WizardCard) getTrumpCard()).changeSorcererColour(colour);
+                ((WizardCard) getGameState().getTrumpCard()).changeSorcererColour(colour);
 
                 broadcast(new MsgSelection(colour));
 
@@ -176,19 +168,19 @@ public class ServerWizard extends ServerRuleset {
     		return false;
     	
     	}else if(getPlayedCards().size() == 0) {
-    		return true;
+    		return playCard(card);
     	
     	} else  if(card.getValue() == valueOfFool) {
-    		return true;
+    		return playCard(card);
     	
     	} else if(card.getValue() == valueOfSorcerer) {
-    		return true;
+    		return playCard(card);
     	}
     	
     	Card firstCard = getPlayedCards().get(0).getCard();
     	
     	if(firstCard.getValue() == valueOfSorcerer) {
-    		return true;
+    		return playCard(card);
     	}
     	
     	/* Falls die nächste Karte Narr ist, wird die als nächstgespielte
@@ -204,10 +196,10 @@ public class ServerWizard extends ServerRuleset {
     	}
     	
     	if(firstCard.getValue() == valueOfFool) {
-    		return true;
+    		return playCard(card);
     	
     	} else if(card.getColour() == firstCard.getColour()) {
-    		return true;
+    		return playCard(card);
     	}
     	
     	List<Card> hand = getCurrentPlayer().getHand();
@@ -220,17 +212,17 @@ public class ServerWizard extends ServerRuleset {
     		}
     	}
     	
-    	return true;
+    	return playCard(card);
     }
 
     /**
-     * Ueberprueft ob eine eingegebene Stichangabe eines Spielers gueltig ist
+     * Überprüft ob eine eingegebene Stichangabe eines Spielers gültig ist
      * und setzt die Stichangabe für den aktuellen Spieler
-     *
      * @param number Die Stichangabe
-     * @return true falls die Stichangabe g�ltig ist, false wenn nicht
+     * @return true falls die Stichangabe gültig ist, false wenn nicht
      */
     private boolean isValidNumber(int number) {
+    	setGamePhase(GamePhase.Playing);
     	if(number < 0 || number > getRoundNumber()) {
     		return false;
     	}else {
@@ -239,26 +231,21 @@ public class ServerWizard extends ServerRuleset {
     }
 
     /**
-     * Ueberprueft ob eine eingebene Trumpffarbe eines Spielers gueltig ist
+     * Überprüft ob eine eingebene Trumpffarbe eines Spielers gültig ist
      *
      * @param colour Die Trumpffarbe
-     * @return true falls die Farbe gueltig ist, false wenn nicht
+     * @return true falls die Farbe gültig ist, false wenn nicht
      */
     private boolean isValidColour(Colour colour) {
-    	if(colour == Colour.RED){
-    		return true;
-    	
-    	} else if(colour == Colour.GREEN) {
-    		return true;
-    	
-    	} else if(colour == Colour.BLUE) {
-    		return true;
-    	
-    	} else if(colour == Colour.YELLOW) {
-    		return true;
+    	setGamePhase(GamePhase.Playing);
+    	if(colour != Colour.RED || colour != Colour.GREEN || 
+    			colour != Colour.BLUE || colour != Colour.YELLOW){
+    		return false;
     	
     	} else {
-    		return false;
+    		// Ändert die Farbe der Trumpfkarte
+    		((WizardCard) getGameState().getTrumpCard()).changeSorcererColour(colour);
+    		return true;
     	}
     }
 
@@ -288,10 +275,10 @@ public class ServerWizard extends ServerRuleset {
                     .getCard().getColour()) {
                 strongestCard = nextCard;
 
-            } else if (nextCard.getCard().getColour() == getTrumpCard()
+            } else if (nextCard.getCard().getColour() == getGameState().getTrumpCard()
                     .getColour()
                     && (nextCard.getCard().getValue() != valueOfFool)
-                    && strongestCard.getCard().getColour() != getTrumpCard()
+                    && strongestCard.getCard().getColour() != getGameState().getTrumpCard()
                     .getColour()) {
                 strongestCard = nextCard;
             }
@@ -322,21 +309,12 @@ public class ServerWizard extends ServerRuleset {
         }
     }
 
-    /**
-     * Holt die Trumpfkarte
-     *
-     * @return Gibt die Trumpffarbe zurueck
-     */
-    protected Card getTrumpCard() {
-        return getGameState().getTrumpCard();
-    }
-
     @Override
     public void runGame() throws IllegalNumberOfPlayersException {
         List<PlayerState> players = getPlayers();
         int deckSize = WizardCard.values().length;
 
-        if ((players.size() < MIN_PLAYERS) || (players.size() > MAX_PLAYERS)
+        if ((players.size() < RULESET.getMinPlayer()) || (players.size() > RULESET.getMaxPlayer())
                 || (players.size() == 0)) {
             throw new IllegalNumberOfPlayersException(
                     "The number of players are: " + players.size());
@@ -359,9 +337,7 @@ public class ServerWizard extends ServerRuleset {
             getGameState().shuffleDeck();
 
 			/*
-			 * Verteilt die Karten an Spieler. Wenn false zurück kommt wird ein
-			 * neues Deck erstellt und alle Karten im Spiel gelöscht. Wenn
-			 * nochmal ein Fehler kommt wirft es eine Exception
+			 * Verteilt die Karten an Spieler. Wenn false zurück kommt wirft es eine RulesetException
 			 */
             if (!getGameState().dealCards(getGameState().getRoundNumber())) {
                 throw new RulesetException(

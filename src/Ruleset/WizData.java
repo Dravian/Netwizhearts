@@ -26,7 +26,7 @@ public class WizData extends OtherData implements Serializable{
 	 * Holt die angesagten Stiche des Spielers
 	 * @return announcedTricks Die angesagten Stiche
 	 */
-	protected int getAnnouncedTricks() {
+	public int getAnnouncedTricks() {
 		return this.announcedTricks;
 	}
 	

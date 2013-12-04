@@ -10,19 +10,9 @@ import Client.ClientModel;
 import ComObjects.*;
 
 /** 
- * ClientHearts. Diese Klasse bildet das Regelwerk f�r den Clientmodel bei einer Partie Hearts
+ * ClientHearts. Diese Klasse bildet das Regelwerk für den Clientmodel bei einer Partie Hearts
  */
 public class ClientHearts extends ClientRuleset {
-	/**
-	 * Die Mindestanzahl an Spielern die Hearts spielen koennen
-	 */
-	private static final int MIN_PLAYERS = 4;
-	
-	/**
-	 * Die Maximale Anzahl an Spielern die Hearts spielen koennen 
-	 */
-	private static final int MAX_PLAYERS = 4;
-	
 	/**
 	 * Der RulesetTyp des Spiels
 	 */
@@ -33,7 +23,7 @@ public class ClientHearts extends ClientRuleset {
 	 * @param client Das Model auf dem gespielt wird
 	 */
 	public ClientHearts(ClientModel client) {
-		super(RulesetType.Hearts, MIN_PLAYERS, MAX_PLAYERS,client);
+		super(RulesetType.Hearts, client);
 	}
 	
 

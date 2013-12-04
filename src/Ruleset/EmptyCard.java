@@ -3,7 +3,7 @@ package Ruleset;
 import java.io.Serializable;
 
 /**
- * Eine leere Karte die zu keinem Spiel gehört
+ * Eine leere Karte die zu keinem Spiel gehÃ¶rt
  */
 public enum EmptyCard implements Card, Serializable{
 	Empty(-1,Colour.NONE);

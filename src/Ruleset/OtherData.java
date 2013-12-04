@@ -70,7 +70,7 @@ public abstract class OtherData implements Serializable{
 	 * Gibt die Anzahl der gemachten Stiche des Spielers zurueck
 	 * @return Die Anzahl der gemachten Stiche
 	 */
-	protected int getNumberOfTricks() {
+	public int getNumberOfTricks() {
 		return numberOfTricks;
 	}
 	
@@ -85,7 +85,7 @@ public abstract class OtherData implements Serializable{
 	 * Gibt den Punktestand eines Spielers zurück
 	 * @return Der Punktestand
 	 */
-	protected int getPoints() {
+	public int getPoints() {
 		return points;
 	}
 	
@@ -95,7 +95,7 @@ public abstract class OtherData implements Serializable{
 	public abstract String toString();
 
 	/**
-	 * Gibt den Namen des Spielers zur�ck
+	 * Gibt den Namen des Spielers zurück
 	 * @return Der Name des Spielers
 	 */
 	public String getOtherDataName() {

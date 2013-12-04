@@ -42,7 +42,7 @@ public enum HeartsCard implements Card, Serializable{
 	private final Colour colour;
 	
 	/**
-	 * Das Spiel zu dem die Karte gehört
+	 * Das Spiel zu dem die Karte gehÃ¶rt
 	 */
 	private final RulesetType ruleset;
 	
