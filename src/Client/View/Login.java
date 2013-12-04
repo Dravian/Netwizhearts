@@ -178,7 +178,7 @@ public class Login extends JFrame implements Observer{
 	 * oder eine Fehlermeldung angezeigt.
 	 * 
 	 * @param o erwartet ein Objekt von der Klasse ClientModel
-	 * @param arg erwartet: loginSuccessful
+	 * @param arg erwartet: windowChangeForced
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
@@ -186,7 +186,7 @@ public class Login extends JFrame implements Observer{
 		try {
 			ViewNotification message = (ViewNotification) arg;
 		switch (message) {
-		case loginSuccessful:
+		case windowChangeForced:
 			this.setVisible(false);
 			break;
 		default:

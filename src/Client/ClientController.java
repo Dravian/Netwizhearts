@@ -17,6 +17,7 @@ import Client.View.GameLobby;
 import Client.View.Game;
 import Client.View.Password;
 import Client.View.Language;
+import Client.View.ViewCard;
 import Client.View.Warning;
 
 import java.awt.event.ActionEvent;
@@ -25,6 +26,8 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
@@ -118,6 +121,7 @@ public class ClientController {
 		
 		game = new Game();
 		game.addChatMessageListener(new ChatListenerGame());
+		game.addCardMouseListener(new CardMouseListener());
 		clientModel.addObserver(game);
 	}
 	
@@ -267,7 +271,9 @@ public class ClientController {
 				clientModel.joinGame(lobby.getChosenGameName(), password.getPassword());
 			} catch (IllegalArgumentException i) {
 				//TODO
-			}			
+			} catch (NullPointerException n) {
+				//TODO
+			}
 		}
 		
 	}
@@ -431,5 +437,46 @@ public class ClientController {
 
 	}
 	
+	class CardMouseListener implements MouseListener {
+
+		@Override
+		public void mouseClicked(MouseEvent arg0) {
+			//TODO
+			ViewCard vc = (ViewCard)arg0.getSource();
+			if (vc.isClicked()) {
+				//clientModel.giveCard(vc.getCard);
+			} else {
+				game.unclickAll();
+				vc.setClicked(true);
+				game.repaint();
+			}
+			
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent arg0) {
+			//not needed
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent arg0) {
+			//not needed
+			
+		}
+
+		@Override
+		public void mousePressed(MouseEvent arg0) {
+			//not needed
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent arg0) {
+			//not needed
+			
+		}
+		
+	}
 	
 }

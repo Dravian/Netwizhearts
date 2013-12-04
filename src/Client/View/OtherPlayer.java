@@ -44,8 +44,6 @@ public class OtherPlayer extends JPanel{
 	public OtherPlayer(String n, String i) {
 		name = n;
 		info = i;
-		xPos = 0;
-		yPos = 0;
 		try {
 			image = ImageIO.read(new File(IMAGEPATH + "hand.jpg"));
 		} catch (IOException e) {
@@ -53,15 +51,24 @@ public class OtherPlayer extends JPanel{
 		}
 	}
 	
-	/**
-	 * Setzt die Position des Objekts
-	 * 
-	 * @param x X-Position
-	 * @param y Y-Position
-	 */
-	public void setPosition(int x, int y) {
-		xPos = x;
-		yPos = y;
+//	/**
+//	 * Setzt die Position des Objekts
+//	 * 
+//	 * @param x X-Position
+//	 * @param y Y-Position
+//	 */
+//	public void setPosition(int x, int y) {
+//		xPos = x;
+//		yPos = y;
+//	}
+	
+	@Override
+	public int getWidth() {
+		return image.getWidth();
+	}
+	@Override
+	public int getHeight() {
+		return image.getHeight();
 	}
 	
 	/**
@@ -75,13 +82,23 @@ public class OtherPlayer extends JPanel{
 	}
 	
 	@Override
-	public void paint(Graphics g) {
-		g.drawImage(image, xPos, yPos, null);
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		g.drawImage(image, 0, 0, null);
 		Font font = new Font("Arial",Font.BOLD,16);
 		g.setColor(Color.white);
 		g.setFont(font);
-		g.drawString(name, xPos + 40, yPos + 50);
-        g.drawString(info, xPos + 40, yPos + 70);
-        super.paint(g);
+		g.drawString(name, 40, 50);
+        g.drawString(info, 40, 70);        
     }
+//
+//	@Override
+//	public void paint(Graphics g) {
+//		g.drawImage(image, this.getX(), this.getY(), null);
+//		Font font = new Font("Arial", Font.BOLD, 16);
+//		g.setColor(Color.white);
+//		g.setFont(font);
+//		g.drawString(name, this.getX() + 40, this.getY() + 50);
+//		g.drawString(info, this.getX() + 40, this.getY() + 70);
+//	}
 }

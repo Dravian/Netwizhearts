@@ -3,6 +3,7 @@
  */
 package Client.View;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -28,8 +29,7 @@ public class ViewCard extends JPanel{
 	private RulesetType ruleset;
 	private Card card;
 	private BufferedImage face;
-	private int xPos;
-	private int yPos;
+	private boolean clicked;
 	
 	/**
 	 * Erstellt eine neue Karte fuer die Anzeige und zeichnet dafuer
@@ -39,15 +39,32 @@ public class ViewCard extends JPanel{
 	 */
 	public ViewCard(Card c) {
 		//TODO
+		
 		ruleset = c.getRuleset();
 		card = c;
-		xPos = 0;
-		yPos = 0;
+		clicked = false;
 		try {                
-	          face = ImageIO.read(new File(DATAPATH + ruleset.toString().toLowerCase() + "/"+  c.toString() +".jpg"));
+	          face = ImageIO.read(new File(DATAPATH + ruleset.toString().toLowerCase() + "/"+  card.toString() +".jpg"));
 	       } catch (IOException ex) {
 	            //TODO
 	       }
+	}
+	
+	/**
+	 * Setzt den 'clicked' Zustand der Karte
+	 * 
+	 * @param b true, wenn Karte angeklickt wurde, false sonst
+	 */
+	public void setClicked(boolean b) {
+		clicked = b;
+	}
+	
+	/**
+	 * Gibt zurueck, ob die Karte bereits angeklickt wurde
+	 * @return
+	 */
+	public boolean isClicked() {
+		return clicked;
 	}
 	
 	/**
@@ -58,22 +75,24 @@ public class ViewCard extends JPanel{
 	public Card getCard() {
 		return card;
 	}
-	
-	/**
-	 * Setzt die Position des Objekts
-	 * 
-	 * @param x X-Position
-	 * @param y Y-Position
-	 */
-	public void setPosition(int x, int y) {
-		xPos = x;
-		yPos = y;
+	@Override
+	public int getWidth() {
+		return face.getWidth();
+	}
+	@Override
+	public int getHeight() {
+		return face.getHeight();
 	}
 	
 	@Override
-	public void paint(Graphics g) {
+	public void paintComponent(Graphics g) {
         //TODO
-        g.drawImage(face, xPos, yPos, null);
-        super.paint(g);
+		super.paintComponent(g);
+        g.drawImage(face, 0, 0, null);
+        if (clicked) {
+        	g.setColor(Color.YELLOW);
+        	g.fillRect(0, 0, face.getWidth()-1, face.getHeight()-1);
+        }
+        
     }
 }

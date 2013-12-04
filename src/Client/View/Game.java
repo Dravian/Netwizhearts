@@ -5,6 +5,8 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -26,6 +28,8 @@ import javax.swing.SwingConstants;
 
 import Client.ClientModel;
 import Client.ViewNotification;
+import Ruleset.Card;
+import Ruleset.HeartsCard;
 
 import java.awt.Color;
 
@@ -74,7 +78,7 @@ public class Game extends JFrame implements Observer{
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		//Test
+		//TEST
 		LinkedList<String> players = new LinkedList<String>();
 		players.add("Mr. Blue");
 		players.add("Mr. White");
@@ -82,16 +86,26 @@ public class Game extends JFrame implements Observer{
 		players.add("Mr. Pink");
 		players.add("Mr. Brown");
 		LinkedList<String> data = new LinkedList<String>();
+		data.add("1 Stiche");
 		data.add("2 Stiche");
-		data.add("3 Stiche2");
-		data.add("8 Stiche");
-		data.add("8 Stiche");
-		data.add("8 Stiche");
-		gamePanel = new GamePanel(players, data);
+		data.add("3 Stiche");
+		data.add("4 Stiche");
+		data.add("5 Stiche");
+		List<Card> karten = new LinkedList<Card>();
+		karten.add(HeartsCard.HerzAss);
+		karten.add(HeartsCard.Herz2);
+		karten.add(HeartsCard.Herz3);
+		karten.add(HeartsCard.Herz4);
+		karten.add(HeartsCard.Herz5);
+		karten.add(HeartsCard.Herz6);
+		
+		gamePanel = new GamePanel(players, data, contentPane);
 		gamePanel.setBounds(10, 11, 998, 547);
-		gamePanel.setOpaque(false);
-		contentPane.add(gamePanel);		
-		//
+		gamePanel.updateCardsPlayed(karten);
+		gamePanel.updateOwnCards(karten, new CardMouseListener());
+		//gamePanel.setOpaque(true);
+		contentPane.add(gamePanel);
+		//TEST
 		
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 569, 998, 105);
@@ -106,10 +120,6 @@ public class Game extends JFrame implements Observer{
 		messageField.setBounds(10, 685, 998, 44);
 		contentPane.add(messageField);
 		messageField.setColumns(10);
-		
-		JPanel panel = new JPanel();
-		panel.setBounds(-10, 11, 62, 96);
-		contentPane.add(panel);
 	}
 	
 	/**
@@ -125,10 +135,28 @@ public class Game extends JFrame implements Observer{
 	
 	/**
 	 * Fuegt einen KeyListener fuer das Nachricht-Senden-Feld der Lobby hinzu
-	 * @param k
+	 * 
+	 * @param k ein KeyListener
 	 */
 	public void addChatMessageListener(KeyListener k) {
 		messageField.addKeyListener(k);
+	}
+	
+	/**
+	 * Fuegt einen MouseListener fuer die anklickbaren Karten hinzu
+	 * 
+	 * @param m  ein MouseListener
+	 */
+	public void addCardMouseListener(MouseListener m) {
+		//gamePanel.addCardMouseListener(m);
+	}
+	
+	/**
+	 * Setzt alle anklickbaren Karten auf 'nicht angeklickt'.
+	 * Ruft dazu die unclickAll() Methode des GamePanels auf.
+	 */
+	public void unclickAll() {
+		gamePanel.unclickAll();
 	}
 	
 	/**
@@ -143,7 +171,7 @@ public class Game extends JFrame implements Observer{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					gamePanel = new GamePanel(players, data);
+					gamePanel = new GamePanel(players, data, contentPane);
 					gamePanel.setBounds(10, 11, 998, 547);
 					gamePanel.setOpaque(false);
 					contentPane.add(gamePanel);
@@ -162,7 +190,7 @@ public class Game extends JFrame implements Observer{
 	 * 
 	 * @param o erwartet ein Objekt von der Klasse ClientModel
 	 * @param arg erwartet: playedCardsUpdate, otherDataUpdate,
-	 * 					  	moveAcknowledged, gameStarted
+	 * 					  	moveAcknowledged, gameStarted, windowChangeForced
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
@@ -174,12 +202,20 @@ public class Game extends JFrame implements Observer{
 			List<String> players = observed.getPlayerlist();
 			players.remove(observed.getPlayerName());
 			makeTrickGameBoard(players, observed.getOtherPlayerData());
+			this.setVisible(true);
 			break;
 		case playedCardsUpdate:
 			gamePanel.updateCardsPlayed(observed.getPlayedCards());
 			break;
 		case otherDataUpdate:
 			gamePanel.updateOtherData(observed.getOtherPlayerData());
+			break;
+		case moveAcknowledged:
+			gamePanel.updateOwnCards(observed.getOwnHand(), new CardMouseListener());
+			gamePanel.updateCardsPlayed(observed.getPlayedCards());
+			break;
+		case windowChangeForced:
+			this.setVisible(false);
 			break;
 		default:
 			break;
@@ -198,6 +234,50 @@ public class Game extends JFrame implements Observer{
 	 * @param arg erwartet eine Chatnachricht in String-Form
 	 */
 	public void update(Observable o, String arg) {
+		if (this.isVisible()) {
+			chatlog.append(arg);
+		}
+	}
+	
+	class CardMouseListener implements MouseListener {
+
+		@Override
+		public void mouseClicked(MouseEvent arg0) {
+			//not needed
+			
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent arg0) {
+			//not needed
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent arg0) {
+			//not needed
+			
+		}
+
+		@Override
+		public void mousePressed(MouseEvent arg0) {
+			//not needed
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent arg0) {
+			System.out.println("funzt");
+//			ViewCard vc = (ViewCard) arg0.getSource();
+//			if (vc.isClicked()) {
+//				// clientModel.giveCard(vc.getCard);
+//			} else {
+//				unclickAll();
+//				vc.setClicked(true);
+//				repaint();
+//			}
+			
+		}
 		
 	}
 }
