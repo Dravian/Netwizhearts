@@ -46,6 +46,7 @@ public abstract class ClientRuleset {
 		RULESET = ruleset;
 		gamePhase = GamePhase.Start;
 		this.client = client;
+		gameState = null;
 	}
 	
 	/**
@@ -78,7 +79,7 @@ public abstract class ClientRuleset {
 	public GameClientUpdate getGameState() {
 		return gameState;
 	}
-
+	
 	/**
 	 * Gibt die eigenen Handkarten zurueck
 	 * @return Liste von Karten
@@ -116,8 +117,8 @@ public abstract class ClientRuleset {
 	 * Holt die aufgedeckte Trumpfkarte
 	 * @return Eine Karte
 	 */
-	public Card getTrumpCard() {
-		return gameState.getTrumpCard();
+	public Card getUncoveredCard() {
+		return gameState.getUncoveredCard();
 	}
 	
 	/**

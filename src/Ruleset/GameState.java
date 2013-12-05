@@ -58,7 +58,7 @@ public class GameState {
 	/**
 	 * Die Trumpffarbe im Spiel
 	 */
-	private Card trumpCard;
+	private Card uncoveredCard;
 
 	/**
 	 * Erstellt eine GameStateklasse und trumpCard wird als WizardCard.Empty
@@ -75,7 +75,7 @@ public class GameState {
 		discardPile = new ArrayList<DiscardedCard>();
 		this.deck = deck;
 		roundNumber = 1;
-		trumpCard = EmptyCard.Empty;
+		uncoveredCard = EmptyCard.Empty;
 	}
 
 	/**
@@ -94,7 +94,7 @@ public class GameState {
 			}
 			player.getOtherData().removeTricks();
 		}
-
+		uncoveredCard = EmptyCard.Empty;
 		this.deck = deck;
 		discardPile = new ArrayList<DiscardedCard>();
 	}
@@ -227,7 +227,7 @@ public class GameState {
 	 *            Die Trumpfkarte
 	 */
 	protected void setTrumpCard(Card trumpCard) {
-		this.trumpCard = trumpCard;
+		this.uncoveredCard = trumpCard;
 	}
 
 	/**
@@ -236,7 +236,7 @@ public class GameState {
 	 * @return trumpCard Die momentane Trumpfkarte
 	 */
 	protected Card getTrumpCard() {
-		return trumpCard;
+		return uncoveredCard;
 	}
 
 	/**
