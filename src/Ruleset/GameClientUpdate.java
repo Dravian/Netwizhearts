@@ -6,7 +6,7 @@ import java.util.Map;
 
 /** 
  * GameClientUpdate. Das GameClientUpdate wird vom RuleSet ueber den GameServer an den Client geschickt 
- * und enthaelt alle Aenderungen des GameState, die für den Client relevant sind. 
+ * und enthaelt alle Aenderungen des GameState, die fï¿½r den Client relevant sind. 
  * Das waeren seine Spielhand, der Ablagestapel sowie die Otherdata von allen Spielern
  * und die Trumpfkarte.
  */
@@ -42,9 +42,9 @@ public class GameClientUpdate implements Serializable{
 	private int roundNumber;
 	
 	/**
-	 * Die Trumpfkarte des Spiels
+	 * Die aufgeckte Karte im Spiels. Ist EmptyCard falls es keine gibt.
 	 */
-	private Card trumpCard;
+	private Card uncoveredCard;
 	
 	/**
 	 * Erstellt ein GameClientUpdate
@@ -62,7 +62,7 @@ public class GameClientUpdate implements Serializable{
 		this.otherPlayerData = otherPlayerData;
 		this.currentPlayer = currentPlayer;
 		this.roundNumber = roundNumber;
-		this.trumpCard = trumpCard;
+		this.uncoveredCard = trumpCard;
 	}
 
 	/** 
@@ -83,7 +83,7 @@ public class GameClientUpdate implements Serializable{
 	}
 
 	/**
-	 * Holt die Otherdata des Client als String als Stringrepräsentation
+	 * Holt die Otherdata des Client als String als Stringreprï¿½sentation
 	 * @return ownData Die Otherdata des Clients
 	 */
 	protected OtherData getOwnData() {
@@ -100,7 +100,7 @@ public class GameClientUpdate implements Serializable{
 	}
 	
 	/**
-	 * Gibt den Spieler der momentan am Zug ist zurück
+	 * Gibt den Spieler der momentan am Zug ist zurï¿½ck
 	 * @return Der momentane Spieler
 	 */
 	protected PlayerState getCurrentPlayer() {
@@ -108,7 +108,7 @@ public class GameClientUpdate implements Serializable{
 	}
 	
 	/**
-	 * Gibt die Rundenanzahl zurück
+	 * Gibt die Rundenanzahl zurï¿½ck
 	 * @return Die Rundenanzahl
 	 */
 	protected int getRoundNumber() {
@@ -116,11 +116,11 @@ public class GameClientUpdate implements Serializable{
 	}
 	
 	/**
-	 * Holt die aufgedeckte Trumpfkarte
-	 * @return trumpCard Die Trumpfkarte
+	 * Holt die vom Deck aufgedeckte Karte, falls keine existiert wird eine EmptyCard zurÃ¼ckgegeben
+	 * @return uncoveredCard Die aufgedeckte Karte
 	 */
-	protected Card getTrumpCard() {
-		return trumpCard;
+	protected Card getUncoveredCard() {
+		return uncoveredCard;
 	}
 
 	/**

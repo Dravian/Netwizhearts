@@ -24,12 +24,18 @@ public class ServerWizard extends ServerRuleset {
      * Spieleranzahl.
      */
     private int playingRounds;
+    
+    /**
+     * Die Trumpffarbe
+     */
+    private Colour trumpColour;
 
     /**
      * Erstellt das Regelwerk zum Spiel Wizard
      */
     public ServerWizard(GameServer server) {
         super(RULESET, server);
+        trumpColour = Colour.NONE;
     }
 
     /**
@@ -147,8 +153,6 @@ public class ServerWizard extends ServerRuleset {
                 throw new IllegalArgumentException("Die Farbe " + colour
                         + "existiert in Wizard nicht");
             } else {
-                ((WizardCard) getGameState().getTrumpCard()).changeSorcererColour(colour);
-
                 broadcast(new MsgSelection(colour));
 
                 setGamePhase(GamePhase.TrickRequest);
@@ -238,13 +242,13 @@ public class ServerWizard extends ServerRuleset {
      */
     private boolean isValidColour(Colour colour) {
     	setGamePhase(GamePhase.Playing);
+    	
     	if(colour != Colour.RED || colour != Colour.GREEN || 
     			colour != Colour.BLUE || colour != Colour.YELLOW){
     		return false;
     	
     	} else {
-    		// Ändert die Farbe der Trumpfkarte
-    		((WizardCard) getGameState().getTrumpCard()).changeSorcererColour(colour);
+    		trumpColour = colour;
     		return true;
     	}
     }
@@ -265,6 +269,7 @@ public class ServerWizard extends ServerRuleset {
                 strongestCard = nextCard;
                 break;
 
+               
             } else if (strongestCard.getCard().getValue() == valueOfFool
                     && nextCard.getCard().getValue() > valueOfFool) {
                 strongestCard = nextCard;
@@ -317,16 +322,19 @@ public class ServerWizard extends ServerRuleset {
         if ((players.size() < RULESET.getMinPlayer()) || (players.size() > RULESET.getMaxPlayer())
                 || (players.size() == 0)) {
             throw new IllegalNumberOfPlayersException(
-                    "The number of players are: " + players.size());
+                    "Die Anzahl der Spieler ist:  " + players.size());
+       
+        } else if(getGamePhase() != GamePhase.Start) {
+        	throw new IllegalStateException("Das Spiel läuft bereits!");
+        
         } else {
             int numberOfRounds = deckSize / players.size();
             setPlayingRounds(numberOfRounds);
+            setFirstPlayer(players.get(0));
+
+            setGamePhase(GamePhase.RoundStart);
+            startRound();
         }
-
-        setFirstPlayer(players.get(0));
-
-        setGamePhase(GamePhase.RoundStart);
-        startRound();
     }
 
     @Override
@@ -334,6 +342,8 @@ public class ServerWizard extends ServerRuleset {
 
         if (getGamePhase() == GamePhase.RoundStart) {
             int valueOfSorcerer = 14;
+            int valueOfFool = 0;
+            
             getGameState().shuffleDeck();
 
 			/*
@@ -348,19 +358,25 @@ public class ServerWizard extends ServerRuleset {
             Card trumpCard = getGameState().getTopCard();
             getGameState().setTrumpCard(trumpCard);
 
-            updatePlayers();
-
 			/*
 			 * Falls ein Zauberer aufgedeckt wird, darf der Spieler vor dem
 			 * firstPlayer entscheiden welche Farbe Trumpf ist.
 			 */
             if (trumpCard.getValue() == valueOfSorcerer) {
-                setGamePhase(GamePhase.SelectionRequest);
+            	updatePlayers();
+
+            	setGamePhase(GamePhase.SelectionRequest);
 
                 send(new MsgSelectionRequest(), getFirstPlayer().getPlayerStateName());
 
             } else {
-                setGamePhase(GamePhase.TrickRequest);
+            	if(trumpCard.getValue() != valueOfFool) {
+            		trumpColour = trumpCard.getColour();
+            	}
+            	
+            	updatePlayers();
+
+            	setGamePhase(GamePhase.TrickRequest);
                 nextPlayer();
 
                 send(new MsgNumberRequest(), getCurrentPlayer().getPlayerStateName());
@@ -416,6 +432,7 @@ public class ServerWizard extends ServerRuleset {
                 quitGame();
            
             } else {
+            	trumpColour = Colour.NONE;
             	getGameState().restartDeck(createDeck());
                
             	setCurrentPlayer(getFirstPlayer());             

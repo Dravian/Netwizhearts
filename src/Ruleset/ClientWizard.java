@@ -18,6 +18,11 @@ public class ClientWizard extends ClientRuleset {
 	private static final RulesetType RULESET = RulesetType.Wizard;
 	
 	/**
+	 * Die Trumpffarbe
+	 */
+	private Colour trumpColour;
+	
+	/**
 	 * Erzeugt ein ClientWizard
 	 * @param client Das Model auf dem gespielt wird
 	 */
@@ -49,7 +54,7 @@ public class ClientWizard extends ClientRuleset {
 	@Override
 	public void resolveMessage(MsgSelection msgSelection) {
 		Colour trumpColour = msgSelection.getSelection();
-		Card trumpCard = getTrumpCard();
+		Card trumpCard = getUncoveredCard();
 		int valueOfSorcerer = 14;
 		
 		if(trumpCard.getValue() == valueOfSorcerer && 
@@ -176,5 +181,13 @@ public class ClientWizard extends ClientRuleset {
     		setGamePhase(GamePhase.SelectionRequest);
     		return false;
     	}
+	}
+	
+	/**
+	 * Holt die Trumpffarbe des Spiels
+	 * @return Gibt die Trumpffarbe zurück
+	 */
+	public Colour getTrumpColour() {
+		return trumpColour;
 	}
 }
