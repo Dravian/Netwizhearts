@@ -14,6 +14,7 @@ import test.TestLobbyServer;
 import test.TestPlayer;
 import ComObjects.ComRuleset;
 import ComObjects.MsgMultiCards;
+import Server.GameServer;
 import Server.LobbyServer;
 
 public class TestHeartsSwap {
@@ -105,6 +106,7 @@ public class TestHeartsSwap {
 		player4Cards.add(HeartsCard.PikDame);
 		player4Cards.add(HeartsCard.CaroAss);
 		player4Cards.add(HeartsCard.CaroBube);
+		
 	}
 
 	@After

@@ -215,9 +215,11 @@ public class ServerHearts extends ServerRuleset {
                 updatePlayers();
                 
                 setGamePhase(GamePhase.CardRequest);
-                send(new MsgCardRequest(), getFirstPlayer()
+                send(new MsgCardRequest(), getCurrentPlayer()
                         .getPlayerStateName());
 
+            } else {
+            	setGamePhase(GamePhase.MultipleCardRequest);
             }
         }
     }
