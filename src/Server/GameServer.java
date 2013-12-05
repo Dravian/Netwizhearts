@@ -48,11 +48,6 @@ public class GameServer extends Server {
 	private int maxPlayers;
 	
 	/**
-	 * Die minmale Anzahl an Spielern, die dem Spiel beitreten koennen, vom
-	 * Regelwerk abhaengig
-	 */
-	private int minPlayers;
-	/**
 	 * Die Anzahl der Spielern, die dem Spiel beitreten sind
 	 */
 	private int currentPlayers;
@@ -74,7 +69,7 @@ public class GameServer extends Server {
 	private ServerRuleset ruleset;
 	
 	/**
-	 * Shows if Game has started
+	 * Zeigt ob das Spiel bereits gestartet ist
 	 */
 	private boolean hasStarted;
 
@@ -112,12 +107,10 @@ public class GameServer extends Server {
 		if (rulesetType == RulesetType.Hearts) {
 			this.ruleset = new ServerHearts(this);
 			maxPlayers = 4;
-			minPlayers = 4;
 		} else {
 			if (rulesetType == RulesetType.Wizard) {
 				this.ruleset = new ServerWizard(this);
 				maxPlayers = 6;
-				minPlayers = 3;
 			} else {
 				System.err.println("Unknown Ruleset!");
 				disconnectPlayer(gameMaster);
@@ -132,7 +125,7 @@ public class GameServer extends Server {
 	 */
 	public synchronized GameServerRepresentation getRepresentation() {
 		return new GameServerRepresentation(getGameMasterName(), name, 
-				maxPlayers, minPlayers, currentPlayers, rulesetType, hasPassword);
+				maxPlayers , currentPlayers, rulesetType, hasPassword, hasStarted);
 	}
 
 	/**
@@ -405,8 +398,9 @@ public class GameServer extends Server {
 					for (Player back : playerSet) {
 						ruleset.addPlayerToGame(back.getPlayerName());
 					}
-					//lobbyServer.broadcast(new ComLobbyUpdateGamelist(true,
-					//		getRepresentation()));
+					lobbyServer.broadcast(new ComLobbyUpdateGamelist(false,
+							getRepresentation()));
+					broadcast(new ComStartGame());
 					ruleset.runGame();
 					hasStarted = true;
 				} catch (IllegalNumberOfPlayersException e) {

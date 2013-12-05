@@ -26,12 +26,6 @@ public class GameServerRepresentation implements Serializable {
 	 * Regelwerk abhaengig
 	 */
 	private int maxPlayers;
-	
-	/**
-	 * Die minimale Anzahl an Spielern, die dem Spiel beitreten koennen, vom
-	 * Regelwerk abhaengig
-	 */
-	private int minPlayers;
 
 	/**
 	 * Die Anzahl der Spielern, die dem Spiel beigetreten sind
@@ -46,7 +40,10 @@ public class GameServerRepresentation implements Serializable {
 	 * Zeigt an, ob ein Spiel Passwortgeschuezt ist
 	 */
 	private boolean hasPassword;
-
+	/**
+	 * Zeigt ob das Spiel bereits gestartet ist
+	 */
+	private boolean hasStarted;
 	/**
 	 * Der Konstruktor der Klasse GameServerRepresentation initialisiert die
 	 * Attribute mit den vom GameServer übergebenen Werten.
@@ -65,21 +62,14 @@ public class GameServerRepresentation implements Serializable {
 	 *            ob das Spiel ein Passwort hat
 	 */
 	public GameServerRepresentation(String gameMaster, String gameName,
-			int max, int min, int current, RulesetType type, boolean password) {
+			int max,int current, RulesetType type, boolean password, boolean started) {
 		gameMasterName = gameMaster;
 		name = gameName;
 		maxPlayers = max;
-		minPlayers = min;
 		currentPlayers = current;
 		ruleset = type;
 		hasPassword = password;
-	}
-	
-	/**
-	 * Getter-Methode fuer die minimale Anzahl an Spielern
-	 */
-	public int getMinPlayers() {
-		return minPlayers;
+		hasStarted = started;
 	}
 
 	/**
@@ -122,5 +112,13 @@ public class GameServerRepresentation implements Serializable {
 	 */
 	public boolean hasPassword() {
 		return hasPassword;
+	}
+	
+	/**
+	 * Gibt zurück, ob das Spiel bereits gestartet ist
+	 * @return den Wert von hasStarted
+	 */
+	public boolean isHasStarted() {
+		return hasStarted;
 	}
 }
