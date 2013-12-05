@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JList;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -34,6 +35,8 @@ public class GameLobby extends JFrame implements Observer{
 	private Language lang;
 	private JButton btnRemovePlayer;
 	private JButton btnLeave;
+	private JScrollPane scrollPaneChat;
+	private JScrollPane scrollPanePlayers;
 	private JTextArea chatlog;
 	private JButton btnStartGame;
 	private JList<String> playerList;
@@ -50,15 +53,27 @@ public class GameLobby extends JFrame implements Observer{
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		
 		playerList = new JList<String>();
 		playerList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		playerList.setBounds(12, 12, 211, 130);
-		contentPane.add(playerList);
+		//contentPane.add(playerList);
+		
+		scrollPanePlayers = new JScrollPane(playerList);
+		scrollPanePlayers.setBounds(12, 12, 211, 130);
+		scrollPanePlayers.setViewportView(playerList);
+		contentPane.add(scrollPanePlayers);
 		
 		chatlog = new JTextArea();
 		chatlog.setBounds(12, 154, 400, 84);
 		chatlog.setEditable(false);
-		contentPane.add(chatlog);
+		//contentPane.add(chatlog);
+		
+		scrollPaneChat = new JScrollPane(chatlog);
+		scrollPaneChat.setBounds(12, 154, 400, 84);
+		scrollPaneChat.setViewportView(chatlog);
+		contentPane.add(scrollPaneChat);
 		
 		messageField = new JTextField();
 		messageField.setBounds(12, 250, 400, 31);

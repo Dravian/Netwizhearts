@@ -84,6 +84,8 @@ public class ClientController {
 	private Warning warning;
 	
 	public ClientController() {
+		language = Language.English;
+		
 		clientModel = new ClientModel(new MessageListenerThread());
 		
 		login = new Login();
@@ -288,7 +290,7 @@ public class ClientController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			try {
-				clientModel.createConnection(login.getUsername(), login.getServerAdress(), 1337);//FIXME Port hart codiert
+				clientModel.createConnection(login.getUsername(), login.getServerAdress(), 1337);//FIXME
 			} catch (IllegalArgumentException i) {
 				//TODO
 			}
@@ -365,7 +367,25 @@ public class ClientController {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			try {
-				clientModel.hostGame(createGame.getGameName(), createGame.hasPassword(), 
+				String gameName = createGame.getGameName();
+				if(gameName.compareTo("")==0) {
+					String s = "";
+					switch (language) {
+					case German:
+						s = "Spiel";
+						break;
+					case Bavarian:
+						s = "Spui";
+						break;
+					case English:
+						s = "Game";
+						break;
+					default:
+						break;
+					}
+					gameName = clientModel.getPlayerName() + "'s " + s;
+				}
+				clientModel.hostGame(gameName, createGame.hasPassword(), 
 						createGame.getPassword(), createGame.getSelectedRulesetType());
 				createGame.setVisible(false);
 			} catch (IllegalArgumentException i) {

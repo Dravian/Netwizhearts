@@ -3,6 +3,8 @@
  */
 package Client;
 
+import javax.swing.SwingUtilities;
+
 /** 
  * ClientMain. Die ClientMain Klasse startet den Spielclient
  * und initialisiert dessen Komponenten.
@@ -22,6 +24,15 @@ public class ClientMain {
 	 * @param args Argumente die nicht verwendet werden.
 	 */
 	public static void main(final String[] args){
-		clientController = new ClientController();
+		SwingUtilities.invokeLater(new Runnable() {
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				clientController = new ClientController();
+			}
+			
+		});
+		
 	}
 }

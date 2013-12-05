@@ -3,11 +3,8 @@
  */
 package Client.View;
 
-import java.awt.EventQueue;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemListener;
-import java.awt.event.WindowListener;
-import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -20,7 +17,6 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.SwingUtilities;
 
-import Client.ClientModel;
 import Client.ViewNotification;
 /**
  * Login. Das Login-Fenster repraesentiert den initialen Dialog zwischen Benutzer und Client.
@@ -62,8 +58,9 @@ public class Login extends JFrame implements Observer{
 		
 		nameField = new JTextField();
 		nameField.setBounds(133, 44, 155, 20);
-		contentPane.add(nameField);
 		nameField.setColumns(10);
+		nameField.setText("TestSpieler");//FIXME Nur fuer Testzwecke
+		contentPane.add(nameField);
 		
 		lblNickname = new JLabel("Nickname:");
 		lblNickname.setBounds(13, 43, 110, 23);
@@ -71,8 +68,9 @@ public class Login extends JFrame implements Observer{
 		
 		serverField = new JTextField();
 		serverField.setBounds(133, 72, 155, 20); 
-		contentPane.add(serverField);
 		serverField.setColumns(10);
+		serverField.setText("localhost");//FIXME Nur fuer Testzwecke
+		contentPane.add(serverField);
 		
 		btnConnect = new JButton("Connect");
 		btnConnect.setBounds(108, 103, 104, 23);

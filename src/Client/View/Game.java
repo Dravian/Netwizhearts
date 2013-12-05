@@ -1,37 +1,24 @@
 package Client.View;
 
 import java.awt.EventQueue;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
 
 import Client.ClientModel;
 import Client.ViewNotification;
 import Ruleset.Card;
 import Ruleset.HeartsCard;
-
-import java.awt.Color;
 
 /**
  * Game. Im Game Fenster laeuft das Spiel ab.Es enthaelt den Spielchat und ein GamePanel.
@@ -45,7 +32,7 @@ public class Game extends JFrame implements Observer{
 	
 	private JPanel contentPane;
 	private JTextField messageField;
-	private JScrollPane scrollPane;
+	private JScrollPane scrollPaneChat;
 	private JTextArea chatlog;
 	private GamePanel gamePanel;
 	private MouseListener cardMouseListener;
@@ -73,7 +60,7 @@ public class Game extends JFrame implements Observer{
 	public Game() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		setBounds(100, 100, 1024, 768);
+		setBounds(100, 100, 1024, 695);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -101,23 +88,23 @@ public class Game extends JFrame implements Observer{
 //		karten.add(HeartsCard.Herz6);
 //
 //		gamePanel = new GamePanel(players, data, contentPane);
-//		gamePanel.setBounds(10, 11, 998, 547);
+//		gamePanel.setBounds(10, 11, 998, 495);
 //		gamePanel.updateCardsPlayed(karten);
 //		gamePanel.updateOwnCards(karten);
 //		contentPane.add(gamePanel);
 //		// TEST
 		
-		scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 569, 998, 105);
-		scrollPane.setViewportView(chatlog);
-		contentPane.add(scrollPane);
+		scrollPaneChat = new JScrollPane();
+		scrollPaneChat.setBounds(10, 505, 998, 112);
+		scrollPaneChat.setViewportView(chatlog);
+		contentPane.add(scrollPaneChat);
 		
 		chatlog = new JTextArea();
 		chatlog.setEditable(false);
 		chatlog.setLineWrap(true);
 		
 		messageField = new JTextField();
-		messageField.setBounds(10, 685, 998, 44);
+		messageField.setBounds(10, 617, 998, 44);
 		contentPane.add(messageField);
 		messageField.setColumns(10);
 	}
@@ -207,13 +194,17 @@ public class Game extends JFrame implements Observer{
 			break;
 		case playedCardsUpdate:
 			gamePanel.updateCardsPlayed(observed.getPlayedCards());
+			repaint();
 			break;
 		case otherDataUpdate:
+			gamePanel.updateOwnScore(observed.getOwnScore());
 			gamePanel.updateOtherData(observed.getOtherPlayerData());
+			repaint();
 			break;
 		case moveAcknowledged:
 			gamePanel.updateOwnCards(observed.getOwnHand());
 			gamePanel.updateCardsPlayed(observed.getPlayedCards());
+			repaint();
 			break;
 		case windowChangeForced:
 			this.setVisible(false);

@@ -36,7 +36,7 @@ public class GamePanel extends JPanel{
 	
 	private OwnHand ownHand;
 	
-	private Object ownScoreLabel;
+	private OwnScore ownScore;
 	
 	private List<OtherPlayer> otherHands;
 	
@@ -59,8 +59,12 @@ public class GamePanel extends JPanel{
 			background = null;
 		}
 		ownHand = new OwnHand(contentPane);
-		ownHand.setBounds(15, 440, 750, 105);
+		ownHand.setBounds(15, 390, 750, 105);
 		contentPane.add(ownHand);
+		
+		ownScore = new OwnScore();
+		ownScore.setBounds(900, 450, 100, 50);
+		contentPane.add(ownScore);
 		
 		otherHands = new LinkedList<OtherPlayer>();
 		discardPiles = new LinkedList<DiscardPile>();
@@ -89,6 +93,17 @@ public class GamePanel extends JPanel{
 		default:
 			break;
 		}
+	}
+	
+	public void updateOwnScore(final int score) {
+		SwingUtilities.invokeLater(new Runnable() {
+
+			@Override
+			public void run() {
+				ownScore.setScore(score);
+			}
+			
+		});
 	}
 	
 	/**
@@ -150,7 +165,7 @@ public class GamePanel extends JPanel{
 				otherHands.get(1).setBounds(750, 70, otherHands.get(1).getWidth(), otherHands.get(1).getHeight());
 				discardPiles.get(0).setBounds(270, 160, discardPiles.get(0).getWidth(), discardPiles.get(0).getHeight());
 				discardPiles.get(1).setBounds(660, 160, discardPiles.get(1).getWidth(), discardPiles.get(1).getHeight());
-				discardPiles.get(2).setBounds(465, 310, discardPiles.get(2).getWidth(), discardPiles.get(2).getHeight());
+				discardPiles.get(2).setBounds(465, 270, discardPiles.get(2).getWidth(), discardPiles.get(2).getHeight());
 			}
 		});
 		
@@ -171,7 +186,7 @@ public class GamePanel extends JPanel{
 				discardPiles.get(0).setBounds(200, 210, discardPiles.get(0).getWidth(), discardPiles.get(0).getHeight());
 				discardPiles.get(1).setBounds(465, 145, discardPiles.get(1).getWidth(), discardPiles.get(1).getHeight());
 				discardPiles.get(2).setBounds(710, 210, discardPiles.get(2).getWidth(), discardPiles.get(2).getHeight());
-				discardPiles.get(3).setBounds(465, 310, discardPiles.get(3).getWidth(), discardPiles.get(3).getHeight());
+				discardPiles.get(3).setBounds(465, 270, discardPiles.get(3).getWidth(), discardPiles.get(3).getHeight());
 			
 			}
 		});
@@ -195,7 +210,7 @@ public class GamePanel extends JPanel{
 				discardPiles.get(1).setBounds(365, 145, discardPiles.get(1).getWidth(), discardPiles.get(1).getHeight());
 				discardPiles.get(2).setBounds(570, 145, discardPiles.get(2).getWidth(), discardPiles.get(2).getHeight());
 				discardPiles.get(3).setBounds(710, 210, discardPiles.get(3).getWidth(), discardPiles.get(3).getHeight());
-				discardPiles.get(4).setBounds(465, 310, discardPiles.get(4).getWidth(), discardPiles.get(4).getHeight());
+				discardPiles.get(4).setBounds(465, 270, discardPiles.get(4).getWidth(), discardPiles.get(4).getHeight());
 			}
 		});
 		
@@ -220,7 +235,7 @@ public class GamePanel extends JPanel{
 				discardPiles.get(2).setBounds(465, 145, discardPiles.get(2).getWidth(), discardPiles.get(2).getHeight());
 				discardPiles.get(3).setBounds(630, 145, discardPiles.get(3).getWidth(), discardPiles.get(3).getHeight());
 				discardPiles.get(4).setBounds(740, 230, discardPiles.get(4).getWidth(), discardPiles.get(4).getHeight());
-				discardPiles.get(5).setBounds(465, 310, discardPiles.get(5).getWidth(), discardPiles.get(5).getHeight());
+				discardPiles.get(5).setBounds(465, 270, discardPiles.get(5).getWidth(), discardPiles.get(5).getHeight());
 			}
 		});
 		
