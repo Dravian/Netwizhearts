@@ -297,25 +297,25 @@ public class LanguageInterpreter {
 			break;
 			//TODO: Bayerisch...
 		case EmptyUsername:
-			ret = "Bitte gib einen Benutzernamen ein.";
+			ret = "Du muasd nu eigem wiasd hoasd.";
 			break;
 		case EmptyAddress:
-			ret = "Bitte gib eine gültige IP-Adresse ein.";
+			ret = "Du hosd do nix eigem, wo 'so a Nummer' steht, de brauchma aber.";
 			break;
 		case WrongAddress:
-			ret = "Diese Adresse ist unbekannt.";
+			ret = "Do wo 'so a Nummer' steht, steht wos foisch drin. Do brauchst so a 'IP' dings.";
 			break;
 		case Portnumber:
-			ret = "Portnummer außer Reichweite.";
+			ret = "Do wo 'so a Nummer' steht, steht am Schluss wos foisch drin. Hoasd 'Port' oder so.";
 			break;
 		case UnknownHost:
-			ret = "Der Host ist unbekannt.";
+			ret = "Wia kimma den Horst ..ääh Host ned finden.";
 			break;
 		case ConnectionLost:
-			ret = "Die Verbindung zum Server ist verlorengegangen!";
+			ret = "Wia hamma d'Verbindung verlorn, I fiachd, des wars.";
 			break;
 		case CouldntJoin:
-			ret = "Du kannst diesem Spiel nicht beitreten!";
+			ret = "Du kosd do nes midspuin.";
 			break;	
 		default:
 			IllegalArgumentException e = new IllegalArgumentException();

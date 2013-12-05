@@ -36,7 +36,7 @@ public class Warning extends JFrame implements Observer{
 		warningTextArea.setFont(new Font("Arial", Font.PLAIN, 13));
 		warningTextArea.setEditable(false);
 		warningTextArea.setLineWrap(true);
-		warningTextArea.setBounds(10, 11, 406, 118);
+		warningTextArea.setBounds(10, 11, 397, 118);
 		getContentPane().add(warningTextArea);
 		
 		okButton = new JButton("OK");

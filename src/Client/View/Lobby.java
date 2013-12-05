@@ -41,7 +41,9 @@ public class Lobby extends JFrame implements Observer{
 	private JTextField messageField;
 	private JList<String> playerList;
 	private JList<String> gameList;
-	private JScrollPane scrollPane;
+	private JScrollPane scrollPaneChat;
+	private JScrollPane scrollPanePlayers;
+	private JScrollPane scrollPaneGames;
 	private JButton btnHostGame;
 	private JButton btnJoinGame;
 	private JButton btnLeave;
@@ -65,20 +67,31 @@ public class Lobby extends JFrame implements Observer{
 		playerList = new JList<String>();
 		playerList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		playerList.setBounds(10, 11, 246, 191);
-		contentPane.add(playerList);
+		//contentPane.add(playerList);
+		
+		scrollPanePlayers = new JScrollPane(playerList);
+		scrollPanePlayers.setBounds(10, 11, 246, 191);
+		scrollPanePlayers.setViewportView(playerList);
+		contentPane.add(scrollPanePlayers);
+		
+		gameList = new JList<String>();
+		gameList.setBounds(266, 11, 308, 191);
+		//contentPane.add(gameList);
+		
+		scrollPaneGames = new JScrollPane(gameList);
+		scrollPaneGames.setBounds(266, 11, 308, 191);
+		scrollPaneGames.setViewportView(gameList);
+		contentPane.add(scrollPaneGames);
 		
 		chatlog = new JTextArea();
 		chatlog.setLineWrap(true);
 		chatlog.setEditable(false);
 		chatlog.setBounds(10, 213, 564, 94);
 		
-		gameList = new JList<String>();
-		gameList.setBounds(266, 11, 308, 191);
-		contentPane.add(gameList);
-		
-		scrollPane = new JScrollPane(chatlog);
-		scrollPane.setBounds(10, 213, 564, 96);
-		contentPane.add(scrollPane);
+		scrollPaneChat = new JScrollPane(chatlog);
+		scrollPaneChat.setBounds(10, 213, 564, 96);
+		scrollPaneChat.setViewportView(chatlog);
+		contentPane.add(scrollPaneChat);
 		
 		messageField = new JTextField();
 		messageField.setBounds(10, 320, 564, 31);
@@ -210,16 +223,20 @@ public class Lobby extends JFrame implements Observer{
 				String[] games = new String[length];
 				for (int i = 0; i < length; i++) {
 					String s = "";
+					String p = "";
 					if (gameRepresentationList.get(i).hasPassword()) {
 						switch (lang) {
 						case English:
 							s = "(Password)";
+							p = "(started)";
 							break;
 						case German:
 							s = "(Passwort)";
+							p = "(gestarted)";
 							break;
 						case Bavarian:
-							s = "(voi äksklusiv)";
+							s = "(Passwort)";
+							p = "(hod agfangd)";
 							break;
 						default:
 							break;
@@ -228,9 +245,9 @@ public class Lobby extends JFrame implements Observer{
 					games[i] = gameRepresentationList.get(i).getName() + " ("
 							+ gameRepresentationList.get(i).getCurrentPlayers()
 							+ "/"
-							+ gameRepresentationList.get(i).getMaxPlayers()
+							+ gameRepresentationList.get(i).getRuleset().getMaxPlayer()
 							+ ") " + gameRepresentationList.get(i).getRuleset()
-							+ " " + s;
+							+ " " + s + " " + p;
 				}
 				gameList.setListData(games);
 				gameRepList = new LinkedList<GameServerRepresentation>(

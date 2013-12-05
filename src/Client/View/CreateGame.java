@@ -75,6 +75,7 @@ public class CreateGame extends JFrame{
 		
 		chboxPassword = new JCheckBox("Set Password:");
 		chboxPassword.setBounds(12, 140, 188, 23);
+		chboxPassword.addActionListener(new PWCheckedListener());
 		getContentPane().add(chboxPassword);
 		
 		btnLeave = new JButton("Leave");
@@ -99,30 +100,32 @@ public class CreateGame extends JFrame{
 		
 		passwordField = new JTextField();
 		passwordField.setBounds(12, 171, 188, 32);
+		passwordField.setEditable(false);
 		getContentPane().add(passwordField);
 		passwordField.setColumns(10);
-		
-				tooltipArea = new JTextArea();
-				tooltipArea.setBounds(210, 12, 177, 192);
-				getContentPane().add(tooltipArea);
-				tooltipArea.setLineWrap(true);
-				
-				imagePanel = new JPanel() {
-					private static final long serialVersionUID = 1L;
 
-					protected void paintComponent(Graphics g) {
-					        super.paintComponent(g);
-					        if (image != null) {
-					        	g.drawImage(image, 0, 0, null); 
-					        }
-					    }
-				};
-				
-						imagePanel.setBounds(235, 12, 139, 171);
-						imagePanel.addMouseListener(new MouseOverListener());
-						getContentPane().add(imagePanel);
-				tooltipArea.setVisible(false);
-				tooltipArea.addMouseListener(new MouseOverListener());
+		tooltipArea = new JTextArea();
+		tooltipArea.setBounds(210, 12, 177, 192);
+		getContentPane().add(tooltipArea);
+		tooltipArea.setLineWrap(true);
+
+		imagePanel = new JPanel() {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected void paintComponent(Graphics g) {
+				super.paintComponent(g);
+				if (image != null) {
+					g.drawImage(image, 0, 0, null);
+				}
+			}
+		};
+
+		imagePanel.setBounds(235, 12, 139, 171);
+		imagePanel.addMouseListener(new MouseOverListener());
+		getContentPane().add(imagePanel);
+		tooltipArea.setVisible(false);
+		tooltipArea.addMouseListener(new MouseOverListener());
 	}
 	
 	/**
@@ -324,6 +327,16 @@ public class CreateGame extends JFrame{
 		@Override
 		public void itemStateChanged(ItemEvent e) {
 			updateImage();
+		}
+		
+	}
+	
+	class PWCheckedListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			passwordField.setEditable(chboxPassword.isSelected());
+			
 		}
 		
 	}
