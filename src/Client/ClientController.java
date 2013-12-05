@@ -195,7 +195,7 @@ public class ClientController {
 
 		@Override
 		public void windowClosing(WindowEvent arg0) {
-			clientModel.leaveGameLobby();
+			clientModel.returnToLobby();
 		}
 
 		@Override
@@ -240,7 +240,7 @@ public class ClientController {
 
 		@Override
 		public void windowClosing(WindowEvent arg0) {
-			//clientModel.leaveGameLobby();//TODO ClientModel
+			clientModel.returnToLobby();
 		}
 
 		@Override
@@ -290,7 +290,7 @@ public class ClientController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			try {
-				clientModel.createConnection(login.getUsername(), login.getServerAdress(), 1337);//FIXME
+				clientModel.createConnection(login.getUsername(), login.getServerAdress());//FIXME
 			} catch (IllegalArgumentException i) {
 				//TODO
 			}
@@ -483,7 +483,7 @@ public class ClientController {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			clientModel.leaveGameLobby();
+			clientModel.returnToLobby();
 			gameLobby.setVisible(false);
 		}
 		
