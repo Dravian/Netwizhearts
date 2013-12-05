@@ -50,14 +50,14 @@ public class ModelTest {
 	@Test
 	public void loginTest() {
 		ComLoginRequest testLoginRequest;
-		testModel.createConnection("Player2", "localhost", 4567);
+		testModel.createConnection("Player2", "localhost");
 		testLoginRequest = (ComLoginRequest) testNetIO.getModelInput().remove(0);
 		assertEquals("Versende Login Request","Player2",testLoginRequest.getPlayerName());
 	
 		List<String> players = new LinkedList<String>();
 		players.add("Player2");
 		Set<GameServerRepresentation> games = new HashSet<GameServerRepresentation>();
-		GameServerRepresentation game = new GameServerRepresentation("Peter", "Mein Spiel", 6, 3, 1, RulesetType.Wizard, false);
+		GameServerRepresentation game = new GameServerRepresentation("Peter", "Mein Spiel", 6, 1, RulesetType.Wizard, false, false);
 		games.add(game);
 	
 		ComInitLobby testInitLobby = new ComInitLobby(players, games);
@@ -80,13 +80,13 @@ public class ModelTest {
 		assertEquals("Observer Update", ViewNotification.playerListUpdate, testObserver.getNotification().remove(0));
 		assertFalse("Hans nicht mehr in Liste", testModel.getPlayerlist().contains("Hans"));
 		
-		GameServerRepresentation game = new GameServerRepresentation("Peter", "Mein Spiel", 6, 3, 1, RulesetType.Wizard, false);
+		GameServerRepresentation game = new GameServerRepresentation("Peter", "Mein Spiel", 6, 1, RulesetType.Wizard, false, false);
 		ComLobbyUpdateGamelist updateGameList = new ComLobbyUpdateGamelist(false, game);
 		testNetIO.injectComObject(updateGameList);
 		assertEquals("Observer Update", ViewNotification.gameListUpdate, testObserver.getNotification().remove(0));
 		assertTrue("Spiel in Liste", testModel.getLobbyGamelist().contains(game));
 		
-		game = new GameServerRepresentation("Peter", "Mein Spiel", 6, 3, 1, RulesetType.Wizard, false);
+		game = new GameServerRepresentation("Peter", "Mein Spiel", 6, 1, RulesetType.Wizard, false, false);
 		updateGameList = new ComLobbyUpdateGamelist(true, game);
 		testNetIO.injectComObject(updateGameList);
 		assertEquals("Observer Update", ViewNotification.gameListUpdate, testObserver.getNotification().remove(0));
@@ -114,7 +114,7 @@ public class ModelTest {
 	@Test
 	public void joinGameTest() {
 		ComJoinRequest testJoinRequest;
-		GameServerRepresentation game = new GameServerRepresentation("Peter", "Mein Spiel", 6, 3, 1, RulesetType.Wizard, false);
+		GameServerRepresentation game = new GameServerRepresentation("Peter", "Mein Spiel", 6, 1, RulesetType.Wizard, false, false);
 		ComLobbyUpdateGamelist updateGameList = new ComLobbyUpdateGamelist(false, game);
 		testNetIO.injectComObject(updateGameList);
 		testModel.joinGame("Peter", "");

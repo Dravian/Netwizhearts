@@ -4,7 +4,6 @@ import Ruleset.Card;
 import Ruleset.ClientHearts;
 import Ruleset.ClientRuleset;
 import Ruleset.ClientWizard;
-import Ruleset.GamePhase;
 import Ruleset.OtherData;
 import Ruleset.RulesetType;
 import Server.GameServerRepresentation;
@@ -107,15 +106,11 @@ public class ClientModel extends Observable{
 	}
 
 	/**
-	 * Wird aufgerufen, wenn der User die GameLobby verlaesst.
-	 * Der Client gelangt zurueck in die Lobby.
+	 * Wird aufgerufen, wenn der User in die ServerLobby zurückkehren möchte.
+	 * 
 	 */
-	public void leaveGameLobby() {
-		if (state == ClientState.GAMELOBBY) {
-			netIO.send(new ComClientLeave());
-		} else if (state == ClientState.GAME) {
-			netIO.send(new ComClientLeave());
-		}
+	public void returnToLobby() {
+	   netIO.send(new ComClientLeave());
 	}
 
 	/**
@@ -141,7 +136,7 @@ public class ClientModel extends Observable{
 		warningText = null;
 		playerList = null;
 		gameList = null;
-		System.exit(0);
+		//System.exit(0);
 	}
 
 	/**
@@ -761,8 +756,7 @@ public class ClientModel extends Observable{
 	 * @param port Integer der Port des Spielservers.
 	 */
 	public void createConnection(String username,
-								 String host,
-								 int por)
+								 String host)
 										 throws IllegalArgumentException {
 		state = ClientState.LOGIN;
 		URI uri = null;
@@ -779,9 +773,8 @@ public class ClientModel extends Observable{
 			warningText.append(warningBuilder.resolveWarning(WarningMsg.EmptyUsername));
 		}
 		if (host.isEmpty()) {
-			//fault = true;
-			host = "localhost";
-			//warningText.append(warningBuilder.resolveWarning(WarningMsg.EmptyAddress));
+			fault = true;
+			warningText.append(warningBuilder.resolveWarning(WarningMsg.EmptyAddress));
 		} 
 		if (!fault) {
 			try {
