@@ -43,13 +43,13 @@ public class LanguageInterpreter {
 		String ret = sdf.format(Calendar.getInstance().getTime());
 		switch (language) {
 		case German:
-			ret = "(" + ret + ") " + germanWarning(warning);
+			ret = "(" + ret + ") " + germanWarning(warning)+"\n";
 			break;
 		case English:
-			ret = "(" + ret + ") " + englishWarning(warning);
+			ret = "(" + ret + ") " + englishWarning(warning)+"\n";
 			break;
 		case Bavarian:
-			ret = "(" + ret + ") " + bavarianWarning(warning);
+			ret = "(" + ret + ") " + bavarianWarning(warning)+"\n";
 			break;
 		}
 		return ret;
@@ -295,7 +295,6 @@ public class LanguageInterpreter {
 		case WrongPlayer:
 			ret = "Du bisd do überhaupt ned dra.";
 			break;
-			//TODO: Bayerisch...
 		case EmptyUsername:
 			ret = "Du muasd nu eigem wiasd hoasd.";
 			break;
@@ -315,7 +314,7 @@ public class LanguageInterpreter {
 			ret = "Wia hamma d'Verbindung verlorn, I fiachd, des wars.";
 			break;
 		case CouldntJoin:
-			ret = "Du kosd do nes midspuin.";
+			ret = "Du kosd do ned midspuin.";
 			break;	
 		default:
 			IllegalArgumentException e = new IllegalArgumentException();
