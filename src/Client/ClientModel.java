@@ -4,6 +4,7 @@ import Ruleset.Card;
 import Ruleset.ClientHearts;
 import Ruleset.ClientRuleset;
 import Ruleset.ClientWizard;
+import Ruleset.DiscardedCard;
 import Ruleset.OtherData;
 import Ruleset.RulesetType;
 import Server.GameServerRepresentation;
@@ -50,9 +51,17 @@ public class ClientModel extends Observable{
     /**
      * String der den eindeutigen Spielernamen repraesentiert.
 	 */
-	private String playerName = new String();
+	private String playerName;
 	
-	private String gameMaster = new String();
+	private String gameMaster;
+	
+	private List<String> otherPlayerData;
+	
+	private List<DiscardedCard> playedCards;
+	
+	private List<Card> ownHand;
+	
+	
 
 	/**
 	 * Referenz auf das Regelwerk des Spieles.
@@ -110,7 +119,9 @@ public class ClientModel extends Observable{
 	 * 
 	 */
 	public void returnToLobby() {
-	   netIO.send(new ComClientLeave());
+		if (state != ClientState.LOGIN) {
+			netIO.send(new ComClientLeave());
+		}
 	}
 
 	/**
@@ -150,7 +161,11 @@ public class ClientModel extends Observable{
 			if (!msg.getChatMessage().isEmpty()) {
 				setChanged();
 				notifyObservers(msg.getChatMessage());
+			} else {
+				throw new IllegalArgumentException();
 			}
+		} else {
+			throw new IllegalArgumentException();
 		}
 	}
 
@@ -166,20 +181,18 @@ public class ClientModel extends Observable{
 	 */
 	public void receiveMessage(ComInitLobby msg) {	
 		if (msg != null) {
-			if (state != ClientState.ENTERGAMELOBBY) {
-				state = ClientState.SERVERLOBBY;
-				gameMaster = new String();
-				if (msg.getPlayerList() != null) {
-					playerList = msg.getPlayerList();
-					if (playerList.isEmpty()) {
-						throw new IllegalArgumentException();
-					}
+			state = ClientState.SERVERLOBBY;
+			gameMaster = new String();
+			if (msg.getPlayerList() != null) {
+				playerList = msg.getPlayerList();
+				if (playerList.isEmpty()) {
+					throw new IllegalArgumentException();
 				}
-				if (msg.getGameList() != null) {
-					gameList = new LinkedList<GameServerRepresentation>(msg.getGameList());
-				}
-				informView(ViewNotification.windowChangeForced);
 			}
+			if (msg.getGameList() != null) {
+				gameList = new LinkedList<GameServerRepresentation>(msg.getGameList());
+			}
+			informView(ViewNotification.windowChangeForced);
 		} else {
 			throw new IllegalArgumentException();
 		}
@@ -225,21 +238,18 @@ public class ClientModel extends Observable{
 	 * @param msg Die ankommende ComRuleset Nachricht
 	 */
 	public void receiveMessage(ComRuleset msg) {
-		if (state == ClientState.GAMELOBBY) {
-			state = ClientState.GAME;
-			if (gameType == RulesetType.Wizard) {
-				ruleset = new ClientWizard(this);
-			} else if (gameType == RulesetType.Hearts) {
-				ruleset = new ClientHearts(this);
+		if (state == ClientState.GAME) {
+		   if (msg != null) {
+			   if (msg.getRulesetMessage() != null) {
+				   msg.getRulesetMessage().visit(ruleset);
+			   } else {
+					throw new IllegalArgumentException();
+				}
+		   } else {
+				throw new IllegalArgumentException();
 			}
-		} 
-		if (msg != null) {
-			if (msg.getRulesetMessage() != null) {
-				msg.getRulesetMessage().visit(ruleset);
-			}
-			if (state == ClientState.GAME) {
-			informView(ViewNotification.gameStarted);
-			}
+		} else {
+			throw new IllegalArgumentException();
 		}
 	}
 
@@ -289,7 +299,11 @@ public class ClientModel extends Observable{
 				} else if (gameType == RulesetType.Hearts) {
 					ruleset = new ClientHearts(this);
 				}
+				otherPlayerData = new LinkedList<String>();
+				playedCards = new LinkedList<DiscardedCard>();
 				informView(ViewNotification.gameStarted);
+			} else {
+				throw new IllegalArgumentException();
 			} 
 		} else {
 			throw new IllegalArgumentException();
@@ -321,7 +335,11 @@ public class ClientModel extends Observable{
 					playerList.add(update.getPlayerName());
 				}
 				informView(ViewNotification.playerListUpdate);
+			} else {
+				throw new IllegalArgumentException();
 			}
+		} else {
+			throw new IllegalArgumentException();
 		}
 	}
 
@@ -404,8 +422,8 @@ public class ClientModel extends Observable{
 	 *
 	 * @return List<Card>. Eine Liste der gespielten Karten.
 	 */
-	public List<Card> getPlayedCards() {
-		return null;
+	public List<DiscardedCard> getPlayedCards() {
+		return playedCards == null ? new LinkedList<DiscardedCard>() : playedCards;
 	}
 
 	/**
@@ -414,7 +432,7 @@ public class ClientModel extends Observable{
 	 * @return List<Card> aller Handkarten des Spielers
 	 */
 	public List<Card> getOwnHand() {
-		return null;
+		return ruleset == null ? new LinkedList<Card>() : ruleset.getOwnHand();
 	}
 
 	/**
@@ -423,19 +441,7 @@ public class ClientModel extends Observable{
 	 * @return List<String> der Stringrepraesentationen der OtherData der Spieler
 	 */
 	public List<String> getOtherPlayerData() {
-		List<String>  otherPlayerData = new LinkedList<String>();
-		if (state == ClientState.GAME) {
-			if (ruleset != null) {
-				for (OtherData data : ruleset.getOtherPlayerData()) {
-					otherPlayerData.add(data.toString());
-				}
-			} else {
-				throw new IllegalArgumentException();
-			}
-		} else {
-			throw new IllegalArgumentException();
-		}
-		return otherPlayerData;
+		return otherPlayerData == null ? new LinkedList<String>() : otherPlayerData;
 	}
 	
 	public String getGameMaster() {
@@ -535,7 +541,9 @@ public class ClientModel extends Observable{
 	 * @param msg die RulesetMessage, die an den Server geschickt werden soll
 	 */
 	public void send(RulesetMessage msg) {
-		netIO.send(new ComRuleset(msg));
+		if (msg != null) {
+			netIO.send(new ComRuleset(msg));
+		}
 	}
 
 	/**
@@ -653,11 +661,43 @@ public class ClientModel extends Observable{
 	}
 	
 	public void playedCardsUpdate() {
-		
+		if (state == ClientState.GAME) {
+			if (ruleset != null) {
+				if (playedCards != null) {
+					playedCards.clear();
+				} else {
+					playedCards = new LinkedList<DiscardedCard>();
+				}
+				for (DiscardedCard cards : ruleset.getPlayedCards()) {
+					playedCards.add(cards);
+				}
+				informView(ViewNotification.playedCardsUpdate);
+			} else {
+				throw new IllegalArgumentException();
+			}
+		} else {
+			throw new IllegalArgumentException();
+		}
 	}
 	
 	public void otherPlayerDataUpdate() {
-		
+		if (state == ClientState.GAME) {
+			if (ruleset != null) {
+				if (otherPlayerData != null) {
+					otherPlayerData.clear();
+				} else {
+					otherPlayerData = new LinkedList<String>();
+				}
+				for (OtherData data : ruleset.getOtherPlayerData()) {
+					otherPlayerData.add(data.toString());
+				}
+				informView(ViewNotification.otherDataUpdate);
+			} else {
+				throw new IllegalArgumentException();
+			}
+		} else {
+			throw new IllegalArgumentException();
+		}
 	}
 	
 	public Card getPlayedCard() {
@@ -720,8 +760,8 @@ public class ClientModel extends Observable{
 	 * Wenn der Client nicht der Spielleiter des Spiels ist, wird eine Fehlermeldung ausgegeben.
 	 */
 	public void startGame() {
-		
-		if (!gameMaster.isEmpty()) {
+	   if (gameMaster != null) {
+	      if (!gameMaster.isEmpty()) {
 			if (gameMaster.equals(playerName)) {
 				int playerCount = playerList.size();
 				if (playerCount >= gameType.getMinPlayer() &&
@@ -731,6 +771,7 @@ public class ClientModel extends Observable{
 					//TODO Warnung einbauen "Spielerzahl"...
 				}
 			}
+	      }
 		}
 	}
 
