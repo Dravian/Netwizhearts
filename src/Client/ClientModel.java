@@ -136,6 +136,7 @@ public class ClientModel extends Observable{
 		warningText = null;
 		playerList = null;
 		gameList = null;
+		//informView(ViewNotification.quitGame); ???
 		//System.exit(0);
 	}
 
@@ -641,6 +642,30 @@ public class ClientModel extends Observable{
 	 */
 	public void openInputNumber(String text) {
 
+	}
+	
+	public void announceTrumpCard() {
+		
+	}
+	
+	public Card getTrumpCard() {
+		return null;
+	}
+	
+	public void playedCardsUpdate() {
+		
+	}
+	
+	public void otherPlayerDataUpdate() {
+		
+	}
+	
+	public Card getPlayedCard() {
+		return null;
+	}
+	
+	public void announceTurn() {
+		
 	}
 
 	/**
