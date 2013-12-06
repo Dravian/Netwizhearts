@@ -37,6 +37,7 @@ import java.net.UnknownHostException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Observable;
+import java.util.Set;
 
 /**
  * ClientModel. Das ClientModel ist die Schnittstelle zwischen dem MessageListenerThread,
@@ -61,8 +62,6 @@ public class ClientModel extends Observable{
 	
 	private List<Card> ownHand;
 	
-	
-
 	/**
 	 * Referenz auf das Regelwerk des Spieles.
 	 */
@@ -90,7 +89,11 @@ public class ClientModel extends Observable{
 
 	private Thread netIOThread;
 	
-	private LanguageInterpreter warningBuilder = new LanguageInterpreter(Language.English);
+	private LanguageInterpreter warningBuilder;
+	
+	private String windowText;
+	
+	private List<Card> chooseCards;
 
 	/**
 	 * Haelt den für die Netzwerkkomunikation zustaendigen Thread.
@@ -111,6 +114,7 @@ public class ClientModel extends Observable{
 		}
 		this.netIO = netIO;
 		state = ClientState.LOGIN;
+		warningBuilder = new LanguageInterpreter(Language.English);
 		prepRulesetList();
 	}
 
@@ -325,11 +329,11 @@ public class ClientModel extends Observable{
 		if (update != null) {
 			if (update.getPlayerName() != null) {
 				if (update.isRemoveFlag()) {
-					if (playerList.remove(update.getPlayerName()) == false) {
+					if (!playerList.remove(update.getPlayerName())) {
 						throw new IllegalArgumentException();
 					}
 				} else {
-					if (playerList.remove(update.getPlayerName()) == true) {
+					if (playerList.remove(update.getPlayerName())) {
 						throw new IllegalArgumentException();
 					}
 					playerList.add(update.getPlayerName());
@@ -404,7 +408,7 @@ public class ClientModel extends Observable{
 	 * @return Liste von Spielernamen oder null wenn leer.
 	 */
 	public List<String> getPlayerlist() {
-		return playerList;
+		return playerList == null ? new LinkedList<String>() : playerList;
 	}
 
 	/**
@@ -432,6 +436,9 @@ public class ClientModel extends Observable{
 	 * @return List<Card> aller Handkarten des Spielers
 	 */
 	public List<Card> getOwnHand() {
+		if (state == ClientState.GAME) {
+			
+		}
 		return ruleset == null ? new LinkedList<Card>() : ruleset.getOwnHand();
 	}
 
@@ -563,7 +570,7 @@ public class ClientModel extends Observable{
 	 * @return String Text der Bildschirmmeldung.
 	 */
 	public String getWindowText() {
-		return null;
+		return windowText == null ? new String() : windowText;
 	}
 
 	/**
@@ -572,7 +579,7 @@ public class ClientModel extends Observable{
 	 * @return List<Card> Karten, aus denen gewaehlt werden kann
 	 */
 	public List<Card> getChooseCards() {
-		return null;
+		return null; //((ClientHearts) ruleset);
 	}
 
 	/**
@@ -582,8 +589,16 @@ public class ClientModel extends Observable{
 	 *
 	 * @param cards Karten, die der User gewaehlt hat
 	 */
-	public void giveChosenCards(List<Card> cards) {
-
+	public void giveChosenCards(Set<Card> cards) {
+		if (state == ClientState.GAME) {
+			if (!cards.isEmpty()) {
+				if (!((ClientHearts) ruleset).areValidChoosenCards(cards)) {
+					informView(ViewNotification.openChooseCards);
+				} else {
+					informView(ViewNotification.chooseCardsSuccessful);
+				}
+			}
+		}
 	}
 
 	/**
@@ -595,7 +610,23 @@ public class ClientModel extends Observable{
 	 * @param text Text, der dem User angezeigt werden soll
 	 */
 	public void openChooseCards(List<Card> cards, String text) {
-
+		if (state == ClientState.GAME) {
+			if (cards != null) {
+				if (!cards.isEmpty()) {
+					chooseCards = cards;
+					if (text != null) {
+						windowText = text;
+					} else {
+						windowText = new String();
+					}
+					informView(ViewNotification.openChooseCards);
+				} else {
+					throw new IllegalArgumentException();
+				}
+			} else {
+				throw new IllegalArgumentException();
+			}
+		}
 	}
 
 	/**
@@ -615,7 +646,11 @@ public class ClientModel extends Observable{
 	 * @param item Item, das der User gewahlt hat
 	 */
 	public void giveChosenItem(Object item) {
-
+		if (state == ClientState.GAME) {
+			if (item != null) {
+				
+			}
+		}
 	}
 
 	/**
@@ -626,8 +661,12 @@ public class ClientModel extends Observable{
 	 * @param items Liste der Items, von denen eines gewaehlt werden soll
 	 * @param text Text, der dem User angezeigt werden soll
 	 */
-	public void openChooseItem(List<Object> items, String text) {
-
+	public void openChooseItem(List<Card> items, String text) {
+		if (state == ClientState.GAME) {
+			if (items != null) {
+				
+			}
+		}
 	}
 
 	/**
@@ -639,7 +678,15 @@ public class ClientModel extends Observable{
 	 * @param number Zahl, die vom User gewahlt wurde
 	 */
 	public void giveInputNumber(int number) {
-
+		if (state == ClientState.GAME) {
+			if (ruleset != null) {
+		       if (!((ClientWizard) ruleset).isValidTrickNumber(number)) {
+		    	   informView(ViewNotification.openInputNumber);
+		       } else {
+		    	   informView(ViewNotification.inputNumberSuccessful);
+		       }
+			}
+		}
 	}
 
 	/**
@@ -760,19 +807,21 @@ public class ClientModel extends Observable{
 	 * Wenn der Client nicht der Spielleiter des Spiels ist, wird eine Fehlermeldung ausgegeben.
 	 */
 	public void startGame() {
-	   if (gameMaster != null) {
-	      if (!gameMaster.isEmpty()) {
-			if (gameMaster.equals(playerName)) {
-				int playerCount = playerList.size();
-				if (playerCount >= gameType.getMinPlayer() &&
-						playerCount <= gameType.getMaxPlayer()) {
-					netIO.send(new ComStartGame());
-				} else {
-					//TODO Warnung einbauen "Spielerzahl"...
-				}
-			}
-	      }
-		}
+		if (state == ClientState.GAMELOBBY) {
+	      if (gameMaster != null) {
+	         if (!gameMaster.isEmpty()) {
+			   if (gameMaster.equals(playerName)) {
+			      int playerCount = playerList.size();
+				  if (playerCount >= gameType.getMinPlayer() &&
+					     playerCount <= gameType.getMaxPlayer()) {
+					  netIO.send(new ComStartGame());
+				  } else {
+					  //TODO Warnung einbauen "Spielerzahl"...
+				  }
+			  }
+	        }
+		  }
+	   }
 	}
 
 	/**
@@ -783,7 +832,13 @@ public class ClientModel extends Observable{
 	 * @param card Die gespielte Karte.
 	 */
 	public void makeMove(Card card) {
-
+		if (state == ClientState.GAME) {
+			if (ruleset != null) {
+				if (card != null) {
+			
+				}
+			}
+		}
 	}
 
 	/**
