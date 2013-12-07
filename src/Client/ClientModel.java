@@ -478,16 +478,17 @@ public class ClientModel extends Observable{
 
 	/**
 	 * Gibt den Punktestand des Spielers zurueck.
+	 * Halt einfach die Otherdata ;P
 	 *
 	 * @return int Der eigene Punktestand.
 	 */
-	public OtherData getOwnOtherData() {
+	public String getOwnOtherData() {
 		if (state == ClientState.GAME) {
 			if (ruleset != null) {
-				return ruleset.getOwnData();
+				return ruleset.getOwnData().toString();
 			}
 		}
-		return null;
+		return new String();
 	}
 
 	/**
