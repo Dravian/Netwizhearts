@@ -481,9 +481,13 @@ public class ClientModel extends Observable{
 	 *
 	 * @return int Der eigene Punktestand.
 	 */
-	public int getOwnScore() {
-		//TODO Score ??
-		return 0; //((ClientHearts) ruleset).;
+	public OtherData getOwnOtherData() {
+		if (state == ClientState.GAME) {
+			if (ruleset != null) {
+				return ruleset.getOwnData();
+			}
+		}
+		return null;
 	}
 
 	/**
@@ -966,7 +970,10 @@ public class ClientModel extends Observable{
 	 * @return List<String> der/die Gewinner.
 	 */
 	public List<String> getWinner() {
-		return winner;
+		if (state == ClientState.ENDING) {
+			return winner;
+		}
+		return new LinkedList<String>();
 	}
 
 	/**
