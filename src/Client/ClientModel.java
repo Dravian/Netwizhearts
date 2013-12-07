@@ -4,6 +4,7 @@ import Ruleset.Card;
 import Ruleset.ClientHearts;
 import Ruleset.ClientRuleset;
 import Ruleset.ClientWizard;
+import Ruleset.Colour;
 import Ruleset.DiscardedCard;
 import Ruleset.OtherData;
 import Ruleset.RulesetType;
@@ -34,6 +35,7 @@ import java.net.SocketException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.UnknownHostException;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Observable;
@@ -62,6 +64,8 @@ public class ClientModel extends Observable{
 	
 	private List<Card> ownHand;
 	
+	private List<String> winner;
+	
 	/**
 	 * Referenz auf das Regelwerk des Spieles.
 	 */
@@ -81,11 +85,11 @@ public class ClientModel extends Observable{
 
 	private List<RulesetType> supportetGames;
 
-	private List<String> playerList = new LinkedList<String>();
+	private List<String> playerList;
 
-	private List<GameServerRepresentation> gameList = new LinkedList<GameServerRepresentation>();
+	private List<GameServerRepresentation> gameList;
 
-	private StringBuilder warningText = new StringBuilder();
+	private StringBuffer warningText;
 
 	private Thread netIOThread;
 	
@@ -94,6 +98,8 @@ public class ClientModel extends Observable{
 	private String windowText;
 	
 	private List<Card> chooseCards;
+	
+	private List<Colour> chooseColour;
 
 	/**
 	 * Haelt den für die Netzwerkkomunikation zustaendigen Thread.
@@ -114,7 +120,13 @@ public class ClientModel extends Observable{
 		}
 		this.netIO = netIO;
 		state = ClientState.LOGIN;
-		warningBuilder = new LanguageInterpreter(Language.English);
+		this.language = Language.English;
+		warningBuilder = new LanguageInterpreter(language);
+		playerName = new String();
+		winner = new LinkedList<String>();
+		warningText = new StringBuffer();
+		playerList = new LinkedList<String>();
+		gameList = new LinkedList<GameServerRepresentation>();
 		prepRulesetList();
 	}
 
@@ -123,7 +135,8 @@ public class ClientModel extends Observable{
 	 * 
 	 */
 	public void returnToLobby() {
-		if (state != ClientState.LOGIN) {
+		if (state != ClientState.LOGIN &&
+				state != ClientState.SERVERLOBBY) {
 			netIO.send(new ComClientLeave());
 		}
 	}
@@ -228,6 +241,8 @@ public class ClientModel extends Observable{
 					} else {
 						informView(ViewNotification.joinGameSuccessful);
 					}
+				} else {
+					throw new IllegalArgumentException();
 				}
 			}
 		}
@@ -437,9 +452,11 @@ public class ClientModel extends Observable{
 	 */
 	public List<Card> getOwnHand() {
 		if (state == ClientState.GAME) {
-			
+			if (ruleset != null) {
+				return ruleset.getOwnHand();
+			}
 		}
-		return ruleset == null ? new LinkedList<Card>() : ruleset.getOwnHand();
+		return new LinkedList<Card>();
 	}
 
 	/**
@@ -465,7 +482,8 @@ public class ClientModel extends Observable{
 	 * @return int Der eigene Punktestand.
 	 */
 	public int getOwnScore() {
-		return 0;
+		//TODO Score ??
+		return 0; //((ClientHearts) ruleset).;
 	}
 
 	/**
@@ -473,8 +491,13 @@ public class ClientModel extends Observable{
 	 *
 	 * @param language Enumerator der die Spielsprache anzeigt.
 	 */
-	public void setLanguage(final Language language) {
-		this.warningBuilder = new LanguageInterpreter(language);
+	public void setLanguage(Language language) {
+		if (language != null) {
+		   this.language = language;
+		   this.warningBuilder = new LanguageInterpreter(language);
+		} else {
+		   throw new IllegalArgumentException();
+		}
 	}
 
 	/**
@@ -491,7 +514,7 @@ public class ClientModel extends Observable{
 	 *
 	 * @param Name des Spielers, der enfernt werden soll
 	 */
-	public void kickPlayer(final String name) throws IllegalArgumentException {
+	public void kickPlayer(String name) {
 		if (name == null) {
 			throw new IllegalArgumentException();
 		}
@@ -517,7 +540,7 @@ public class ClientModel extends Observable{
 	 */
 	public void hostGame(String gameName,
 						 boolean hasPassword, String password,
-						 RulesetType game) throws IllegalArgumentException {
+						 RulesetType game) {
 		if (gameName == null) {
 			gameName = new String();
 		}
@@ -550,17 +573,9 @@ public class ClientModel extends Observable{
 	public void send(RulesetMessage msg) {
 		if (msg != null) {
 			netIO.send(new ComRuleset(msg));
+		} else {
+			throw new IllegalArgumentException();
 		}
-	}
-
-	/**
-	 * Gibt die Anzahl der Spieler eines Spieles zurueck.
-	 *
-	 * @return int Die Spielerzahl eines Spieles.
-	 */
-	public int getPlayerCount() {
-		return 0;
-
 	}
 
 	/**
@@ -576,27 +591,42 @@ public class ClientModel extends Observable{
 	/**
 	 * Gibt die Karten zurueck, aus denen gewaehlt werden soll.
 	 * 
+	 * 
 	 * @return List<Card> Karten, aus denen gewaehlt werden kann
 	 */
-	public List<Card> getChooseCards() {
-		return null; //((ClientHearts) ruleset);
+	public List<Card> getCardsToChooseFrom() {
+		if (state == ClientState.GAME) {
+			if (ruleset != null) {
+				if(ruleset.getClass().equals(ClientHearts.class)) {
+					return ((ClientHearts) ruleset).getOwnHand();
+				}
+			}
+		}
+		return new LinkedList<Card>();
 	}
 
 	/**
 	 * Uebergibt die Karten, die vom User gewahlt wurden. Diese
 	 * werden dann dem Regelwerk weitergegeben. Akzeptiert dieses
 	 * die gewaehlten Karten nicht, wird nochmal openChooseCards aufgerufen.
+	 * Hearts
 	 *
 	 * @param cards Karten, die der User gewaehlt hat
 	 */
-	public void giveChosenCards(Set<Card> cards) {
+	public void giveChosenCards(List<Card> cards) {
 		if (state == ClientState.GAME) {
 			if (!cards.isEmpty()) {
-				if (!((ClientHearts) ruleset).areValidChoosenCards(cards)) {
-					informView(ViewNotification.openChooseCards);
-				} else {
-					informView(ViewNotification.chooseCardsSuccessful);
+				if (ruleset != null) {
+					if(ruleset.getClass().equals(ClientHearts.class)) {
+						if (!((ClientHearts) ruleset).areValidChoosenCards(new HashSet<Card>(cards))) {
+							informView(ViewNotification.openChooseCards);
+						} else {
+							informView(ViewNotification.chooseCardsSuccessful);
+						}
+					}
 				}
+			} else {
+				throw new IllegalArgumentException();
 			}
 		}
 	}
@@ -605,11 +635,12 @@ public class ClientModel extends Observable{
 	 * Benachrichtigt die Observer mit der openChooseCards ViewNotification
 	 * und speichert die Liste der Karten sowie den Anzeigetext des Regelwerks
 	 * zwischen.
+	 * Hearts
 	 *
 	 * @param cards Liste der Karten, von denen gewaehlt werden kann
 	 * @param text Text, der dem User angezeigt werden soll
 	 */
-	public void openChooseCards(List<Card> cards, String text) {
+	public void openChooseCardsWindow(List<Card> cards, String text) {
 		if (state == ClientState.GAME) {
 			if (cards != null) {
 				if (!cards.isEmpty()) {
@@ -630,41 +661,53 @@ public class ClientModel extends Observable{
 	}
 
 	/**
-	 * Gibt die Items zurueck, aus denen eines gewaehlt werden soll.
-	 *
-	 * @return Items, aus denen gewahlt werden kann
-	 */
-	public List<Object> getChooseItems() {
-		return null;
-	}
-
-	/**
-	 * Uebergibt das Item, das vom User gewahlt wurden. Dieses
+	 * Uebergibt die Trumpffarbe, das vom User gewahlt wurde. Diese
 	 * wird dann dem Regelwerk weitergegeben. Akzeptiert dieses
-	 * das gewaehlte Item nicht, wird nochmal openChooseItem aufgerufen.
+	 * die gewaehlte Farbe nicht, wird nochmal openChooseColour aufgerufen.
+	 * Wizard
 	 * 
-	 * @param item Item, das der User gewahlt hat
+	 * @param colour Die Farbe, die der User gewahlt hat
 	 */
-	public void giveChosenItem(Object item) {
+	public void giveColourSelection(Colour colour) {
 		if (state == ClientState.GAME) {
-			if (item != null) {
-				
+			if (colour != null) {
+				if (ruleset != null) {
+					if (ruleset.getClass().equals(ClientWizard.class)) {
+						if(((ClientWizard) ruleset).isValidColour(colour)) {
+							informView(ViewNotification.chooseItemSuccessful);
+						} else {
+							informView(ViewNotification.openChooseItem);
+						}
+					}
+				}
+			} else {
+				throw new IllegalArgumentException();
 			}
 		}
 	}
 
 	/**
 	 * Benachrichtigt die Observer mit der openChooseItem ViewNotification
-	 * und speichert die Liste der Items, von denen eines gewaehlt werden soll,
+	 * und speichert die Liste der Farben, von denen eine gewaehlt werden soll,
 	 * sowie den Anzeigtetext des Regelwerks zwischen.
 	 *
 	 * @param items Liste der Items, von denen eines gewaehlt werden soll
 	 * @param text Text, der dem User angezeigt werden soll
 	 */
-	public void openChooseItem(List<Card> items, String text) {
+	public void openChooseColourWindow(List<Colour> colours, String text) {
 		if (state == ClientState.GAME) {
-			if (items != null) {
-				
+			if (ruleset != null) {
+			   if (colours != null) {	
+				   if (!colours.isEmpty()) {
+				      chooseColour = colours;
+				      if (text != null) {
+				    	  windowText = text;
+				      } else {
+				    	  windowText = new String();
+				      }
+				      informView(ViewNotification.openChooseItem);
+				   }
+				}
 			}
 		}
 	}
@@ -674,17 +717,20 @@ public class ClientModel extends Observable{
 	 * wird dann dem Regelwerk weitergegeben. Akzeptiert dieses
 	 * die gewaehlte Zahl nicht, wird nochmal openInputNumber
 	 * aufgerufen.
+	 * Wizard
 	 *
 	 * @param number Zahl, die vom User gewahlt wurde
 	 */
 	public void giveInputNumber(int number) {
 		if (state == ClientState.GAME) {
 			if (ruleset != null) {
-		       if (!((ClientWizard) ruleset).isValidTrickNumber(number)) {
-		    	   informView(ViewNotification.openInputNumber);
-		       } else {
-		    	   informView(ViewNotification.inputNumberSuccessful);
-		       }
+				if (ruleset.getClass().equals(ClientWizard.class)) {
+					if (!((ClientWizard) ruleset).isValidTrickNumber(number)) {
+						informView(ViewNotification.openInputNumber);
+					} else {
+						informView(ViewNotification.inputNumberSuccessful);
+					}
+				}
 			}
 		}
 	}
@@ -692,18 +738,44 @@ public class ClientModel extends Observable{
 	/**
 	 * Benachrichtigt die Observer mit der openInputNumber ViewNotification
 	 * und speichert den Anzeigetext des Regelwerks zwischen.
+	 * Wizard
 	 *
 	 * @param text Text, der dem User angezeigt werden soll
 	 */
-	public void openInputNumber(String text) {
-
+	public void openNumberInputWindow(String text) {
+		if (state == ClientState.GAME) {
+			if (ruleset != null) {
+			   if (text != null) {
+			      windowText = text;
+			   } else {
+				  windowText = new String();
+			   }
+		   informView(ViewNotification.openInputNumber);
+		   }
+     	}
 	}
 	
 	public void announceTrumpCard() {
-		
+		//TODO enum einbauen ??
 	}
 	
-	public Card getTrumpCard() {
+	public Card getUncoveredCard() {
+		if (state == ClientState.GAME) {
+			if (ruleset != null) {
+				return ruleset.getUncoveredCard();
+			}
+		}
+		return null;
+	}
+	
+	public Colour getTrumpCard() {
+		if (state == ClientState.GAME) {
+			if (ruleset != null) {
+				if (ruleset.getClass().equals(ClientWizard.class)) {
+					return ((ClientWizard) ruleset).getTrumpColour();
+				}
+			}
+		}
 		return null;
 	}
 	
@@ -747,8 +819,13 @@ public class ClientModel extends Observable{
 		}
 	}
 	
-	public Card getPlayedCard() {
-		return null;
+	public List<DiscardedCard> getPlayedCard() {
+		if (state == ClientState.GAME) {
+			if (ruleset != null) {
+				return ruleset.getPlayedCards();
+			}
+		}
+		return new LinkedList<DiscardedCard>();
 	}
 	
 	public void announceTurn() {
@@ -833,10 +910,35 @@ public class ClientModel extends Observable{
 	 */
 	public void makeMove(Card card) {
 		if (state == ClientState.GAME) {
-			if (ruleset != null) {
-				if (card != null) {
-			
+			if (card != null) {
+				if (ruleset != null) {
+					if (ruleset.getClass().equals(ClientWizard.class)) {
+						if (((ClientWizard) ruleset).isValidMove(card)) {
+							informView(ViewNotification.moveAcknowledged);
+						} else {
+							//TODO Warnungen ??
+							//informView(ViewNotification.openWarning);
+						}
+					} else if (ruleset.getClass().equals(ClientHearts.class)) {
+						if (((ClientHearts) ruleset).isValidMove(card)) {
+							informView(ViewNotification.moveAcknowledged);
+						} else {
+							//TODO Warnungen ??
+							//informView(ViewNotification.openWarning);
+						}
+					}
 				}
+			}
+		}
+	}
+	
+	/**
+	 * Wird zwischen den Runden aufgerufen ?
+	 */
+	public void showScoreWindow() {
+		if (state == ClientState.GAME) {
+			if (ruleset != null) {
+				informView(ViewNotification.showScore);
 			}
 		}
 	}
@@ -846,17 +948,25 @@ public class ClientModel extends Observable{
 	 * 
 	 * @param winner String der Gewinner der Partie.
 	 */
-	public void announceWinner(final String winner) {
-
+	public void announceWinner(List<String> winner) {
+		if (state == ClientState.GAME) {
+			state = ClientState.ENDING;
+			if (winner != null) {
+				if (!winner.isEmpty()) {
+					this.winner = winner;
+					informView(ViewNotification.showScore);
+				}
+			}
+		}
 	}
 
 	/**
 	 * Liefert den Gewinner einer Partie.
 	 *
-	 * @return String der Gewinner.
+	 * @return List<String> der/die Gewinner.
 	 */
-	public String getWinner() {
-		return null;
+	public List<String> getWinner() {
+		return winner;
 	}
 
 	/**
