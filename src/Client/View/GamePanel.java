@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import Ruleset.Card;
+import Ruleset.DiscardedCard;
 import Ruleset.HeartsCard;
 import Ruleset.RulesetType;
 
@@ -36,7 +37,7 @@ public class GamePanel extends JPanel{
 	
 	private OwnHand ownHand;
 	
-	private OwnScore ownScore;
+	private OwnOtherData ownScore;
 	
 	private List<OtherPlayer> otherHands;
 	
@@ -62,7 +63,7 @@ public class GamePanel extends JPanel{
 		ownHand.setBounds(15, 390, 750, 105);
 		contentPane.add(ownHand);
 		
-		ownScore = new OwnScore();
+		ownScore = new OwnOtherData();
 		ownScore.setBounds(900, 450, 100, 50);
 		contentPane.add(ownScore);
 		
@@ -95,12 +96,12 @@ public class GamePanel extends JPanel{
 		}
 	}
 	
-	public void updateOwnScore(final int score) {
+	public void updateOwnOtherData(final String ownData) {
 		SwingUtilities.invokeLater(new Runnable() {
 
 			@Override
 			public void run() {
-				ownScore.setScore(score);
+				ownScore.setData(ownData);
 			}
 			
 		});
@@ -122,13 +123,13 @@ public class GamePanel extends JPanel{
 		
 	}
 	
-	public void updateCardsPlayed(final List<Card> cards) {
+	public void updateCardsPlayed(final List<DiscardedCard> cards) {
 		SwingUtilities.invokeLater(new Runnable() {
 
 			@Override
 			public void run() {
 				for (int i = 0; i < cards.size(); i++) {
-					discardPiles.get(i).addCard(cards.get(i));
+					discardPiles.get(i).addCard(cards.get(i).getCard());
 				}
 			}
 		});

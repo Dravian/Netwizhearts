@@ -197,7 +197,7 @@ public class Game extends JFrame implements Observer{
 			repaint();
 			break;
 		case otherDataUpdate:
-			gamePanel.updateOwnScore(observed.getOwnScore());
+			gamePanel.updateOwnOtherData(observed.getOwnOtherData());
 			gamePanel.updateOtherData(observed.getOtherPlayerData());
 			repaint();
 			break;
