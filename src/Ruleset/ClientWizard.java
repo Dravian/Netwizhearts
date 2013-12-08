@@ -3,6 +3,7 @@
  */
 package Ruleset;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import Client.ClientModel;
@@ -41,6 +42,7 @@ public class ClientWizard extends ClientRuleset {
 	 */
 	public void resolveMessage(MsgNumberRequest msgNumber) {
 		setGamePhase(GamePhase.TrickRequest);
+		getModel().openInputNumber("A Zahl eingeben");
 	}
 	
 	/**
@@ -49,28 +51,46 @@ public class ClientWizard extends ClientRuleset {
 	 */
 	public void resolveMessage(MsgSelectionRequest msgSelection) {
 		setGamePhase(GamePhase.SelectionRequest);
+		List<Object> colours = new ArrayList<Object>();
+		colours.add(Colour.RED);
+		colours.add(Colour.BLUE);
+		colours.add(Colour.GREEN);
+		colours.add(Colour.YELLOW);
+		
+		getModel().openChooseItem(colours, "Choose one of thoose Colours");
 	}
 	
 	@Override
 	public void resolveMessage(MsgSelection msgSelection) {
-		Colour trumpColour = msgSelection.getSelection();
 		Card trumpCard = getUncoveredCard();
 		int valueOfSorcerer = 14;
 		
 		if(trumpCard.getValue() == valueOfSorcerer && 
 				trumpCard.getRuleset() == RulesetType.Wizard) {
-			((WizardCard) trumpCard).changeSorcererColour(trumpColour);
+			trumpColour = msgSelection.getSelection();
 		} else {
-			throw new RulesetException("Die vom Server geschickte Kartenfarbe" +
+			throw new IllegalArgumentException("Die vom Server geschickte Kartenfarbe" +
 					"ist falsch.");
 		}
 		
+		//TODO Update model
 	}
 	
 	@Override
-	public void resolveMessage(MsgGameEnd gameEnd) {
-		setGamePhase(GamePhase.Ending);
-		//TODO Die Liste von Winners
+	public void resolveMessage(MsgUser gameUpdate) {
+		int valueOfSorcerer = 14;
+		int valueOfFool = 0;
+		
+		setGameState(gameUpdate.getGameClientUpdate());
+		
+		if(getGameState().getUncoveredCard().getValue() == valueOfSorcerer ||
+				getGameState().getUncoveredCard().getValue() == valueOfFool) {
+			trumpColour = Colour.NONE;
+		} else {
+			trumpColour = getGameState().getUncoveredCard().getColour();
+		}
+		
+		//TODO Update model
 	}
 	
 	@Override
@@ -102,10 +122,11 @@ public class ClientWizard extends ClientRuleset {
 			return true;
 		}
 		
-		/* Falls die n�chste Karte Narr ist, wird die als n�chstgespielte
-		* Karte als erste Karte gesetzt, au�er es liegen keine Karten mehr
-		* im Ablagestapel
-		*/
+		/* 
+		 * Falls die nächste Karte Narr ist, wird die als nächstgespielte
+		 * Karte als erste Karte gesetzt, außer es liegen keine Karten mehr
+		 * im Ablagestapel
+		 */
 		for(int i = 1; i < getPlayedCards().size(); i++) {
 			if(firstCard.getValue() == valueOfFool) {
 				firstCard = getPlayedCards().get(i).getCard();
@@ -138,8 +159,8 @@ public class ClientWizard extends ClientRuleset {
 	}
 
 	/**
-	 * Pr�ft ob die Anzahl der angesagten Stiche vom Spieler gueltig sind
-	 * @param number Die Anzahl der angesagten Sticht
+	 * Prüft ob die Anzahl der angesagten Stiche vom Spieler gültig sind
+	 * @param number Die Anzahl der angesagten Stichen
 	 * @return true falls die Anzahl der Stiche passen, false wenn nicht
 	 */
 	public boolean isValidTrickNumber(int number) {
@@ -154,7 +175,7 @@ public class ClientWizard extends ClientRuleset {
 	}
 	
 	/**
-	 * Pr�ft ob die angesagte Trumpffarbe richtig
+	 * Prüft ob die angesagte Trumpffarbe richtig ist
 	 * @param colour Die angesagte Trumpffarbe
 	 * @return true falls die Farbe in Ordnung ist, false wenn nicht
 	 */
