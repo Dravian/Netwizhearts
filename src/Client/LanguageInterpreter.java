@@ -180,7 +180,7 @@ public class LanguageInterpreter {
 			ret = "You have been kicked out of the Game.";
 			break;
 		case WrongPassword:
-			ret = "Joining failed. Password is incorrekt.";
+			ret = "Joining failed. Password is incorrect.";
 			break;
 		case UnvalidMove:
 			ret = "This move is not valid!";
