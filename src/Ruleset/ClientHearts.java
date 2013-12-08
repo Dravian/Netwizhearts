@@ -42,11 +42,20 @@ public class ClientHearts extends ClientRuleset {
 	}
 	
 	/**
-	 * Gibt zuueck ob die Karten die der Client tauschen will, gueltig sind
+	 * Gibt zurück ob die Karten die der Client tauschen will, gültig sind
 	 * @param cards Die zu tauschenden Karten
 	 * @return true wenn Karten valide sind, false wenn nicht
 	 */
 	public boolean areValidChoosenCards(Set<Card> cards) {
+		
+		if(cards.size() == 3) {
+			for(Card card : cards) {
+				if(card.getRuleset() != RulesetType.Hearts) {
+					return false;
+				}
+			}
+			return true;
+		}
 		return false;
 	}
 
