@@ -716,6 +716,17 @@ public class ClientModel extends Observable{
 			}
 		}
 	}
+	
+	public List<Colour> getColoursToChooseFrom() {
+		if (state == ClientState.GAME) {
+			if (ruleset != null) {
+				if (chooseColour != null) {
+					return chooseColour;
+				}
+			}
+		}
+		return new LinkedList<Colour>();
+	}
 
 	/**
 	 * Uebergibt die Zahl, die vom User gewahlt wurde. Diese 
