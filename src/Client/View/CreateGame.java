@@ -62,6 +62,7 @@ public class CreateGame extends JFrame{
 		lang = Language.English;
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 403, 279);
+		setResizable(false);
 		getContentPane().setLayout(null);
 		
 		lblSelect = new JLabel("Select Game");

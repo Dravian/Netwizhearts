@@ -19,6 +19,7 @@ import Client.View.Password;
 import Client.View.Language;
 import Client.View.ViewCard;
 import Client.View.Warning;
+import Ruleset.Colour;
 
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -131,6 +132,18 @@ public class ClientController {
 		inputNumber = new InputNumber();
 		inputNumber.addOKButtonListener(new OKButtonListenerInputNumber());
 		clientModel.addObserver(inputNumber);
+		
+		chooseColour = new ChooseItem();
+		chooseColour.addOKButtonListener(new OKButtonListenerChooseColour());
+		clientModel.addObserver(chooseColour);
+		
+		chooseCards = new ChooseCards();
+		chooseCards.addOKButtonListener(new OKButtonListenerChooseCards());
+		clientModel.addObserver(chooseCards);
+		
+		scoreWindow = new ScoreWindow();
+		scoreWindow.addOKButtonListener(new OKButtonListenerScoreWindow());
+		clientModel.addObserver(scoreWindow);
 	}
 	
 	class LobbyCloseListener implements WindowListener {
@@ -386,7 +399,7 @@ public class ClientController {
 					gameName = clientModel.getPlayerName() + "'s " + s;
 				}
 				clientModel.hostGame(gameName, createGame.hasPassword(), 
-						createGame.getPassword(), createGame.getSelectedRulesetType());
+				createGame.getPassword(), createGame.getSelectedRulesetType());
 				createGame.setVisible(false);
 			} catch (IllegalArgumentException i) {
 				//TODO
@@ -539,24 +552,15 @@ public class ClientController {
 
 		@Override
 		public void mouseReleased(MouseEvent arg0) {
-			//TODO
 			final ViewCard vc = (ViewCard)arg0.getSource();
 			if (vc.isClicked()) {
 				clientModel.makeMove(vc.getCard());
-				EventQueue.invokeLater(new Runnable() {
-					public void run() {
-						vc.setClicked(false);
-						game.repaint();
-					}
-				});
+				vc.setClicked(false);
+				game.repaint();
 			} else {
-				EventQueue.invokeLater(new Runnable() {
-					public void run() {
-						game.unclickAll();
-						vc.setClicked(true);
-						game.repaint();
-					}
-				});
+				game.unclickAll();
+				vc.setClicked(true);
+				game.repaint();
 			}
 			
 		}
@@ -570,10 +574,53 @@ public class ClientController {
 			int n = inputNumber.getUserInput();
 			if (n != -1) {
 				clientModel.giveInputNumber(n); 
+				inputNumber.setVisible(false);
 			}
 			
 		}
 		
 	}
+	
+	class OKButtonListenerChooseColour implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			try {
+			clientModel.giveColourSelection((Colour)chooseColour.getItemSelection());
+			chooseColour.setVisible(false);
+			} catch (ClassCastException e) {
+				//TODO
+			}
+		}
+		
+	}
+	
+	class OKButtonListenerChooseCards implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			try {
+			clientModel.giveChosenCards(chooseCards.getChosenCards());
+			chooseCards.setVisible(false);
+			} catch (ClassCastException e) {
+				//TODO
+			}
+		}
+		
+	}
+	
+	class OKButtonListenerScoreWindow implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			try {
+			scoreWindow.setVisible(false);
+			} catch (ClassCastException e) {
+				//TODO
+			}
+		}
+		
+	}
+	
 	
 }
