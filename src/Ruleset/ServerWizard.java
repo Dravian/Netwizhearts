@@ -290,7 +290,7 @@ public class ServerWizard extends ServerRuleset {
 
         }
 
-        PlayerState trickWinner = getPlayerState(strongestCard.getName());
+        PlayerState trickWinner = getPlayerState(strongestCard.getOwnerName());
         getGameState().madeTrick(trickWinner);
 
         updatePlayers();

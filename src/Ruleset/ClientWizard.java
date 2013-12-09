@@ -42,7 +42,7 @@ public class ClientWizard extends ClientRuleset {
 	 */
 	public void resolveMessage(MsgNumberRequest msgNumber) {
 		setGamePhase(GamePhase.TrickRequest);
-		getModel().openInputNumber("A Zahl eingeben");
+		//TODO
 	}
 	
 	/**
@@ -57,7 +57,7 @@ public class ClientWizard extends ClientRuleset {
 		colours.add(Colour.GREEN);
 		colours.add(Colour.YELLOW);
 		
-		getModel().openChooseItem(colours, "Choose one of thoose Colours");
+		// TODO getModel().openChooseItem(colours, "Choose one of thoose Colours");
 	}
 	
 	@Override

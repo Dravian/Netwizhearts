@@ -322,16 +322,17 @@ public class ServerHearts extends ServerRuleset {
 
 		for (int i = 1; i < getPlayedCards().size(); i++) {
 			DiscardedCard nextCard = getPlayedCards().get(i);
-
+			
 			if (nextCard.getCard().getColour() == strongestCard.getCard()
 					.getColour()
 					&& nextCard.getCard().getValue() > strongestCard.getCard()
 							.getValue()) {
-				nextCard = strongestCard;
+				strongestCard = nextCard;
 			}
+			
 		}
 
-		PlayerState trickWinner = getPlayerState(strongestCard.getName());
+		PlayerState trickWinner = getPlayerState(strongestCard.getOwnerName());
 		getGameState().madeTrick(trickWinner);
 
 		updatePlayers();
