@@ -24,8 +24,10 @@ public class Warning extends JFrame implements Observer{
 	
 	private JTextArea warningTextArea;
 	private JButton okButton;
+	private boolean dispose;
 	
 	public Warning() {
+		dispose = false;
 		setTitle("Warning");
 		setBounds(50, 50, 433, 204);
 		setAlwaysOnTop(true);
@@ -50,6 +52,15 @@ public class Warning extends JFrame implements Observer{
 	 */
 	public void addOKButtonListener(ActionListener a) {
 		okButton.addActionListener(a);
+	}
+	
+	/**
+	 * Gibt zurueck, ob das Fenster die Nachricht quitGame erhalten hat.
+	 * 
+	 * @return true, wenn ja, false sonst
+	 */
+	public boolean isDisposed() {
+		return dispose;
 	}
 	
 	/**
@@ -79,7 +90,7 @@ public class Warning extends JFrame implements Observer{
 			this.setVisible(true);
 			break;
 		case quitGame:
-			this.dispose();
+			dispose = true;
 			break;
 		default:
 			break;

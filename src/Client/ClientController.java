@@ -371,7 +371,10 @@ public class ClientController {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			warning.setVisible(false);			
+			warning.setVisible(false);	
+			if (warning.isDisposed()) {
+				warning.dispose();
+			}
 		}
 		
 	}
