@@ -201,8 +201,8 @@ public class TestisValidMoveHearts {
         // Zweite Runde
         // Der Spieler 2 hat den letzten Stick bekommen und fängt nun an
         //????????
-        //System.out.println(ruleset.getCurrentPlayer().getPlayerStateName());
-        //assertTrue(ruleset.getCurrentPlayer().getPlayerStateName() == playerState2.getPlayerStateName());
+        System.out.println(ruleset.getCurrentPlayer().getPlayerStateName());
+        assertTrue(ruleset.getCurrentPlayer().getPlayerStateName() == playerState2.getPlayerStateName());
 
         //System.out.println(ruleset.getPlayedCards().size());
 
