@@ -94,7 +94,7 @@ public class ChooseItem extends JFrame implements Observer{
 		switch (message) {
 		case openChooseItem:
 			//Client-> getMethode //FIXME
-//			List<Object> items = observed.getItems()???
+//			List<Object> items = observed.getColoursToChooseFrom()
 //			for (Object o : items) {
 //				comboBox.addItem(o);
 //			}
