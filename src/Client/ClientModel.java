@@ -775,6 +775,12 @@ public class ClientModel extends Observable{
 		//TODO enum einbauen ??
 	}
 	
+	/**
+	 * Gibt die oberste Karte des Kartenstapels zurück,
+	 * welche nach dem Kartengeben aufgedeckt wurde.
+	 * 
+	 * @return Card Eine Karte oder null.
+	 */
 	public Card getUncoveredCard() {
 		if (state == ClientState.GAME) {
 			if (ruleset != null) {
@@ -784,7 +790,12 @@ public class ClientModel extends Observable{
 		return null;
 	}
 	
-	public Colour getTrumpCard() {
+	/**
+	 * Gibt die aktuelle Trumpffarbe zurück.
+	 * 
+	 * @return Colour Die aktuelle Trumpffarbe oder null.
+	 */
+	public Colour getTrumpColour() {
 		if (state == ClientState.GAME) {
 			if (ruleset != null) {
 				if (ruleset.getClass().equals(ClientWizard.class)) {
@@ -795,6 +806,11 @@ public class ClientModel extends Observable{
 		return null;
 	}
 	
+	/**
+	 * Diese Methode aktualisiert den Ablagestapel im Model
+	 * und informiert die Observer über Änderungen.
+	 *
+	 */
 	public void playedCardsUpdate() {
 		if (state == ClientState.GAME) {
 			if (ruleset != null) {
@@ -814,7 +830,12 @@ public class ClientModel extends Observable{
 			throw new IllegalArgumentException();
 		}
 	}
-	
+
+	/**
+	 * Diese Methode aktualisiert die Daten der anderen Spieler
+	 * im Model und informiert die Observer über Änderungen.
+	 * 
+	 */
 	public void otherPlayerDataUpdate() {
 		if (state == ClientState.GAME) {
 			if (ruleset != null) {
@@ -835,6 +856,13 @@ public class ClientModel extends Observable{
 		}
 	}
 	
+	/**
+	 * Gibt die Karten des Ablagestapels zurück.
+	 * 
+	 * @return List<DiscardedCard> Die Karten des Ablagestapels,
+	 * oder eine leere Liste.
+	 * 
+	 */
 	public List<DiscardedCard> getPlayedCard() {
 		if (state == ClientState.GAME) {
 			if (ruleset != null) {
