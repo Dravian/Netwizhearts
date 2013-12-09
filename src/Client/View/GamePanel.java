@@ -47,6 +47,8 @@ public class GamePanel extends JPanel{
 	
 	private BufferedImage background;
 	
+	private DrawDeck deck;
+	
 	/**
 	 * Erstellt ein GamePanel
 	 * 
@@ -64,8 +66,12 @@ public class GamePanel extends JPanel{
 		contentPane.add(ownHand);
 		
 		ownScore = new OwnOtherData();
-		ownScore.setBounds(900, 450, 100, 50);
+		ownScore.setBounds(770, 445, 100, 50);
 		contentPane.add(ownScore);
+		
+		deck = new DrawDeck();
+		deck.setBounds(920, 390, 70, 105);
+		contentPane.add(deck);
 		
 		otherHands = new LinkedList<OtherPlayer>();
 		discardPiles = new LinkedList<DiscardPile>();
