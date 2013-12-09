@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.10.1)  4 DEC 2013 20:46
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.10.1)  9 DEC 2013 12:27
 entering extended mode
 **C:/Users/Viktoria/Documents/GitHub/sep13/Handbuch/Handbuch.tex
 (C:/Users/Viktoria/Documents/GitHub/sep13/Handbuch/Handbuch.tex
@@ -779,7 +779,7 @@ Dictionary: glossaries-dictionary, Language: English
 LaTeX Font Warning: Font shape `OT1/cmr/bx/sc' undefined
 (Font)              using `OT1/cmr/bx/n' instead on input line 59.
 
-<kartenspiel.png, id=55, 154.4169pt x 172.4844pt>
+<kartenspiel.png, id=59, 154.4169pt x 172.4844pt>
 File: kartenspiel.png Graphic file (type png)
  <use kartenspiel.png>
 Package pdftex.def Info: kartenspiel.png used on input line 64.
@@ -797,97 +797,119 @@ been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.88 \newpage
-              [1] <Login-Fenster.png, id=89, 355.3275pt x 170.13562pt>
+              [1]
+Underfull \hbox (badness 10000) in paragraph at lines 98--100
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--112
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 115--118
+
+ []
+
+[2] <Login-Fenster.png, id=103, 355.3275pt x 170.13562pt>
 File: Login-Fenster.png Graphic file (type png)
 
 <use Login-Fenster.png>
-Package pdftex.def Info: Login-Fenster.png used on input line 104.
+Package pdftex.def Info: Login-Fenster.png used on input line 120.
 (pdftex.def)             Requested size: 345.0pt x 165.19489pt.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 106.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 122.
 
  ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 106.
- [2 <C:/Users/Viktoria/Documents/GitHub/sep13/Handbuch/Login-Fenster.png>]
-<Lobby-Fenster.png, id=104, 560.8453pt x 426.09187pt>
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 122.
+ <Lobby-Fenster.png, id=112, 560.8453pt x 426.09187pt>
 File: Lobby-Fenster.png Graphic file (type png)
- <use Lobby-Fenster.png>
-Package pdftex.def Info: Lobby-Fenster.png used on input line 114.
-(pdftex.def)             Requested size: 345.0pt x 262.1067pt.
 
-[3 <C:/Users/Viktoria/Documents/GitHub/sep13/Handbuch/Lobby-Fenster.png>]
-<Passwort-Fenster.png, id=113, 389.20406pt x 192.72pt>
+<use Lobby-Fenster.png>
+Package pdftex.def Info: Lobby-Fenster.png used on input line 130.
+(pdftex.def)             Requested size: 345.0pt x 262.1067pt.
+ [3 <C:/Users/Viktoria/Documents/GitHub/sep13/Handbuch/Login-Fenster.png>] <Pas
+swort-Fenster.png, id=122, 389.20406pt x 192.72pt>
 File: Passwort-Fenster.png Graphic file (type png)
 
 <use Passwort-Fenster.png>
-Package pdftex.def Info: Passwort-Fenster.png used on input line 130.
+Package pdftex.def Info: Passwort-Fenster.png used on input line 146.
 (pdftex.def)             Requested size: 345.0pt x 170.83801pt.
-
-<Erstellungs-Fenster.png, id=117, 461.47406pt x 289.83281pt>
+ [4 <C:/Users/Viktoria/Documents/GitHub/sep13/Handbuch/Lobby-Fenster.png>]
+<Erstellungs-Fenster.png, id=131, 461.47406pt x 289.83281pt>
 File: Erstellungs-Fenster.png Graphic file (type png)
 
 <use Erstellungs-Fenster.png>
-Package pdftex.def Info: Erstellungs-Fenster.png used on input line 139.
+Package pdftex.def Info: Erstellungs-Fenster.png used on input line 155.
 (pdftex.def)             Requested size: 345.0pt x 216.67973pt.
- [4 <C:/Users/Viktoria/Documents/GitHub/sep13/Handbuch/Passwort-Fenster.png>]
-Overfull \hbox (32.72691pt too wide) in paragraph at lines 141--142
+
+Overfull \hbox (32.72691pt too wide) in paragraph at lines 157--158
 []\OT1/cmr/bx/sc/10 1) Spie-l-aus-wahl: \OT1/cmr/m/n/10 Hier k[]onnen Sie in ei
 -nem Dropdown-Men[]u aus den[][]Regelwerk[]en
  []
 
-
-Overfull \hbox (8.73491pt too wide) in paragraph at lines 146--147
+[5 <C:/Users/Viktoria/Documents/GitHub/sep13/Handbuch/Passwort-Fenster.png> <C:
+/Users/Viktoria/Documents/GitHub/sep13/Handbuch/Erstellungs-Fenster.png>]
+Overfull \hbox (8.73491pt too wide) in paragraph at lines 162--163
 []\OT1/cmr/bx/sc/10 6) Erstellen-Knopf: \OT1/cmr/m/n/10 Wenn Sie mit Ih-ren Ein
 -stel-lun-gen Fer-tig sind, dr[]ucken
  []
 
-<Warte-Fenster.png, id=127, 435.12563pt x 335.75438pt>
+<Warte-Fenster.png, id=141, 435.12563pt x 335.75438pt>
 File: Warte-Fenster.png Graphic file (type png)
  <use Warte-Fenster.png>
-Package pdftex.def Info: Warte-Fenster.png used on input line 148.
+Package pdftex.def Info: Warte-Fenster.png used on input line 164.
 (pdftex.def)             Requested size: 345.0pt x 266.2267pt.
 
-[5 <C:/Users/Viktoria/Documents/GitHub/sep13/Handbuch/Erstellungs-Fenster.png>]
 [6 <C:/Users/Viktoria/Documents/GitHub/sep13/Handbuch/Warte-Fenster.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 188--189
+
+ []
+
 [7] [8]
+Underfull \hbox (badness 10000) in paragraph at lines 225--227
+
+ []
+
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\gls' on input line 209.
+(hyperref)                removing `\gls' on input line 227.
 
-(C:\Users\Viktoria\Documents\GitHub\sep13\Handbuch\Handbuch.gls)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 213.
- [9]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 213.
+(C:\Users\Viktoria\Documents\GitHub\sep13\Handbuch\Handbuch.gls [9])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 232.
+ [10]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 232.
 
 (C:\Users\Viktoria\Documents\GitHub\sep13\Handbuch\Handbuch.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 213.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 213.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 232.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 232.
 Package rerunfilecheck Info: File `Handbuch.out' has not changed.
-(rerunfilecheck)             Checksum: E03CD06C5127C51476B53D2167071613;768.
+(rerunfilecheck)             Checksum: 9F0055B30A0A8B61E7D2DD1368D062AB;829.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 213.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 232.
  ) 
 Here is how much of TeX's memory you used:
- 12317 strings out of 493921
- 181111 string characters out of 3147273
+ 12320 strings out of 493921
+ 181148 string characters out of 3147273
  312364 words of memory out of 3000000
- 15365 multiletter control sequences out of 15000+200000
+ 15366 multiletter control sequences out of 15000+200000
  5919 words of font info for 22 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 46i,7n,40p,1509b,742s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 46i,7n,40p,1509b,551s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTe
 X 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fon
 ts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Handbuch.pdf (10 pages, 1790093 bytes).
+Output written on Handbuch.pdf (11 pages, 1794333 bytes).
 PDF statistics:
- 250 PDF objects out of 1000 (max. 8388607)
- 42 named destinations out of 1000 (max. 500000)
- 135 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 266 PDF objects out of 1000 (max. 8388607)
+ 44 named destinations out of 1000 (max. 500000)
+ 143 words of extra memory for PDF output out of 10000 (max. 10000000)
 
