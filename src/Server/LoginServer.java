@@ -20,9 +20,9 @@ public class LoginServer extends Server {
 	/**
 	 * Erstellt und Startet den ClientListenerThread.
 	 */
-	public LoginServer(LobbyServer server) {
+	public LoginServer(LobbyServer server, int port) {
 		lobby = server;
-		clientListenerThread = new Thread(new ClientListenerThread(this));
+		clientListenerThread = new Thread(new ClientListenerThread(this, port));
 		clientListenerThread.start();
 	}
 
@@ -52,14 +52,14 @@ public class LoginServer extends Server {
 		/**
 		 * Konstruktor des ClientListenerThreads
 		 */
-		public ClientListenerThread(LoginServer server) {
+		public ClientListenerThread(LoginServer server, int port) {
 			super("CLT");
 			try {
-				socket = new ServerSocket(4567);
+				socket = new ServerSocket(port);
 			} catch (IOException e) {
-				System.err.println("Could not listen on port: 4567.");
+				System.err.println("Could not listen on port: "+port);
 				e.printStackTrace();
-				System.exit(1);
+				System.exit(0);
 			}
 			waiting = true;
 			this.server = server;

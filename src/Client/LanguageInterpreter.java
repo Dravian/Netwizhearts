@@ -112,7 +112,7 @@ public class LanguageInterpreter {
 			ret = "Du kannst diese Karten nicht tauschen.";
 			break;
 		case WrongMethodCalled:
-			ret = "Diese Aktion ist in disem Spiel nicht gültig.";
+			ret = "Diese Aktion ist in diesem Spiel nicht gültig.";
 			break;
 		case WrongPlayer:
 			ret = "Du bist nicht am Zug!";
@@ -180,7 +180,7 @@ public class LanguageInterpreter {
 			ret = "You have been kicked out of the Game.";
 			break;
 		case WrongPassword:
-			ret = "Joining failed. Password is incorrekt.";
+			ret = "Joining failed. Password is incorrect.";
 			break;
 		case UnvalidMove:
 			ret = "This move is not valid!";
@@ -195,7 +195,7 @@ public class LanguageInterpreter {
 			ret = "Your number is not valid.";
 			break;
 		case WrongColour:
-			ret = "This colour is not valid.";
+			ret = "This color is not valid.";
 			break;
 		case WrongTradeCards:
 			ret = "You cannot switch these cards.";
@@ -210,7 +210,7 @@ public class LanguageInterpreter {
 			ret = "Please input a username.";
 			break;
 		case EmptyAddress:
-			ret = "Please input a valid Host Adress.";
+			ret = "Please input a valid Host Address.";
 			break;
 		case WrongAddress:
 			ret = "This Host Address is unrecognizable .";

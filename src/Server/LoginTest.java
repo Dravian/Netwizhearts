@@ -18,7 +18,7 @@ public class LoginTest {
 	@Before
 	public void setUp() throws Exception {
 		lobby = new LobbyServer();
-		login = new LoginServer(lobby);
+		login = new LoginServer(lobby, 4567);
 		player = new TestPlayer(login);
 		player.setServer(login);
 		login.addPlayer(player);
