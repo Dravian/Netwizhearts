@@ -25,7 +25,7 @@ public class DiscardedCard implements Serializable{
 	 * Holt den Namen des Spielers zurück
 	 * @return Der Name vom Spieler
 	 */
-	protected String getName() {
+	public String getOwnerName() {
 		return name;
 	}
 	
@@ -33,7 +33,7 @@ public class DiscardedCard implements Serializable{
 	 * Holt die Karte die abgelegt wurde
 	 * @return Die Karte die abgelegt wurde
 	 */
-	protected Card getCard() {
+	public Card getCard() {
 		return card;
 	}
 }

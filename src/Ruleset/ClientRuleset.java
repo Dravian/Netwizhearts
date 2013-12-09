@@ -3,7 +3,9 @@
  */
 package Ruleset;
 
+import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
 
 import Client.ClientModel;
 import ComObjects.*;
@@ -74,8 +76,7 @@ public abstract class ClientRuleset {
 	}
 
 	/**
-	 * Gibt die momentane Spielphase zur�ck
-	 * 
+	 * Gibt die momentane Spielphase zurück
 	 * @return gamePhase Die Spielphase
 	 */
 	public GamePhase getGamePhase() {
@@ -177,7 +178,6 @@ public abstract class ClientRuleset {
 
 	/**
 	 * Holt die gespielten Karten auf dem Ablagestapel als DiscardedCards
-	 * 
 	 * @return Die gespielten Karten
 	 */
 	public List<DiscardedCard> getPlayedCards() {
@@ -187,7 +187,7 @@ public abstract class ClientRuleset {
 			return gameState.getPlayedCards();
 		}
 	}
-
+	
 	/**
 	 * Verarbeitet eine RulesetMessage vom Server
 	 * 
@@ -296,7 +296,7 @@ public abstract class ClientRuleset {
 	 */
 	public void resolveMessage(MsgSelectionRequest msgSelection) {
 		throw new IllegalArgumentException(
-				"Das Comobject MsgSelection wird hier nicht" + "gebraucht");
+				"Das Comobject MsgSelection wird hier dnicht" + "gebraucht");
 	}
 
 	/**
@@ -319,7 +319,7 @@ public abstract class ClientRuleset {
 	 *            Der Gewinner
 	 */
 	protected void announceWinner(String winner) {
-		client.announceWinner(winner);
+		// TODO client.announceWinner(winner);
 	}
 
 	/**
