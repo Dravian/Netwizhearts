@@ -104,6 +104,9 @@ public class ChooseItem extends JFrame implements Observer{
 		case chooseItemSuccessful:
 			this.setVisible(false);
 			break;
+		case quitGame:
+			this.dispose();
+			break;
 		default:
 			break;
 		}

@@ -141,6 +141,9 @@ public class Password extends JFrame implements Observer{
 		case joinGameSuccessful:
 			this.setVisible(false);
 			break;
+		case quitGame:
+			this.dispose();
+			break;
 		default:
 			break;
 		}

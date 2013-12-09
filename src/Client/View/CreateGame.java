@@ -14,6 +14,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
+import Client.ViewNotification;
 import Ruleset.RulesetType;
 
 import java.awt.event.ActionListener;
@@ -26,6 +27,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * CreateGame. Das Fenster CreateGame dient dem Benutzer zur Erstellung eines neuen Spieles.
@@ -35,7 +38,7 @@ import java.util.List;
  * ueber 'Leave' kehrt der Spieler in die Lobby zurueck 
  * und mit 'Create' wird das Spiel erstellt.
  */
-public class CreateGame extends JFrame{
+public class CreateGame extends JFrame implements Observer{
 
 	
 	private static final long serialVersionUID = -2893031560688870723L;
@@ -376,4 +379,21 @@ public class CreateGame extends JFrame{
 		}
 		
 	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		try {
+			ViewNotification message = (ViewNotification) arg;
+		switch (message) {
+		case quitGame:
+			this.dispose();
+			break;
+		default:
+			break;
+		}
+		} catch (ClassCastException e) {
+			//TODO
+		}
+	}
+	
 }

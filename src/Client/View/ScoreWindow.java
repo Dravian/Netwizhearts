@@ -68,6 +68,9 @@ public class ScoreWindow extends JFrame implements Observer{
 		case showScore:
 			textArea.setText(observed.getWindowText());//FIXME
 			break;
+		case quitGame:
+			this.dispose();
+			break;
 		default:
 			break;
 		}

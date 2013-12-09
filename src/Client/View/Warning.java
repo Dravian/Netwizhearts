@@ -78,6 +78,9 @@ public class Warning extends JFrame implements Observer{
 			
 			this.setVisible(true);
 			break;
+		case quitGame:
+			this.dispose();
+			break;
 		default:
 			break;
 		}
