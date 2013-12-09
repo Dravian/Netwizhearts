@@ -53,12 +53,12 @@ public class Lobby extends JFrame implements Observer{
 	/**
 	 * Erstellt das Lobby-Fenster
 	 */
-	public Lobby() {
-		setResizable(false);		
+	public Lobby() {		
 		setTitle("Server Lobby");
 		lang = Language.English;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 596, 433);
+		setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

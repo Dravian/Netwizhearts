@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 import Client.ClientModel;
 import Client.ViewNotification;
 import Ruleset.Card;
+import Ruleset.DiscardedCard;
 import Ruleset.HeartsCard;
 
 /**
@@ -86,10 +87,18 @@ public class Game extends JFrame implements Observer{
 //		karten.add(HeartsCard.Herz4);
 //		karten.add(HeartsCard.Herz5);
 //		karten.add(HeartsCard.Herz6);
+//		
+//		List<DiscardedCard> diskarten= new LinkedList<DiscardedCard>();
+//		diskarten.add(new DiscardedCard("Mr. Blue", HeartsCard.HerzAss));
+//		diskarten.add(new DiscardedCard("Mr. White", HeartsCard.Herz2));
+//		diskarten.add(new DiscardedCard("Mr. Orange", HeartsCard.Herz3));
+//		diskarten.add(new DiscardedCard("Mr. Pink", HeartsCard.Herz4));
+//		diskarten.add(new DiscardedCard("Mr. Brown", HeartsCard.Herz5));
+//		diskarten.add(new DiscardedCard("Myself", HeartsCard.Herz6));
 //
 //		gamePanel = new GamePanel(players, data, contentPane);
 //		gamePanel.setBounds(10, 11, 998, 495);
-//		gamePanel.updateCardsPlayed(karten);
+//		gamePanel.updateCardsPlayed(diskarten);
 //		gamePanel.updateOwnCards(karten);
 //		contentPane.add(gamePanel);
 //		// TEST

@@ -45,9 +45,9 @@ public class GameLobby extends JFrame implements Observer{
 	 * Erstellt das GameLobby Fenster
 	 */
 	public GameLobby() {
-		setResizable(false);
 		setTitle("GameLobby");
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		setResizable(false);
 		setBounds(100, 100, 438, 358);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
