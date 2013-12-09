@@ -53,7 +53,7 @@ public class GamePanel extends JPanel{
 	 * @param names Namen der Mitspieler
 	 * @param infos Informationen zu den Mitspielern
 	 */
-	public GamePanel(List<String> names, List<String> infos, JPanel contentPane) {
+	public GamePanel(List<String> names, JPanel contentPane) {
 		try {
 			background = ImageIO.read(new File(IMAGEPATH + "background.jpg"));
 		} catch (IOException e) {
@@ -70,7 +70,7 @@ public class GamePanel extends JPanel{
 		otherHands = new LinkedList<OtherPlayer>();
 		discardPiles = new LinkedList<DiscardPile>();
 		for (int i = 0; i < names.size(); i++) {
-			otherHands.add(i, new OtherPlayer(names.get(i), infos.get(i)));
+			otherHands.add(i, new OtherPlayer(names.get(i), ""));
 			discardPiles.add(i, new DiscardPile());
 			contentPane.add(otherHands.get(i));
 			contentPane.add(discardPiles.get(i));
