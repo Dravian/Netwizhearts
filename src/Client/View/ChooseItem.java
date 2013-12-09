@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 
 import Client.ClientModel;
 import Client.ViewNotification;
+import Ruleset.Colour;
 
 import javax.swing.JComboBox;
 import javax.swing.JTextArea;
@@ -24,7 +25,7 @@ import javax.swing.SwingUtilities;
  */
 public class ChooseItem extends JFrame implements Observer{
 	
-	private JComboBox comboBox;
+	private JComboBox<Colour> comboBox;
 	private JTextArea rsMessageArea;
 	private JButton btnOK;
 	
@@ -32,7 +33,7 @@ public class ChooseItem extends JFrame implements Observer{
 		setResizable(false);
 		getContentPane().setLayout(null);
 		
-		comboBox = new JComboBox();
+		comboBox = new JComboBox<Colour>();
 		comboBox.setBounds(10, 127, 200, 27);
 		getContentPane().add(comboBox);
 		
@@ -93,11 +94,11 @@ public class ChooseItem extends JFrame implements Observer{
 			ViewNotification message = (ViewNotification) arg;
 		switch (message) {
 		case openChooseItem:
-			//Client-> getMethode //FIXME
-//			List<Object> items = observed.getColoursToChooseFrom()
-//			for (Object o : items) {
-//				comboBox.addItem(o);
-//			}
+			//Momentan speziell für Colour //FIXME
+			List<Colour> items = observed.getColoursToChooseFrom();
+			for (Colour col : items) {
+				comboBox.addItem(col);
+			}
 			setMessageText(observed.getWindowText());
 			this.setVisible(true);
 			break;
