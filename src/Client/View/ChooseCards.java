@@ -114,6 +114,9 @@ public class ChooseCards extends JFrame implements Observer{
 		case chooseCardsSuccessful:
 			this.setVisible(false);
 			break;
+		case quitGame:
+			this.dispose();
+			break;
 		default:
 			break;
 		}

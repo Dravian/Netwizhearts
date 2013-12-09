@@ -186,7 +186,8 @@ public class Game extends JFrame implements Observer{
 	 * 
 	 * @param o erwartet ein Objekt von der Klasse ClientModel
 	 * @param arg erwartet: playedCardsUpdate, otherDataUpdate,
-	 * 					  	moveAcknowledged, gameStarted, windowChangeForced
+	 * 					  	moveAcknowledged, gameStarted, windowChangeForced,
+	 * 						quitGame
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
@@ -217,6 +218,9 @@ public class Game extends JFrame implements Observer{
 			break;
 		case windowChangeForced:
 			this.setVisible(false);
+			break;
+		case quitGame:
+			this.dispose();
 			break;
 		default:
 			break;
