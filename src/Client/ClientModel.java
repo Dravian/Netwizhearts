@@ -808,6 +808,7 @@ public class ClientModel extends Observable{
 	public void openWarning(WarningMsg msg) {
 		if (state == ClientState.GAME) {
 			warningText.append(screenOut.resolveWarning(msg));
+			informView(ViewNotification.openWarning);
 		}
 	}
 	
