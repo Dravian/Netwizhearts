@@ -437,15 +437,6 @@ public class ClientModel extends Observable{
 	}
 
 	/**
-	 * Gibt eine Liste aller bereits ausgespielten Karten zurueck.
-	 *
-	 * @return List<Card>. Eine Liste der gespielten Karten.
-	 */
-	public List<DiscardedCard> getPlayedCards() {
-		return playedCards == null ? new LinkedList<DiscardedCard>() : playedCards;
-	}
-
-	/**
 	 * Gibt eine Liste der Handkarten des Spielers zurueck.
 	 *
 	 * @return List<Card> aller Handkarten des Spielers
@@ -602,8 +593,8 @@ public class ClientModel extends Observable{
 	public List<Card> getCardsToChooseFrom() {
 		if (state == ClientState.GAME) {
 			if (ruleset != null) {
-				if(ruleset.getClass().equals(ClientHearts.class)) {
-					return ((ClientHearts) ruleset).getOwnHand();
+				if(chooseCards != null) {
+					return chooseCards;
 				}
 			}
 		}
@@ -863,7 +854,7 @@ public class ClientModel extends Observable{
 	 * oder eine leere Liste.
 	 * 
 	 */
-	public List<DiscardedCard> getPlayedCard() {
+	public List<DiscardedCard> getPlayedCards() {
 		if (state == ClientState.GAME) {
 			if (ruleset != null) {
 				return ruleset.getPlayedCards();
