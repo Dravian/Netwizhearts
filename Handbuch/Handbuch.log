@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.10.1)  9 DEC 2013 12:27
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.10.9)  10 DEC 2013 21:05
 entering extended mode
-**C:/Users/Viktoria/Documents/GitHub/sep13/Handbuch/Handbuch.tex
-(C:/Users/Viktoria/Documents/GitHub/sep13/Handbuch/Handbuch.tex
+**Handbuch.tex
+(C:\Users\AlinaAdmin\Desktop\Handbuch\Handbuch.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -463,15 +463,15 @@ Package caption Info: hyperref package is loaded.
 \lst@maxwidth=\dimen120
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
-File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
+File: lstmisc.sty 2013/08/26 1.5b (Carsten Heinz)
 \c@lstnumber=\count109
 \lst@skipnumbers=\count110
 \lst@framebox=\box29
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.cfg"
-File: listings.cfg 2007/02/22 1.4 listings configuration
+File: listings.cfg 2013/08/26 1.5b listings configuration
 ))
-Package: listings 2007/02/22 1.4 (Carsten Heinz)
+Package: listings 2013/08/26 1.5b (Carsten Heinz)
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\color.sty"
 Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
@@ -482,7 +482,7 @@ File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 Package color Info: Driver file: pdftex.def on input line 130.
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\glossaries\base\glossaries.sty"
-Package: glossaries 2013/04/21 v3.05 (NLCT)
+Package: glossaries 2013/07/05 v3.07 (NLCT)
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty"
 Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
@@ -515,7 +515,7 @@ Package: etex 1998/03/26 v2.0 eTeX basic definition package (PEB)
 Package: xfor 2009/02/05 v1.05 (NLCT)
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\datatool\datatool-base.sty"
-Package: datatool-base 2013/01/15 v2.13 (NLCT)
+Package: datatool-base 2013/09/06 v2.18 (NLCT)
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
 Package: amsmath 2013/01/14 v2.14 AMS math features
@@ -580,7 +580,7 @@ Package: substr 2009/10/20 v1.2 Handle substrings
 \c@su@anzahl=\count126
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\datatool\datatool-fp.sty"
-Package: datatool-fp 2013/01/15 v2.13 (NLCT)
+Package: datatool-fp 2013/08/29 v2.17 (NLCT)
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\fp\fp.sty"
 Package: fp 1995/04/02
@@ -713,7 +713,7 @@ Package: glossary-tree 2012/09/21 v3.03 (NLCT)
 \glo@main@file=\write4
 Package glossaries Info: Writing glossary file Handbuch.glo on input line 12.
 
-(C:\Users\Viktoria\Documents\GitHub\sep13\Handbuch\Handbuch.aux)
+(C:\Users\AlinaAdmin\Desktop\Handbuch\Handbuch.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 55.
 LaTeX Font Info:    ... okay on input line 55.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 55.
@@ -757,8 +757,8 @@ LaTeX Info: Redefining \ref on input line 55.
 LaTeX Info: Redefining \pageref on input line 55.
 LaTeX Info: Redefining \nameref on input line 55.
 
-(C:\Users\Viktoria\Documents\GitHub\sep13\Handbuch\Handbuch.out)
-(C:\Users\Viktoria\Documents\GitHub\sep13\Handbuch\Handbuch.out)
+(C:\Users\AlinaAdmin\Desktop\Handbuch\Handbuch.out)
+(C:\Users\AlinaAdmin\Desktop\Handbuch\Handbuch.out)
 \@outlinefile=\write5
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: listings package is loaded.
@@ -787,9 +787,9 @@ Package pdftex.def Info: kartenspiel.png used on input line 64.
 
 [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/Viktoria/Documen
-ts/GitHub/sep13/Handbuch/kartenspiel.png>]
-(C:\Users\Viktoria\Documents\GitHub\sep13\Handbuch\Handbuch.toc)
+{C:/Users/AlinaAdmin/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Use
+rs/AlinaAdmin/Desktop/Handbuch/kartenspiel.png>]
+(C:\Users\AlinaAdmin\Desktop\Handbuch\Handbuch.toc)
 \tf@toc=\write6
 Package hyperref Info: Option `pageanchor' set `true' on input line 86.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
@@ -831,15 +831,15 @@ File: Lobby-Fenster.png Graphic file (type png)
 <use Lobby-Fenster.png>
 Package pdftex.def Info: Lobby-Fenster.png used on input line 130.
 (pdftex.def)             Requested size: 345.0pt x 262.1067pt.
- [3 <C:/Users/Viktoria/Documents/GitHub/sep13/Handbuch/Login-Fenster.png>] <Pas
-swort-Fenster.png, id=122, 389.20406pt x 192.72pt>
+ [3 <C:/Users/AlinaAdmin/Desktop/Handbuch/Login-Fenster.png>] <Passwort-Fenster
+.png, id=122, 389.20406pt x 192.72pt>
 File: Passwort-Fenster.png Graphic file (type png)
 
 <use Passwort-Fenster.png>
 Package pdftex.def Info: Passwort-Fenster.png used on input line 146.
 (pdftex.def)             Requested size: 345.0pt x 170.83801pt.
- [4 <C:/Users/Viktoria/Documents/GitHub/sep13/Handbuch/Lobby-Fenster.png>]
-<Erstellungs-Fenster.png, id=131, 461.47406pt x 289.83281pt>
+ [4 <C:/Users/AlinaAdmin/Desktop/Handbuch/Lobby-Fenster.png>] <Erstellungs-Fens
+ter.png, id=131, 461.47406pt x 289.83281pt>
 File: Erstellungs-Fenster.png Graphic file (type png)
 
 <use Erstellungs-Fenster.png>
@@ -851,11 +851,11 @@ Overfull \hbox (32.72691pt too wide) in paragraph at lines 157--158
 -nem Dropdown-Men[]u aus den[][]Regelwerk[]en
  []
 
-[5 <C:/Users/Viktoria/Documents/GitHub/sep13/Handbuch/Passwort-Fenster.png> <C:
-/Users/Viktoria/Documents/GitHub/sep13/Handbuch/Erstellungs-Fenster.png>]
-Overfull \hbox (8.73491pt too wide) in paragraph at lines 162--163
+[5 <C:/Users/AlinaAdmin/Desktop/Handbuch/Passwort-Fenster.png> <C:/Users/AlinaA
+dmin/Desktop/Handbuch/Erstellungs-Fenster.png>]
+Overfull \hbox (6.09602pt too wide) in paragraph at lines 162--163
 []\OT1/cmr/bx/sc/10 6) Erstellen-Knopf: \OT1/cmr/m/n/10 Wenn Sie mit Ih-ren Ein
--stel-lun-gen Fer-tig sind, dr[]ucken
+-stel-lun-gen fer-tig sind, dr[]ucken
  []
 
 <Warte-Fenster.png, id=141, 435.12563pt x 335.75438pt>
@@ -864,52 +864,53 @@ File: Warte-Fenster.png Graphic file (type png)
 Package pdftex.def Info: Warte-Fenster.png used on input line 164.
 (pdftex.def)             Requested size: 345.0pt x 266.2267pt.
 
-[6 <C:/Users/Viktoria/Documents/GitHub/sep13/Handbuch/Warte-Fenster.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 188--189
-
+[6 <C:/Users/AlinaAdmin/Desktop/Handbuch/Warte-Fenster.png>] [7]
+Overfull \hbox (0.55884pt too wide) in paragraph at lines 201--202
+[]\OT1/cmr/bx/sc/10 Spiel: \OT1/cmr/m/n/10 Im Uhr-zei-ger-sinn wer-den Kar-ten 
+ge-spielt. Da-bei herrscht [][]Farb-
  []
 
-[7] [8]
-Underfull \hbox (badness 10000) in paragraph at lines 225--227
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 227--229
 
  []
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\gls' on input line 227.
+(hyperref)                removing `\gls' on input line 247.
 
-(C:\Users\Viktoria\Documents\GitHub\sep13\Handbuch\Handbuch.gls [9])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 232.
- [10]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 232.
+[9] [10] (C:\Users\AlinaAdmin\Desktop\Handbuch\Handbuch.gls)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 262.
+ [11]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 262.
 
-(C:\Users\Viktoria\Documents\GitHub\sep13\Handbuch\Handbuch.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 232.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 232.
+(C:\Users\AlinaAdmin\Desktop\Handbuch\Handbuch.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 262.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 262.
 Package rerunfilecheck Info: File `Handbuch.out' has not changed.
 (rerunfilecheck)             Checksum: 9F0055B30A0A8B61E7D2DD1368D062AB;829.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 232.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 262.
  ) 
 Here is how much of TeX's memory you used:
- 12320 strings out of 493921
- 181148 string characters out of 3147273
- 312364 words of memory out of 3000000
- 15366 multiletter control sequences out of 15000+200000
+ 12327 strings out of 493921
+ 181051 string characters out of 3147267
+ 312529 words of memory out of 3000000
+ 15372 multiletter control sequences out of 15000+200000
  5919 words of font info for 22 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 46i,7n,40p,1509b,551s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 46i,7n,40p,1459b,574s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTe
 X 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fon
 ts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Handbuch.pdf (11 pages, 1794333 bytes).
+Output written on Handbuch.pdf (12 pages, 1795543 bytes).
 PDF statistics:
- 266 PDF objects out of 1000 (max. 8388607)
- 44 named destinations out of 1000 (max. 500000)
+ 270 PDF objects out of 1000 (max. 8388607)
+ 45 named destinations out of 1000 (max. 500000)
  143 words of extra memory for PDF output out of 10000 (max. 10000000)
 
