@@ -67,17 +67,12 @@ public class ClientWizard extends ClientRuleset {
 	 */
 	public void resolveMessage(MsgSelectionRequest msgSelection) {
 		setGamePhase(GamePhase.SelectionRequest);
-		List<Object> colours = new ArrayList<Object>();
-		colours.add(Colour.RED);
-		colours.add(Colour.BLUE);
-		colours.add(Colour.GREEN);
-		colours.add(Colour.YELLOW);
-
 		getModel().openChooseColourWindow(UserMessages.ChooseColour);
 	}
 
 	@Override
 	public void resolveMessage(MsgSelection msgSelection) {
+		setGamePhase(GamePhase.SelectionRequest);
 		Card trumpCard = getUncoveredCard();
 		int valueOfSorcerer = 14;
 
@@ -94,17 +89,9 @@ public class ClientWizard extends ClientRuleset {
 
 	@Override
 	public void resolveMessage(MsgUser gameUpdate) {
-		int valueOfSorcerer = 14;
-		int valueOfFool = 0;
 		setGamePhase(GamePhase.Playing);
 		setGameState(gameUpdate.getGameClientUpdate());
 
-		if (getGameState().getUncoveredCard().getValue() == valueOfSorcerer
-				|| getGameState().getUncoveredCard().getValue() == valueOfFool) {
-			trumpColour = Colour.NONE;
-		} else {
-			trumpColour = getGameState().getUncoveredCard().getColour();
-		}
 		getModel().updateGame();
 	}
 
