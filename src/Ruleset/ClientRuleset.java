@@ -196,6 +196,9 @@ public abstract class ClientRuleset {
 	public List<String> getWinners() {
 		if(gamePhase == GamePhase.Ending) {
 			return winners;
+		} else {
+			getModel().openWarning(WarningMsg.WrongPhase);
+			throw new IllegalStateException("Jetzt ist das Spiel noch nicht zu Ende.");
 		}
 	}
 	/**
