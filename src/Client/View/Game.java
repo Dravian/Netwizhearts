@@ -1,6 +1,5 @@
 package Client.View;
 
-import java.awt.EventQueue;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 import java.util.LinkedList;
@@ -14,6 +13,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
 import Client.ClientModel;
 import Client.ViewNotification;
@@ -66,6 +66,8 @@ public class Game extends JFrame implements Observer{
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		gamePanel = null;
 		
 //		// TEST
 //		LinkedList<String> players = new LinkedList<String>();
@@ -163,16 +165,12 @@ public class Game extends JFrame implements Observer{
 	 * @param players Liste der Spieler
 	 */
 	public void makeTrickGameBoard(final List<String> players) {
-		EventQueue.invokeLater(new Runnable() {
+		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				try {
 					gamePanel = new GamePanel(players, contentPane);
 					gamePanel.setBounds(10, 11, 998, 547);
 					gamePanel.addCardMouseListener(cardMouseListener);
 					contentPane.add(gamePanel);
-				} catch (Exception e) {
-					//TODO
-				}
 			}
 		});
 		
@@ -202,23 +200,20 @@ public class Game extends JFrame implements Observer{
 			this.setVisible(true);
 			break;
 		case gameUpdate:
-			gamePanel.updateGame(observed.getGameUpdate());
-//				try {
-//
-//					System.out.println(observed.toString());
-//
-//				} catch (Exception e) {
-//					System.out.println("Observed failed");
-//					try {
-//						System.out.println(observed.getGameUpdate().toString());
-//					} catch (Exception f) {
-//						System.out.println("getGame feiled");
-//					}
-//				}
+			SwingUtilities.invokeLater(new Runnable() {
+				public void run() {
+					gamePanel.updateGame(observed.getGameUpdate());
+				}
+			});
 			repaint();
 			break;
 		case trumpUpdate:
-			gamePanel.updateTrumpColour(observed.getTrumpColour());
+			SwingUtilities.invokeLater(new Runnable() {
+				public void run() {
+					gamePanel.updateTrumpColour(observed.getTrumpColour());
+				}
+			});
+			
 			repaint();
 			break;
 		case turnUpdate:

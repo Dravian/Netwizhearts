@@ -110,11 +110,19 @@ public class GamePanel extends JPanel{
 	 * 
 	 * @param update GameClientUpdate mit dem aktuellen Zustand des Spiels
 	 */
-	public void updateGame(GameClientUpdate update) {
-		updateOwnOtherData(update.getOwnData());
-		updateOwnCards(update.getOwnHand());
-		updateCardsPlayed(update.getPlayedCards());
-		updateOtherData(update.getOtherPlayerData());
+	public void updateGame(final GameClientUpdate update) {
+		SwingUtilities.invokeLater(new Runnable() {
+
+			@Override
+			public void run() {
+				updateOwnOtherData(update.getOwnData());
+				updateOwnCards(update.getOwnHand());
+				updateCardsPlayed(update.getPlayedCards());
+				updateOtherData(update.getOtherPlayerData());
+			}
+			
+		});
+		
 	}
 	
 	public void updateTrumpColour(Colour col) {
