@@ -839,7 +839,7 @@ public class ClientModel extends Observable{
 	 * 
 	 * @param winner String der Gewinner der Partie.
 	 */
-	public void announceWinner() {
+	public void announceWinner(UserMessages msg) {
 		if (state == ClientState.GAME) {
 			state = ClientState.ENDING;
 			   informView(ViewNotification.showScore);
