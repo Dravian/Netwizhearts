@@ -10,6 +10,7 @@ import java.util.List;
 import javax.swing.JPanel;
 
 import Ruleset.Card;
+import Ruleset.Colour;
 
 /** 
  * DrawDeck. Stellt einen Aufnahmestapel dar.
@@ -17,10 +18,13 @@ import Ruleset.Card;
 public class DrawDeck extends JPanel{
 	
 	private ViewCard shownCard;
-	
+	private boolean isTrump;
+	private Colour trumpColour;
 	
 	public DrawDeck() {
 		shownCard = new ViewCard(null);
+		isTrump = false;
+		trumpColour = null;
 		this.add(shownCard);
 		this.setLayout(null);
 	}
@@ -32,6 +36,11 @@ public class DrawDeck extends JPanel{
 	@Override
 	public int getHeight() {
 		return shownCard.getHeight();
+	}
+	
+	public void setTrumpColour(Colour col) {
+		isTrump = true;
+		trumpColour = col;
 	}
 	
 	/**

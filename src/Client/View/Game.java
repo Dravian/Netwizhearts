@@ -201,19 +201,15 @@ public class Game extends JFrame implements Observer{
 			chatlog.setText("");
 			this.setVisible(true);
 			break;
-		case playedCardsUpdate:
-			gamePanel.updateCardsPlayed(observed.getPlayedCards());
+		case gameUpdate:
+			gamePanel.updateGame(observed.getGameUpdate());
 			repaint();
 			break;
-		case otherDataUpdate:
-			gamePanel.updateOwnOtherData(observed.getOwnOtherData());
-			gamePanel.updateOtherData(observed.getOtherPlayerData());
-			repaint();
+		case trumpUpdate:
+			gamePanel.updateTrumpColour(observed.getTrumpColour());
 			break;
-		case moveAcknowledged:
-			gamePanel.updateOwnCards(observed.getOwnHand());
-			gamePanel.updateCardsPlayed(observed.getPlayedCards());
-			repaint();
+		case turnUpdate:
+			//TODO Anzeigen, dass man an der Reihe ist
 			break;
 		case windowChangeForced:
 			this.setVisible(false);

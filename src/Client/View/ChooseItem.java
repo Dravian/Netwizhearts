@@ -25,6 +25,8 @@ import javax.swing.SwingUtilities;
  */
 public class ChooseItem extends JFrame implements Observer{
 	
+	private static final long serialVersionUID = 1L;
+	
 	private JComboBox<Colour> comboBox;
 	private JTextArea rsMessageArea;
 	private JButton btnOK;
@@ -94,16 +96,12 @@ public class ChooseItem extends JFrame implements Observer{
 			ViewNotification message = (ViewNotification) arg;
 		switch (message) {
 		case openChooseItem:
-			//Momentan speziell für Colour //FIXME
 			List<Colour> items = observed.getColoursToChooseFrom();
 			for (Colour col : items) {
 				comboBox.addItem(col);
 			}
 			setMessageText(observed.getWindowText());
 			this.setVisible(true);
-			break;
-		case chooseItemSuccessful:
-			this.setVisible(false);
 			break;
 		case quitGame:
 			this.dispose();

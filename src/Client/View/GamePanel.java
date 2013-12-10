@@ -17,8 +17,11 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import Ruleset.Card;
+import Ruleset.Colour;
 import Ruleset.DiscardedCard;
+import Ruleset.GameClientUpdate;
 import Ruleset.HeartsCard;
+import Ruleset.OtherData;
 import Ruleset.RulesetType;
 
 /** 
@@ -102,23 +105,34 @@ public class GamePanel extends JPanel{
 		}
 	}
 	
-	public void updateOwnOtherData(final String ownData) {
+	/**
+	 * Aktualisiert alle Spielelemente
+	 * 
+	 * @param update GameClientUpdate mit dem aktuellen Zustand des Spiels
+	 */
+	public void updateGame(GameClientUpdate update) {
+		updateOwnOtherData(update.getOwnData());
+		updateOwnCards(update.getOwnHand());
+		updateCardsPlayed(update.getPlayedCards());
+		updateOtherData(update.getOtherPlayerData());
+	}
+	
+	public void updateTrumpColour(Colour col) {
+		drawDeck.setTrumpColour(col);
+	}
+	
+	private void updateOwnOtherData(final OtherData ownData) {
 		SwingUtilities.invokeLater(new Runnable() {
 
 			@Override
 			public void run() {
-				ownScore.setData(ownData);
+				ownScore.setData(ownData.toString());
 			}
 			
 		});
 	}
 	
-	/**
-	 * Setzt die Hand des Spielers
-	 * 
-	 * @param cards Handkarten des Spielers
-	 */
-	public void updateOwnCards(final List<Card> cards) {
+	private void updateOwnCards(final List<Card> cards) {
 		SwingUtilities.invokeLater(new Runnable() {
 
 			@Override
@@ -129,31 +143,31 @@ public class GamePanel extends JPanel{
 		
 	}
 	
-	public void updateCardsPlayed(final List<DiscardedCard> cards) {
+	private void updateCardsPlayed(final List<DiscardedCard> cards) {
 		SwingUtilities.invokeLater(new Runnable() {
 
 			@Override
-			public void run() {
-				for (int i = 0; i < cards.size(); i++) {
-					discardPiles.get(i).addCard(cards.get(i).getCard());
+			public void run() {				
+				for (DiscardedCard c : cards) {
+					for (OtherPlayer p : otherHands) {
+						if (c.getOwnerName().compareTo(p.getName()) == 0) {
+							int index = otherHands.indexOf(p);
+							discardPiles.get(index).addCard(c.getCard());
+						}
+					}
 				}
 			}
 		});
 		
 	}
 	
-	/**
-	 * Setzt die Zusatzinformationen der Spieler
-	 * 
-	 * @param data
-	 */
-	public void updateOtherData(final List<String> data) {
+	private void updateOtherData(final List<OtherData> data) {
 		SwingUtilities.invokeLater(new Runnable() {
 
 			@Override
 			public void run() {
 				for (int i = 0; i < otherHands.size(); i++) {
-					otherHands.get(i).setInfo(data.get(i));
+					otherHands.get(i).setInfo(data.get(i).toString());
 				}
 			}
 		});

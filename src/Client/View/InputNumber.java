@@ -103,9 +103,6 @@ public class InputNumber extends JFrame implements Observer{
 			setMessageText(observed.getWindowText());
 			this.setVisible(true);
 			break;
-		case inputNumberSuccessful:
-			this.setVisible(false);
-			break;
 		case quitGame:
 			this.dispose();
 			break;
