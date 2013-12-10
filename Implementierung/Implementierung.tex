@@ -89,7 +89,7 @@ Hier kommt die Implementierung
 
 \begin{itemize}
 \item  \textbf{LoginServer:}  \textit{Neu hinzugefügte Klasse, erbt von Server}: Sie ist für das Zustabdekommen von Clientverbindungen zuständig. \textit{Attribute}:  Thread clientListenerThread,  LobbyServer lobby; \textit{Methoden}: receiveMessage(Player player, ComLoginRequest login), disconnectPlayer()
-\item  \textbf{GameServer:} \textit{hinzugefügt}: quitGame(), getGameMasterName(), getPassword(), sendRulesetMessage(String player, RulesetMessage message), broadcastRulesetMessage(RulesetMessage message), sendWarning(String player, WarningMsg warning), broadcastWarning(WarningMsg warning)
+\item  \textbf{GameServer:} \textit{hinzugefügt}: quitGame(), getGameMasterName(), getPassword(), sendRulesetMessage(String player, RulesetMessage message), broadcastRulesetMessage(RulesetMessage message), sendWarning(String player, WarningMsg warning), broadcastWarning(WarningMsg warning) \textit{entfernt}: receiveMessage(Player player, ComClientQuit quit)
 \item  \textbf{GameServerRepresentation:} \textit{implementiert jetzt Serializable}
 \item  \textbf{LobbyServer:} \textit{entfernt}: innere Klasse ClientListenerThread, Set<Player> noNames, ServerSocket socket, receiveMessage(Player player, ComClientQuit quit ), receiveMessage(Player player, ComLoginRequest login); \textit{hinzugefügt}: addPlayerToGame(Player player, GameServer game), getNames()
 \item  \textbf{ClientListenerThread:} erbt jetzt von Thread  \textit{hinzugefügt}: boolean waiting, ServerScocket socket, LoginServer server
@@ -144,6 +144,7 @@ Begründung: Wurde hauptsächlich schon in Spezifikationsphase implementiert
 \item \textbf{Ruleset(ClientWizard):} ang. Dauer:6 Stunden, tats. 
 Dauer: bisher 5 Stunden
 \item \textbf{Ruleset(ClientHearts):} ang. Dauer:6 Stunden, tats. Dauer: bisher 5 Stunden
+\item \textbf{Handbuch:} Dauer: 5 Stunden
 \end{itemize}
 
 
@@ -152,6 +153,8 @@ Dauer: bisher 5 Stunden
 \item \textbf{View(WizardWindows):} ang. Dauer: 4 Stunden, tats. Dauer: 2.5 Stunden
 \item \textbf{View(HeartsWindows):} ang. Dauer: 4 Stunden, tats. Dauer: 2 Stunden
 \item \textbf{Server(Game):} ang. Dauer: 4 Stunden, tats. Dauer: 2 Stunden 30 Minuten
+\item \textbf{Client(LanguageInterpreter):} Dauer: bisher 2 Stunden(V)
+\item \textbf{Karten:} Dauer: 4 Stunden
 \end{itemize}
 
  
