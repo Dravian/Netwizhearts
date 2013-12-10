@@ -40,7 +40,8 @@ public class ClientHearts extends ClientRuleset {
 		if (getGamePhase() == GamePhase.CardRequest) {
 			// Jeder Spieler hat bereits eine Karte gespielt
 			if (getPlayedCards().size() == getOtherPlayerData().size() + 1) {
-				return false;
+				getModel().openWarning(WarningMsg.RulesetError);
+				throw new RulesetException("Der Ablagestapel ist bereits voll.");
 
 				// Die Spieler befinden sich in der ersten Runde
 			} else if (getGameState().getOwnHand().size() == 13) {
@@ -50,6 +51,7 @@ public class ClientHearts extends ClientRuleset {
 
 					// Die erste Karte jeder Runde muss die Kreu2 sein.
 					if (card != HeartsCard.Kreuz2) {
+						getModel().openWarning(WarningMsg.UnvalidMove);
 						return false;
 					} else {
 						send(new MsgCard(card));
@@ -72,9 +74,8 @@ public class ClientHearts extends ClientRuleset {
 
 							// Wenn in der Spielerhand eine Karte weder Herz
 							// noch PikDame ist
-							if (handCard.getColour() != Colour.HEART) {
-								return false;
-							} else if (handCard != HeartsCard.PikDame) {
+							if (handCard != HeartsCard.PikDame & handCard.getColour() != Colour.HEART) {
+								getModel().openWarning(WarningMsg.UnvalidMove);
 								return false;
 							}
 						}
@@ -100,6 +101,7 @@ public class ClientHearts extends ClientRuleset {
 						} else {
 							for (Card handCard : getGameState().getOwnHand()) {
 								if (handCard.getColour() != Colour.HEART){
+									getModel().openWarning(WarningMsg.UnvalidMove);
 									return false;
 								}
 							}
@@ -141,6 +143,7 @@ public class ClientHearts extends ClientRuleset {
 				// Es gibt eine Karte auf der Hand, die die Farbe der
 				// erstgepielten Karte hat
 				if (handCard.getColour() == firstCard.getColour()) {
+					getModel().openWarning(WarningMsg.UnvalidMove);
 					return false;
 
 					// Die Spieler möchte ein Herz spielen, hat aber noch andere
@@ -148,6 +151,7 @@ public class ClientHearts extends ClientRuleset {
 					// und Herz ist noch nicht gebrochen
 				} else if (handCard.getColour() != Colour.HEART
 						&& card.getColour() == Colour.HEART && !heartBroken) {
+					getModel().openWarning(WarningMsg.UnvalidMove);
 					return false;
 				}
 			}
@@ -175,7 +179,7 @@ public class ClientHearts extends ClientRuleset {
 	 */
 	public void resolveMessage(MsgMultiCardsRequest msgMultiCardsRequest) {
 		setGamePhase(GamePhase.MultipleCardRequest);
-		getModel().openChooseCardsWindow(cards, text);
+		getModel().openChooseCardsWindow(UserMessages.ChooseCards);
 	}
 
 	@Override
@@ -201,12 +205,14 @@ public class ClientHearts extends ClientRuleset {
 			if (cards.size() == 3) {
 				for (Card card : cards) {
 					if (card.getRuleset() != RulesetType.Hearts) {
+						getModel().openWarning(WarningMsg.WrongTradeCards);
 						return false;
 					}
 				}
 				send(new MsgMultiCards(cards));
 				return true;
 			}
+			getModel().openWarning(WarningMsg.WrongTradeCards);
 			return false;
 		} else {
 			getModel().openWarning(WarningMsg.WrongPhase);

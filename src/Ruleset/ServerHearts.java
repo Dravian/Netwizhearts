@@ -51,7 +51,10 @@ public class ServerHearts extends ServerRuleset {
 
         // Jeder Spieler hat bereits eine Karte gespielt
         if (getPlayedCards().size() == getPlayers().size()) {
-            return false;
+        	broadcast(WarningMsg.RulesetError);
+        	quitGame();
+        	throw new RulesetException("Der Ablagestapel ist bereits voll.");
+        	
             // Die Spieler befinden sich in der ersten Runde
         } else if (getCurrentPlayer().getHand().size() == 13) {
             // Noch kein Spieler hat eine Karte gespielt
@@ -71,10 +74,8 @@ public class ServerHearts extends ServerRuleset {
                     
                     for (Card handCard : hand) {
                         // Wenn in der Spielerhand eine Karte weder Herz noch PikDame ist
-                        if (handCard.getColour() != Colour.HEART) {
+                        if (handCard != HeartsCard.PikDame & handCard.getColour() != Colour.HEART){
                             return false;
-                        } else if (handCard != HeartsCard.PikDame) {
-                        	return false;
                         }
                     }
                     heartBroken = true;
@@ -480,6 +481,8 @@ public class ServerHearts extends ServerRuleset {
 			 * nochmal ein Fehler kommt wirft es eine Exception
 			 */
 			if (!getGameState().dealCards(getGameState().getRoundNumber())) {
+				broadcast(WarningMsg.RulesetError);
+				quitGame();
 				throw new RulesetException(
 						"Probleme beim Verteilen der Karten!");
 			}

@@ -225,25 +225,6 @@ public abstract class ClientRuleset {
 	}
 
 	/**
-	 * Setzt ein neues GameClientUpdate
-	 * 
-	 * @param clientUpdate
-	 *            Das Update des Spiels
-	 */
-	protected void setGameState(GameClientUpdate clientUpdate) {
-		this.gameState = clientUpdate;
-	}
-
-	/**
-	 * Holt das Model
-	 * 
-	 * @return Das Model
-	 */
-	protected ClientModel getModel() {
-		return client;
-	}
-
-	/**
 	 * Verarbeitet die RulesetMessage dass der Server von dem Spieler verlangt
 	 * eine Karte zu spielen
 	 * 
@@ -252,7 +233,7 @@ public abstract class ClientRuleset {
 	 */
 	public void resolveMessage(MsgCardRequest msgCardRequest) {
 		setGamePhase(GamePhase.CardRequest);
-		getModel().announceTurn();
+		getModel().announceTurn(UserMessages.PlayCard);
 	}
 
 	/**
@@ -265,9 +246,46 @@ public abstract class ClientRuleset {
 	public void resolveMessage(MsgGameEnd gameEnd) {
 		setGamePhase(GamePhase.Ending);
 		winners = gameEnd.getWinnerName();
-		getModel().announceWinner();
-
+		getModel().announceWinner(UserMessages.GameEnd);
 	}
+
+	/**
+	 * Setzt ein neues GameClientUpdate
+	 * 
+	 * @param clientUpdate
+	 *            Das Update des Spiels
+	 */
+	protected void setGameState(GameClientUpdate clientUpdate) {
+		this.gameState = clientUpdate;
+	}
+
+	/**
+	 * Holt das Model
+	 * @return Das Model
+	 */
+	protected ClientModel getModel() {
+		return client;
+	}
+
+	/**
+	 * Ruft beim Model die send Methode auf und verschickt eine Rulesetmessage
+	 * 
+	 * @param message
+	 *            Die Nachricht
+	 */
+	protected void send(RulesetMessage message) {
+		gamePhase = GamePhase.Playing;
+		client.send(message);
+	}
+
+	/**
+	 * Prueft ob ein gemachter Zug in einem Spiel gueltig war
+	 * 
+	 * @param card
+	 *            Die Karte
+	 * @return true falls die Karte gueltig ist, false wenn nicht
+	 */
+	protected abstract boolean isValidMove(Card card);
 
 	public void resolveMessage(MsgCard card) {
 		throw new IllegalArgumentException(
@@ -325,24 +343,4 @@ public abstract class ClientRuleset {
 				"Das Comobject MsgMultiCardsRequest wird hier nicht"
 						+ "gebraucht");
 	}
-
-	/**
-	 * Ruft beim Model die send Methode auf und verschickt eine Rulesetmessage
-	 * 
-	 * @param message
-	 *            Die Nachricht
-	 */
-	protected void send(RulesetMessage message) {
-		gamePhase = GamePhase.Playing;
-		client.send(message);
-	}
-
-	/**
-	 * Prueft ob ein gemachter Zug in einem Spiel gueltig war
-	 * 
-	 * @param card
-	 *            Die Karte
-	 * @return true falls die Karte gueltig ist, false wenn nicht
-	 */
-	protected abstract boolean isValidMove(Card card);
 }
