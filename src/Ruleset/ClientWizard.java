@@ -172,7 +172,7 @@ public class ClientWizard extends ClientRuleset {
 			send(new MsgCard(card));
 			return true;
 		} else {
-			setWarning(WarningMsg.WrongPhase);
+			getModel().openWarning(WarningMsg.WrongPhase);
 			throw new IllegalStateException("Jetzt darf keine Karte gespielt werden.");
 		}
 	}
@@ -194,7 +194,7 @@ public class ClientWizard extends ClientRuleset {
 				return true;
 			}
 		} else {
-			setWarningText(WarningMsg.WrongPhase);
+			getModel().openWarning(WarningMsg.WrongPhase);
 			throw new IllegalStateException("Jetzt darf keine Zahl angesagt werden.");
 		}
 	}
@@ -229,7 +229,7 @@ public class ClientWizard extends ClientRuleset {
 				return false;
 			}
 		} else {
-			setWarningText(WarningMsg.WrongPhase);
+			getModel().openWarning(WarningMsg.WrongPhase);
 			throw new IllegalStateException("Jetzt darf keine Farbe ausgewählt werden.");
 		}
 	}

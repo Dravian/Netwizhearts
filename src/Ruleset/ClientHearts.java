@@ -209,7 +209,7 @@ public class ClientHearts extends ClientRuleset {
 			}
 			return false;
 		} else {
-			setWarning(WarningMsg.WrongPhase);
+			getModel().openWarning(WarningMsg.WrongPhase);
 			throw new IllegalStateException("Jetzt werden keine Karten getauscht");
 		}
 

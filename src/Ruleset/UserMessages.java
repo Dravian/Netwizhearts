@@ -1,5 +1,5 @@
 package Ruleset;
 
 public enum UserMessages {
-	ChooseColour, TrumpColour, PlayCard, ChooseCards, GameEnd, ChooseNumber, GameUpdate;
+	ChooseColour, TrumpColour, PlayCard, ChooseCards, GameEnd, ChooseNumber;
 }
