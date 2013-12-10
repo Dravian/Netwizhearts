@@ -34,7 +34,7 @@ public class ServerHearts extends ServerRuleset {
 	/**
 	 * Gibt an, ob Herz schon ausgespielt werden darf.
 	 */
-	private boolean heartBroken = false;
+	private boolean heartBroken;
 
 	/**
 	 * Erstellt das Regelwerk zum Spiel Hearts
@@ -42,6 +42,7 @@ public class ServerHearts extends ServerRuleset {
 	public ServerHearts(GameServer server) {
 		super(RULESET, server);
 		swap = new Hashtable<String, Set<Card>>();
+		heartBroken = false;
 	}
 
 	@Override
@@ -59,7 +60,7 @@ public class ServerHearts extends ServerRuleset {
                 if (card != HeartsCard.Kreuz2) {
                     return false;
                 } else {
-                    return true;
+                    return playCard(card);
                 }
                 // Es wurden bereits Karten gespielt
             } else {
@@ -67,42 +68,55 @@ public class ServerHearts extends ServerRuleset {
                 if (card.getColour() == Colour.HEART || card == HeartsCard.PikDame) {
                     // Wenn der Spieler nur Herz auf der Hand hat, oder nur Herz und die PikDame
                     List<Card> hand = getCurrentPlayer().getHand();
-                    findOtherCard:
+                    
                     for (Card handCard : hand) {
                         // Wenn in der Spielerhand eine Karte weder Herz noch PikDame ist
-                        if (handCard.getColour() != Colour.HEART && handCard != HeartsCard.PikDame) {
+                        if (handCard.getColour() != Colour.HEART) {
                             return false;
+                        } else if (handCard != HeartsCard.PikDame) {
+                        	return false;
                         }
                     }
-                    return true;
+                    heartBroken = true;
+                    return playCard(card);
                 } else {
                     return testOtherHandCards(card);
                 }
             }
             // Die Spieler befinden sich nicht mehr im ersten Umlauf
-        } else if (getCurrentPlayer().getHand().size() < 13) {
+        } else {
             // In diesem Umlauf wurde noch keine Karte gespielt
             if (getPlayedCards().size() == 0) {
                 // Die Karte, die gespielt werden soll, hat die Farbe Herz
                 if (card.getColour() == Colour.HEART) {
                     // Wurde Herz schon einmal gespielt
                     if (heartBroken == true) {
-                        return true;
+                        return playCard(card);
                     } else {
-                        return false;
+                    	for(Card handCard : getCurrentPlayer().getHand()) {
+                    		if(handCard.getColour() != Colour.HEART); {
+                    			return false;
+                    		}
+                    	}
+                    	heartBroken = true;
+                        return playCard(card);
                     }
                     // Die Karte hat nicht die Farbe Herz
                 } else {
-                    return true;
+                    return playCard(card);
                 }
                 // Es wurden schon Karten gespielt
             } else {
                 return testOtherHandCards(card);
             }
         }
-        return true;
 	}
 
+	/**
+	 * Überprüft ob man eine Kartenfarbe zugeben muss
+	 * @param card Die zu spielende Karte
+	 * @return true falls Karte gültig, false wenn nicht
+	 */
     private boolean testOtherHandCards(Card card) {
         Card firstCard = getPlayedCards().get(0).getCard();
         // Die Karte hat eine andere Farbe als die erste gespielte Karte der Runde
@@ -113,18 +127,24 @@ public class ServerHearts extends ServerRuleset {
                 // Es gibt eine Karte auf der Hand, die die Farbe der erstgepielten Karte hat
                 if (handCard.getColour() == firstCard.getColour()) {
                     return false;
-                    // Die Hand enthält keine Karte der Farbe der erstgespielten Karte
+                    
+                 // Die Spieler möchte ein Herz spielen, hat aber noch andere Karten auf der Hand
+                    // und Herz ist noch nicht gebrochen
+                } else if(handCard.getColour() != Colour.HEART && 
+                		card.getColour() == Colour.HEART &&
+                		!heartBroken) {
+                	return false;
                 }
             }
 
             // Die zu spielende Karte hat die Farbe Herz
             if (card.getColour() == Colour.HEART) {
                 heartBroken = true;
-            }
-            return true;
+            } 
+            return playCard(card);
         }
         // Die Karte hat die selbe Farbe, wie die erste ausgespielte Karte der Runde
-        return true;
+        return playCard(card);
     }
 
 	@Override
@@ -452,6 +472,7 @@ public class ServerHearts extends ServerRuleset {
 	protected void startRound() {
 		if (getGamePhase() == GamePhase.RoundStart) {
 			getGameState().shuffleDeck();
+			heartBroken = false;
 
 			/*
 			 * Verteilt die Karten an Spieler. Wenn false zurück kommt wird ein

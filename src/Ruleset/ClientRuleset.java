@@ -36,6 +36,11 @@ public abstract class ClientRuleset {
 	 * Die momentane Spielphase
 	 */
 	private GamePhase gamePhase;
+	
+	/**
+	 * Die Gewinner des Spiels
+	 */
+	private List<String> winners;
 
 	/**
 	 * Erstellt eine ClientRuleset Klasse
@@ -89,7 +94,7 @@ public abstract class ClientRuleset {
 	 * @return den Spielzustand
 	 */
 	public GameClientUpdate getGameState() {
-		if (gamePhase != GamePhase.Start) {
+		if (gamePhase != GamePhase.Start || gameState == null) {
 			return gameState;
 		} else {
 			throw new IllegalStateException("Spiel hat noch nicht begonnen.");
@@ -142,7 +147,7 @@ public abstract class ClientRuleset {
 	 * 
 	 * @return Der momentane Spieler
 	 */
-	public PlayerState getCurrentPlayer() {
+	public String getCurrentPlayer() {
 		if (gamePhase == GamePhase.Start) {
 			throw new IllegalStateException("Spiel hat noch nicht begonnen.");
 		} else {
@@ -188,6 +193,11 @@ public abstract class ClientRuleset {
 		}
 	}
 	
+	public List<String> getWinners() {
+		if(gamePhase == GamePhase.Ending) {
+			return winners;
+		}
+	}
 	/**
 	 * Verarbeitet eine RulesetMessage vom Server
 	 * 
@@ -238,8 +248,8 @@ public abstract class ClientRuleset {
 	 *            Die Nachricht vom Server
 	 */
 	public void resolveMessage(MsgCardRequest msgCardRequest) {
-		throw new IllegalArgumentException(
-				"Das Comobject MsgCardRequest wird hier nicht" + "gebraucht");
+		setGamePhase(GamePhase.CardRequest);
+		getModel().announceTurn();
 	}
 
 	/**
@@ -251,7 +261,8 @@ public abstract class ClientRuleset {
 	 */
 	public void resolveMessage(MsgGameEnd gameEnd) {
 		setGamePhase(GamePhase.Ending);
-		getModel().announceWinner(gameEnd.getWinnerName());
+		winners = gameEnd.getWinnerName();
+		getModel().announceWinner();
 
 	}
 
@@ -313,22 +324,13 @@ public abstract class ClientRuleset {
 	}
 
 	/**
-	 * Ruft beim Model die Methode announceWinner, wenn es einem Gewinner gibt
-	 * 
-	 * @param winner
-	 *            Der Gewinner
-	 */
-	protected void announceWinner(String winner) {
-		// TODO client.announceWinner(winner);
-	}
-
-	/**
 	 * Ruft beim Model die send Methode auf und verschickt eine Rulesetmessage
 	 * 
 	 * @param message
 	 *            Die Nachricht
 	 */
 	protected void send(RulesetMessage message) {
+		gamePhase = GamePhase.Playing;
 		client.send(message);
 	}
 
