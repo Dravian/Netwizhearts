@@ -44,13 +44,13 @@ public class GamePanel extends JPanel{
 	
 	private List<OtherPlayer> otherHands;
 	
-	private DrawDeck drawDeck;
-	
 	private List<DiscardPile> discardPiles;
 	
 	private BufferedImage background;
 	
 	private DrawDeck deck;
+	
+	private TrumpColour trumpColour;
 	
 	/**
 	 * Erstellt ein GamePanel
@@ -73,8 +73,12 @@ public class GamePanel extends JPanel{
 		contentPane.add(ownScore);
 		
 		deck = new DrawDeck();
-		deck.setBounds(920, 390, 70, 105);
+		deck.setBounds(925, 390, 70, 105);
 		contentPane.add(deck);
+		
+		trumpColour = new TrumpColour();
+		trumpColour.setBounds(873, 445, 50, 50);
+		contentPane.add(trumpColour);
 		
 		otherHands = new LinkedList<OtherPlayer>();
 		discardPiles = new LinkedList<DiscardPile>();
@@ -126,15 +130,7 @@ public class GamePanel extends JPanel{
 	}
 	
 	public void updateTrumpColour(final Colour col) {
-		SwingUtilities.invokeLater(new Runnable() {
-
-			@Override
-			public void run() {
-				drawDeck.setTrumpColour(col);
-			}
-			
-		});
-		
+		trumpColour.setTrumpColour(col);
 	}
 	
 	private void updateOwnOtherData(OtherData ownData) {

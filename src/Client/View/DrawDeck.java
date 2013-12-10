@@ -19,13 +19,9 @@ import Ruleset.Colour;
 public class DrawDeck extends JPanel{
 	
 	private ViewCard shownCard;
-	private boolean isTrump;
-	private Colour trumpColour;
 	
 	public DrawDeck() {
 		shownCard = new ViewCard(null);
-		isTrump = false;
-		trumpColour = null;
 		this.add(shownCard);
 		this.setLayout(null);
 	}
@@ -37,11 +33,6 @@ public class DrawDeck extends JPanel{
 	@Override
 	public int getHeight() {
 		return shownCard.getHeight();
-	}
-	
-	public void setTrumpColour(Colour col) {
-		isTrump = true;
-		trumpColour = col;
 	}
 	
 	/**
@@ -56,24 +47,5 @@ public class DrawDeck extends JPanel{
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		if(isTrump) {
-			switch (trumpColour) {
-			case RED:
-				g.setColor(Color.RED);
-				break;
-			case BLUE:
-				g.setColor(Color.BLUE);
-				break;
-			case GREEN:
-				g.setColor(Color.GREEN);
-				break;
-			case YELLOW:
-				g.setColor(Color.YELLOW);
-				break;
-			default:
-				break;
-			}
-			g.fillRect(0, 0, 105, 70);
-		}
     }
 }
