@@ -9,6 +9,7 @@ import Ruleset.DiscardedCard;
 import Ruleset.GameClientUpdate;
 import Ruleset.OtherData;
 import Ruleset.RulesetType;
+import Ruleset.UserMessages;
 import Server.GameServerRepresentation;
 import Client.View.Language;
 import ComObjects.ComChatMessage;
@@ -412,7 +413,7 @@ public class ClientModel extends Observable{
 	 * @return Liste von Spielernamen oder null wenn leer.
 	 */
 	public List<String> getPlayerlist() {
-		return playerList == null ? new LinkedList<String>() : playerList;
+		return playerList;
 	}
 
 	/**
@@ -426,11 +427,11 @@ public class ClientModel extends Observable{
 	}
 	
 	public String getGameMaster() {
-		return gameMaster == null ? new String() : gameMaster;
+		return gameMaster;
 	}
 
 	public String getPlayerName() {
-		return playerName == null ? new String() : playerName;
+		return playerName;
 	}
 
 	/**
@@ -544,8 +545,8 @@ public class ClientModel extends Observable{
 	public List<Card> getCardsToChooseFrom() {
 		if (state == ClientState.GAME) {
 			if (ruleset != null) {
-				if(chooseCards != null) {
-					return chooseCards;
+				if(ruleset.getClass().equals(ClientHearts.class)) {
+					return ((ClientHearts) ruleset).getOwnHand();
 				}
 			}
 		}
@@ -585,7 +586,7 @@ public class ClientModel extends Observable{
 	 * @param cards Liste der Karten, von denen gewaehlt werden kann
 	 * @param text Text, der dem User angezeigt werden soll
 	 */
-	public void openChooseCardsWindow(WarningMsg msg) {
+	public void openChooseCardsWindow(UserMessages msg) {
 		if (state == ClientState.GAME) {
 			if (msg != null) {
 					informView(ViewNotification.openChooseCards);
@@ -627,7 +628,7 @@ public class ClientModel extends Observable{
 	 * @param items Liste der Items, von denen eines gewaehlt werden soll
 	 * @param text Text, der dem User angezeigt werden soll
 	 */
-	public void openChooseColourWindow(WarningMsg msg) {
+	public void openChooseColourWindow(UserMessages msg) {
 		if (state == ClientState.GAME) {
 			if (ruleset != null) {
 			   if (ruleset.getClass().equals(ClientWizard.class)) {	
@@ -676,7 +677,7 @@ public class ClientModel extends Observable{
 	 *
 	 * @param text Text, der dem User angezeigt werden soll
 	 */
-	public void openNumberInputWindow(WarningMsg msg) {
+	public void openNumberInputWindow(UserMessages msg) {
 		if (state == ClientState.GAME) {
 			if (ruleset != null) {
 			   if (ruleset.getClass().equals(ClientWizard.class)) {
@@ -686,8 +687,8 @@ public class ClientModel extends Observable{
      	}
 	}
 	
-	public void announceTrumpColour() {
-		//TODO enum einbauen ??
+	public void announceTrumpColour(UserMessages msg) {
+		informView(ViewNotification.trumpUpdate);
 	}
 	
 	/**
@@ -706,12 +707,12 @@ public class ClientModel extends Observable{
 		return null;
 	}
 	
-	public void announceTurn() {
-		
+	public void announceTurn(UserMessages msg) {
+		informView(ViewNotification.turnUpdate);
 	}
 	
 	public int getTurn() {
-		return 0;
+		return ruleset.getRoundNumber();
 	}
 
 	/**
@@ -809,16 +810,16 @@ public class ClientModel extends Observable{
 	}
 	
 	public void updateGameState() {
-		
+		informView(ViewNotification.gameUpdate);
 	}
 	
 	public GameClientUpdate getGameUpdate() {
-		return null;
+		return ruleset.getGameState();
 	}
 	
-	public void openWarning(WarningMsg msg) {
+	public void openWarning(UserMessages msg) {
 		if (state == ClientState.GAME) {
-			
+			warningText.append(screenOut.resolveWarning(msg));
 		}
 	}
 	
@@ -852,7 +853,7 @@ public class ClientModel extends Observable{
 	 */
 	public List<String> getWinner() {
 		if (state == ClientState.ENDING) {
-			return winner;
+			return ruleset.getWinners();
 		}
 		return new LinkedList<String>();
 	}
