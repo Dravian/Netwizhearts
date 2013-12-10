@@ -118,7 +118,7 @@ public class ClientHearts extends ClientRuleset {
 				}
 			}
 		} else {
-			setWarning(WarningMsg.WrongPhase);
+			getModel().openWarning(WarningMsg.WrongPhase);
 			throw new IllegalStateException("Jetzt darf keine Karte gespielt werden.");
 		}
 	}
