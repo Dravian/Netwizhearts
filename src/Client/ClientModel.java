@@ -7,7 +7,6 @@ import Ruleset.ClientWizard;
 import Ruleset.Colour;
 import Ruleset.DiscardedCard;
 import Ruleset.GameClientUpdate;
-import Ruleset.OtherData;
 import Ruleset.RulesetType;
 import Ruleset.UserMessages;
 import Server.GameServerRepresentation;
@@ -24,7 +23,6 @@ import ComObjects.ComLobbyUpdateGamelist;
 import ComObjects.ComLoginRequest;
 import ComObjects.ComObject;
 import ComObjects.ComRuleset;
-import ComObjects.ComServerAcknowledgement;
 import ComObjects.ComStartGame;
 import ComObjects.ComUpdatePlayerlist;
 import ComObjects.ComWarning;
@@ -41,7 +39,6 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Observable;
-import java.util.Set;
 
 /**
  * ClientModel. Das ClientModel ist die Schnittstelle zwischen dem MessageListenerThread,
@@ -59,14 +56,6 @@ public class ClientModel extends Observable{
 	private String playerName;
 	
 	private String gameMaster;
-	
-	private List<String> otherPlayerData;
-	
-	private List<DiscardedCard> playedCards;
-	
-	private List<Card> ownHand;
-	
-	private List<String> winner;
 	
 	/**
 	 * Referenz auf das Regelwerk des Spieles.
@@ -125,7 +114,6 @@ public class ClientModel extends Observable{
 		this.language = Language.English;
 		screenOut = new LanguageInterpreter(language);
 		playerName = new String();
-		winner = new LinkedList<String>();
 		warningText = new StringBuffer();
 		playerList = new LinkedList<String>();
 		gameList = new LinkedList<GameServerRepresentation>();
