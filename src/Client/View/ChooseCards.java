@@ -38,6 +38,7 @@ public class ChooseCards extends JFrame implements Observer{
 	
 	
 	public ChooseCards() {
+		setBounds(100, 100, 780, 330);
 		setResizable(false);
 		getContentPane().setLayout(null);
 		
@@ -51,7 +52,7 @@ public class ChooseCards extends JFrame implements Observer{
 		handPanel.setBounds(10, 137, 750, 105);
 		getContentPane().add(handPanel);
 		
-		btnOK = new JButton("New button");
+		btnOK = new JButton("OK");
 		btnOK.setBounds(628, 253, 132, 40);
 		
 		getContentPane().add(btnOK);

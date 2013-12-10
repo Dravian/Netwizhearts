@@ -32,6 +32,7 @@ public class ChooseItem extends JFrame implements Observer{
 	private JButton btnOK;
 	
 	public ChooseItem() {
+		setBounds(100, 100, 370, 190);
 		setResizable(false);
 		getContentPane().setLayout(null);
 		

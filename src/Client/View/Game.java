@@ -203,6 +203,18 @@ public class Game extends JFrame implements Observer{
 			break;
 		case gameUpdate:
 			gamePanel.updateGame(observed.getGameUpdate());
+//				try {
+//
+//					System.out.println(observed.toString());
+//
+//				} catch (Exception e) {
+//					System.out.println("Observed failed");
+//					try {
+//						System.out.println(observed.getGameUpdate().toString());
+//					} catch (Exception f) {
+//						System.out.println("getGame feiled");
+//					}
+//				}
 			repaint();
 			break;
 		case trumpUpdate:
@@ -237,6 +249,7 @@ public class Game extends JFrame implements Observer{
 	public void update(Observable o, String arg) {
 		if (this.isVisible()) {
 			chatlog.append(arg);
+			System.out.println("Funktioniert");
 		}
 	}
 	
