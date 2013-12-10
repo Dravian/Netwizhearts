@@ -283,11 +283,9 @@ public class ServerWizard extends ServerRuleset {
                     .getCard().getColour()) {
                 strongestCard = nextCard;
 
-            } else if (nextCard.getCard().getColour() == getGameState().getUncoveredCard()
-                    .getColour()
+            } else if (nextCard.getCard().getColour() == trumpColour
                     && (nextCard.getCard().getValue() != valueOfFool)
-                    && strongestCard.getCard().getColour() != getGameState().getUncoveredCard()
-                    .getColour()) {
+                    && strongestCard.getCard().getColour() != trumpColour) {
                 strongestCard = nextCard;
             }
 
