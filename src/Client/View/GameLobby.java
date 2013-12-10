@@ -251,6 +251,9 @@ public class GameLobby extends JFrame implements Observer{
 		case gameStarted:
 			this.setVisible(false);
 			break;
+		case quitGame:
+			this.dispose();
+			break;
 		default:
 			break;
 		}

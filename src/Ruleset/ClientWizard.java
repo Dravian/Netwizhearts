@@ -80,7 +80,7 @@ public class ClientWizard extends ClientRuleset {
 	public void resolveMessage(MsgUser gameUpdate) {
 		int valueOfSorcerer = 14;
 		int valueOfFool = 0;
-		
+		setGamePhase(GamePhase.Playing);
 		setGameState(gameUpdate.getGameClientUpdate());
 		
 		if(getGameState().getUncoveredCard().getValue() == valueOfSorcerer ||

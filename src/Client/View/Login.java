@@ -187,6 +187,9 @@ public class Login extends JFrame implements Observer{
 		case windowChangeForced:
 			this.setVisible(false);
 			break;
+		case quitGame:
+			this.dispose();
+			break;
 		default:
 			break;
 		}

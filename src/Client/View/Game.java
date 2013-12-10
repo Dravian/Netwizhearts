@@ -96,7 +96,7 @@ public class Game extends JFrame implements Observer{
 //		diskarten.add(new DiscardedCard("Mr. Brown", HeartsCard.Herz5));
 //		diskarten.add(new DiscardedCard("Myself", HeartsCard.Herz6));
 //
-//		gamePanel = new GamePanel(players, data, contentPane);
+//		gamePanel = new GamePanel(players, contentPane);
 //		gamePanel.setBounds(10, 11, 998, 495);
 //		gamePanel.updateCardsPlayed(diskarten);
 //		gamePanel.updateOwnCards(karten);
@@ -161,13 +161,12 @@ public class Game extends JFrame implements Observer{
 	 * Ablagestapel vor sich.
 	 * 
 	 * @param players Liste der Spieler
-	 * @param data Liste der Spielerdaten
 	 */
-	public void makeTrickGameBoard(final List<String> players, final List<String> data) {
+	public void makeTrickGameBoard(final List<String> players) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					gamePanel = new GamePanel(players, data, contentPane);
+					gamePanel = new GamePanel(players, contentPane);
 					gamePanel.setBounds(10, 11, 998, 547);
 					gamePanel.addCardMouseListener(cardMouseListener);
 					contentPane.add(gamePanel);
@@ -186,7 +185,8 @@ public class Game extends JFrame implements Observer{
 	 * 
 	 * @param o erwartet ein Objekt von der Klasse ClientModel
 	 * @param arg erwartet: playedCardsUpdate, otherDataUpdate,
-	 * 					  	moveAcknowledged, gameStarted, windowChangeForced
+	 * 					  	moveAcknowledged, gameStarted, windowChangeForced,
+	 * 						quitGame
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
@@ -197,7 +197,7 @@ public class Game extends JFrame implements Observer{
 		case gameStarted:
 			List<String> players = observed.getPlayerlist();
 			players.remove(observed.getPlayerName());
-			makeTrickGameBoard(players, observed.getOtherPlayerData());
+			makeTrickGameBoard(players);
 			chatlog.setText("");
 			this.setVisible(true);
 			break;
@@ -217,6 +217,9 @@ public class Game extends JFrame implements Observer{
 			break;
 		case windowChangeForced:
 			this.setVisible(false);
+			break;
+		case quitGame:
+			this.dispose();
 			break;
 		default:
 			break;

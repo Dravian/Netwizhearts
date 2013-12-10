@@ -24,8 +24,10 @@ public class Warning extends JFrame implements Observer{
 	
 	private JTextArea warningTextArea;
 	private JButton okButton;
+	private boolean dispose;
 	
 	public Warning() {
+		dispose = false;
 		setTitle("Warning");
 		setBounds(50, 50, 433, 204);
 		setAlwaysOnTop(true);
@@ -53,6 +55,15 @@ public class Warning extends JFrame implements Observer{
 	}
 	
 	/**
+	 * Gibt zurueck, ob das Fenster die Nachricht quitGame erhalten hat.
+	 * 
+	 * @return true, wenn ja, false sonst
+	 */
+	public boolean isDisposed() {
+		return dispose;
+	}
+	
+	/**
 	 * Wird durch notify() im ClientModel aufgerufen. Je nach dem in arg
 	 * übergebenen Befehl wird ein Update des Fensters ausgeführt 
 	 * oder eine Fehlermeldung angezeigt.
@@ -77,6 +88,9 @@ public class Warning extends JFrame implements Observer{
 			});
 			
 			this.setVisible(true);
+			break;
+		case quitGame:
+			dispose = true;
 			break;
 		default:
 			break;

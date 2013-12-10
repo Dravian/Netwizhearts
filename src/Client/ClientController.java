@@ -114,6 +114,7 @@ public class ClientController {
 		createGame = new CreateGame();
 		createGame.setRulesetTypes(clientModel.getRulesets());
 		createGame.addCreateButtonListener(new CreateButtonListener());
+		clientModel.addObserver(createGame);
 		
 		gameLobby = new GameLobby();
 		gameLobby.addWindowListener(new GameLobbyCloseListener());
@@ -370,7 +371,10 @@ public class ClientController {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			warning.setVisible(false);			
+			warning.setVisible(false);	
+			if (warning.isDisposed()) {
+				warning.dispose();
+			}
 		}
 		
 	}
