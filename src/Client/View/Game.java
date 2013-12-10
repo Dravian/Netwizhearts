@@ -207,6 +207,7 @@ public class Game extends JFrame implements Observer{
 			break;
 		case trumpUpdate:
 			gamePanel.updateTrumpColour(observed.getTrumpColour());
+			repaint();
 			break;
 		case turnUpdate:
 			//TODO Anzeigen, dass man an der Reihe ist
