@@ -1,6 +1,7 @@
 package Ruleset;
 
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -27,14 +28,9 @@ public class GameClientUpdate implements Serializable{
 	private List<OtherData> otherPlayerData;
 	
 	/**
-	 * Der Spieler der zuerst gespielt hat
-	 */
-	private PlayerState firstPlayer;
-	
-	/**
 	 * Der Spieler der grad am Zug ist
 	 */
-	private PlayerState currentPlayer;
+	private String currentPlayer;
 	
 	/**
 	 * Die Anzahl der gespielten Runden
@@ -55,11 +51,13 @@ public class GameClientUpdate implements Serializable{
 	 * @param trumpCard Die Trumpffarbe
 	 */
 	protected GameClientUpdate(PlayerState playerState, List<DiscardedCard> discardPile,
-			List<OtherData> otherPlayerData,  PlayerState firstPlayer, PlayerState currentPlayer,
+			List<OtherData> otherPlayerData,  String currentPlayer,
 			int roundNumber, Card trumpCard) {
 		this.playerState = playerState;
 		this.discardPile = discardPile;
+		Collections.unmodifiableList(this.discardPile);
 		this.otherPlayerData = otherPlayerData;
+		Collections.unmodifiableList(this.otherPlayerData);
 		this.currentPlayer = currentPlayer;
 		this.roundNumber = roundNumber;
 		this.uncoveredCard = trumpCard;
@@ -69,8 +67,9 @@ public class GameClientUpdate implements Serializable{
 	 * Holt die Karten die der Client auf der Hand hat
 	 * @return ownHand Die Hand des Clients
 	 */
-	protected List<Card> getOwnHand() {
+	public List<Card> getOwnHand() {
 		List<Card> ownHand = playerState.getHand();
+		Collections.unmodifiableList(ownHand);
 		return ownHand;
 	}
 
@@ -78,7 +77,7 @@ public class GameClientUpdate implements Serializable{
 	 * Holt die gespielten Karten auf dem Ablagestapel
 	 * @return discardPile Die gespielten Karten
 	 */
-	protected List<DiscardedCard> getPlayedCards() {
+	public List<DiscardedCard> getPlayedCards() {
 		return discardPile;
 	}
 
@@ -86,7 +85,7 @@ public class GameClientUpdate implements Serializable{
 	 * Holt die Otherdata des Client als String als Stringrepr�sentation
 	 * @return ownData Die Otherdata des Clients
 	 */
-	protected OtherData getOwnData() {
+	public OtherData getOwnData() {
 		return playerState.getOtherData();
 	}
 	
@@ -95,7 +94,7 @@ public class GameClientUpdate implements Serializable{
 	 * @param player Der Name des Spielers
 	 * @return otherPlayerData Die OtherData der anderen Spieler
 	 */
-	protected List<OtherData> getOtherPlayerData() {
+	public List<OtherData> getOtherPlayerData() {
 		return otherPlayerData;
 	}
 	
@@ -103,15 +102,15 @@ public class GameClientUpdate implements Serializable{
 	 * Gibt den Spieler der momentan am Zug ist zur�ck
 	 * @return Der momentane Spieler
 	 */
-	protected PlayerState getCurrentPlayer() {
+	public String getCurrentPlayer() {
 		return currentPlayer;
 	}
 	
 	/**
-	 * Gibt die Rundenanzahl zur�ck
+	 * Gibt die Rundenanzahl zurück
 	 * @return Die Rundenanzahl
 	 */
-	protected int getRoundNumber() {
+	public int getRoundNumber() {
 		return roundNumber;
 	}
 	
@@ -119,15 +118,8 @@ public class GameClientUpdate implements Serializable{
 	 * Holt die vom Deck aufgedeckte Karte, falls keine existiert wird eine EmptyCard zurückgegeben
 	 * @return uncoveredCard Die aufgedeckte Karte
 	 */
-	protected Card getUncoveredCard() {
+	public Card getUncoveredCard() {
 		return uncoveredCard;
 	}
 
-	/**
-	 * Holt den Spieler der zuerst eine Karte hingelegt hat
-	 * @return Den ersten Spieler
-	 */
-	protected PlayerState getFirstPlayer() {
-		return firstPlayer;
-	}
 }

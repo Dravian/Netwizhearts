@@ -398,9 +398,8 @@ public abstract class ServerRuleset {
 	protected GameClientUpdate generateGameClientUpdate(PlayerState player) {
 		return new GameClientUpdate(player,
 				gameState.getPlayedCards(),
-				viewOfOtherPlayers(player), 
-				getFirstPlayer(),
-				getCurrentPlayer(),
+				viewOfOtherPlayers(player),
+				getCurrentPlayer().getPlayerStateName(),
 				getRoundNumber(),
 				gameState.getTrumpCard());
 		
