@@ -687,7 +687,7 @@ public class ClientModel extends Observable{
      	}
 	}
 	
-	public void announceTrumpColour(UserMessages msg) {
+	public void updateTrumpColour(UserMessages msg) {
 		informView(ViewNotification.trumpUpdate);
 	}
 	
@@ -809,7 +809,7 @@ public class ClientModel extends Observable{
 		}
 	}
 	
-	public void updateGameState() {
+	public void updateGame() {
 		informView(ViewNotification.gameUpdate);
 	}
 	
