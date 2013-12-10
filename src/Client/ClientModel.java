@@ -585,9 +585,9 @@ public class ClientModel extends Observable{
 	 * @param cards Liste der Karten, von denen gewaehlt werden kann
 	 * @param text Text, der dem User angezeigt werden soll
 	 */
-	public void openChooseCardsWindow(ENUM EINBAUEN) {
+	public void openChooseCardsWindow(WarningMsg msg) {
 		if (state == ClientState.GAME) {
-			if (cards != null) {
+			if (msg != null) {
 					informView(ViewNotification.openChooseCards);
 			} else {
 				throw new IllegalArgumentException();
@@ -627,7 +627,7 @@ public class ClientModel extends Observable{
 	 * @param items Liste der Items, von denen eines gewaehlt werden soll
 	 * @param text Text, der dem User angezeigt werden soll
 	 */
-	public void openChooseColourWindow(ENUM EINBAUEN) {
+	public void openChooseColourWindow(WarningMsg msg) {
 		if (state == ClientState.GAME) {
 			if (ruleset != null) {
 			   if (ruleset.getClass().equals(ClientWizard.class)) {	
@@ -641,7 +641,7 @@ public class ClientModel extends Observable{
 		if (state == ClientState.GAME) {
 			if (ruleset != null) {
 				if (ruleset.getClass().equals(ClientWizard.class)) {
-					return ((ClientWizard) ruleset).;
+					return ((ClientWizard) ruleset).getColours();
 				}
 			}
 		}
@@ -676,7 +676,7 @@ public class ClientModel extends Observable{
 	 *
 	 * @param text Text, der dem User angezeigt werden soll
 	 */
-	public void openNumberInputWindow(ENUM EINBAUEN) {
+	public void openNumberInputWindow(WarningMsg msg) {
 		if (state == ClientState.GAME) {
 			if (ruleset != null) {
 			   if (ruleset.getClass().equals(ClientWizard.class)) {
@@ -708,6 +708,10 @@ public class ClientModel extends Observable{
 	
 	public void announceTurn() {
 		
+	}
+	
+	public int getTurn() {
+		return 0;
 	}
 
 	/**
@@ -812,8 +816,10 @@ public class ClientModel extends Observable{
 		return null;
 	}
 	
-	public void setWarningText(String text) {
-		
+	public void openWarning(WarningMsg msg) {
+		if (state == ClientState.GAME) {
+			
+		}
 	}
 	
 	/**
