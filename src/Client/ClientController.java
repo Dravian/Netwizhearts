@@ -590,7 +590,7 @@ public class ClientController {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			try {
-			clientModel.giveColourSelection((Colour)chooseColour.getItemSelection());
+			clientModel.giveColourSelection(chooseColour.getItemSelection());
 			chooseColour.setVisible(false);
 			} catch (ClassCastException e) {
 				//TODO

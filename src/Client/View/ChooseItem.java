@@ -65,8 +65,8 @@ public class ChooseItem extends JFrame implements Observer{
 	 * 
 	 * @return ausgewahltes Item der ComboBox
 	 */
-	public Object getItemSelection() {
-		Object ret = comboBox.getSelectedItem();
+	public Colour getItemSelection() {
+		Colour ret = (Colour) comboBox.getSelectedItem();
 		return ret;
 	}
 	
