@@ -155,7 +155,7 @@ public class LanguageInterpreter {
 	 * @throws IllegalArgumentException
 	 *             falls es eine unbekannte Warnmeldung bekommt
 	 */
-	private String englishWarning(WarningMsg warning) {
+	private String englishWarning(WarningMsg warning) throws IllegalArgumentException {
 		String ret;
 		switch (warning) {
 		case LoginError:
@@ -244,7 +244,7 @@ public class LanguageInterpreter {
 	 * @throws IllegalArgumentException
 	 *             falls es eine unbekannte Warnmeldung bekommt
 	 */
-	private String bavarianWarning(WarningMsg warning) {
+	private String bavarianWarning(WarningMsg warning)throws IllegalArgumentException  {
 		String ret;
 		switch (warning) {
 		case LoginError:
@@ -321,5 +321,58 @@ public class LanguageInterpreter {
 			throw e;
 		}
 		return ret;
+	}
+	
+	/**
+	 * Erhaelt einen Nachrichtentyp und gibt je nach Sprache eine entsprechende Stringmeldung
+	 * zurueck
+	 * 
+	 * @param warning
+	 *            ist der Typ der Warnung, die aufgetreten ist
+	 * @return gibt eine entsprechende Stringmeldung zurück
+	 * @throws IllegalArgumentException
+	 *             falls es eine unbekannte Warnmeldung bekommt
+	 */
+	public String resolveWarning(Enum message)
+			throws IllegalArgumentException {
+		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+		String ret = sdf.format(Calendar.getInstance().getTime());
+		switch (language) {
+		case German:
+			ret = "(" + ret + ") " + germanMessage(message)+"\n";
+			break;
+		case English:
+			ret = "(" + ret + ") " + englishMessage(message)+"\n";
+			break;
+		case Bavarian:
+			ret = "(" + ret + ") " + bavarianMessage(message)+"\n";
+			break;
+		}
+		return ret;
+	}
+
+	private String germanMessage(Enum message)throws IllegalArgumentException  {
+		// TODO Automatisch erstellter Methoden-Stub
+		String ret;
+		switch (message) {
+		case :
+			ret = "";
+			break;
+			
+		default:
+			IllegalArgumentException e = new IllegalArgumentException();
+			throw e;
+		}
+		return ret;
+	}
+
+	private String englishMessage(Enum message) throws IllegalArgumentException {
+		// TODO Automatisch erstellter Methoden-Stub
+		return null;
+	}
+
+	private String bavarianMessage(Enum message) throws IllegalArgumentException {
+		// TODO Automatisch erstellter Methoden-Stub
+		return null;
 	}
 }
