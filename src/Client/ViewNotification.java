@@ -9,13 +9,11 @@ package Client;
  * stattgefunden hat.
  */
 public enum ViewNotification {
-	moveAcknowledged,
-
-	chooseCardsSuccessful,
-
-	inputNumberSuccessful,
-
-	chooseItemSuccessful,
+	gameUpdate,
+	
+	trumpUpdate,
+	
+	turnUpdate,
 
 	playerListUpdate,
 
@@ -28,10 +26,6 @@ public enum ViewNotification {
 	joinGameSuccessful,
 	
 	gameStarted,
-	
-	playedCardsUpdate,
-	
-	otherDataUpdate,
 	
     windowChangeForced,
 	
