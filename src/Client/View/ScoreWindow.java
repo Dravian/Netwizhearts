@@ -29,6 +29,7 @@ public class ScoreWindow extends JFrame implements Observer{
 	private JButton btnOK;
 	
 	public ScoreWindow() {
+		setBounds(100, 100, 450, 290);
 		getContentPane().setLayout(null);
 		
 		textArea = new JTextArea();

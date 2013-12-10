@@ -33,6 +33,7 @@ public class InputNumber extends JFrame implements Observer{
 	 * Erstellt ein neues InputNumber-Fenster
 	 */
 	public InputNumber() {
+		setBounds(100, 100, 345, 154);
 		setResizable(false);
 		getContentPane().setLayout(null);
 		
@@ -45,7 +46,7 @@ public class InputNumber extends JFrame implements Observer{
 		getContentPane().add(numberField);
 		numberField.setColumns(10);
 		
-		btnOK = new JButton("New button");
+		btnOK = new JButton("OK");
 		btnOK.setBounds(219, 94, 111, 23);
 		getContentPane().add(btnOK);
 	}
