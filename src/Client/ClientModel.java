@@ -272,17 +272,6 @@ public class ClientModel extends Observable{
 		}
 	}
 
-	/**
-	 * Diese Methode wird aufgerufen,
-	 * falls ein Server Acknowledgement auftritt.
-	 * Dabei ist es von Bedeutung, in welchem Zustand sich der Client befindet.
-	 *
-	 *  @param ack Eine Bestätigung durch den Server.
-	 */
-	public void receiveMessage(ComServerAcknowledgement ack) {
-		
-	}
-
 	public void receiveMessage(ComWarning warning) {
 		if (warning != null) {
 			if (state == ClientState.LOGIN) {
@@ -310,6 +299,7 @@ public class ClientModel extends Observable{
 	 * 
 	 */
 	public void receiveMessage(ComStartGame msg) {
+		//TODO SWITCHCASE
 		if (msg != null) {
 			if (state == ClientState.GAMELOBBY) {
 				state = ClientState.GAME;
@@ -318,8 +308,6 @@ public class ClientModel extends Observable{
 				} else if (gameType == RulesetType.Hearts) {
 					ruleset = new ClientHearts(this);
 				}
-				otherPlayerData = new LinkedList<String>();
-				playedCards = new LinkedList<DiscardedCard>();
 				informView(ViewNotification.gameStarted);
 			} else {
 				throw new IllegalArgumentException();
@@ -435,29 +423,6 @@ public class ClientModel extends Observable{
 	public List<GameServerRepresentation> getLobbyGamelist() {
 		return gameList;
 	}
-
-	/**
-	 * Gibt eine Liste der Handkarten des Spielers zurueck.
-	 *
-	 * @return List<Card> aller Handkarten des Spielers
-	 */
-	public List<Card> getOwnHand() {
-		if (state == ClientState.GAME) {
-			if (ruleset != null) {
-				return ruleset.getOwnHand();
-			}
-		}
-		return new LinkedList<Card>();
-	}
-
-	/**
-	 * Gibt zusaetzliche Daten der anderen Spieler zurueck.
-	 *
-	 * @return List<String> der Stringrepraesentationen der OtherData der Spieler
-	 */
-	public List<String> getOtherPlayerData() {
-		return otherPlayerData == null ? new LinkedList<String>() : otherPlayerData;
-	}
 	
 	public String getGameMaster() {
 		return gameMaster == null ? new String() : gameMaster;
@@ -465,21 +430,6 @@ public class ClientModel extends Observable{
 
 	public String getPlayerName() {
 		return playerName == null ? new String() : playerName;
-	}
-
-	/**
-	 * Gibt den Punktestand des Spielers zurueck.
-	 * Halt einfach die Otherdata ;P
-	 *
-	 * @return int Der eigene Punktestand.
-	 */
-	public String getOwnOtherData() {
-		if (state == ClientState.GAME) {
-			if (ruleset != null) {
-				return ruleset.getOwnData().toString();
-			}
-		}
-		return new String();
 	}
 
 	/**
@@ -636,7 +586,7 @@ public class ClientModel extends Observable{
 	 * @param cards Liste der Karten, von denen gewaehlt werden kann
 	 * @param text Text, der dem User angezeigt werden soll
 	 */
-	public void openChooseCardsWindow(List<Card> cards, String text) {
+	public void openChooseCardsWindow(ENUM EINBAUENt) {
 		if (state == ClientState.GAME) {
 			if (cards != null) {
 				if (!cards.isEmpty()) {
@@ -646,6 +596,7 @@ public class ClientModel extends Observable{
 					} else {
 						windowText = new String();
 					}
+					//TODO successfull enum nichtmehr benötigt
 					informView(ViewNotification.openChooseCards);
 				} else {
 					throw new IllegalArgumentException();
@@ -690,7 +641,7 @@ public class ClientModel extends Observable{
 	 * @param items Liste der Items, von denen eines gewaehlt werden soll
 	 * @param text Text, der dem User angezeigt werden soll
 	 */
-	public void openChooseColourWindow(List<Colour> colours, String text) {
+	public void openChooseColourWindow(ENUM EINBAUEN) {
 		if (state == ClientState.GAME) {
 			if (ruleset != null) {
 			   if (colours != null) {	
@@ -735,7 +686,7 @@ public class ClientModel extends Observable{
 					if (!((ClientWizard) ruleset).isValidTrickNumber(number)) {
 						informView(ViewNotification.openInputNumber);
 					} else {
-						informView(ViewNotification.inputNumberSuccessful);
+						//informView(ViewNotification.inputNumberSuccessful);
 					}
 				}
 			}
@@ -749,7 +700,7 @@ public class ClientModel extends Observable{
 	 *
 	 * @param text Text, der dem User angezeigt werden soll
 	 */
-	public void openNumberInputWindow(String text) {
+	public void openNumberInputWindow(ENUM EINBAUEN) {
 		if (state == ClientState.GAME) {
 			if (ruleset != null) {
 			   if (text != null) {
@@ -764,21 +715,6 @@ public class ClientModel extends Observable{
 	
 	public void announceTrumpCard() {
 		//TODO enum einbauen ??
-	}
-	
-	/**
-	 * Gibt die oberste Karte des Kartenstapels zurück,
-	 * welche nach dem Kartengeben aufgedeckt wurde.
-	 * 
-	 * @return Card Eine Karte oder null.
-	 */
-	public Card getUncoveredCard() {
-		if (state == ClientState.GAME) {
-			if (ruleset != null) {
-				return ruleset.getUncoveredCard();
-			}
-		}
-		return null;
 	}
 	
 	/**
@@ -820,47 +756,6 @@ public class ClientModel extends Observable{
 		} else {
 			throw new IllegalArgumentException();
 		}
-	}
-
-	/**
-	 * Diese Methode aktualisiert die Daten der anderen Spieler
-	 * im Model und informiert die Observer über Änderungen.
-	 * 
-	 */
-	public void otherPlayerDataUpdate() {
-		if (state == ClientState.GAME) {
-			if (ruleset != null) {
-				if (otherPlayerData != null) {
-					otherPlayerData.clear();
-				} else {
-					otherPlayerData = new LinkedList<String>();
-				}
-				for (OtherData data : ruleset.getOtherPlayerData()) {
-					otherPlayerData.add(data.toString());
-				}
-				informView(ViewNotification.otherDataUpdate);
-			} else {
-				throw new IllegalArgumentException();
-			}
-		} else {
-			throw new IllegalArgumentException();
-		}
-	}
-	
-	/**
-	 * Gibt die Karten des Ablagestapels zurück.
-	 * 
-	 * @return List<DiscardedCard> Die Karten des Ablagestapels,
-	 * oder eine leere Liste.
-	 * 
-	 */
-	public List<DiscardedCard> getPlayedCards() {
-		if (state == ClientState.GAME) {
-			if (ruleset != null) {
-				return ruleset.getPlayedCards();
-			}
-		}
-		return new LinkedList<DiscardedCard>();
 	}
 	
 	public void announceTurn() {
@@ -983,15 +878,10 @@ public class ClientModel extends Observable{
 	 * 
 	 * @param winner String der Gewinner der Partie.
 	 */
-	public void announceWinner(List<String> winner) {
+	public void announceWinner() {
 		if (state == ClientState.GAME) {
 			state = ClientState.ENDING;
-			if (winner != null) {
-				if (!winner.isEmpty()) {
-					this.winner = winner;
 					informView(ViewNotification.showScore);
-				}
-			}
 		}
 	}
 
