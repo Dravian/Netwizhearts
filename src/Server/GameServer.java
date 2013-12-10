@@ -286,6 +286,12 @@ public class GameServer extends Server {
 	 * Aufruf von changeServer an die ServerLobby zurueck und schickt ihm ein
 	 * ComInitLobby. Danach wird ein ComUpdatePlayerlist Objekt mit broadcast an
 	 * alle Clients im Spiel verschickt.
+	 * Diese Methode beendet ein laufendes Spiel, wenn ein Spieler dieses
+	 * verlaesst. Dieser wird an den LobbyServer zurueckgegeben und erhaelt ein
+	 * ComInitLobby. Die anderen Spieler werden ebenfalls an den LobbyServer
+	 * zurueckgegeben und erhalten sowohl ein ComInitLobby als auch ein
+	 * ComWarning. Der GameServer wird aus dem Set des LobbyServers entfernt und
+	 * die Spieler in der Lobby erhalten ein Gamelist Update.
 	 * 
 	 * @param player
 	 *            ist der Thread der die Nachricht erhalten hat
@@ -296,86 +302,75 @@ public class GameServer extends Server {
 	@Override
 	public synchronized void receiveMessage(Player player, ComClientLeave leave) {
 		Player leavingPlayer = player;
-		if (!playerSet.isEmpty()) {
-			if (playerSet.contains(leavingPlayer)) {
-				if (leavingPlayer.getPlayerName().equals(gameMasterName)) {
-					for (Player back : playerSet) {
-						back.changeServer(lobbyServer);
+		if (!hasStarted) {
+			if (!playerSet.isEmpty()) {
+				if (playerSet.contains(leavingPlayer)) {
+					if (leavingPlayer.getPlayerName().equals(gameMasterName)) {
+						for (Player back : playerSet) {
+							back.changeServer(lobbyServer);
+							ComInitLobby comInit = lobbyServer.initLobby();
+							back.send(comInit);
+							ComWarning warning = new ComWarning(
+									WarningMsg.GameDisbanded);
+							back.send(warning);
+						}
+						playerSet.clear();
+						lobbyServer.broadcast(new ComLobbyUpdateGamelist(true,
+								this.getRepresentation()));
+						lobbyServer.removeGameServer(this);
+					} else {
+						removePlayer(leavingPlayer);
+						leavingPlayer.changeServer(lobbyServer);
 						ComInitLobby comInit = lobbyServer.initLobby();
-						back.send(comInit);
-						ComWarning warning = new ComWarning(WarningMsg.GameDisbanded);
-						back.send(warning);
+						leavingPlayer.send(comInit);
+						ComUpdatePlayerlist update = new ComUpdatePlayerlist(
+								leavingPlayer.getPlayerName(), true);
+						broadcast(update);
+						lobbyServer.broadcast(new ComLobbyUpdateGamelist(false,
+								getRepresentation()));
 					}
-					playerSet.clear();
-					lobbyServer.broadcast(new ComLobbyUpdateGamelist(true,
-							this.getRepresentation()));
-					lobbyServer.removeGameServer(this);
 				} else {
-					removePlayer(leavingPlayer);
-					leavingPlayer.changeServer(lobbyServer);
-					ComInitLobby comInit = lobbyServer.initLobby();
-					leavingPlayer.send(comInit);
-					ComUpdatePlayerlist update = new ComUpdatePlayerlist(
-							leavingPlayer.getPlayerName(), true);
-					broadcast(update);
-					lobbyServer.broadcast(new ComLobbyUpdateGamelist(false,
-							getRepresentation()));
+					System.err.println("Player not in Game!");
 				}
 			} else {
-				System.err.println("Player not in Game!");
+				System.err.println("PlayerSet empty!");
+				player.send(new ComClientQuit());
+				player.closeConnection();
 			}
 		} else {
-			System.err.println("PlayerSet empty!");
-			player.send(new ComClientQuit());
-			player.closeConnection();
-		}
-	}
-
-	/**
-	 * Diese Methode beendet ein laufendes Spiel, wenn ein Spieler dieses
-	 * verlaesst. Dieser wird an den LobbyServer zurueckgegeben und erhaelt ein
-	 * ComInitLobby. Die anderen Spieler werden ebenfalls an den LobbyServer
-	 * zurueckgegeben und erhalten sowohl ein ComInitLobby als auch ein
-	 * ComWarning. Der GameServer wird aus dem Set des LobbyServers entfernt und
-	 * die Spieler in der Lobby erhalten ein Gamelist Update.
-	 * 
-	 * @param quit
-	 *            ist das ComObject, welches angibt, dass der Spieler das
-	 *            laufende Spiel verlaesst
-	 */
-	@Override
-	public synchronized void receiveMessage(Player player, ComClientQuit quit) {
-		if (!playerSet.isEmpty()) {
-			if (playerSet.contains(player)) {
-				removePlayer(player);
-				player.changeServer(lobbyServer);
-				ComInitLobby comInit = lobbyServer.initLobby();
-				player.send(comInit);
+			if (!playerSet.isEmpty()) {
+				if (playerSet.contains(player)) {
+					removePlayer(player);
+					player.changeServer(lobbyServer);
+					ComInitLobby comInit = lobbyServer.initLobby();
+					player.send(comInit);
+				} else {
+					System.err.println("Player not in Game!");
+				}
 			} else {
-				System.err.println("Player not in Game!");
+				System.err.println("PlayerSet empty!");
+				player.send(new ComClientQuit());
+				player.closeConnection();
 			}
-		} else {
-			System.err.println("PlayerSet empty!");
-			player.send(new ComClientQuit());
-			player.closeConnection();
-		}
-		if (!playerSet.isEmpty()) {
-			for (Player back : playerSet) {
-				back.changeServer(lobbyServer);
-				ComInitLobby comInit = lobbyServer.initLobby();
-				back.send(comInit);
-				ComWarning warning = new ComWarning(WarningMsg.GameDisbanded);
-				back.send(warning);
+			if (!playerSet.isEmpty()) {
+				for (Player back : playerSet) {
+					back.changeServer(lobbyServer);
+					ComInitLobby comInit = lobbyServer.initLobby();
+					back.send(comInit);
+					ComWarning warning = new ComWarning(
+							WarningMsg.GameDisbanded);
+					back.send(warning);
+				}
+				playerSet.clear();
+			} else {
+				System.err.println("PlayerSet empty!");
+				player.send(new ComClientQuit());
+				player.closeConnection();
 			}
-			playerSet.clear();
-		} else {
-			System.err.println("PlayerSet empty!");
-			player.send(new ComClientQuit());
-			player.closeConnection();
+			lobbyServer.removeGameServer(this);
+			lobbyServer.broadcast(new ComLobbyUpdateGamelist(true,
+					getRepresentation()));
 		}
-		lobbyServer.removeGameServer(this);
-		lobbyServer.broadcast(new ComLobbyUpdateGamelist(true,
-				getRepresentation()));
 	}
 
 	/**

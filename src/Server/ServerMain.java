@@ -27,22 +27,16 @@ public class ServerMain {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		BufferedReader in = new BufferedReader(
-				new InputStreamReader(System.in));
-		System.out.print("Input port> ");
-		String input;
 		int port;
 		try {
-			input = in.readLine();
-			if (input.isEmpty()){
+			if (args.length == 0 || args[0].isEmpty()){
 				port = 4567;
 				lobbyServer = new LobbyServer();
 				loginServer = new LoginServer(lobbyServer, port);
 			} else {
-				port = Integer.parseInt(input);
+				port = Integer.parseInt(args[0]);
 				if (port < 1025 || port > 49151) {
-					System.err.println("Invalid Portnumber, try again.");
-					main(args);	
+					System.err.println("Invalid Portnumber, try again.");	
 				} else {
 					lobbyServer = new LobbyServer();
 					loginServer = new LoginServer(lobbyServer, port);
@@ -50,10 +44,6 @@ public class ServerMain {
 			}		
 		} catch (NumberFormatException e) {
 			System.err.println("Please input a number!");
-			main(args);
-		} catch (IOException e) {
-			System.err.println("IO was lost");
-			e.printStackTrace();
 		}						
 	}
 }
