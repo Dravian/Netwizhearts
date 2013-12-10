@@ -55,7 +55,7 @@ public class ClientWizard extends ClientRuleset {
 	 */
 	public void resolveMessage(MsgNumberRequest msgNumber) {
 		setGamePhase(GamePhase.TrickRequest);
-		getModel().openNumberInputWindow(text);
+		getModel().openNumberInputWindow(UserMessages.ChooseNumber);
 	}
 
 	/**
@@ -73,7 +73,7 @@ public class ClientWizard extends ClientRuleset {
 		colours.add(Colour.GREEN);
 		colours.add(Colour.YELLOW);
 
-		getModel().openChooseColourWindow(colours, text);
+		getModel().openChooseColourWindow(UserMessages.ChooseColour);
 	}
 
 	@Override
@@ -84,7 +84,7 @@ public class ClientWizard extends ClientRuleset {
 		if (trumpCard.getValue() == valueOfSorcerer
 				&& trumpCard.getRuleset() == RulesetType.Wizard) {
 			trumpColour = msgSelection.getSelection();
-			getModel().updateTrumpColour();
+			getModel().updateTrumpColour(UserMessages.TrumpColour);
 		} else {
 			throw new IllegalArgumentException(
 					"Die vom Server geschickte Kartenfarbe" + "ist falsch.");
@@ -115,8 +115,8 @@ public class ClientWizard extends ClientRuleset {
 			int valueOfSorcerer = 14;
 
 			if (getPlayedCards().size() == getOtherPlayerData().size() + 1) {
-				return false;
-
+				getModel().openWarning(WarningMsg.RulesetError);
+				throw new RulesetException("Der Ablagestapel ist bereits voll");
 			} else if (getPlayedCards().size() == 0) {
 				send(new MsgCard(card));
 				return true;
@@ -166,6 +166,7 @@ public class ClientWizard extends ClientRuleset {
 						&& handCard.getValue() != valueOfFool
 						&& handCard.getValue() != valueOfSorcerer) {
 					setGamePhase(GamePhase.CardRequest);
+					getModel().openWarning(WarningMsg.UnvalidMove);
 					return false;
 				}
 			}
@@ -188,6 +189,7 @@ public class ClientWizard extends ClientRuleset {
 		if (getGamePhase() == GamePhase.TrickRequest) {
 			if (number < 0 || number > getRoundNumber()) {
 				setGamePhase(GamePhase.TrickRequest);
+				getModel().openWarning(WarningMsg.WrongNumber);
 				return false;
 			} else {
 				send(new MsgNumber(number));

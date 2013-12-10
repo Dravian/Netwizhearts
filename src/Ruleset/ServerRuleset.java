@@ -252,6 +252,14 @@ public abstract class ServerRuleset {
 		server.broadcastRulesetMessage(message);
 	}
 	
+	/**
+	 * Schickt eine Warnung an alle Spieler
+	 * @param message Die Nachricht
+	 */
+	protected void broadcast(WarningMsg message) {
+		server.broadcastWarning(message);
+	}
+	
 	/** 
 	 * Verarbeitet die RulesetMessage dass eine Karte vom Spieler gespielt.
 	 * Die wird dann in isValidMove überprüft, bei falscher Eingabe wird

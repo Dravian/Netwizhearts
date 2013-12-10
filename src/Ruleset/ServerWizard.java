@@ -169,7 +169,9 @@ public class ServerWizard extends ServerRuleset {
     	setGamePhase(GamePhase.Playing);
     	
     	if(getPlayedCards().size() == getPlayers().size()) {
-    		return false;
+    		broadcast(WarningMsg.RulesetError);
+        	quitGame();
+    		throw new RulesetException(" Der Ablagestapel ist bereits voll.");
     	
     	}else if(getPlayedCards().size() == 0) {
     		return playCard(card);
@@ -350,6 +352,8 @@ public class ServerWizard extends ServerRuleset {
 			 * Verteilt die Karten an Spieler. Wenn false zurück kommt wirft es eine RulesetException
 			 */
             if (!getGameState().dealCards(getGameState().getRoundNumber())) {
+            	broadcast(WarningMsg.RulesetError);
+            	quitGame();
                 throw new RulesetException(
                         "Probleme beim Verteilen der Karten!");
 
