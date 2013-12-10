@@ -44,8 +44,9 @@ public class OtherPlayer extends JPanel{
 	public OtherPlayer(String n, String i) {
 		name = n;
 		info = i;
+		this.setOpaque(true);
 		try {
-			image = ImageIO.read(new File(IMAGEPATH + "hand.jpg"));
+			image = ImageIO.read(new File(IMAGEPATH + "hand.png"));
 		} catch (IOException e) {
 			image = null;
 		}
