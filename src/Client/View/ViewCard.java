@@ -107,6 +107,7 @@ public class ViewCard extends JPanel{
 			            //TODO
 			       }	
 			}
+		repaint();
 	}
 	
 	@Override

@@ -47,6 +47,7 @@ public class DiscardPile extends JPanel{
 	public void addCard(Card card) {
 		playedCards.add(topCard.getCard());
 		topCard.setCard(card);
+		repaint();
 	}
 	
 	/**

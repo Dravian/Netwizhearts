@@ -205,7 +205,6 @@ public class Game extends JFrame implements Observer{
 					gamePanel.updateGame(observed.getGameUpdate());
 				}
 			});
-			repaint();
 			break;
 		case trumpUpdate:
 			SwingUtilities.invokeLater(new Runnable() {

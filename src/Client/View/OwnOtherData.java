@@ -25,6 +25,7 @@ public class OwnOtherData extends JPanel {
 	 */
 	public void setData(String s) {
 		ownData = s;
+		repaint();
 	}
 	
 //	/**

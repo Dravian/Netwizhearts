@@ -125,62 +125,43 @@ public class GamePanel extends JPanel{
 		
 	}
 	
-	public void updateTrumpColour(Colour col) {
-		drawDeck.setTrumpColour(col);
-	}
-	
-	private void updateOwnOtherData(final OtherData ownData) {
+	public void updateTrumpColour(final Colour col) {
 		SwingUtilities.invokeLater(new Runnable() {
 
 			@Override
 			public void run() {
-				ownScore.setData(ownData.toString());
+				drawDeck.setTrumpColour(col);
 			}
 			
 		});
-	}
-	
-	private void updateOwnCards(final List<Card> cards) {
-		SwingUtilities.invokeLater(new Runnable() {
-
-			@Override
-			public void run() {
-				ownHand.setHand(cards);
-			}
-		});
 		
 	}
 	
-	private void updateCardsPlayed(final List<DiscardedCard> cards) {
-		SwingUtilities.invokeLater(new Runnable() {
-
-			@Override
-			public void run() {				
-				for (DiscardedCard c : cards) {
-					for (OtherPlayer p : otherHands) {
-						if (c.getOwnerName().compareTo(p.getName()) == 0) {
-							int index = otherHands.indexOf(p);
-							discardPiles.get(index).addCard(c.getCard());
-						}
-					}
+	private void updateOwnOtherData(OtherData ownData) {
+		ownScore.setData(ownData.toString());
+	}
+	
+	private void updateOwnCards(List<Card> cards) {
+		ownHand.setHand(cards);
+	}
+	
+	private void updateCardsPlayed(List<DiscardedCard> cards) {
+		for (DiscardedCard c : cards) {
+			for (OtherPlayer p : otherHands) {
+				if (c.getOwnerName().compareTo(p.getName()) == 0) {
+					int index = otherHands.indexOf(p);
+					discardPiles.get(index).addCard(c.getCard());
 				}
 			}
-		});
-		
+		}
 	}
 	
-	private void updateOtherData(final List<OtherData> data) {
-		SwingUtilities.invokeLater(new Runnable() {
-
-			@Override
-			public void run() {
-				for (int i = 0; i < otherHands.size(); i++) {
-					otherHands.get(i).setInfo(data.get(i).toString());
-				}
-			}
-		});
+	private void updateOtherData(List<OtherData> data) {
+		for (int i = 0; i < otherHands.size(); i++) {
+			otherHands.get(i).setInfo(data.get(i).toString());
+		}
 	}
-		
+
 	/**
 	 * Erstellt eine Spielfeld fuer ein Stich-Kartenspiel
 	 * mit 3 Spielern
