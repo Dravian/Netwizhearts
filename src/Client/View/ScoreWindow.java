@@ -4,6 +4,7 @@
 package Client.View;
 
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -66,7 +67,12 @@ public class ScoreWindow extends JFrame implements Observer{
 			ViewNotification message = (ViewNotification) arg;
 		switch (message) {
 		case showScore:
-			textArea.setText(observed.getWindowText());//FIXME
+			textArea.setText(observed.getWindowText() + "\n");//FIXME
+			List<String> winners = observed.getWinner();
+			for (int i = 0; i < winners.size(); i++) {
+				textArea.append(winners.get(i) + "\n");
+			}
+			this.setVisible(true);
 			break;
 		case quitGame:
 			this.dispose();

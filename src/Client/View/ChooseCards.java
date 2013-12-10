@@ -19,6 +19,7 @@ import javax.swing.SwingUtilities;
 
 import Client.ClientModel;
 import Client.ViewNotification;
+import Ruleset.GameClientUpdate;
 import Ruleset.Card;
 
 
@@ -106,13 +107,10 @@ public class ChooseCards extends JFrame implements Observer{
 		switch (message) {
 		case openChooseCards:
 			//TODO
-			List<Card> handCards = observed.getOwnHand();
+			List<Card> handCards = observed.getGameUpdate().getOwnHand();
 			playerHand.setHand(handCards);
 			setMessageText(observed.getWindowText());
 			this.setVisible(true);
-			break;
-		case chooseCardsSuccessful:
-			this.setVisible(false);
 			break;
 		case quitGame:
 			this.dispose();
