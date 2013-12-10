@@ -38,6 +38,7 @@ public class WizData extends OtherData implements Serializable{
 		this.announcedTricks = annouceTricks;
 	}
 
+	
 	@Override
 	public String toString() {
 		StringBuilder otherData = new StringBuilder();

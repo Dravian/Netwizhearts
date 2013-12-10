@@ -232,6 +232,7 @@ public class ServerWizard extends ServerRuleset {
     	if(number < 0 || number > getRoundNumber()) {
     		return false;
     	}else {
+    		((WizData) getCurrentPlayer().getOtherData()).setAnnouncedTricks(number);
     		return true;
     	}
     }
@@ -282,10 +283,10 @@ public class ServerWizard extends ServerRuleset {
                     .getCard().getColour()) {
                 strongestCard = nextCard;
 
-            } else if (nextCard.getCard().getColour() == getGameState().getTrumpCard()
+            } else if (nextCard.getCard().getColour() == getGameState().getUncoveredCard()
                     .getColour()
                     && (nextCard.getCard().getValue() != valueOfFool)
-                    && strongestCard.getCard().getColour() != getGameState().getTrumpCard()
+                    && strongestCard.getCard().getColour() != getGameState().getUncoveredCard()
                     .getColour()) {
                 strongestCard = nextCard;
             }
@@ -359,27 +360,29 @@ public class ServerWizard extends ServerRuleset {
 
             }
 
-            Card trumpCard = getGameState().getTopCard();
-            getGameState().setTrumpCard(trumpCard);
+            Card uncoveredCard = getGameState().getTopCard();
+            getGameState().setUncoveredCard(uncoveredCard);
 
+            updatePlayers();
+            
 			/*
 			 * Falls ein Zauberer aufgedeckt wird, darf der Spieler vor dem
 			 * firstPlayer entscheiden welche Farbe Trumpf ist.
 			 */
-            if (trumpCard.getValue() == valueOfSorcerer) {
-            	updatePlayers();
-
+            if (uncoveredCard.getValue() == valueOfSorcerer) {
             	setGamePhase(GamePhase.SelectionRequest);
-
                 send(new MsgSelectionRequest(), getFirstPlayer().getPlayerStateName());
 
             } else {
-            	if(trumpCard.getValue() != valueOfFool) {
-            		trumpColour = trumpCard.getColour();
+            	
+            	if(uncoveredCard.getValue() != valueOfFool) {
+            		trumpColour = uncoveredCard.getColour();
+            	} else {
+            		trumpColour = Colour.NONE;
             	}
             	
-            	updatePlayers();
-
+            	broadcast(new MsgSelection(trumpColour));
+            	
             	setGamePhase(GamePhase.TrickRequest);
                 nextPlayer();
 
@@ -421,6 +424,7 @@ public class ServerWizard extends ServerRuleset {
                 }
 
                 player.getOtherData().setPoints(points);
+                ((WizData)player.getOtherData()).setAnnouncedTricks(0);
             }
 
 

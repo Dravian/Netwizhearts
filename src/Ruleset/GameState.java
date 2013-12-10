@@ -226,7 +226,7 @@ public class GameState {
 	 * @param trumpCard
 	 *            Die Trumpfkarte
 	 */
-	protected void setTrumpCard(Card trumpCard) {
+	protected void setUncoveredCard(Card trumpCard) {
 		this.uncoveredCard = trumpCard;
 	}
 
@@ -235,7 +235,7 @@ public class GameState {
 	 * 
 	 * @return trumpCard Die momentane Trumpfkarte
 	 */
-	protected Card getTrumpCard() {
+	protected Card getUncoveredCard() {
 		return uncoveredCard;
 	}
 

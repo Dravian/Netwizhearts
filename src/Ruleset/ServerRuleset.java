@@ -353,7 +353,7 @@ public abstract class ServerRuleset {
 	 * @param card Eine Karte
 	 */
 	protected void setTrumpCard(Card card) {
-		gameState.setTrumpCard(card);
+		gameState.setUncoveredCard(card);
 	}
 
 	/** 
@@ -409,7 +409,7 @@ public abstract class ServerRuleset {
 				viewOfOtherPlayers(player),
 				getCurrentPlayer().getPlayerStateName(),
 				getRoundNumber(),
-				gameState.getTrumpCard());
+				gameState.getUncoveredCard());
 		
 	}
 	
