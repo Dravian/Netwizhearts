@@ -38,6 +38,7 @@ public class InputNumber extends JFrame implements Observer{
 		getContentPane().setLayout(null);
 		
 		rsMessageArea = new JTextArea();
+		rsMessageArea.setEditable(false);
 		rsMessageArea.setBounds(10, 11, 320, 72);
 		getContentPane().add(rsMessageArea);
 		

@@ -3,6 +3,7 @@
  */
 package Client.View;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.LinkedList;
 import java.util.List;
@@ -55,6 +56,24 @@ public class DrawDeck extends JPanel{
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		
+		if(isTrump) {
+			switch (trumpColour) {
+			case RED:
+				g.setColor(Color.RED);
+				break;
+			case BLUE:
+				g.setColor(Color.BLUE);
+				break;
+			case GREEN:
+				g.setColor(Color.GREEN);
+				break;
+			case YELLOW:
+				g.setColor(Color.YELLOW);
+				break;
+			default:
+				break;
+			}
+			g.fillRect(0, 0, 105, 70);
+		}
     }
 }

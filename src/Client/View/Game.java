@@ -1,5 +1,6 @@
 package Client.View;
 
+import java.awt.EventQueue;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 import java.util.LinkedList;
