@@ -5,6 +5,7 @@ import java.util.Calendar;
 
 import Client.View.Language;
 import ComObjects.WarningMsg;
+import Ruleset.UserMessages;
 
 /**
  * Diese Klasse ist dafuer zustaendig, je nach Sprache eine entsprechende
@@ -327,52 +328,140 @@ public class LanguageInterpreter {
 	 * Erhaelt einen Nachrichtentyp und gibt je nach Sprache eine entsprechende Stringmeldung
 	 * zurueck
 	 * 
-	 * @param warning
-	 *            ist der Typ der Warnung, die aufgetreten ist
+	 * @param message
+	 *            ist der Typ der Nachricht, die aufgetreten ist
 	 * @return gibt eine entsprechende Stringmeldung zurück
 	 * @throws IllegalArgumentException
 	 *             falls es eine unbekannte Warnmeldung bekommt
 	 */
-	public String resolveWarning(Enum message)
+	public String resolveWarning(UserMessages message)
 			throws IllegalArgumentException {
-		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-		String ret = sdf.format(Calendar.getInstance().getTime());
+		String ret = new String();
 		switch (language) {
 		case German:
-			ret = "(" + ret + ") " + germanMessage(message)+"\n";
+			ret = germanMessage(message)+"\n";
 			break;
 		case English:
-			ret = "(" + ret + ") " + englishMessage(message)+"\n";
+			ret = englishMessage(message)+"\n";
 			break;
 		case Bavarian:
-			ret = "(" + ret + ") " + bavarianMessage(message)+"\n";
+			ret = bavarianMessage(message)+"\n";
 			break;
 		}
 		return ret;
 	}
-
-	private String germanMessage(Enum message)throws IllegalArgumentException  {
-		// TODO Automatisch erstellter Methoden-Stub
+	
+	/**
+	 * Hilfsmethode, für den Fall, dass die Sprache Deutsch ist
+	 * 
+	 * @param message
+	 *            ist der Typ der Nachricht, die aufgetreten ist
+	 * 
+	 * @return gibt eine entsprechende Stringmeldung zurück
+	 * @throws IllegalArgumentException
+	 *             falls es eine unbekannte Warnmeldung bekommt
+	 */
+	private String germanMessage(UserMessages message)throws IllegalArgumentException  {
 		String ret;
 		switch (message) {
-		case :
-			ret = "";
+		case ChooseColour:
+			ret = "Wähle eine Farbe.";
 			break;
-			
+		case ChooseCards:
+			ret = "Wähle drei Karten.";
+			break;
+		case ChooseNumber:
+			ret = "Gib eine Zahl ein.";
+			break;
+		case GameEnd:
+			ret = "Das Spiel ist vorbei.";
+			break;
+		case TrumpColour:
+			ret = "Es wurde eine neue Trumpffarbe ausgewählt.";
+			break;
+		case PlayCard:
+			ret = "Du bist dran. Spiele eine Karte.";
+			break;
 		default:
 			IllegalArgumentException e = new IllegalArgumentException();
 			throw e;
 		}
 		return ret;
 	}
-
-	private String englishMessage(Enum message) throws IllegalArgumentException {
-		// TODO Automatisch erstellter Methoden-Stub
-		return null;
+	
+	/**
+	 * Hilfsmethode, für den Fall, dass die Sprache Englisch ist
+	 * 
+	 * @param message
+	 *            ist der Typ der Nachricht, die aufgetreten ist
+	 * 
+	 * @return gibt eine entsprechende Stringmeldung zurück
+	 * @throws IllegalArgumentException
+	 *             falls es eine unbekannte Warnmeldung bekommt
+	 */
+	private String englishMessage(UserMessages message) throws IllegalArgumentException {
+		String ret;
+		switch (message) {
+		case ChooseColour:
+			ret = "Choose a colour.";
+			break;
+		case ChooseCards:
+			ret = "Choose three cards.";
+			break;
+		case ChooseNumber:
+			ret = "Input a number.";
+			break;
+		case GameEnd:
+			ret = "The game has ended.";
+			break;
+		case TrumpColour:
+			ret = "A new trump colour has been chosen.";
+			break;
+		case PlayCard:
+			ret = "It is your turn. Play a card.";
+			break;
+		default:
+			IllegalArgumentException e = new IllegalArgumentException();
+			throw e;
+		}
+		return ret;	
 	}
-
-	private String bavarianMessage(Enum message) throws IllegalArgumentException {
-		// TODO Automatisch erstellter Methoden-Stub
-		return null;
+	
+	/**
+	 * Hilfsmethode, für den Fall, dass die Sprache Bayerisch ist
+	 * 
+	 * @param message
+	 *            ist der Typ der Nachricht, die aufgetreten ist
+	 * 
+	 * @return gibt eine entsprechende Stringmeldung zurück
+	 * @throws IllegalArgumentException
+	 *             falls es eine unbekannte Warnmeldung bekommt
+	 */
+	private String bavarianMessage(UserMessages message) throws IllegalArgumentException {
+		String ret;
+		switch (message) {
+		case ChooseColour:
+			ret = "Wähle eine Farbe.";
+			break;
+		case ChooseCards:
+			ret = "Wähle drei Karten.";
+			break;
+		case ChooseNumber:
+			ret = "Gib eine Zahl ein.";
+			break;
+		case GameEnd:
+			ret = "Das Spiel ist vorbei.";
+			break;
+		case TrumpColour:
+			ret = "Es wurde eine neue Trumpffarbe ausgewählt.";
+			break;
+		case PlayCard:
+			ret = "Du bist dran. Spiele eine Karte.";
+			break;
+		default:
+			IllegalArgumentException e = new IllegalArgumentException();
+			throw e;
+		}
+		return ret;
 	}
 }
