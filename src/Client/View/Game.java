@@ -220,8 +220,10 @@ public class Game extends JFrame implements Observer{
 			break;
 		case turnUpdate:
 			//TODO Anzeigen, dass man an der Reihe ist
+			chatlog.append("Du bist an der Reihe\n");
 			break;
 		case windowChangeForced:
+			gamePanel = null;
 			this.setVisible(false);
 			break;
 		case quitGame:
