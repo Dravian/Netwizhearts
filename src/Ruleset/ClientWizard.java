@@ -38,6 +38,7 @@ public class ClientWizard extends ClientRuleset {
 	 */
 	public ClientWizard(ClientModel client) {
 		super(RULESET, client);
+		trumpColour = Colour.NONE;
 		colours = new ArrayList<Colour>();
 		colours.add(Colour.BLUE);
 		colours.add(Colour.GREEN);
@@ -72,19 +73,7 @@ public class ClientWizard extends ClientRuleset {
 
 	@Override
 	public void resolveMessage(MsgSelection msgSelection) {
-		setGamePhase(GamePhase.SelectionRequest);
-		Card trumpCard = getUncoveredCard();
-		int valueOfSorcerer = 14;
-
-		if (trumpCard.getValue() == valueOfSorcerer
-				&& trumpCard.getRuleset() == RulesetType.Wizard) {
-			trumpColour = msgSelection.getSelection();
-			getModel().updateTrumpColour(UserMessages.TrumpColour);
-		} else {
-			throw new IllegalArgumentException(
-					"Die vom Server geschickte Kartenfarbe" + "ist falsch.");
-		}
-
+		getModel().updateTrumpColour(UserMessages.TrumpColour);
 	}
 
 	@Override
@@ -225,7 +214,6 @@ public class ClientWizard extends ClientRuleset {
 
 	/**
 	 * Holt die Trumpffarbe des Spiels
-	 * 
 	 * @return Gibt die Trumpffarbe zurück
 	 */
 	public Colour getTrumpColour() {

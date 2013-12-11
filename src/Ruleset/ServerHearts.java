@@ -480,7 +480,7 @@ public class ServerHearts extends ServerRuleset {
 			 * neues Deck erstellt und alle Karten im Spiel gelöscht. Wenn
 			 * nochmal ein Fehler kommt wirft es eine Exception
 			 */
-			if (!getGameState().dealCards(getGameState().getRoundNumber())) {
+			if (!getGameState().dealCards(13)) {
 				broadcast(WarningMsg.RulesetError);
 				quitGame();
 				throw new RulesetException(

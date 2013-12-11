@@ -166,7 +166,6 @@ public class ServerWizard extends ServerRuleset {
     protected boolean isValidMove(Card card) {
         int valueOfFool = 0;
     	int valueOfSorcerer = 14;
-    	setGamePhase(GamePhase.Playing);
     	
     	if(getPlayedCards().size() == getPlayers().size()) {
     		broadcast(WarningMsg.RulesetError);
@@ -228,7 +227,6 @@ public class ServerWizard extends ServerRuleset {
      * @return true falls die Stichangabe gültig ist, false wenn nicht
      */
     private boolean isValidNumber(int number) {
-    	setGamePhase(GamePhase.Playing);
     	if(number < 0 || number > getRoundNumber()) {
     		return false;
     	}else {
@@ -244,7 +242,6 @@ public class ServerWizard extends ServerRuleset {
      * @return true falls die Farbe gültig ist, false wenn nicht
      */
     private boolean isValidColour(Colour colour) {
-    	setGamePhase(GamePhase.Playing);
     	
     	if(colour != Colour.RED || colour != Colour.GREEN || 
     			colour != Colour.BLUE || colour != Colour.YELLOW){
