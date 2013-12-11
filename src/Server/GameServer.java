@@ -340,36 +340,28 @@ public class GameServer extends Server {
 		} else {
 			if (!playerSet.isEmpty()) {
 				if (playerSet.contains(player)) {
-					removePlayer(player);
-					player.changeServer(lobbyServer);
-					ComInitLobby comInit = lobbyServer.initLobby();
-					player.send(comInit);
+					for (Player back : playerSet) {
+						back.changeServer(lobbyServer);
+						ComInitLobby comInit = lobbyServer.initLobby();
+						back.send(comInit);
+						ComWarning warning = new ComWarning(
+								WarningMsg.GameDisbanded);
+						back.send(warning);
+					}
+					playerSet.clear();
 				} else {
 					System.err.println("Player not in Game!");
+					player.send(new ComClientQuit());
+					player.closeConnection();
 				}
 			} else {
 				System.err.println("PlayerSet empty!");
 				player.send(new ComClientQuit());
 				player.closeConnection();
 			}
-			if (!playerSet.isEmpty()) {
-				for (Player back : playerSet) {
-					back.changeServer(lobbyServer);
-					ComInitLobby comInit = lobbyServer.initLobby();
-					back.send(comInit);
-					ComWarning warning = new ComWarning(
-							WarningMsg.GameDisbanded);
-					back.send(warning);
-				}
-				playerSet.clear();
-			} else {
-				System.err.println("PlayerSet empty!");
-				player.send(new ComClientQuit());
-				player.closeConnection();
-			}
-			lobbyServer.removeGameServer(this);
 			lobbyServer.broadcast(new ComLobbyUpdateGamelist(true,
 					getRepresentation()));
+			lobbyServer.removeGameServer(this);
 		}
 	}
 
@@ -396,8 +388,8 @@ public class GameServer extends Server {
 					lobbyServer.broadcast(new ComLobbyUpdateGamelist(false,
 							getRepresentation()));
 					broadcast(new ComStartGame());
-					ruleset.runGame();
 					hasStarted = true;
+					ruleset.runGame();
 				} catch (IllegalNumberOfPlayersException e) {
 					ComWarning warning = new ComWarning(WarningMsg.CouldntStart);
 					broadcast(warning);
