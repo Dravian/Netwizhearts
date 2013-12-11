@@ -441,22 +441,22 @@ public class LanguageInterpreter {
 		String ret;
 		switch (message) {
 		case ChooseColour:
-			ret = "Wähle eine Farbe.";
+			ret = "Suach da oane vo de Farbn aus.";
 			break;
 		case ChooseCards:
-			ret = "Wähle drei Karten.";
+			ret = "Suach da drei Kartn aus.";
 			break;
 		case ChooseNumber:
-			ret = "Gib eine Zahl ein.";
+			ret = "Gib ei wiavui Stich dassd moansd, dassd machsd.";
 			break;
 		case GameEnd:
-			ret = "Das Spiel ist vorbei.";
+			ret = "As Spui is vorbei.";
 			break;
 		case TrumpColour:
-			ret = "Es wurde eine neue Trumpffarbe ausgewählt.";
+			ret = "A neie Farb is Trumpf.";
 			break;
 		case PlayCard:
-			ret = "Du bist dran. Spiele eine Karte.";
+			ret = "Du bist dra. Spui a Kartn.";
 			break;
 		default:
 			IllegalArgumentException e = new IllegalArgumentException();
