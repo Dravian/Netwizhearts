@@ -5,6 +5,8 @@ package Client.View;
 
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -33,6 +35,7 @@ public class Warning extends JFrame implements Observer{
 		setAlwaysOnTop(true);
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		getContentPane().setLayout(null);
+		this.addWindowListener(new CloseListener());
 		
 		warningTextArea = new JTextArea();
 		warningTextArea.setFont(new Font("Arial", Font.PLAIN, 13));
@@ -96,6 +99,54 @@ public class Warning extends JFrame implements Observer{
 			break;
 		}
 		} catch (ClassCastException e) {
+		}
+		
+	}
+	
+	class CloseListener implements WindowListener {
+
+
+		@Override
+		public void windowActivated(WindowEvent arg0) {
+			// not needed
+			
+		}
+
+		@Override
+		public void windowClosed(WindowEvent arg0) {
+			// not needed
+			
+		}
+
+		@Override
+		public void windowClosing(WindowEvent arg0) {
+			if(dispose) {
+				dispose();
+			}
+		}
+
+		@Override
+		public void windowDeactivated(WindowEvent arg0) {
+			// not needed
+			
+		}
+
+		@Override
+		public void windowDeiconified(WindowEvent arg0) {
+			// not needed
+			
+		}
+
+		@Override
+		public void windowIconified(WindowEvent arg0) {
+			// not needed
+			
+		}
+
+		@Override
+		public void windowOpened(WindowEvent arg0) {
+			// not needed
+			
 		}
 		
 	}
