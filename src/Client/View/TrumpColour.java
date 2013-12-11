@@ -31,6 +31,7 @@ public class TrumpColour extends JPanel {
 		@Override
 		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
+			if (trumpColour != null) {
 				switch (trumpColour) {
 				case RED:
 					g.setColor(Color.RED);
@@ -47,6 +48,9 @@ public class TrumpColour extends JPanel {
 				default:
 					break;
 				}
+			} else {
+				g.setColor(Color.WHITE);
+			}
 				g.fillRect(0, 0, this.getWidth(), this.getHeight());
 	    }
 }
