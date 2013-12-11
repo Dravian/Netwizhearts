@@ -73,6 +73,7 @@ public class ClientWizard extends ClientRuleset {
 
 	@Override
 	public void resolveMessage(MsgSelection msgSelection) {
+		trumpColour = msgSelection.getSelection();
 		getModel().updateTrumpColour(UserMessages.TrumpColour);
 	}
 
@@ -80,7 +81,6 @@ public class ClientWizard extends ClientRuleset {
 	public void resolveMessage(MsgUser gameUpdate) {
 		setGamePhase(GamePhase.Playing);
 		setGameState(gameUpdate.getGameClientUpdate());
-
 		getModel().updateGame();
 	}
 
