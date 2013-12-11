@@ -5,9 +5,7 @@ package Client;
 
 import java.io.EOFException;
 import java.io.IOException;
-import java.io.ObjectInput;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.SocketException;
@@ -22,9 +20,9 @@ public class MessageListenerThread implements Runnable {
 
 	private Socket connection;
 
-	private ObjectInput in;
+	private ObjectInputStream in;
 
-	private ObjectOutput out;
+	private ObjectOutputStream out;
 
 	private boolean run;
 	
@@ -94,7 +92,7 @@ public class MessageListenerThread implements Runnable {
 	public void send(ComObject object) {
 		if (run) {
 			try {
-				out.writeObject(object);
+				out.writeUnshared(object);
 				out.flush();
 			} catch (IOException e) {
 				System.out.println("ERROR: Write to Object Stream failed.");
@@ -114,7 +112,7 @@ public class MessageListenerThread implements Runnable {
 		try {
 			ComObject object;
 			while (run) {
-				object = (ComObject) in.readObject();
+				object = (ComObject) in.readUnshared();
 				object.process(model);
 			}
 		} catch (ClassNotFoundException e) {
