@@ -52,6 +52,8 @@ public class GamePanel extends JPanel{
 	
 	private TrumpColour trumpColour;
 	
+	private int roundNumber;
+	
 	/**
 	 * Erstellt ein GamePanel
 	 * 
@@ -59,6 +61,8 @@ public class GamePanel extends JPanel{
 	 * @param infos Informationen zu den Mitspielern
 	 */
 	public GamePanel(List<String> names, JPanel contentPane) {
+		roundNumber = 0;
+		
 		try {
 			background = ImageIO.read(new File(IMAGEPATH + "background.jpg"));
 		} catch (IOException e) {
@@ -115,6 +119,21 @@ public class GamePanel extends JPanel{
 	 * @param update GameClientUpdate mit dem aktuellen Zustand des Spiels
 	 */
 	public void updateGame(final GameClientUpdate update) {
+		int currentRoundNumber = update.getRoundNumber();
+		if (roundNumber != currentRoundNumber) {
+			SwingUtilities.invokeLater(new Runnable() {
+
+				@Override
+				public void run() {
+					updateOtherData(update.getOtherPlayerData());
+					updateOwnOtherData(update.getOwnData());
+					updateOwnCards(update.getOwnHand());
+					clearCardsPlayed();
+					updateCardsPlayed(update.getPlayedCards());
+				}
+				
+			});
+		}
 		SwingUtilities.invokeLater(new Runnable() {
 
 			@Override
@@ -141,13 +160,24 @@ public class GamePanel extends JPanel{
 		ownHand.setHand(cards);
 	}
 	
+	private void clearCardsPlayed() {
+		for (DiscardPile d : discardPiles) {
+			d.addCard(null);
+		}
+	}
+	
 	private void updateCardsPlayed(List<DiscardedCard> cards) {
 		for (DiscardedCard c : cards) {
+			boolean wasOtherPlayer = false;
 			for (OtherPlayer p : otherHands) {
 				if (c.getOwnerName().compareTo(p.getName()) == 0) {
 					int index = otherHands.indexOf(p);
 					discardPiles.get(index).addCard(c.getCard());
-				}
+					wasOtherPlayer = true;
+				} 
+			}
+			if (!wasOtherPlayer) {
+				discardPiles.get(discardPiles.size()-1).addCard(c.getCard());
 			}
 		}
 	}

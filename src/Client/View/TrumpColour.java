@@ -46,6 +46,7 @@ public class TrumpColour extends JPanel {
 					g.setColor(Color.YELLOW);
 					break;
 				default:
+					g.setColor(Color.WHITE);
 					break;
 				}
 			} else {
