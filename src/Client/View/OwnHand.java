@@ -45,8 +45,12 @@ public class OwnHand extends JPanel{
 	 * @param cards
 	 */
 	public void setHand(List<Card> cards) {
-		for (int i = 0; i < cards.size(); i++) {
+		for (int i = 0; i < hand.size(); i++) {
+			if (i < cards.size()) {
 			hand.get(i).setCard(cards.get(i));
+			} else {
+				hand.get(i).setCard(null);
+			}
 			 //TODO 
 		}
 		repaint();
