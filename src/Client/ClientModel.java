@@ -134,8 +134,8 @@ public class ClientModel extends Observable{
 	 */
 	protected void closeView() {
 		warningText.append(screenOut.resolveWarning(WarningMsg.ConnectionLost));
+		informView(ViewNotification.openWarning);
 		informView(ViewNotification.quitGame);
-		informView(ViewNotification.openWarning);	
 	}
 
 	/**
