@@ -119,10 +119,10 @@ public class GamePanel extends JPanel{
 
 			@Override
 			public void run() {
+				updateOtherData(update.getOtherPlayerData());
 				updateOwnOtherData(update.getOwnData());
 				updateOwnCards(update.getOwnHand());
 				updateCardsPlayed(update.getPlayedCards());
-				updateOtherData(update.getOtherPlayerData());
 			}
 			
 		});
@@ -144,6 +144,8 @@ public class GamePanel extends JPanel{
 	private void updateCardsPlayed(List<DiscardedCard> cards) {
 		for (DiscardedCard c : cards) {
 			for (OtherPlayer p : otherHands) {
+				System.out.println(c.getOwnerName() + "\n");
+				System.out.println(p.getName() + "\n");
 				if (c.getOwnerName().compareTo(p.getName()) == 0) {
 					int index = otherHands.indexOf(p);
 					discardPiles.get(index).addCard(c.getCard());

@@ -63,6 +63,10 @@ public class OtherPlayer extends JPanel{
 //		yPos = y;
 //	}
 	
+	public String getName() {
+		return name;
+	}
+	
 	@Override
 	public int getWidth() {
 		return image.getWidth();
