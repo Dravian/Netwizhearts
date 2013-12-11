@@ -94,6 +94,7 @@ public class MessageListenerThread implements Runnable {
 			try {
 				out.writeUnshared(object);
 				out.flush();
+				out.reset();
 			} catch (IOException e) {
 				System.out.println("ERROR: Write to Object Stream failed.");
 				e.printStackTrace();
