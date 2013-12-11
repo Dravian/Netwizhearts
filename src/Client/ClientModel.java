@@ -88,10 +88,6 @@ public class ClientModel extends Observable{
 	
 	private String windowText;
 	
-	private List<Card> chooseCards;
-	
-	private List<Colour> chooseColour;
-
 	/**
 	 * Haelt den für die Netzwerkkomunikation zustaendigen Thread.
 	 */
@@ -137,10 +133,9 @@ public class ClientModel extends Observable{
 	 * oder ein Netzwerkfehler auftritt.
 	 */
 	protected void closeView() {
-		//TODO oder mit Dialog.
 		warningText.append(screenOut.resolveWarning(WarningMsg.ConnectionLost));
-		informView(ViewNotification.openWarning);
 		informView(ViewNotification.quitGame);
+		informView(ViewNotification.openWarning);	
 	}
 
 	/**
@@ -154,8 +149,6 @@ public class ClientModel extends Observable{
 		warningText = null;
 		playerList = null;
 		gameList = null;
-		//informView(ViewNotification.quitGame); ???
-		//System.exit(0);
 	}
 
 	/**
@@ -203,11 +196,6 @@ public class ClientModel extends Observable{
 		} else {
 			throw new IllegalArgumentException();
 		}
-	}
-
-	//TODO wird evtl für den Übergang der Fenster benötigt ?
-	public ClientState getClientState() {
-		return state;
 	}
 
 	/**
@@ -521,7 +509,7 @@ public class ClientModel extends Observable{
 	 * @return String Text der Bildschirmmeldung.
 	 */
 	public String getWindowText() {
-		return windowText == null ? new String() : windowText;
+		return windowText;
 	}
 
 	/**
@@ -577,7 +565,8 @@ public class ClientModel extends Observable{
 	public void openChooseCardsWindow(UserMessages msg) {
 		if (state == ClientState.GAME) {
 			if (msg != null) {
-					informView(ViewNotification.openChooseCards);
+				windowText = screenOut.resolveWarning(msg);
+				informView(ViewNotification.openChooseCards);
 			} else {
 				throw new IllegalArgumentException();
 			}
@@ -619,7 +608,8 @@ public class ClientModel extends Observable{
 	public void openChooseColourWindow(UserMessages msg) {
 		if (state == ClientState.GAME) {
 			if (ruleset != null) {
-			   if (ruleset.getClass().equals(ClientWizard.class)) {	
+			   if (ruleset.getClass().equals(ClientWizard.class)) {
+				  windowText = screenOut.resolveWarning(msg);
 			      informView(ViewNotification.openChooseItem);
 			   }
 			}
@@ -669,6 +659,7 @@ public class ClientModel extends Observable{
 		if (state == ClientState.GAME) {
 			if (ruleset != null) {
 			   if (ruleset.getClass().equals(ClientWizard.class)) {
+				  windowText = screenOut.resolveWarning(msg);
 			      informView(ViewNotification.openInputNumber);
 			   }
 		   }
@@ -676,6 +667,7 @@ public class ClientModel extends Observable{
 	}
 	
 	public void updateTrumpColour(UserMessages msg) {
+		windowText = screenOut.resolveWarning(msg);
 		informView(ViewNotification.trumpUpdate);
 	}
 	
@@ -696,6 +688,7 @@ public class ClientModel extends Observable{
 	}
 	
 	public void announceTurn(UserMessages msg) {
+		windowText = screenOut.resolveWarning(msg);
 		informView(ViewNotification.turnUpdate);
 	}
 	
@@ -764,7 +757,8 @@ public class ClientModel extends Observable{
 					     playerCount <= gameType.getMaxPlayer()) {
 					  netIO.send(new ComStartGame());
 				  } else {
-					  //TODO Warnung einbauen "Spielerzahl"...
+					  warningText.append("Warnung noch einbauen!");
+					  informView(ViewNotification.openWarning);
 				  }
 			  }
 	        }
@@ -831,7 +825,8 @@ public class ClientModel extends Observable{
 	public void announceWinner(UserMessages msg) {
 		if (state == ClientState.GAME) {
 			state = ClientState.ENDING;
-			   informView(ViewNotification.showScore);
+			windowText = screenOut.resolveWarning(msg);
+			informView(ViewNotification.showScore);
 		}
 	}
 
