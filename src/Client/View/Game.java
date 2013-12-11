@@ -107,15 +107,15 @@ public class Game extends JFrame implements Observer{
 //		gamePanel.updateTrumpColour(Colour.RED);
 //		contentPane.add(gamePanel);
 //		// TEST
+		chatlog = new JTextArea();
+		chatlog.setBounds(10, 505, 998, 112);
+		chatlog.setEditable(false);
+		chatlog.setLineWrap(true);
 		
 		scrollPaneChat = new JScrollPane();
 		scrollPaneChat.setBounds(10, 505, 998, 112);
 		scrollPaneChat.setViewportView(chatlog);
 		contentPane.add(scrollPaneChat);
-		
-		chatlog = new JTextArea();
-		chatlog.setEditable(false);
-		chatlog.setLineWrap(true);
 		
 		messageField = new JTextField();
 		messageField.setBounds(10, 617, 998, 44);
@@ -248,7 +248,6 @@ public class Game extends JFrame implements Observer{
 	public void update(Observable o, String arg) {
 		if (this.isVisible()) {
 			chatlog.append(arg);
-			System.out.println("Funktioniert");
 		}
 	}
 	
