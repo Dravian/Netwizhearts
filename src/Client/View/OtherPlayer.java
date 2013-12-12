@@ -13,6 +13,7 @@ import java.text.AttributedCharacterIterator;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 /** 
  * OhterPlayer. Zeigt die Informationen über die anderen Spieler an, also den Namen, 
@@ -69,6 +70,14 @@ public class OtherPlayer extends JPanel{
 		name = s;
 	}
 	
+	public void setMyTurn(boolean b) {
+		if (b) {
+			this.setBorder(new LineBorder(Color.RED, 3));
+		} else {
+			this.setBorder(null);
+		}
+	}
+	
 	@Override
 	public int getWidth() {
 		return image.getWidth();
@@ -93,9 +102,9 @@ public class OtherPlayer extends JPanel{
 		super.paintComponent(g);
 		g.drawImage(image, 0, 0, null);
 		Font font = new Font("Arial",Font.BOLD,16);
-		g.setColor(Color.white);
+		g.setColor(Color.WHITE);
 		g.setFont(font);
 		g.drawString(name, 35, 50);
-        g.drawString(info, 35, 70);        
+        g.drawString(info, 35, 70);
     }
 }

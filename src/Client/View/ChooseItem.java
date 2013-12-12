@@ -32,6 +32,8 @@ public class ChooseItem extends JFrame implements Observer{
 	public ChooseItem() {
 		setBounds(100, 100, 370, 190);
 		setResizable(false);
+		setAlwaysOnTop(true);
+		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		getContentPane().setLayout(null);
 		
 		comboBox = new JComboBox<Colour>();
@@ -101,6 +103,9 @@ public class ChooseItem extends JFrame implements Observer{
 			}
 			setMessageText(observed.getWindowText());
 			this.setVisible(true);
+			break;
+		case windowChangeForced:
+			this.setVisible(false);
 			break;
 		case quitGame:
 			this.dispose();

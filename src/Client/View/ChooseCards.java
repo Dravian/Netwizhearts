@@ -38,6 +38,8 @@ public class ChooseCards extends JFrame implements Observer{
 	public ChooseCards() {
 		setBounds(100, 100, 780, 330);
 		setResizable(false);
+		setAlwaysOnTop(true);
+		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		getContentPane().setLayout(null);
 		
 		rsMessageArea = new JTextArea();
@@ -111,6 +113,9 @@ public class ChooseCards extends JFrame implements Observer{
 			playerHand.setHand(handCards);
 			setMessageText(observed.getWindowText());
 			this.setVisible(true);
+			break;
+		case windowChangeForced:
+			this.setVisible(false);
 			break;
 		case quitGame:
 			this.dispose();
