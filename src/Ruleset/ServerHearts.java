@@ -166,12 +166,14 @@ public class ServerHearts extends ServerRuleset {
 		} else if (card.getRuleset() != RulesetType.Hearts
 				|| card.getColour() == Colour.NONE) {
 			send(WarningMsg.WrongCard, name);
+			send(new MsgCardRequest(), name);
 			throw new IllegalArgumentException("Die Karte " + card.getValue()
 					+ card.getColour() + " gehört nicht zum Spiel");
 
 		} else if (!isValidMove(card)) {
 			setGamePhase(GamePhase.CardRequest);
 			send(WarningMsg.UnvalidMove, name);
+			send(new MsgCardRequest(), name);
 			throw new IllegalArgumentException("Der Spieler" + name
 					+ "hat die Karte " + card.getValue() + card.getColour()
 					+ " gespielt, obwohl sie kein gültiger "
@@ -180,6 +182,7 @@ public class ServerHearts extends ServerRuleset {
 		} else if(!playCard(card)) {
 			setGamePhase(GamePhase.CardRequest);
 			send(WarningMsg.WrongCard, name);
+			send(new MsgCardRequest(), name);
 			throw new IllegalArgumentException("Der Spieler" + name
 					+ "hat die Karte " + card.getValue() + card.getColour()
 					+ " gespielt, obwohl er sie nicht hat.");

@@ -74,12 +74,14 @@ public class ServerWizard extends ServerRuleset {
         } else if (card.getRuleset() != RulesetType.Wizard
                 || card.getColour() == Colour.NONE) {
         	send(WarningMsg.WrongCard, name);
+        	send(new MsgCardRequest(), name);
             throw new IllegalArgumentException("Die Karte " + card.getValue()
                     + card.getColour() + " gehört nicht zum Spiel");
 
         } else if (!isValidMove(card)) {
         	setGamePhase(GamePhase.CardRequest);
         	send(WarningMsg.UnvalidMove, name);
+        	send(new MsgCardRequest(), name);
             throw new IllegalArgumentException("Der Spieler" + name + "hat die Karte "
                     + card.getValue() + card.getColour()
                     + " gespielt, obwohl sie kein gültiger "
@@ -87,6 +89,7 @@ public class ServerWizard extends ServerRuleset {
 
         } else if(!playCard(card)) {
         	send(WarningMsg.WrongCard,name);
+        	send(new MsgCardRequest(), name);
         	throw new IllegalArgumentException("Der Spieler" + name + "hat die Karte "
                     + card.getValue() + card.getColour()
                     + " gespielt, obwohl er sie nicht hat.");
@@ -118,6 +121,7 @@ public class ServerWizard extends ServerRuleset {
         } else if (!isValidNumber(msgNumber.getNumber())) {
         	setGamePhase(GamePhase.SelectionRequest);
         	send(WarningMsg.WrongNumber, name);
+        	send(new MsgNumberRequest(), name);
             throw new IllegalArgumentException("Die Zahl " + msgNumber.getNumber() +
                     " vom Spieler " + name + " ist nicht erlaubt.");
 
@@ -156,6 +160,7 @@ public class ServerWizard extends ServerRuleset {
             if (!isValidColour(colour)) {
             	setGamePhase(GamePhase.SelectionRequest);
             	send(WarningMsg.WrongColour, name);
+            	send(new MsgSelectionRequest(), name);
                 throw new IllegalArgumentException("Die Farbe " + colour
                         + "existiert in Wizard nicht");
             } else {
@@ -233,11 +238,11 @@ public class ServerWizard extends ServerRuleset {
      * @return true falls die Stichangabe gültig ist, false wenn nicht
      */
     private boolean isValidNumber(int number) {
-    	if(number < 0 || number > getRoundNumber()) {
-    		return false;
-    	}else {
+    	if(number >= 0 && number <= getRoundNumber()) {
     		((WizData) getCurrentPlayer().getOtherData()).setAnnouncedTricks(number);
     		return true;
+    	}else {
+    		return false;
     	}
     }
 
@@ -365,10 +370,6 @@ public class ServerWizard extends ServerRuleset {
             getGameState().setUncoveredCard(uncoveredCard);
 
             updatePlayers();
-            
-            for(int i = 0; i < getPlayers().size(); i++) {
-            	System.out.println(getPlayers().get(i).getPlayerStateName());
-            }
             
 			/*
 			 * Falls ein Zauberer aufgedeckt wird, darf der Spieler vor dem
