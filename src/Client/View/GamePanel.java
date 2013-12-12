@@ -53,45 +53,45 @@ public class GamePanel extends JPanel{
 	/**
 	 * Erstellt ein GamePanel
 	 * 
-	 * @param names Namen der Mitspieler
-	 * @param infos Informationen zu den Mitspielern
+	 * @param playerCount Anzahl der Mitspieler
 	 */
-	public GamePanel(List<String> names, JPanel contentPane) {
+	public GamePanel(int playerCount) {
 		try {
 			background = ImageIO.read(new File(IMAGEPATH + "background.jpg"));
 		} catch (IOException e) {
 			background = null;
 		}
 		
-		ownHand = new OwnHand(contentPane);
-		ownHand.setBounds(15, 390, 750, 105);
-		contentPane.add(ownHand);
+		this.setLayout(null);
+		
+		ownHand = new OwnHand();
+		ownHand.setBounds(5, 385, 750, 105);
+		this.add(ownHand);
 		
 		ownScore = new OwnOtherData();
-		ownScore.setBounds(770, 445, 100, 50);
-		contentPane.add(ownScore);
+		ownScore.setBounds(760, 440, 100, 50);
+		this.add(ownScore);
 		
 		deck = new DrawDeck();
-		deck.setBounds(925, 390, 70, 105);
-		contentPane.add(deck);
+		deck.setBounds(920, 385, 70, 105);
+		this.add(deck);
 		
 		trumpColour = new TrumpColour();
-		trumpColour.setBounds(873, 445, 50, 50);
-		contentPane.add(trumpColour);
+		trumpColour.setBounds(868, 440, 50, 50);
+		this.add(trumpColour);
 		
 		otherHands = new LinkedList<OtherPlayer>();		
 		discardPiles = new LinkedList<DiscardPile>();
-		for (int i = 0; i < names.size(); i++) {
-			otherHands.add(i, new OtherPlayer(names.get(i), ""));
+		for (int i = 0; i < playerCount; i++) {
+			otherHands.add(i, new OtherPlayer());
 			discardPiles.add(i, new DiscardPile());
-			contentPane.add(otherHands.get(i));
-			contentPane.add(discardPiles.get(i));
+			this.add(otherHands.get(i));
+			this.add(discardPiles.get(i));
 		}
 		discardPiles.add(otherHands.size(), new DiscardPile());
-		contentPane.add(discardPiles.get(otherHands.size()));
+		this.add(discardPiles.get(otherHands.size()));
 		
-		int playercount = otherHands.size()+1;
-		switch (playercount) {
+		switch (playerCount+1) {
 		case 3:
 			makeTrickGameBoardThreePlayers();
 			break;
@@ -115,20 +115,12 @@ public class GamePanel extends JPanel{
 	 * @param update GameClientUpdate mit dem aktuellen Zustand des Spiels
 	 */
 	public void updateGame(final GameClientUpdate update) {
-		SwingUtilities.invokeLater(new Runnable() {
-
-			@Override
-			public void run() {
-				updateOtherData(update.getOtherPlayerData());
-				updateOwnOtherData(update.getOwnData());
-				updateOwnCards(update.getOwnHand());
-				clearCardsPlayed();
-				updateCardsPlayed(update.getPlayedCards());
-				setUncoveredCard(update.getUncoveredCard());
-			}
-			
-		});
-		
+		updateOtherData(update.getOtherPlayerData());
+		updateOwnOtherData(update.getOwnData());
+		updateOwnCards(update.getOwnHand());
+		clearCardsPlayed();
+		updateCardsPlayed(update.getPlayedCards());
+		setUncoveredCard(update.getUncoveredCard());
 	}
 	
 	/**
@@ -145,8 +137,7 @@ public class GamePanel extends JPanel{
 	}
 	
 	private void updateOwnOtherData(OtherData ownData) {
-		ownScore.setData("Stiche:" + ownData.getNumberOfTricks() 
-						  + "  " + ownData.getPoints());
+		ownScore.setData(ownData.toString());
 	}
 	
 	private void updateOwnCards(List<Card> cards) {
@@ -177,8 +168,8 @@ public class GamePanel extends JPanel{
 	
 	private void updateOtherData(List<OtherData> data) {
 		for (int i = 0; i < otherHands.size(); i++) {
-			otherHands.get(i).setInfo("" + data.get(i).getNumberOfTricks() 
-										+ "  " +  data.get(i).getPoints());
+			otherHands.get(i).setName(data.get(i).getOtherDataName());
+			otherHands.get(i).setInfo(data.get(i).toString());
 		}
 	}
 
