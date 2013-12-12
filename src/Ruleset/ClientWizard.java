@@ -143,6 +143,7 @@ public class ClientWizard extends ClientRuleset {
 						&& handCard.getValue() != valueOfSorcerer) {
 					setGamePhase(GamePhase.CardRequest);
 					getModel().openWarning(WarningMsg.UnvalidMove);
+					getModel().announceTurn(UserMessages.PlayCard);
 					return false;
 				}
 			}
@@ -163,13 +164,15 @@ public class ClientWizard extends ClientRuleset {
 	 */
 	public boolean isValidTrickNumber(int number) {
 		if (getGamePhase() == GamePhase.TrickRequest) {
-			if (number < 0 || number > getRoundNumber()) {
-				setGamePhase(GamePhase.TrickRequest);
-				getModel().openWarning(WarningMsg.WrongNumber);
-				return false;
-			} else {
+		
+			if (number >= 0 && number <= getGameState().getOwnHand().size()) {
 				send(new MsgNumber(number));
 				return true;
+			} else {
+				setGamePhase(GamePhase.TrickRequest);
+				getModel().openWarning(WarningMsg.WrongNumber);
+				getModel().openNumberInputWindow(UserMessages.ChooseNumber);
+				return false;
 			}
 		} else {
 			getModel().openWarning(WarningMsg.WrongPhase);
@@ -204,6 +207,8 @@ public class ClientWizard extends ClientRuleset {
 				return true;
 
 			} else {
+				getModel().openWarning(WarningMsg.WrongColour);
+				getModel().openChooseColourWindow(UserMessages.ChooseColour);
 				return false;
 			}
 		} else {
