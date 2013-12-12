@@ -9,7 +9,7 @@ import Ruleset.UserMessages;
 
 /**
  * Diese Klasse ist dafuer zustaendig, je nach Sprache eine entsprechende
- * Warnmeldung zu generieren
+ * Stringausgabe zu generieren
  */
 public class LanguageInterpreter {
 	/**
@@ -243,7 +243,7 @@ public class LanguageInterpreter {
 	 * 
 	 * @return gibt eine entsprechende Stringmeldung zurück
 	 * @throws IllegalArgumentException
-	 *             falls es eine unbekannte Warnmeldung bekommt
+	 *             falls es einen unbekannten Nachrichtentyp bekommt
 	 */
 	private String bavarianWarning(WarningMsg warning)throws IllegalArgumentException  {
 		String ret;
@@ -359,7 +359,7 @@ public class LanguageInterpreter {
 	 * 
 	 * @return gibt eine entsprechende Stringmeldung zurück
 	 * @throws IllegalArgumentException
-	 *             falls es eine unbekannte Warnmeldung bekommt
+	 *             falls es einen unbekannten Nachrichtentyp bekommt
 	 */
 	private String germanMessage(UserMessages message)throws IllegalArgumentException  {
 		String ret;
@@ -397,7 +397,7 @@ public class LanguageInterpreter {
 	 * 
 	 * @return gibt eine entsprechende Stringmeldung zurück
 	 * @throws IllegalArgumentException
-	 *             falls es eine unbekannte Warnmeldung bekommt
+	 *             falls es einen unbekannten Nachrichtentyp bekommt
 	 */
 	private String englishMessage(UserMessages message) throws IllegalArgumentException {
 		String ret;
@@ -435,7 +435,7 @@ public class LanguageInterpreter {
 	 * 
 	 * @return gibt eine entsprechende Stringmeldung zurück
 	 * @throws IllegalArgumentException
-	 *             falls es eine unbekannte Warnmeldung bekommt
+	 *             falls es einen unbekannten Nachrichtentyp bekommt
 	 */
 	private String bavarianMessage(UserMessages message) throws IllegalArgumentException {
 		String ret;

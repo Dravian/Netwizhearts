@@ -11,6 +11,7 @@ import test.TestPlayer;
 
 import ComObjects.ComLoginRequest;
 import ComObjects.ComWarning;
+import ComObjects.WarningMsg;
 
 public class LoginTestNegativ {
 
@@ -48,6 +49,8 @@ public class LoginTestNegativ {
 		ComWarning warning = new ComWarning(null);
 		assertTrue(player2.getServerInput().get(0).getClass()
 				.equals(warning.getClass()));
+		ComWarning playerWarning = (ComWarning) player2.getServerInput().get(0);
+		assertTrue(playerWarning.getWarning().equals(WarningMsg.LoginError));
 		assertFalse(lobby.playerSet.contains(player2));
 		assertFalse(lobby.getNames().contains(player2.getPlayerName()));
 	}
