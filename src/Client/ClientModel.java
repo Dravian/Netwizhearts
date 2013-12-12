@@ -5,7 +5,6 @@ import Ruleset.ClientHearts;
 import Ruleset.ClientRuleset;
 import Ruleset.ClientWizard;
 import Ruleset.Colour;
-import Ruleset.DiscardedCard;
 import Ruleset.GameClientUpdate;
 import Ruleset.RulesetType;
 import Ruleset.UserMessages;
@@ -191,6 +190,8 @@ public class ClientModel extends Observable{
 			}
 			if (msg.getGameList() != null) {
 				gameList = new LinkedList<GameServerRepresentation>(msg.getGameList());
+			} else {
+				throw new IllegalArgumentException();
 			}
 			informView(ViewNotification.windowChangeForced);
 		} else {
@@ -222,7 +223,11 @@ public class ClientModel extends Observable{
 				} else {
 					throw new IllegalArgumentException();
 				}
+			} else {
+				throw new IllegalStateException();
 			}
+		} else {
+			throw new IllegalArgumentException();
 		}
 	}
 
@@ -277,18 +282,19 @@ public class ClientModel extends Observable{
 	 * 
 	 */
 	public void receiveMessage(ComStartGame msg) {
-		//TODO SWITCHCASE
 		if (msg != null) {
 			if (state == ClientState.GAMELOBBY) {
 				state = ClientState.GAME;
-				if (gameType == RulesetType.Wizard) {
-					ruleset = new ClientWizard(this);
-				} else if (gameType == RulesetType.Hearts) {
-					ruleset = new ClientHearts(this);
+				switch (gameType) {
+					case Hearts: ruleset = new ClientHearts(this);
+						break;
+					case Wizard: ruleset = new ClientWizard(this);
+						break;
+					default: throw new IllegalStateException();
 				}
 				informView(ViewNotification.gameStarted);
 			} else {
-				throw new IllegalArgumentException();
+				throw new IllegalStateException();
 			} 
 		} else {
 			throw new IllegalArgumentException();
@@ -371,6 +377,8 @@ public class ClientModel extends Observable{
 				netIO.closeConnection();
 				closeView();
 			}	
+		} else {
+			throw new IllegalArgumentException();
 		}
 	}
 
@@ -449,6 +457,8 @@ public class ClientModel extends Observable{
 			if(gameMaster.equals(playerName)) {
 				netIO.send(new ComKickPlayerRequest(name));
 			}
+		} else {
+			throw new IllegalStateException();
 		}
 	}
 
@@ -495,10 +505,14 @@ public class ClientModel extends Observable{
 	 * @param msg die RulesetMessage, die an den Server geschickt werden soll
 	 */
 	public void send(RulesetMessage msg) {
-		if (msg != null) {
-			netIO.send(new ComRuleset(msg));
+		if (state == ClientState.GAME) {
+			if (msg != null) {
+				netIO.send(new ComRuleset(msg));
+			} else {
+				throw new IllegalArgumentException();
+			}
 		} else {
-			throw new IllegalArgumentException();
+			throw new IllegalStateException();
 		}
 	}
 
@@ -524,7 +538,11 @@ public class ClientModel extends Observable{
 				if(ruleset.getClass().equals(ClientHearts.class)) {
 					return ((ClientHearts) ruleset).getOwnHand();
 				}
+			} else {
+				throw new IllegalStateException();
 			}
+		} else {
+			throw new IllegalStateException();
 		}
 		return new LinkedList<Card>();
 	}
@@ -545,11 +563,17 @@ public class ClientModel extends Observable{
 						if (!((ClientHearts) ruleset).areValidChoosenCards(new HashSet<Card>(cards))) {
 							informView(ViewNotification.openChooseCards);
 						}
+					} else {
+						throw new IllegalStateException();
 					}
+				} else {
+					throw new IllegalStateException();
 				}
 			} else {
 				throw new IllegalArgumentException();
 			}
+		} else {
+			throw new IllegalStateException();
 		}
 	}
 
@@ -570,6 +594,8 @@ public class ClientModel extends Observable{
 			} else {
 				throw new IllegalArgumentException();
 			}
+		} else {
+			throw new IllegalStateException();
 		}
 	}
 
@@ -589,11 +615,17 @@ public class ClientModel extends Observable{
 						if(!((ClientWizard) ruleset).isValidColour(colour)) {
 							informView(ViewNotification.openChooseItem);
 						}
-					}
+					} else {
+						throw new IllegalStateException();
+					} 
+				} else {
+					throw new IllegalArgumentException();
 				}
 			} else {
 				throw new IllegalArgumentException();
 			}
+		} else {
+			throw new IllegalStateException();
 		}
 	}
 
@@ -611,8 +643,14 @@ public class ClientModel extends Observable{
 			   if (ruleset.getClass().equals(ClientWizard.class)) {
 				  windowText = screenOut.resolveWarning(msg);
 			      informView(ViewNotification.openChooseItem);
-			   }
+			   } else {
+					throw new IllegalStateException();
+				}
+			} else {
+				throw new IllegalArgumentException();
 			}
+		} else {
+			throw new IllegalStateException();
 		}
 	}
 	
@@ -621,10 +659,15 @@ public class ClientModel extends Observable{
 			if (ruleset != null) {
 				if (ruleset.getClass().equals(ClientWizard.class)) {
 					return ((ClientWizard) ruleset).getColours();
+				} else {
+					throw new IllegalStateException();
 				}
+			} else {
+				throw new IllegalStateException();
 			}
+		} else {
+			throw new IllegalStateException();
 		}
-		return new LinkedList<Colour>();
 	}
 
 	/**
@@ -644,7 +687,11 @@ public class ClientModel extends Observable{
 						informView(ViewNotification.openInputNumber);
 					}
 				}
+			} else {
+				throw new IllegalStateException();
 			}
+		} else {
+			throw new IllegalStateException();
 		}
 	}
 
@@ -662,13 +709,25 @@ public class ClientModel extends Observable{
 				  windowText = screenOut.resolveWarning(msg);
 			      informView(ViewNotification.openInputNumber);
 			   }
-		   }
-     	}
+		   } else {
+				throw new IllegalStateException();
+			} 
+     	} else {
+			throw new IllegalStateException();
+		}
 	}
 	
 	public void updateTrumpColour(UserMessages msg) {
-		windowText = screenOut.resolveWarning(msg);
-		informView(ViewNotification.trumpUpdate);
+		if (state == ClientState.GAME) {
+			if (msg != null) {
+				windowText = screenOut.resolveWarning(msg);
+				informView(ViewNotification.trumpUpdate);
+			} else {
+				throw new IllegalArgumentException();
+			}
+		} else {
+			throw new IllegalStateException();
+		}
 	}
 	
 	/**
@@ -682,18 +741,34 @@ public class ClientModel extends Observable{
 				if (ruleset.getClass().equals(ClientWizard.class)) {
 					return ((ClientWizard) ruleset).getTrumpColour();
 				}
+			} else {
+				throw new IllegalStateException();
 			}
+		} else {
+			throw new IllegalStateException();
 		}
 		return null;
 	}
 	
 	public void announceTurn(UserMessages msg) {
-		windowText = screenOut.resolveWarning(msg);
-		informView(ViewNotification.turnUpdate);
+		if (state == ClientState.GAME) {
+			if (msg != null) {
+				windowText = screenOut.resolveWarning(msg);
+				informView(ViewNotification.turnUpdate);
+			} else {
+				throw new IllegalArgumentException();
+			}
+		} else {
+			throw new IllegalStateException();
+		}
 	}
 	
 	public int getTurn() {
-		return ruleset.getRoundNumber();
+		if (state == ClientState.GAME) {
+			return ruleset.getRoundNumber();
+		} else {
+			throw new IllegalStateException();
+		}
 	}
 
 	/**
@@ -706,7 +781,11 @@ public class ClientModel extends Observable{
 		if (msg != null) {
 			if (!msg.isEmpty()) {
 				netIO.send(new ComChatMessage(msg));
+			} else {
+				throw new IllegalArgumentException();
 			}
+		} else {
+			throw new IllegalArgumentException();
 		}
 	}
 
@@ -757,13 +836,25 @@ public class ClientModel extends Observable{
 					     playerCount <= gameType.getMaxPlayer()) {
 					  netIO.send(new ComStartGame());
 				  } else {
+					  //TODO Warnung oder View Button ausgrauen.
 					  warningText.append("Warnung noch einbauen!");
 					  informView(ViewNotification.openWarning);
 				  }
-			  }
-	        }
-		  }
-	   }
+			  } else {
+					throw new IllegalStateException();
+				}
+
+	        } else {
+				throw new IllegalStateException();
+			}
+
+		  } else {
+				throw new IllegalStateException();
+			}
+
+	   } else {
+			throw new IllegalStateException();
+		}
 	}
 
 	/**
@@ -779,30 +870,52 @@ public class ClientModel extends Observable{
 				if (ruleset != null) {
 					if (ruleset.getClass().equals(ClientWizard.class)) {
 						if (((ClientWizard) ruleset).isValidMove(card)) {
-							
 						}
 					} else if (ruleset.getClass().equals(ClientHearts.class)) {
 						if (((ClientHearts) ruleset).isValidMove(card)) {
-							
 						}
 					}
+				} else {
+					throw new IllegalStateException();
 				}
+			} else {
+				throw new IllegalArgumentException();
 			}
-		}
+		} else {
+			throw new IllegalStateException();
+		} 
 	}
 	
 	public void updateGame() {
-		informView(ViewNotification.gameUpdate);
+		if (state == ClientState.GAME) {
+			informView(ViewNotification.gameUpdate);
+		} else {
+			throw new IllegalStateException();
+		}
 	}
 	
 	public GameClientUpdate getGameUpdate() {
-		return ruleset.getGameState();
+		if (state == ClientState.GAME) {
+			if (ruleset != null) {
+				return ruleset.getGameState();
+			} else {
+				throw new IllegalStateException();
+			}
+		} else {
+			throw new IllegalStateException();
+		}
 	}
 	
 	public void openWarning(WarningMsg msg) {
 		if (state == ClientState.GAME) {
-			warningText.append(screenOut.resolveWarning(msg));
-			informView(ViewNotification.openWarning);
+			if (msg != null) {
+				warningText.append(screenOut.resolveWarning(msg));
+				informView(ViewNotification.openWarning);
+			} else {
+				throw new IllegalArgumentException();
+			}
+		} else {
+			throw new IllegalStateException();
 		}
 	}
 	
@@ -813,7 +926,11 @@ public class ClientModel extends Observable{
 		if (state == ClientState.GAME) {
 			if (ruleset != null) {
 				informView(ViewNotification.showScore);
+			} else {
+				throw new IllegalStateException();
 			}
+		} else {
+			throw new IllegalStateException();
 		}
 	}
 
@@ -825,8 +942,14 @@ public class ClientModel extends Observable{
 	public void announceWinner(UserMessages msg) {
 		if (state == ClientState.GAME) {
 			state = ClientState.ENDING;
-			windowText = screenOut.resolveWarning(msg);
-			informView(ViewNotification.showScore);
+			if (msg != null) {
+				windowText = screenOut.resolveWarning(msg);
+				informView(ViewNotification.showScore);
+			} else {
+				throw new IllegalArgumentException();
+			}
+		} else {
+			throw new IllegalStateException();
 		}
 	}
 
