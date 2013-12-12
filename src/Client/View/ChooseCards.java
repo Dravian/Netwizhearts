@@ -55,8 +55,9 @@ public class ChooseCards extends JFrame implements Observer{
 		
 		getContentPane().add(btnOK);
 		
-		playerHand = new OwnHand(handPanel);
+		playerHand = new OwnHand();
 		playerHand.addCardMouseListener(new CardMouseListener());
+		handPanel.add(playerHand);
 		
 		chosenCards = new LinkedList<Card>();
 	}

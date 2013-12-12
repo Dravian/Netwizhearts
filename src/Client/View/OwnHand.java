@@ -25,9 +25,8 @@ import Ruleset.Colour;
 public class OwnHand extends JPanel{
 		
 	private List<ViewCard> hand;
-	private JPanel contentPane;
 	
-	public OwnHand(JPanel cP) {
+	public OwnHand() {
 		hand = new LinkedList<ViewCard>();
 		for (int i = 0; i < 10; i++) {
 			hand.add(new ViewCard(null));
@@ -36,7 +35,6 @@ public class OwnHand extends JPanel{
 			this.add(vc);
 			this.setLayout(null);
 		}
-		contentPane = cP;
 	}
 	
 	/**

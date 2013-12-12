@@ -39,9 +39,9 @@ public class OwnOtherData extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		Font font = new Font("Arial",Font.BOLD,20);
+		Font font = new Font("Arial",Font.BOLD,15);
 		g.setFont(font);
-		g.drawString("Test", 0, 0);
+		g.drawString(ownData, 0, 30);
 	}
 
 }

@@ -21,7 +21,9 @@ import Client.ViewNotification;
 import Ruleset.Card;
 import Ruleset.Colour;
 import Ruleset.DiscardedCard;
+import Ruleset.GameClientUpdate;
 import Ruleset.HeartsCard;
+import Ruleset.OtherData;
 
 /**
  * Game. Im Game Fenster laeuft das Spiel ab.Es enthaelt den Spielchat und ein GamePanel.
@@ -82,29 +84,14 @@ public class Game extends JFrame implements Observer{
 //		data.add("3 Stiche");
 //		data.add("4 Stiche");
 //		data.add("5 Stiche");
-//		List<Card> karten = new LinkedList<Card>();
-//		karten.add(HeartsCard.HerzAss);
-//		karten.add(HeartsCard.Herz2);
-//		karten.add(HeartsCard.Herz3);
-//		karten.add(HeartsCard.Herz4);
-//		karten.add(HeartsCard.Herz5);
-//		karten.add(HeartsCard.Herz6);
-//		
-////		List<DiscardedCard> diskarten= new LinkedList<DiscardedCard>();
-////		diskarten.add(new DiscardedCard("Mr. Blue", HeartsCard.HerzAss));
-////		diskarten.add(new DiscardedCard("Mr. White", HeartsCard.Herz2));
-////		diskarten.add(new DiscardedCard("Mr. Orange", HeartsCard.Herz3));
-////		diskarten.add(new DiscardedCard("Mr. Pink", HeartsCard.Herz4));
-////		diskarten.add(new DiscardedCard("Mr. Brown", HeartsCard.Herz5));
-////		diskarten.add(new DiscardedCard("Myself", HeartsCard.Herz6));
 //
-//		gamePanel = new GamePanel(players, contentPane);
+//		gamePanel = new GamePanel(players.size());
 //		gamePanel.setBounds(10, 11, 998, 495);
-////		gamePanel.updateCardsPlayed(diskarten);
-////		gamePanel.updateOwnCards(karten);
 //		gamePanel.updateTrumpColour(Colour.RED);
 //		contentPane.add(gamePanel);
 //		// TEST
+		
+		
 		chatlog = new JTextArea();
 		chatlog.setBounds(10, 505, 998, 112);
 		chatlog.setEditable(false);
@@ -163,12 +150,12 @@ public class Game extends JFrame implements Observer{
 	 * bei dem Stiche gemacht werden. Hierfuer hat jeder Spieler einen eigenen
 	 * Ablagestapel vor sich.
 	 * 
-	 * @param players Liste der Spieler
+	 * @param playerCount Anzahl der Mitspieler
 	 */
-	public void makeTrickGameBoard(final List<String> players) {
+	public void makeTrickGameBoard(final int playerCount) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-					gamePanel = new GamePanel(players, contentPane);
+					gamePanel = new GamePanel(playerCount);
 					gamePanel.setBounds(10, 11, 998, 547);
 					gamePanel.addCardMouseListener(cardMouseListener);
 					contentPane.add(gamePanel);
@@ -194,9 +181,7 @@ public class Game extends JFrame implements Observer{
 			ViewNotification message = (ViewNotification) arg;
 		switch (message) {
 		case gameStarted:
-			List<String> players = observed.getPlayerlist();
-			players.remove(observed.getPlayerName());
-			makeTrickGameBoard(players);
+			makeTrickGameBoard(observed.getPlayerlist().size()-1);
 			chatlog.setText("");
 			this.setVisible(true);
 			break;
@@ -213,15 +198,22 @@ public class Game extends JFrame implements Observer{
 					gamePanel.updateTrumpColour(observed.getTrumpColour());
 				}
 			});
-			
-			repaint();
 			break;
 		case turnUpdate:
-			//TODO Anzeigen, dass man an der Reihe ist
+			SwingUtilities.invokeLater(new Runnable() {
+				public void run() {
+					//TODO Anzeigen, dass man an der Reihe ist
+				}
+			});
 			chatlog.append("Du bist an der Reihe\n");
 			break;
 		case windowChangeForced:
-			gamePanel = null;
+			SwingUtilities.invokeLater(new Runnable() {
+				public void run() {
+					gamePanel = null;
+				}
+			});
+			
 			this.setVisible(false);
 			break;
 		case quitGame:
