@@ -28,6 +28,8 @@ public class ScoreWindow extends JFrame implements Observer{
 	
 	public ScoreWindow() {
 		setBounds(100, 100, 450, 290);
+		setAlwaysOnTop(true);
+		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		getContentPane().setLayout(null);
 		
 		textArea = new JTextArea();
@@ -72,6 +74,9 @@ public class ScoreWindow extends JFrame implements Observer{
 				textArea.append(winners.get(i) + "\n");
 			}
 			this.setVisible(true);
+			break;
+		case windowChangeForced:
+			this.setVisible(false);
 			break;
 		case quitGame:
 			this.dispose();

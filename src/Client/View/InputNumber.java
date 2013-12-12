@@ -31,7 +31,10 @@ public class InputNumber extends JFrame implements Observer{
 	public InputNumber() {
 		setBounds(100, 100, 345, 154);
 		setResizable(false);
+		setAlwaysOnTop(true);
+		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		getContentPane().setLayout(null);
+		
 		
 		rsMessageArea = new JTextArea();
 		rsMessageArea.setEditable(false);
@@ -109,6 +112,9 @@ public class InputNumber extends JFrame implements Observer{
 				
 			});
 			
+			break;
+		case windowChangeForced:
+			this.setVisible(false);
 			break;
 		case quitGame:
 			this.dispose();

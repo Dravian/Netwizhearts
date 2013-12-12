@@ -115,8 +115,8 @@ public class GamePanel extends JPanel{
 	 * @param update GameClientUpdate mit dem aktuellen Zustand des Spiels
 	 */
 	public void updateGame(final GameClientUpdate update) {
-		updateOtherData(update.getOtherPlayerData());
-		updateOwnOtherData(update.getOwnData());
+		updateOtherData(update.getOtherPlayerData(), update.getCurrentPlayer());
+		updateOwnOtherData(update.getOwnData(), update.getCurrentPlayer());
 		updateOwnCards(update.getOwnHand());
 		clearCardsPlayed();
 		updateCardsPlayed(update.getPlayedCards());
@@ -136,8 +136,13 @@ public class GamePanel extends JPanel{
 		deck.setShownCard(c);
 	}
 	
-	private void updateOwnOtherData(OtherData ownData) {
+	private void updateOwnOtherData(OtherData ownData, String currentPlayer) {
 		ownScore.setData(ownData.toString());
+		if (ownData.getOtherDataName().compareTo(currentPlayer) == 0) {
+			ownScore.setMyTurn(true);
+		} else {
+			ownScore.setMyTurn(false);
+		}
 	}
 	
 	private void updateOwnCards(List<Card> cards) {
@@ -166,10 +171,16 @@ public class GamePanel extends JPanel{
 		}
 	}
 	
-	private void updateOtherData(List<OtherData> data) {
+	private void updateOtherData(List<OtherData> data, String currentPlayer) {
 		for (int i = 0; i < otherHands.size(); i++) {
-			otherHands.get(i).setName(data.get(i).getOtherDataName());
+			String player = data.get(i).getOtherDataName();
+			otherHands.get(i).setName(player);
 			otherHands.get(i).setInfo(data.get(i).toString());
+			if (player.compareTo(currentPlayer) == 0) {
+				otherHands.get(i).setMyTurn(true);
+			} else {
+				otherHands.get(i).setMyTurn(false);
+			}
 		}
 	}
 
