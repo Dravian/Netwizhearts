@@ -25,8 +25,6 @@ import javax.swing.SwingUtilities;
  */
 public class ChooseItem extends JFrame implements Observer{
 	
-	private static final long serialVersionUID = 1L;
-	
 	private JComboBox<Colour> comboBox;
 	private JTextArea rsMessageArea;
 	private JButton btnOK;

@@ -30,8 +30,6 @@ import Ruleset.HeartsCard;
  * und der Spieler wird in die Lobby zurueckgeleitet.
  */
 public class Game extends JFrame implements Observer{
-
-	private static final long serialVersionUID = -2655520138213745249L;
 	
 	private JPanel contentPane;
 	private JTextField messageField;

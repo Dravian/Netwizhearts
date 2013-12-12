@@ -32,9 +32,6 @@ import Client.ViewNotification;
  * und mit 'Join Game' kann einem bereits erstellten Spiel beigetreten werden.
  */
 public class Lobby extends JFrame implements Observer{
-
-	
-	private static final long serialVersionUID = 1L;
 	
 	List<GameServerRepresentation> gameRepList;
 	private JPanel contentPane;

@@ -25,9 +25,6 @@ import Client.ViewNotification;
  * ueber den Login-Button wird die Verbindung zum Server hergestellt.
  */
 public class Login extends JFrame implements Observer{
-
-	
-	private static final long serialVersionUID = -2516577977746181978L;
 	
 	private JPanel contentPane;
 	private JTextField serverField;
