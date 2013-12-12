@@ -28,8 +28,6 @@ import Ruleset.Card;
  */
 public class ChooseCards extends JFrame implements Observer{
 	
-	private static final long serialVersionUID = 1L;
-	
 	private OwnHand playerHand;
 	private JPanel handPanel;
 	private JTextArea rsMessageArea;

@@ -21,10 +21,6 @@ import Client.ViewNotification;
  */
 public class InputNumber extends JFrame implements Observer{
 	
-
-	
-	private static final long serialVersionUID = 1L;
-	
 	private JTextArea rsMessageArea;
 	private JTextField numberField;
 	private JButton btnOK;
@@ -103,6 +99,7 @@ public class InputNumber extends JFrame implements Observer{
 		switch (message) {
 		case openInputNumber:
 			setMessageText(observed.getWindowText());
+			//numberField.setText("");
 			this.setVisible(true);
 			break;
 		case quitGame:

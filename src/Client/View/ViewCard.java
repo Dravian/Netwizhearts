@@ -23,8 +23,6 @@ import Ruleset.RulesetType;
  * Karten gespeichert sind, und eine ID, um das genaue Bild zu spezifizieren.
  */
 public class ViewCard extends JPanel{
-
-	private static final long serialVersionUID = 8733682958484899430L;
 	private static String DATAPATH = "Data/";
 	
 	private RulesetType ruleset;

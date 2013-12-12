@@ -27,8 +27,6 @@ import Client.ViewNotification;
  * in die Lobby zurueck. Der spielinterne Chat ist ab hier verfuegbar.
  */
 public class GameLobby extends JFrame implements Observer{
-
-	private static final long serialVersionUID = -1899311213351027436L;
 	
 	private JPanel contentPane;
 	private JTextField messageField;
