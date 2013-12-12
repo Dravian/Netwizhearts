@@ -39,9 +39,9 @@ public class OtherPlayer extends JPanel{
 	 * @param n Name des Spielers
 	 * @param i Informationen ueber den Spieler
 	 */
-	public OtherPlayer(String n, String i) {
-		name = n;
-		info = i;
+	public OtherPlayer() {
+		name = "";
+		info = "";
 		this.setOpaque(true);
 		try {
 			image = ImageIO.read(new File(IMAGEPATH + "hand.png"));
@@ -63,6 +63,10 @@ public class OtherPlayer extends JPanel{
 	
 	public String getName() {
 		return name;
+	}
+	
+	public void setName(String s) {
+		name = s;
 	}
 	
 	@Override

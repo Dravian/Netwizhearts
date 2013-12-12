@@ -74,18 +74,27 @@ public class ServerWizard extends ServerRuleset {
         } else if (card.getRuleset() != RulesetType.Wizard
                 || card.getColour() == Colour.NONE) {
         	send(WarningMsg.WrongCard, name);
+        	send(new MsgCardRequest(), name);
             throw new IllegalArgumentException("Die Karte " + card.getValue()
                     + card.getColour() + " gehört nicht zum Spiel");
 
         } else if (!isValidMove(card)) {
         	setGamePhase(GamePhase.CardRequest);
         	send(WarningMsg.UnvalidMove, name);
+        	send(new MsgCardRequest(), name);
             throw new IllegalArgumentException("Der Spieler" + name + "hat die Karte "
                     + card.getValue() + card.getColour()
                     + " gespielt, obwohl sie kein gültiger "
-                    + "Zug ist. Es muss ein Fehler bei ClientWizard sein.");
+                    + "Zug ist.");
 
-        } else {
+        } else if(!playCard(card)) {
+        	send(WarningMsg.WrongCard,name);
+        	send(new MsgCardRequest(), name);
+        	throw new IllegalArgumentException("Der Spieler" + name + "hat die Karte "
+                    + card.getValue() + card.getColour()
+                    + " gespielt, obwohl er sie nicht hat.");
+        }
+        else {
             updatePlayers();      
             
             if (getGameState().getPlayedCards().size() == getPlayers().size()) {
@@ -112,6 +121,7 @@ public class ServerWizard extends ServerRuleset {
         } else if (!isValidNumber(msgNumber.getNumber())) {
         	setGamePhase(GamePhase.SelectionRequest);
         	send(WarningMsg.WrongNumber, name);
+        	send(new MsgNumberRequest(), name);
             throw new IllegalArgumentException("Die Zahl " + msgNumber.getNumber() +
                     " vom Spieler " + name + " ist nicht erlaubt.");
 
@@ -150,6 +160,7 @@ public class ServerWizard extends ServerRuleset {
             if (!isValidColour(colour)) {
             	setGamePhase(GamePhase.SelectionRequest);
             	send(WarningMsg.WrongColour, name);
+            	send(new MsgSelectionRequest(), name);
                 throw new IllegalArgumentException("Die Farbe " + colour
                         + "existiert in Wizard nicht");
             } else {
@@ -173,19 +184,19 @@ public class ServerWizard extends ServerRuleset {
     		throw new RulesetException(" Der Ablagestapel ist bereits voll.");
     	
     	}else if(getPlayedCards().size() == 0) {
-    		return playCard(card);
+    		return true;
     	
     	} else  if(card.getValue() == valueOfFool) {
-    		return playCard(card);
+    		return true;
     	
     	} else if(card.getValue() == valueOfSorcerer) {
-    		return playCard(card);
+    		return true;
     	}
     	
     	Card firstCard = getPlayedCards().get(0).getCard();
     	
     	if(firstCard.getValue() == valueOfSorcerer) {
-    		return playCard(card);
+    		return true;
     	}
     	
     	/* Falls die nächste Karte Narr ist, wird die als nächstgespielte
@@ -201,10 +212,10 @@ public class ServerWizard extends ServerRuleset {
     	}
     	
     	if(firstCard.getValue() == valueOfFool) {
-    		return playCard(card);
+    		return true;
     	
     	} else if(card.getColour() == firstCard.getColour()) {
-    		return playCard(card);
+    		return true;
     	}
     	
     	List<Card> hand = getCurrentPlayer().getHand();
@@ -217,7 +228,7 @@ public class ServerWizard extends ServerRuleset {
     		}
     	}
     	
-    	return playCard(card);
+    	return true;
     }
 
     /**
@@ -227,11 +238,11 @@ public class ServerWizard extends ServerRuleset {
      * @return true falls die Stichangabe gültig ist, false wenn nicht
      */
     private boolean isValidNumber(int number) {
-    	if(number < 0 || number > getRoundNumber()) {
-    		return false;
-    	}else {
+    	if(number >= 0 && number <= getRoundNumber()) {
     		((WizData) getCurrentPlayer().getOtherData()).setAnnouncedTricks(number);
     		return true;
+    	}else {
+    		return false;
     	}
     }
 
@@ -243,13 +254,13 @@ public class ServerWizard extends ServerRuleset {
      */
     private boolean isValidColour(Colour colour) {
     	
-    	if(colour != Colour.RED || colour != Colour.GREEN || 
-    			colour != Colour.BLUE || colour != Colour.YELLOW){
-    		return false;
-    	
-    	} else {
+    	if(colour == Colour.RED || colour == Colour.GREEN || 
+    			colour == Colour.BLUE || colour == Colour.YELLOW){
     		trumpColour = colour;
     		return true;
+    	
+    	} else {
+    		return false;
     	}
     }
 

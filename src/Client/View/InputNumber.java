@@ -98,9 +98,17 @@ public class InputNumber extends JFrame implements Observer{
 			ViewNotification message = (ViewNotification) arg;
 		switch (message) {
 		case openInputNumber:
-			setMessageText(observed.getWindowText());
-			//numberField.setText("");
-			this.setVisible(true);
+			SwingUtilities.invokeLater(new Runnable() {
+
+				@Override
+				public void run() {
+					setMessageText(observed.getWindowText());
+					//numberField.setText("");
+					setVisible(true);
+				}
+				
+			});
+			
 			break;
 		case quitGame:
 			this.dispose();

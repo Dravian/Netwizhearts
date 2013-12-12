@@ -52,6 +52,7 @@ public class ClientHearts extends ClientRuleset {
 					// Die erste Karte jeder Runde muss die Kreu2 sein.
 					if (card != HeartsCard.Kreuz2) {
 						getModel().openWarning(WarningMsg.UnvalidMove);
+						getModel().announceTurn(UserMessages.PlayCard);
 						return false;
 					} else {
 						send(new MsgCard(card));
@@ -76,6 +77,7 @@ public class ClientHearts extends ClientRuleset {
 							// noch PikDame ist
 							if (handCard != HeartsCard.PikDame & handCard.getColour() != Colour.HEART) {
 								getModel().openWarning(WarningMsg.UnvalidMove);
+								getModel().announceTurn(UserMessages.PlayCard);
 								return false;
 							}
 						}
@@ -102,6 +104,7 @@ public class ClientHearts extends ClientRuleset {
 							for (Card handCard : getGameState().getOwnHand()) {
 								if (handCard.getColour() != Colour.HEART){
 									getModel().openWarning(WarningMsg.UnvalidMove);
+									getModel().announceTurn(UserMessages.PlayCard);
 									return false;
 								}
 							}
@@ -144,6 +147,7 @@ public class ClientHearts extends ClientRuleset {
 				// erstgepielten Karte hat
 				if (handCard.getColour() == firstCard.getColour()) {
 					getModel().openWarning(WarningMsg.UnvalidMove);
+					getModel().announceTurn(UserMessages.PlayCard);
 					return false;
 
 					// Die Spieler möchte ein Herz spielen, hat aber noch andere
@@ -152,6 +156,7 @@ public class ClientHearts extends ClientRuleset {
 				} else if (handCard.getColour() != Colour.HEART
 						&& card.getColour() == Colour.HEART && !heartBroken) {
 					getModel().openWarning(WarningMsg.UnvalidMove);
+					getModel().announceTurn(UserMessages.PlayCard);
 					return false;
 				}
 			}
@@ -206,6 +211,7 @@ public class ClientHearts extends ClientRuleset {
 				for (Card card : cards) {
 					if (card.getRuleset() != RulesetType.Hearts) {
 						getModel().openWarning(WarningMsg.WrongTradeCards);
+						getModel().openChooseCardsWindow(UserMessages.ChooseCards);
 						return false;
 					}
 				}
@@ -213,6 +219,7 @@ public class ClientHearts extends ClientRuleset {
 				return true;
 			}
 			getModel().openWarning(WarningMsg.WrongTradeCards);
+			getModel().openChooseCardsWindow(UserMessages.ChooseCards);
 			return false;
 		} else {
 			getModel().openWarning(WarningMsg.WrongPhase);
