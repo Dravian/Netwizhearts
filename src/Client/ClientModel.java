@@ -61,6 +61,9 @@ public class ClientModel extends Observable{
 	 */
 	private ClientRuleset ruleset;
 	
+	/**
+	 * 
+	 */
 	private RulesetType gameType;
 
 	/**
@@ -73,6 +76,9 @@ public class ClientModel extends Observable{
 	 */
 	private ClientState state;
 
+	/**
+	 * Liste mit allen unterstuetzten Spieltypen.
+	 */
 	private List<RulesetType> supportetGames;
 
 	private List<String> playerList;
@@ -179,9 +185,7 @@ public class ClientModel extends Observable{
 	 * Diese Methode wird aufgerufen,
 	 * falls der Server den Spieler erfolgreich in die Lobby hinzugefügt hat.
 	 * Empfaengt die ComInitGameLobby Nachricht, die eine Liste aller
-	 * Spieler enthaelt, die sich in der Lobby befinden. Speichert
-	 * diese Liste und benachrichtigt die Observer mit der loginSuccesful
-	 * ViewNotification.
+	 * Spieler enthaelt, die sich in der Lobby befinden.
 	 *
 	 * @param msg die ankommende ComInitLobby Nachricht
 	 */
@@ -201,6 +205,7 @@ public class ClientModel extends Observable{
 			} else {
 				throw new IllegalArgumentException();
 			}
+			System.out.println("InitLobby empfangen.");
 			informView(ViewNotification.windowChangeForced);
 		} else {
 			throw new IllegalArgumentException();
@@ -218,24 +223,24 @@ public class ClientModel extends Observable{
 	 * @param msg die ankommende ComInitGameLobby Nachricht
 	 */
 	public void receiveMessage(ComInitGameLobby msg) {
-		if (msg != null) {
-			if (state == ClientState.ENTERGAMELOBBY) {
+		if (state == ClientState.ENTERGAMELOBBY) {
+			if (msg != null) {
 				state = ClientState.GAMELOBBY;
 				if (msg.getPlayerList() != null) {
 					playerList = msg.getPlayerList();
-					if (playerList.isEmpty()) {
-						throw new IllegalArgumentException();
-					} else {
+					if (!playerList.isEmpty()) {
 						informView(ViewNotification.joinGameSuccessful);
+					} else {
+						throw new IllegalArgumentException();
 					}
 				} else {
 					throw new IllegalArgumentException();
 				}
 			} else {
-				throw new IllegalStateException();
+				throw new IllegalArgumentException();
 			}
 		} else {
-			throw new IllegalArgumentException();
+			throw new IllegalStateException();
 		}
 	}
 
@@ -259,7 +264,7 @@ public class ClientModel extends Observable{
 				throw new IllegalArgumentException();
 			}
 		} else {
-			throw new IllegalArgumentException();
+			throw new IllegalStateException();
 		}
 	}
 
@@ -290,22 +295,24 @@ public class ClientModel extends Observable{
 	 * 
 	 */
 	public void receiveMessage(ComStartGame msg) {
-		if (msg != null) {
-			if (state == ClientState.GAMELOBBY) {
-				state = ClientState.GAME;
+		if (state == ClientState.GAMELOBBY) {
+			if (msg != null) {
 				switch (gameType) {
 					case Hearts: ruleset = new ClientHearts(this);
+						 state = ClientState.GAME;
+						 informView(ViewNotification.gameStarted);
 						break;
 					case Wizard: ruleset = new ClientWizard(this);
+					 	 state = ClientState.GAME;
+						 informView(ViewNotification.gameStarted);
 						break;
 					default: throw new IllegalStateException();
 				}
-				informView(ViewNotification.gameStarted);
 			} else {
-				throw new IllegalStateException();
+				throw new IllegalArgumentException();
 			} 
 		} else {
-			throw new IllegalArgumentException();
+			throw new IllegalStateException();
 		}
 	}
 
@@ -321,24 +328,29 @@ public class ClientModel extends Observable{
 	 * @param update die ankommende ComLobbyUpdatePlayerlist Nachricht
 	 */
 	public void receiveMessage(ComUpdatePlayerlist update) {
-		if (update != null) {
-			if (update.getPlayerName() != null) {
-				if (update.isRemoveFlag()) {
-					if (!playerList.remove(update.getPlayerName())) {
-						throw new IllegalArgumentException();
+		if (state == ClientState.SERVERLOBBY ||
+				state == ClientState.GAMELOBBY) {
+			if (update != null) {
+				if (update.getPlayerName() != null) {
+					if (update.isRemoveFlag()) {
+						if (!playerList.remove(update.getPlayerName())) {
+							throw new IllegalArgumentException();
+						}
+					} else {
+						if (playerList.remove(update.getPlayerName())) {
+							throw new IllegalArgumentException();
+						}
+						playerList.add(update.getPlayerName());
 					}
+					informView(ViewNotification.playerListUpdate);
 				} else {
-					if (playerList.remove(update.getPlayerName())) {
-						throw new IllegalArgumentException();
-					}
-					playerList.add(update.getPlayerName());
+					throw new IllegalArgumentException();
 				}
-				informView(ViewNotification.playerListUpdate);
 			} else {
 				throw new IllegalArgumentException();
 			}
 		} else {
-			throw new IllegalArgumentException();
+			throw new IllegalStateException();
 		}
 	}
 
@@ -354,26 +366,31 @@ public class ClientModel extends Observable{
 	 * @param update die ankommende ComLobbyUpdateGamelist Nachricht
 	 */
 	public void receiveMessage(ComLobbyUpdateGamelist update) {
-		if (update != null) {
-			GameServerRepresentation gameUpdate = update.getGameServer();
-			String gameMaster;
-			if (gameUpdate != null) {
-				for (GameServerRepresentation gameInList : gameList ) {
-					gameMaster = gameInList.getGameMasterName();
-					if (gameMaster.equals(gameUpdate.getGameMasterName())) {
-						gameList.remove(gameInList);
-						break;
+		if (state == ClientState.SERVERLOBBY ||
+				state == ClientState.ENTERGAMELOBBY) {
+			if (update != null) {
+				GameServerRepresentation gameUpdate = update.getGameServer();
+				String key;
+				if (gameUpdate != null) {
+					for (GameServerRepresentation gameInList : gameList ) {
+						key = gameInList.getGameMasterName();
+						if (key.equals(gameUpdate.getGameMasterName())) {
+							gameList.remove(gameInList);
+							break;
+						}
 					}
+					if (!update.isRemoveFlag()) {
+						gameList.add(update.getGameServer());
+					}
+					informView(ViewNotification.gameListUpdate);
+				} else {
+					throw new IllegalArgumentException();
 				}
-				if (!update.isRemoveFlag()) {
-					gameList.add(update.getGameServer());
-				}
-				informView(ViewNotification.gameListUpdate);
 			} else {
 				throw new IllegalArgumentException();
 			}
 		} else {
-			throw new IllegalArgumentException();
+			throw new IllegalStateException();
 		}
 	}
 	
@@ -483,26 +500,30 @@ public class ClientModel extends Observable{
 	public void hostGame(String gameName,
 						 boolean hasPassword, String password,
 						 RulesetType game) {
-		if (gameName == null) {
-			gameName = new String();
-		}
-		if (hasPassword) {
-			if (password == null) {
-				hasPassword = false;
+		if (state == ClientState.SERVERLOBBY) {
+			if (gameName == null) {
+				gameName = new String();
+			}
+			if (hasPassword) {
+				if (password == null) {
+					hasPassword = false;
+					password = new String();
+				} else if (password.isEmpty()) {
+					hasPassword = false;
+				}
+			} else {
 				password = new String();
-			} else if (password.isEmpty()) {
-				hasPassword = false;
+			}
+			if (game == null) {
+				throw new IllegalArgumentException();
+			} else {
+				state = ClientState.ENTERGAMELOBBY;
+				gameMaster = playerName;
+				gameType = game;
+				netIO.send(new ComCreateGameRequest(gameName, game, hasPassword, password));
 			}
 		} else {
-			password = new String();
-		}
-		if (game == null) {
-			throw new IllegalArgumentException();
-		} else {
-			state = ClientState.ENTERGAMELOBBY;
-			gameMaster = playerName;
-			gameType = game;
-			netIO.send(new ComCreateGameRequest(gameName, game, hasPassword, password));
+			throw new IllegalStateException();
 		}
 	}
 
@@ -809,23 +830,27 @@ public class ClientModel extends Observable{
 	 * oder null Wert in name uebergeben wird.
 	 */
 	public void joinGame(String name, String password) throws IllegalArgumentException {
-		if (password == null) {
-			password = new String();
-		}
-		if (name == null) {
-			throw new IllegalArgumentException();
-		} else if (name.isEmpty()) {
-			throw new IllegalArgumentException();
-		} else {
-			for (GameServerRepresentation game : gameList) {
-				if (name.equals(game.getGameMasterName())) {
-					state = ClientState.ENTERGAMELOBBY;
-					gameMaster = name;
-					gameType = game.getRuleset();
-					netIO.send(new ComJoinRequest(name, password));
-					break;
+		if (state == ClientState.SERVERLOBBY) {
+			if (password == null) {
+				password = new String();
+			}
+			if (name == null) {
+				throw new IllegalArgumentException();
+			} else if (name.isEmpty()) {
+				throw new IllegalArgumentException();
+			} else {
+				for (GameServerRepresentation game : gameList) {
+					if (name.equals(game.getGameMasterName())) {
+						state = ClientState.ENTERGAMELOBBY;
+						gameMaster = name;
+						gameType = game.getRuleset();
+						netIO.send(new ComJoinRequest(name, password));
+						break;
+					}
 				}
 			}
+		} else {
+			throw new IllegalStateException();
 		}
 	}
 
@@ -877,11 +902,9 @@ public class ClientModel extends Observable{
 			if (card != null) {
 				if (ruleset != null) {
 					if (ruleset.getClass().equals(ClientWizard.class)) {
-						if (((ClientWizard) ruleset).isValidMove(card)) {
-						}
+						((ClientWizard) ruleset).isValidMove(card);
 					} else if (ruleset.getClass().equals(ClientHearts.class)) {
-						if (((ClientHearts) ruleset).isValidMove(card)) {
-						}
+						((ClientHearts) ruleset).isValidMove(card);
 					}
 				} else {
 					throw new IllegalStateException();

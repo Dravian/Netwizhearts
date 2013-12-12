@@ -126,7 +126,7 @@ public class MessageListenerThread implements Runnable {
 			}
 		} catch (SocketException e) {
 			if (run) {
-				System.err.println("ERROR: Connection reset.");
+				System.err.println("ERROR: Connection lost.");
 				e.printStackTrace();
 			}
 		} catch (IOException e) {
