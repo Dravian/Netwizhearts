@@ -112,6 +112,7 @@ public class ClientModel extends Observable{
 		warningText = new StringBuffer();
 		playerList = new LinkedList<String>();
 		gameList = new LinkedList<GameServerRepresentation>();
+		ruleset = null;
 		prepRulesetList();
 	}
 
@@ -123,6 +124,8 @@ public class ClientModel extends Observable{
 		if (state != ClientState.LOGIN &&
 				state != ClientState.SERVERLOBBY) {
 			netIO.send(new ComClientLeave());
+		} else {
+			throw new IllegalStateException();
 		}
 	}
 
@@ -142,12 +145,16 @@ public class ClientModel extends Observable{
 	 * Leitet den Verbindungsabbau zum Server ein.
 	 */
 	public void closeProgram() {
-		netIO.send(new ComClientQuit());
-		netIO.closeConnection();
-		netIO = null;
-		warningText = null;
-		playerList = null;
-		gameList = null;
+		if (state == ClientState.SERVERLOBBY) {
+			netIO.send(new ComClientQuit());
+			netIO.closeConnection();
+			netIO = null;
+			warningText = null;
+			playerList = null;
+			gameList = null;
+		} else {
+			throw new IllegalStateException();
+		}	
 	}
 
 	/**
@@ -182,6 +189,7 @@ public class ClientModel extends Observable{
 		if (msg != null) {
 			state = ClientState.SERVERLOBBY;
 			gameMaster = new String();
+			ruleset = null;
 			if (msg.getPlayerList() != null) {
 				playerList = msg.getPlayerList();
 				if (playerList.isEmpty()) {
