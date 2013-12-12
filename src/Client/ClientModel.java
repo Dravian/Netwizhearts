@@ -106,7 +106,7 @@ public class ClientModel extends Observable{
 	 * @throws IllegalArgumentException Wird geworfen bei fehlerhaftem
 	 * MessageListenerThread Argument.
 	 */
-	public ClientModel(final MessageListenerThread netIO) throws IllegalArgumentException {
+	public ClientModel(MessageListenerThread netIO) throws IllegalArgumentException {
 		if (netIO == null) {
 			throw new IllegalArgumentException();
 		}
@@ -151,7 +151,8 @@ public class ClientModel extends Observable{
 	 * Leitet den Verbindungsabbau zum Server ein.
 	 */
 	public void closeProgram() {
-		if (state == ClientState.SERVERLOBBY) {
+		if (state == ClientState.SERVERLOBBY ||
+				state == ClientState.ENTERGAMELOBBY) {
 			netIO.send(new ComClientQuit());
 			netIO.closeConnection();
 			netIO = null;
@@ -481,6 +482,8 @@ public class ClientModel extends Observable{
 		if (state == ClientState.GAMELOBBY) {
 			if(gameMaster.equals(playerName)) {
 				netIO.send(new ComKickPlayerRequest(name));
+			} else {
+				throw new IllegalStateException();
 			}
 		} else {
 			throw new IllegalStateException();
@@ -557,7 +560,6 @@ public class ClientModel extends Observable{
 
 	/**
 	 * Gibt die Karten zurueck, aus denen gewaehlt werden soll.
-	 * 
 	 * 
 	 * @return List<Card> Karten, aus denen gewaehlt werden kann
 	 */
@@ -762,7 +764,7 @@ public class ClientModel extends Observable{
 	/**
 	 * Gibt die aktuelle Trumpffarbe zurück.
 	 * 
-	 * @return Colour Die aktuelle Trumpffarbe oder null.
+	 * @return Colour Die aktuelle Trumpffarbe.
 	 */
 	public Colour getTrumpColour() {
 		if (state == ClientState.GAME) {
@@ -869,9 +871,9 @@ public class ClientModel extends Observable{
 					     playerCount <= gameType.getMaxPlayer()) {
 					  netIO.send(new ComStartGame());
 				  } else {
-					  //TODO Warnung oder View Button ausgrauen.
+					  /*
 					  warningText.append("Warnung noch einbauen!");
-					  informView(ViewNotification.openWarning);
+					  informView(ViewNotification.openWarning); */
 				  }
 			  } else {
 					throw new IllegalStateException();
