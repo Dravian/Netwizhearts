@@ -74,7 +74,7 @@ public class ServerHearts extends ServerRuleset {
                     
                     for (Card handCard : hand) {
                         // Wenn in der Spielerhand eine Karte weder Herz noch PikDame ist
-                        if (handCard != HeartsCard.PikDame & handCard.getColour() != Colour.HEART){
+                        if (handCard != HeartsCard.PikDame && handCard.getColour() != Colour.HEART){
                             return false;
                         }
                     }
@@ -195,7 +195,7 @@ public class ServerHearts extends ServerRuleset {
 
 
 	@Override
-	public void resolveMessage(MsgMultiCards msgMultiCard, String name) {
+	public synchronized void resolveMessage(MsgMultiCards msgMultiCard, String name) {
 		Set<Card> cards = msgMultiCard.getCardList();
 
 		if (getGamePhase() != GamePhase.MultipleCardRequest) {
@@ -464,7 +464,7 @@ public class ServerHearts extends ServerRuleset {
 			throw new IllegalNumberOfPlayersException(
 					"The number of players are: " + players.size());
 		}
-
+		setFirstPlayer(players.get(0));
 		setGamePhase(GamePhase.RoundStart);
 		startRound();
 	}

@@ -75,7 +75,7 @@ public class TestisValidMoveWizard {
 	}
 	@Test
 	public void testSorcerer() {
-		ruleset.playCard(WizardCard.ZaubererRot);
+		assertTrue(ruleset.isValidMove(WizardCard.ZaubererRot));
 		ruleset.setCurrentPlayer(playerState2);
 		
 		boolean isValidMove = ruleset.isValidMove(WizardCard.DreiRot);
