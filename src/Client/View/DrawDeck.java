@@ -42,6 +42,7 @@ public class DrawDeck extends JPanel{
 	 */
 	public void setShownCard(Card card) {
 		shownCard.setCard(card);
+		repaint();
 	}
 	
 	@Override

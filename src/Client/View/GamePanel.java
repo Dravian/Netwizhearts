@@ -34,8 +34,6 @@ import Ruleset.RulesetType;
  */
 public class GamePanel extends JPanel{
 	
-	private static final long serialVersionUID = -1041218552426155968L;
-	
 	private static String IMAGEPATH = "Data/";
 	
 	private OwnHand ownHand;
@@ -52,8 +50,6 @@ public class GamePanel extends JPanel{
 	
 	private TrumpColour trumpColour;
 	
-	private int roundNumber;
-	
 	/**
 	 * Erstellt ein GamePanel
 	 * 
@@ -61,13 +57,12 @@ public class GamePanel extends JPanel{
 	 * @param infos Informationen zu den Mitspielern
 	 */
 	public GamePanel(List<String> names, JPanel contentPane) {
-		roundNumber = 0;
-		
 		try {
 			background = ImageIO.read(new File(IMAGEPATH + "background.jpg"));
 		} catch (IOException e) {
 			background = null;
 		}
+		
 		ownHand = new OwnHand(contentPane);
 		ownHand.setBounds(15, 390, 750, 105);
 		contentPane.add(ownHand);
@@ -84,7 +79,7 @@ public class GamePanel extends JPanel{
 		trumpColour.setBounds(873, 445, 50, 50);
 		contentPane.add(trumpColour);
 		
-		otherHands = new LinkedList<OtherPlayer>();
+		otherHands = new LinkedList<OtherPlayer>();		
 		discardPiles = new LinkedList<DiscardPile>();
 		for (int i = 0; i < names.size(); i++) {
 			otherHands.add(i, new OtherPlayer(names.get(i), ""));
@@ -94,6 +89,7 @@ public class GamePanel extends JPanel{
 		}
 		discardPiles.add(otherHands.size(), new DiscardPile());
 		contentPane.add(discardPiles.get(otherHands.size()));
+		
 		int playercount = otherHands.size()+1;
 		switch (playercount) {
 		case 3:
@@ -119,21 +115,6 @@ public class GamePanel extends JPanel{
 	 * @param update GameClientUpdate mit dem aktuellen Zustand des Spiels
 	 */
 	public void updateGame(final GameClientUpdate update) {
-		int currentRoundNumber = update.getRoundNumber();
-		if (roundNumber != currentRoundNumber) {
-			SwingUtilities.invokeLater(new Runnable() {
-
-				@Override
-				public void run() {
-					updateOtherData(update.getOtherPlayerData());
-					updateOwnOtherData(update.getOwnData());
-					updateOwnCards(update.getOwnHand());
-					clearCardsPlayed();
-					updateCardsPlayed(update.getPlayedCards());
-				}
-				
-			});
-		}
 		SwingUtilities.invokeLater(new Runnable() {
 
 			@Override
@@ -141,19 +122,31 @@ public class GamePanel extends JPanel{
 				updateOtherData(update.getOtherPlayerData());
 				updateOwnOtherData(update.getOwnData());
 				updateOwnCards(update.getOwnHand());
+				clearCardsPlayed();
 				updateCardsPlayed(update.getPlayedCards());
+				setUncoveredCard(update.getUncoveredCard());
 			}
 			
 		});
 		
 	}
 	
+	/**
+	 * Aktualisiert die Trumpffarbe, die angezeigt wird
+	 * 
+	 * @param col Farbe
+	 */
 	public void updateTrumpColour(final Colour col) {
 		trumpColour.setTrumpColour(col);
 	}
 	
+	private void setUncoveredCard(Card c) {
+		deck.setShownCard(c);
+	}
+	
 	private void updateOwnOtherData(OtherData ownData) {
-		ownScore.setData(ownData.toString());
+		ownScore.setData("Stiche:" + ownData.getNumberOfTricks() 
+						  + "  " + ownData.getPoints());
 	}
 	
 	private void updateOwnCards(List<Card> cards) {
@@ -184,7 +177,8 @@ public class GamePanel extends JPanel{
 	
 	private void updateOtherData(List<OtherData> data) {
 		for (int i = 0; i < otherHands.size(); i++) {
-			otherHands.get(i).setInfo(data.get(i).toString());
+			otherHands.get(i).setInfo("" + data.get(i).getNumberOfTricks() 
+										+ "  " +  data.get(i).getPoints());
 		}
 	}
 

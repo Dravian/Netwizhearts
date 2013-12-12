@@ -138,19 +138,19 @@ public class LobbyTest {
 
 		ComChatMessage toPlayer1 = (ComChatMessage) player1.getServerInput()
 				.get(0);
-		assertTrue(toPlayer1.getChatMessage().equals("Hallo!"));
+		assertTrue(toPlayer1.getChatMessage().contains("Hallo!"));
 
 		ComChatMessage toPlayer2 = (ComChatMessage) player2.getServerInput()
 				.get(0);
-		assertTrue(toPlayer2.getChatMessage().equals("Hallo!"));
+		assertTrue(toPlayer2.getChatMessage().contains("Hallo!"));
 
 		ComChatMessage toPlayer3 = (ComChatMessage) player3.getServerInput()
 				.get(0);
-		assertTrue(toPlayer3.getChatMessage().equals("Hallo!"));
+		assertTrue(toPlayer3.getChatMessage().contains("Hallo!"));
 
 		ComChatMessage toPlayer4 = (ComChatMessage) player4.getServerInput()
 				.get(0);
-		assertTrue(toPlayer4.getChatMessage().equals("Hallo!"));
+		assertTrue(toPlayer4.getChatMessage().contains("Hallo!"));
 	}
 
 	@Test
@@ -287,6 +287,22 @@ public class LobbyTest {
 				.getServerInput().get(3);
 		assertTrue(toPlayer4.getPlayerName() == player2.getPlayerName());
 		assertTrue(toPlayer4.isRemoveFlag());
+		
+		ComLobbyUpdateGamelist to3game = (ComLobbyUpdateGamelist) player3
+				.getServerInput().get(4);
+		assertTrue(to3game.getGameServer().getGameMasterName()
+				.equals(player1.getPlayerName()));
+		assertTrue(to3game.getGameServer().getName().equals("Markus' Spiel"));
+		assertTrue(to3game.getGameServer().getCurrentPlayers() == 2);
+		assertFalse(to3game.isRemoveFlag());
+		
+		ComLobbyUpdateGamelist to4game = (ComLobbyUpdateGamelist) player4
+				.getServerInput().get(4);
+		assertTrue(to4game.getGameServer().getGameMasterName()
+				.equals(player1.getPlayerName()));
+		assertTrue(to4game.getGameServer().getName().equals("Markus' Spiel"));
+		assertTrue(to4game.getGameServer().getCurrentPlayers() == 2);
+		assertFalse(to4game.isRemoveFlag());
 	}
 
 	@Test
@@ -349,6 +365,8 @@ public class LobbyTest {
 		ComWarning warning = new ComWarning(null);
 		assertTrue(player2.getServerInput().get(3).getClass()
 				.equals(warning.getClass()));
+		ComWarning toPlayer2 = (ComWarning) player2.getServerInput().get(3);
+		assertTrue(toPlayer2.getWarning().equals(WarningMsg.WrongPassword));
 	}
 
 	@Test

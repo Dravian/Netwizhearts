@@ -22,8 +22,6 @@ import javax.swing.JButton;
  * nach jeder Runde und den Gesamtpunktestand am Ende des Spieles an.
  */
 public class ScoreWindow extends JFrame implements Observer{
-	
-	private static final long serialVersionUID = 1L;
 
 	private JTextArea textArea;
 	private JButton btnOK;

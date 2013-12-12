@@ -21,8 +21,6 @@ import javax.swing.JPanel;
 public class OtherPlayer extends JPanel{
 	
 	private static String IMAGEPATH = "Data/";
-	
-	private static final long serialVersionUID = 1L;
 
 	private String name;
 	
@@ -93,7 +91,7 @@ public class OtherPlayer extends JPanel{
 		Font font = new Font("Arial",Font.BOLD,16);
 		g.setColor(Color.white);
 		g.setFont(font);
-		g.drawString(name, 40, 50);
-        g.drawString(info, 40, 70);        
+		g.drawString(name, 35, 50);
+        g.drawString(info, 35, 70);        
     }
 }

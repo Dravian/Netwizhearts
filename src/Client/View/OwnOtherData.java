@@ -7,8 +7,6 @@ import javax.swing.JPanel;
 
 public class OwnOtherData extends JPanel {
 
-	private static final long serialVersionUID = 1L;
-
 	private String ownData;
 	
 	/**
@@ -43,7 +41,7 @@ public class OwnOtherData extends JPanel {
 		super.paintComponent(g);
 		Font font = new Font("Arial",Font.BOLD,20);
 		g.setFont(font);
-		g.drawString(ownData, 0, 0);
+		g.drawString("Test", 0, 0);
 	}
 
 }

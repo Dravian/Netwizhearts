@@ -23,8 +23,6 @@ import Client.ViewNotification;
  * oder per 'Leave' wieder in die Lobby zurueckzukehren.
  */
 public class Password extends JFrame implements Observer{
-
-	private static final long serialVersionUID = 7994797823893327272L;
 	
 	private JPanel contentPane;
 	private JTextField textField;

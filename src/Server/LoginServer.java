@@ -18,7 +18,10 @@ public class LoginServer extends Server {
 	private LobbyServer lobby;
 
 	/**
-	 * Erstellt und Startet den ClientListenerThread.
+	 * Konstruktor für den LoginServer. Erstellt und Startet den ClientListenerThread und
+	 * setzt den LobbyServer auf den übergebenen Wert.
+	 * @param server ist der LobbyServer
+	 * @param port ist der Serverport
 	 */
 	public LoginServer(LobbyServer server, int port) {
 		lobby = server;
@@ -49,8 +52,12 @@ public class LoginServer extends Server {
 		 */
 		private LoginServer server;
 
+
 		/**
-		 * Konstruktor des ClientListenerThreads
+		 * Konstruktor des ClientListenerThreads. Erstellt einen neuen Serversocket
+		 * mit dem übergebenen Port.
+		 * @param server ist der LobbyServer
+		 * @param port ist der Serverport
 		 */
 		public ClientListenerThread(LoginServer server, int port) {
 			super("CLT");

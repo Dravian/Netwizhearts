@@ -39,9 +39,6 @@ import java.util.Observer;
  * und mit 'Create' wird das Spiel erstellt.
  */
 public class CreateGame extends JFrame implements Observer{
-
-	
-	private static final long serialVersionUID = -2893031560688870723L;
 	
 	private Language lang;
 	private JTextField nameField;
