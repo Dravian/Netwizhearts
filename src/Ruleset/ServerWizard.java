@@ -360,6 +360,10 @@ public class ServerWizard extends ServerRuleset {
 
             updatePlayers();
             
+            for(int i = 0; i < getPlayers().size(); i++) {
+            	System.out.println(getPlayers().get(i).getPlayerStateName());
+            }
+            
 			/*
 			 * Falls ein Zauberer aufgedeckt wird, darf der Spieler vor dem
 			 * firstPlayer entscheiden welche Farbe Trumpf ist.
