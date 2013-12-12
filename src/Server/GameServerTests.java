@@ -12,6 +12,7 @@ import ComObjects.ComClientQuit;
 import ComObjects.ComInitLobby;
 import ComObjects.ComJoinRequest;
 import ComObjects.ComKickPlayerRequest;
+import ComObjects.ComLobbyUpdateGamelist;
 import ComObjects.ComRuleset;
 import ComObjects.ComStartGame;
 import ComObjects.ComWarning;
@@ -164,6 +165,14 @@ public class GameServerTests {
 
 		ComWarning toPlayer3 = (ComWarning) player3.getServerInput().get(7);
 		assertTrue(toPlayer3.getWarning().equals(WarningMsg.BeenKicked));
+		
+		ComLobbyUpdateGamelist to3game = (ComLobbyUpdateGamelist) player3
+				.getServerInput().get(8);
+		assertTrue(to3game.getGameServer().getGameMasterName()
+				.equals(player1.getPlayerName()));
+		assertTrue(to3game.getGameServer().getName().equals("Markus' Spiel"));
+		assertTrue(to3game.getGameServer().getCurrentPlayers() == 5);
+		assertFalse(to3game.isRemoveFlag());
 	}
 
 	@Test
@@ -202,6 +211,14 @@ public class GameServerTests {
 		ComInitLobby init = new ComInitLobby(null, null);
 		assertTrue(player2.getServerInput().get(5).getClass()
 				.equals(init.getClass()));
+		
+		ComLobbyUpdateGamelist to7game = (ComLobbyUpdateGamelist) player7
+				.getServerInput().get(11);
+		assertTrue(to7game.getGameServer().getGameMasterName()
+				.equals(player1.getPlayerName()));
+		assertTrue(to7game.getGameServer().getName().equals("Markus' Spiel"));
+		assertTrue(to7game.getGameServer().getCurrentPlayers() == 5);
+		assertFalse(to7game.isRemoveFlag());
 	}
 
 	@Test
@@ -261,6 +278,13 @@ public class GameServerTests {
 
 		ComWarning toPlayer6 = (ComWarning) player6.getServerInput().get(10);
 		assertTrue(toPlayer6.getWarning().equals(WarningMsg.GameDisbanded));
+		
+		ComLobbyUpdateGamelist to7game = (ComLobbyUpdateGamelist) player7
+				.getServerInput().get(16);
+		assertTrue(to7game.getGameServer().getGameMasterName()
+				.equals(player1.getPlayerName()));
+		assertTrue(to7game.getGameServer().getName().equals("Markus' Spiel"));
+		assertTrue(to7game.isRemoveFlag());
 	}
 
 	@Test
@@ -305,7 +329,6 @@ public class GameServerTests {
 		assertTrue(toPlayer6.getWarning().equals(WarningMsg.GameDisbanded));
 	}
 
-	// GameTests(Wizard)
 
 	@Test
 	public void testStartGame() {
@@ -313,18 +336,26 @@ public class GameServerTests {
 		player1.injectComObject(start);
 
 		ComRuleset ruleset = new ComRuleset(null);
-		assertTrue(player1.getServerInput().get(5).getClass()
+		assertTrue(player1.getServerInput().get(6).getClass()
 				.equals(ruleset.getClass()));
-		assertTrue(player2.getServerInput().get(5).getClass()
+		assertTrue(player2.getServerInput().get(6).getClass()
 				.equals(ruleset.getClass()));
-		assertTrue(player3.getServerInput().get(6).getClass()
+		assertTrue(player3.getServerInput().get(7).getClass()
 				.equals(ruleset.getClass()));
-		assertTrue(player4.getServerInput().get(7).getClass()
+		assertTrue(player4.getServerInput().get(8).getClass()
 				.equals(ruleset.getClass()));
-		assertTrue(player5.getServerInput().get(8).getClass()
+		assertTrue(player5.getServerInput().get(9).getClass()
 				.equals(ruleset.getClass()));
-		assertTrue(player6.getServerInput().get(9).getClass()
+		assertTrue(player6.getServerInput().get(10).getClass()
 				.equals(ruleset.getClass()));
+		
+		ComLobbyUpdateGamelist to7game = (ComLobbyUpdateGamelist) player7
+				.getServerInput().get(10);
+		assertTrue(to7game.getGameServer().getGameMasterName()
+				.equals(player1.getPlayerName()));
+		assertTrue(to7game.getGameServer().getName().equals("Markus' Spiel"));
+		assertTrue(to7game.getGameServer().isHasStarted());
+		assertFalse(to7game.isRemoveFlag());
 	}
 
 	@Test
@@ -344,56 +375,56 @@ public class GameServerTests {
 		assertTrue(lobby.initLobby().getGameList().size() == 0);
 
 		ComWarning warning = new ComWarning(null);
-		assertTrue(player1.getServerInput().get(5).getClass()
+		assertTrue(player1.getServerInput().get(6).getClass()
 				.equals(warning.getClass()));
-		assertTrue(player2.getServerInput().get(5).getClass()
+		assertTrue(player2.getServerInput().get(6).getClass()
 				.equals(warning.getClass()));
-		assertTrue(player3.getServerInput().get(6).getClass()
+		assertTrue(player3.getServerInput().get(7).getClass()
 				.equals(warning.getClass()));
-		assertTrue(player4.getServerInput().get(7).getClass()
+		assertTrue(player4.getServerInput().get(8).getClass()
 				.equals(warning.getClass()));
-		assertTrue(player5.getServerInput().get(8).getClass()
+		assertTrue(player5.getServerInput().get(9).getClass()
 				.equals(warning.getClass()));
-		assertTrue(player6.getServerInput().get(9).getClass()
+		assertTrue(player6.getServerInput().get(10).getClass()
 				.equals(warning.getClass()));
-		assertTrue(player7.getServerInput().get(10).getClass()
+		assertTrue(player7.getServerInput().get(11).getClass()
 				.equals(warning.getClass()));
 
-		ComWarning toPlayer1 = (ComWarning) player1.getServerInput().get(5);
+		ComWarning toPlayer1 = (ComWarning) player1.getServerInput().get(6);
 		assertTrue(toPlayer1.getWarning().equals(WarningMsg.CouldntStart));
 
-		ComWarning toPlayer2 = (ComWarning) player2.getServerInput().get(5);
+		ComWarning toPlayer2 = (ComWarning) player2.getServerInput().get(6);
 		assertTrue(toPlayer2.getWarning().equals(WarningMsg.CouldntStart));
 
-		ComWarning toPlayer3 = (ComWarning) player3.getServerInput().get(6);
+		ComWarning toPlayer3 = (ComWarning) player3.getServerInput().get(7);
 		assertTrue(toPlayer3.getWarning().equals(WarningMsg.CouldntStart));
 
-		ComWarning toPlayer4 = (ComWarning) player4.getServerInput().get(7);
+		ComWarning toPlayer4 = (ComWarning) player4.getServerInput().get(8);
 		assertTrue(toPlayer4.getWarning().equals(WarningMsg.CouldntStart));
 
-		ComWarning toPlayer5 = (ComWarning) player5.getServerInput().get(8);
+		ComWarning toPlayer5 = (ComWarning) player5.getServerInput().get(9);
 		assertTrue(toPlayer5.getWarning().equals(WarningMsg.CouldntStart));
 
-		ComWarning toPlayer6 = (ComWarning) player6.getServerInput().get(9);
+		ComWarning toPlayer6 = (ComWarning) player6.getServerInput().get(10);
 		assertTrue(toPlayer6.getWarning().equals(WarningMsg.CouldntStart));
 
-		ComWarning toPlayer7 = (ComWarning) player7.getServerInput().get(10);
+		ComWarning toPlayer7 = (ComWarning) player7.getServerInput().get(11);
 		assertTrue(toPlayer7.getWarning().equals(WarningMsg.CouldntStart));
 
 		ComInitLobby init = new ComInitLobby(null, null);
-		assertTrue(player1.getServerInput().get(6).getClass()
+		assertTrue(player1.getServerInput().get(7).getClass()
 				.equals(init.getClass()));
-		assertTrue(player2.getServerInput().get(6).getClass()
+		assertTrue(player2.getServerInput().get(7).getClass()
 				.equals(init.getClass()));
-		assertTrue(player3.getServerInput().get(7).getClass()
+		assertTrue(player3.getServerInput().get(8).getClass()
 				.equals(init.getClass()));
-		assertTrue(player4.getServerInput().get(8).getClass()
+		assertTrue(player4.getServerInput().get(9).getClass()
 				.equals(init.getClass()));
-		assertTrue(player5.getServerInput().get(9).getClass()
+		assertTrue(player5.getServerInput().get(10).getClass()
 				.equals(init.getClass()));
-		assertTrue(player6.getServerInput().get(10).getClass()
+		assertTrue(player6.getServerInput().get(11).getClass()
 				.equals(init.getClass()));
-		assertTrue(player7.getServerInput().get(11).getClass()
+		assertTrue(player7.getServerInput().get(12).getClass()
 				.equals(init.getClass()));
 	}
 
@@ -415,28 +446,29 @@ public class GameServerTests {
 		player1.injectComObject(start);
 
 		ComWarning warning = new ComWarning(null);
-		assertTrue(player1.getServerInput().get(9).getClass()
+		assertTrue(player1.getServerInput().get(10).getClass()
 				.equals(warning.getClass()));
-		assertTrue(player5.getServerInput().get(12).getClass()
+		assertTrue(player5.getServerInput().get(13).getClass()
 				.equals(warning.getClass()));
 
-		ComWarning toPlayer1 = (ComWarning) player1.getServerInput().get(9);
+		ComWarning toPlayer1 = (ComWarning) player1.getServerInput().get(10);
 		assertTrue(toPlayer1.getWarning().equals(WarningMsg.CouldntStart));
 
-		ComWarning toPlayer5 = (ComWarning) player5.getServerInput().get(12);
+		ComWarning toPlayer5 = (ComWarning) player5.getServerInput().get(13);
 		assertTrue(toPlayer5.getWarning().equals(WarningMsg.CouldntStart));
 
 		ComInitLobby init = new ComInitLobby(null, null);
-		assertTrue(player1.getServerInput().get(10).getClass()
+		assertTrue(player1.getServerInput().get(11).getClass()
 				.equals(init.getClass()));
-		assertTrue(player5.getServerInput().get(13).getClass()
+		assertTrue(player5.getServerInput().get(14).getClass()
 				.equals(init.getClass()));
 	}
 
 	@Test
-	public void testClientQuitGame() {
-		ComClientQuit quit = new ComClientQuit();
-		player1.injectComObject(quit);
+	public void testClientQuitRunningGame() {
+		game.setHasStarted(true);
+		ComClientLeave leave = new ComClientLeave();
+		player1.injectComObject(leave);
 		assertTrue(lobby.playerSet.contains(player1));
 		assertTrue(lobby.playerSet.contains(player2));
 		assertTrue(lobby.playerSet.contains(player3));
@@ -449,7 +481,6 @@ public class GameServerTests {
 		ComInitLobby init = new ComInitLobby(null, null);
 		assertTrue(player1.getServerInput().get(5).getClass()
 				.equals(init.getClass()));
-
 		assertTrue(player2.getServerInput().get(5).getClass()
 				.equals(init.getClass()));
 		assertTrue(player3.getServerInput().get(6).getClass()

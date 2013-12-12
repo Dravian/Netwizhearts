@@ -77,7 +77,7 @@ public class GameServer extends Server {
 	 * Konstruktor des GameServers. Setzt die Attribute lobbyServer, name,
 	 * password, hasPassword und rulesetType auf die uebergebenen Werte. Setzt
 	 * den gameMasterName auf den Namen des gameMaster und fuegt den gameMaster
-	 * dem Set an Spielern hinzu. Bestimmt mithilfe des Enums RulesetType das
+	 * dem Set an Spielern hinzu. Setzt hasStarted auf false. Bestimmt mithilfe des Enums RulesetType das
 	 * Ruleset und erstellt es. Setzt currentPlayers auf 0 und max- und minPlayers je
 	 * nach Ruleset.
 	 * 
@@ -96,7 +96,7 @@ public class GameServer extends Server {
 	 */
 	public GameServer(LobbyServer server, Player gameMaster, String GameName,
 			RulesetType ruleset, String password, boolean hasPassword) {
-		hasStarted = false;
+		setHasStarted(false);
 		lobbyServer = server;
 		gameMasterName = gameMaster.getPlayerName();
 		name = GameName;
@@ -125,7 +125,7 @@ public class GameServer extends Server {
 	 */
 	public synchronized GameServerRepresentation getRepresentation() {
 		return new GameServerRepresentation(getGameMasterName(), name, 
-				maxPlayers , currentPlayers, rulesetType, hasPassword, hasStarted);
+				maxPlayers , currentPlayers, rulesetType, hasPassword, isHasStarted());
 	}
 
 	/**
@@ -302,7 +302,7 @@ public class GameServer extends Server {
 	@Override
 	public synchronized void receiveMessage(Player player, ComClientLeave leave) {
 		Player leavingPlayer = player;
-		if (!hasStarted) {
+		if (!isHasStarted()) {
 			if (!playerSet.isEmpty()) {
 				if (playerSet.contains(leavingPlayer)) {
 					if (leavingPlayer.getPlayerName().equals(gameMasterName)) {
@@ -384,11 +384,11 @@ public class GameServer extends Server {
 				try {
 					for (Player back : playerSet) {
 						ruleset.addPlayerToGame(back.getPlayerName());
-					}
+					}			
+					setHasStarted(true);
 					lobbyServer.broadcast(new ComLobbyUpdateGamelist(false,
 							getRepresentation()));
 					broadcast(new ComStartGame());
-					hasStarted = true;
 					ruleset.runGame();
 				} catch (IllegalNumberOfPlayersException e) {
 					ComWarning warning = new ComWarning(WarningMsg.CouldntStart);
@@ -538,5 +538,12 @@ public class GameServer extends Server {
 	 */
 	public boolean isHasStarted() {
 		return hasStarted;
+	}
+	/**
+	 * Setter für has started
+	 * @param hasStarted wird auf den übergebenen Wert gesetzt
+	 */
+	public void setHasStarted(boolean hasStarted) {
+		this.hasStarted = hasStarted;
 	}
 }

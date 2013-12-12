@@ -16,9 +16,10 @@ public class ServerMain {
 	private static LoginServer loginServer;
 
 	/**
-	 * Die main-Methode erstellt einen neuen LobbyServer
+	 * Die main-Methode erstellt einen neuen LobbyServer, sowie einen
+	 * neuen LoginServer, dem die Portnummer übergeben wird
 	 * 
-	 * @param args
+	 * @param args ist der eingegebene Port
 	 */
 	public static void main(String[] args) {
 		int port;
