@@ -243,13 +243,13 @@ public class ServerWizard extends ServerRuleset {
      */
     private boolean isValidColour(Colour colour) {
     	
-    	if(colour != Colour.RED || colour != Colour.GREEN || 
-    			colour != Colour.BLUE || colour != Colour.YELLOW){
-    		return false;
-    	
-    	} else {
+    	if(colour == Colour.RED || colour == Colour.GREEN || 
+    			colour == Colour.BLUE || colour == Colour.YELLOW){
     		trumpColour = colour;
     		return true;
+    	
+    	} else {
+    		return false;
     	}
     }
 
