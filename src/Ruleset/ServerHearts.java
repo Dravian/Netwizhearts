@@ -63,7 +63,7 @@ public class ServerHearts extends ServerRuleset {
                 if (card != HeartsCard.Kreuz2) {
                     return false;
                 } else {
-                    return playCard(card);
+                    return true;
                 }
                 // Es wurden bereits Karten gespielt
             } else {
@@ -79,7 +79,7 @@ public class ServerHearts extends ServerRuleset {
                         }
                     }
                     heartBroken = true;
-                    return playCard(card);
+                    return true;
                 } else {
                     return testOtherHandCards(card);
                 }
@@ -92,7 +92,7 @@ public class ServerHearts extends ServerRuleset {
                 if (card.getColour() == Colour.HEART) {
                     // Wurde Herz schon einmal gespielt
                     if (heartBroken == true) {
-                        return playCard(card);
+                        return true;
                     } else {
                     	for(Card handCard : getCurrentPlayer().getHand()) {
                     		if(handCard.getColour() != Colour.HEART); {
@@ -100,11 +100,11 @@ public class ServerHearts extends ServerRuleset {
                     		}
                     	}
                     	heartBroken = true;
-                        return playCard(card);
+                        return true;
                     }
                     // Die Karte hat nicht die Farbe Herz
                 } else {
-                    return playCard(card);
+                    return true;
                 }
                 // Es wurden schon Karten gespielt
             } else {
@@ -142,10 +142,10 @@ public class ServerHearts extends ServerRuleset {
             if (card.getColour() == Colour.HEART) {
                 heartBroken = true;
             } 
-            return playCard(card);
+            return true;
         }
         // Die Karte hat die selbe Farbe, wie die erste ausgespielte Karte der Runde
-        return playCard(card);
+        return true;
     }
 
 	@Override
@@ -177,6 +177,13 @@ public class ServerHearts extends ServerRuleset {
 					+ " gespielt, obwohl sie kein gültiger "
 					+ "Zug ist. Es muss ein Fehler bei ClientWizard sein.");
 
+		} else if(!playCard(card)) {
+			setGamePhase(GamePhase.CardRequest);
+			send(WarningMsg.WrongCard, name);
+			throw new IllegalArgumentException("Der Spieler" + name
+					+ "hat die Karte " + card.getValue() + card.getColour()
+					+ " gespielt, obwohl er sie nicht hat.");
+			
 		} else {
 			updatePlayers();
 			setGamePhase(GamePhase.Playing);

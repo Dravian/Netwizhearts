@@ -83,9 +83,15 @@ public class ServerWizard extends ServerRuleset {
             throw new IllegalArgumentException("Der Spieler" + name + "hat die Karte "
                     + card.getValue() + card.getColour()
                     + " gespielt, obwohl sie kein gültiger "
-                    + "Zug ist. Es muss ein Fehler bei ClientWizard sein.");
+                    + "Zug ist.");
 
-        } else {
+        } else if(!playCard(card)) {
+        	send(WarningMsg.WrongCard,name);
+        	throw new IllegalArgumentException("Der Spieler" + name + "hat die Karte "
+                    + card.getValue() + card.getColour()
+                    + " gespielt, obwohl er sie nicht hat.");
+        }
+        else {
             updatePlayers();      
             
             if (getGameState().getPlayedCards().size() == getPlayers().size()) {
@@ -173,19 +179,19 @@ public class ServerWizard extends ServerRuleset {
     		throw new RulesetException(" Der Ablagestapel ist bereits voll.");
     	
     	}else if(getPlayedCards().size() == 0) {
-    		return playCard(card);
+    		return true;
     	
     	} else  if(card.getValue() == valueOfFool) {
-    		return playCard(card);
+    		return true;
     	
     	} else if(card.getValue() == valueOfSorcerer) {
-    		return playCard(card);
+    		return true;
     	}
     	
     	Card firstCard = getPlayedCards().get(0).getCard();
     	
     	if(firstCard.getValue() == valueOfSorcerer) {
-    		return playCard(card);
+    		return true;
     	}
     	
     	/* Falls die nächste Karte Narr ist, wird die als nächstgespielte
@@ -201,10 +207,10 @@ public class ServerWizard extends ServerRuleset {
     	}
     	
     	if(firstCard.getValue() == valueOfFool) {
-    		return playCard(card);
+    		return true;
     	
     	} else if(card.getColour() == firstCard.getColour()) {
-    		return playCard(card);
+    		return true;
     	}
     	
     	List<Card> hand = getCurrentPlayer().getHand();
@@ -217,7 +223,7 @@ public class ServerWizard extends ServerRuleset {
     		}
     	}
     	
-    	return playCard(card);
+    	return true;
     }
 
     /**
