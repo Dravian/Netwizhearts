@@ -27,6 +27,11 @@ public class PlayerState implements Serializable{
 	private OtherData otherData;
 	
 	/**
+	 * Der Spieltyp in dem sich der Spieler befindet
+	 */
+	private RulesetType ruleset;
+	
+	/**
 	 * Erstellt einen Spielerzustand
 	 * @param name Der Name vom Spieler
 	 * @param ruleset Das Spiel das er spielt
@@ -34,7 +39,7 @@ public class PlayerState implements Serializable{
 	 */
 	public PlayerState(String name,RulesetType ruleset) throws IllegalArgumentException{
 		this.name = name;
-		
+		this.ruleset = ruleset;
 		this.ownHand = new ArrayList<Card>();
 		
 		if(ruleset == RulesetType.Hearts) {
@@ -71,8 +76,23 @@ public class PlayerState implements Serializable{
 		return otherData;
 	}
 	
+	/**
+	 * Setzt einen neuen OtherData
+	 * @param data Der neue Otherdata
+	 */
+	private void setOtherData(OtherData data) {
+		otherData = data;
+	}
 	
-	
-	
+	/**
+	 * Kopiert den aktuellen PlayerState
+	 * @return Den aktuellen PlayerState
+	 */
+	protected PlayerState clone() {
+		PlayerState copy = new PlayerState(name, ruleset);
+		copy.getHand().addAll(ownHand);
+		copy.setOtherData(otherData.clone());
+		return copy;
+	}
 	
 }

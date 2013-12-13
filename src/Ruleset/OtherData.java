@@ -109,4 +109,17 @@ public abstract class OtherData implements Serializable{
 	public int getAnnouncedTricks() {
 		throw new UnsupportedOperationException("Wird in diesem Ruleset nicht verwendet");
 	}
+	
+	protected void setMadeTricks(Set<Card> madeTricks) {
+		this.madeTricks = madeTricks;
+	}
+	
+	protected Set<Card> getMadeTricks() {
+		return madeTricks;
+	}
+	
+	protected void setNumberOfTricks(int number) {
+		numberOfTricks = number;
+	}
+	protected abstract OtherData clone();
 }
