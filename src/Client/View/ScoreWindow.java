@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 
 import Client.ClientModel;
 import Client.ViewNotification;
+import Ruleset.OtherData;
 
 import javax.swing.JTextArea;
 import javax.swing.JButton;
@@ -68,10 +69,15 @@ public class ScoreWindow extends JFrame implements Observer{
 			ViewNotification message = (ViewNotification) arg;
 		switch (message) {
 		case showScore:
-			textArea.setText(observed.getWindowText() + "\n");//FIXME
 			List<String> winners = observed.getWinner();
 			for (int i = 0; i < winners.size(); i++) {
 				textArea.append(winners.get(i) + "\n");
+			}
+			OtherData myself = observed.getGameUpdate().getOwnData();
+			List<OtherData> players = observed.getGameUpdate().getOtherPlayerData();
+			textArea.append("" + myself.getPoints());
+			for (OtherData p : players) {
+				textArea.append("" + p.getPoints());
 			}
 			this.setVisible(true);
 			break;
