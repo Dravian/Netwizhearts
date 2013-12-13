@@ -286,7 +286,7 @@ public abstract class ClientRuleset {
 	 *            Die Karte
 	 * @return true falls die Karte gueltig ist, false wenn nicht
 	 */
-	protected abstract boolean isValidMove(Card card);
+	public abstract boolean isValidMove(Card card);
 
 	public void resolveMessage(MsgCard card) {
 		throw new IllegalArgumentException(
