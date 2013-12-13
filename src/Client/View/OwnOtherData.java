@@ -1,9 +1,11 @@
 package Client.View;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 public class OwnOtherData extends JPanel {
 
@@ -35,6 +37,14 @@ public class OwnOtherData extends JPanel {
 //		return score;
 //	}
 	
+	
+	public void setMyTurn(boolean b) {
+		if (b) {
+			this.setBorder(new LineBorder(Color.RED, 3));
+		} else {
+			this.setBorder(null);
+		}
+	}
 	
 	@Override
 	protected void paintComponent(Graphics g) {

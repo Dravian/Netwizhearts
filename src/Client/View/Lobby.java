@@ -225,14 +225,26 @@ public class Lobby extends JFrame implements Observer{
 						switch (lang) {
 						case English:
 							s = "(Password)";
-							p = "(started)";
 							break;
 						case German:
 							s = "(Passwort)";
-							p = "(gestarted)";
 							break;
 						case Bavarian:
 							s = "(Passwort)";
+							break;
+						default:
+							break;
+						}
+					}
+					if (gameRepresentationList.get(i).isHasStarted()) {
+						switch (lang) {
+						case English:
+							p = "(started)";
+							break;
+						case German:
+							p = "(gestarted)";
+							break;
+						case Bavarian:
 							p = "(hod agfangd)";
 							break;
 						default:
