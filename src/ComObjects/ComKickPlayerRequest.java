@@ -41,7 +41,8 @@ public class ComKickPlayerRequest implements ComObject, Serializable {
 
     @Override
     public void process(ClientModel model) {
-        model.receiveMessage(this);
+        //model.receiveMessage(this);
+        throw new UnsupportedOperationException();
     }
 
     @Override
