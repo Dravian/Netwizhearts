@@ -75,7 +75,7 @@ public class ClientHearts extends ClientRuleset {
 
 							// Wenn in der Spielerhand eine Karte weder Herz
 							// noch PikDame ist
-							if (handCard != HeartsCard.PikDame & handCard.getColour() != Colour.HEART) {
+							if (handCard != HeartsCard.PikDame && handCard.getColour() != Colour.HEART) {
 								getModel().openWarning(WarningMsg.UnvalidMove);
 								getModel().announceTurn(UserMessages.PlayCard);
 								return false;
@@ -150,11 +150,12 @@ public class ClientHearts extends ClientRuleset {
 					getModel().announceTurn(UserMessages.PlayCard);
 					return false;
 
-					// Die Spieler möchte ein Herz spielen, hat aber noch andere
+					// Der Spieler möchte ein Herz spielen, hat aber noch andere
 					// Karten auf der Hand
 					// und Herz ist noch nicht gebrochen
 				} else if (handCard.getColour() != Colour.HEART
-						&& card.getColour() == Colour.HEART && !heartBroken) {
+						&& card.getColour() == Colour.HEART 
+						&& !heartBroken) {
 					getModel().openWarning(WarningMsg.UnvalidMove);
 					getModel().announceTurn(UserMessages.PlayCard);
 					return false;
@@ -198,13 +199,7 @@ public class ClientHearts extends ClientRuleset {
 		getModel().updateGame();
 	}
 
-	/**
-	 * Gibt zurück ob die Karten die der Client tauschen will, gültig sind
-	 * 
-	 * @param cards
-	 *            Die zu tauschenden Karten
-	 * @return true wenn Karten valide sind, false wenn nicht
-	 */
+	@Override
 	public boolean areValidChoosenCards(Set<Card> cards) {
 		if (getGamePhase() == GamePhase.MultipleCardRequest) {
 			if (cards.size() == 3) {

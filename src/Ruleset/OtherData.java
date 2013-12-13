@@ -101,4 +101,12 @@ public abstract class OtherData implements Serializable{
 	public String getOtherDataName() {
 		return name;
 	}
+	
+	/** 
+	 * Holt die angesagten Stiche des Spielers
+	 * @return announcedTricks Die angesagten Stiche
+	 */
+	public int getAnnouncedTricks() {
+		throw new UnsupportedOperationException("Wird in diesem Ruleset nicht verwendet");
+	}
 }

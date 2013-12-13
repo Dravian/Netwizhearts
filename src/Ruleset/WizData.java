@@ -22,10 +22,7 @@ public class WizData extends OtherData implements Serializable{
 		this.announcedTricks = 0;
 	}
 	
-	/** 
-	 * Holt die angesagten Stiche des Spielers
-	 * @return announcedTricks Die angesagten Stiche
-	 */
+	@Override
 	public int getAnnouncedTricks() {
 		return this.announcedTricks;
 	}

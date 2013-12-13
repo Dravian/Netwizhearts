@@ -6,6 +6,7 @@ package Ruleset;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import Client.ClientModel;
 import ComObjects.*;
@@ -342,5 +343,54 @@ public abstract class ClientRuleset {
 		throw new IllegalArgumentException(
 				"Das Comobject MsgMultiCardsRequest wird hier nicht"
 						+ "gebraucht");
+	}
+	
+	/**
+	 * Prüft ob die Anzahl der angesagten Stiche vom Spieler gültig sind
+	 * @param number Die Anzahl der angesagten Stichen
+	 * @return true falls die Anzahl der Stiche passen, false wenn nicht
+	 */
+	public boolean isValidTrickNumber(int number) {
+		throw new UnsupportedOperationException("Wird in diesem Ruleset nicht verwendet");
+	}
+	
+	/**
+	 * Prüft ob die angesagte Trumpffarbe richtig ist
+	 * 
+	 * @param colour
+	 *            Die angesagte Trumpffarbe
+	 * @return true falls die Farbe in Ordnung ist, false wenn nicht
+	 */
+	public boolean isValidColour(Colour colour) {
+		throw new UnsupportedOperationException("Wird in diesem Ruleset nicht verwendet");
+	}
+	
+	/**
+	 * Gibt zurück ob die Karten die der Client tauschen will, gültig sind
+	 * 
+	 * @param cards
+	 *            Die zu tauschenden Karten
+	 * @return true wenn Karten valide sind, false wenn nicht
+	 */
+	public boolean areValidChoosenCards(Set<Card> cards) {
+		throw new UnsupportedOperationException("Wird in diesem Ruleset nicht verwendet");
+	}
+	
+	/**
+	 * Holt die Trumpffarbe des Spiels
+	 * @return Gibt die Trumpffarbe zurück
+	 */
+	public Colour getTrumpColour() {
+		throw new UnsupportedOperationException("Wird in diesem Ruleset nicht verwendet");
+
+	}
+	
+	/**
+	 * Gibt die Farben die es im Spiel gibt zurück
+	 * @return Die Farben des Spiels
+	 */
+	public List<Colour> getColours() {
+		throw new UnsupportedOperationException("Wird in diesem Ruleset nicht verwendet");
+
 	}
 }

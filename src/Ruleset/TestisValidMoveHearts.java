@@ -223,6 +223,6 @@ public class TestisValidMoveHearts {
 
        assertTrue(ruleset.isValidMove(HeartsCard.Pik5));
        assertTrue(ruleset.isValidMove(HeartsCard.PikDame));
-       assertTrue(ruleset.isValidMove(HeartsCard.Herz10));
+       
     }
 }
