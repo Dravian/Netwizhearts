@@ -205,7 +205,6 @@ public class ClientModel extends Observable{
 			} else {
 				throw new IllegalArgumentException();
 			}
-			System.out.println("InitLobby empfangen.");
 			informView(ViewNotification.windowChangeForced);
 		} else {
 			throw new IllegalArgumentException();
