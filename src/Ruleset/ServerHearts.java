@@ -188,14 +188,14 @@ public class ServerHearts extends ServerRuleset {
 					+ " gespielt, obwohl er sie nicht hat.");
 			
 		} else {
-			updatePlayers();
 			setGamePhase(GamePhase.Playing);
-			playCard(card);
 
 			if (getGameState().getPlayedCards().size() == getPlayers().size()) {
+				updatePlayers();
 				calculateTricks();
 			} else {
 				nextPlayer();
+				updatePlayers();
 				setGamePhase(GamePhase.CardRequest);
 				send(new MsgCardRequest(), getCurrentPlayer()
 						.getPlayerStateName());
@@ -366,8 +366,6 @@ public class ServerHearts extends ServerRuleset {
 		PlayerState trickWinner = getPlayerState(strongestCard.getOwnerName());
 		getGameState().madeTrick(trickWinner);
 
-		updatePlayers();
-
 		boolean noOneHasACard = true;
 
 		for (PlayerState player : getPlayers()) {
@@ -382,7 +380,7 @@ public class ServerHearts extends ServerRuleset {
 		} else {
 			setGamePhase(GamePhase.CardRequest);
 			setCurrentPlayer(trickWinner);
-
+			updatePlayers();
 			send(new MsgCardRequest(), trickWinner.getPlayerStateName());
 		}
 	}
@@ -420,8 +418,6 @@ public class ServerHearts extends ServerRuleset {
 				}
 			}
 
-			updatePlayers();
-
 			for (PlayerState player : getPlayers()) {
 				if (player.getOtherData().getPoints() >= ENDING_POINTS) {
 					setGamePhase(GamePhase.Ending);
@@ -430,6 +426,7 @@ public class ServerHearts extends ServerRuleset {
 			}
 
 			if (getGamePhase() == GamePhase.Ending) {
+				updatePlayers();
 				List<String> winners = getWinners();
 				broadcast(new MsgGameEnd(winners));
 				quitGame();
@@ -496,7 +493,6 @@ public class ServerHearts extends ServerRuleset {
 				throw new RulesetException(
 						"Probleme beim Verteilen der Karten!");
 			}
-			updatePlayers();
 			
 			if (getRoundNumber() % 4 == 0) {
 				
@@ -506,11 +502,12 @@ public class ServerHearts extends ServerRuleset {
 						break;
 					}
 				}
-				
+				updatePlayers();
 				setGamePhase(GamePhase.CardRequest);
 				send(new MsgCardRequest(), getCurrentPlayer()
 						.getPlayerStateName());
 			} else {
+				updatePlayers();
 				setGamePhase(GamePhase.MultipleCardRequest);
 				broadcast(new MsgMultiCardsRequest(3));
 			}
