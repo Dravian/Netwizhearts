@@ -155,13 +155,7 @@ public class ClientWizard extends ClientRuleset {
 		}
 	}
 
-	/**
-	 * Prüft ob die Anzahl der angesagten Stiche vom Spieler gültig sind
-	 * 
-	 * @param number
-	 *            Die Anzahl der angesagten Stichen
-	 * @return true falls die Anzahl der Stiche passen, false wenn nicht
-	 */
+	@Override
 	public boolean isValidTrickNumber(int number) {
 		if (getGamePhase() == GamePhase.TrickRequest) {
 		
@@ -180,13 +174,7 @@ public class ClientWizard extends ClientRuleset {
 		}
 	}
 
-	/**
-	 * Prüft ob die angesagte Trumpffarbe richtig ist
-	 * 
-	 * @param colour
-	 *            Die angesagte Trumpffarbe
-	 * @return true falls die Farbe in Ordnung ist, false wenn nicht
-	 */
+	@Override
 	public boolean isValidColour(Colour colour) {
 		if (getGamePhase() == GamePhase.SelectionRequest) {
 
@@ -217,19 +205,14 @@ public class ClientWizard extends ClientRuleset {
 		}
 	}
 
-	/**
-	 * Holt die Trumpffarbe des Spiels
-	 * @return Gibt die Trumpffarbe zurück
-	 */
+	@Override
 	public Colour getTrumpColour() {
 		return trumpColour;
 	}
 	
-	/**
-	 * Gibt die Farben die es im Spiel gibt zurück
-	 * @return Die Farben des Spiels
-	 */
+	@Override
 	public List<Colour> getColours() {
 		return colours;
 	}
+	
 }
