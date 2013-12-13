@@ -408,15 +408,6 @@ public class ClientModel extends Observable{
 	}
 
 	/**
-	 * Standard receiveMessage Methode, die ComObjekte
-	 * zur Weiterverarbeitung identifiziert.
-	 * @param com Das auflaufende ComObjekt.
-	 */
-	public void receiveMessage(ComObject com) {
-
-	}
-
-	/**
 	 * Liefert eine Liste der Namen der Spieler in der Lobby oder GameLobby.
 	 *
 	 * @return Liste von Spielernamen oder null wenn leer.
