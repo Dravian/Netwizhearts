@@ -205,7 +205,6 @@ public class Game extends JFrame implements Observer{
 					//TODO Anzeigen, dass man an der Reihe ist
 				}
 			});
-			chatlog.append("Du bist an der Reihe\n");
 			break;
 		case windowChangeForced:
 			SwingUtilities.invokeLater(new Runnable() {
