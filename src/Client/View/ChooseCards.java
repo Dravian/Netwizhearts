@@ -16,6 +16,7 @@ import javax.swing.JTextArea;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.SwingUtilities;
+import javax.swing.border.EmptyBorder;
 
 import Client.ClientModel;
 import Client.ViewNotification;
@@ -28,6 +29,7 @@ import Ruleset.Card;
  */
 public class ChooseCards extends JFrame implements Observer{
 	
+	private JPanel contentPane;
 	private OwnHand playerHand;
 	private JPanel handPanel;
 	private JTextArea rsMessageArea;
@@ -40,26 +42,26 @@ public class ChooseCards extends JFrame implements Observer{
 		setResizable(false);
 		setAlwaysOnTop(true);
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-		getContentPane().setLayout(null);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
 		
 		rsMessageArea = new JTextArea();
 		rsMessageArea.setLineWrap(true);
 		rsMessageArea.setEditable(false);
 		rsMessageArea.setBounds(10, 11, 750, 115);
-		getContentPane().add(rsMessageArea);
-		
-		handPanel = new JPanel();
-		handPanel.setBounds(10, 137, 750, 105);
-		getContentPane().add(handPanel);
+		contentPane.add(rsMessageArea);
 		
 		btnOK = new JButton("OK");
 		btnOK.setBounds(628, 253, 132, 40);
 		
-		getContentPane().add(btnOK);
+		contentPane.add(btnOK);
 		
 		playerHand = new OwnHand();
+		playerHand.setBounds(10, 137, 750, 105);
 		playerHand.addCardMouseListener(new CardMouseListener());
-		handPanel.add(playerHand);
+		contentPane.add(playerHand);
 		
 		chosenCards = new LinkedList<Card>();
 	}
