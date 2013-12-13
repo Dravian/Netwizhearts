@@ -10,34 +10,34 @@ import ComObjects.ComObject;
 public class TestMessageListenerThread extends MessageListenerThread{
 
 	List<ComObject> inputComObjectList = new LinkedList<ComObject>();
-	
+
 	ClientModel model;
-	
+
 	public void send(ComObject com) {
 		inputComObjectList.add(com);
 	}
-	
+
 	public void startConnection(ClientModel model, String host, int port) {
 		this.model = model;
 	}
-	
+
 	public void closeConnection() {
-		
+
 	}
-	
+
 	public List<ComObject> getModelInput() {
 		return inputComObjectList;
 	}
-	
+
 	public void injectComObject(ComObject object) {
 		object.process(model);
 	}
-	
+
 	public void setModel(ClientModel model) {
 		this.model = model;
 	}
-	
+
 	public void run() {
-		
+
 	}
 }

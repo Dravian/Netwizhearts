@@ -1,6 +1,3 @@
-/**
- *
- */
 package Client;
 
 import java.io.EOFException;
@@ -25,7 +22,7 @@ public class MessageListenerThread implements Runnable {
 	private ObjectOutputStream out;
 
 	private boolean run;
-	
+
 	private boolean socketSet;
 
 	private ClientModel model;
@@ -42,17 +39,16 @@ public class MessageListenerThread implements Runnable {
 	/**
 	 * Initialisiert die ObjectStreams und speichert den TCP Socket im Thread.
 	 *
-	 * @param model ClientModel, Das Model das den Spielablauf und Serverkommunikation
-	 * steuert.
-	 * @param connection Socket, der Socket über den die TCP Verbindung laeuft.
-	 * @throws IllegalArgumentException Wird geworfen bei falschen ClientModel
+	 * @param model ClientModel, Das Model das den Spielablauf und
+	 * Serverkommunikation steuert.
 	 * oder Socket Argumenten.
 	 * @throws IOException Wird geworfen beim fehlerbehafteten Erstellen der
 	 * ObjectStreams.
 	 */
 	public void startConnection(ClientModel model,
 								String host,
-								int port) throws IllegalArgumentException, IOException {
+								int port) throws IllegalArgumentException,
+												 IOException {
 		if (model == null || host == null) {
 			throw new IllegalArgumentException();
 		}
@@ -78,7 +74,7 @@ public class MessageListenerThread implements Runnable {
 				in.close();
 				connection.close();
 			} catch (IOException e) {
-				System.out.println("ERROR: While closing network ressources.");
+				System.out.println("While closing network ressources.");
 				e.printStackTrace();
 			}
 		}
@@ -89,14 +85,14 @@ public class MessageListenerThread implements Runnable {
 	 *
 	 * @param object Das zu Versendende ComObjekt.
 	 */
-	public void send(ComObject object) {
+	public void send(final ComObject object) {
 		if (run) {
 			try {
 				out.writeUnshared(object);
 				out.flush();
 				out.reset();
 			} catch (IOException e) {
-				System.out.println("ERROR: Write to Object Stream failed.");
+				System.out.println("Write to Object Stream failed.");
 				e.printStackTrace();
 				closeConnection();
 				model.closeView();
@@ -117,25 +113,25 @@ public class MessageListenerThread implements Runnable {
 				object.process(model);
 			}
 		} catch (ClassNotFoundException e) {
-			System.err.println("ERROR: Unknown Object received.");
+			System.err.println("Unknown Object received.");
 			e.printStackTrace();
 		} catch (EOFException e) {
 			if (run) {
-				System.err.println("ERROR: Object Stream emty.");
+				System.err.println("Object Stream emty.");
 				e.printStackTrace();
 			}
 		} catch (SocketException e) {
 			if (run) {
-				System.err.println("ERROR: Connection lost.");
+				System.err.println("Connection lost.");
 				e.printStackTrace();
 			}
 		} catch (IOException e) {
 			if (run) {
-				System.err.println("ERROR: Network IO failed.");
+				System.err.println("Network IO failed.");
 				e.printStackTrace();
 			}
 		} finally {
-			if(run) {
+			if (run) {
 				closeConnection();
 				model.closeView();
 			}

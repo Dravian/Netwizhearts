@@ -922,13 +922,15 @@ public class ClientModel extends Observable {
 	}
 
 	/**
-	 * Versucht eine Karte auszuspielen. Laesst dazu vom ClientRuleset ueberpruefen ob, die ausgewaehlte
-	 * Karte gespielt werden darf. Wenn ja, wird sie im ClientRuleset weiterbehandelt. Wenn nein,
-	 * wird eine Fehlermeldung ausgegeben und dazu die Observer mit openWarning informiert.
-	 * 
+	 * Versucht eine Karte auszuspielen. Laesst dazu vom ClientRuleset
+	 * ueberpruefen ob, die ausgewaehlte Karte gespielt werden darf.
+	 * Wenn ja, wird sie im ClientRuleset weiterbehandelt. Wenn nein,
+	 * wird eine Fehlermeldung ausgegeben und dazu die Observer mit
+	 * openWarning informiert.
+	 *
 	 * @param card Die gespielte Karte.
 	 */
-	public void makeMove(Card card) {
+	public final void makeMove(final Card card) {
 		if (state == ClientState.GAME) {
 			if (card != null) {
 				if (ruleset != null) {
@@ -962,7 +964,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @return GameClientUpdate Die Daten der laufenden Sitzung.
 	 */
-	public GameClientUpdate getGameUpdate() {
+	public final GameClientUpdate getGameUpdate() {
 		if (state == ClientState.GAME) {
 			if (ruleset != null) {
 				return ruleset.getGameState();
