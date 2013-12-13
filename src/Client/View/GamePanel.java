@@ -189,17 +189,17 @@ public class GamePanel extends JPanel{
 	 * mit 3 Spielern
 	 */
 	private void makeTrickGameBoardThreePlayers() {
-		SwingUtilities.invokeLater(new Runnable() {
-
-			@Override
-			public void run() {
+//		SwingUtilities.invokeLater(new Runnable() {
+//
+//			@Override
+//			public void run() {
 				otherHands.get(0).setBounds(100, 70, otherHands.get(0).getWidth(), otherHands.get(0).getHeight());
 				otherHands.get(1).setBounds(750, 70, otherHands.get(1).getWidth(), otherHands.get(1).getHeight());
 				discardPiles.get(0).setBounds(270, 160, discardPiles.get(0).getWidth(), discardPiles.get(0).getHeight());
 				discardPiles.get(1).setBounds(660, 160, discardPiles.get(1).getWidth(), discardPiles.get(1).getHeight());
 				discardPiles.get(2).setBounds(465, 270, discardPiles.get(2).getWidth(), discardPiles.get(2).getHeight());
-			}
-		});
+//			}
+//		});
 		
 	}
 	
@@ -208,10 +208,10 @@ public class GamePanel extends JPanel{
 	 * mit 4 Spielern
 	 */
 	private void makeTrickGameBoardFourPlayers() {
-		SwingUtilities.invokeLater(new Runnable() {
-
-			@Override
-			public void run() {				
+//		SwingUtilities.invokeLater(new Runnable() {
+//
+//			@Override
+//			public void run() {				
 				otherHands.get(0).setBounds(10, 200, otherHands.get(0).getWidth(), otherHands.get(0).getHeight());
 				otherHands.get(1).setBounds(425, 10, otherHands.get(1).getWidth(), otherHands.get(1).getHeight());
 				otherHands.get(2).setBounds(820, 200, otherHands.get(2).getWidth(), otherHands.get(2).getHeight());
@@ -220,8 +220,8 @@ public class GamePanel extends JPanel{
 				discardPiles.get(2).setBounds(710, 210, discardPiles.get(2).getWidth(), discardPiles.get(2).getHeight());
 				discardPiles.get(3).setBounds(465, 270, discardPiles.get(3).getWidth(), discardPiles.get(3).getHeight());
 			
-			}
-		});
+//			}
+//		});
 		
 	}
 
@@ -230,10 +230,10 @@ public class GamePanel extends JPanel{
 	 * mit 5 Spielern
 	 */
 	private void makeTrickGameBoardFivePlayers() {
-		SwingUtilities.invokeLater(new Runnable() {
-
-			@Override
-			public void run() {
+//		SwingUtilities.invokeLater(new Runnable() {
+//
+//			@Override
+//			public void run() {
 				otherHands.get(0).setBounds(10, 200, otherHands.get(0).getWidth(), otherHands.get(0).getHeight());
 				otherHands.get(1).setBounds(250, 10, otherHands.get(1).getWidth(), otherHands.get(1).getHeight());
 				otherHands.get(2).setBounds(600, 10, otherHands.get(2).getWidth(), otherHands.get(2).getHeight());
@@ -243,8 +243,8 @@ public class GamePanel extends JPanel{
 				discardPiles.get(2).setBounds(570, 145, discardPiles.get(2).getWidth(), discardPiles.get(2).getHeight());
 				discardPiles.get(3).setBounds(710, 210, discardPiles.get(3).getWidth(), discardPiles.get(3).getHeight());
 				discardPiles.get(4).setBounds(465, 270, discardPiles.get(4).getWidth(), discardPiles.get(4).getHeight());
-			}
-		});
+//			}
+//		});
 		
 	}
 
@@ -253,10 +253,10 @@ public class GamePanel extends JPanel{
 	 * mit 6 Spielern
 	 */
 	private void makeTrickGameBoardSixPlayers() {
-		SwingUtilities.invokeLater(new Runnable() {
-
-			@Override
-			public void run() {
+//		SwingUtilities.invokeLater(new Runnable() {
+//
+//			@Override
+//			public void run() {
 				otherHands.get(0).setBounds(10, 220, otherHands.get(0).getWidth(), otherHands.get(0).getHeight());
 				otherHands.get(1).setBounds(200, 10, otherHands.get(1).getWidth(), otherHands.get(1).getHeight());
 				otherHands.get(2).setBounds(430, 10, otherHands.get(2).getWidth(), otherHands.get(2).getHeight());
@@ -268,8 +268,8 @@ public class GamePanel extends JPanel{
 				discardPiles.get(3).setBounds(630, 145, discardPiles.get(3).getWidth(), discardPiles.get(3).getHeight());
 				discardPiles.get(4).setBounds(740, 230, discardPiles.get(4).getWidth(), discardPiles.get(4).getHeight());
 				discardPiles.get(5).setBounds(465, 270, discardPiles.get(5).getWidth(), discardPiles.get(5).getHeight());
-			}
-		});
+//			}
+//		});
 		
 	}
 	

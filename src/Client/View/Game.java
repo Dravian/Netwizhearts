@@ -62,7 +62,7 @@ public class Game extends JFrame implements Observer{
 	 */
 	public Game() {
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 1024, 695);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -153,15 +153,11 @@ public class Game extends JFrame implements Observer{
 	 * @param playerCount Anzahl der Mitspieler
 	 */
 	public void makeTrickGameBoard(final int playerCount) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-					gamePanel = new GamePanel(playerCount);
-					gamePanel.setBounds(10, 11, 998, 547);
-					gamePanel.addCardMouseListener(cardMouseListener);
-					contentPane.add(gamePanel);
-			}
-		});
-		
+		gamePanel = new GamePanel(playerCount);
+		gamePanel.setBounds(10, 11, 998, 547);
+		gamePanel.addCardMouseListener(cardMouseListener);
+		contentPane.add(gamePanel);
+
 	}
 	
 	/**
@@ -181,10 +177,14 @@ public class Game extends JFrame implements Observer{
 			ViewNotification message = (ViewNotification) arg;
 		switch (message) {
 		case gameStarted:
-			makeTrickGameBoard(observed.getPlayerlist().size()-1);
-			chatlog.setText("");
-			this.setVisible(true);
-			break;
+			SwingUtilities.invokeLater(new Runnable() {
+				public void run() {
+					makeTrickGameBoard(observed.getPlayerlist().size()-1);
+					chatlog.setText("");
+					setVisible(true);
+				}
+			});
+		break;	
 		case gameUpdate:
 			SwingUtilities.invokeLater(new Runnable() {
 				public void run() {
@@ -210,11 +210,15 @@ public class Game extends JFrame implements Observer{
 		case windowChangeForced:
 			SwingUtilities.invokeLater(new Runnable() {
 				public void run() {
-					gamePanel = null;
+						if (isVisible()) {
+							contentPane.remove(gamePanel);
+							gamePanel = null;
+							setVisible(false);
+						}
 				}
 			});
 			
-			this.setVisible(false);
+			
 			break;
 		case quitGame:
 			this.dispose();
