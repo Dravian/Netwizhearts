@@ -45,4 +45,14 @@ public class WizData extends OtherData implements Serializable{
 		
 		return otherData.toString();
 	}
+	
+	@Override
+	protected OtherData clone() {
+		WizData copy = new WizData(getOtherDataName());
+		copy.setMadeTricks(getMadeTricks());
+		copy.setNumberOfTricks(getNumberOfTricks());
+		copy.setPoints(getPoints());
+		copy.setAnnouncedTricks(announcedTricks);
+		return copy;
+	}
 }

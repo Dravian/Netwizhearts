@@ -404,8 +404,14 @@ public abstract class ServerRuleset {
 	 * @param player Dem Spieler 
 	 */
 	protected GameClientUpdate generateGameClientUpdate(PlayerState player) {
-		return new GameClientUpdate(player,
-				gameState.getPlayedCards(),
+		List<DiscardedCard> discardPile = new ArrayList<DiscardedCard>();
+		
+		for(int i = 0; i < getPlayedCards().size(); i++) {
+			discardPile.add(getPlayedCards().get(i).clone());
+		}
+		
+		return new GameClientUpdate(player.clone(),
+				discardPile,
 				viewOfOtherPlayers(player),
 				getCurrentPlayer().getPlayerStateName(),
 				getRoundNumber(),
@@ -431,7 +437,7 @@ public abstract class ServerRuleset {
 		}
 		
 		while(iterator != players.indexOf(player)) {
-			enemyData.add((players.get(iterator)).getOtherData());
+			enemyData.add((players.get(iterator)).getOtherData().clone());
 			if(iterator == players.size()-1) {
 				iterator = 0;
 			} else {

@@ -22,4 +22,13 @@ public class HeartsData extends OtherData implements Serializable {
 		
 		return otherData.toString();
 	}
+
+	@Override
+	protected OtherData clone() {
+		HeartsData copy = new HeartsData(getOtherDataName());
+		copy.setMadeTricks(getMadeTricks());
+		copy.setNumberOfTricks(getNumberOfTricks());
+		copy.setPoints(getPoints());
+		return copy;
+	}
 }

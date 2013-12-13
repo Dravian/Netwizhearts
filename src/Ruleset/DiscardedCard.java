@@ -36,4 +36,13 @@ public class DiscardedCard implements Serializable{
 	public Card getCard() {
 		return card;
 	}
+	
+	/**
+	 * Kopier eine DiscardedCard
+	 * @return Eine Kopie dieser DiscardedCard
+	 */
+	protected DiscardedCard clone() {
+		DiscardedCard copy = new DiscardedCard(name,card);
+		return copy;
+	}
 }
