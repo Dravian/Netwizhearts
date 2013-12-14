@@ -15,16 +15,34 @@ import ComObjects.ComObject;
  */
 public class MessageListenerThread implements Runnable {
 
+	/**
+	 * Der TCP Socket.
+	 */
 	private Socket connection;
 
+	/**
+	 * Referenz auf den Ausgabestrom.
+	 */
 	private ObjectInputStream in;
 
+	/**
+	 * Referenz auf den Eingabestrom.
+	 */
 	private ObjectOutputStream out;
 
+	/**
+	 * Signalisiert den Zustand des Threads.
+	 */
 	private boolean run;
 
+	/**
+	 * Signalisiert ob ein TCP Socket aktiv ist.
+	 */
 	private boolean socketSet;
 
+	/**
+	 * Referenz auf das zugrundeliegende Model des Clients.
+	 */
 	private ClientModel model;
 
 	/**
@@ -74,7 +92,7 @@ public class MessageListenerThread implements Runnable {
 				in.close();
 				connection.close();
 			} catch (IOException e) {
-				System.out.println("While closing network ressources.");
+				System.out.println("Fehler beim schlieﬂen des Netzwerkes");
 				e.printStackTrace();
 			}
 		}
@@ -82,17 +100,17 @@ public class MessageListenerThread implements Runnable {
 
 	/**
 	 * ‹ber diese Methode koennen Nachrichten an den Server versendet werden.
+	 * Nimmt ein ComObjekt und schreibt es in den Objektstrom.
 	 *
 	 * @param object Das zu Versendende ComObjekt.
 	 */
 	public void send(final ComObject object) {
 		if (run) {
 			try {
-				out.writeUnshared(object);
+				out.writeObject(object);
 				out.flush();
-				out.reset();
 			} catch (IOException e) {
-				System.out.println("Write to Object Stream failed.");
+				System.out.println("Schreibvorgang fehlgeschlagen");
 				e.printStackTrace();
 				closeConnection();
 				model.closeView();
@@ -101,33 +119,33 @@ public class MessageListenerThread implements Runnable {
 	}
 
 	/**
-	 * Initialisiert den In- und OutputStream
-	 * und liest ComObjekte solange der Thread
-	 * lebt von seinem InputStream.
+	 * Liest ComObjekte solange der Thread
+	 * lebt von seinem InputStream und schlieﬂt bei 
+	 * einem Verbindungsabbruch die Verbindung.
 	 */
 	public void run() {
 		try {
 			ComObject object;
 			while (run) {
-				object = (ComObject) in.readUnshared();
+				object = (ComObject) in.readObject();
 				object.process(model);
 			}
 		} catch (ClassNotFoundException e) {
-			System.err.println("Unknown Object received.");
+			System.err.println("Unbekanntes Objekt empfangen");
 			e.printStackTrace();
 		} catch (EOFException e) {
 			if (run) {
-				System.err.println("Object Stream emty.");
+				System.err.println("Ende des Objektstroms");
 				e.printStackTrace();
 			}
 		} catch (SocketException e) {
 			if (run) {
-				System.err.println("Connection lost.");
+				System.err.println("Verbindung verloren");
 				e.printStackTrace();
 			}
 		} catch (IOException e) {
 			if (run) {
-				System.err.println("Network IO failed.");
+				System.err.println("Netzwerkfehler");
 				e.printStackTrace();
 			}
 		} finally {

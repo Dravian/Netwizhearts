@@ -33,6 +33,7 @@ import java.net.SocketException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.UnknownHostException;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -55,6 +56,16 @@ public class ClientModel extends Observable {
 	 * Standardport des Spielservers.
 	 */
 	public static final int PORT = 4567;
+	
+	/**
+	 * kleinstmoeglicher port.
+	 */
+	public static final int MINPORT = 1025;
+	
+	/**
+	 * Groessmoeglicher zulaessiger port.
+	 */
+	public static final int MAXPORT = 49151;
 
     /**
     * String der den eindeutigen Spielernamen repraesentiert.
@@ -143,8 +154,9 @@ public class ClientModel extends Observable {
 		screenOut = new LanguageInterpreter(language);
 		playerName = new String();
 		warningText = new StringBuffer();
-		playerList = new LinkedList<String>();
-		gameList = new LinkedList<GameServerRepresentation>();
+		playerList = Collections.synchronizedList(new LinkedList<String>());
+		gameList = Collections.synchronizedList(
+				new LinkedList<GameServerRepresentation>());
 		ruleset = null;
 		prepRulesetList();
 	}
@@ -158,7 +170,7 @@ public class ClientModel extends Observable {
 				&& state != ClientState.SERVERLOBBY) {
 			netIO.send(new ComClientLeave());
 		} else {
-			throw new IllegalStateException("Client out of sync");
+			throw new IllegalStateException("Falscher Zustand des Clients");
 		}
 	}
 
@@ -197,10 +209,10 @@ public class ClientModel extends Observable {
 				setChanged();
 				notifyObservers(msg.getChatMessage());
 			} else {
-					throw new IllegalArgumentException("Empty string");
+					throw new IllegalArgumentException("Leerer String");
 			}
 		} else {
-			throw new IllegalArgumentException("Argument value is null");
+			throw new IllegalArgumentException("Argument ist null");
 		}
 	}
 
@@ -218,20 +230,20 @@ public class ClientModel extends Observable {
 			gameMaster = new String();
 			ruleset = null;
 			if (msg.getPlayerList() != null) {
-				playerList = msg.getPlayerList();
+				playerList = Collections.synchronizedList(msg.getPlayerList());
 				if (playerList.isEmpty()) {
-					throw new IllegalArgumentException("Empty playerlist");
+					throw new IllegalArgumentException("Leere Spielerliste");
 				}
 			}
 			if (msg.getGameList() != null) {
-				gameList =
-				  new LinkedList<GameServerRepresentation>(msg.getGameList());
+				gameList = Collections.synchronizedList(
+				  new LinkedList<GameServerRepresentation>(msg.getGameList()));
 			} else {
-				throw new IllegalArgumentException("Gamelist is null value");
+				throw new IllegalArgumentException("Spielliste ist null");
 			}
 			informView(ViewNotification.windowChangeForced);
 		} else {
-			throw new IllegalArgumentException("Argument is null value");
+			throw new IllegalArgumentException("Argument ist null");
 		}
 	}
 
@@ -250,21 +262,23 @@ public class ClientModel extends Observable {
 			if (msg != null) {
 				state = ClientState.GAMELOBBY;
 				if (msg.getPlayerList() != null) {
-					playerList = msg.getPlayerList();
+					playerList = Collections.synchronizedList(
+							msg.getPlayerList());
 					if (!playerList.isEmpty()) {
 						informView(ViewNotification.joinGameSuccessful);
 					} else {
-						throw new IllegalArgumentException("Empty playerlist");
+						throw new IllegalArgumentException("Leere"
+								+ " Spielerliste");
 					}
 				} else {
-					throw new IllegalArgumentException("Playerlist "
-							+ "value is null");
+					throw new IllegalArgumentException("Spielerliste"
+							+ " ist null");
 				}
 			} else {
 				throw new IllegalArgumentException("Argument value is null");
 			}
 		} else {
-			throw new IllegalStateException("Server out of sync");
+			throw new IllegalStateException("Falscher Zustand des Clients");
 		}
 	}
 
@@ -282,14 +296,14 @@ public class ClientModel extends Observable {
 			   if (msg.getRulesetMessage() != null) {
 				   msg.getRulesetMessage().visit(ruleset);
 			   } else {
-					throw new IllegalArgumentException("Ruleset "
-							+ "message value is null");
+					throw new IllegalArgumentException("Regelwernachricht"
+							+ " ist null");
 				}
 		   } else {
-				throw new IllegalArgumentException("Argument value is null");
+				throw new IllegalArgumentException("Argument ist null");
 			}
 		} else {
-			throw new IllegalStateException("Client out of sync");
+			throw new IllegalStateException("Falscher Zustand des Clients");
 		}
 	}
 
@@ -322,7 +336,7 @@ public class ClientModel extends Observable {
 				informView(ViewNotification.openWarning);
 			}
 		} else {
-			throw new IllegalArgumentException("Argument value is null");
+			throw new IllegalArgumentException("Argument ist null");
 		}
 	}
 
@@ -346,13 +360,14 @@ public class ClientModel extends Observable {
 						informView(ViewNotification.gameStarted);
 						break;
 					default:
-						throw new IllegalArgumentException("Unknown Ruleset");
+						throw new IllegalArgumentException("Regelwerk"
+								+ " nicht verfuegbar");
 				}
 			} else {
-				throw new IllegalArgumentException("Argument value is null");
+				throw new IllegalArgumentException("Argument ist null");
 			}
 		} else {
-			throw new IllegalStateException("Client out of sync");
+			throw new IllegalStateException("Falscher Zustand des Clients");
 		}
 	}
 
@@ -372,28 +387,30 @@ public class ClientModel extends Observable {
 				|| state == ClientState.GAMELOBBY) {
 			if (update != null) {
 				if (update.getPlayerName() != null) {
-					if (update.isRemoveFlag()) {
-						if (!playerList.remove(update.getPlayerName())) {
-							throw new IllegalArgumentException("Remove player"
-									+ " failed. Player not in list");
+					synchronized (playerList) {
+						if (update.isRemoveFlag()) {
+							if (!playerList.remove(update.getPlayerName())) {
+								throw new IllegalArgumentException("Spieler"
+									+ " nicht in der Liste gefunden");
+							}
+						} else {
+							if (playerList.remove(update.getPlayerName())) {
+								throw new IllegalArgumentException("Spieler"
+									+ " bereits in der Liste");
+							}
+							playerList.add(update.getPlayerName());
 						}
-					} else {
-						if (playerList.remove(update.getPlayerName())) {
-							throw new IllegalArgumentException("Add player"
-									+ " failed. Player already in list ");
-						}
-						playerList.add(update.getPlayerName());
 					}
 					informView(ViewNotification.playerListUpdate);
 				} else {
-					throw new IllegalArgumentException("Player name"
-							+ " value is null");
+					throw new IllegalArgumentException("Spieler"
+							+ " name ist null");
 				}
 			} else {
-				throw new IllegalArgumentException("Argument value is null");
+				throw new IllegalArgumentException("Argument ist null");
 			}
 		} else {
-			throw new IllegalStateException("Client out of sync");
+			throw new IllegalStateException("Falscher Zustand des Clients");
 		}
 	}
 
@@ -415,27 +432,28 @@ public class ClientModel extends Observable {
 				GameServerRepresentation gameUpdate = update.getGameServer();
 				String key;
 				if (gameUpdate != null) {
-					for (GameServerRepresentation gameInList : gameList ) {
-						key = gameInList.getGameMasterName();
-						if (key.equals(gameUpdate.getGameMasterName())) {
-							gameList.remove(gameInList);
-							break;
+					synchronized (gameList) {
+						for (GameServerRepresentation gameInList : gameList ) {
+							key = gameInList.getGameMasterName();
+							if (key.equals(gameUpdate.getGameMasterName())) {
+								gameList.remove(gameInList);
+								break;
+							}
 						}
-					}
-					if (!update.isRemoveFlag()) {
-						gameList.add(update.getGameServer());
+						if (!update.isRemoveFlag()) {
+							gameList.add(update.getGameServer());
+						}
 					}
 					informView(ViewNotification.gameListUpdate);
 				} else {
-					throw new IllegalArgumentException("Gameupdate"
-							+ " value is null");
+					throw new IllegalArgumentException("Spielupdate"
+							+ " ist null");
 				}
 			} else {
-				throw new IllegalArgumentException("Argument value"
-						+ " is null");
+				throw new IllegalArgumentException("Argument ist null");
 			}
 		} else {
-			throw new IllegalStateException("Client out of sync");
+			throw new IllegalStateException("Falscher Zustand des Clients");
 		}
 	}
 	/**
@@ -452,7 +470,7 @@ public class ClientModel extends Observable {
 				closeView();
 			}
 		} else {
-			throw new IllegalArgumentException("Argument value is null");
+			throw new IllegalArgumentException("Argument ist null");
 		}
 	}
 
@@ -505,7 +523,7 @@ public class ClientModel extends Observable {
 		   this.language = lang;
 		   this.screenOut = new LanguageInterpreter(language);
 		} else {
-		   throw new IllegalArgumentException("Argument value is null");
+		   throw new IllegalArgumentException("Argument ist null");
 		}
 	}
 
@@ -525,17 +543,17 @@ public class ClientModel extends Observable {
 	 */
 	public final void kickPlayer(final String name) {
 		if (name == null) {
-			throw new IllegalArgumentException("Argument value is null");
+			throw new IllegalArgumentException("Argument ist null");
 		}
 		if (name.isEmpty()) {
-			throw new IllegalArgumentException("Argument is empty");
+			throw new IllegalArgumentException("Argument ist leer");
 		}
 		if (state == ClientState.GAMELOBBY) {
 			if (gameMaster.equals(playerName)) {
 				netIO.send(new ComKickPlayerRequest(name));
 			}
 		} else {
-			throw new IllegalStateException("Client out of sync");
+			throw new IllegalStateException("Falscher Zustand des Clients");
 		}
 	}
 
@@ -567,8 +585,7 @@ public class ClientModel extends Observable {
 				password = new String();
 			}
 			if (game == null) {
-				throw new IllegalArgumentException("Argument"
-						+ " value is null");
+				throw new IllegalArgumentException("Argument ist null");
 			} else {
 				state = ClientState.ENTERGAMELOBBY;
 				gameMaster = playerName;
@@ -577,7 +594,7 @@ public class ClientModel extends Observable {
 						hasPassword, password));
 			}
 		} else {
-			throw new IllegalStateException("Client out of sync");
+			throw new IllegalStateException("Falscher Zustand des Clients");
 		}
 	}
 
@@ -592,10 +609,10 @@ public class ClientModel extends Observable {
 			if (msg != null) {
 				netIO.send(new ComRuleset(msg));
 			} else {
-				throw new IllegalArgumentException("Argument value is null");
+				throw new IllegalArgumentException("Argument ist null");
 			}
 		} else {
-			throw new IllegalStateException("Client out of sync");
+			throw new IllegalStateException("Falscher Zustand des Clients");
 		}
 	}
 
@@ -619,11 +636,10 @@ public class ClientModel extends Observable {
 			if (ruleset != null) {
 				return ruleset.getOwnHand();
 			} else {
-				throw new IllegalStateException("no ruleset"
-						+ " instance available");
+				throw new IllegalStateException("Kein Regelwerk instanziert");
 			}
 		} else {
-			throw new IllegalStateException("Client out of sync");
+			throw new IllegalStateException("Falscher Zustand des Clients");
 		}
 	}
 
@@ -645,17 +661,17 @@ public class ClientModel extends Observable {
 							informView(ViewNotification.openChooseCards);
 						}
 					} else {
-						throw new IllegalStateException("no ruleset"
-								+ " instantiated");
+						throw new IllegalStateException("Kein"
+								+ " Regelwerk instanziert");
 					}
 				} else {
-					throw new IllegalArgumentException("Argument is empty");
+					throw new IllegalArgumentException("Argument ist leer");
 				}
 			} else {
-				throw new IllegalArgumentException("Argument value is null");
+				throw new IllegalArgumentException("Argument ist null");
 			}
 		} else {
-			throw new IllegalStateException("Client out of sync");
+			throw new IllegalStateException("Falscher Zustand des Clients");
 		}
 	}
 
@@ -671,10 +687,10 @@ public class ClientModel extends Observable {
 				windowText = screenOut.resolveWarning(msg);
 				informView(ViewNotification.openChooseCards);
 			} else {
-				throw new IllegalArgumentException("Argument value is null");
+				throw new IllegalArgumentException("Argument ist null");
 			}
 		} else {
-			throw new IllegalStateException("Client out of sync");
+			throw new IllegalStateException("Falscher Zustand des Clients");
 		}
 	}
 
@@ -694,13 +710,14 @@ public class ClientModel extends Observable {
 						informView(ViewNotification.openChooseItem);
 					}
 				} else {
-					throw new IllegalStateException("No ruleset instantiated");
+					throw new IllegalStateException("Kein"
+							+ " Regelwerk instanziert");
 				}
 			} else {
-				throw new IllegalArgumentException("Argument value is null");
+				throw new IllegalArgumentException("Argument ist null");
 			}
 		} else {
-			throw new IllegalStateException("Client out of sync");
+			throw new IllegalStateException("Falscher Zustand des Clients");
 		}
 	}
 
@@ -716,10 +733,10 @@ public class ClientModel extends Observable {
 				  windowText = screenOut.resolveWarning(msg);
 			      informView(ViewNotification.openChooseItem);
 			} else {
-				throw new IllegalStateException("No ruleset instantiated");
+				throw new IllegalStateException("Kein Regelwerk instanziert");
 			}
 		} else {
-			throw new IllegalStateException("Client out of sync");
+			throw new IllegalStateException("Falscher Zustand des Clients");
 		}
 	}
 
@@ -734,10 +751,10 @@ public class ClientModel extends Observable {
 			if (ruleset != null) {
 				return ruleset.getColours();
 			} else {
-				throw new IllegalStateException("No ruleset instantiated");
+				throw new IllegalStateException("Kein Regelwerk instanziert");
 			}
 		} else {
-			throw new IllegalStateException("Client out of sync");
+			throw new IllegalStateException("Falscher Zustand des Clients");
 		}
 	}
 
@@ -757,10 +774,10 @@ public class ClientModel extends Observable {
 					informView(ViewNotification.openInputNumber);
 				}
 			} else {
-				throw new IllegalStateException("No ruleset instantiated");
+				throw new IllegalStateException("Kein Regelwerk instanziert");
 			}
 		} else {
-			throw new IllegalStateException("Client out of sync");
+			throw new IllegalStateException("Falscher Zustand des Clients");
 		}
 	}
 
@@ -777,10 +794,10 @@ public class ClientModel extends Observable {
 				  windowText = screenOut.resolveWarning(msg);
 			      informView(ViewNotification.openInputNumber);
 		   } else {
-				throw new IllegalStateException("no ruleset instantiated");
+				throw new IllegalStateException("Kein Regelwerk instanziert");
 			}
      	} else {
-			throw new IllegalStateException("Client out of sync");
+			throw new IllegalStateException("Falscher Zustand des Clients");
 		}
 	}
 
@@ -796,10 +813,10 @@ public class ClientModel extends Observable {
 				windowText = screenOut.resolveWarning(msg);
 				informView(ViewNotification.trumpUpdate);
 			} else {
-				throw new IllegalArgumentException("Argument value is null");
+				throw new IllegalArgumentException("Argument ist null");
 			}
 		} else {
-			throw new IllegalStateException("Client out of sync");
+			throw new IllegalStateException("Falscher Zustand des Clients");
 		}
 	}
 
@@ -813,11 +830,10 @@ public class ClientModel extends Observable {
 			if (ruleset != null) {
 				return ruleset.getTrumpColour();
 			} else {
-				throw new IllegalStateException("No"
-						+ " ruleset instantiated");
+				throw new IllegalStateException("Kein Regelwerk instanziert");
 			}
 		} else {
-			throw new IllegalStateException("Client out of sync");
+			throw new IllegalStateException("Falscher Zustand des Clients");
 		}
 	}
 
@@ -833,10 +849,10 @@ public class ClientModel extends Observable {
 				windowText = screenOut.resolveWarning(msg);
 				informView(ViewNotification.turnUpdate);
 			} else {
-				throw new IllegalArgumentException("Argmuent value is null");
+				throw new IllegalArgumentException("Argmuent ist null");
 			}
 		} else {
-			throw new IllegalStateException("Client out of sync");
+			throw new IllegalStateException("Falscher Zustand des Clients");
 		}
 	}
 
@@ -851,10 +867,10 @@ public class ClientModel extends Observable {
 			if (!msg.isEmpty()) {
 				netIO.send(new ComChatMessage(msg));
 			} else {
-				throw new IllegalArgumentException("Empty string");
+				throw new IllegalArgumentException("Leerer String");
 			}
 		} else {
-			throw new IllegalArgumentException("Argument value is null");
+			throw new IllegalArgumentException("Argument ist null");
 		}
 	}
 
@@ -874,22 +890,24 @@ public class ClientModel extends Observable {
 				password = new String();
 			}
 			if (name == null) {
-				throw new IllegalArgumentException("Argument value is null");
+				throw new IllegalArgumentException("Argument ist null");
 			} else if (name.isEmpty()) {
-				throw new IllegalArgumentException("Argument value is empty");
+				throw new IllegalArgumentException("Argument ist leer");
 			} else {
-				for (GameServerRepresentation game : gameList) {
-					if (name.equals(game.getGameMasterName())) {
-						state = ClientState.ENTERGAMELOBBY;
-						gameMaster = name;
-						gameType = game.getRuleset();
-						netIO.send(new ComJoinRequest(name, password));
-						break;
+				synchronized (gameList) {
+					for (GameServerRepresentation game : gameList) {
+						if (name.equals(game.getGameMasterName())) {
+							state = ClientState.ENTERGAMELOBBY;
+							gameMaster = name;
+							gameType = game.getRuleset();
+							netIO.send(new ComJoinRequest(name, password));
+							break;
+						}
 					}
 				}
 			}
 		} else {
-			throw new IllegalStateException("Client out of sync");
+			throw new IllegalStateException("Falscher Zustand des Clients");
 		}
 	}
 
@@ -911,13 +929,13 @@ public class ClientModel extends Observable {
 				  }
 			   }
 	         } else {
-				throw new IllegalStateException("gamemaster value is empty ");
+				throw new IllegalStateException("Spielleiter ist leer");
 	         }
 		  } else {
-				throw new IllegalStateException("gamemaster value is null");
+				throw new IllegalStateException("Spielleiter ist null");
 		  }
 		} else {
-			throw new IllegalStateException("Client out of sync");
+			throw new IllegalStateException("Falscher Zustand des Clients");
 		}
 	}
 
@@ -936,13 +954,14 @@ public class ClientModel extends Observable {
 				if (ruleset != null) {
 					ruleset.isValidMove(card);
 				} else {
-					throw new IllegalStateException("No ruleset instantiated");
+					throw new IllegalStateException("Kein"
+							+ " Regelwerk instanziert");
 				}
 			} else {
-				throw new IllegalArgumentException("Argument value is null");
+				throw new IllegalArgumentException("Argument ist null");
 			}
 		} else {
-			throw new IllegalStateException("Client out of sync");
+			throw new IllegalStateException("Falscher Zustand des Clients");
 		}
 	}
 
@@ -955,7 +974,7 @@ public class ClientModel extends Observable {
 		if (state == ClientState.GAME) {
 			informView(ViewNotification.gameUpdate);
 		} else {
-			throw new IllegalStateException("Client out of sync");
+			throw new IllegalStateException("Falscher Zustand des Clients");
 		}
 	}
 
@@ -969,10 +988,10 @@ public class ClientModel extends Observable {
 			if (ruleset != null) {
 				return ruleset.getGameState();
 			} else {
-				throw new IllegalStateException("No ruleset instantiated");
+				throw new IllegalStateException("Kein Regelwerk instanziert");
 			}
 		} else {
-			throw new IllegalStateException("Client out of sync");
+			throw new IllegalStateException("Falscher Zustand des Clients");
 		}
 	}
 
@@ -987,7 +1006,7 @@ public class ClientModel extends Observable {
 			warningText.append(screenOut.resolveWarning(msg));
 			informView(ViewNotification.openWarning);
 		} else {
-			throw new IllegalArgumentException("Argument value is null");
+			throw new IllegalArgumentException("Argument ist null");
 		}
 	}
 
@@ -1001,10 +1020,10 @@ public class ClientModel extends Observable {
 			if (ruleset != null) {
 				informView(ViewNotification.showScore);
 			} else {
-				throw new IllegalStateException("No ruleset instantiated");
+				throw new IllegalStateException("Kein Regelwerk instanziert");
 			}
 		} else {
-			throw new IllegalStateException("Client out of sync");
+			throw new IllegalStateException("Falscher Zustand des Clients");
 		}
 	}
 
@@ -1020,10 +1039,10 @@ public class ClientModel extends Observable {
 				windowText = screenOut.resolveWarning(msg);
 				informView(ViewNotification.showScore);
 			} else {
-				throw new IllegalArgumentException("Argument value is null");
+				throw new IllegalArgumentException("Argument ist null");
 			}
 		} else {
-			throw new IllegalStateException("Client out of sync");
+			throw new IllegalStateException("Falscher Zustand des Clients");
 		}
 	}
 
@@ -1089,7 +1108,8 @@ public class ClientModel extends Observable {
 				}
 				if (port == -1) {
 					port = PORT;
-				} else if (port < 1025 || port > 49151) {
+				} else if (port < MINPORT
+							|| port > MAXPORT) {
 					fault = true;
 					warningText.append(screenOut.resolveWarning(
 							WarningMsg.Portnumber));
