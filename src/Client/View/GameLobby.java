@@ -184,12 +184,14 @@ public class GameLobby extends JFrame implements Observer{
 
 			@Override
 			public void run() {
-				int length = list.size();
-				String[] players = new String[length];
-				for (int i = 0; i < length; i++) {
-					players[i] = list.get(i);
+				synchronized (list) {
+					int length = list.size();
+					String[] players = new String[length];
+					for (int i = 0; i < length; i++) {
+						players[i] = list.get(i);
+					}
+					playerList.setListData(players);
 				}
-				playerList.setListData(players);
 			}
 		});
 		

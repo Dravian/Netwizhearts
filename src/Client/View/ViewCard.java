@@ -5,7 +5,7 @@ package Client.View;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
+import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 
@@ -23,11 +23,12 @@ import Ruleset.RulesetType;
  * Karten gespeichert sind, und eine ID, um das genaue Bild zu spezifizieren.
  */
 public class ViewCard extends JPanel{
-	private static String DATAPATH = "Data/";
+	private static int WIDTH = 70;
+	private static int HEIGHT = 105;
 	
 	private RulesetType ruleset;
 	private Card card;
-	private BufferedImage face;
+	private Image face;
 	private boolean clicked;
 	
 	/**
@@ -44,13 +45,14 @@ public class ViewCard extends JPanel{
 		card = c;
 		ruleset = card.getRuleset();
 		try {                
-	          face = ImageIO.read(new File(DATAPATH + ruleset.toString().toLowerCase() + "/"+  card.toString() +".jpg"));
+	          face = ImageIO.read(new File(Game.IMAGEPATH + ruleset.toString().toLowerCase() + "/"+  card.toString() +".jpg"))
+	        		  .getScaledInstance(WIDTH, HEIGHT, UNDEFINED_CONDITION);
 	       } catch (IOException ex) {
 	            //TODO
 	       }	
 		} else {
 			try {                
-		          face = ImageIO.read(new File(DATAPATH + "backside.jpg"));
+		          face = ImageIO.read(new File(Game.IMAGEPATH + "cards/" + Game.BACKSIDE));
 		       } catch (IOException ex) {
 		            //TODO
 		       }	
@@ -94,13 +96,14 @@ public class ViewCard extends JPanel{
 			card = c;
 			ruleset = card.getRuleset();
 			try {                
-		          face = ImageIO.read(new File(DATAPATH + ruleset.toString().toLowerCase() + "/"+  card.toString() +".jpg"));
+				face = ImageIO.read(new File(Game.IMAGEPATH + ruleset.toString().toLowerCase() + "/"+  card.toString() +".jpg"))
+		        		  .getScaledInstance(WIDTH, HEIGHT, UNDEFINED_CONDITION);
 		       } catch (IOException ex) {
 		            //TODO
 		       }	
 			} else {
 				try {                
-			          face = ImageIO.read(new File(DATAPATH + "backside.jpg"));
+			          face = ImageIO.read(new File(Game.IMAGEPATH + "cards/" + Game.BACKSIDE));
 			       } catch (IOException ex) {
 			            //TODO
 			       }	
@@ -110,16 +113,15 @@ public class ViewCard extends JPanel{
 	
 	@Override
 	public int getWidth() {
-		return face.getWidth();
+		return WIDTH;
 	}
 	@Override
 	public int getHeight() {
-		return face.getHeight();
+		return HEIGHT;
 	}
 	
 	@Override
 	public void paintComponent(Graphics g) {
-        //TODO
 		super.paintComponent(g);
         g.drawImage(face, 0, 0, null);
         

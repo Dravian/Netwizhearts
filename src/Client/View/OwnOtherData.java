@@ -26,17 +26,7 @@ public class OwnOtherData extends JPanel {
 	public void setData(String s) {
 		ownData = s;
 		repaint();
-	}
-	
-//	/**
-//	 * Gibt den Punktestand des Spielers zurueck
-//	 * 
-//	 * @return Punktestand
-//	 */
-//	public int getScore() {
-//		return score;
-//	}
-	
+	}	
 	
 	public void setMyTurn(boolean b) {
 		if (b) {
