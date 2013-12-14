@@ -4,25 +4,21 @@
 package Client.View;
 
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.MouseListener;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 
 import Ruleset.Card;
 import Ruleset.Colour;
 import Ruleset.DiscardedCard;
 import Ruleset.GameClientUpdate;
-import Ruleset.HeartsCard;
 import Ruleset.OtherData;
-import Ruleset.RulesetType;
 
 /** 
  * GamePanel. Das GamePanel ist die Komponente des Game-Fensters, 
@@ -35,6 +31,8 @@ import Ruleset.RulesetType;
 public class GamePanel extends JPanel{
 	
 	private static String IMAGEPATH = "Data/";
+	private static int BGWIDTH = 998;
+	private static int BGHEIGHT = 547;
 	
 	private OwnHand ownHand;
 	
@@ -44,7 +42,7 @@ public class GamePanel extends JPanel{
 	
 	private List<DiscardPile> discardPiles;
 	
-	private BufferedImage background;
+	private Image background;
 	
 	private DrawDeck deck;
 	
@@ -57,7 +55,8 @@ public class GamePanel extends JPanel{
 	 */
 	public GamePanel(int playerCount) {
 		try {
-			background = ImageIO.read(new File(IMAGEPATH + "background.jpg"));
+			background = ImageIO.read(new File(IMAGEPATH + "backgrounds/" + Game.BACKGROUND))
+					.getScaledInstance(BGWIDTH, BGHEIGHT, UNDEFINED_CONDITION);
 		} catch (IOException e) {
 			background = null;
 		}

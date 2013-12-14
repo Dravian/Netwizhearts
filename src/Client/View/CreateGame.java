@@ -52,7 +52,6 @@ public class CreateGame extends JFrame implements Observer{
 	private JButton btnCreate;
 	private JLabel lblGameName;
 	private JTextArea tooltipArea;
-	private static String IMAGEPATH = "Data/";
 
 	/**
 	 * Erstellt das CreateGame Fenster
@@ -302,7 +301,7 @@ public class CreateGame extends JFrame implements Observer{
 			public void run() {
 				try {
 					RulesetType t = (RulesetType)(rulesetBox.getSelectedItem());
-				    image = ImageIO.read(new File(IMAGEPATH + t.toString().toLowerCase() + ".jpg"));
+				    image = ImageIO.read(new File(Game.IMAGEPATH + t.toString().toLowerCase() + ".jpg"));
 				    tooltipArea.setText(getTooltip(t));
 				    imagePanel.repaint();
 					} catch (IOException e) {

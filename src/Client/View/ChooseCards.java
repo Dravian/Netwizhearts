@@ -20,7 +20,6 @@ import javax.swing.border.EmptyBorder;
 
 import Client.ClientModel;
 import Client.ViewNotification;
-import Ruleset.GameClientUpdate;
 import Ruleset.Card;
 
 
