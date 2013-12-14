@@ -200,7 +200,7 @@ public class Game extends JFrame implements Observer{
 	 */
 	public void makeTrickGameBoard(final int playerCount) {
 		gamePanel = new GamePanel(playerCount);
-		gamePanel.setBounds(10, 11, 998, 547);
+		gamePanel.setBounds(10, 0, 998, 547);
 		gamePanel.addCardMouseListener(cardMouseListener);
 		contentPane.add(gamePanel);
 
