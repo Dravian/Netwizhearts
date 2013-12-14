@@ -149,9 +149,8 @@ public class Player extends Thread {
 	 */
 	public void send(ComObject com) {
 		try {
-			comOut.writeUnshared(com);
+			comOut.writeObject(com);
 			comOut.flush();
-			comOut.reset();
 		} catch (IOException e) {
 			run = false;
 			server.disconnectPlayer(this);
