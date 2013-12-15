@@ -19,12 +19,12 @@ public class LobbyServer extends Server {
 	 * Ein Set der Benutzernamen aller Spieler, die in der Lobby oder einem
 	 * Spiel sind
 	 */
-	private Set<String> names = new HashSet<String>();
+	private Set<String> names = Collections.synchronizedSet(new HashSet<String>());
 
 	/**
 	 * Ein Set an GameServern, die alle erstellten Spiele repraesentieren
 	 */
-	private Set<GameServer> gameServerSet = new HashSet<GameServer>();
+	private Set<GameServer> gameServerSet = Collections.synchronizedSet(new HashSet<GameServer>());
 
 	/**
 	 * Konstruktor des Lobby Servers
@@ -39,8 +39,10 @@ public class LobbyServer extends Server {
 	 * @param name
 	 *            ist der Name der eingefuegt wird
 	 */
-	public synchronized void addName(String name) {
-		getNames().add(name);
+	public void addName(String name) {
+		synchronized (names){
+			names.add(name);			
+		}
 	}
 
 	/**
@@ -50,8 +52,10 @@ public class LobbyServer extends Server {
 	 * @param name
 	 *            ist der Name der geloescht wird
 	 */
-	public synchronized void removeName(String name) {
-		getNames().remove(name);
+	public void removeName(String name) {
+		synchronized (names){
+			names.remove(name);			
+		}
 	}
 
 	/**
@@ -60,8 +64,10 @@ public class LobbyServer extends Server {
 	 * @param game
 	 *            ist der GameServer der eingefuegt wird
 	 */
-	public synchronized void addGameServer(GameServer game) {
-		gameServerSet.add(game);
+	public void addGameServer(GameServer game) {
+		synchronized(gameServerSet){
+			gameServerSet.add(game);		
+		}
 	}
 
 	/**
@@ -70,8 +76,10 @@ public class LobbyServer extends Server {
 	 * @param game
 	 *            ist der GameServer der geloescht wird
 	 */
-	public synchronized void removeGameServer(GameServer game) {
-		gameServerSet.remove(game);
+	public void removeGameServer(GameServer game) {
+		synchronized(gameServerSet){
+			gameServerSet.remove(game);			
+		}
 	}
 
 	/**
@@ -110,7 +118,7 @@ public class LobbyServer extends Server {
 	 *            Spiel erstellt hat
 	 */
 	@Override
-	public synchronized void receiveMessage(Player player,
+	public void receiveMessage(Player player,
 			ComCreateGameRequest create) {
 		if (create.getGameName() != null && create.getPassword() != null) {
 			String name = create.getGameName();
@@ -199,16 +207,18 @@ public class LobbyServer extends Server {
 	 *            beitreten will
 	 */
 	@Override
-	public synchronized void receiveMessage(Player player, ComJoinRequest join) {
+	public void receiveMessage(Player player, ComJoinRequest join) {
 		if (join.getGameMasterName() != null) {
 			String master = join.getGameMasterName();
 			GameServer joinGame = null;
 			if (!gameServerSet.isEmpty()) {
-				for (GameServer game : gameServerSet) {
-					if (game.getGameMasterName().equals(master)) {
-						joinGame = game;
+				synchronized(gameServerSet){
+					for (GameServer game : gameServerSet) {
+						if (game.getGameMasterName().equals(master)) {
+							joinGame = game;
+						}
 					}
-				}
+				}	
 			} else {
 				ComWarning warning = new ComWarning(WarningMsg.GameNotExistent);
 				player.send(warning);
@@ -257,14 +267,18 @@ public class LobbyServer extends Server {
 		List<String> playerList = new ArrayList<String>();
 		Set<GameServerRepresentation> gameList = new HashSet<GameServerRepresentation>();
 		if (!playerSet.isEmpty()) {
-			for (Player player : playerSet) {
-				playerList.add(player.getPlayerName());
+			synchronized (playerSet) {
+				for (Player player : playerSet) {
+					playerList.add(player.getPlayerName());
+				}
 			}
 		}
 		if (!gameServerSet.isEmpty()) {
-			for (GameServer game : gameServerSet) {
-				gameList.add(game.getRepresentation());							
-			}
+			synchronized (gameServerSet) {
+				for (GameServer game : gameServerSet) {
+					gameList.add(game.getRepresentation());							
+				}
+			}		
 		}
 		ComInitLobby init = new ComInitLobby(playerList, gameList);
 		return init;
@@ -280,7 +294,7 @@ public class LobbyServer extends Server {
 	 *            ist der Spieler der entfernt wird
 	 */
 	@Override
-	public synchronized void disconnectPlayer(Player player) {
+	public void disconnectPlayer(Player player) {
 		removePlayer(player);
 		removeName(player.getPlayerName());
 		player.closeConnection();
