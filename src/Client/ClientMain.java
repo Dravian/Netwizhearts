@@ -28,7 +28,6 @@ public class ClientMain {
 
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				clientController = new ClientController();
 			}
 			

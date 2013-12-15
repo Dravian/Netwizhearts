@@ -40,23 +40,7 @@ public class ViewCard extends JPanel{
 	public ViewCard(Card c) {
 		//TODO
 		clicked = false;
-		
-		if (c != null) {
 		card = c;
-		ruleset = card.getRuleset();
-		try {                
-	          face = ImageIO.read(new File(Game.IMAGEPATH + ruleset.toString().toLowerCase() + "/"+  card.toString() +".jpg"))
-	        		  .getScaledInstance(WIDTH, HEIGHT, UNDEFINED_CONDITION);
-	       } catch (IOException ex) {
-	            //TODO
-	       }	
-		} else {
-			try {                
-		          face = ImageIO.read(new File(Game.IMAGEPATH + "cards/" + Game.BACKSIDE));
-		       } catch (IOException ex) {
-		            //TODO
-		       }	
-		}
 		
 	}
 	
@@ -92,22 +76,7 @@ public class ViewCard extends JPanel{
 	}
 	
 	public void setCard(Card c) {
-		if (c != null) {
-			card = c;
-			ruleset = card.getRuleset();
-			try {                
-				face = ImageIO.read(new File(Game.IMAGEPATH + ruleset.toString().toLowerCase() + "/"+  card.toString() +".jpg"))
-		        		  .getScaledInstance(WIDTH, HEIGHT, UNDEFINED_CONDITION);
-		       } catch (IOException ex) {
-		            //TODO
-		       }	
-			} else {
-				try {                
-			          face = ImageIO.read(new File(Game.IMAGEPATH + "cards/" + Game.BACKSIDE));
-			       } catch (IOException ex) {
-			            //TODO
-			       }	
-			}
+		card = c;
 		repaint();
 	}
 	
@@ -123,6 +92,21 @@ public class ViewCard extends JPanel{
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
+		if (card != null) {
+			ruleset = card.getRuleset();
+			try {                
+				face = ImageIO.read(new File(Game.IMAGEPATH + ruleset.toString().toLowerCase() + "/"+  card.toString() +".jpg"))
+		        		  .getScaledInstance(WIDTH, HEIGHT, UNDEFINED_CONDITION);
+		       } catch (IOException ex) {
+		            //TODO
+		       }	
+			} else {
+				try {                
+			          face = ImageIO.read(new File(Game.IMAGEPATH + "cards/" + Game.BACKSIDE));
+			       } catch (IOException ex) {
+			            //TODO
+			       }	
+			}
         g.drawImage(face, 0, 0, null);
         
     }
