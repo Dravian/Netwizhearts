@@ -23,10 +23,10 @@ public class OwnHand extends JPanel{
 	
 	public OwnHand() {
 		hand = new LinkedList<ViewCard>();
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 20; i++) {
 			hand.add(new ViewCard(null));
 			ViewCard vc = hand.get(i);
-			vc.setBounds(2+i*75, 0, vc.getWidth(), vc.getHeight());
+			vc.setBounds(1+i*(ViewCard.WIDTH+1), 0, ViewCard.WIDTH, ViewCard.HEIGHT);
 			this.add(vc);
 			this.setLayout(null);
 		}

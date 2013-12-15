@@ -23,8 +23,8 @@ import Ruleset.RulesetType;
  * Karten gespeichert sind, und eine ID, um das genaue Bild zu spezifizieren.
  */
 public class ViewCard extends JPanel{
-	private static int WIDTH = 70;
-	private static int HEIGHT = 105;
+	protected static int WIDTH = 48;
+	protected static int HEIGHT = 76;
 	
 	private RulesetType ruleset;
 	private Card card;
@@ -84,6 +84,7 @@ public class ViewCard extends JPanel{
 	public int getWidth() {
 		return WIDTH;
 	}
+	
 	@Override
 	public int getHeight() {
 		return HEIGHT;
@@ -96,13 +97,14 @@ public class ViewCard extends JPanel{
 			ruleset = card.getRuleset();
 			try {                
 				face = ImageIO.read(new File(Game.IMAGEPATH + ruleset.toString().toLowerCase() + "/"+  card.toString() +".jpg"))
-		        		  .getScaledInstance(WIDTH, HEIGHT, UNDEFINED_CONDITION);
+		        		  .getScaledInstance(ViewCard.WIDTH, ViewCard.HEIGHT, UNDEFINED_CONDITION);
 		       } catch (IOException ex) {
 		            //TODO
 		       }	
 			} else {
 				try {                
-			          face = ImageIO.read(new File(Game.IMAGEPATH + "cards/" + Game.BACKSIDE));
+			          face = ImageIO.read(new File(Game.IMAGEPATH + "cards/" + Game.BACKSIDE))
+			        		  .getScaledInstance(ViewCard.WIDTH, ViewCard.HEIGHT, UNDEFINED_CONDITION);
 			       } catch (IOException ex) {
 			            //TODO
 			       }	

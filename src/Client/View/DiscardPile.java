@@ -29,11 +29,11 @@ public class DiscardPile extends JPanel{
 	
 	@Override
 	public int getWidth() {
-		return topCard.getWidth();
+		return ViewCard.WIDTH;
 	}
 	@Override
 	public int getHeight() {
-		return topCard.getHeight();
+		return ViewCard.HEIGHT;
 	}
 	
 	/**

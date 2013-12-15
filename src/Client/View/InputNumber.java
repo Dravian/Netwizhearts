@@ -106,7 +106,7 @@ public class InputNumber extends JFrame implements Observer{
 				@Override
 				public void run() {
 					setMessageText(observed.getWindowText());
-					//numberField.setText("");
+					numberField.setText("");
 					setVisible(true);
 				}
 				

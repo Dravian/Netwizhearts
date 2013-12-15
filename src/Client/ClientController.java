@@ -296,6 +296,7 @@ public class ClientController {
 			password.setLanguage(language);
 			createGame.setLanguage(language);
 			gameLobby.setLanguage(language);
+			game.setLanguage(language);
 		}
 		
 	}

@@ -58,19 +58,19 @@ public class GamePanel extends JPanel{
 		this.setLayout(null);
 		
 		ownHand = new OwnHand();
-		ownHand.setBounds(5, 385, 750, 105);
+		ownHand.setBounds(3, 410, 983, 78);
 		this.add(ownHand);
 		
 		ownScore = new OwnOtherData();
-		ownScore.setBounds(760, 440, 100, 50);
+		ownScore.setBounds(850, 360, 90, 45);
 		this.add(ownScore);
 		
 		deck = new DrawDeck();
-		deck.setBounds(920, 385, 70, 105);
+		deck.setBounds(945, 330, ViewCard.WIDTH, ViewCard.HEIGHT);
 		this.add(deck);
 		
 		trumpColour = new TrumpColour();
-		trumpColour.setBounds(868, 440, 50, 50);
+		trumpColour.setBounds(915, 330, 25, 25);
 		this.add(trumpColour);
 		
 		otherHands = new LinkedList<OtherPlayer>();		
