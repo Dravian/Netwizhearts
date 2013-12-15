@@ -107,7 +107,7 @@ public class LoginServer extends Server {
 	 *            ist das ComObject, dass den Benutzernamen des Clients enthält
 	 */
 	@Override
-	public synchronized void receiveMessage(Player player, ComLoginRequest login) {
+	public void receiveMessage(Player player, ComLoginRequest login) {
 		if (login.getPlayerName() != null) {
 			String CheckName = login.getPlayerName();
 			if (lobby.getNames().contains(CheckName)) {
@@ -138,7 +138,7 @@ public class LoginServer extends Server {
 	 *            ist der Spieler der entfernt wird
 	 */
 	@Override
-	public synchronized void disconnectPlayer(Player player) {
+	public void disconnectPlayer(Player player) {
 		player.closeConnection();
 	}
 }

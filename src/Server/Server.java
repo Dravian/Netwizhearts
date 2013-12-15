@@ -1,5 +1,6 @@
 package Server;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,7 +15,7 @@ public abstract class Server {
 	/**
 	 * Ein Set an Spielern, welche momentan vom Server verwaltet werden
 	 */
-	protected Set<Player> playerSet = new HashSet<Player>();
+	protected Set<Player> playerSet = Collections.synchronizedSet(new HashSet<Player>());
 
 	/**
 	 * Diese Methode verarbeitet eine Nachricht, die von einem Client kommt
@@ -65,12 +66,12 @@ public abstract class Server {
 	 *            ist das ComObject, welches angibt, dass der Spieler das Spiel
 	 *            vollstaendig verlaesst
 	 */
-	public synchronized void receiveMessage(Player player, ComClientQuit quit) {
+	public  void receiveMessage(Player player, ComClientQuit quit) {
 		if (playerSet.contains(player)) {
 			disconnectPlayer(player);
 		} else {
 			System.err.println("Player not found!");
-		}
+		}	
 	}
 
 	/**
@@ -163,12 +164,14 @@ public abstract class Server {
 	 * @param c
 	 *            ist das ComObject, dass verschickt werden soll
 	 */
-	public synchronized void sendToPlayer(String name, ComObject com) {
-		for (Player player : playerSet) {
-			if (player.getPlayerName().equals(name)) {
-				player.send(com);
+	public void sendToPlayer(String name, ComObject com) {
+		synchronized(playerSet){
+			for (Player player : playerSet) {
+				if (player.getPlayerName().equals(name)) {
+					player.send(com);
+				}
 			}
-		}
+		}		
 	}
 
 	/**
@@ -179,8 +182,10 @@ public abstract class Server {
 	 * @param player
 	 *            ist der Player, der hinzugefuegt wird
 	 */
-	public synchronized void addPlayer(Player player) {
-		playerSet.add(player);
+	public void addPlayer(Player player) {
+		synchronized(playerSet){
+			playerSet.add(player);			
+		}
 	}
 
 	/**
@@ -191,8 +196,10 @@ public abstract class Server {
 	 * @param player
 	 *            ist der Player, der entfernt wird
 	 */
-	public synchronized void removePlayer(Player player) {
-		playerSet.remove(player);
+	public void removePlayer(Player player) {
+		synchronized(playerSet){
+			playerSet.remove(player);			
+		}
 	}
 
 	/**
@@ -203,11 +210,13 @@ public abstract class Server {
 	 * @param com
 	 *            ist das ComObject, dass verschickt werden soll
 	 */
-	public synchronized void broadcast(ComObject com) {
+	public void broadcast(ComObject com) {
 		if (com != null) {
-			for (Player player : playerSet) {
-				player.send(com);
-			}
+			synchronized(playerSet){
+				for (Player player : playerSet) {
+					player.send(com);
+				}	
+			}		
 		}
 	}
 
@@ -218,8 +227,7 @@ public abstract class Server {
 	 *            ist der Spieler der entfernt wird
 	 */
 	public void disconnectPlayer(Player player) {
-		// TODO Automatisch erstellter Methoden-Stub
-
+		player.closeConnection();
 	}
 
 }

@@ -123,7 +123,7 @@ public class GameServer extends Server {
 	 * 
 	 * @return Gibt die neue GameServerRepresentation zurueck
 	 */
-	public synchronized GameServerRepresentation getRepresentation() {
+	public GameServerRepresentation getRepresentation() {
 		return new GameServerRepresentation(getGameMasterName(), name, 
 				maxPlayers , currentPlayers, rulesetType, hasPassword, isHasStarted());
 	}
@@ -138,9 +138,11 @@ public class GameServer extends Server {
 	 *            ist der Player, der hinzugefuegt wird
 	 */
 	@Override
-	public synchronized void addPlayer(Player player) {
-		playerSet.add(player);
-		++currentPlayers;
+	public void addPlayer(Player player) {
+		synchronized(playerSet){
+			playerSet.add(player);
+			++currentPlayers;
+		}	
 	}
 
 	/**
@@ -153,9 +155,11 @@ public class GameServer extends Server {
 	 *            ist der Player, der entfernt wird
 	 */
 	@Override
-	public synchronized void removePlayer(Player player) {
-		playerSet.remove(player);
-		--currentPlayers;
+	public void removePlayer(Player player) {
+		synchronized(playerSet){
+			playerSet.remove(player);
+			--currentPlayers;
+		}
 	}
 
 	/**
@@ -236,16 +240,18 @@ public class GameServer extends Server {
 	 *            ist das ComObject, das verarbeitet wird
 	 */
 	@Override
-	public synchronized void receiveMessage(Player player,
+	public void receiveMessage(Player player,
 			ComKickPlayerRequest kickPlayer) {
 		if (player.getPlayerName().equals(gameMasterName)){
 			Player toBeKicked = null;
 			if (!playerSet.isEmpty()) {
-				for (Player check : playerSet) {
-					if (check.getPlayerName().equals(kickPlayer.getPlayerName())) {
-						toBeKicked = check;
+				synchronized(playerSet) {
+					for (Player check : playerSet) {
+						if (check.getPlayerName().equals(kickPlayer.getPlayerName())) {
+							toBeKicked = check;
+						}
 					}
-				}
+				}	
 				if (toBeKicked != null) {
 					if (!toBeKicked.getPlayerName().equals(gameMasterName)) {
 						lobbyServer.broadcast(new ComLobbyUpdateGamelist(false,
@@ -300,19 +306,21 @@ public class GameServer extends Server {
 	 *            Lobby zurueckkehrt
 	 */
 	@Override
-	public synchronized void receiveMessage(Player player, ComClientLeave leave) {
+	public void receiveMessage(Player player, ComClientLeave leave) {
 		Player leavingPlayer = player;
 		if (!isHasStarted()) {
 			if (!playerSet.isEmpty()) {
 				if (playerSet.contains(leavingPlayer)) {
 					if (leavingPlayer.getPlayerName().equals(gameMasterName)) {
-						for (Player back : playerSet) {
-							back.changeServer(lobbyServer);
-							ComInitLobby comInit = lobbyServer.initLobby();
-							back.send(comInit);
-							ComWarning warning = new ComWarning(
-									WarningMsg.GameDisbanded);
-							back.send(warning);
+						synchronized(playerSet){
+							for (Player back : playerSet) {
+								back.changeServer(lobbyServer);
+								ComInitLobby comInit = lobbyServer.initLobby();
+								back.send(comInit);
+								ComWarning warning = new ComWarning(
+										WarningMsg.GameDisbanded);
+								back.send(warning);
+							}
 						}
 						playerSet.clear();
 						lobbyServer.broadcast(new ComLobbyUpdateGamelist(true,
@@ -340,13 +348,15 @@ public class GameServer extends Server {
 		} else {
 			if (!playerSet.isEmpty()) {
 				if (playerSet.contains(player)) {
-					for (Player back : playerSet) {
-						back.changeServer(lobbyServer);
-						ComInitLobby comInit = lobbyServer.initLobby();
-						back.send(comInit);
-						ComWarning warning = new ComWarning(
-								WarningMsg.GameDisbanded);
-						back.send(warning);
+					synchronized (playerSet) {
+						for (Player back : playerSet) {
+							back.changeServer(lobbyServer);
+							ComInitLobby comInit = lobbyServer.initLobby();
+							back.send(comInit);
+							ComWarning warning = new ComWarning(
+									WarningMsg.GameDisbanded);
+							back.send(warning);
+						}
 					}
 					playerSet.clear();
 				} else {
@@ -378,13 +388,15 @@ public class GameServer extends Server {
 	 *            werden soll
 	 */
 	@Override
-	public synchronized void receiveMessage(Player player, ComStartGame start) {
+	public void receiveMessage(Player player, ComStartGame start) {
 		if (player.getPlayerName().equals(gameMasterName)) {
 			if(!isHasStarted()){
 				try {
-					for (Player back : playerSet) {
-						ruleset.addPlayerToGame(back.getPlayerName());
-					}			
+					synchronized (playerSet) {
+						for (Player back : playerSet) {
+							ruleset.addPlayerToGame(back.getPlayerName());
+						}	
+					}		
 					setHasStarted(true);
 					lobbyServer.broadcast(new ComLobbyUpdateGamelist(false,
 							getRepresentation()));
@@ -419,7 +431,7 @@ public class GameServer extends Server {
 	 *            bearbeitet werden muss
 	 */
 	@Override
-	public synchronized void receiveMessage(Player player, ComRuleset ruleset) {
+	public void receiveMessage(Player player, ComRuleset ruleset) {
 		ruleset.getRulesetMessage().visit(this.ruleset, player.getPlayerName());			
 	}
 
@@ -431,9 +443,11 @@ public class GameServer extends Server {
 	public ComInitGameLobby initLobby() {
 		List<String> playerList = new ArrayList<String>();
 		if (!playerSet.isEmpty()) {
-			for (Player player : playerSet) {
-				playerList.add(player.getPlayerName());
-			}
+			synchronized(playerSet){
+				for (Player player : playerSet) {
+					playerList.add(player.getPlayerName());
+				}
+			}	
 		}
 		ComInitGameLobby init = new ComInitGameLobby(playerList);
 		return init;
@@ -445,11 +459,13 @@ public class GameServer extends Server {
 	 * Spieler in der Lobby erhalten ein Gamelist Update.
 	 */
 	public void quitGame() {
-		for (Player player : playerSet) {
-			player.changeServer(lobbyServer);
-			ComInitLobby comInit = lobbyServer.initLobby();
-			player.send(comInit);
-		}
+		synchronized(playerSet){
+			for (Player player : playerSet) {
+				player.changeServer(lobbyServer);
+				ComInitLobby comInit = lobbyServer.initLobby();
+				player.send(comInit);
+			}	
+		}	
 		playerSet.clear();
 		lobbyServer.removeGameServer(this);
 		lobbyServer.broadcast(new ComLobbyUpdateGamelist(true,
@@ -468,7 +484,7 @@ public class GameServer extends Server {
 	 *            ist der Spieler der entfernt wird
 	 */
 	@Override
-	public synchronized void disconnectPlayer(Player player) {
+	public void disconnectPlayer(Player player) {
 		if(isHasStarted() || player.getPlayerName().equals(gameMasterName)){
 			if (!playerSet.isEmpty()) {
 				if (playerSet.contains(player)) {
@@ -482,12 +498,14 @@ public class GameServer extends Server {
 				System.err.println("PlayerSet empty!");
 			}
 			if (!playerSet.isEmpty()) {
-				for (Player back : playerSet) {
-					back.changeServer(lobbyServer);
-					ComInitLobby comInit = lobbyServer.initLobby();
-					back.send(comInit);
-					ComWarning warning = new ComWarning(WarningMsg.GameDisbanded);
-					back.send(warning);
+				synchronized(playerSet) {
+					for (Player back : playerSet) {
+						back.changeServer(lobbyServer);
+						ComInitLobby comInit = lobbyServer.initLobby();
+						back.send(comInit);
+						ComWarning warning = new ComWarning(WarningMsg.GameDisbanded);
+						back.send(warning);
+					}	
 				}
 				playerSet.clear();
 			} else {
