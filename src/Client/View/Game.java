@@ -26,6 +26,7 @@ import Ruleset.Colour;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -79,6 +80,7 @@ public class Game extends JFrame implements Observer{
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
+		contentPane.setDoubleBuffered(true);
 		setContentPane(contentPane);
 		
 		gamePanel = null;
@@ -300,11 +302,11 @@ public class Game extends JFrame implements Observer{
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			BACKGROUND = name;
-			//System.out.println(BACKGROUND);
-			gamePanel.repaint();
+			Game.BACKGROUND = name;
+			System.out.println(Game.BACKGROUND);
+			repaint();
 		}
-		
+
 	}
 	
 	class cardsMenuAction extends AbstractAction {
@@ -317,10 +319,11 @@ public class Game extends JFrame implements Observer{
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			BACKSIDE = name;
-			//System.out.println(BACKSIDE);
-			gamePanel.repaint();
+			Game.BACKSIDE = name;
+			System.out.println(Game.BACKSIDE);
+			repaint();
+
 		}
-		
+
 	}
 }
