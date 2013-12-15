@@ -56,12 +56,12 @@ public class ClientModel extends Observable {
 	 * Standardport des Spielservers.
 	 */
 	public static final int PORT = 4567;
-	
+
 	/**
 	 * kleinstmoeglicher port.
 	 */
 	public static final int MINPORT = 1025;
-	
+
 	/**
 	 * Groessmoeglicher zulaessiger port.
 	 */
