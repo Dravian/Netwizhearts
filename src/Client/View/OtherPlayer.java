@@ -6,10 +6,9 @@ package Client.View;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
+import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
-import java.text.AttributedCharacterIterator;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
@@ -21,7 +20,8 @@ import javax.swing.border.LineBorder;
  */
 public class OtherPlayer extends JPanel{
 	
-	private static String IMAGEPATH = "Data/";
+	private static int WIDTH = 153;
+	private static int HEIGHT = 120;
 
 	private String name;
 	
@@ -31,7 +31,7 @@ public class OtherPlayer extends JPanel{
 	
 	private int yPos;
 	
-	private BufferedImage image;
+	private Image image;
 	
 	
 	/**
@@ -45,22 +45,12 @@ public class OtherPlayer extends JPanel{
 		info = "";
 		this.setOpaque(true);
 		try {
-			image = ImageIO.read(new File(IMAGEPATH + "hand.png"));
+			image = ImageIO.read(new File(Game.IMAGEPATH + "hand.png"))
+					.getScaledInstance(WIDTH, HEIGHT, UNDEFINED_CONDITION);
 		} catch (IOException e) {
 			image = null;
 		}
 	}
-	
-//	/**
-//	 * Setzt die Position des Objekts
-//	 * 
-//	 * @param x X-Position
-//	 * @param y Y-Position
-//	 */
-//	public void setPosition(int x, int y) {
-//		xPos = x;
-//		yPos = y;
-//	}
 	
 	public String getName() {
 		return name;
@@ -80,11 +70,11 @@ public class OtherPlayer extends JPanel{
 	
 	@Override
 	public int getWidth() {
-		return image.getWidth();
+		return WIDTH;
 	}
 	@Override
 	public int getHeight() {
-		return image.getHeight();
+		return HEIGHT;
 	}
 	
 	/**

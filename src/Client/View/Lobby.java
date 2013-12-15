@@ -216,51 +216,56 @@ public class Lobby extends JFrame implements Observer{
 
 			@Override
 			public void run() {
-				int length = gameRepresentationList.size();
-				String[] games = new String[length];
-				for (int i = 0; i < length; i++) {
-					String s = "";
-					String p = "";
-					if (gameRepresentationList.get(i).hasPassword()) {
-						switch (lang) {
-						case English:
-							s = "(Password)";
-							break;
-						case German:
-							s = "(Passwort)";
-							break;
-						case Bavarian:
-							s = "(Passwort)";
-							break;
-						default:
-							break;
+				synchronized (gameRepresentationList) {
+					int length = gameRepresentationList.size();
+					String[] games = new String[length];
+					for (int i = 0; i < length; i++) {
+						String s = "";
+						String p = "";
+						if (gameRepresentationList.get(i).hasPassword()) {
+							switch (lang) {
+							case English:
+								s = "(Password)";
+								break;
+							case German:
+								s = "(Passwort)";
+								break;
+							case Bavarian:
+								s = "(Passwort)";
+								break;
+							default:
+								break;
+							}
 						}
-					}
-					if (gameRepresentationList.get(i).isHasStarted()) {
-						switch (lang) {
-						case English:
-							p = "(started)";
-							break;
-						case German:
-							p = "(gestarted)";
-							break;
-						case Bavarian:
-							p = "(hod agfangd)";
-							break;
-						default:
-							break;
+						if (gameRepresentationList.get(i).isHasStarted()) {
+							switch (lang) {
+							case English:
+								p = "(started)";
+								break;
+							case German:
+								p = "(gestarted)";
+								break;
+							case Bavarian:
+								p = "(hod agfangd)";
+								break;
+							default:
+								break;
+							}
 						}
+						games[i] = gameRepresentationList.get(i).getName()
+								+ " ("
+								+ gameRepresentationList.get(i)
+										.getCurrentPlayers()
+								+ "/"
+								+ gameRepresentationList.get(i).getRuleset().getMaxPlayer() 
+								+ ") "
+								+ gameRepresentationList.get(i).getRuleset()
+								+ " " + s + " " + p;
 					}
-					games[i] = gameRepresentationList.get(i).getName() + " ("
-							+ gameRepresentationList.get(i).getCurrentPlayers()
-							+ "/"
-							+ gameRepresentationList.get(i).getRuleset().getMaxPlayer()
-							+ ") " + gameRepresentationList.get(i).getRuleset()
-							+ " " + s + " " + p;
+					gameList.setListData(games);
+					gameRepList = new LinkedList<GameServerRepresentation>(
+							gameRepresentationList);
 				}
-				gameList.setListData(games);
-				gameRepList = new LinkedList<GameServerRepresentation>(
-						gameRepresentationList);
 			}
 		});
 
@@ -271,12 +276,14 @@ public class Lobby extends JFrame implements Observer{
 
 			@Override
 			public void run() {
-				int length = list.size();
-				String[] players = new String[length];
-				for (int i = 0; i < length; i++) {
-					players[i] = list.get(i);
+				synchronized (list) {
+					int length = list.size();
+					String[] players = new String[length];
+					for (int i = 0; i < length; i++) {
+						players[i] = list.get(i);
+					}
+					playerList.setListData(players);
 				}
-				playerList.setListData(players);
 			}
 		});
 		

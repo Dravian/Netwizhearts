@@ -6,12 +6,9 @@ package Client.View;
 import java.awt.Graphics;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
-
 import javax.swing.JPanel;
 
 import Ruleset.Card;
-import Ruleset.HeartsCard;
 
 /** 
  * DiscardPile. Stellt einen Ablagestapel dar, dieser kann sowohl für jeden Spieler einzeln 

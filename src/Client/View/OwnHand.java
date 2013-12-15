@@ -3,19 +3,14 @@
  */
 package Client.View;
 
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 import javax.swing.JPanel;
 
 import Ruleset.Card;
-import Ruleset.Colour;
 
 /** 
  * OwnHand. Stellt die Karten dar, die der Spieler auf der Hand hat. 

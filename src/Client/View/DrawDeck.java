@@ -3,15 +3,11 @@
  */
 package Client.View;
 
-import java.awt.Color;
 import java.awt.Graphics;
-import java.util.LinkedList;
-import java.util.List;
 
 import javax.swing.JPanel;
 
 import Ruleset.Card;
-import Ruleset.Colour;
 
 /** 
  * DrawDeck. Stellt einen Aufnahmestapel dar.

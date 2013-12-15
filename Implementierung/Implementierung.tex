@@ -114,55 +114,60 @@ Dieses Dokument ist eine Dokumentation der Implementierungsphase. In Folgenden w
 
 \subsection{Milestone 1}
 
+\begin{tabular}{|c|c|c|c|c|}\hline
+   Bereich & angen. Dauer & tats. Dauer & Abweichung & Begründung \\ \hline\hline
+   View(Login+Lobby) & 8 Stunden & 4 Stunden & 50\% & (1) \\ \hline
+   View(Create+Join) & 8 Stunden & 5 Stunden & 37,5\% &\\ \hline
+   View(GameLobby) & 8 Stunden & 3 Stunden & 62,6\% &\\ \hline
+   Model(Login) & 8 Stunden & 8,5 Stunden & (-) 6,25\% & (2) \\ \hline
+   Client(Lobby) & 8 Stunden &  6,5 Stunden & 18,75\% &\\ \hline
+   Client(Create+Join) &  8 Stunden & 6 Stunden & 25\% &\\ \hline
+   Client (GameLobby) &  8 Stunden & 10 Stunden & (-) 25\% &\\ \hline
+   Client (Game) & 14  Stunden &  12 Stunden & 14,3\% &\\ \hline
+   Client (Wizard) & 6 Stunden & 0 Stunden & 100\% &\\ \hline
+   Client (Hearts) & 4 Stunden & 0 Stunden & 100\% &\\ \hline
+   Server(Login) & 16 Stunden & 6 Stunden & 62,5\% & (3) \\ \hline
+   Server(Lobby) & 8 Stunden & 3 Stunden & 62,5\% &\\ \hline 
+   Server(Create+Join) & 12 Stunden & 6 Stunden & 50\% &\\ \hline 
+   Ruleset(Daten) & 20 Stunden & 5 Stunden & 25\% & (4) \\ \hline 
+   Ruleset(ServerWizard) & 30 Stunden & 20 Stunden & 33,4\% &\\ \hline 
+   Ruleset(ServerHearts) & 30 Stunden & 15 Stunden & 50\% &\\ \hline 
+ \end{tabular}
+
 \begin{itemize}
-\item \textbf{View(Login+Lobby):} ang. Dauer: 8 Stunden, tats. Dauer: 4 Stunden \\
-Begründung: Es waren noch Code-Teile aus der Pflichtenheft-Phase vorhanden. \\
-\item \textbf{View(Create+Join):} ang. Dauer: 8 Stunden, tats. Dauer: 5 Stunden \\
-\item \textbf{View(GameLobby):} ang. Dauer: 8 Stunden, tats. Dauer: bisher 3 Stunden \\
-\item \textbf{Model(Login):} ang. Dauer: 8 Stunden, tats. Dauer: bisher 8.5 Stunden \\
-Begründung: Login mehrmals umgebaut um die Tests aus dem Pflichtenheft zu erfüllen. \\
-\item \textbf{Client(Lobby):} ang. Dauer: 8 Stunden, tats. Dauer: bisher 6.5 Stunden \\
-\item \textbf{Client(Create+Join):} ang. Dauer: 8 Stunden, tats. Dauer: bisher 6 Stunden \\
-\item \textbf{Client (GameLobby):} ang. Dauer: 8 Stunden, tats. Dauer: bisher 10 Stunden \\
-\item \textbf{Client (Game):} ang. Dauer: 14 Stunden, tats. Dauer: bisher 12 Stunden \\
-\item \textbf{Client (Wizard):} ang. Dauer: 6 Stunden, tats. Dauer: bisher 0 Stunden \\
-\item \textbf{Client (Hearts):} ang. Dauer 4 Stunden, tats. Dauer: bisher 0 Stunden \\
-\item \textbf{Server(Login):} ang. Dauer: 16 Stunden, tats. Dauer: 6 Stunden \\
-Begründung: Viele der ComObjects waren bereits fertig.
-\item \textbf{Server(Lobby):} ang. Dauer: 8 Stunden, tats. Dauer: 3 Stunden 
-\item \textbf{Server(Create+Join):} ang. Dauer: 12 Stunden, tats. Dauer: 6 Stunden 
-\item \textbf{Ruleset(Daten):} ang. Dauer: 20 Stunden, tats. Dauer: 5 Stunden
-Begründung: Wurde hauptsächlich schon in Spezifikationsphase implementiert
-
-\item \textbf{Ruleset(ServerWizard):} ang. Dauer: 30 Stunden, tats. Dauer: 20 Stunden
-
-\item \textbf{Ruleset(ServerHearts):} ang. Dauer: 30 Stunden, tats. Dauer: 15 Stunden
+\item \textbf{(1)} Es waren noch Code-Teile aus der Pflichtenheft-Phase vorhanden. \\
+\item \textbf{(2)} Login mehrmals umgebaut um die Tests aus dem Pflichtenheft zu erfüllen. \\
+\item \textbf{(3)} Viele der ComObjects waren bereits fertig. \\
+\item \textbf{(4)} Wurde hauptsächlich schon in Spezifikationsphase implementiert. \\
 \end{itemize}
 
 \subsection{Milestone 2}
-\begin{itemize}
-\item \textbf{View(Game):} ang. Dauer 20 Stunden, tats. Dauer: 18.5 Stunden
-\item \textbf{Server(GameLobby):} ang. Dauer: 10 Stunden, tats. Dauer: 5 Stunden 
-\item \textbf{Ruleset(ClientWizard):} ang. Dauer: 6 Stunden, tats. Dauer: bisher 5 Stunden
-\item \textbf{Ruleset(ClientHearts):} ang. Dauer: 6 Stunden, tats. Dauer: bisher 5 Stunden
-\item \textbf{Handbuch:} Dauer: 5 Stunden
-\end{itemize}
 
+\begin{tabular}{|c|c|c|c|c|}\hline
+   Bereich & angen. Dauer & tats. Dauer & Abweichung & Begründung\\ \hline\hline
+   View(Game) & 20 Stunden & 18,5 Stunden & 7,5\% &\\ \hline 
+   Server(GameLobby) & 10 Stunden & 5 Stunden & 50\% &\\ \hline
+   Ruleset(ClientWizard) & 6 Stunden & 5 Stunden & 16,7\% &\\ \hline 
+   Ruleset(ClientHearts) & 6 Stunden & 5 Stunden & 16,7\% &\\ \hline 
+   Handbuch & - & 5 Stunden & - &\\ \hline 
+ \end{tabular}
 
 \subsection{Milestone 3}
-\begin{itemize}
-\item \textbf{View(WizardWindows):} ang. Dauer: 4 Stunden, tats. Dauer: 2.5 Stunden
-\item \textbf{View(HeartsWindows):} ang. Dauer: 4 Stunden, tats. Dauer: 2 Stunden
-\item \textbf{Server(Game):} ang. Dauer: 4 Stunden, tats. Dauer: 2 Stunden 30 Minuten
-\item \textbf{Client(LanguageInterpreter):} Dauer: bisher 2 Stunden(V)
-\item \textbf{Karten:} Dauer: 4 Stunden
-\item \textbf{Handbuch:} Dauer: 1 Stunden
-\end{itemize}
 
+\begin{tabular}{|c|c|c|c|c|}\hline
+   Bereich & angen. Dauer & tats. Dauer & Abweichung & Begründung\\ \hline\hline
+   View(WizardWindows) & 4 Stunden & 2,5 Stunden & 37,5\% &\\ \hline
+   View(HeartsWindows) & 4 Stunden & 2 Stunden & 50\% &\\ \hline
+   Server(Game) & 4 Stunden & 2,5 Stunden & 37,5\% &\\ \hline
+   Client(LanguageInterpreter) & - & 2 Stunden & - &\\ \hline
+   Karten & - & 4 Stunden & - &\\ \hline
+   Handbuch & - & 2 Stunden & - &\\ \hline
+ \end{tabular}
  
 \subsection{Finale Phase}
-
-
-
+\begin{tabular}{|c|c|c|c|c|}\hline
+   Bereich & angen. Dauer & tats. Dauer & Abweichung & Begründung\\ \hline\hline
+ 
+ \end{tabular}
 
 \end{document}

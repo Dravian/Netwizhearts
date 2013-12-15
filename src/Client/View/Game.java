@@ -1,16 +1,20 @@
 package Client.View;
 
 import java.awt.EventQueue;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.AbstractAction;
+import javax.swing.ImageIcon;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -18,12 +22,14 @@ import javax.swing.SwingUtilities;
 
 import Client.ClientModel;
 import Client.ViewNotification;
-import Ruleset.Card;
 import Ruleset.Colour;
-import Ruleset.DiscardedCard;
-import Ruleset.GameClientUpdate;
-import Ruleset.HeartsCard;
-import Ruleset.OtherData;
+
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import java.io.File;
+import java.io.IOException;
+
+import javax.swing.JMenu;
 
 /**
  * Game. Im Game Fenster laeuft das Spiel ab.Es enthaelt den Spielchat und ein GamePanel.
@@ -32,6 +38,9 @@ import Ruleset.OtherData;
  * und der Spieler wird in die Lobby zurueckgeleitet.
  */
 public class Game extends JFrame implements Observer{
+	protected static String IMAGEPATH = "Data/";
+	protected static String BACKSIDE = "backside.jpg.";
+	protected static String BACKGROUND = "background.jpg";
 	
 	private JPanel contentPane;
 	private JTextField messageField;
@@ -39,6 +48,9 @@ public class Game extends JFrame implements Observer{
 	private JTextArea chatlog;
 	private GamePanel gamePanel;
 	private MouseListener cardMouseListener;
+	private JMenuBar menuBar;
+	private JMenu mnBackground;
+	private JMenu mnCards;
 	
 //	/**
 //	 * Launch the application.
@@ -66,10 +78,60 @@ public class Game extends JFrame implements Observer{
 		setBounds(100, 100, 1024, 695);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setContentPane(contentPane);
 		
 		gamePanel = null;
+		
+		menuBar = new JMenuBar();
+		menuBar.setBounds(0, 0, 133, 21);
+		contentPane.add(menuBar);
+		
+		mnBackground = new JMenu("Background");
+		File backgroundFolder = new File(IMAGEPATH + "backgrounds/");
+		File[] backgrounds = backgroundFolder.listFiles();
+		for (int i = 0; i < backgrounds.length; i++) {
+			try {
+				Image icon = ImageIO.read(backgrounds[i]);
+				JMenuItem item = new JMenuItem(new bgMenuAction(backgrounds[i].getName()));
+				item.setIcon(new ImageIcon(icon.getScaledInstance(80, 45, -1)));
+				mnBackground.add(item);
+			} catch (IOException e) {
+				// TODO
+			}
+		    
+		}
+		menuBar.add(mnBackground);
+		
+		mnCards = new JMenu("Cards");
+		File cardsFolder = new File(IMAGEPATH + "cards/");
+		File[] cards = cardsFolder.listFiles();
+		for (int i = 0; i < cards.length; i++) {
+			try {
+				Image icon = ImageIO.read(cards[i]);
+				JMenuItem item = new JMenuItem(new cardsMenuAction(cards[i].getName()));
+				item.setIcon(new ImageIcon(icon.getScaledInstance(35, 50, -1)));
+				mnCards.add(item);
+			} catch (IOException e) {
+				// TODO 
+			}
+		}
+		menuBar.add(mnCards);
+		
+		chatlog = new JTextArea();
+		chatlog.setBounds(10, 505, 998, 112);
+		chatlog.setEditable(false);
+		chatlog.setLineWrap(true);
+		
+		scrollPaneChat = new JScrollPane();
+		scrollPaneChat.setBounds(10, 494, 998, 123);
+		scrollPaneChat.setViewportView(chatlog);
+		contentPane.add(scrollPaneChat);
+		
+		messageField = new JTextField();
+		messageField.setBounds(10, 617, 998, 44);
+		contentPane.add(messageField);
+		messageField.setColumns(10);
 		
 //		// TEST
 //		LinkedList<String> players = new LinkedList<String>();
@@ -86,26 +148,10 @@ public class Game extends JFrame implements Observer{
 //		data.add("5 Stiche");
 //
 //		gamePanel = new GamePanel(players.size());
-//		gamePanel.setBounds(10, 11, 998, 495);
+//		gamePanel.setBounds(10, 0, 998, 495);
 //		gamePanel.updateTrumpColour(Colour.RED);
 //		contentPane.add(gamePanel);
 //		// TEST
-		
-		
-		chatlog = new JTextArea();
-		chatlog.setBounds(10, 505, 998, 112);
-		chatlog.setEditable(false);
-		chatlog.setLineWrap(true);
-		
-		scrollPaneChat = new JScrollPane();
-		scrollPaneChat.setBounds(10, 505, 998, 112);
-		scrollPaneChat.setViewportView(chatlog);
-		contentPane.add(scrollPaneChat);
-		
-		messageField = new JTextField();
-		messageField.setBounds(10, 617, 998, 44);
-		contentPane.add(messageField);
-		messageField.setColumns(10);
 	}
 	
 	/**
@@ -154,7 +200,7 @@ public class Game extends JFrame implements Observer{
 	 */
 	public void makeTrickGameBoard(final int playerCount) {
 		gamePanel = new GamePanel(playerCount);
-		gamePanel.setBounds(10, 11, 998, 547);
+		gamePanel.setBounds(10, 0, 998, 547);
 		gamePanel.addCardMouseListener(cardMouseListener);
 		contentPane.add(gamePanel);
 
@@ -244,5 +290,37 @@ public class Game extends JFrame implements Observer{
 		}
 	}
 	
+	class bgMenuAction extends AbstractAction {
+
+		String name;
+		
+		public bgMenuAction (String s) {
+			name = s;
+		}
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			BACKGROUND = name;
+			//System.out.println(BACKGROUND);
+			gamePanel.repaint();
+		}
+		
+	}
 	
+	class cardsMenuAction extends AbstractAction {
+
+		String name;
+		
+		public cardsMenuAction (String s) {
+			name = s;
+		}
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			BACKSIDE = name;
+			//System.out.println(BACKSIDE);
+			gamePanel.repaint();
+		}
+		
+	}
 }
