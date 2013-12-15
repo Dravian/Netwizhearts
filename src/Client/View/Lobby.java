@@ -339,9 +339,18 @@ public class Lobby extends JFrame implements Observer{
 	 * @param o erwartet ein Objekt von der Klasse ClientModel
 	 * @param arg erwartet einen String, der eine Chatnachricht darstellt
 	 */
-	public void update(Observable o, String arg) {
+	public void update(Observable o, final String arg) {
 		if (this.isVisible()) {
-			chatlog.append(arg);
+			SwingUtilities.invokeLater(new Runnable() {
+
+				@Override
+				public void run() {
+					chatlog.append(arg);
+					scrollPaneChat.validate();
+					scrollPaneChat.getVerticalScrollBar().setValue(scrollPaneChat.getVerticalScrollBar().getMaximum());
+				}
+				
+			});
 		}
 	}
 }

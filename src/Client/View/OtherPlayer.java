@@ -20,8 +20,8 @@ import javax.swing.border.LineBorder;
  */
 public class OtherPlayer extends JPanel{
 	
-	private static int WIDTH = 153;
-	private static int HEIGHT = 120;
+	private static int WIDTH = 140;
+	private static int HEIGHT = 110;
 
 	private String name;
 	
@@ -46,7 +46,7 @@ public class OtherPlayer extends JPanel{
 		this.setOpaque(true);
 		try {
 			image = ImageIO.read(new File(Game.IMAGEPATH + "hand.png"))
-					.getScaledInstance(WIDTH, HEIGHT, UNDEFINED_CONDITION);
+					.getScaledInstance(OtherPlayer.WIDTH, OtherPlayer.HEIGHT, UNDEFINED_CONDITION);
 		} catch (IOException e) {
 			image = null;
 		}

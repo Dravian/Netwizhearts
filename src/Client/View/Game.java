@@ -52,6 +52,7 @@ public class Game extends JFrame implements Observer{
 	private JMenuBar menuBar;
 	private JMenu mnBackground;
 	private JMenu mnCards;
+	private Language lang;
 	
 //	/**
 //	 * Launch the application.
@@ -74,6 +75,7 @@ public class Game extends JFrame implements Observer{
 	 * 
 	 */
 	public Game() {
+		lang = Language.English;
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 1024, 695);
@@ -142,12 +144,6 @@ public class Game extends JFrame implements Observer{
 //		players.add("Mr. Orange");
 //		players.add("Mr. Pink");
 //		players.add("Mr. Brown");
-//		LinkedList<String> data = new LinkedList<String>();
-//		data.add("1 Stiche");
-//		data.add("2 Stiche");
-//		data.add("3 Stiche");
-//		data.add("4 Stiche");
-//		data.add("5 Stiche");
 //
 //		gamePanel = new GamePanel(players.size());
 //		gamePanel.setBounds(10, 0, 998, 495);
@@ -206,6 +202,36 @@ public class Game extends JFrame implements Observer{
 		gamePanel.addCardMouseListener(cardMouseListener);
 		contentPane.add(gamePanel);
 
+	}
+	
+	/**
+	 * Aendert die Sprache des Fensters
+	 * 
+	 * @param l Sprache in Form des Language-Enums
+	 */
+	public void setLanguage(Language l) {
+		lang = l;
+		updateLanguage();
+	}
+		
+	private void updateLanguage() {
+		switch (lang) {
+		case German:
+			this.setTitle("Spiel");
+			mnBackground.setText("Hintergrund");
+			mnCards.setText("Karten");
+			break;
+		case English:
+			this.setTitle("Game");
+			mnBackground.setText("Background");
+			mnCards.setText("Cards");
+			break;
+		case Bavarian:
+			this.setTitle("Spui");
+			mnBackground.setText("Hindagrund");
+			mnCards.setText("Kortn");
+			break;
+		}		
 	}
 	
 	/**
@@ -286,9 +312,18 @@ public class Game extends JFrame implements Observer{
 	 * @param o erwartet ein Objekt von der Klasse ClientModel
 	 * @param arg erwartet eine Chatnachricht in String-Form
 	 */
-	public void update(Observable o, String arg) {
+	public void update(Observable o, final String arg) {
 		if (this.isVisible()) {
-			chatlog.append(arg);
+			SwingUtilities.invokeLater(new Runnable() {
+
+				@Override
+				public void run() {
+					chatlog.append(arg);
+					scrollPaneChat.validate();
+					scrollPaneChat.getVerticalScrollBar().setValue(scrollPaneChat.getVerticalScrollBar().getMaximum());
+				}
+				
+			});
 		}
 	}
 	
