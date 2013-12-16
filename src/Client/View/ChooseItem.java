@@ -29,6 +29,9 @@ public class ChooseItem extends JFrame implements Observer{
 	private JTextArea rsMessageArea;
 	private JButton btnOK;
 	
+	/**
+	 * Erstellt ein neues ChooseItem-Fenster
+	 */
 	public ChooseItem() {
 		setBounds(100, 100, 370, 190);
 		setResizable(false);
@@ -88,7 +91,7 @@ public class ChooseItem extends JFrame implements Observer{
 	 * oder eine Fehlermeldung angezeigt.
 	 * 
 	 * @param o erwartet ein Objekt von der Klasse ClientModel
-	 * @param arg erwartet: openChooseItem, chooseItemSuccessful
+	 * @param arg erwartet: openChooseItem, windowChangeForced, quitGame
 	 */
 	@Override
 	public void update(Observable o, Object arg) {

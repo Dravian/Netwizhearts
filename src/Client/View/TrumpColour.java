@@ -10,20 +10,19 @@ import Ruleset.Colour;
 public class TrumpColour extends JPanel {
 		private Colour trumpColour;
 		
+		/**
+		 * Erstellt ein neues TrumpColour-Panel
+		 */
 		public TrumpColour() {
 			trumpColour = null;
 			this.setLayout(null);
 		}
 		
-//		@Override
-//		public int getWidth() {
-//			return shownCard.getWidth();
-//		}
-//		@Override
-//		public int getHeight() {
-//			return shownCard.getHeight();
-//		}
-		
+		/**
+		 * Setzt die Farbe des Panels
+		 * 
+		 * @param col Trumpffarbe
+		 */
 		public void setTrumpColour(Colour col) {
 			trumpColour = col;
 			repaint();

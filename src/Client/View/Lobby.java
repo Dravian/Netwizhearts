@@ -296,7 +296,7 @@ public class Lobby extends JFrame implements Observer{
 	 * 
 	 * @param o erwartet ein Objekt von der Klasse ClientModel
 	 * @param arg erwartet: loginSuccessful, joinGameSuccessful, windowChangeForced,
-	 * 			  playerListUpdate, gameListUpdate, chatMessage
+	 * 			  playerListUpdate, gameListUpdate, quitGame
 	 */
 	@Override
 	public void update(Observable o, Object arg) {

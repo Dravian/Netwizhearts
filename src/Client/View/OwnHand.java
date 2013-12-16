@@ -21,6 +21,9 @@ public class OwnHand extends JPanel{
 		
 	private List<ViewCard> hand;
 	
+	/**
+	 * Erstellt ein neues OwnHand-Panel
+	 */
 	public OwnHand() {
 		hand = new LinkedList<ViewCard>();
 		for (int i = 0; i < 20; i++) {
@@ -35,7 +38,7 @@ public class OwnHand extends JPanel{
 	/**
 	 * Setzt die Hand des Spielers
 	 * 
-	 * @param cards
+	 * @param cards Liste der Handkarten des Spielers
 	 */
 	public void setHand(List<Card> cards) {
 		for (int i = 0; i < hand.size(); i++) {

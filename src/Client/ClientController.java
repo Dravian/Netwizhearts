@@ -106,6 +106,7 @@ public class ClientController {
 		
 		password = new Password();
 		password.addJoinButtonListener(new JoinButtonListenerPassword());
+		password.addLeaveButtonListener(new LeaveButtonListenerPassword());
 		clientModel.addObserver(password);
 		
 		warning = new Warning();
@@ -356,6 +357,16 @@ public class ClientController {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			lobby.dispatchEvent(new WindowEvent(lobby, WindowEvent.WINDOW_CLOSING));
+		}
+		
+	}
+	
+	class LeaveButtonListenerPassword implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			password.clearField();
+			password.setVisible(false);
 		}
 		
 	}
