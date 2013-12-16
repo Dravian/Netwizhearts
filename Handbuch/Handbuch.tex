@@ -224,29 +224,32 @@ Hearts ist ein stichbasiertes Kartenspiel, bei dem es darum geht, so wenig Punkt
 \end{itemize}
 
 \section{Fehlermeldungen und Behebung}
-Bei Risiken und Nebenwirkungen lesen Sie die Packungsbeilage, oder Fragen Sie Ihren Arzt oder Apotheker...
-....\\
+Tritt ein Fehler auf, werden Sie durch eine entsprechende Fehlermeldung gewarnt.
+Die folgende Auflistung einiger Fehler hilft Ihnen bei der Behebung:
 \begin{itemize}
-\item \textbf{Fehler bei der Verbindung}:
-		Sollte die Verbindung plötzlich beendet werden, müssen Sie das Spiel neu starten (siehe hierzu: 5.1 Spielstart). Sollten Sie bereits in einem Spiel gewesen sein, wird das Spiel beendet und ihr Mitspieler werden in die Lobby gebracht.
-\item \textbf{Fehler beim Login}:
+\item \textbf{Fehler Server}:
 	\begin{itemize}
-	\item \textbf{Fehler bei der Namenseingabe}:
-		Tritt hier ein Fehler auf, erhalten Sie eine Fehlermeldung. In diesem Fall sollten Sie einen anderen Namen wählen, da der zuvor gewählte bereits vergeben ist.
-	\item \textbf{Fehler beim Verbindungsaufbau}:
+	\item \textbf{Fehler beim Start}:
 		Sollte der gewählte Port bereits belegt sein, bekommen Sie eine Fehlermeldung, bitte wählen Sie in diesem Fall einen anderen Port.
-		Sollte die gewählte IP Adresse nicht korrekt sein, d.h. auf dem Rechner mit dieser IP wurde kein Server gestartet, so erhalten Sie eine Fehlermeldung. Überprüfen Sie dann bitte ihre Eingabe auf Richtigkeit oder wählen Sie eine andere IP-Adresse.
 	\end{itemize}
-\item \textbf{Fehler in der Lobby}:
-\item \textbf{Fehler im Erstellungsfenster}:
-\item \textbf{Fehler im Wartefenster}:
-\item \textbf{Fehler im Spiel}:
+\item \textbf{Fehler Client}:
 	\begin{itemize}
-	\item \textbf{Fehler Wizard}:
-	\item \textbf{Fehler Hearts}:
+	\item \textbf{Fehler bei der Verbindung}:
+		Sollte die Verbindung plötzlich beendet werden, müssen Sie das Spiel neu starten (siehe hierzu: 5.1 Spielstart). Sollten Sie bereits in einem Spiel gewesen sein, wird das Spiel beendet und ihr Mitspieler werden in die Lobby gebracht.
+	\item \textbf{Fehler beim Login}:
+		\begin{itemize}
+		\item \textbf{Fehler bei der Namenseingabe}:
+			Tritt hier ein Fehler auf, erhalten Sie eine Fehlermeldung. In diesem Fall sollten Sie einen anderen Namen wählen, da der zuvor gewählte bereits vergeben ist.
+		\item \textbf{Fehler beim Verbindungsaufbau}:
+			Sollte der gewählte Port bereits belegt sein, bekommen Sie eine Fehlermeldung, bitte wählen Sie in diesem Fall einen anderen Port.
+Sollte die gewählte IP Adresse nicht korrekt sein, d.h. auf dem Rechner mit dieser IP wurde kein Server gestartet, so erhalten Sie eine Fehlermeldung. Überprüfen Sie dann bitte ihre Eingabe auf Richtigkeit oder wählen Sie eine andere IP-Adresse.
+Die Adresse kann auf folgende Weisen angegeben werden: \\
+IP-Adresse\\
+servername.de:port\\
+ip:port\\
+		\end{itemize}
 	\end{itemize}
 \end{itemize}
-
 
 \section{Entwicklung eines neuen \gls{Regelwerk}es}
 Die Anwendung NET-WizHearts ist so konzipiert, dass jederzeit weitere \gls{Regelwerk}e hinzugefügt werden können.
@@ -254,23 +257,16 @@ Dazu ist die Entwicklung folgender Klassen notwendig:
 \begin{itemize}
 \item \textbf{Paket Ruleset}
 	\begin{itemize}
-	\item \textbf{ServerRuleset''NameOfTheGame''}: Dies ist eine Klasse, die die Einhaltung der Regeln garantiert. Serverseitig.
-	\item \textbf{ClientRuleset''NameOfTheGame''}: Dies ist eine Klasse, die eine Vorab-Regelauswertung vornehmen soll. Clientseitig. 
-	\end{itemize}
-\item \textbf{Paket ComObjects}:
-\begin{itemize}
-	\item \textbf{}
-	\item \textbf{}
-	\end{itemize}
-\item \textbf{Paket View}:
-\begin{itemize}
-	\item \textbf{}
-	\item \textbf{}
-	\end{itemize}
-\item \textbf{Paket ClientModel}:
-\begin{itemize}
-	\item \textbf{}
-	\item \textbf{}
+	\item \textbf{Server''NameOfTheGame''}: Dies ist eine Klasse, die die Einhaltung der Regeln garantiert. Serverseitig.
+	\item \textbf{Client''NameOfTheGame''}: Dies ist eine Klasse, die eine Vorab-Regelauswertung vornehmen soll. Clientseitig.
+	
+	 Achten Sie bei der Entwicklung dieser Klassen darauf, dass die Methode isValidMove in beiden Klassen den selben Inhalt hat!
+	\item \textbf{Color}: Eventuelle Änderungen in dieser Klasse, sollten andere Farben für das neue Regelwerk benötigt werden.
+	\item \textbf{GamePhase}: Eventuelle Änderungen in dieser Klasse, sollten die bereits existierenden Phasen nicht ausreichen.
+	\item \textbf{''NameOfTheGame''Card}: Neue Klasse, die alle Karten enthalten muss, die für das Regelwerk benötigt werden.
+	\item \textbf{''NameOfTheGame''Data}: Neue Klasse, die die Otherdata eines Spielers zum Regelwerk enthält.
+	\item \textbf{RulesetType}: Änderungen an dieser Klasse, das Regelwerk muss hinzugefügt werden.
+	\item \textbf{UserMessages}: 
 	\end{itemize}
 \end{itemize}
 
