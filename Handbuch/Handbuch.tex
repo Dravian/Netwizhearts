@@ -95,8 +95,13 @@ Dieses Produkt läuft auf den Betriebssystemen Microsoft Windows, Mac OS X und L
 \gls{Server}seitig müssen zusätzlich die Mindestanforderungen des verwendeten Betriebssystems bezüglich Arbeitsspeicher und Rechenleistung erfüllt sein. Diese können durch die Anzahl der gehosteten Spieler/Spiele steigen.
 
 \section{Installation}
-Entpacken sie die Dateien und starten Sie.
-....\\
+Entpacken sie die Dateien eventuell in einem Ordner. Es ist wichtig, dass der Data Ordner am gleichen Ort abgelegt wird, wie die .jar Dateien.
+\begin{itemize}
+	\item \textbf{Server:} Mit Doppelklick auf die Server.jar - Datei starten Sie diese. Sollte anschließend von Ihnen gefordert werden ein Programm auszuwählen, gehen Sie unter C:/Programme (x86)/Java/jre7/bin auf die Datei javaw.exe.
+	Sie können ihr Programm auch aus der Konsole starten. Geben Sie hierzu in der Konsole ein: java -jar Server.jar, dahinter können Sie optional eine Portnummer setzen, wenn Sie nicht den Standartport verwenden möchten.
+	\item \textbf{Client:}  Mit Doppelklick auf die NetWizHearts.jar - Datei starten Sie diese. Sollte anschließend von Ihnen gefordert werden ein Programm auszuwählen, gehen Sie unter C:/Programme (x86)/Java/jre7/bin auf die Datei javaw.exe.
+	Sie können ihr Programm auch aus der Konsole starten. Geben Sie hierzu in der Konsole ein: java -jar NetWizHearts.jar.
+\end{itemize}
 \section{Haftungsausschluss}
 
 1. Haftung für den Inhalt
@@ -257,16 +262,22 @@ Dazu ist die Entwicklung folgender Klassen notwendig:
 \begin{itemize}
 \item \textbf{Paket Ruleset}
 	\begin{itemize}
-	\item \textbf{Server''NameOfTheGame''}: Dies ist eine Klasse, die die Einhaltung der Regeln garantiert. Serverseitig.
-	\item \textbf{Client''NameOfTheGame''}: Dies ist eine Klasse, die eine Vorab-Regelauswertung vornehmen soll. Clientseitig.
+	\item \textbf{Neue Klassen}:
+		\begin{itemize}
+		\item \textbf{Server''NameOfTheGame''}: Diese Klasseerbt von ServerRuleset. Es ist eine Klasse, die die Einhaltung der Regeln garantiert - Serverseitig.
+		\item \textbf{Client''NameOfTheGame''}: Diese Klasseerbt von ClientRuleset. Dies ist eine Klasse, die eine Vorab-Regelauswertung vornehmen soll- Clientseitig.
 	
-	 Achten Sie bei der Entwicklung dieser Klassen darauf, dass die Methode isValidMove in beiden Klassen den selben Inhalt hat!
-	\item \textbf{Color}: Eventuelle Änderungen in dieser Klasse, sollten andere Farben für das neue Regelwerk benötigt werden.
-	\item \textbf{GamePhase}: Eventuelle Änderungen in dieser Klasse, sollten die bereits existierenden Phasen nicht ausreichen.
-	\item \textbf{''NameOfTheGame''Card}: Neue Klasse, die alle Karten enthalten muss, die für das Regelwerk benötigt werden.
-	\item \textbf{''NameOfTheGame''Data}: Neue Klasse, die die Otherdata eines Spielers zum Regelwerk enthält.
-	\item \textbf{RulesetType}: Änderungen an dieser Klasse, das Regelwerk muss hinzugefügt werden.
-	\item \textbf{UserMessages}: 
+		 Achten Sie bei der Entwicklung dieser Klassen darauf, dass die Methode isValidMove in beiden oben genannten Klassen den selben Inhalt hat! Andernfalls wertet der Server dies als Betrugsversuch eines Spielers und dieser wird aus dem Spiel geworfen.
+		 \item \textbf{''NameOfTheGame''Card}: Neue Klasse, die alle Karten enthalten muss, die für das Regelwerk benötigt werden.
+		\item \textbf{''NameOfTheGame''Data}: Neue Klasse, die die Otherdata eines Spielers zum Regelwerk enthält.
+	\end{itemize}
+	\item \textbf{Änderungen an bestehenden Klassen}:
+		\begin{itemize}
+		\item \textbf{RulesetType}: Eine Änderung dieser Klasse ist unbedingt nötig. Fügen sie dazu den Namen des entsprechenden Regelwerkes mit der Mindest- und Höchstspielerzahl ein.
+		\item \textbf{Color}: Eventuelle Änderungen in dieser Klasse, sollten andere Farben für das neue Regelwerk benötigt werden. Fügen Sie einfach die Namen der Farben in die schon bestehende Auflistung hinzu.
+		\item \textbf{GamePhase}: Eventuelle Änderungen in dieser Klasse, sollten die bereits existierenden Phasen nicht ausreichen. Benötigen Sie eine Spielphase, die noch nicht existiert, so fügen Sie diese einfach in die bereits bestehende Auflistung hinzu.
+		\item \textbf{UserMessages}: Eventuelle Änderungen an dieser Klasse, sollten die bereits existierenden Nachrichtentypen nicht ausreichen. Fügen Sie diese einfach in die bereits bestehende Auflistung hinzu.
+		\end{itemize}
 	\end{itemize}
 \end{itemize}
 
