@@ -17,6 +17,7 @@ import Ruleset.RulesetType;
 import Server.GameServerRepresentation;
 import test.TestMessageListenerThread;
 import test.TestObserver;
+import ComObjects.ComChatMessage;
 import ComObjects.ComCreateGameRequest;
 import ComObjects.ComInitGameLobby;
 import ComObjects.ComInitLobby;
@@ -31,6 +32,8 @@ public class ClientInServerLobbyTest {
 	TestObserver testObserver;
 
 	TestMessageListenerThread testNetIO;
+
+	String testText;
 
 	@Before
 	public void setUp() throws Exception {
@@ -55,6 +58,23 @@ public class ClientInServerLobbyTest {
 		testNetIO = null;
     	testModel = null;
     	testObserver = null;
+    	testText = null;
+	}
+
+	@Test
+	public void testSendChatMessage() {
+		String inputText = "Hello Test!";
+		testModel.sendChatMessage(inputText);
+		testText = ((ComChatMessage) testNetIO.getModelInput().get(0)).getChatMessage();
+		assertTrue("Vergleich der gesendeten Chatnachrichten", testText.contains(inputText));
+	}
+
+	@Test
+	public void testReceiveChatMessage() {
+		ComChatMessage testMessage = new ComChatMessage("Hello Test!");
+		testNetIO.injectComObject(testMessage);
+		assertTrue("Vergleich der empfangenen Chatnachrichten", 
+				testObserver.getChatMessage().equals(testMessage.getChatMessage()));
 	}
 
 	@Test
