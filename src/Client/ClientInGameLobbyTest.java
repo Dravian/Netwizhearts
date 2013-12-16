@@ -17,6 +17,7 @@ import test.TestObserver;
 import ComObjects.ComChatMessage;
 import ComObjects.ComInitGameLobby;
 import ComObjects.ComInitLobby;
+import ComObjects.ComKickPlayerRequest;
 import ComObjects.ComUpdatePlayerlist;
 import Ruleset.RulesetType;
 import Server.GameServerRepresentation;
@@ -100,5 +101,10 @@ public class ClientInGameLobbyTest {
 				testObserver.getNotification().remove(0));
 		assertTrue("Hans in Liste",
 				testModel.getPlayerlist().contains("Hans"));
+
+		testModel.kickPlayer("Hans");
+		ComKickPlayerRequest request =
+				(ComKickPlayerRequest) testNetIO.getModelInput().remove(0);
+		assertEquals("Hans im Request", "Hans", request.getPlayerName());
 	}
 }
