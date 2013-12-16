@@ -55,6 +55,13 @@ public class GamePanel extends JPanel{
 	 */
 	public GamePanel(int playerCount) {
 		
+		try {
+			background = ImageIO.read(new File(IMAGEPATH + "backgrounds/" + Game.BACKGROUND))
+					.getScaledInstance(BGWIDTH, BGHEIGHT, UNDEFINED_CONDITION);
+		} catch (IOException e) {
+			background = null;
+		}
+		
 		this.setLayout(null);
 		
 		ownHand = new OwnHand();
@@ -99,6 +106,15 @@ public class GamePanel extends JPanel{
 			break;
 		default:
 			break;
+		}
+	}
+	
+	public void updateBackground() {
+		try {
+			background = ImageIO.read(new File(IMAGEPATH + "backgrounds/" + Game.BACKGROUND))
+					.getScaledInstance(BGWIDTH, BGHEIGHT, UNDEFINED_CONDITION);
+		} catch (IOException e) {
+			background = null;
 		}
 	}
 	
@@ -258,12 +274,7 @@ public class GamePanel extends JPanel{
 	@Override
 	public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        try {
-			background = ImageIO.read(new File(IMAGEPATH + "backgrounds/" + Game.BACKGROUND))
-					.getScaledInstance(BGWIDTH, BGHEIGHT, UNDEFINED_CONDITION);
-		} catch (IOException e) {
-			background = null;
-		}
+        
         g.drawImage(background, 0, 0, null);
     }
 }

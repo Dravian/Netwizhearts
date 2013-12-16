@@ -25,6 +25,16 @@ import Ruleset.RulesetType;
 public class ViewCard extends JPanel{
 	protected static int WIDTH = 48;
 	protected static int HEIGHT = 76;
+	protected static Image BACKSIDEIMAGE = null;
+	
+	protected static void updateBackside() {
+		try {
+			ViewCard.BACKSIDEIMAGE = ImageIO.read(new File(Game.IMAGEPATH + "cards/" + Game.BACKSIDE))
+				  .getScaledInstance(ViewCard.WIDTH, ViewCard.HEIGHT, UNDEFINED_CONDITION);
+		} catch (IOException e) {
+			//TODO
+		}
+	}
 	
 	private RulesetType ruleset;
 	private Card card;
@@ -41,7 +51,12 @@ public class ViewCard extends JPanel{
 		//TODO
 		clicked = false;
 		card = c;
-		
+		try {
+			ViewCard.BACKSIDEIMAGE = ImageIO.read(new File(Game.IMAGEPATH + "cards/" + Game.BACKSIDE))
+				  .getScaledInstance(ViewCard.WIDTH, ViewCard.HEIGHT, UNDEFINED_CONDITION);
+		} catch (IOException e) {
+			//TODO
+		}
 	}
 	
 	/**
@@ -98,18 +113,16 @@ public class ViewCard extends JPanel{
 			try {                
 				face = ImageIO.read(new File(Game.IMAGEPATH + ruleset.toString().toLowerCase() + "/"+  card.toString() +".jpg"))
 		        		  .getScaledInstance(ViewCard.WIDTH, ViewCard.HEIGHT, UNDEFINED_CONDITION);
+				
 		       } catch (IOException ex) {
-		            //TODO
-		       }	
+		            face = null;
+		            g.drawString("Card missing", 10, 10);
+		       }
+			g.drawImage(face, 0, 0, null);
 			} else {
-				try {                
-			          face = ImageIO.read(new File(Game.IMAGEPATH + "cards/" + Game.BACKSIDE))
-			        		  .getScaledInstance(ViewCard.WIDTH, ViewCard.HEIGHT, UNDEFINED_CONDITION);
-			       } catch (IOException ex) {
-			            //TODO
-			       }	
+				g.drawImage(ViewCard.BACKSIDEIMAGE, 0, 0, null);
 			}
-        g.drawImage(face, 0, 0, null);
+        
         
     }
 }
