@@ -97,10 +97,11 @@ public class ClientHearts extends ClientRuleset {
 					// Die Karte, die gespielt werden soll, hat die Farbe Herz
 					if (card.getColour() == Colour.HEART) {
 						// Wurde Herz schon einmal gespielt
-						if (heartBroken == true) {
+						/*if (heartBroken == true) {
 							send(new MsgCard(card));
 							return true;
-						} else {
+						} 
+						else {
 							for (Card handCard : getGameState().getOwnHand()) {
 								if (handCard.getColour() != Colour.HEART){
 									getModel().openWarning(WarningMsg.UnvalidMove);
@@ -111,7 +112,9 @@ public class ClientHearts extends ClientRuleset {
 							heartBroken = true;
 							send(new MsgCard(card));
 							return true;
-						}
+						}*/
+						send(new MsgCard(card));
+						return true;
 						// Die Karte hat nicht die Farbe Herz
 					} else {
 						send(new MsgCard(card));
