@@ -46,7 +46,7 @@ public enum WizardCard implements Card, Serializable{
 	private Colour colour;
 	
 	/**
-	 * Das Spiel zu dem die Karte gehört
+	 * Das Spiel zu dem die Karte gehï¿½rt
 	 */
 	private final RulesetType ruleset;
 	
@@ -76,15 +76,4 @@ public enum WizardCard implements Card, Serializable{
 		return ruleset;
 	}
 	
-	/**
-	 * Wechselt die Farbe einer Zaubererkarte
-	 * @param colour Die neue Farbe der Karte
-	 */
-	protected void changeSorcererColour(Colour colour) {
-		int valueOfSorcerer = 14;
-		
-		if(value == valueOfSorcerer) {
-			this.colour = colour;
-		}
-	}
 }
