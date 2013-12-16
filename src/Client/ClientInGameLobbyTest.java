@@ -1,6 +1,7 @@
 package Client;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.HashSet;
@@ -18,6 +19,7 @@ import ComObjects.ComChatMessage;
 import ComObjects.ComInitGameLobby;
 import ComObjects.ComInitLobby;
 import ComObjects.ComKickPlayerRequest;
+import ComObjects.ComStartGame;
 import ComObjects.ComUpdatePlayerlist;
 import Ruleset.RulesetType;
 import Server.GameServerRepresentation;
@@ -32,6 +34,8 @@ public class ClientInGameLobbyTest {
 
 	String testText;
 
+	List<String> players;
+
 	@Before
 	public void setUp() throws Exception {
 		testNetIO = new TestMessageListenerThread();
@@ -40,7 +44,7 @@ public class ClientInGameLobbyTest {
 		testNetIO.setModel(testModel);
 		testModel.addObserver(testObserver);
 		testModel.createConnection("TestPlayer1", "localhost");
-		List<String> players = new LinkedList<String>();
+		players = new LinkedList<String>();
 		players.add("Player2");
 		Set<GameServerRepresentation> games =
 				new HashSet<GameServerRepresentation>();
@@ -69,8 +73,10 @@ public class ClientInGameLobbyTest {
 	public void testSendChatMessage() {
 		String inputText = "Hello Test!";
 		testModel.sendChatMessage(inputText);
-		testText = ((ComChatMessage) testNetIO.getModelInput().get(0)).getChatMessage();
-		assertTrue("Vergleich der gesendeten Chatnachrichten", testText.contains(inputText));
+		testText = ((ComChatMessage)
+				testNetIO.getModelInput().get(0)).getChatMessage();
+		assertTrue("Vergleich der gesendeten Chatnachrichten",
+				testText.contains(inputText));
 	}
 
 	@Test
@@ -78,7 +84,7 @@ public class ClientInGameLobbyTest {
 		ComChatMessage testMessage = new ComChatMessage("Hello Test!");
 		testNetIO.injectComObject(testMessage);
 		assertTrue("Vergleich der empfangenen Chatnachrichten", 
-				testObserver.getChatMessage().equals(testMessage.getChatMessage()));
+		   testObserver.getChatMessage().equals(testMessage.getChatMessage()));
 	}
 
 	@Test
@@ -106,5 +112,41 @@ public class ClientInGameLobbyTest {
 		ComKickPlayerRequest request =
 				(ComKickPlayerRequest) testNetIO.getModelInput().remove(0);
 		assertEquals("Hans im Request", "Hans", request.getPlayerName());
+		
+		ComUpdatePlayerlist gameListUpdate = new ComUpdatePlayerlist("Hans",
+				true);
+		testNetIO.injectComObject(gameListUpdate);
+		assertEquals("Observer Update", ViewNotification.playerListUpdate,
+				testObserver.getNotification().remove(0));
+		assertFalse("Hans nichtmehr in Liste",
+				testModel.getPlayerlist().contains("Hans"));
+	}
+
+	@Test
+	public void startGameTest() {
+		ComUpdatePlayerlist updatePlayerList =
+				new ComUpdatePlayerlist("Player2", false);
+		testNetIO.injectComObject(updatePlayerList);
+		assertEquals("Observer Update", ViewNotification.playerListUpdate,
+				testObserver.getNotification().remove(0));
+		assertTrue("Player2 in Liste",
+				testModel.getPlayerlist().contains("Player2"));
+
+		updatePlayerList = new ComUpdatePlayerlist("Player3", false);
+		testNetIO.injectComObject(updatePlayerList);
+		assertEquals("Observer Update", ViewNotification.playerListUpdate,
+				testObserver.getNotification().remove(0));
+		assertTrue("Player3 in Liste",
+				testModel.getPlayerlist().contains("Player3"));
+
+		testModel.startGame();
+		ComStartGame start = (ComStartGame)
+				testNetIO.getModelInput().remove(0);
+		assertEquals("StartGameNachricht", ComStartGame.class,
+				start.getClass());
+
+		testNetIO.injectComObject(new ComStartGame());
+		assertEquals("wechsel zu Spielfenster", ViewNotification.gameStarted,
+				testObserver.getNotification().remove(0));
 	}
 }

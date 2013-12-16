@@ -65,8 +65,10 @@ public class ClientInServerLobbyTest {
 	public void testSendChatMessage() {
 		String inputText = "Hello Test!";
 		testModel.sendChatMessage(inputText);
-		testText = ((ComChatMessage) testNetIO.getModelInput().get(0)).getChatMessage();
-		assertTrue("Vergleich der gesendeten Chatnachrichten", testText.contains(inputText));
+		testText = ((ComChatMessage)
+				testNetIO.getModelInput().get(0)).getChatMessage();
+		assertTrue("Vergleich der gesendeten Chatnachrichten",
+				testText.contains(inputText));
 	}
 
 	@Test
@@ -74,7 +76,7 @@ public class ClientInServerLobbyTest {
 		ComChatMessage testMessage = new ComChatMessage("Hello Test!");
 		testNetIO.injectComObject(testMessage);
 		assertTrue("Vergleich der empfangenen Chatnachrichten", 
-				testObserver.getChatMessage().equals(testMessage.getChatMessage()));
+		   testObserver.getChatMessage().equals(testMessage.getChatMessage()));
 	}
 
 	@Test
