@@ -177,8 +177,8 @@ public class LobbyServer extends Server {
 	/**
 	 * Hilfsmethode, die einen Spieler zu einem Spiel hinzufuegt
 	 * 
-	 * @param player
-	 * @param game
+	 * @param player ist der Spieler, der hinzugefügt wird
+	 * @param game ist das Spiel zu dem der Spieler hinzugefügt wird
 	 */
 	private void addPlayerToGame(Player player, GameServer game) {
 		removePlayer(player);
