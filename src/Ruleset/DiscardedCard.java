@@ -12,7 +12,7 @@ public class DiscardedCard implements Serializable{
 	private Card card;
 	
 	/**
-	 * Erstelle eine abgelegt Karte
+	 * Erstellt eine abgelegte Karte
 	 * @param name Der Name des Spielers der sie ablegt
 	 * @param card Die Karte die abgelegt wurde
 	 */

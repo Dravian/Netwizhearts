@@ -12,6 +12,11 @@ public enum EmptyCard implements Card, Serializable{
 	private Colour colour;
 	private RulesetType ruleset;
 	
+	/**
+	 * Erstellt eine leere Karte
+	 * @param value Der Wert der Karte
+	 * @param colour Die Farbe der Karte
+	 */
 	private EmptyCard(int value, Colour colour) {
 		this.value = value;
 		this.colour = colour;

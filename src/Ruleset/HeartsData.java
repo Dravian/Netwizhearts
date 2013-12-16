@@ -9,7 +9,10 @@ import java.io.Serializable;
  * HeartsData. Die Otherdata eines Spielers zum Spiel Hearts
  */
 public class HeartsData extends OtherData implements Serializable {
-	
+	/**
+	 * Erzeugt ein HeartsData
+	 * @param name Der name des zugehörigen Spielers
+	 */
 	public HeartsData(String name) {
 		super(name);
 	}
