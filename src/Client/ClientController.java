@@ -607,6 +607,7 @@ public class ClientController {
 		public void actionPerformed(ActionEvent arg0) {
 			try {
 			clientModel.giveChosenCards(chooseCards.getChosenCards());
+			chooseCards.clearHand();
 			chooseCards.setVisible(false);
 			} catch (ClassCastException e) {
 				//TODO

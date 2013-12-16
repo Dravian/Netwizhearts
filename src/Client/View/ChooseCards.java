@@ -66,6 +66,18 @@ public class ChooseCards extends JFrame implements Observer{
 		chosenCards = new LinkedList<Card>();
 	}
 	
+	public void clearHand() {
+		SwingUtilities.invokeLater(new Runnable() {
+
+			@Override
+			public void run() {
+				chosenCards.clear();;
+				playerHand.unclickAll();
+			}
+			
+		});
+	}
+	
 	/**
 	 * Fuegt dem OK-Button einen ActionListener hinzu
 	 * 
@@ -110,17 +122,31 @@ public class ChooseCards extends JFrame implements Observer{
 			ViewNotification message = (ViewNotification) arg;
 		switch (message) {
 		case openChooseCards:
-			//TODO
-			List<Card> handCards = observed.getGameUpdate().getOwnHand();
-			playerHand.setHand(handCards);
-			setMessageText(observed.getWindowText());
-			repaint();
-			this.setVisible(true);
+			SwingUtilities.invokeLater(new Runnable() {
+
+				@Override
+				public void run() {
+					List<Card> handCards = observed.getGameUpdate().getOwnHand();
+					playerHand.setHand(handCards);
+					setMessageText(observed.getWindowText());
+					repaint();
+					setVisible(true);
+				}
+				
+			});
+			
 			break;
 		case windowChangeForced:
-			chosenCards.clear();;
-			playerHand.unclickAll();
-			this.setVisible(false);
+			SwingUtilities.invokeLater(new Runnable() {
+
+				@Override
+				public void run() {
+					chosenCards.clear();
+					playerHand.unclickAll();
+					setVisible(false);
+				}
+				
+			});
 			break;
 		case quitGame:
 			this.dispose();
