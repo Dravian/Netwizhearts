@@ -19,6 +19,11 @@ public enum RulesetType {
 	private final int MIN_PLAYER;
 	private final int MAX_PLAYER;
 	
+	/**
+	 * Erzeugt ein RulesetType
+	 * @param minPlayer Die minimale Anzahl an Spielern
+	 * @param maxPlayer Die maximale Anzahl an Spielern
+	 */
 	private RulesetType(int minPlayer, int maxPlayer) {
 		MIN_PLAYER = minPlayer;
 		MAX_PLAYER = maxPlayer;

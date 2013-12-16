@@ -100,7 +100,7 @@ public class GameState {
 	}
 
 	/**
-	 * F�gt den Spieler ins Spiel hinein, falls er nicht schon im Spiel ist
+	 * Fügt den Spieler ins Spiel hinein, falls er nicht schon im Spiel ist
 	 * 
 	 * @param name
 	 *            Der Name eines Spielers
@@ -208,8 +208,7 @@ public class GameState {
 	 * @throws IllegalArgumentException
 	 *             falls der Spieler nicht existiert
 	 */
-	protected PlayerState getPlayerState(String name)
-			throws IllegalArgumentException {
+	protected PlayerState getPlayerState(String name){
 		for (PlayerState p : players) {
 			if (p.getPlayerStateName().equals(name)) {
 				return p;

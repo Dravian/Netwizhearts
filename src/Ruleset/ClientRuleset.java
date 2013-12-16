@@ -48,10 +48,6 @@ public abstract class ClientRuleset {
 	 * 
 	 * @param ruleset
 	 *            Das Ruleset zum Spiel
-	 * @param minPlayers
-	 *            Die minimale Spieleranzahl
-	 * @param maxPlayers
-	 *            Die maximale Spieleranzahl
 	 * @param client
 	 *            Das ClientModel auf dem gespielt wird
 	 */
@@ -130,9 +126,6 @@ public abstract class ClientRuleset {
 
 	/**
 	 * Holt die OtherData eines anderen Spielers
-	 * 
-	 * @param player
-	 *            Der Spielername
 	 * @return otherPlayerData Die OtherData
 	 */
 	public List<OtherData> getOtherPlayerData() {
@@ -205,7 +198,7 @@ public abstract class ClientRuleset {
 	/**
 	 * Verarbeitet eine RulesetMessage vom Server
 	 * 
-	 * @param clientUpdate
+	 * @param message
 	 *            Die Nachricht vom Server
 	 */
 	public void resolveMessage(RulesetMessage message) {
@@ -241,7 +234,7 @@ public abstract class ClientRuleset {
 	 * Verarbeitet die RulesetMessage dass das Spiel zu Ende ist und das es
 	 * einen Sieger gibt
 	 * 
-	 * @param msgCardRequest
+	 * @param gameEnd
 	 *            Die Nachricht vom Server
 	 */
 	public void resolveMessage(MsgGameEnd gameEnd) {
@@ -288,21 +281,37 @@ public abstract class ClientRuleset {
 	 */
 	public abstract boolean isValidMove(Card card);
 
+	/**
+	 * Wird nicht verwendet
+	 * @param card
+	 */
 	public void resolveMessage(MsgCard card) {
 		throw new IllegalArgumentException(
 				"Das Comobject MsgCard wird hier nicht" + "gebraucht");
 	}
 
+	/**
+	 * Wird nicht verwendet
+	 * @param card
+	 */
 	public void resolveMessage(MsgNumber number) {
 		throw new IllegalArgumentException(
 				"Das Comobject MsgNumber wird hier nicht" + "gebraucht");
 	}
 
+	/**
+	 * Wird nicht verwendet
+	 * @param card
+	 */
 	public void resolveMessage(MsgSelection selection) {
 		throw new IllegalArgumentException(
 				"Das Comobject MsgSelection wird hier nicht" + "gebraucht");
 	}
 
+	/**
+	 * Wird nicht verwendet
+	 * @param card
+	 */
 	public void resolveMessage(MsgMultiCards mulit) {
 		throw new IllegalArgumentException(
 				"Das Comobject MsgMultiCards wird hier nicht" + "gebraucht");
