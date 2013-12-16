@@ -6,6 +6,11 @@ import java.net.Socket;
 
 import ComObjects.*;
 
+/**
+ * LoginServer. Diese Klasse ist für das Zustandekommen von 
+ * Clientverbindungen zustaendig. Sie hat den ClientListenerTread
+ * als innere Klasse.
+ */
 public class LoginServer extends Server {
 	/**
 	 * Ein Thread, der fuer das Annehmen neuer Clientverbindungen zustaendig ist

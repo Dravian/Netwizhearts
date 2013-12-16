@@ -85,16 +85,163 @@ enthält.;
 \end{itemize}
 
 \subsection{Server}
-
+/**\\
+ * LoginServer. Diese Klasse ist für das Zustandekommen von \\
+ * Clientverbindungen zustaendig. Sie hat den ClientListenerTread\\
+ * als innere Klasse.\\
+ */\\
 \begin{itemize}
-\item  \textbf{LoginServer:}  \textit{Neu hinzugefügte Klasse, erbt von Server}: Sie ist für das Zustabdekommen von Clientverbindungen zuständig. \textit{Attribute}:  Thread clientListenerThread,  LobbyServer lobby; \textit{Methoden}: receiveMessage(Player player, ComLoginRequest login), disconnectPlayer()
-\item  \textbf{GameServer:} \textit{hinzugefügt}: quitGame(), getGameMasterName(), getPassword(), sendRulesetMessage(String player, RulesetMessage message), broadcastRulesetMessage(RulesetMessage message), sendWarning(String player, WarningMsg warning), broadcastWarning(WarningMsg warning) \textit{entfernt}: receiveMessage(Player player, ComClientQuit quit)
-\item  \textbf{GameServerRepresentation:} \textit{implementiert jetzt Serializable}
-\item  \textbf{LobbyServer:} \textit{entfernt}: innere Klasse ClientListenerThread, Set<Player> noNames, ServerSocket socket, receiveMessage(Player player, ComClientQuit quit ), receiveMessage(Player player, ComLoginRequest login); \textit{hinzugefügt}: addPlayerToGame(Player player, GameServer game), getNames()
-\item  \textbf{ClientListenerThread:} erbt jetzt von Thread  \textit{hinzugefügt}: boolean waiting, ServerScocket socket, LoginServer server
-\item  \textbf{Player:}  erbt jetzt von Thread  \textit{hinzugefügt}: Socket connection, boolean run, closeConnection(); \textit{geändert}: getName() heißt getPlayerName(), setName() heißt setPlayerName()
-\item  \textbf{Server:} \textit{hinzugefügt}: eine receiveMessage Methode für jedes ComObject, das vom Server empfangen werden soll; \textit{geändert}: handleIOException heißt jetzt disconnectPlayer()
-\item  \textbf{ServerMain:} \textit{hinzugefügt}: Attribut LoginServer loginServer
+\item  \textbf{LoginServer:}  \textit{Neu hinzugefügte Klasse, erbt von Server}.\\
+\textit{Attribute}:  \\
+/**\\
+ * Ein Thread, der fuer das Annehmen neuer Clientverbindungen zustaendig ist\\
+ */\\
+Thread clientListenerThread\\
+/**\\
+ * Der LobbyServer\\
+ */\\
+LobbyServer lobby \\
+\\
+\textit{Methoden}: 
+/**\\
+ * Diese ueberladene Methode ueberprueft, ob der Name im Set names des\\
+ * LobbyServers vorhanden ist, falls ja, wird ein ComWarning an den Client\\
+ * geschickt, dass der Name bereits vergeben ist, falls nein, wird im Player\\
+ * setName aufgerufen. Der Player wecheselt auf den LobbyServer, sein Name\\
+ * wird in das names Set eingefügt. Dem Client wird ein ComInitLobby\\
+ * geschickt.\\
+ *\\
+ * @param player\\
+ *            ist der Thread der die Nachricht erhalten hat\\
+ * @param login\\
+ *            ist das ComObject, dass den Benutzernamen des Clients enthält\\
+ */\\
+receiveMessage(Player player, ComLoginRequest login) \\
+/**\\
+ * Diese Methode schliesst die Verbindung zu einem Client. Der uebergebene\\
+ * Player wird aus dem playerSet sowie dem names Set im LobbyServer\\
+ * entfernt.\\
+ * \\
+ * @param player\\
+ *            ist der Spieler der entfernt wird\\
+ */\\
+disconnectPlayer()\\
+\\
+\item  \textbf{GameServer:} \textit{hinzugefügt}: \\
+/**\\
+ * Diese Methode beendet das Spiel und gibt die Player an den LobbyServer\\
+ * zurueck.Der GameServer wird aus dem Set des LobbyServers entfernt und die\\
+ * Spieler in der Lobby erhalten ein Gamelist Update.\\
+ */\\
+quitGame()\\
+/**\\
+ * Getter fuer den Namen des Spielleiters\\
+ * \\
+ * @return Gibt den gameMasterName zurueck\\
+ */\\
+getGameMasterName()\\
+/**\\
+ * Getter fuer das Passwort\\
+ * \\
+ * @return Gibt das Passwort des Spieles zurueck\\
+ */\\
+getPassword()\\
+/**\\
+ * Diese Methode verpackt eine RulesetMessage in ein ComObject und\\
+ * verschickt es mit sendToPlayer() an einen bestimmten Spieler.\\
+ * @param player\\
+ *            ist der Name des Spielers an den die Nachricht verschickt wird\\
+ * @param message\\
+ *            ist die Ruleset Nachricht, die in ein ComObject verpackt wird\\
+ */\\
+sendRulesetMessage(String player, RulesetMessage message)\\
+/**\\
+ * Diese Methode verschickt ComWarning mit der übergebenen Warnung \\
+ * mit broadcast() an alle Spieler.\\
+ * @param message\\
+ *            ist die Ruleset Nachricht, die in ein ComObject verpackt wird\\
+ */\\
+broadcastRulesetMessage(RulesetMessage message)\\
+/**\\
+ * Diese Methode verschickt ein ComWarning mit sendToPlayer() an einen bestimmten Spieler.\\
+ * @param player\\
+ *            ist der Name des Spielers an den die Nachricht verschickt wird\\
+ * @param message\\
+ *            ist die Ruleset Nachricht, die in ein ComObject verpackt wird\\
+ */\\
+sendWarning(String player, WarningMsg warning)\\
+/**\\
+ * Diese Methode verpackt eine RulesetMessage in ein ComObject und\\
+ * verschickt es mit broadcast() an alle Spieler.\\
+ * @param message\\
+ *            ist die Ruleset Nachricht, die in ein ComObject verpackt wird\\
+ */\\
+broadcastWarning(WarningMsg warning) \\
+/**\\
+ * Gibt zurück, ob das Spiel bereits gestartet ist\\
+ * @return den Wert von hasStarted\\
+ */\\
+isHasStarted()\\
+/**\\
+ * Setter für has started\\
+ * @param hasStarted wird auf den übergebenen Wert gesetzt\\
+ */\\
+setHasStarted(boolean hasStarted)\\
+\textit{entfernt}: \\
+receiveMessage(Player player, ComClientQuit quit)--wird jetzt mit receiveMessage(Player player, ComClientLeave leave) gelöst
+\\
+\item  \textbf{GameServerRepresentation:} \textit{implementiert jetzt Serializable}\\
+\\
+\item  \textbf{LobbyServer:} \textit{entfernt}: 
+innere Klasse ClientListenerThread--- ist jetzt im Login Server\\
+Set<Player> noNames--- wurde nicht gebraucht bzw. wurde durch den LoginServer einfacher gelöst\\
+ ServerSocket socket--- ist jetzt im Login Server\\
+receiveMessage(Player player, ComClientQuit quit )--- macht der allgemeine Server\\
+receiveMessage(Player player, ComLoginRequest login)--- ist jetzt im Login Server\\
+\textit{hinzugefügt}:\\
+/**\\
+ * Hilfsmethode, die einen Spieler zu einem Spiel hinzufuegt\\
+ * \\
+ * @param player ist der Spieler, der hinzugefügt wird\\
+ * @param game ist das Spiel zu dem der Spieler hinzugefügt wird\\
+ */\\
+ addPlayerToGame(Player player, GameServer game)\\
+/**\\
+ * Getter für das Set der Spielernamen\\
+ * \\
+ * @return Gibt das names Set zurück\\
+ */\\
+getNames()\\
+\\
+\item  \textbf{ClientListenerThread:} erbt jetzt von Thread  \textit{hinzugefügt}:\\
+/**\\
+ * Zeigt, ob der Tread auf verbindungen wartet\\
+ */\\
+boolean waiting\\
+ServerSocket socket\\
+LoginServer server\\
+\\
+\item  \textbf{Player:}  erbt jetzt von Thread  \textit{hinzugefügt}: \\
+/**\\
+ * Socket des Clients\\
+ */\\
+Socket connection\\
+/**\\
+ * Zeigt an, ob der Thread läuft\\
+ */\\
+boolean run\\
+/**\\
+ * Diese Methode schließt den Socket, sowie comIn und comOut\\
+ */\\
+closeConnection()\\
+
+\textit{geändert}: getName() heißt getPlayerName(), setName() heißt setPlayerName()
+\\
+\item  \textbf{Server:} \textit{hinzugefügt}: eine receiveMessage Methode für jedes ComObject, das vom Server empfangen werden soll; \\
+\textit{geändert}: handleIOException heißt jetzt disconnectPlayer()
+\\
+\item  \textbf{ServerMain:} \textit{hinzugefügt}:\\
+ Attribut LoginServer loginServer\\
 \end{itemize}
 
 \subsection{ComObjects}
@@ -127,9 +274,9 @@ enthält.;
    Client (Game) & 14  Stunden &  12 Stunden & 14,3\% &\\ \hline
    Client (Wizard) & 6 Stunden & 0 Stunden & 100\% &\\ \hline
    Client (Hearts) & 4 Stunden & 0 Stunden & 100\% &\\ \hline
-   Server(Login) & 16 Stunden & 6 Stunden & 62,5\% & (3) \\ \hline
-   Server(Lobby) & 8 Stunden & 3 Stunden & 62,5\% &\\ \hline 
-   Server(Create+Join) & 12 Stunden & 6 Stunden & 50\% &\\ \hline 
+   Server(Login) & 16 Stunden & 6 Stunden & 62,5\% & (5) \\ \hline
+   Server(Lobby) & 8 Stunden & 3 Stunden & 62,5\% & (5)\\ \hline 
+   Server(Create+Join) & 12 Stunden & 6 Stunden & 50\% & (5)\\ \hline 
    Ruleset(Daten) & 20 Stunden & 6 Stunden & 25\% & (4) \\ \hline 
    Ruleset(ServerWizard) & 30 Stunden & 24 Stunden & 33,4\% &\\ \hline 
    Ruleset(ServerHearts) & 30 Stunden & 18 Stunden & 50\% &\\ \hline 
@@ -140,6 +287,7 @@ enthält.;
 \item \textbf{(2)} Login mehrmals umgebaut um die Tests aus dem Pflichtenheft zu erfüllen. \\
 \item \textbf{(3)} Viele der ComObjects waren bereits fertig. \\
 \item \textbf{(4)} Wurde hauptsächlich schon in Spezifikationsphase implementiert. \\
+\item \textbf{(5)} Stundenzahl würde Anfangs verdoppelt. \\
 \end{itemize}
 
 \subsection{Milestone 2}
@@ -147,7 +295,7 @@ enthält.;
 \begin{tabular}{|c|c|c|c|c|}\hline
    Bereich & angen. Dauer & tats. Dauer & Abweichung & Begründung\\ \hline\hline
    View(Game) & 20 Stunden & 18,5 Stunden & 7,5\% &\\ \hline 
-   Server(GameLobby) & 10 Stunden & 5 Stunden & 50\% &\\ \hline
+   Server(GameLobby) & 10 Stunden & 5 Stunden & 50\% &(5)\\ \hline
    Ruleset(ClientWizard) & 6 Stunden & 5 Stunden & 16,7\% &\\ \hline 
    Ruleset(ClientHearts) & 6 Stunden & 5 Stunden & 16,7\% &\\ \hline 
    Handbuch & - & 5 Stunden & - &\\ \hline 
@@ -169,6 +317,7 @@ enthält.;
 \begin{tabular}{|c|c|c|c|c|}\hline
    Bereich & angen. Dauer & tats. Dauer & Abweichung & Begründung\\ \hline\hline
    View(Polishing) & 10 Stunden & 7,5 Stunden & 25\% &\\ \hline
+   Server(Polishing) & 10 Stunden & 1 Stunde & 25\% &\\ \hline
  Handbuch & - & 2 Stunden & - &\\ \hline
  
  \end{tabular}
