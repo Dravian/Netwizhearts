@@ -255,13 +255,13 @@ public class LanguageInterpreter {
 			ret = "Des Spui in des du geh woidst gibts nimma. Muasd in a andas geh.";
 			break;
 		case GameDisbanded:
-			ret = "De andern draun se olle ned mit dir zum spuin.";
+			ret = "As Spui is aufglöst worn";
 			break;
 		case GameFull:
 			ret = "Do ko koaner mehr midspuin, weil koa Stui mehr frei is.";
 			break;
 		case CouldntKick:
-			ret = "Bist du depperd und mechsd di seiba auseschmeißn oder wos?";
+			ret = "Den kosd ned auseschmeißen.";
 			break;
 		case CouldntStart:
 			ret = "Du kosd nuned afanga, hetz ned aso.";
