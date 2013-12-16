@@ -384,6 +384,7 @@ public class ClientModel extends Observable {
 	 */
 	public final void receiveMessage(final ComUpdatePlayerlist update) {
 		if (state == ClientState.SERVERLOBBY
+				|| state == ClientState.ENTERGAMELOBBY
 				|| state == ClientState.GAMELOBBY) {
 			if (update != null) {
 				if (update.getPlayerName() != null) {
@@ -984,7 +985,8 @@ public class ClientModel extends Observable {
 	 * @return GameClientUpdate Die Daten der laufenden Sitzung.
 	 */
 	public final GameClientUpdate getGameUpdate() {
-		if (state == ClientState.GAME) {
+		if (state == ClientState.GAME
+				|| state == ClientState.ENDING) {
 			if (ruleset != null) {
 				return ruleset.getGameState();
 			} else {

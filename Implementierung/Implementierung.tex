@@ -69,11 +69,10 @@ Dieses Dokument ist eine Dokumentation der Implementierungsphase. In Folgenden w
 \subsection{Ruleset}
 
 \begin{itemize}
-\item \textit{hinzugefügt} \textbf{DiscardedCard:} ;
+\item \textit{hinzugefügt} \textbf{DiscardedCard:} Eine Karte die von einem Spieler auf den Ablegestapel gelegt wird und als Atrribute die Karte die gespielt wurde und den Spieler der sie gespielt hat 
+enthält.;
 
-\item \textit{hinzugefügt} \textbf{EmptyCard:};
-
-\item \textbf{WizardCard:} \textit{hinzugefügt}: changeSorcererColour ();
+\item \textit{hinzugefügt} \textbf{EmptyCard:} Eine leere Karte die zu keinem Spiel gehört;
 
 \item \textbf{GameState:} \textit{hinzugefügt}: madeTrick(), restartDeck (), newRound(); \textit{gelöscht}: getNumberOfPlayedCards(), getCardsLeftInDeck()
 
@@ -131,9 +130,9 @@ Dieses Dokument ist eine Dokumentation der Implementierungsphase. In Folgenden w
    Server(Login) & 16 Stunden & 6 Stunden & 62,5\% & (3) \\ \hline
    Server(Lobby) & 8 Stunden & 3 Stunden & 62,5\% &\\ \hline 
    Server(Create+Join) & 12 Stunden & 6 Stunden & 50\% &\\ \hline 
-   Ruleset(Daten) & 20 Stunden & 5 Stunden & 25\% & (4) \\ \hline 
-   Ruleset(ServerWizard) & 30 Stunden & 20 Stunden & 33,4\% &\\ \hline 
-   Ruleset(ServerHearts) & 30 Stunden & 15 Stunden & 50\% &\\ \hline 
+   Ruleset(Daten) & 20 Stunden & 6 Stunden & 25\% & (4) \\ \hline 
+   Ruleset(ServerWizard) & 30 Stunden & 24 Stunden & 33,4\% &\\ \hline 
+   Ruleset(ServerHearts) & 30 Stunden & 18 Stunden & 50\% &\\ \hline 
  \end{tabular}
 
 \begin{itemize}
@@ -170,7 +169,11 @@ Dieses Dokument ist eine Dokumentation der Implementierungsphase. In Folgenden w
 \begin{tabular}{|c|c|c|c|c|}\hline
    Bereich & angen. Dauer & tats. Dauer & Abweichung & Begründung\\ \hline\hline
    View(Polishing) & 10 Stunden & 7,5 Stunden & 25\% &\\ \hline
+ Handbuch & - & 2 Stunden & - &\\ \hline
  
  \end{tabular}
+ 
+ \section{Bekannte Bugs}
+
 
 \end{document}

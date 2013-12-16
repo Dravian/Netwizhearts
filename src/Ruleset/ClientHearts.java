@@ -97,10 +97,11 @@ public class ClientHearts extends ClientRuleset {
 					// Die Karte, die gespielt werden soll, hat die Farbe Herz
 					if (card.getColour() == Colour.HEART) {
 						// Wurde Herz schon einmal gespielt
-						if (heartBroken == true) {
+						/*if (heartBroken == true) {
 							send(new MsgCard(card));
 							return true;
-						} else {
+						} 
+						else {
 							for (Card handCard : getGameState().getOwnHand()) {
 								if (handCard.getColour() != Colour.HEART){
 									getModel().openWarning(WarningMsg.UnvalidMove);
@@ -111,7 +112,9 @@ public class ClientHearts extends ClientRuleset {
 							heartBroken = true;
 							send(new MsgCard(card));
 							return true;
-						}
+						}*/
+						send(new MsgCard(card));
+						return true;
 						// Die Karte hat nicht die Farbe Herz
 					} else {
 						send(new MsgCard(card));
@@ -149,17 +152,7 @@ public class ClientHearts extends ClientRuleset {
 					getModel().openWarning(WarningMsg.UnvalidMove);
 					getModel().announceTurn(UserMessages.PlayCard);
 					return false;
-
-					// Der Spieler möchte ein Herz spielen, hat aber noch andere
-					// Karten auf der Hand
-					// und Herz ist noch nicht gebrochen
-				} else if (handCard.getColour() != Colour.HEART
-						&& card.getColour() == Colour.HEART 
-						&& !heartBroken) {
-					getModel().openWarning(WarningMsg.UnvalidMove);
-					getModel().announceTurn(UserMessages.PlayCard);
-					return false;
-				}
+				} 
 			}
 
 			// Die zu spielende Karte hat die Farbe Herz

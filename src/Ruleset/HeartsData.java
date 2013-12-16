@@ -17,7 +17,7 @@ public class HeartsData extends OtherData implements Serializable {
 	@Override
 	public String toString() {
 		StringBuilder otherData = new StringBuilder();
-		otherData.append(Integer.toString(this.getNumberOfTricks()) + ", ");
+		otherData.append(Integer.toString(this.getNumberOfTricks()) + " P:");
 		otherData.append(Integer.toString((this.getPoints())));
 		
 		return otherData.toString();
