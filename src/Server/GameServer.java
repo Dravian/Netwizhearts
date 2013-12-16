@@ -508,8 +508,6 @@ public class GameServer extends Server {
 					}	
 				}
 				playerSet.clear();
-			} else {
-				System.err.println("PlayerSet empty!");
 			}
 			lobbyServer.removeGameServer(this);
 			lobbyServer.broadcast(new ComLobbyUpdateGamelist(true,
