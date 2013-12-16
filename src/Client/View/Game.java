@@ -53,22 +53,6 @@ public class Game extends JFrame implements Observer{
 	private JMenu mnBackground;
 	private JMenu mnCards;
 	private Language lang;
-	
-//	/**
-//	 * Launch the application.
-//	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					Game frame = new Game();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
 
 	/**
 	 * Erstellt das Game Fenster
@@ -136,20 +120,6 @@ public class Game extends JFrame implements Observer{
 		messageField.setBounds(10, 617, 998, 44);
 		contentPane.add(messageField);
 		messageField.setColumns(10);
-		
-//		// TEST
-//		LinkedList<String> players = new LinkedList<String>();
-//		players.add("Mr. Blue");
-//		players.add("Mr. White");
-//		players.add("Mr. Orange");
-//		players.add("Mr. Pink");
-//		players.add("Mr. Brown");
-//
-//		gamePanel = new GamePanel(players.size());
-//		gamePanel.setBounds(10, 0, 998, 495);
-//		gamePanel.updateTrumpColour(Colour.RED);
-//		contentPane.add(gamePanel);
-//		// TEST
 	}
 	
 	/**
@@ -240,9 +210,8 @@ public class Game extends JFrame implements Observer{
 	 * oder eine Fehlermeldung angezeigt.
 	 * 
 	 * @param o erwartet ein Objekt von der Klasse ClientModel
-	 * @param arg erwartet: playedCardsUpdate, otherDataUpdate,
-	 * 					  	moveAcknowledged, gameStarted, windowChangeForced,
-	 * 						quitGame
+	 * @param arg erwartet: gameStarted, gameUpdate, windowChangeForced
+	 * 						trumpUpdate, turnUpdate, quitGame
 	 */
 	@Override
 	public void update(Observable o, Object arg) {

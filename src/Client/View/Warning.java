@@ -28,6 +28,9 @@ public class Warning extends JFrame implements Observer{
 	private JButton okButton;
 	private boolean dispose;
 	
+	/**
+	 * Erstellt eine neues Warning-Fenster, in dem Fehlermeldungen angezeigt werden können
+	 */
 	public Warning() {
 		dispose = false;
 		setTitle("Warning");
@@ -72,7 +75,7 @@ public class Warning extends JFrame implements Observer{
 	 * oder eine Fehlermeldung angezeigt.
 	 * 
 	 * @param o erwartet ein Objekt von der Klasse ClientModel
-	 * @param arg erwartet: openWarning
+	 * @param arg erwartet: openWarning, quitGame
 	 */
 	@Override
 	public void update(Observable o, Object arg) {

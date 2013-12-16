@@ -246,7 +246,7 @@ public class CreateGame extends JFrame implements Observer{
 		}
 	}
 	
-	private String getTooltip(RulesetType ruleset) {
+	private String getTooltip(RulesetType ruleset) {//FIXME in LanguageInterpreter auslagern?
 		String ret = "";
 		switch (ruleset) {
 		case Wizard:

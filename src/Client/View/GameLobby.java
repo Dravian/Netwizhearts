@@ -56,7 +56,6 @@ public class GameLobby extends JFrame implements Observer{
 		playerList = new JList<String>();
 		playerList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		playerList.setBounds(12, 12, 211, 130);
-		//contentPane.add(playerList);
 		
 		scrollPanePlayers = new JScrollPane(playerList);
 		scrollPanePlayers.setBounds(12, 12, 211, 130);
@@ -66,7 +65,6 @@ public class GameLobby extends JFrame implements Observer{
 		chatlog = new JTextArea();
 		chatlog.setBounds(12, 154, 400, 84);
 		chatlog.setEditable(false);
-		//contentPane.add(chatlog);
 		
 		scrollPaneChat = new JScrollPane(chatlog);
 		scrollPaneChat.setBounds(12, 154, 400, 84);
@@ -227,7 +225,7 @@ public class GameLobby extends JFrame implements Observer{
 	 * 
 	 * @param o erwartet ein Objekt von der Klasse ClientModel
 	 * @param arg erwartet: joinGameSuccessful, playerListUpdate, windowChangeForced,
-	 * 						gameStarted
+	 * 						gameStarted, quitGame
 	 */
 	@Override
 	public void update(Observable o, Object arg) {

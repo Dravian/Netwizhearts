@@ -90,6 +90,11 @@ public class ViewCard extends JPanel{
 		return card;
 	}
 	
+	/**
+	 * Setzt die Karte, die angezeigt wird
+	 * 
+	 * @param c Karte
+	 */
 	public void setCard(Card c) {
 		card = c;
 		repaint();

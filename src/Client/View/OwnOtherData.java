@@ -25,9 +25,9 @@ public class OwnOtherData extends JPanel {
 	}
 	
 	/**
-	 * Setzt den Punktestand des Spielers
+	 * Setzt die zusätzlichen Informationen über den Spieler
 	 * 
-	 * @param n Punktestand
+	 * @param s zusätzliche Informationen
 	 */
 	public void setData(String s) {
 		ownData = s;
@@ -38,7 +38,7 @@ public class OwnOtherData extends JPanel {
 	 * Legt fest, ob der Spieler gerade an der Reihe ist und
 	 * passt die Umrandung der Komponente dementsprechend an.
 	 * 
-	 * @param b true, die Komponente wird umrandet, false der Rand fällt weg
+	 * @param b true, die Komponente wird umrandet, false, der Rand fällt weg
 	 */
 	public void setMyTurn(boolean b) {
 		if (b) {

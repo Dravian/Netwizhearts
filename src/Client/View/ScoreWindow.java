@@ -61,7 +61,7 @@ public class ScoreWindow extends JFrame implements Observer{
 	 * oder eine Fehlermeldung angezeigt.
 	 * 
 	 * @param o erwartet ein Objekt von der Klasse ClientModel
-	 * @param arg erwartet: showScore
+	 * @param arg erwartet: showScore, windowChangeForced, quitGame
 	 */
 	@Override
 	public void update(Observable o, Object arg) {

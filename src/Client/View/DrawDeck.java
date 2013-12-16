@@ -16,6 +16,9 @@ public class DrawDeck extends JPanel{
 	
 	private ViewCard shownCard;
 	
+	/**
+	 * Erstellt ein neues DrawDeck
+	 */
 	public DrawDeck() {
 		shownCard = new ViewCard(null);
 		this.add(shownCard);

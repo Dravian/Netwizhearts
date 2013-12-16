@@ -20,6 +20,9 @@ public class DiscardPile extends JPanel{
 	private ViewCard topCard;
 	
 	
+	/**
+	 * Erstellt einene neuen DiscardPile
+	 */
 	public DiscardPile() {
 		playedCards = new LinkedList<Card>();
 		topCard = new ViewCard(null);

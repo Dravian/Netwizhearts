@@ -36,6 +36,9 @@ public class ChooseCards extends JFrame implements Observer{
 	private int shownCardsCount;
 	
 	
+	/**
+	 * Erstellte ein neues ChooseCards-Fenster
+	 */
 	public ChooseCards() {
 		shownCardsCount = 20;
 		setBounds(100, 100, 1004, 330);
@@ -113,7 +116,7 @@ public class ChooseCards extends JFrame implements Observer{
 	 * oder eine Fehlermeldung angezeigt.
 	 * 
 	 * @param o erwartet ein Objekt von der Klasse ClientModel
-	 * @param arg erwartet: openChooseCards, chooseCardsSuccessful
+	 * @param arg erwartet: openChooseCards, windowChangeForced, quitGame
 	 */
 	@Override
 	public void update(Observable o, Object arg) {

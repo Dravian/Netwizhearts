@@ -37,8 +37,6 @@ public class OtherPlayer extends JPanel{
 	/**
 	 * Erstellt einen neuen OtherPlayer
 	 * 
-	 * @param n Name des Spielers
-	 * @param i Informationen ueber den Spieler
 	 */
 	public OtherPlayer() {
 		name = "";

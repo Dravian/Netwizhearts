@@ -35,7 +35,7 @@ public class Password extends JFrame implements Observer{
 	public Password() {
 		setTitle("Closed Game");
 		lang = Language.English;
-		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 286, 161);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -77,6 +77,22 @@ public class Password extends JFrame implements Observer{
 	 */
 	public void addJoinButtonListener(ActionListener a) {
 		btnJoin.addActionListener(a);
+	}
+	
+	/**
+	 * Fuegt einen ActionListener fuer den 'Leave' Button hinzu
+	 * 
+	 * @param a ein ActionListener
+	 */
+	public void addLeaveButtonListener(ActionListener a) {
+		btnLeave.addActionListener(a);
+	}
+	
+	/**
+	 * Leert das Texteingabefeld des Passwortfensters
+	 */
+	public void clearField() {
+		textField.setText("");
 	}
 	
 	/**
@@ -127,7 +143,7 @@ public class Password extends JFrame implements Observer{
 	 * oder eine Fehlermeldung angezeigt.
 	 * 
 	 * @param o erwartet ein Objekt von der Klasse ClientModel
-	 * @param arg erwartet: passwordAccepted
+	 * @param arg erwartet: joinGameSuccesful, quitGame
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
@@ -135,6 +151,7 @@ public class Password extends JFrame implements Observer{
 			ViewNotification message = (ViewNotification) arg;
 		switch (message) {
 		case joinGameSuccessful:
+			textField.setText("");
 			this.setVisible(false);
 			break;
 		case quitGame:
