@@ -74,14 +74,13 @@ enthält.;
 
 \item \textit{hinzugefügt} \textbf{EmptyCard:} Eine leere Karte die zu keinem Spiel gehört;
 
-\item \textbf{GameState:} \textit{hinzugefügt}: madeTrick(), restartDeck (), newRound(); \textit{gelöscht}: getNumberOfPlayedCards()
+\item \textbf{GameState:} \textit{hinzugefügt}: madeTrick() Entfernt die DiscardedCards im Ablagestapel und gibt ihre Karten als Set einem Spieler in seine gemachten Stiche, restartDeck () Wird aufgerufen um ein neues Deck zu erstellen und alle Karten die vorher im Spiel waren zu löschen., nextRound() Erhöht die Rundenzahl um eins; \textit{gelöscht}: getNumberOfPlayedCards()
 
-\item \textbf{ServerRuleset} \textit{hinzugefügt}: updatePlayers (), getPlayedCards (), startRound(); 
+\item \textbf{ServerRuleset} \textit{hinzugefügt}: updatePlayers() Schickt an alle Spieler ein neues GameClientUpdate, getPlayedCards() Holt die gespielten Karten im Ablagestapel, startRound() Wird am Anfang jeder Runde aufgerufen. Mischt und verteilt Karten und schickt Comobject mit Updates und Request für den Rundenanfang., getWinners() Wird bei Spielende aufgerufen und gibt die Namen der Sieger zurück,; 
 
-\item \textbf{ServerWizard} \textit{hinzugefügt}: trumpColour; 
+\item \textbf{ServerWizard} \textit{hinzugefügt}: trumpColour Die Trumpffarbe im Spiel; 
 
-\item \textbf{ServerHearts:} \textit{hinzugefügt}: swapLeft(),swapRight(),swapAcross(), swap
-\textit{geändert}: getWinners(),  ;
+\item \textbf{ServerHearts:} \textit{hinzugefügt}: heartBroken: Gibt an ob Herz gebrochen wurde. swapLeft(),swapRight(),swapAcross(): Tauscht die Karten nach links, rechts oder gegenüber
 \end{itemize}
 
 \subsection{Server}
@@ -275,7 +274,6 @@ closeConnection()\\
    Server(Create+Join) & 12 Stunden & 6 Stunden & 50\% & (5)\\ \hline 
    Ruleset(Daten) & 20 Stunden & 6 Stunden & 25\% & (4) \\ \hline 
    Ruleset(ServerWizard) & 30 Stunden & 24 Stunden & 33,4\% &\\ \hline 
-   Ruleset(ServerHearts) & 30 Stunden & 18 Stunden & 50\% &\\ \hline 
  \end{tabular}
 
 \begin{itemize}
@@ -293,8 +291,7 @@ closeConnection()\\
    View(Game) & 20 Stunden & 18,5 Stunden & 7,5\% &\\ \hline 
    Client (GameLobby) &  8 Stunden & 10 Stunden & (-) 25\% &\\ \hline
    Server(GameLobby) & 10 Stunden & 5 Stunden & 50\% &(5)\\ \hline
-   Ruleset(ClientWizard) & 6 Stunden & 5 Stunden & 16,7\% &\\ \hline 
-   Ruleset(ClientHearts) & 6 Stunden & 5 Stunden & 16,7\% &\\ \hline 
+   Ruleset(ServerHearts) & 30 Stunden & 18 Stunden & 50\% &\\ \hline 
    Handbuch & - & 5 Stunden & - &\\ \hline 
  \end{tabular}
 
@@ -305,6 +302,8 @@ closeConnection()\\
    View(WizardWindows) & 4 Stunden & 3,5 Stunden & 12,5\% &\\ \hline
    View(HeartsWindows) & 4 Stunden & 3 Stunden & 25\% &\\ \hline
    Client (Game) & 14  Stunden &  12 Stunden & 14,3\% & (1)\\ \hline
+   Ruleset(ClientWizard) & 6 Stunden & 5 Stunden & 16,7\% &\\ \hline 
+   Ruleset(ClientHearts) & 6 Stunden & 5 Stunden & 16,7\% &\\ \hline 
    Server(Game) & 4 Stunden & 2,5 Stunden & 37,5\% &\\ \hline
    Client(LanguageInterpreter) & - & 2 Stunden & - &\\ \hline
    Karten & - & 4 Stunden & - &\\ \hline
@@ -320,6 +319,7 @@ closeConnection()\\
    Bereich & angen. Dauer & tats. Dauer & Abweichung & Begründung\\ \hline\hline
    View(Polishing) & 10 Stunden & 7,5 Stunden & 25\% &\\ \hline
    Client(Polishing) & 10 Stunden & 12 Stunden & 20\% & (1) \\ \hline
+   Ruleset(Polishing & 10 STunden & 5 Stunden & 50\% &\\ \hline
    Server(Polishing) & 10 Stunden & 1 Stunde & 25\% &\\ \hline
  Handbuch & - & 2 Stunden & - &\\ \hline
  
