@@ -62,6 +62,8 @@ Dieses Dokument ist eine Dokumentation der Implementierungsphase. In Folgenden w
 \item \textbf{CreateWindow:} \textit{entfernt}: addLeaveButtonListener(), addRulesetSelectionListener(); \textit{hizugefügt}: setRulesetTypes(), getGameName(), hasPassword(), getPassword(), getSelectedRulesetType()
 \item \textbf{GameLobby:} \textit{hinzugefügt}: getChatMessage(), getSelectedPlayer()
 \item \textbf{Game:} \textit{hinzugefügt}: getChatMessage(), addChatMessageListener() \textit{geändert}: makeTrickGameBoard()
+\item \textbf{TrumpColour:} \textit{Neu hinzugefügte Klasse}: Hinzugefügt um die aktuelle Trumpfarbe anzuzeigen. Das ist primär bei Wizard wichtig, da der Zauberer selbst keine Farbe hat und dementsprechend nicht genutzt werden kann, um die Trumpffarbe anzuzeigen.
+\item \textbf{Sonstiges:} Weiterhin wurden auch viele Detailänderungen an den einzelnen GamePanel Bausteinen vorgenommen.
 \end{itemize}
 
 \subsection{Ruleset}
@@ -117,8 +119,8 @@ Dieses Dokument ist eine Dokumentation der Implementierungsphase. In Folgenden w
 \begin{tabular}{|c|c|c|c|c|}\hline
    Bereich & angen. Dauer & tats. Dauer & Abweichung & Begründung \\ \hline\hline
    View(Login+Lobby) & 8 Stunden & 4 Stunden & 50\% & (1) \\ \hline
-   View(Create+Join) & 8 Stunden & 5 Stunden & 37,5\% &\\ \hline
-   View(GameLobby) & 8 Stunden & 3 Stunden & 62,6\% &\\ \hline
+   View(Create+Join) & 8 Stunden & 5 Stunden & 37,5\% & (1)\\ \hline
+   View(GameLobby) & 8 Stunden & 3 Stunden & 62,6\% & (1)\\ \hline
    Model(Login) & 8 Stunden & 8,5 Stunden & (-) 6,25\% & (2) \\ \hline
    Client(Lobby) & 8 Stunden &  6,5 Stunden & 18,75\% &\\ \hline
    Client(Create+Join) &  8 Stunden & 6 Stunden & 25\% &\\ \hline
@@ -156,8 +158,8 @@ Dieses Dokument ist eine Dokumentation der Implementierungsphase. In Folgenden w
 
 \begin{tabular}{|c|c|c|c|c|}\hline
    Bereich & angen. Dauer & tats. Dauer & Abweichung & Begründung\\ \hline\hline
-   View(WizardWindows) & 4 Stunden & 2,5 Stunden & 37,5\% &\\ \hline
-   View(HeartsWindows) & 4 Stunden & 2 Stunden & 50\% &\\ \hline
+   View(WizardWindows) & 4 Stunden & 3,5 Stunden & 12,5\% &\\ \hline
+   View(HeartsWindows) & 4 Stunden & 3 Stunden & 25\% &\\ \hline
    Server(Game) & 4 Stunden & 2,5 Stunden & 37,5\% &\\ \hline
    Client(LanguageInterpreter) & - & 2 Stunden & - &\\ \hline
    Karten & - & 4 Stunden & - &\\ \hline
@@ -167,6 +169,7 @@ Dieses Dokument ist eine Dokumentation der Implementierungsphase. In Folgenden w
 \subsection{Finale Phase}
 \begin{tabular}{|c|c|c|c|c|}\hline
    Bereich & angen. Dauer & tats. Dauer & Abweichung & Begründung\\ \hline\hline
+   View(Polishing) & 10 Stunden & 7,5 Stunden & 25\% &\\ \hline
  
  \end{tabular}
 

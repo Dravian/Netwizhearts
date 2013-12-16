@@ -7,6 +7,12 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+/**
+ * GUI Element, dass zusätzliche Informationen über den Spieler anzeigen kann, wie
+ * z.B. einen Punktestand. Wird außerdem farblich umrandet, wenn der Spieler an der
+ * Reihe ist.
+ *
+ */
 public class OwnOtherData extends JPanel {
 
 	private String ownData;
@@ -28,6 +34,12 @@ public class OwnOtherData extends JPanel {
 		repaint();
 	}	
 	
+	/**
+	 * Legt fest, ob der Spieler gerade an der Reihe ist und
+	 * passt die Umrandung der Komponente dementsprechend an.
+	 * 
+	 * @param b true, die Komponente wird umrandet, false der Rand fällt weg
+	 */
 	public void setMyTurn(boolean b) {
 		if (b) {
 			this.setBorder(new LineBorder(Color.RED, 3));

@@ -110,14 +110,23 @@ public class ViewCard extends JPanel{
 		super.paintComponent(g);
 		if (card != null) {
 			ruleset = card.getRuleset();
-			try {                
-				face = ImageIO.read(new File(Game.IMAGEPATH + ruleset.toString().toLowerCase() + "/"+  card.toString() +".jpg"))
-		        		  .getScaledInstance(ViewCard.WIDTH, ViewCard.HEIGHT, UNDEFINED_CONDITION);
-				
-		       } catch (IOException ex) {
-		            face = null;
-		            g.drawString("Card missing", 10, 10);
-		       }
+			if (ruleset == RulesetType.NONE) {
+				g.drawImage(ViewCard.BACKSIDEIMAGE, 0, 0, null);
+			} else {
+				try {
+					face = ImageIO.read(
+							new File(Game.IMAGEPATH
+									+ ruleset.toString().toLowerCase() + "/"
+									+ card.toString() + ".jpg"))
+							.getScaledInstance(ViewCard.WIDTH, ViewCard.HEIGHT,
+									UNDEFINED_CONDITION);
+
+				} catch (IOException ex) {
+					face = null;
+					g.drawString("Card", 5, 10);
+					g.drawString("Missing", 5, 30);
+				}
+			}
 			g.drawImage(face, 0, 0, null);
 			} else {
 				g.drawImage(ViewCard.BACKSIDEIMAGE, 0, 0, null);

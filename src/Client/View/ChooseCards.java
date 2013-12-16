@@ -30,14 +30,15 @@ public class ChooseCards extends JFrame implements Observer{
 	
 	private JPanel contentPane;
 	private OwnHand playerHand;
-	private JPanel handPanel;
 	private JTextArea rsMessageArea;
 	private JButton btnOK;
-	List<Card> chosenCards;
+	private List<Card> chosenCards;
+	private int shownCardsCount;
 	
 	
 	public ChooseCards() {
-		setBounds(100, 100, 780, 330);
+		shownCardsCount = 20;
+		setBounds(100, 100, 1004, 330);
 		setResizable(false);
 		setAlwaysOnTop(true);
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -49,16 +50,16 @@ public class ChooseCards extends JFrame implements Observer{
 		rsMessageArea = new JTextArea();
 		rsMessageArea.setLineWrap(true);
 		rsMessageArea.setEditable(false);
-		rsMessageArea.setBounds(10, 11, 750, 115);
+		rsMessageArea.setBounds(10, 11, 980, 115);
 		contentPane.add(rsMessageArea);
 		
 		btnOK = new JButton("OK");
-		btnOK.setBounds(628, 253, 132, 40);
+		btnOK.setBounds(440, 253, 132, 40);
 		
 		contentPane.add(btnOK);
 		
 		playerHand = new OwnHand();
-		playerHand.setBounds(10, 137, 750, 105);
+		playerHand.setBounds(10, 137, (ViewCard.WIDTH+1)*shownCardsCount, 105);
 		playerHand.addCardMouseListener(new CardMouseListener());
 		contentPane.add(playerHand);
 		
@@ -113,9 +114,12 @@ public class ChooseCards extends JFrame implements Observer{
 			List<Card> handCards = observed.getGameUpdate().getOwnHand();
 			playerHand.setHand(handCards);
 			setMessageText(observed.getWindowText());
+			repaint();
 			this.setVisible(true);
 			break;
 		case windowChangeForced:
+			chosenCards.clear();;
+			playerHand.unclickAll();
 			this.setVisible(false);
 			break;
 		case quitGame:
