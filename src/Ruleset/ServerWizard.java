@@ -452,6 +452,7 @@ public class ServerWizard extends ServerRuleset {
             	setFirstPlayer(getCurrentPlayer());
             	
             	trumpColour = Colour.NONE;
+            	getGameState().setUncoveredCard(EmptyCard.Empty);
             	getGameState().restartDeck(createDeck());
 
                 setGamePhase(GamePhase.RoundStart);
