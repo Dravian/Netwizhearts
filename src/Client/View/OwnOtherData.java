@@ -53,7 +53,7 @@ public class OwnOtherData extends JPanel {
 		super.paintComponent(g);
 		Font font = new Font("Arial",Font.BOLD,15);
 		g.setFont(font);
-		g.drawString(ownData, 0, 30);
+		g.drawString(ownData, 2, 30);
 	}
 
 }

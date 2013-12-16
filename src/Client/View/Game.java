@@ -339,7 +339,6 @@ public class Game extends JFrame implements Observer{
 		public void actionPerformed(ActionEvent e) {
 			Game.BACKGROUND = name;
 			gamePanel.updateBackground();
-			System.out.println(Game.BACKGROUND);
 			repaint();
 		}
 
@@ -357,7 +356,6 @@ public class Game extends JFrame implements Observer{
 		public void actionPerformed(ActionEvent e) {
 			Game.BACKSIDE = name;
 			ViewCard.updateBackside();
-			System.out.println(Game.BACKSIDE);
 			repaint();
 
 		}
