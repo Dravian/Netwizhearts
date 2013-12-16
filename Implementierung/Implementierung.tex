@@ -267,13 +267,9 @@ closeConnection()\\
    View(Login+Lobby) & 8 Stunden & 4 Stunden & 50\% & (1) \\ \hline
    View(Create+Join) & 8 Stunden & 5 Stunden & 37,5\% & (1)\\ \hline
    View(GameLobby) & 8 Stunden & 3 Stunden & 62,6\% & (1)\\ \hline
-   Model(Login) & 8 Stunden & 8,5 Stunden & (-) 6,25\% & (2) \\ \hline
+   Client(Login) & 8 Stunden & 8,5 Stunden & (-) 6,25\% & (2) \\ \hline
    Client(Lobby) & 8 Stunden &  6,5 Stunden & 18,75\% &\\ \hline
    Client(Create+Join) &  8 Stunden & 6 Stunden & 25\% &\\ \hline
-   Client (GameLobby) &  8 Stunden & 10 Stunden & (-) 25\% &\\ \hline
-   Client (Game) & 14  Stunden &  12 Stunden & 14,3\% &\\ \hline
-   Client (Wizard) & 6 Stunden & 0 Stunden & 100\% &\\ \hline
-   Client (Hearts) & 4 Stunden & 0 Stunden & 100\% &\\ \hline
    Server(Login) & 16 Stunden & 6 Stunden & 62,5\% & (5) \\ \hline
    Server(Lobby) & 8 Stunden & 3 Stunden & 62,5\% & (5)\\ \hline 
    Server(Create+Join) & 12 Stunden & 6 Stunden & 50\% & (5)\\ \hline 
@@ -284,7 +280,7 @@ closeConnection()\\
 
 \begin{itemize}
 \item \textbf{(1)} Es waren noch Code-Teile aus der Pflichtenheft-Phase vorhanden. \\
-\item \textbf{(2)} Login mehrmals umgebaut um die Tests aus dem Pflichtenheft zu erfüllen. \\
+\item \textbf{(2)} Login wegen Änderungen am Loginserver umgebaut. \\
 \item \textbf{(3)} Viele der ComObjects waren bereits fertig. \\
 \item \textbf{(4)} Wurde hauptsächlich schon in Spezifikationsphase implementiert. \\
 \item \textbf{(5)} Stundenzahl würde Anfangs verdoppelt. \\
@@ -295,6 +291,7 @@ closeConnection()\\
 \begin{tabular}{|c|c|c|c|c|}\hline
    Bereich & angen. Dauer & tats. Dauer & Abweichung & Begründung\\ \hline\hline
    View(Game) & 20 Stunden & 18,5 Stunden & 7,5\% &\\ \hline 
+   Client (GameLobby) &  8 Stunden & 10 Stunden & (-) 25\% &\\ \hline
    Server(GameLobby) & 10 Stunden & 5 Stunden & 50\% &(5)\\ \hline
    Ruleset(ClientWizard) & 6 Stunden & 5 Stunden & 16,7\% &\\ \hline 
    Ruleset(ClientHearts) & 6 Stunden & 5 Stunden & 16,7\% &\\ \hline 
@@ -307,20 +304,30 @@ closeConnection()\\
    Bereich & angen. Dauer & tats. Dauer & Abweichung & Begründung\\ \hline\hline
    View(WizardWindows) & 4 Stunden & 3,5 Stunden & 12,5\% &\\ \hline
    View(HeartsWindows) & 4 Stunden & 3 Stunden & 25\% &\\ \hline
+   Client (Game) & 14  Stunden &  12 Stunden & 14,3\% & (1)\\ \hline
    Server(Game) & 4 Stunden & 2,5 Stunden & 37,5\% &\\ \hline
    Client(LanguageInterpreter) & - & 2 Stunden & - &\\ \hline
    Karten & - & 4 Stunden & - &\\ \hline
    Handbuch & - & 2 Stunden & - &\\ \hline
  \end{tabular}
- 
+
+\begin{itemize}
+\item \textbf{(1)} Regelwerk Packete delegiert. Zeit für Refactoring des Clientcodes verwendet. \\
+\end{itemize}
+
 \subsection{Finale Phase}
 \begin{tabular}{|c|c|c|c|c|}\hline
    Bereich & angen. Dauer & tats. Dauer & Abweichung & Begründung\\ \hline\hline
    View(Polishing) & 10 Stunden & 7,5 Stunden & 25\% &\\ \hline
+   Client(Polishing) & 10 Stunden & 12 Stunden & 20\% & (1) \\ \hline
    Server(Polishing) & 10 Stunden & 1 Stunde & 25\% &\\ \hline
  Handbuch & - & 2 Stunden & - &\\ \hline
  
  \end{tabular}
+ 
+ \begin{itemize}
+\item \textbf{(1)} Nacharbeiten wegen Nebenläufigkeit und JUnit Tests sowie Tests in Gruppe wegen Abgabe\\
+\end{itemize}
  
  \section{Bekannte Bugs}
 
