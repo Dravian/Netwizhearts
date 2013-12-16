@@ -984,7 +984,8 @@ public class ClientModel extends Observable {
 	 * @return GameClientUpdate Die Daten der laufenden Sitzung.
 	 */
 	public final GameClientUpdate getGameUpdate() {
-		if (state == ClientState.GAME) {
+		if (state == ClientState.GAME
+				|| state == ClientState.ENDING) {
 			if (ruleset != null) {
 				return ruleset.getGameState();
 			} else {
