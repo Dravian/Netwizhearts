@@ -238,15 +238,8 @@ public class ServerHearts extends ServerRuleset {
 	        for (Card handCard : hand) {
 	            // Es gibt eine Karte auf der Hand, die die Farbe der erstgepielten Karte hat
 	            if (handCard.getColour() == firstCard.getColour()) {
-	                return false;
-	                
-	             // Die Spieler möchte ein Herz spielen, hat aber noch andere Karten auf der Hand
-	                // und Herz ist noch nicht gebrochen
-	            } else if(handCard.getColour() != Colour.HEART && 
-	            		card.getColour() == Colour.HEART &&
-	            		!heartBroken) {
-	            	return false;
-	            }
+	                return false;	             
+	            } 
 	        }
 	
 	        // Die zu spielende Karte hat die Farbe Herz
