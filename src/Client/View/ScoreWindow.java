@@ -16,6 +16,7 @@ import Ruleset.OtherData;
 
 import javax.swing.JTextArea;
 import javax.swing.JButton;
+import javax.swing.SwingUtilities;
 
 
 /** 
@@ -69,20 +70,38 @@ public class ScoreWindow extends JFrame implements Observer{
 			ViewNotification message = (ViewNotification) arg;
 		switch (message) {
 		case showScore:
-			List<String> winners = observed.getWinner();
-			for (int i = 0; i < winners.size(); i++) {
-				textArea.append(winners.get(i) + "\n");
-			}
-			OtherData myself = observed.getGameUpdate().getOwnData();
-			List<OtherData> players = observed.getGameUpdate().getOtherPlayerData();
-			textArea.append("" + myself.getPoints());
-			for (OtherData p : players) {
-				textArea.append("" + p.getPoints());
-			}
-			this.setVisible(true);
+				SwingUtilities.invokeLater(new Runnable() {
+
+					@Override
+					public void run() {
+						List<String> winners = observed.getWinner();
+						for (int i = 0; i < winners.size(); i++) {
+							textArea.append(winners.get(i) + "\n");
+						}
+						OtherData myself = observed.getGameUpdate()
+								.getOwnData();
+						List<OtherData> players = observed.getGameUpdate()
+								.getOtherPlayerData();
+						textArea.append(myself.getOtherDataName() + ": "
+								+ myself.getPoints() + "\n");
+						for (OtherData p : players) {
+							textArea.append(p.getOtherDataName() + ": "
+									+ p.getPoints() + "\n");
+						}
+						setVisible(true);
+					}
+				});
+			
 			break;
 		case windowChangeForced:
-			this.setVisible(false);
+			SwingUtilities.invokeLater(new Runnable() {
+
+				@Override
+				public void run() {
+					textArea.setText("");
+					setVisible(false);
+				}
+			});
 			break;
 		case quitGame:
 			this.dispose();
