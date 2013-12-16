@@ -95,8 +95,13 @@ Dieses Produkt läuft auf den Betriebssystemen Microsoft Windows, Mac OS X und L
 \gls{Server}seitig müssen zusätzlich die Mindestanforderungen des verwendeten Betriebssystems bezüglich Arbeitsspeicher und Rechenleistung erfüllt sein. Diese können durch die Anzahl der gehosteten Spieler/Spiele steigen.
 
 \section{Installation}
-Entpacken sie die Dateien und starten Sie.
-....\\
+Entpacken sie die Dateien eventuell in einem Ordner. Es ist wichtig, dass der Data Ordner am gleichen Ort abgelegt wird, wie die .jar Dateien.
+\begin{itemize}
+	\item \textbf{Server:} Mit Doppelklick auf die Server.jar - Datei starten Sie diese. Sollte anschließend von Ihnen gefordert werden ein Programm auszuwählen, gehen Sie unter C:/Programme (x86)/Java/jre7/bin auf die Datei javaw.exe.
+	Sie können ihr Programm auch aus der Konsole starten. Geben Sie hierzu in der Konsole ein: java -jar Server.jar, dahinter können Sie optional eine Portnummer setzen, wenn Sie nicht den Standartport verwenden möchten.
+	\item \textbf{Client:}  Mit Doppelklick auf die NetWizHearts.jar - Datei starten Sie diese. Sollte anschließend von Ihnen gefordert werden ein Programm auszuwählen, gehen Sie unter C:/Programme (x86)/Java/jre7/bin auf die Datei javaw.exe.
+	Sie können ihr Programm auch aus der Konsole starten. Geben Sie hierzu in der Konsole ein: java -jar NetWizHearts.jar.
+\end{itemize}
 \section{Haftungsausschluss}
 
 1. Haftung für den Inhalt
@@ -129,13 +134,14 @@ Sobald Sie die Anwendung starten, sehen Sie als erstes das Login-Fenster. In die
 In der \gls{Lobby} können Sie ein Spiel erstellen, oder einem existierenden Spiel beitreten. Das Chatten mit anderen Mitspielern in der \gls{Lobby} ist möglich.\\
 \includegraphics[width=\textwidth]{Lobby-Fenster}
 \begin{itemize}
-	\item \textbf{1) Spielerliste:} Hier sehen Sie Benutzernamen aller Spieler, die sich momentan in der \gls{Lobby}v befinden.
+	\item \textbf{1) Spielerliste:} Hier sehen Sie Benutzernamen aller Spieler, die sich momentan in der \gls{Lobby}  befinden.
 	\item \textbf{2) Spielliste:} Hier sehen Sie alle Spiele, die momentan noch auf Mitspieler warten oder noch nicht gestartet sind.
 	\begin{itemize}
 		\item \textbf{2a) Spielname:} Der Name des Spieles
 		\item \textbf{2b) Spielerzahl:} Die Anzahl der momentanen Spieler/Die Anzahl der maximalen Spieler
 		\item \textbf{2c) Regelwerk:} Welche Art von Spiel gespielt wird
 		\item \textbf{2d) Passwort:} Zeigt an, ob der Beitritt zum Spiel passwortgeschüzt ist
+		\item \textbf{2e) Gestartet:} Zeigt an, ob das Spiel bereits gestartet wurde. Ein Beitritt ist dann nicht mehr möglich
 	\end{itemize}
 	\item \textbf{3) Eingabefeld für den Chat:} In dieses Feld geben Sie ihre Chatnachrichten ein. Mit ENTER werden Sie versendet.
 	\item \textbf{4) Chatverlauf:} Hier sehen Sie Ihre Chatnachrichten und die der anderen Nutzer.
@@ -173,7 +179,8 @@ In der Lobby können Sie ein neues Spiel erstellen, indem Sie auf den Erstellen-
 
 \subsection{Spiel spielen}
 
-Nachdem das Spiel im \gls{Wartefenster} gestartet wurde, befinden Sie sich nun im Spielfenster.
+Nachdem das Spiel im \gls{Wartefenster} gestartet wurde, befinden Sie sich nun im Spielfenster.\\
+\includegraphics[width=\textwidth]{Spiel-Fenster}
 \begin{itemize}
 	\item \textbf{1) Spiefeld:} Hier läuft das Spiel ab.
 	\item \textbf{2) Eingabefeld für den Chat:} In dieses Feld geben Sie ihre Chatnachrichten ein. Mit ENTER werden Sie versendet.
@@ -182,8 +189,9 @@ Nachdem das Spiel im \gls{Wartefenster} gestartet wurde, befinden Sie sich nun i
 	\item \textbf{5) Eigenes Anzeigefeld:} Hier sehen Sie je nach Regelwerk relevante Informationen über Ihren Punktestand bzw. Ihre gemachte Stiche.
 	\item \textbf{6) Andere Spieler:} Es werden Informationen zu Ihren Mitspielern angezeigt.
 	\item \textbf{7) Ablagestapel:} Hier sehen Sie die bereits gespielten Karten.
-	\item \textbf{8) Aufnahmestapel:} Von diesem Stapel werden Karten gezogen. Beim Spiel Wizard sieht man dort die Trumpffarbe.
-	\item \textbf{9) Hintergrundbild-Auswahl:} Hier können Sie einen Pfad zu einem Bild eingeben, das Sie als Hintergrunbild haben möchten.
+	\item \textbf{8) Aufnahmestapel:} Von diesem Stapel werden Karten gezogen. Beim Spiel Wizard sieht man daneben die Trumpffarbe.
+	\item \textbf{9a) Hintergrundbild-Auswahl:} Hier können Sie ein Bild auswählen, das Sie als Hintergrundbild haben möchten.
+	\item \textbf{9a) Hintergrundbild-Auswahl:} Hier können Sie das  Kartenhintergrudbild auswählen
 \end{itemize}
 
 
@@ -224,29 +232,32 @@ Hearts ist ein stichbasiertes Kartenspiel, bei dem es darum geht, so wenig Punkt
 \end{itemize}
 
 \section{Fehlermeldungen und Behebung}
-Bei Risiken und Nebenwirkungen lesen Sie die Packungsbeilage, oder Fragen Sie Ihren Arzt oder Apotheker...
-....\\
+Tritt ein Fehler auf, werden Sie durch eine entsprechende Fehlermeldung gewarnt.
+Die folgende Auflistung einiger Fehler hilft Ihnen bei der Behebung:
 \begin{itemize}
-\item \textbf{Fehler bei der Verbindung}:
-		Sollte die Verbindung plötzlich beendet werden, müssen Sie das Spiel neu starten (siehe hierzu: 5.1 Spielstart). Sollten Sie bereits in einem Spiel gewesen sein, wird das Spiel beendet und ihr Mitspieler werden in die Lobby gebracht.
-\item \textbf{Fehler beim Login}:
+\item \textbf{Fehler Server}:
 	\begin{itemize}
-	\item \textbf{Fehler bei der Namenseingabe}:
-		Tritt hier ein Fehler auf, erhalten Sie eine Fehlermeldung. In diesem Fall sollten Sie einen anderen Namen wählen, da der zuvor gewählte bereits vergeben ist.
-	\item \textbf{Fehler beim Verbindungsaufbau}:
+	\item \textbf{Fehler beim Start}:
 		Sollte der gewählte Port bereits belegt sein, bekommen Sie eine Fehlermeldung, bitte wählen Sie in diesem Fall einen anderen Port.
-		Sollte die gewählte IP Adresse nicht korrekt sein, d.h. auf dem Rechner mit dieser IP wurde kein Server gestartet, so erhalten Sie eine Fehlermeldung. Überprüfen Sie dann bitte ihre Eingabe auf Richtigkeit oder wählen Sie eine andere IP-Adresse.
 	\end{itemize}
-\item \textbf{Fehler in der Lobby}:
-\item \textbf{Fehler im Erstellungsfenster}:
-\item \textbf{Fehler im Wartefenster}:
-\item \textbf{Fehler im Spiel}:
+\item \textbf{Fehler Client}:
 	\begin{itemize}
-	\item \textbf{Fehler Wizard}:
-	\item \textbf{Fehler Hearts}:
+	\item \textbf{Fehler bei der Verbindung}:
+		Sollte die Verbindung plötzlich beendet werden, müssen Sie das Spiel neu starten (siehe hierzu: 5.1 Spielstart). Sollten Sie bereits in einem Spiel gewesen sein, wird das Spiel beendet und ihr Mitspieler werden in die Lobby gebracht.
+	\item \textbf{Fehler beim Login}:
+		\begin{itemize}
+		\item \textbf{Fehler bei der Namenseingabe}:
+			Tritt hier ein Fehler auf, erhalten Sie eine Fehlermeldung. In diesem Fall sollten Sie einen anderen Namen wählen, da der zuvor gewählte bereits vergeben ist.
+		\item \textbf{Fehler beim Verbindungsaufbau}:
+			Sollte der gewählte Port bereits belegt sein, bekommen Sie eine Fehlermeldung, bitte wählen Sie in diesem Fall einen anderen Port.
+Sollte die gewählte IP Adresse nicht korrekt sein, d.h. auf dem Rechner mit dieser IP wurde kein Server gestartet, so erhalten Sie eine Fehlermeldung. Überprüfen Sie dann bitte ihre Eingabe auf Richtigkeit oder wählen Sie eine andere IP-Adresse.
+Die Adresse kann auf folgende Weisen angegeben werden: \\
+IP-Adresse\\
+servername.de:port\\
+ip:port\\
+		\end{itemize}
 	\end{itemize}
 \end{itemize}
-
 
 \section{Entwicklung eines neuen \gls{Regelwerk}es}
 Die Anwendung NET-WizHearts ist so konzipiert, dass jederzeit weitere \gls{Regelwerk}e hinzugefügt werden können.
@@ -254,23 +265,22 @@ Dazu ist die Entwicklung folgender Klassen notwendig:
 \begin{itemize}
 \item \textbf{Paket Ruleset}
 	\begin{itemize}
-	\item \textbf{ServerRuleset''NameOfTheGame''}: Dies ist eine Klasse, die die Einhaltung der Regeln garantiert. Serverseitig.
-	\item \textbf{ClientRuleset''NameOfTheGame''}: Dies ist eine Klasse, die eine Vorab-Regelauswertung vornehmen soll. Clientseitig. 
+	\item \textbf{Neue Klassen}:
+		\begin{itemize}
+		\item \textbf{Server''NameOfTheGame''}: Diese Klasseerbt von ServerRuleset. Es ist eine Klasse, die die Einhaltung der Regeln garantiert - Serverseitig.
+		\item \textbf{Client''NameOfTheGame''}: Diese Klasseerbt von ClientRuleset. Dies ist eine Klasse, die eine Vorab-Regelauswertung vornehmen soll- Clientseitig.
+	
+		 Achten Sie bei der Entwicklung dieser Klassen darauf, dass die Methode isValidMove in beiden oben genannten Klassen den selben Inhalt hat! Andernfalls wertet der Server dies als Betrugsversuch eines Spielers und dieser wird aus dem Spiel geworfen.
+		 \item \textbf{''NameOfTheGame''Card}: Neue Klasse, die alle Karten enthalten muss, die für das Regelwerk benötigt werden.
+		\item \textbf{''NameOfTheGame''Data}: Neue Klasse, die die Otherdata eines Spielers zum Regelwerk enthält.
 	\end{itemize}
-\item \textbf{Paket ComObjects}:
-\begin{itemize}
-	\item \textbf{}
-	\item \textbf{}
-	\end{itemize}
-\item \textbf{Paket View}:
-\begin{itemize}
-	\item \textbf{}
-	\item \textbf{}
-	\end{itemize}
-\item \textbf{Paket ClientModel}:
-\begin{itemize}
-	\item \textbf{}
-	\item \textbf{}
+	\item \textbf{Änderungen an bestehenden Klassen}:
+		\begin{itemize}
+		\item \textbf{RulesetType}: Eine Änderung dieser Klasse ist unbedingt nötig. Fügen sie dazu den Namen des entsprechenden Regelwerkes mit der Mindest- und Höchstspielerzahl ein.
+		\item \textbf{Color}: Eventuelle Änderungen in dieser Klasse, sollten andere Farben für das neue Regelwerk benötigt werden. Fügen Sie einfach die Namen der Farben in die schon bestehende Auflistung hinzu.
+		\item \textbf{GamePhase}: Eventuelle Änderungen in dieser Klasse, sollten die bereits existierenden Phasen nicht ausreichen. Benötigen Sie eine Spielphase, die noch nicht existiert, so fügen Sie diese einfach in die bereits bestehende Auflistung hinzu.
+		\item \textbf{UserMessages}: Eventuelle Änderungen an dieser Klasse, sollten die bereits existierenden Nachrichtentypen nicht ausreichen. Fügen Sie diese einfach in die bereits bestehende Auflistung hinzu.
+		\end{itemize}
 	\end{itemize}
 \end{itemize}
 

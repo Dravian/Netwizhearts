@@ -1,6 +1,6 @@
 package Client;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.junit.After;
@@ -8,7 +8,6 @@ import org.junit.Before;
 
 import test.TestMessageListenerThread;
 import test.TestObserver;
-import Client.ClientModel;
 import ComObjects.ComChatMessage;
 
 public class ClientModelChatTest {
@@ -34,7 +33,7 @@ public class ClientModelChatTest {
     }
  
     @After
-    public void tearDown() throws Exception { 
+    public void tearDown() throws Exception {
     	testNetIO = null;
     	testMessage = null;
     	testModel = null;
@@ -45,14 +44,16 @@ public class ClientModelChatTest {
 	public void testSendChatMessage() {
 		String inputText = "Hello Test!";
 		testModel.sendChatMessage(inputText);
-		testText = ((ComChatMessage) testNetIO.getModelInput().get(0)).getChatMessage();
-		assertTrue("Vergleich der gesendeten Chatnachrichten", testText.contains(inputText));
+		testText = ((ComChatMessage)
+				testNetIO.getModelInput().get(0)).getChatMessage();
+		assertTrue("Vergleich der gesendeten Chatnachrichten",
+				testText.contains(inputText));
 	}
 
 	@Test
 	public void testReceiveChatMessage() {
 		testNetIO.injectComObject(testMessage);
-		assertTrue("Vergleich der empfangenen Chatnachrichten", 
-				testObserver.getChatMessage().equals(testMessage.getChatMessage()));
+		assertTrue("Vergleich der empfangenen Chatnachrichten",
+		   testObserver.getChatMessage().equals(testMessage.getChatMessage()));
 	}
 }

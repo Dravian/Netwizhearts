@@ -5,6 +5,10 @@ package Ruleset;
  */
 public class RulesetException extends RuntimeException {
 
+	/**
+	 * Erstellt eine RulesetException
+	 * @param string Die Fehlermeldung
+	 */
 	public RulesetException(String string) {
 		super(string);
 	}

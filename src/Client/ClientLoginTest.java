@@ -1,9 +1,6 @@
 package Client;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -17,13 +14,8 @@ import Ruleset.RulesetType;
 import Server.GameServerRepresentation;
 import test.TestMessageListenerThread;
 import test.TestObserver;
-import ComObjects.ComCreateGameRequest;
-import ComObjects.ComInitGameLobby;
 import ComObjects.ComInitLobby;
-import ComObjects.ComJoinRequest;
-import ComObjects.ComLobbyUpdateGamelist;
 import ComObjects.ComLoginRequest;
-import ComObjects.ComUpdatePlayerlist;
 
 public class ClientLoginTest {
 
@@ -75,5 +67,24 @@ public class ClientLoginTest {
 				testModel.getPlayerlist().get(0));
 		assertEquals("Spielliste", games.contains(game),
 				testModel.getLobbyGamelist().contains(game));
+	}
+
+	@Test (expected=IllegalArgumentException.class)
+	public void loginTestNegativ() {
+		testModel.createConnection("", "localhost");
+		assertEquals("Leerer Name", ViewNotification.openWarning,
+				testObserver.getNotification().remove(0));
+
+		testModel.createConnection("Player1", "");
+		assertEquals("Leere Addresse", ViewNotification.openWarning,
+				testObserver.getNotification().remove(0));
+
+		testModel.createConnection("", "");
+		assertEquals("Name und Addresse leer", ViewNotification.openWarning,
+				testObserver.getNotification().remove(0));
+
+		testModel.createConnection(null, "localhost");
+		testModel.createConnection("Player1", null);
+		testModel.createConnection(null, null);
 	}
 }
