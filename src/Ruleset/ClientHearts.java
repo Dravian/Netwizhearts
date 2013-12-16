@@ -149,17 +149,7 @@ public class ClientHearts extends ClientRuleset {
 					getModel().openWarning(WarningMsg.UnvalidMove);
 					getModel().announceTurn(UserMessages.PlayCard);
 					return false;
-
-					// Der Spieler möchte ein Herz spielen, hat aber noch andere
-					// Karten auf der Hand
-					// und Herz ist noch nicht gebrochen
-				} else if (handCard.getColour() != Colour.HEART
-						&& card.getColour() == Colour.HEART 
-						&& !heartBroken) {
-					getModel().openWarning(WarningMsg.UnvalidMove);
-					getModel().announceTurn(UserMessages.PlayCard);
-					return false;
-				}
+				} 
 			}
 
 			// Die zu spielende Karte hat die Farbe Herz
