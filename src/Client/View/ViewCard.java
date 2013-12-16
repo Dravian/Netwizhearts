@@ -25,6 +25,16 @@ import Ruleset.RulesetType;
 public class ViewCard extends JPanel{
 	protected static int WIDTH = 48;
 	protected static int HEIGHT = 76;
+	protected static Image BACKSIDEIMAGE = null;
+	
+	protected static void updateBackside() {
+		try {
+			ViewCard.BACKSIDEIMAGE = ImageIO.read(new File(Game.IMAGEPATH + "cards/" + Game.BACKSIDE))
+				  .getScaledInstance(ViewCard.WIDTH, ViewCard.HEIGHT, UNDEFINED_CONDITION);
+		} catch (IOException e) {
+			//TODO
+		}
+	}
 	
 	private RulesetType ruleset;
 	private Card card;
@@ -41,7 +51,12 @@ public class ViewCard extends JPanel{
 		//TODO
 		clicked = false;
 		card = c;
-		
+		try {
+			ViewCard.BACKSIDEIMAGE = ImageIO.read(new File(Game.IMAGEPATH + "cards/" + Game.BACKSIDE))
+				  .getScaledInstance(ViewCard.WIDTH, ViewCard.HEIGHT, UNDEFINED_CONDITION);
+		} catch (IOException e) {
+			//TODO
+		}
 	}
 	
 	/**
@@ -95,21 +110,28 @@ public class ViewCard extends JPanel{
 		super.paintComponent(g);
 		if (card != null) {
 			ruleset = card.getRuleset();
-			try {                
-				face = ImageIO.read(new File(Game.IMAGEPATH + ruleset.toString().toLowerCase() + "/"+  card.toString() +".jpg"))
-		        		  .getScaledInstance(ViewCard.WIDTH, ViewCard.HEIGHT, UNDEFINED_CONDITION);
-		       } catch (IOException ex) {
-		            //TODO
-		       }	
+			if (ruleset == RulesetType.NONE) {
+				g.drawImage(ViewCard.BACKSIDEIMAGE, 0, 0, null);
 			} else {
-				try {                
-			          face = ImageIO.read(new File(Game.IMAGEPATH + "cards/" + Game.BACKSIDE))
-			        		  .getScaledInstance(ViewCard.WIDTH, ViewCard.HEIGHT, UNDEFINED_CONDITION);
-			       } catch (IOException ex) {
-			            //TODO
-			       }	
+				try {
+					face = ImageIO.read(
+							new File(Game.IMAGEPATH
+									+ ruleset.toString().toLowerCase() + "/"
+									+ card.toString() + ".jpg"))
+							.getScaledInstance(ViewCard.WIDTH, ViewCard.HEIGHT,
+									UNDEFINED_CONDITION);
+
+				} catch (IOException ex) {
+					face = null;
+					g.drawString("Card", 5, 10);
+					g.drawString("Missing", 5, 30);
+				}
 			}
-        g.drawImage(face, 0, 0, null);
+			g.drawImage(face, 0, 0, null);
+			} else {
+				g.drawImage(ViewCard.BACKSIDEIMAGE, 0, 0, null);
+			}
+        
         
     }
 }
