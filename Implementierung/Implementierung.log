@@ -1,7 +1,8 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.10.9)  15 DEC 2013 01:34
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.10.9)  16 DEC 2013 18:35
 entering extended mode
 **Implementierung.tex
-(C:\Users\AlinaAdmin\Desktop\Implementierung\Implementierung.tex
+
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\Implementierung\Implementierung.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -742,7 +743,8 @@ Package: pgf-umlsd 2009/09/30 v0.5 Some LaTeX macros for UML Sequence Diagrams.
 \c@callselflevel=\count123
 \c@blocklevel=\count124
 )
-(C:\Users\AlinaAdmin\Desktop\Implementierung\Implementierung.aux)
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\Implementierung\Implementierung.aux
+)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
 LaTeX Font Info:    ... okay on input line 13.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
@@ -759,8 +761,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 13.
 LaTeX Font Info:    ... okay on input line 13.
 \AtBeginShipoutBox=\box39
 Package hyperref Info: Link coloring OFF on input line 13.
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
 ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
@@ -772,11 +773,12 @@ LaTeX Info: Redefining \ref on input line 13.
 LaTeX Info: Redefining \pageref on input line 13.
 LaTeX Info: Redefining \nameref on input line 13.
 
-(C:\Users\AlinaAdmin\Desktop\Implementierung\Implementierung.out)
-(C:\Users\AlinaAdmin\Desktop\Implementierung\Implementierung.out)
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\Implementierung\Implementierung.out
+)
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\Implementierung\Implementierung.out
+)
 \@outlinefile=\write4
-
-("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+ ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count126
 \scratchdimen=\dimen154
@@ -807,8 +809,9 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 [1
 
 {C:/Users/AlinaAdmin/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Use
-rs/AlinaAdmin/Desktop/Implementierung/kartenspiel.png>]
-(C:\Users\AlinaAdmin\Desktop\Implementierung\Implementierung.toc)
+rs/AlinaAdmin/Documents/GitHub/sep13/Implementierung/kartenspiel.png>]
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\Implementierung\Implementierung.toc
+)
 \tf@toc=\write5
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
@@ -830,61 +833,56 @@ t\OT1/cmr/m/n/10 :
  []
 
 
-Overfull \hbox (16.76608pt too wide) in paragraph at lines 76--77
+Overfull \hbox (16.76608pt too wide) in paragraph at lines 77--78
 []\OT1/cmr/bx/sc/10 GameState: \OT1/cmr/m/it/10 hin-zu-gef[]ugt\OT1/cmr/m/n/10 
 : ma-de-Trick(), re-st-art-Deck (), ne-wRound(); \OT1/cmr/m/it/10 gel[]oscht\OT
 1/cmr/m/n/10 :
  []
 
-
-Overfull \hbox (5.95067pt too wide) in paragraph at lines 89--90
+[2]
+Overfull \hbox (5.95067pt too wide) in paragraph at lines 90--91
 \OT1/cmr/m/n/10 cli-ent-Lis-te-nerThread, Lob-by-Ser-ver lob-by; \OT1/cmr/m/it/
 10 Me-tho-den\OT1/cmr/m/n/10 : re-cei-ve-Mes-sa-ge(Player
  []
 
-[2]
-Overfull \hbox (1.17612pt too wide) in paragraph at lines 90--91
+
+Overfull \hbox (1.17612pt too wide) in paragraph at lines 91--92
 []\OT1/cmr/bx/sc/10 GameServer: \OT1/cmr/m/it/10 hin-zu-gef[]ugt\OT1/cmr/m/n/10
  : quit-Ga-me(), get-Ga-me-Mas-ter-Na-me(), get-Pass-
  []
 
 
-Overfull \hbox (9.22275pt too wide) in paragraph at lines 90--91
+Overfull \hbox (9.22275pt too wide) in paragraph at lines 91--92
 \OT1/cmr/m/n/10 word(), sen-dRu-le-set-Mes-sa-ge(String player, Ru-le-set-Mes-s
 a-ge mes-sa-ge), broad-
  []
 
 
-Overfull \hbox (2.86165pt too wide) in paragraph at lines 90--91
+Overfull \hbox (2.86165pt too wide) in paragraph at lines 91--92
 \OT1/cmr/m/n/10 ca-stRu-le-set-Mes-sa-ge(RulesetMessage mes-sa-ge), send-War-ni
 ng(String player,
  []
 
 
-Overfull \hbox (1.2101pt too wide) in paragraph at lines 90--91
+Overfull \hbox (1.2101pt too wide) in paragraph at lines 91--92
 \OT1/cmr/m/n/10 War-ningMsg war-ning), broad-cast-War-ning(WarningMsg war-ning)
  \OT1/cmr/m/it/10 ent-fernt\OT1/cmr/m/n/10 :
  []
 
 
-Overfull \hbox (4.07112pt too wide) in paragraph at lines 92--93
+Overfull \hbox (4.07112pt too wide) in paragraph at lines 93--94
 \OT1/cmr/m/it/10 zu-gef[]ugt\OT1/cmr/m/n/10 : add-Player-To-Ga-me(Player player
 , Ga-me-Ser-ver ga-me), get-Na-mes() 
  []
 
 [3]
-Overfull \hbox (1.0979pt too wide) in paragraph at lines 107--107
+Overfull \hbox (1.0979pt too wide) in paragraph at lines 108--108
 []\OT1/cmr/bx/n/14.4 Vergleich: Im-ple-men-tie-rungs-plan und Rea-lit[]at 
  []
 
 
-Overfull \hbox (30.61174pt too wide) in paragraph at lines 117--136
+Overfull \hbox (30.61174pt too wide) in paragraph at lines 118--137
 [] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 138--139
-
  []
 
 
@@ -903,33 +901,51 @@ Underfull \hbox (badness 10000) in paragraph at lines 141--142
  []
 
 
-Overfull \hbox (34.72287pt too wide) in paragraph at lines 146--154
+Underfull \hbox (badness 10000) in paragraph at lines 142--143
+
+ []
+
+
+Overfull \hbox (34.72287pt too wide) in paragraph at lines 147--155
 [] 
  []
 
 [4]
-Overfull \hbox (54.44514pt too wide) in paragraph at lines 157--166
+Overfull \hbox (54.44514pt too wide) in paragraph at lines 158--167
 [] 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 173.
-[5]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 173.
- (C:\Users\AlinaAdmin\Desktop\Implementierung\Implementierung.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 173.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 173.
-Package rerunfilecheck Info: File `Implementierung.out' has not changed.
-(rerunfilecheck)             Checksum: A21BABB965AD7D6789E631DCA0246C7F;812.
 
+Overfull \hbox (0.80617pt too wide) in paragraph at lines 169--175
+[] 
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 179.
+[5]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 179.
+
+(C:\Users\AlinaAdmin\Documents\GitHub\sep13\Implementierung\Implementierung.aux
+)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 179.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 179.
+
+
+Package rerunfilecheck Warning: File `Implementierung.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Implementierung.out':
+(rerunfilecheck)             Before: A21BABB965AD7D6789E631DCA0246C7F;812
+(rerunfilecheck)             After:  5F286079F588DC3A78A316CAB9C42946;862.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 173.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 179.
  ) 
 Here is how much of TeX's memory you used:
- 14106 strings out of 493921
- 257825 string characters out of 3147267
- 335463 words of memory out of 3000000
+ 14107 strings out of 493921
+ 258029 string characters out of 3147267
+ 335464 words of memory out of 3000000
  17140 multiletter control sequences out of 15000+200000
  5811 words of font info for 21 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
@@ -940,9 +956,9 @@ les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTe
 X 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fon
 ts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
 /public/amsfonts/cm/cmti10.pfb>
-Output written on Implementierung.pdf (6 pages, 1608924 bytes).
+Output written on Implementierung.pdf (6 pages, 1610178 bytes).
 PDF statistics:
- 147 PDF objects out of 1000 (max. 8388607)
- 20 named destinations out of 1000 (max. 500000)
+ 148 PDF objects out of 1000 (max. 8388607)
+ 21 named destinations out of 1000 (max. 500000)
  218 words of extra memory for PDF output out of 10000 (max. 10000000)
 
