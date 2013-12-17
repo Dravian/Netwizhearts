@@ -986,6 +986,7 @@ public class ClientModel extends Observable {
 	 */
 	public final GameClientUpdate getGameUpdate() {
 		if (state == ClientState.GAME
+				|| state == ClientState.SERVERLOBBY
 				|| state == ClientState.ENDING) {
 			if (ruleset != null) {
 				return ruleset.getGameState();
