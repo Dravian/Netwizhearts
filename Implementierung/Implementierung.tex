@@ -8,6 +8,7 @@
 \usepackage{tikz}
 \usetikzlibrary{arrows,shadows}
 \usepackage{pgf-umlsd}
+\usepackage{multirow}
 
 
 \begin{document}
@@ -246,7 +247,10 @@ closeConnection()\\
 \subsection{ComObjects}
 
 \begin{itemize}
-\item 
+\item \textbf{ComBeenKicked:} \textit{gelöscht}, da das Comobject nicht mehr gebraucht wird.\\
+\item \textbf{ComGameEnd:} \textit{gelöscht}, da das Comobject nicht mehr gebraucht wird.\\
+\item \textbf{ComServerAcknowledgement:} \textit{gelöscht}, da das Comobject nicht mehr gebraucht wird.\\
+
 \end{itemize}
 
 \newpage
@@ -277,11 +281,11 @@ closeConnection()\\
  \end{tabular}
 
 \begin{itemize}
-\item \textbf{(1)} Es waren noch Code-Teile aus der Pflichtenheft-Phase vorhanden. \\
-\item \textbf{(2)} Login wegen Änderungen am Loginserver umgebaut. \\
-\item \textbf{(3)} Viele der ComObjects waren bereits fertig. \\
-\item \textbf{(4)} Wurde hauptsächlich schon in Spezifikationsphase implementiert. \\
-\item \textbf{(5)} Stundenzahl würde Anfangs verdoppelt. \\
+	\item \textbf{(1)} Es waren noch Code-Teile aus der Pflichtenheft-Phase vorhanden. \\
+	\item \textbf{(2)} Login wegen Änderungen am Loginserver umgebaut. \\
+	\item \textbf{(3)} Viele der ComObjects waren bereits fertig. \\
+	\item \textbf{(4)} Wurde hauptsächlich schon in Spezifikationsphase implementiert. \\
+	\item \textbf{(5)} Stundenzahl würde Anfangs verdoppelt. \\
 \end{itemize}
 
 \subsection{Milestone 2}
@@ -290,10 +294,14 @@ closeConnection()\\
    Bereich & angen. Dauer & tats. Dauer & Abweichung & Begründung\\ \hline\hline
    View(Game) & 20 Stunden & 18,5 Stunden & 7,5\% &\\ \hline 
    Client (GameLobby) &  8 Stunden & 10 Stunden & (-) 25\% &\\ \hline
-   Server(GameLobby) & 10 Stunden & 5 Stunden & 50\% &(5)\\ \hline
-   Ruleset(ServerHearts) & 30 Stunden & 18 Stunden & 50\% &\\ \hline 
+   Server(GameLobby) & 10 Stunden & 5 Stunden & 50\% & (1)\\ \hline
+   Ruleset(ServerHearts) & 30 Stunden & 18 Stunden & 40\% &\\ \hline 
    Handbuch & - & 5 Stunden & - &\\ \hline 
- \end{tabular}
+\end{tabular}
+
+\begin{itemize}
+	\item \textbf{(1)} Stundenzahl würde Anfangs verdoppelt. \\
+\end{itemize}
 
 \subsection{Milestone 3}
 
@@ -308,7 +316,7 @@ closeConnection()\\
    Client(LanguageInterpreter) & - & 2 Stunden & - &\\ \hline
    Karten & - & 4 Stunden & - &\\ \hline
    Handbuch & - & 2 Stunden & - &\\ \hline
- \end{tabular}
+\end{tabular}
 
 \begin{itemize}
 \item \textbf{(1)} Regelwerk Packete delegiert. Zeit für Refactoring des Clientcodes verwendet. \\
@@ -318,18 +326,61 @@ closeConnection()\\
 \begin{tabular}{|c|c|c|c|c|}\hline
    Bereich & angen. Dauer & tats. Dauer & Abweichung & Begründung\\ \hline\hline
    View(Polishing) & 10 Stunden & 7,5 Stunden & 25\% &\\ \hline
-   Client(Polishing) & 10 Stunden & 12 Stunden & 20\% & (1) \\ \hline
-   Ruleset(Polishing & 10 STunden & 5 Stunden & 50\% &\\ \hline
-   Server(Polishing) & 10 Stunden & 1 Stunde & 25\% &\\ \hline
- Handbuch & - & 2 Stunden & - &\\ \hline
+   Client(Polishing) & 10 Stunden & 12 Stunden & (-) 20\% & (1) \\ \hline
+   Ruleset(Polishing & 10 Stunden & 5 Stunden & 50\% &\\ \hline
+   Server(Polishing) & 10 Stunden & 1 Stunde & 10\% &\\ \hline
+ Handbuch & - & 3 Stunden & - &\\ \hline
+\end{tabular}
  
- \end{tabular}
- 
- \begin{itemize}
+\begin{itemize}
 \item \textbf{(1)} Nacharbeiten wegen Nebenläufigkeit und JUnit Tests sowie Tests in Gruppe wegen Abgabe\\
 \end{itemize}
- 
- \section{Bekannte Bugs}
 
+\section{Vergleich: Implementierung und Pflichtenheft}
+ \begin{tabular}{|l|c|c|}\hline
+   Kriterium & umgesetzt & Begründung\\ \hline\hline
+   \multirow{2}{80mm}{Text in Client können sich verbinden und eindeutigen Benutzernamen auswählen} & ja & - \\
+   & & \\ \hline
+   \multirow{2}{80mm}{Lobby mit der Möglichkeit, Spiele zu erstellen und offenen Spielen beizutreten} & ja & - \\ 
+   & & \\ \hline
+   Unterstützung mehrere parallel laufender Spiele & ja & - \\ \hline
+   \multirow{2}{80mm}{Regelauswertung mit Überprüfung erlaubter Aktionen, Punktezählung, Kartenausgabe} & ja & - \\  & & \\  \hline
+   Unterstützung der Spiele Hearts und Wizard & ja & - \\ \hline
+   Chat in der Lobby & ja & - \\ \hline
+   Chat mit Mitspielern während eines Spiels & ja & - \\ \hline
+   Schutz vor Cheats & ja & - \\ \hline
+   \multirow{3}{80mm}{Darstellungsfenster, das mindestens bei der Auflösung von 1024x768 Bildpunkten benutzt werden kann} & ja & - \\  & & \\ & & \\ \hline
+   \multirow{4}{80mm}{Darstellung des laufenden Spiels (eigene Hand, verdeckte Hand der anderen Spieler, Ablage- und Aufnahmestapel, Punktestand, evtl. Zusatzinformationen)} & ja & - \\ & & \\  && \\ && \\\hline
+   \multirow{2}{80mm}{Eingabemöglichkeiten für erlaubte Aktionen während des Spiels (Karte ablegen, Ansagen, etc.)} & ja & - \\ & & \\ \hline
+   \multirow{2}{80mm}{Die GUI muss den Benutzer sinnvoll unterstützen und benutzerfreundliche Eingabeelemente anbieten} & ja & - \\ & & \\ \hline
+   Flüssige Darstellung & ja & - \\ \hline
+   Unabhängigkeit vom Regelwerk & ja & - \\ \hline
+   \multirow{2}{80mm}{Beim Start Auswahl des Servers und des Benutzernamens} & ja & - \\ & & \\ \hline
+   \multirow{2}{80mm}{Anzeige von offenen Spielen in der Lobby mit Möglichkeit zum Erstellen und Beitreten} & ja & - \\ & & \\ \hline
+   Chat in der Lobby und während des Spiels & ja & - \\ \hline
+   Verwaltung der Verbindung mit dem Server & ja & - \\ \hline
+  \multirow{2}{80mm}{Verwaltung des aktuellen Spielzustands (soweit Client bekannt)} & ja & - \\ & & \\ \hline
+  \multirow{3}{80mm}{Vorab-Regelauswertung zur Unterstützung des Nutzers (ungültige Spielaktionen sind nicht durchführbar in der GUI)} & ja & - \\ & & \\ & & \\ \hline \hline
+   Weiteres Regelwerk (Uno, Mau-Mau, Black Jack) & nein & (1) \\ \hline
+   Scoresystem & ja & - \\ \hline
+   Statistiken & nein & (1) \\ \hline
+   Mehrsprachen & ja & - \\ \hline
+   veränderbare GUI (Farben etc) & ja & - \\ \hline
+\end{tabular}
+
+\begin{itemize}
+	\item \textbf{(1)} Zeitmangel, da auf andere Kriterien größerer Wert gelegt wurde. \\
+\end{itemize}
+
+\section{Bekannte Bugs}
+\begin{itemize}
+	\item \textbf{Hearts - Spielen der Karten:} Momentan wird beim Spielen von Hearts vom ServerRuleset keine Nachricht an alle ClientRulesets gesendet, wenn Herz gebrochen wird. Dadurch entsteht der Fehler, dass nur derjenige, der Herz gebrochen hat davon weiß und deshalb die anderen Mitspieler dennoch kein Herz spielen können. Momentane Lösung: die isValidMove in ServerRuleset und ClientRuleset enthalten unterschiedlichen Code, so dass die Abfrage nach Herz nur vom Server gemacht wird. Die Funktion, dass jemand als Cheater vom Server erkannt wird, wenn diese Methoden sich unterscheiden, ist momentan unterbunden.\\
+	\item \textbf{Abgelegte Karten:} Momentan verschwinden die abgelegten Karten sofort nachdem der letzte Spieler eine Karte gespielt hat. Dadurch ist es kaum möglich den Spielverlauf nachzuvollziehen. Die Karten sollen noch einige Sekunden angezeigt werden, bevor ein neuer Umlauf beginnt. \\
+	\item \textbf{Heartspunkte:} Bei Hearts wird noch die Anzahl der gemachten Stiche statt der Punkte angezeigt. \\
+	\item \textbf{GUI Hearts:} In Hearts kann man einige Komponenten, wie zb. die Anzeige der Trumpffarbe und -karte weglassen. \\
+	\item \textbf{Fehlermeldungen:} Einige Fehlermeldungen können noch optimiert werden. \\
+	\item \textbf{Nebenläufigkeit?????}  \\
+	\item \textbf{Scorefenster?????}  \\
+\end{itemize}
 
 \end{document}
