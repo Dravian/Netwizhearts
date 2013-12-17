@@ -130,7 +130,7 @@ disconnectPlayer()\\
 \item  \textbf{GameServer:} \textit{hinzugefügt}: \\
 /**\\
  * Diese Methode beendet das Spiel und gibt die Player an den LobbyServer\\
- * zurueck.Der GameServer wird aus dem Set des LobbyServers entfernt und die\\
+ * zurueck .Der GameServer wird aus dem Set des LobbyServers entfernt und die\\
  * Spieler in der Lobby erhalten ein Gamelist Update.\\
  */\\
 quitGame()\\
@@ -247,9 +247,9 @@ closeConnection()\\
 \subsection{ComObjects}
 
 \begin{itemize}
-\item \textbf{ComBeenKicked:} \textit{gelöscht}, da das Comobject nicht mehr gebraucht wird.\\
-\item \textbf{ComGameEnd:} \textit{gelöscht}, da das Comobject nicht mehr gebraucht wird.\\
-\item \textbf{ComServerAcknowledgement:} \textit{gelöscht}, da das Comobject nicht mehr gebraucht wird.\\
+\item \textbf{ComBeenKicked:} \textit{gelöscht}, da das ComObject nicht mehr gebraucht wird.\\
+\item \textbf{ComGameEnd:} \textit{gelöscht}, da das ComObject nicht mehr gebraucht wird.\\
+\item \textbf{ComServerAcknowledgement:} \textit{gelöscht}, da das ComObject nicht mehr gebraucht wird.\\
 
 \end{itemize}
 
@@ -259,7 +259,6 @@ closeConnection()\\
 
 \subsection{Änderungen am Plan}
 \begin{itemize}
-\item Zuständigkeit von Arbeitspaket Client(Lobby) wurde von Patrick an Andi gegeben, um die Arbeitszeiten anzugleichen
 \item Zuständigkeit von Arbeitspaket Ruleset(Wizard-Client) wurde von Patrick/Andi and Daniel gegeben, um die Arbeitszzeiten anzugleichen
 \end{itemize}
 
@@ -361,15 +360,16 @@ closeConnection()\\
    Verwaltung der Verbindung mit dem Server & ja & - \\ \hline
   \multirow{2}{80mm}{Verwaltung des aktuellen Spielzustands (soweit Client bekannt)} & ja & - \\ & & \\ \hline
   \multirow{3}{80mm}{Vorab-Regelauswertung zur Unterstützung des Nutzers (ungültige Spielaktionen sind nicht durchführbar in der GUI)} & ja & - \\ & & \\ & & \\ \hline \hline
-   Weiteres Regelwerk (Uno, Mau-Mau, Black Jack) & nein & (1) \\ \hline
-   Scoresystem & ja & - \\ \hline
-   Statistiken & nein & (1) \\ \hline
+   Passwortbeschränkung & ja & -\\ \hline
+   Statistiken & ja & - \\ \hline
+   Spielename & ja & -\\ \hline
    Mehrsprachen & ja & - \\ \hline
-   veränderbare GUI (Farben etc) & ja & - \\ \hline
+   Veränderbare GUI (Farben etc) & ja & - \\ \hline
+   Neue Runde direkt starten & nein & (1) \\ \hline
 \end{tabular}
 
 \begin{itemize}
-	\item \textbf{(1)} Zeitmangel, da auf andere Kriterien größerer Wert gelegt wurde. \\
+	\item \textbf{(1)} Es wurde auf andere Kriterien größerer Wert gelegt, z.B. Korrektheit des Spielablaufes. \\
 \end{itemize}
 
 \section{Bekannte Bugs}
@@ -379,8 +379,9 @@ closeConnection()\\
 	\item \textbf{Heartspunkte:} Bei Hearts wird noch die Anzahl der gemachten Stiche statt der Punkte angezeigt. \\
 	\item \textbf{GUI Hearts:} In Hearts kann man einige Komponenten, wie zb. die Anzeige der Trumpffarbe und -karte weglassen. \\
 	\item \textbf{Fehlermeldungen:} Einige Fehlermeldungen können noch optimiert werden. \\
-	\item \textbf{Nebenläufigkeit?????}  \\
-	\item \textbf{Scorefenster?????}  \\
+	\item \textbf{Kartenrückseite unter Linux:} Bild der Kartenrückseite wird unter Linux nicht sofort initialisiert. \\
+	\item \textbf{Spielende und Scorefenster:}  Das Spiel wird an Ende einfach beendet, eine Scorefenster wird nicht angezeigt.\\
+	\item \textbf{GUI Wizard:} In der letzten Runde sollte keine Trumpfkarte mehr angezeigt werden.\\
 \end{itemize}
 
 \end{document}
