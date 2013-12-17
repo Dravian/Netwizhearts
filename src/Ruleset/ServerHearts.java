@@ -1,6 +1,7 @@
 package Ruleset;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
@@ -11,7 +12,7 @@ import ComObjects.*;
 
 /**
  * ServerHearts. Diese Klasse erstellt das Regelwerk zum Spiel Hearts. Sie
- * enthaelt zudem weitere Methoden, welche f�r das Spiel Hearts spezifisch
+ * enthaelt zudem weitere Methoden, welche für das Spiel Hearts spezifisch
  * benoetigt werden, wie die Regelung zum Tausch von Karten und die Berechnung
  * der Stichpunkten.
  */
@@ -137,6 +138,8 @@ public class ServerHearts extends ServerRuleset {
 					throw new RulesetException("Fehler beim Tauschen.");
 				}
 
+				getGameState().sortHands(Colour.NONE);
+				
 				for (PlayerState player : getPlayers()) {
 					if (player.getHand().contains(HeartsCard.Kreuz2)) {
 						setCurrentPlayer(player);
@@ -474,7 +477,9 @@ public class ServerHearts extends ServerRuleset {
 		if (getGamePhase() == GamePhase.RoundStart) {
 			getGameState().shuffleDeck();
 			heartBroken = false;
-
+			
+			Comparator<Card> comp = new CardComparator(Colour.NONE);
+			
 			/*
 			 * Verteilt die Karten an Spieler. Wenn false zurück kommt wird ein
 			 * neues Deck erstellt und alle Karten im Spiel gelöscht. Wenn
@@ -486,6 +491,8 @@ public class ServerHearts extends ServerRuleset {
 				throw new RulesetException(
 						"Probleme beim Verteilen der Karten!");
 			}
+			
+			getGameState().sortHands(Colour.NONE);
 			
 			if (getRoundNumber() % 4 == 0) {
 				

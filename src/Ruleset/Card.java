@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Card. Dieses Interface modelliert eine Spielkarte
  */
-public interface Card {
+public interface Card{
 	
 	/**
 	 * Gibt den Wert der Karte zurück
@@ -24,4 +24,5 @@ public interface Card {
 	 * @return Den Spieltyp zu dem die Karte gehört
 	 */
 	public RulesetType getRuleset();
+	
 }

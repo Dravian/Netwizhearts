@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Eine leere Karte die zu keinem Spiel gehört
  */
-public enum EmptyCard implements Card, Serializable{
+public enum EmptyCard implements Card, Serializable {
 	Empty(-1,Colour.NONE);
 
 	private int value;

@@ -203,6 +203,12 @@ public class ClientHearts extends ClientRuleset {
 						return false;
 					}
 				}
+				if(!getGameState().getOwnHand().containsAll(cards)) {
+					getModel().openWarning(WarningMsg.WrongTradeCards);
+					getModel().openChooseCardsWindow(UserMessages.ChooseCards);
+					return false;
+				}
+				
 				send(new MsgMultiCards(cards));
 				return true;
 			}

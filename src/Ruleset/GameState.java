@@ -5,6 +5,7 @@ package Ruleset;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -271,7 +272,7 @@ public class GameState {
 					return false;
 				}
 			}
-
+			
 			for (PlayerState player : players) {
 				for (int i = 0; i < number; i++) {
 					player.getHand().add(getTopCard());
@@ -358,5 +359,20 @@ public class GameState {
 		discardPile = new ArrayList<DiscardedCard>();
 
 		player.getOtherData().madeTrick(madeTricks);
+	}
+	
+	/**
+	 * Sortiert die Handkarten der Spieler
+	 * @param colour Eine Farbe nach der sortiert wird
+	 */
+	protected void sortHands(Colour colour) {
+		Comparator<Card> comp = new CardComparator(colour);
+		
+		for(PlayerState player : players) {
+			if(!player.getHand().isEmpty()) {
+			Collections.sort(player.getHand(), comp);
+			}
+		}
+		
 	}
 }
