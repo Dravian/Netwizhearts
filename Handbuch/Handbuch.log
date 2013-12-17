@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.10.9)  16 DEC 2013 20:36
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.10.9)  17 DEC 2013 11:29
 entering extended mode
 **Handbuch.tex
 (C:\Users\AlinaAdmin\Documents\GitHub\sep13\Handbuch\Handbuch.tex
@@ -807,26 +807,26 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 100.
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 114--117
+Underfull \hbox (badness 10000) in paragraph at lines 115--118
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 120--122
+Underfull \hbox (badness 10000) in paragraph at lines 121--123
 
  []
 
 <Login-Fenster.png, id=103, 355.3275pt x 170.13562pt>
 File: Login-Fenster.png Graphic file (type png)
  <use Login-Fenster.png>
-Package pdftex.def Info: Login-Fenster.png used on input line 125.
+Package pdftex.def Info: Login-Fenster.png used on input line 126.
 (pdftex.def)             Requested size: 345.0pt x 165.19489pt.
 
 [3 <C:/Users/AlinaAdmin/Documents/GitHub/sep13/Handbuch/Login-Fenster.png>]
-<Lobby-Fenster.png, id=118, 560.8453pt x 426.09187pt>
+<Lobby-Fenster.png, id=117, 560.8453pt x 426.09187pt>
 File: Lobby-Fenster.png Graphic file (type png)
  <use Lobby-Fenster.png>
-Package pdftex.def Info: Lobby-Fenster.png used on input line 135.
+Package pdftex.def Info: Lobby-Fenster.png used on input line 136.
 (pdftex.def)             Requested size: 345.0pt x 262.1067pt.
 
 [4 <C:/Users/AlinaAdmin/Documents/GitHub/sep13/Handbuch/Lobby-Fenster.png>]
@@ -834,24 +834,24 @@ Package pdftex.def Info: Lobby-Fenster.png used on input line 135.
 File: Passwort-Fenster.png Graphic file (type png)
 
 <use Passwort-Fenster.png>
-Package pdftex.def Info: Passwort-Fenster.png used on input line 151.
+Package pdftex.def Info: Passwort-Fenster.png used on input line 153.
 (pdftex.def)             Requested size: 345.0pt x 170.83801pt.
 
 <Erstellungs-Fenster.png, id=131, 461.47406pt x 289.83281pt>
 File: Erstellungs-Fenster.png Graphic file (type png)
 
 <use Erstellungs-Fenster.png>
-Package pdftex.def Info: Erstellungs-Fenster.png used on input line 160.
+Package pdftex.def Info: Erstellungs-Fenster.png used on input line 162.
 (pdftex.def)             Requested size: 345.0pt x 216.67973pt.
  [5 <C:/Users/AlinaAdmin/Documents/GitHub/sep13/Handbuch/Passwort-Fenster.png>]
 
-Overfull \hbox (32.72691pt too wide) in paragraph at lines 162--163
+Overfull \hbox (32.72691pt too wide) in paragraph at lines 164--165
 []\OT1/cmr/bx/sc/10 1) Spie-l-aus-wahl: \OT1/cmr/m/n/10 Hier k[]onnen Sie in ei
 -nem Dropdown-Men[]u aus den[][]Regelwerk[]en
  []
 
 
-Overfull \hbox (6.09602pt too wide) in paragraph at lines 167--168
+Overfull \hbox (6.09602pt too wide) in paragraph at lines 169--170
 []\OT1/cmr/bx/sc/10 6) Erstellen-Knopf: \OT1/cmr/m/n/10 Wenn Sie mit Ih-ren Ein
 -stel-lun-gen fer-tig sind, dr[]ucken
  []
@@ -859,63 +859,71 @@ Overfull \hbox (6.09602pt too wide) in paragraph at lines 167--168
 <Warte-Fenster.png, id=141, 435.12563pt x 335.75438pt>
 File: Warte-Fenster.png Graphic file (type png)
  <use Warte-Fenster.png>
-Package pdftex.def Info: Warte-Fenster.png used on input line 169.
+Package pdftex.def Info: Warte-Fenster.png used on input line 171.
 (pdftex.def)             Requested size: 345.0pt x 266.2267pt.
 
 [6 <C:/Users/AlinaAdmin/Documents/GitHub/sep13/Handbuch/Erstellungs-Fenster.png
->] [7 <C:/Users/AlinaAdmin/Documents/GitHub/sep13/Handbuch/Warte-Fenster.png>]
-Overfull \hbox (0.55884pt too wide) in paragraph at lines 206--207
+>] <Spiel-Fenster.png, id=159, 939.51pt x 635.37375pt>
+File: Spiel-Fenster.png Graphic file (type png)
+ <use Spiel-Fenster.png>
+Package pdftex.def Info: Spiel-Fenster.png used on input line 184.
+(pdftex.def)             Requested size: 345.0pt x 233.31041pt.
+
+[7 <C:/Users/AlinaAdmin/Documents/GitHub/sep13/Handbuch/Warte-Fenster.png>]
+[8 <C:/Users/AlinaAdmin/Documents/GitHub/sep13/Handbuch/Spiel-Fenster.png>]
+Overfull \hbox (0.55884pt too wide) in paragraph at lines 210--211
 []\OT1/cmr/bx/sc/10 Spiel: \OT1/cmr/m/n/10 Im Uhr-zei-ger-sinn wer-den Kar-ten 
 ge-spielt. Da-bei herrscht [][]Farb-
  []
 
-[8] [9]
-Overfull \hbox (8.50827pt too wide) in paragraph at lines 248--255
+[9]
+Overfull \hbox (8.50827pt too wide) in paragraph at lines 252--259
 \OT1/cmr/m/n/10 be-reits be-legt sein, be-kom-men Sie ei-ne Feh-ler-mel-dung, b
 it-te w[]ahlen
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 248--255
+Underfull \hbox (badness 10000) in paragraph at lines 252--259
 
  []
 
+[10]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\gls' on input line 259.
+(hyperref)                removing `\gls' on input line 263.
 
-[10] [11] (C:\Users\AlinaAdmin\Documents\GitHub\sep13\Handbuch\Handbuch.gls)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 287.
+[11] [12] (C:\Users\AlinaAdmin\Documents\GitHub\sep13\Handbuch\Handbuch.gls)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 292.
 
-[12]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 287.
+[13]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 292.
  (C:\Users\AlinaAdmin\Documents\GitHub\sep13\Handbuch\Handbuch.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 287.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 287.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 292.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 292.
 Package rerunfilecheck Info: File `Handbuch.out' has not changed.
 (rerunfilecheck)             Checksum: 9F0055B30A0A8B61E7D2DD1368D062AB;829.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 287.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 292.
  ) 
 Here is how much of TeX's memory you used:
- 12329 strings out of 493921
- 181307 string characters out of 3147267
+ 12335 strings out of 493921
+ 181418 string characters out of 3147267
  312529 words of memory out of 3000000
- 15373 multiletter control sequences out of 15000+200000
+ 15377 multiletter control sequences out of 15000+200000
  5919 words of font info for 22 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 46i,7n,40p,1459b,750s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 46i,7n,40p,1459b,563s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTe
 X 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fon
 ts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Handbuch.pdf (13 pages, 1802879 bytes).
+Output written on Handbuch.pdf (14 pages, 2187914 bytes).
 PDF statistics:
- 276 PDF objects out of 1000 (max. 8388607)
- 46 named destinations out of 1000 (max. 500000)
- 143 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 281 PDF objects out of 1000 (max. 8388607)
+ 47 named destinations out of 1000 (max. 500000)
+ 148 words of extra memory for PDF output out of 10000 (max. 10000000)
 
