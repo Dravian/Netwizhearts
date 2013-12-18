@@ -111,6 +111,11 @@ public class ServerHearts extends ServerRuleset {
 			throw new IllegalStateException(
 					"Es werden in dieser Phase werden keine Tauschkarten erwartet.");
 
+		} else if(getPlayedCards().size() < 0 || getPlayedCards().size() >= getPlayers().size()) {
+			broadcast(WarningMsg.RulesetError);
+	    	quitGame();
+	    	throw new RulesetException("Der Ablagestapel ist bereits voll.");
+	    	
 		} else if (!areValidChoosenCards(cards, name)) {
 			setGamePhase(GamePhase.MultipleCardRequest);
 			send(WarningMsg.WrongTradeCards, name);
@@ -163,14 +168,7 @@ public class ServerHearts extends ServerRuleset {
 	protected boolean isValidMove(Card card) {
 	    setGamePhase(GamePhase.Playing);
 	
-	    // Jeder Spieler hat bereits eine Karte gespielt
-	    if (getPlayedCards().size() == getPlayers().size()) {
-	    	broadcast(WarningMsg.RulesetError);
-	    	quitGame();
-	    	throw new RulesetException("Der Ablagestapel ist bereits voll.");
-	    	
-	        // Die Spieler befinden sich in der ersten Runde
-	    } else if (getCurrentPlayer().getHand().size() == 13) {
+	    if (getCurrentPlayer().getHand().size() == 13) {
 	        // Noch kein Spieler hat eine Karte gespielt
 	        if (getPlayedCards().size() == 0) {
 	            // Die erste Karte jeder Runde muss die Kreu2 sein.
@@ -370,7 +368,9 @@ public class ServerHearts extends ServerRuleset {
 				noOneHasACard = false;
 			}
 		}
-
+		
+		broadcast(new MsgBoolean(heartBroken));
+		
 		if (noOneHasACard) {
 			setGamePhase(GamePhase.RoundEnd);
 			calculateRoundOutcome();

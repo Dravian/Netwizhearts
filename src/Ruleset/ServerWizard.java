@@ -77,7 +77,12 @@ public class ServerWizard extends ServerRuleset {
             throw new IllegalArgumentException("Die Karte " + card.getValue()
                     + card.getColour() + " gehört nicht zum Spiel");
 
-        } else if (!isValidMove(card)) {
+        } else if(getPlayedCards().size() == getPlayers().size()) {
+    		broadcast(WarningMsg.RulesetError);
+        	quitGame();
+    		throw new RulesetException(" Der Ablagestapel ist bereits voll.");
+    	
+    	} else if (!isValidMove(card)) {
         	setGamePhase(GamePhase.CardRequest);
         	send(WarningMsg.UnvalidMove, name);
         	send(new MsgCardRequest(), name);
@@ -179,12 +184,7 @@ public class ServerWizard extends ServerRuleset {
         int valueOfFool = 0;
     	int valueOfSorcerer = 14;
     	
-    	if(getPlayedCards().size() == getPlayers().size()) {
-    		broadcast(WarningMsg.RulesetError);
-        	quitGame();
-    		throw new RulesetException(" Der Ablagestapel ist bereits voll.");
-    	
-    	}else if(getPlayedCards().size() == 0) {
+    	if(getPlayedCards().size() == 0) {
     		return true;
     	
     	} else  if(card.getValue() == valueOfFool) {

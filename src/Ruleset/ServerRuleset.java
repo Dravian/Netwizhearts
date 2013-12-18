@@ -534,4 +534,15 @@ public abstract class ServerRuleset {
 				"keine Verwendung.");	
 		
 	}
+	
+	/**
+	 * Wird nicht verwendet
+	 * @param msgBool
+	 * @param name
+	 */
+	public void resolveMessage(MsgBoolean msgBool, String name) {
+		send(WarningMsg.WrongMethodCalled, name);
+		throw new IllegalArgumentException("Das ComObjekt MsgBoolean findet " +
+				"keine Verwendung in diesem Spiel");
+	}
 }

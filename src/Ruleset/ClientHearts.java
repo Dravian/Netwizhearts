@@ -35,100 +35,79 @@ public class ClientHearts extends ClientRuleset {
 	}
 
 	@Override
-	public boolean isValidMove(Card card) {
+	protected boolean isValidMove(Card card) {
+		// Erste Runde
+		if (getGameState().getOwnHand().size() == 13) {
 
-		if (getGamePhase() == GamePhase.CardRequest) {
-			// Jeder Spieler hat bereits eine Karte gespielt
-			if (getPlayedCards().size() == getOtherPlayerData().size() + 1) {
-				getModel().openWarning(WarningMsg.RulesetError);
-				throw new RulesetException("Der Ablagestapel ist bereits voll.");
+			// Noch kein Spieler hat eine Karte gespielt
+			if (getPlayedCards().size() == 0) {
 
-				// Die Spieler befinden sich in der ersten Runde
-			} else if (getGameState().getOwnHand().size() == 13) {
-
-				// Noch kein Spieler hat eine Karte gespielt
-				if (getPlayedCards().size() == 0) {
-
-					// Die erste Karte jeder Runde muss die Kreu2 sein.
-					if (card != HeartsCard.Kreuz2) {
-						getModel().openWarning(WarningMsg.UnvalidMove);
-						getModel().announceTurn(UserMessages.PlayCard);
-						return false;
-					} else {
-						send(new MsgCard(card));
-						return true;
-					}
-
-					// Es wurden bereits Karten gespielt
+				// Die erste Karte jeder Runde muss die Kreu2 sein.
+				if (card != HeartsCard.Kreuz2) {
+					return false;
 				} else {
-
-					// In der ersten Runde darf kein Herz und nicht die PikDame
-					// gespielt werden
-					if (card.getColour() == Colour.HEART
-							|| card == HeartsCard.PikDame) {
-
-						// Wenn der Spieler nur Herz auf der Hand hat, oder nur
-						// Herz und die PikDame
-						List<Card> hand = getGameState().getOwnHand();
-
-						for (Card handCard : hand) {
-
-							// Wenn in der Spielerhand eine Karte weder Herz
-							// noch PikDame ist
-							if (handCard != HeartsCard.PikDame && handCard.getColour() != Colour.HEART) {
-								getModel().openWarning(WarningMsg.UnvalidMove);
-								getModel().announceTurn(UserMessages.PlayCard);
-								return false;
-							}
-						}
-						send(new MsgCard(card));
-						return true;
-					} else {
-						return testOtherHandCards(card);
-					}
+					return true;
 				}
 
-				// Die Spieler befinden sich nicht mehr im ersten Umlauf
+				// Es wurden bereits Karten gespielt
 			} else {
 
-				// In diesem Umlauf wurde noch keine Karte gespielt
-				if (getPlayedCards().size() == 0) {
+				// In der ersten Runde darf kein Herz und nicht die PikDame
+				// gespielt werden
+				if (card.getColour() == Colour.HEART
+						|| card == HeartsCard.PikDame) {
 
-					// Die Karte, die gespielt werden soll, hat die Farbe Herz
-					if (card.getColour() == Colour.HEART) {
-						// Wurde Herz schon einmal gespielt
-						/*if (heartBroken == true) {
-							send(new MsgCard(card));
-							return true;
-						} 
-						else {
-							for (Card handCard : getGameState().getOwnHand()) {
-								if (handCard.getColour() != Colour.HEART){
-									getModel().openWarning(WarningMsg.UnvalidMove);
-									getModel().announceTurn(UserMessages.PlayCard);
-									return false;
-								}
-							}
-							heartBroken = true;
-							send(new MsgCard(card));
-							return true;
-						}*/
-						send(new MsgCard(card));
-						return true;
-						// Die Karte hat nicht die Farbe Herz
-					} else {
-						send(new MsgCard(card));
-						return true;
+					// Wenn der Spieler nur Herz auf der Hand hat, oder nur
+					// Herz und die PikDame
+					List<Card> hand = getGameState().getOwnHand();
+
+					for (Card handCard : hand) {
+
+						// Wenn in der Spielerhand eine Karte weder Herz
+						// noch PikDame ist
+						if (handCard != HeartsCard.PikDame
+								&& handCard.getColour() != Colour.HEART) {
+							return false;
+						}
 					}
-					// Es wurden schon Karten gespielt
+					return true;
 				} else {
 					return testOtherHandCards(card);
 				}
 			}
+
+			// Die Spieler befinden sich nicht mehr im ersten Umlauf
 		} else {
-			getModel().openWarning(WarningMsg.WrongPhase);
-			throw new IllegalStateException("Jetzt darf keine Karte gespielt werden.");
+
+			// In diesem Umlauf wurde noch keine Karte gespielt
+			if (getPlayedCards().size() == 0) {
+
+				// Die Karte, die gespielt werden soll, hat die Farbe Herz
+				if (card.getColour() == Colour.HEART) {
+					// Wurde Herz schon einmal gespielt
+
+					if (heartBroken == true) {
+						return true;
+					} else {
+						for (Card handCard : getGameState().getOwnHand()) {
+							if (handCard.getColour() != Colour.HEART) {
+								return false;
+							}
+						}
+						heartBroken = true;
+						return true;
+					}
+
+				// Die Karte hat nicht die Farbe Herz
+				} else {
+					return true;
+				}
+				// Es wurden schon Karten gespielt
+			} else {
+				return testOtherHandCards(card);
+			}
 		}
+
 	}
 
 	/**
@@ -149,22 +128,18 @@ public class ClientHearts extends ClientRuleset {
 				// Es gibt eine Karte auf der Hand, die die Farbe der
 				// erstgepielten Karte hat
 				if (handCard.getColour() == firstCard.getColour()) {
-					getModel().openWarning(WarningMsg.UnvalidMove);
-					getModel().announceTurn(UserMessages.PlayCard);
 					return false;
-				} 
+				}
 			}
 
 			// Die zu spielende Karte hat die Farbe Herz
 			if (card.getColour() == Colour.HEART) {
 				heartBroken = true;
 			}
-			send(new MsgCard(card));
 			return true;
 		} else {
 			// Die Karte hat die selbe Farbe, wie die erste ausgespielte Karte
 			// der Runde
-			send(new MsgCard(card));
 			return true;
 		}
 	}
@@ -193,32 +168,27 @@ public class ClientHearts extends ClientRuleset {
 	}
 
 	@Override
-	public boolean areValidChoosenCards(Set<Card> cards) {
-		if (getGamePhase() == GamePhase.MultipleCardRequest) {
-			if (cards.size() == 3) {
-				for (Card card : cards) {
-					if (card.getRuleset() != RulesetType.Hearts) {
-						getModel().openWarning(WarningMsg.WrongTradeCards);
-						getModel().openChooseCardsWindow(UserMessages.ChooseCards);
-						return false;
-					}
-				}
-				if(!getGameState().getOwnHand().containsAll(cards)) {
-					getModel().openWarning(WarningMsg.WrongTradeCards);
-					getModel().openChooseCardsWindow(UserMessages.ChooseCards);
+	public void resolveMessage(MsgBoolean msgBool) {
+		heartBroken = msgBool.getBool();
+	}
+
+	@Override
+	protected boolean areValidChoosenCards(Set<Card> cards) {
+		if (cards.size() == 3) {
+			for (Card card : cards) {
+				if (card.getRuleset() != RulesetType.Hearts) {
 					return false;
 				}
-				
-				send(new MsgMultiCards(cards));
-				return true;
 			}
-			getModel().openWarning(WarningMsg.WrongTradeCards);
-			getModel().openChooseCardsWindow(UserMessages.ChooseCards);
-			return false;
-		} else {
-			getModel().openWarning(WarningMsg.WrongPhase);
-			throw new IllegalStateException("Jetzt werden keine Karten getauscht");
+			if (!getGameState().getOwnHand().containsAll(cards)) {
+				return false;
+			}
+
+			return true;
 		}
+		getModel().openWarning(WarningMsg.WrongTradeCards);
+		getModel().openChooseCardsWindow(UserMessages.ChooseCards);
+		return false;
 
 	}
 
