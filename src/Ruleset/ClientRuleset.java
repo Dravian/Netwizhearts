@@ -3,6 +3,7 @@
  */
 package Ruleset;
 
+import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
@@ -467,12 +468,12 @@ public abstract class ClientRuleset {
 	 * @param cards
 	 *            Die zu tauschenden Karten
 	 */
-	public void chooseCards(Set<Card> cards) {
+	public void chooseCards(List<Card> cards) {
 		if (RULESET == RulesetType.Hearts) {
 			if (getGamePhase() == GamePhase.MultipleCardRequest) {
-
-				if (areValidChoosenCards(cards)) {
-					send(new MsgMultiCards(cards));
+				Set chooseCards = new HashSet(cards);
+				if (areValidChoosenCards(new HashSet(cards))) {
+					send(new MsgMultiCards(chooseCards));
 				} else {
 					getModel().openWarning(WarningMsg.WrongTradeCards);
 					getModel().openChooseCardsWindow(UserMessages.ChooseCards);
