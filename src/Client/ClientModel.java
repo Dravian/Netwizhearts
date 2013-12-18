@@ -657,10 +657,7 @@ public class ClientModel extends Observable {
 			if (cards != null) {
 				if (!cards.isEmpty()) {
 					if (ruleset != null) {
-						if (!ruleset.areValidChoosenCards(
-								new HashSet<Card>(cards))) {
-							informView(ViewNotification.openChooseCards);
-						}
+						ruleset.chooseCards(cards);
 					} else {
 						throw new IllegalStateException("Kein"
 								+ " Regelwerk instanziert");
@@ -707,9 +704,7 @@ public class ClientModel extends Observable {
 		if (state == ClientState.GAME) {
 			if (colour != null) {
 				if (ruleset != null) {
-					if (!ruleset.isValidColour(colour)) {
-						informView(ViewNotification.openChooseItem);
-					}
+					ruleset.chooseColour(colour);
 				} else {
 					throw new IllegalStateException("Kein"
 							+ " Regelwerk instanziert");
@@ -771,9 +766,7 @@ public class ClientModel extends Observable {
 	public final void giveInputNumber(final int number) {
 		if (state == ClientState.GAME) {
 			if (ruleset != null) {
-				if (!ruleset.isValidTrickNumber(number)) {
-					informView(ViewNotification.openInputNumber);
-				}
+				ruleset.chooseTrickNumber(number);
 			} else {
 				throw new IllegalStateException("Kein Regelwerk instanziert");
 			}
@@ -953,7 +946,7 @@ public class ClientModel extends Observable {
 		if (state == ClientState.GAME) {
 			if (card != null) {
 				if (ruleset != null) {
-					ruleset.isValidMove(card);
+					ruleset.playCard(card);;
 				} else {
 					throw new IllegalStateException("Kein"
 							+ " Regelwerk instanziert");
