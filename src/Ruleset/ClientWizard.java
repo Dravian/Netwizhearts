@@ -85,134 +85,100 @@ public class ClientWizard extends ClientRuleset {
 	}
 
 	@Override
-	public boolean isValidMove(Card card) {
-		if (getGamePhase() == GamePhase.CardRequest) {
-			int valueOfFool = 0;
-			int valueOfSorcerer = 14;
+	protected boolean isValidMove(Card card) {
+		int valueOfFool = 0;
+		int valueOfSorcerer = 14;
 
-			if (getPlayedCards().size() == getOtherPlayerData().size() + 1) {
-				getModel().openWarning(WarningMsg.RulesetError);
-				throw new RulesetException("Der Ablagestapel ist bereits voll");
-			} else if (getPlayedCards().size() == 0) {
-				send(new MsgCard(card));
-				return true;
+		if (getPlayedCards().size() == 0) {
+			return true;
 
-			} else if (card.getValue() == valueOfFool) {
-				send(new MsgCard(card));
-				return true;
+		} else if (card.getValue() == valueOfFool) {
+			return true;
 
-			} else if (card.getValue() == valueOfSorcerer) {
-				send(new MsgCard(card));
-				return true;
-			}
+		} else if (card.getValue() == valueOfSorcerer) {
+			return true;
+		}
 
-			Card firstCard = getPlayedCards().get(0).getCard();
+		Card firstCard = getPlayedCards().get(0).getCard();
 
-			if (firstCard.getValue() == valueOfSorcerer) {
-				send(new MsgCard(card));
-				return true;
-			}
+		if (firstCard.getValue() == valueOfSorcerer) {
+			return true;
+		}
 
-			/*
-			 * Falls die nächste Karte Narr ist, wird die als nächstgespielte
-			 * Karte als erste Karte gesetzt, außer es liegen keine Karten mehr
-			 * im Ablagestapel
-			 */
-			for (int i = 1; i < getPlayedCards().size(); i++) {
-				if (firstCard.getValue() == valueOfFool) {
-					firstCard = getPlayedCards().get(i).getCard();
-				} else {
-					break;
-				}
-			}
-
+		/*
+		 * Falls die nächste Karte Narr ist, wird die als nächstgespielte Karte
+		 * als erste Karte gesetzt, außer es liegen keine Karten mehr im
+		 * Ablagestapel
+		 */
+		for (int i = 1; i < getPlayedCards().size(); i++) {
 			if (firstCard.getValue() == valueOfFool) {
-				send(new MsgCard(card));
-				return true;
-
-			} else if (card.getColour() == firstCard.getColour()) {
-				send(new MsgCard(card));
-				return true;
+				firstCard = getPlayedCards().get(i).getCard();
+			} else {
+				break;
 			}
+		}
 
-			List<Card> hand = getGameState().getOwnHand();
+		if (firstCard.getValue() == valueOfFool) {
+			return true;
 
-			for (Card handCard : hand) {
-				if (handCard.getColour() == firstCard.getColour()
-						&& handCard.getValue() != valueOfFool
-						&& handCard.getValue() != valueOfSorcerer) {
-					setGamePhase(GamePhase.CardRequest);
-					getModel().openWarning(WarningMsg.UnvalidMove);
-					getModel().announceTurn(UserMessages.PlayCard);
-					return false;
-				}
+		} else if (card.getColour() == firstCard.getColour()) {
+			return true;
+		}
+
+		List<Card> hand = getGameState().getOwnHand();
+
+		for (Card handCard : hand) {
+			if (handCard.getColour() == firstCard.getColour()
+					&& handCard.getValue() != valueOfFool
+					&& handCard.getValue() != valueOfSorcerer) {
+				setGamePhase(GamePhase.CardRequest);
+				return false;
 			}
-			send(new MsgCard(card));
+		}
+		return true;
+
+	}
+
+	@Override
+	protected boolean isValidTrickNumber(int number) {
+		if (number >= 0 && number <= getGameState().getRoundNumber()) {
+			send(new MsgNumber(number));
 			return true;
 		} else {
-			getModel().openWarning(WarningMsg.WrongPhase);
-			throw new IllegalStateException("Jetzt darf keine Karte gespielt werden.");
+			return false;
 		}
+
 	}
 
 	@Override
-	public boolean isValidTrickNumber(int number) {
-		if (getGamePhase() == GamePhase.TrickRequest) {
-		
-			if (number >= 0 && number <= getGameState().getOwnHand().size()) {
-				send(new MsgNumber(number));
-				return true;
-			} else {
-				setGamePhase(GamePhase.TrickRequest);
-				getModel().openWarning(WarningMsg.WrongNumber);
-				getModel().openNumberInputWindow(UserMessages.ChooseNumber);
-				return false;
-			}
+	protected boolean isValidColour(Colour colour) {
+
+		if (colour == Colour.RED) {
+			return true;
+
+		} else if (colour == Colour.GREEN) {
+			return true;
+
+		} else if (colour == Colour.BLUE) {
+			return true;
+
+		} else if (colour == Colour.YELLOW) {
+			return true;
+
 		} else {
-			getModel().openWarning(WarningMsg.WrongPhase);
-			throw new IllegalStateException("Jetzt darf keine Zahl angesagt werden.");
+			return false;
 		}
-	}
 
-	@Override
-	public boolean isValidColour(Colour colour) {
-		if (getGamePhase() == GamePhase.SelectionRequest) {
-
-			if (colour == Colour.RED) {
-				send(new MsgSelection(colour));
-				return true;
-
-			} else if (colour == Colour.GREEN) {
-				send(new MsgSelection(colour));
-				return true;
-
-			} else if (colour == Colour.BLUE) {
-				send(new MsgSelection(colour));
-				return true;
-
-			} else if (colour == Colour.YELLOW) {
-				send(new MsgSelection(colour));
-				return true;
-
-			} else {
-				getModel().openWarning(WarningMsg.WrongColour);
-				getModel().openChooseColourWindow(UserMessages.ChooseColour);
-				return false;
-			}
-		} else {
-			getModel().openWarning(WarningMsg.WrongPhase);
-			throw new IllegalStateException("Jetzt darf keine Farbe ausgewählt werden.");
-		}
 	}
 
 	@Override
 	public Colour getTrumpColour() {
 		return trumpColour;
 	}
-	
+
 	@Override
 	public List<Colour> getColours() {
 		return colours;
 	}
-	
+
 }

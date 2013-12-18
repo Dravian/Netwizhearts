@@ -37,7 +37,7 @@ public abstract class ClientRuleset {
 	 * Die momentane Spielphase
 	 */
 	private GamePhase gamePhase;
-	
+
 	/**
 	 * Die Gewinner des Spiels
 	 */
@@ -79,6 +79,7 @@ public abstract class ClientRuleset {
 
 	/**
 	 * Gibt die momentane Spielphase zurück
+	 * 
 	 * @return gamePhase Die Spielphase
 	 */
 	public GamePhase getGamePhase() {
@@ -126,6 +127,7 @@ public abstract class ClientRuleset {
 
 	/**
 	 * Holt die OtherData eines anderen Spielers
+	 * 
 	 * @return otherPlayerData Die OtherData
 	 */
 	public List<OtherData> getOtherPlayerData() {
@@ -177,6 +179,7 @@ public abstract class ClientRuleset {
 
 	/**
 	 * Holt die gespielten Karten auf dem Ablagestapel als DiscardedCards
+	 * 
 	 * @return Die gespielten Karten
 	 */
 	public List<DiscardedCard> getPlayedCards() {
@@ -186,15 +189,17 @@ public abstract class ClientRuleset {
 			return gameState.getPlayedCards();
 		}
 	}
-	
+
 	public List<String> getWinners() {
-		if(gamePhase == GamePhase.Ending) {
+		if (gamePhase == GamePhase.Ending) {
 			return winners;
 		} else {
 			getModel().openWarning(WarningMsg.WrongPhase);
-			throw new IllegalStateException("Jetzt ist das Spiel noch nicht zu Ende.");
+			throw new IllegalStateException(
+					"Jetzt ist das Spiel noch nicht zu Ende.");
 		}
 	}
+
 	/**
 	 * Verarbeitet eine RulesetMessage vom Server
 	 * 
@@ -255,6 +260,7 @@ public abstract class ClientRuleset {
 
 	/**
 	 * Holt das Model
+	 * 
 	 * @return Das Model
 	 */
 	protected ClientModel getModel() {
@@ -279,10 +285,11 @@ public abstract class ClientRuleset {
 	 *            Die Karte
 	 * @return true falls die Karte gueltig ist, false wenn nicht
 	 */
-	public abstract boolean isValidMove(Card card);
+	protected abstract boolean isValidMove(Card card);
 
 	/**
 	 * Wird nicht verwendet
+	 * 
 	 * @param card
 	 */
 	public void resolveMessage(MsgCard card) {
@@ -292,6 +299,7 @@ public abstract class ClientRuleset {
 
 	/**
 	 * Wird nicht verwendet
+	 * 
 	 * @param card
 	 */
 	public void resolveMessage(MsgNumber number) {
@@ -301,6 +309,7 @@ public abstract class ClientRuleset {
 
 	/**
 	 * Wird nicht verwendet
+	 * 
 	 * @param card
 	 */
 	public void resolveMessage(MsgSelection selection) {
@@ -310,6 +319,7 @@ public abstract class ClientRuleset {
 
 	/**
 	 * Wird nicht verwendet
+	 * 
 	 * @param card
 	 */
 	public void resolveMessage(MsgMultiCards mulit) {
@@ -353,16 +363,31 @@ public abstract class ClientRuleset {
 				"Das Comobject MsgMultiCardsRequest wird hier nicht"
 						+ "gebraucht");
 	}
-	
+
+	/**
+	 * Verarbeitet die RulesetMessage dass der Server dem Spieler ein Boolean
+	 * schickt
+	 * 
+	 * @param msgBool
+	 *            RulesetMessage mit Boolean
+	 */
+	public void resolveMessage(MsgBoolean msgBool) {
+		throw new IllegalArgumentException("Das ComObjekt MsgBoolean findet "
+				+ "keine Verwendung in diesem Spiel");
+	}
+
 	/**
 	 * Prüft ob die Anzahl der angesagten Stiche vom Spieler gültig sind
-	 * @param number Die Anzahl der angesagten Stichen
+	 * 
+	 * @param number
+	 *            Die Anzahl der angesagten Stichen
 	 * @return true falls die Anzahl der Stiche passen, false wenn nicht
 	 */
-	public boolean isValidTrickNumber(int number) {
-		throw new UnsupportedOperationException("Wird in diesem Ruleset nicht verwendet");
+	protected boolean isValidTrickNumber(int number) {
+		throw new UnsupportedOperationException(
+				"Wird in diesem Ruleset nicht verwendet");
 	}
-	
+
 	/**
 	 * Prüft ob die angesagte Trumpffarbe richtig ist
 	 * 
@@ -370,10 +395,11 @@ public abstract class ClientRuleset {
 	 *            Die angesagte Trumpffarbe
 	 * @return true falls die Farbe in Ordnung ist, false wenn nicht
 	 */
-	public boolean isValidColour(Colour colour) {
-		throw new UnsupportedOperationException("Wird in diesem Ruleset nicht verwendet");
+	protected boolean isValidColour(Colour colour) {
+		throw new UnsupportedOperationException(
+				"Wird in diesem Ruleset nicht verwendet");
 	}
-	
+
 	/**
 	 * Gibt zurück ob die Karten die der Client tauschen will, gültig sind
 	 * 
@@ -381,25 +407,136 @@ public abstract class ClientRuleset {
 	 *            Die zu tauschenden Karten
 	 * @return true wenn Karten valide sind, false wenn nicht
 	 */
-	public boolean areValidChoosenCards(Set<Card> cards) {
-		throw new UnsupportedOperationException("Wird in diesem Ruleset nicht verwendet");
+	protected boolean areValidChoosenCards(Set<Card> cards) {
+		throw new UnsupportedOperationException(
+				"Wird in diesem Ruleset nicht verwendet");
 	}
-	
+
 	/**
 	 * Holt die Trumpffarbe des Spiels
+	 * 
 	 * @return Gibt die Trumpffarbe zurück
 	 */
 	public Colour getTrumpColour() {
-		throw new UnsupportedOperationException("Wird in diesem Ruleset nicht verwendet");
+		throw new UnsupportedOperationException(
+				"Wird in diesem Ruleset nicht verwendet");
 
 	}
-	
+
 	/**
 	 * Gibt die Farben die es im Spiel gibt zurück
+	 * 
 	 * @return Die Farben des Spiels
 	 */
 	public List<Colour> getColours() {
-		throw new UnsupportedOperationException("Wird in diesem Ruleset nicht verwendet");
+		throw new UnsupportedOperationException(
+				"Wird in diesem Ruleset nicht verwendet");
 
+	}
+
+	/**
+	 * Wird vom Model aufgerufen um eine Karte zu spielen
+	 * 
+	 * @param card
+	 *            Die zu spielende Karte
+	 */
+	public void playCard(Card card) {
+		if (getGamePhase() == GamePhase.CardRequest) {
+
+			if (getPlayedCards().size() >= getOtherPlayerData().size() + 1
+					|| getPlayedCards().size() < 0) {
+				getModel().openWarning(WarningMsg.RulesetError);
+				throw new RulesetException("Der Ablagestapel ist bereits voll.");
+
+			} else if (isValidMove(card)) {
+				send(new MsgCard(card));
+			} else {
+				getModel().openWarning(WarningMsg.UnvalidMove);
+				getModel().announceTurn(UserMessages.PlayCard);
+			}
+		} else {
+			getModel().openWarning(WarningMsg.WrongPhase);
+			throw new IllegalStateException(
+					"Jetzt darf keine Karte gespielt werden.");
+		}
+	}
+
+	/**
+	 * Wird vom Model aufgerufen um Karten zu tauschen
+	 * 
+	 * @param cards
+	 *            Die zu tauschenden Karten
+	 */
+	public void chooseCards(Set<Card> cards) {
+		if (RULESET == RulesetType.Hearts) {
+			if (getGamePhase() == GamePhase.MultipleCardRequest) {
+
+				if (areValidChoosenCards(cards)) {
+					send(new MsgMultiCards(cards));
+				} else {
+					getModel().openWarning(WarningMsg.WrongTradeCards);
+					getModel().openChooseCardsWindow(UserMessages.ChooseCards);
+				}
+
+			} else {
+				getModel().openWarning(WarningMsg.WrongPhase);
+				throw new IllegalStateException(
+						"Jetzt werden keine Karten getauscht");
+			}
+		} else {
+			throw new UnsupportedOperationException(
+					"Wird in diesem Ruleset nicht verwendet");
+		}
+	}
+	
+	/**
+	 * Wird vom Model aufgerufen um eine Nummer auszuwählen
+	 * @param number Die ausgewählte Nummer
+	 */
+	public void chooseTrickNumber(int number) {
+		if(RULESET == RulesetType.Wizard) {
+			if (getGamePhase() == GamePhase.TrickRequest) {
+			
+				if(isValidTrickNumber(number)) {
+					send(new MsgNumber(number));
+				} else {
+					setGamePhase(GamePhase.TrickRequest);
+					getModel().openWarning(WarningMsg.WrongNumber);
+					getModel().openNumberInputWindow(UserMessages.ChooseNumber);
+				}
+				
+			} else {
+				getModel().openWarning(WarningMsg.WrongPhase);
+				throw new IllegalStateException(
+						"Jetzt darf keine Zahl angesagt werden.");
+			}
+		} else {
+			throw new IllegalArgumentException("Das ComObjekt MsgBoolean findet "
+					+ "keine Verwendung in diesem Spiel");
+		}
+	}
+
+	/**
+	 * Wird vom Model aufgerufen um eine Farbe auszuwählen
+	 * @param colour Die zu wählende Farbe
+	 */
+	public void chooseColour(Colour colour) {
+		if(RULESET == RulesetType.Wizard) {
+			if (getGamePhase() == GamePhase.SelectionRequest) {
+				if(isValidColour(colour)) {
+					send(new MsgSelection(colour));
+				} else {
+					getModel().openWarning(WarningMsg.WrongColour);
+					getModel().openChooseColourWindow(UserMessages.ChooseColour);
+				}
+			} else {
+				getModel().openWarning(WarningMsg.WrongPhase);
+				throw new IllegalStateException(
+						"Jetzt darf keine Farbe ausgewählt werden.");
+			}
+		} else {
+			throw new UnsupportedOperationException(
+					"Wird in diesem Ruleset nicht verwendet");
+		}
 	}
 }
