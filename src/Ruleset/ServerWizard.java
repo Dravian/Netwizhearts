@@ -2,7 +2,6 @@ package Ruleset;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import Server.GameServer;
 import ComObjects.*;
@@ -164,6 +163,8 @@ public class ServerWizard extends ServerRuleset {
                 throw new IllegalArgumentException("Die Farbe " + colour
                         + "existiert in Wizard nicht");
             } else {
+            	getGameState().sortHands(trumpColour);
+            	updatePlayers();
                 broadcast(new MsgSelection(colour));
 
                 setGamePhase(GamePhase.TrickRequest);
@@ -355,7 +356,7 @@ public class ServerWizard extends ServerRuleset {
             int valueOfFool = 0;
             
             getGameState().shuffleDeck();
-
+            
 			/*
 			 * Verteilt die Karten an Spieler. Wenn false zurück kommt wirft es eine RulesetException
 			 */
@@ -370,12 +371,12 @@ public class ServerWizard extends ServerRuleset {
             Card uncoveredCard = getGameState().getTopCard();
             getGameState().setUncoveredCard(uncoveredCard);
 
-            
 			/*
 			 * Falls ein Zauberer aufgedeckt wird, darf der Spieler vor dem
 			 * firstPlayer entscheiden welche Farbe Trumpf ist.
 			 */
             if (uncoveredCard.getValue() == valueOfSorcerer) {
+            	getGameState().sortHands(Colour.NONE);
             	updatePlayers();
             	setGamePhase(GamePhase.SelectionRequest);
                 send(new MsgSelectionRequest(), getFirstPlayer().getPlayerStateName());
@@ -387,6 +388,7 @@ public class ServerWizard extends ServerRuleset {
             	} else {
             		trumpColour = Colour.NONE;
             	}
+            	getGameState().sortHands(trumpColour);
             	
             	setGamePhase(GamePhase.TrickRequest);
                 nextPlayer();

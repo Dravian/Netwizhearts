@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * HeartsCard. Modelliert eine Heartskarte.
  */
-public enum HeartsCard implements Card, Serializable{
+public enum HeartsCard implements Card,Comparable<HeartsCard>, Serializable{
 
 	Herz2(2,Colour.HEART),Herz3(3,Colour.HEART),Herz4(4,Colour.HEART),
 	Herz5(5,Colour.HEART), Herz6(6,Colour.HEART),Herz7(7,Colour.HEART),
@@ -72,4 +72,68 @@ public enum HeartsCard implements Card, Serializable{
 		return ruleset;
 	}
 
+	public int compareTo(Card card) {
+		if(card.getRuleset() != RulesetType.Hearts) {
+			throw new IllegalArgumentException("Falscher Kartenvergleich");
+		
+		} else if(colour == Colour.CLUB) {
+			if(card.getColour() == Colour.CLUB) {
+				if(value < card.getValue()) {
+					return -1;
+				} else {
+					return 1;
+				}
+			} else if(card.getColour() == Colour.DIAMOND) {
+				return -1;
+			} else if(card.getColour() == Colour.SPADE) {
+				return -1;
+			} else if(card.getColour() == Colour.HEART) {
+				return -1;
+			}
+		} else if(colour == Colour.DIAMOND) {
+			if(card.getColour() == Colour.CLUB) {
+				return 1;
+			} else if(card.getColour() == Colour.DIAMOND) {
+				if(value < card.getValue()) {
+					return -1;
+				} else {
+					return 1;
+				}
+			} else if(card.getColour() == Colour.SPADE) {
+				return -1;
+			} else if(card.getColour() == Colour.HEART) {
+				return -1;
+			}
+		} else if(colour == Colour.SPADE) {
+			if(card.getColour() == Colour.CLUB) {
+				return 1;
+			} else if(card.getColour() == Colour.DIAMOND) {
+				return 1;
+			} else if(card.getColour() == Colour.SPADE) {
+				if(value < card.getValue()) {
+					return -1;
+				} else {
+					return 1;
+				}
+			} else if(card.getColour() == Colour.HEART) {
+				return -1;
+			}
+		} else if(colour == Colour.HEART) {
+			if(card.getColour() == Colour.CLUB) {
+				return 1;
+			} else if(card.getColour() == Colour.DIAMOND) {
+				return 1;
+			} else if(card.getColour() == Colour.SPADE) {
+				return 1;
+			} else if(card.getColour() == Colour.HEART) {
+				if(value < card.getValue()) {
+					return -1;
+				} else {
+					return 1;
+				}
+			}
+		}
+		
+		return 0;
+	}
 }

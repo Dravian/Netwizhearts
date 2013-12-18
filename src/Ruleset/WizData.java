@@ -18,7 +18,7 @@ public class WizData extends OtherData implements Serializable{
 	 * Erstellt die OtherData eines Spielers zum Spiel Wizard
 	 */
 	protected WizData(String name) {
-		super(name);
+		super(name, RulesetType.Wizard);
 		this.announcedTricks = 0;
 	}
 	

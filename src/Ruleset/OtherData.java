@@ -5,8 +5,6 @@ package Ruleset;
 
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
 /** 
@@ -35,15 +33,28 @@ public abstract class OtherData implements Serializable{
 	private String name;
 	
 	/**
+	 * Der Typ dieses OtherData
+	 */
+	private RulesetType ruleset;
+	
+	/**
 	 * Erzeugt die OtherData eines Spielers
 	 */
-	protected OtherData(String name) {
+	protected OtherData(String name, RulesetType ruleset) {
 		this.name = name;
 		madeTricks = new HashSet<Card>();
 		points = 0;
 		numberOfTricks = 0;
+		this.ruleset = ruleset;
 	}
 	
+	/**
+	 * Gibt den RulesetType zurück
+	 * @return ruleset
+	 */
+	protected RulesetType getRuleset() {
+		return ruleset;
+	}
 	
 	/**
 	 * Gibt dem Spieler die Stichkarten die er gemacht
@@ -52,6 +63,10 @@ public abstract class OtherData implements Serializable{
 	protected void madeTrick(Set<Card> tricks) {
 		madeTricks.addAll(tricks);
 		numberOfTricks++;
+		
+		if(ruleset == RulesetType.Hearts) {
+			setCurrentPoints();
+		}
 	}
 	
 	/**
@@ -59,11 +74,13 @@ public abstract class OtherData implements Serializable{
 	 * Kartenstapel
 	 * @return Die Kartenstiche
 	 */
-	protected List<Card> removeTricks() {
-		List<Card> returnedCards = new LinkedList<Card>(madeTricks);
+	protected void removeTricks() {
 		madeTricks = new HashSet<Card>();
 		numberOfTricks = 0;
-		return returnedCards;
+		
+		if(ruleset == RulesetType.Hearts) {
+			setCurrentPoints();
+		}
 	}
 	
 	/**
@@ -102,20 +119,15 @@ public abstract class OtherData implements Serializable{
 		return name;
 	}
 	
-	/** 
-	 * Holt die angesagten Stiche des Spielers
-	 * @return announcedTricks Die angesagten Stiche
-	 */
-	public int getAnnouncedTricks() {
-		throw new UnsupportedOperationException("Wird in diesem Ruleset nicht verwendet");
-	}
-	
 	/**
 	 * Setzt die gemachten Stiche
 	 * @param madeTricks Die gemachten Stiche
 	 */
 	protected void setMadeTricks(Set<Card> madeTricks) {
 		this.madeTricks = madeTricks;
+		if(ruleset == RulesetType.Hearts) {
+			setCurrentPoints();
+		}
 	}
 	
 	/**
@@ -139,4 +151,26 @@ public abstract class OtherData implements Serializable{
 	 * @return Eine Kopie diese OtherData
 	 */
 	protected abstract OtherData clone();
+	
+	protected void setCurrentPoints(){
+		throw new UnsupportedOperationException("Wird hier nicht verwendet");
+	}
+	
+	public int getCurrentPoints() {
+		throw new UnsupportedOperationException("Wird hier nicht verwendet");
+	}
+	
+	/** 
+	 * Holt die angesagten Stiche des Spielers
+	 * @return announcedTricks Die angesagten Stiche
+	 */
+	public int getAnnouncedTricks() {
+		throw new UnsupportedOperationException("Wird in diesem Ruleset nicht verwendet");
+	}
+
+
+	protected void setAnnouncedTricks(int tricks) {
+		throw new UnsupportedOperationException("Wird hier nicht verwendet");
+	}
+	
 }

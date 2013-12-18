@@ -1,6 +1,7 @@
 package Ruleset;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
@@ -11,7 +12,7 @@ import ComObjects.*;
 
 /**
  * ServerHearts. Diese Klasse erstellt das Regelwerk zum Spiel Hearts. Sie
- * enthaelt zudem weitere Methoden, welche f�r das Spiel Hearts spezifisch
+ * enthaelt zudem weitere Methoden, welche für das Spiel Hearts spezifisch
  * benoetigt werden, wie die Regelung zum Tausch von Karten und die Berechnung
  * der Stichpunkten.
  */
@@ -86,7 +87,7 @@ public class ServerHearts extends ServerRuleset {
 			
 		} else {
 			setGamePhase(GamePhase.Playing);
-
+			
 			if (getGameState().getPlayedCards().size() == getPlayers().size()) {
 				updatePlayers();
 				calculateTricks();
@@ -137,6 +138,8 @@ public class ServerHearts extends ServerRuleset {
 					throw new RulesetException("Fehler beim Tauschen.");
 				}
 
+				getGameState().sortHands(Colour.NONE);
+				
 				for (PlayerState player : getPlayers()) {
 					if (player.getHand().contains(HeartsCard.Kreuz2)) {
 						setCurrentPlayer(player);
@@ -358,6 +361,7 @@ public class ServerHearts extends ServerRuleset {
 
 		PlayerState trickWinner = getPlayerState(strongestCard.getOwnerName());
 		getGameState().madeTrick(trickWinner);
+		trickWinner.getOtherData().setCurrentPoints();
 
 		boolean noOneHasACard = true;
 
@@ -385,29 +389,20 @@ public class ServerHearts extends ServerRuleset {
 
 			for (PlayerState player : getPlayers()) {
 				int points = player.getOtherData().getPoints();
-
-				for (Card card : player.getOtherData().removeTricks()) {
-					if (card.getColour() == Colour.SPADE
-							&& card.getValue() == 12) {
-						points = points + 13;
-
-					} else if (card.getColour() == Colour.HEART) {
-						points = points + 1;
-					}
-				}
-
-				if (points == 26) {
+				int currentPoints = ((HeartsData)player.getOtherData()).getCurrentPoints();
+				
+				if (currentPoints == 26) {
 					for (PlayerState playerGetsPoints : getPlayers()) {
 
 						if (!playerGetsPoints.getPlayerStateName().equals(
 								player.getPlayerStateName())) {
-							playerGetsPoints.getOtherData().setPoints(points);
+							playerGetsPoints.getOtherData().setPoints(points + currentPoints);
 						}
 
 					}
 					break;
 				} else {
-					player.getOtherData().setPoints(points);
+					player.getOtherData().setPoints(points + currentPoints);
 				}
 			}
 
@@ -426,6 +421,10 @@ public class ServerHearts extends ServerRuleset {
 
 			} else {
 				getGameState().restartDeck(createDeck());
+				
+				for(PlayerState player : getPlayers()) {
+					player.getOtherData().setCurrentPoints();
+				}
 
 				setGamePhase(GamePhase.RoundStart);
 				getGameState().nextRound();
@@ -474,7 +473,7 @@ public class ServerHearts extends ServerRuleset {
 		if (getGamePhase() == GamePhase.RoundStart) {
 			getGameState().shuffleDeck();
 			heartBroken = false;
-
+			
 			/*
 			 * Verteilt die Karten an Spieler. Wenn false zurück kommt wird ein
 			 * neues Deck erstellt und alle Karten im Spiel gelöscht. Wenn
@@ -486,6 +485,8 @@ public class ServerHearts extends ServerRuleset {
 				throw new RulesetException(
 						"Probleme beim Verteilen der Karten!");
 			}
+			
+			getGameState().sortHands(Colour.NONE);
 			
 			if (getRoundNumber() % 4 == 0) {
 				
