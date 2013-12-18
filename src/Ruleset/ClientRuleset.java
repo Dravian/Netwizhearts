@@ -512,8 +512,7 @@ public abstract class ClientRuleset {
 						"Jetzt darf keine Zahl angesagt werden.");
 			}
 		} else {
-			throw new IllegalArgumentException("Das ComObjekt MsgBoolean findet "
-					+ "keine Verwendung in diesem Spiel");
+			throw new UnsupportedOperationException("Wird in diesem Spiel nicht verwendet");
 		}
 	}
 
