@@ -142,7 +142,6 @@ public class ClientWizard extends ClientRuleset {
 	@Override
 	protected boolean isValidTrickNumber(int number) {
 		if (number >= 0 && number <= getGameState().getRoundNumber()) {
-			send(new MsgNumber(number));
 			return true;
 		} else {
 			return false;
