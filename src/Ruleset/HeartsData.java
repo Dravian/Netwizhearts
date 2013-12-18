@@ -48,7 +48,6 @@ public class HeartsData extends OtherData implements Serializable {
 			}
 		}
 
-		System.out.println(getOtherDataName() + " Data :" + currentPoints);
 	}
 
 	/**

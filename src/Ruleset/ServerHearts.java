@@ -474,8 +474,6 @@ public class ServerHearts extends ServerRuleset {
 			getGameState().shuffleDeck();
 			heartBroken = false;
 			
-			Comparator<Card> comp = new CardComparator(Colour.NONE);
-			
 			/*
 			 * Verteilt die Karten an Spieler. Wenn false zurück kommt wird ein
 			 * neues Deck erstellt und alle Karten im Spiel gelöscht. Wenn
