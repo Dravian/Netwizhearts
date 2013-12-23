@@ -352,7 +352,7 @@ public abstract class ServerRuleset {
 	 * Setzt eine Karte als Trumpf
 	 * @param card Eine Karte
 	 */
-	protected void setTrumpCard(Card card) {
+	protected void setUncoveredCard(Card card) {
 		gameState.setUncoveredCard(card);
 	}
 

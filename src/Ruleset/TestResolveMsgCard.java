@@ -61,7 +61,7 @@ public class TestResolveMsgCard {
 		playerState3 = ruleset.getPlayerState(player3.getPlayerName());
 		
 		ruleset.setFirstPlayer(ruleset.getPlayerState(player1.getPlayerName()));
-		ruleset.setTrumpCard(WizardCard.VierRot);
+		ruleset.setUncoveredCard(WizardCard.VierRot);
 		
 		ruleset.giveACard(playerState1, WizardCard.DreiGruen);
 		ruleset.giveACard(playerState1, WizardCard.ZaubererRot);

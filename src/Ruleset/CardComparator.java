@@ -1,11 +1,12 @@
 package Ruleset;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
 /**
  * Sortiert die Spielkarten in einer angenehmen Reihenfolge
  */
-public class CardComparator implements Comparator<Card> {
+public class CardComparator implements Comparator<Card>, Serializable {
 	private Colour trumpColour;
 
 	public CardComparator(Colour trumpColour) {
@@ -76,39 +77,42 @@ public class CardComparator implements Comparator<Card> {
 					}
 				}
 			}
+		} 
 
-			return 0;
-
-			// Sortiert Wizard
-		} else if (card1.getRuleset() == RulesetType.Wizard
+		
+		
+		// Sortiert Wizard
+		if (card1.getRuleset() == RulesetType.Wizard
 				&& card2.getRuleset() == RulesetType.Wizard) {
 
 			if (card1.getValue() == 14 && card2.getValue() < 14) {
 				return 1;
-			} else if (card1.getValue() == 14 && card2.getValue() == 14) {
-				return 0;
-			} else if (card1.getValue() < 14 && card1.getValue() == 14) {
+			} else if (card1.getValue() < 14 && card2.getValue() == 14) {
 				return -1;
+			} else if(card1.getValue() == 14 && card2.getValue() == 14) {
+				return 0;
 			}
 
-			else if (card1.getValue() == 0 && card2.getValue() > 0) {
+			
+			if (card1.getValue() == 0 && card2.getValue() > 0) {
 				return -1;
-			} else if (card1.getValue() == 0 && card2.getValue() == 0) {
-				return 0;
 			} else if (card1.getValue() > 0 && card2.getValue() == 0) {
 				return 1;
 
-			} else if (trumpColour == Colour.BLUE
+			} else if(card1.getValue() == 0 && card2.getValue() == 0) {
+				return 0;
+			}
+			
+			
+			if (trumpColour == Colour.BLUE
 					|| trumpColour == Colour.GREEN || trumpColour == Colour.RED
 					|| trumpColour == Colour.YELLOW) {
-				
+
 				if (card1.getColour() == trumpColour
 						&& card2.getColour() == trumpColour) {
 					if (card1.getValue() > card2.getValue()) {
 						return 1;
-					} else if (card1.getValue() == card2.getValue()) {
-						return 0;
-					} else if (card1.getValue() < card2.getValue()) {
+					}  else if (card1.getValue() < card2.getValue()) {
 						return -1;
 					}
 
@@ -121,15 +125,16 @@ public class CardComparator implements Comparator<Card> {
 					return -1;
 
 				}
-			} else if (card1.getColour() == Colour.BLUE) {
+			} 
+			
+			
+			if (card1.getColour() == Colour.BLUE) {
 
 				if (card2.getColour() != Colour.BLUE) {
 					return -1;
 
 				} else if (card1.getValue() > card2.getValue()) {
 					return 1;
-				} else if (card1.getValue() == card2.getValue()) {
-					return 0;
 				} else if (card1.getValue() < card2.getValue()) {
 					return -1;
 				}
@@ -140,11 +145,10 @@ public class CardComparator implements Comparator<Card> {
 					return 1;
 				} else if (card2.getColour() != Colour.GREEN) {
 					return -1;
+
 				} else if (card1.getValue() > card2.getValue()) {
 					return 1;
-				} else if (card1.getValue() == card2.getValue()) {
-					return 0;
-				} else if (card1.getValue() < card2.getValue()) {
+				}  else if (card1.getValue() < card2.getValue()) {
 					return -1;
 				}
 
@@ -154,26 +158,25 @@ public class CardComparator implements Comparator<Card> {
 					return -1;
 				} else if (card2.getColour() != Colour.RED) {
 					return 1;
+				
 				} else if (card1.getValue() > card2.getValue()) {
 					return 1;
-				} else if (card1.getValue() == card2.getValue()) {
-					return 0;
 				} else if (card1.getValue() < card2.getValue()) {
 					return -1;
 				}
+			
 			} else if (card1.getColour() == Colour.YELLOW) {
 
 				if (card2.getColour() != Colour.YELLOW) {
 					return 1;
 				} else if (card1.getValue() > card2.getValue()) {
 					return 1;
-				} else if (card1.getValue() == card2.getValue()) {
-					return 0;
 				} else if (card1.getValue() < card2.getValue()) {
 					return -1;
 				}
 			}
 		}
+
 		return 0;
 	}
 

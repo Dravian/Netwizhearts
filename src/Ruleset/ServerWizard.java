@@ -45,6 +45,14 @@ public class ServerWizard extends ServerRuleset {
     private void setPlayingRounds(int rounds) {
         playingRounds = rounds;
     }
+    
+    /**
+     * Setzt die Trumpffarbe
+     * @param colour
+     */
+    protected void setTrumpColour(Colour colour) {
+    	trumpColour = colour;
+    }
 
     /**
      * Holt die Anzahl der Runden die gespielt werden
@@ -168,6 +176,7 @@ public class ServerWizard extends ServerRuleset {
                 throw new IllegalArgumentException("Die Farbe " + colour
                         + "existiert in Wizard nicht");
             } else {
+            	trumpColour = colour;
             	getGameState().sortHands(trumpColour);
             	updatePlayers();
                 broadcast(new MsgSelection(colour));
@@ -257,7 +266,6 @@ public class ServerWizard extends ServerRuleset {
     	
     	if(colour == Colour.RED || colour == Colour.GREEN || 
     			colour == Colour.BLUE || colour == Colour.YELLOW){
-    		trumpColour = colour;
     		return true;
     	
     	} else {
