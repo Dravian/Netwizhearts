@@ -52,19 +52,33 @@ public class TestisValidMoveWizard {
 		playerState3 = ruleset.getPlayerState(player3);
 		
 		ruleset.setFirstPlayer(ruleset.getPlayerState(player1));
-		ruleset.setTrumpCard(WizardCard.VierRot);
+		ruleset.setUncoveredCard(WizardCard.VierRot);
+		((ServerWizard)ruleset).setTrumpColour(Colour.RED);
 		
 		ruleset.giveACard(playerState1, WizardCard.DreiGruen);
 		ruleset.giveACard(playerState1, WizardCard.ZaubererRot);
 		ruleset.giveACard(playerState1, WizardCard.ZweiBlau);
+		ruleset.giveACard(playerState1, WizardCard.NarrBlau);
 		
 		ruleset.giveACard(playerState2, WizardCard.ZweiGruen);
 		ruleset.giveACard(playerState2, WizardCard.DreiRot);
 		ruleset.giveACard(playerState2, WizardCard.ZweiGelb);
+		ruleset.giveACard(playerState2, WizardCard.NarrGelb);
 		
-		ruleset.giveACard(playerState3, WizardCard.NarrBlau);
+		
+		ruleset.giveACard(playerState3, WizardCard.NarrRot);
 		ruleset.giveACard(playerState3, WizardCard.EinsGruen);
 		ruleset.giveACard(playerState3, WizardCard.ZweiRot);
+		ruleset.giveACard(playerState3, WizardCard.ZaubererGelb);
+		
+	}
+	
+	@Test
+	public void testNoColour() {
+		ruleset.playCard(WizardCard.ZweiBlau);
+		
+		ruleset.setCurrentPlayer(playerState2);
+		assertTrue(ruleset.isValidMove(WizardCard.ZweiGelb));
 	}
 	
 	@Test
@@ -117,10 +131,21 @@ public class TestisValidMoveWizard {
 	}
 	
 	@Test
+	public void testPlayingSorcerer() {
+		ruleset.playCard(WizardCard.DreiGruen);
+		ruleset.setCurrentPlayer(playerState2);
+		
+		ruleset.playCard(WizardCard.ZweiGruen);
+		ruleset.setCurrentPlayer(playerState3);
+		
+		assertTrue(ruleset.isValidMove(WizardCard.ZaubererGelb));
+	}
+	
+	@Test
 	public void testFool() {
 		ruleset.setCurrentPlayer(playerState3);
 		
-		ruleset.playCard(WizardCard.NarrBlau);
+		ruleset.playCard(WizardCard.NarrRot);
 		ruleset.setCurrentPlayer(playerState1);
 		
 		ruleset.playCard(WizardCard.DreiGruen);
@@ -129,6 +154,22 @@ public class TestisValidMoveWizard {
 		boolean isValidMove = ruleset.isValidMove(WizardCard.DreiRot);
 		
 		assertFalse(isValidMove);
+	}
+	
+	@Test 
+	public void testFoolOnFool() {
+		ruleset.playCard(WizardCard.NarrBlau);
+		
+		ruleset.setCurrentPlayer(playerState2);
+		ruleset.playCard(WizardCard.NarrGelb);
+		
+		ruleset.setCurrentPlayer(playerState3);
+		
+		assertTrue(ruleset.isValidMove(WizardCard.NarrRot));
+		assertTrue(ruleset.isValidMove(WizardCard.EinsGruen));
+		assertTrue(ruleset.isValidMove(WizardCard.ZweiRot));
+		assertTrue(ruleset.isValidMove(WizardCard.ZaubererGelb));
+		
 	}
 
 }

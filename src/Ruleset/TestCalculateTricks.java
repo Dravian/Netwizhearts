@@ -51,7 +51,8 @@ public class TestCalculateTricks {
 		playerState3 = ruleset.getPlayerState(player3);
 		
 		ruleset.setFirstPlayer(ruleset.getPlayerState(player1));
-		ruleset.setTrumpCard(WizardCard.VierRot);
+		ruleset.setUncoveredCard(WizardCard.VierRot);
+		((ServerWizard)ruleset).setTrumpColour(Colour.RED);
 		
 		ruleset.giveACard(playerState1, WizardCard.DreiGruen);
 		ruleset.giveACard(playerState1, WizardCard.ZaubererRot);
@@ -97,6 +98,7 @@ public class TestCalculateTricks {
 		assertTrue(playerState1.getOtherData().getNumberOfTricks() == 1);
 		assertTrue(playerState2.getOtherData().getNumberOfTricks() == 0);
 		assertTrue(playerState3.getOtherData().getNumberOfTricks() == 0);
+		
 	}
 	
 	@Test
