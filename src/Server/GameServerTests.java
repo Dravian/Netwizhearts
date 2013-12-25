@@ -248,8 +248,6 @@ public class GameServerTests {
 				.equals(init.getClass()));
 
 		ComWarning warning = new ComWarning(null);
-		assertTrue(player1.getServerInput().get(6).getClass()
-				.equals(warning.getClass()));
 		assertTrue(player2.getServerInput().get(6).getClass()
 				.equals(warning.getClass()));
 		assertTrue(player3.getServerInput().get(7).getClass()
@@ -260,9 +258,6 @@ public class GameServerTests {
 				.equals(warning.getClass()));
 		assertTrue(player6.getServerInput().get(10).getClass()
 				.equals(warning.getClass()));
-
-		ComWarning toPlayer1 = (ComWarning) player1.getServerInput().get(6);
-		assertTrue(toPlayer1.getWarning().equals(WarningMsg.GameDisbanded));
 
 		ComWarning toPlayer2 = (ComWarning) player2.getServerInput().get(6);
 		assertTrue(toPlayer2.getWarning().equals(WarningMsg.GameDisbanded));

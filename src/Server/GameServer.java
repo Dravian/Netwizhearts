@@ -313,6 +313,10 @@ public class GameServer extends Server {
 				if (playerSet.contains(leavingPlayer)) {
 					if (leavingPlayer.getPlayerName().equals(gameMasterName)) {
 						synchronized(playerSet){
+							leavingPlayer.changeServer(lobbyServer);
+							ComInitLobby comInitGM = lobbyServer.initLobby();
+							leavingPlayer.send(comInitGM);
+							removePlayer(leavingPlayer);
 							for (Player back : playerSet) {
 								back.changeServer(lobbyServer);
 								ComInitLobby comInit = lobbyServer.initLobby();
