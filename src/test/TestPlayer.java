@@ -33,6 +33,10 @@ public class TestPlayer extends Player {
 		inputComObject.add(com);
 	}
 	
+	public void empty() {
+		inputComObject = new ArrayList<ComObject>();
+	}
+	
 	public void setServer(Server server) {
 		this.server = server;
 	}

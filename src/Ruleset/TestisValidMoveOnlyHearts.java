@@ -135,4 +135,5 @@ public class TestisValidMoveOnlyHearts {
 
         assertTrue(ruleset.isValidMove(HeartsCard.PikDame));
     }
+    
 }

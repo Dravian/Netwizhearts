@@ -42,7 +42,7 @@ public class ServerWizard extends ServerRuleset {
      *
      * @param rounds Die Anzahl an Runden
      */
-    private void setPlayingRounds(int rounds) {
+    protected void setPlayingRounds(int rounds) {
         playingRounds = rounds;
     }
     
@@ -52,6 +52,14 @@ public class ServerWizard extends ServerRuleset {
      */
     protected void setTrumpColour(Colour colour) {
     	trumpColour = colour;
+    }
+    
+    /**
+     * Gibt die Trumpffarbe zurück
+     * @return Die Trumpffarbe
+     */
+    protected Colour getTrumpColour() {
+    	return trumpColour;
     }
 
     /**
@@ -85,7 +93,7 @@ public class ServerWizard extends ServerRuleset {
             throw new IllegalArgumentException("Die Karte " + card.getValue()
                     + card.getColour() + " gehört nicht zum Spiel");
 
-        } else if(getPlayedCards().size() == getPlayers().size()) {
+        } else if(getPlayedCards().size() >= getPlayers().size()) {
     		broadcast(WarningMsg.RulesetError);
         	quitGame();
     		throw new RulesetException(" Der Ablagestapel ist bereits voll.");
@@ -94,7 +102,7 @@ public class ServerWizard extends ServerRuleset {
         	setGamePhase(GamePhase.CardRequest);
         	send(WarningMsg.UnvalidMove, name);
         	send(new MsgCardRequest(), name);
-            throw new IllegalArgumentException("Der Spieler" + name + "hat die Karte "
+        	throw new IllegalArgumentException("Der Spieler" + name + "hat die Karte "
                     + card.getValue() + card.getColour()
                     + " gespielt, obwohl sie kein gültiger "
                     + "Zug ist.");
@@ -443,11 +451,13 @@ public class ServerWizard extends ServerRuleset {
                 player.getOtherData().setPoints(points);
                 ((WizData)player.getOtherData()).setAnnouncedTricks(0);
             }
+        
             
             if (getGameState().getRoundNumber() == playingRounds) {
                 setGamePhase(GamePhase.Ending);
             }
 
+           
             if (getGamePhase() == GamePhase.Ending) {
             	updatePlayers();
             	
