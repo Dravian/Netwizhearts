@@ -89,9 +89,7 @@ public class GameState {
 	protected void restartDeck(List<Card> deck) {
 		for (PlayerState player : players) {
 			if (!player.getHand().isEmpty()) {
-				for (Card card : player.getHand()) {
-					player.getHand().remove(card);
-				}
+				player.emptyHand();
 			}
 			player.getOtherData().removeTricks();
 		}

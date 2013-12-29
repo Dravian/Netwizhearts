@@ -69,6 +69,13 @@ public class PlayerState implements Serializable{
 	}
 	
 	/**
+	 * Leer die Kartenhand
+	 */
+	protected void emptyHand() {
+		ownHand = new ArrayList<Card>();
+	}
+	
+	/**
 	 * Gibt die OtherData des Spielers zurück
 	 * @return otherData Die OtherData eines Spielers
 	 */

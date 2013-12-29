@@ -19,7 +19,7 @@ import Server.GameServer;
 import Server.LobbyServer;
 import Server.Player;
 
-public class TestResolveMsgCard {
+public class TestWizardResolveMsgCard {
 	ServerRuleset ruleset;	
 	TestGameServer gameServer;	
 	LobbyServer lobbyServer;
@@ -129,5 +129,47 @@ public class TestResolveMsgCard {
 		assertTrue(playerState3.getOtherData().getNumberOfTricks() == 1);
 	
 	}
+	
+	@Test(expected = IllegalStateException.class)  
+	public void testWrongState() {
+		ruleset.setGamePhase(GamePhase.Ending);
+		
+		ComRuleset rules = new ComRuleset(new MsgCard(WizardCard.ZweiGruen));
+		player2.injectComObject(rules);	
+	}
+	
+	
+	@Test(expected = IllegalArgumentException.class)  
+	public void testWrongPlayer() {	
+		ComRuleset rules = new ComRuleset(new MsgCard(WizardCard.ZweiGruen));
+		player1.injectComObject(rules);	
+	}
+	
 
+	@Test(expected = IllegalArgumentException.class)  
+	public void testWrongCard() {	
+		ComRuleset rules = new ComRuleset(new MsgCard(HeartsCard.Caro10));
+		player2.injectComObject(rules);	
+	}
+	
+	@Test(expected = RulesetException.class)  
+	public void testFullDiscardPile() {	
+		ruleset.playCard(WizardCard.DreiRot);
+		ruleset.playCard(WizardCard.ZweiGelb);
+		
+		ComRuleset rules = new ComRuleset(new MsgCard(WizardCard.ZweiGruen));
+		player2.injectComObject(rules);	
+	}
+	
+	@Test(expected = IllegalArgumentException.class)  
+	public void testUnvalidMove() {	
+		ComRuleset rules = new ComRuleset(new MsgCard(WizardCard.DreiRot));
+		player2.injectComObject(rules);	
+	}
+	
+	@Test(expected = IllegalArgumentException.class)  
+	public void testCardNotInHand() {	
+		ComRuleset rules = new ComRuleset(new MsgCard(WizardCard.ZaubererBlau));
+		player2.injectComObject(rules);	
+	}
 }

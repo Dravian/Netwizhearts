@@ -16,7 +16,7 @@ import Server.GameServer;
 import Server.LobbyServer;
 import Server.Player;
 
-public class TestCalculateTricks {
+public class TestWizardCalculateTricks {
 	ServerRuleset ruleset;
 	
 	GameServer gameServer;
