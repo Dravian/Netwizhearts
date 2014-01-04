@@ -70,7 +70,7 @@ public class ClientLoginTest {
 	}
 
 	@Test (expected=IllegalArgumentException.class)
-	public void loginTestNegativ() {
+	public void loginTestNegativ1() {
 		testModel.createConnection("", "localhost");
 		assertEquals("Leerer Name", ViewNotification.openWarning,
 				testObserver.getNotification().remove(0));
@@ -84,7 +84,39 @@ public class ClientLoginTest {
 				testObserver.getNotification().remove(0));
 
 		testModel.createConnection(null, "localhost");
+	}
+	
+	@Test (expected=IllegalArgumentException.class)
+	public void loginTestNegativ2() {
+		testModel.createConnection("", "localhost");
+		assertEquals("Leerer Name", ViewNotification.openWarning,
+				testObserver.getNotification().remove(0));
+
+		testModel.createConnection("Player1", "");
+		assertEquals("Leere Addresse", ViewNotification.openWarning,
+				testObserver.getNotification().remove(0));
+
+		testModel.createConnection("", "");
+		assertEquals("Name und Addresse leer", ViewNotification.openWarning,
+				testObserver.getNotification().remove(0));
+
 		testModel.createConnection("Player1", null);
+	}
+	
+	@Test (expected=IllegalArgumentException.class)
+	public void loginTestNegativ3() {
+		testModel.createConnection("", "localhost");
+		assertEquals("Leerer Name", ViewNotification.openWarning,
+				testObserver.getNotification().remove(0));
+
+		testModel.createConnection("Player1", "");
+		assertEquals("Leere Addresse", ViewNotification.openWarning,
+				testObserver.getNotification().remove(0));
+
+		testModel.createConnection("", "");
+		assertEquals("Name und Addresse leer", ViewNotification.openWarning,
+				testObserver.getNotification().remove(0));
+
 		testModel.createConnection(null, null);
 	}
 }
