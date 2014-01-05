@@ -203,15 +203,19 @@ public class ClientModel extends Observable {
 	 * @param msg die ankommende ComChatMessage Nachricht
 	 */
 	public final void receiveMessage(final ComChatMessage msg) {
-		if (msg != null) {
-			if (!msg.getChatMessage().isEmpty()) {
-				setChanged();
-				notifyObservers(msg.getChatMessage());
-			} else {
+		if (state != ClientState.LOGIN) {
+			if (msg != null) {
+				if (!msg.getChatMessage().isEmpty()) {
+					setChanged();
+					notifyObservers(msg.getChatMessage());
+				} else {
 					throw new IllegalArgumentException("Leerer String");
+				}
+			} else {
+				throw new IllegalArgumentException("Argument ist null");
 			}
 		} else {
-			throw new IllegalArgumentException("Argument ist null");
+			throw new IllegalStateException("Falscher Zustand des Clients");
 		}
 	}
 
@@ -548,13 +552,13 @@ public class ClientModel extends Observable {
 	 * @param name des Spielers, der enfernt werden soll
 	 */
 	public final void kickPlayer(final String name) {
-		if (name == null) {
-			throw new IllegalArgumentException("Argument ist null");
-		}
-		if (name.isEmpty()) {
-			throw new IllegalArgumentException("Argument ist leer");
-		}
 		if (state == ClientState.GAMELOBBY) {
+			if (name == null) {
+				throw new IllegalArgumentException("Argument ist null");
+			}
+			if (name.isEmpty()) {
+				throw new IllegalArgumentException("Argument ist leer");
+			}
 			if (gameMaster.equals(playerName)) {
 				netIO.send(new ComKickPlayerRequest(name));
 			}
@@ -862,14 +866,18 @@ public class ClientModel extends Observable {
 	 * @param msg die Chatnachricht, die an den Server geschickt werden soll
 	 */
 	public final void sendChatMessage(final String msg) {
-		if (msg != null) {
-			if (!msg.isEmpty()) {
-				netIO.send(new ComChatMessage(msg));
+		if (state != ClientState.LOGIN) {
+			if (msg != null) {
+				if (!msg.isEmpty()) {
+					netIO.send(new ComChatMessage(msg));
+				} else {
+					throw new IllegalArgumentException("Leerer String");
+				}
 			} else {
-				throw new IllegalArgumentException("Leerer String");
+				throw new IllegalArgumentException("Argument ist null");
 			}
 		} else {
-			throw new IllegalArgumentException("Argument ist null");
+			throw new IllegalStateException("Falscher Zustand des Clients");
 		}
 	}
 

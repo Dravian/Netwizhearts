@@ -12,12 +12,19 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import Ruleset.GamePhase;
 import Ruleset.RulesetType;
 import Server.GameServerRepresentation;
 import test.TestMessageListenerThread;
 import test.TestObserver;
+import ComObjects.ComChatMessage;
+import ComObjects.ComInitGameLobby;
 import ComObjects.ComInitLobby;
+import ComObjects.ComLobbyUpdateGamelist;
 import ComObjects.ComLoginRequest;
+import ComObjects.ComRuleset;
+import ComObjects.ComStartGame;
+import ComObjects.ComUpdatePlayerlist;
 
 public class ClientLoginTest {
 
@@ -125,5 +132,55 @@ public class ClientLoginTest {
 	@Test (expected=IllegalArgumentException.class)
 	public void loginTestArgumentsNull() {
 		testModel.createConnection(null, null);
+	}
+
+	@Test (expected=IllegalStateException.class)
+	public void wrongClientStateExceptionsTest() {
+		testModel.receiveMessage((ComChatMessage) null);
+	}
+
+	@Test (expected=IllegalStateException.class)
+	public void wrongClientStateExceptionInitGameLobbyTest() {
+		testModel.receiveMessage((ComInitGameLobby) null);
+	}
+
+	@Test (expected=IllegalStateException.class)
+	public void wrongClientStateExceptionreceiveRulesetMessageTest() {
+		testModel.receiveMessage((ComRuleset) null);
+	}
+
+	@Test (expected=IllegalStateException.class)
+	public void wrongClientStateExceptionStartGameTest() {
+		testModel.receiveMessage((ComStartGame) null);
+	}
+
+	@Test (expected=IllegalStateException.class)
+	public void wrongClientStateExceptionUpdatePlayerlistTest() {
+		testModel.receiveMessage((ComUpdatePlayerlist) null);
+	}
+
+	@Test (expected=IllegalStateException.class)
+	public void wrongClientStateExceptionReceiveChatTest() {
+		testModel.receiveMessage((ComLobbyUpdateGamelist) null);
+	}
+
+	@Test (expected=IllegalStateException.class)
+	public void wrongClientStateExceptionSendChatTest() {
+		testModel.sendChatMessage("Hello IllegalState!");
+	}
+
+	@Test (expected=IllegalStateException.class)
+	public void wrongClientStateExceptionHostGameTest() {
+		testModel.hostGame("<3", false, "password", RulesetType.Wizard);
+	}
+
+	@Test (expected=IllegalStateException.class)
+	public void wrongClientStateExceptionJoinGameTest() {
+		testModel.joinGame("<3", "");
+	}
+
+	@Test (expected=IllegalStateException.class)
+	public void wrongClientStateExceptionKickPlayerTest() {
+		testModel.kickPlayer("Player1");
 	}
 }

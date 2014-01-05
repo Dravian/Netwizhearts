@@ -55,10 +55,8 @@ public class ClientInGameLobbyTest {
 		players.add("TestPlayer1");
 		ComInitGameLobby gameLobbyInit = new ComInitGameLobby(players);
 		testNetIO.injectComObject(gameLobbyInit);
-		testNetIO.getModelInput().remove(0);
-		testNetIO.getModelInput().remove(0);
-		testObserver.getNotification().remove(0);
-		testObserver.getNotification().remove(0);
+		testNetIO.getModelInput().clear();
+		testObserver.getNotification().clear();
 	}
 
 	@After
@@ -96,6 +94,44 @@ public class ClientInGameLobbyTest {
 				testObserver.getNotification().remove(0));
 		assertTrue("Hans in Liste",
 				testModel.getPlayerlist().contains("Hans"));
+	}
+
+	@Test (expected=IllegalArgumentException.class)
+	public void playerlistUpdateArgumentNullTest() {
+		testModel.receiveMessage((ComUpdatePlayerlist) null);
+	}
+
+	@Test (expected=IllegalArgumentException.class)
+	public void addPlayerToListTwiceTest() {
+		ComUpdatePlayerlist updatePlayerList =
+				new ComUpdatePlayerlist("Hans", false);
+		testNetIO.injectComObject(updatePlayerList);
+		testNetIO.injectComObject(updatePlayerList);
+	}
+
+	@Test (expected=IllegalArgumentException.class)
+	public void removePlayerFromListTwiceTest() {
+		ComUpdatePlayerlist updatePlayerList =
+				new ComUpdatePlayerlist("Hans", false);
+		testNetIO.injectComObject(updatePlayerList);
+		updatePlayerList =
+				new ComUpdatePlayerlist("Hans", true);
+		testNetIO.injectComObject(updatePlayerList);
+		testNetIO.injectComObject(updatePlayerList);
+	}
+
+	@Test (expected=IllegalArgumentException.class)
+	public void corruptPlayerListUpdateTest1() {
+		ComUpdatePlayerlist updatePlayerList =
+				new ComUpdatePlayerlist(null, false);
+		testNetIO.injectComObject(updatePlayerList);
+	}
+
+	@Test (expected=IllegalArgumentException.class)
+	public void corruptPlayerListUpdateTest2() {
+		ComUpdatePlayerlist updatePlayerList =
+				new ComUpdatePlayerlist(null, false);
+		testNetIO.injectComObject(updatePlayerList);
 	}
 
 	@Test

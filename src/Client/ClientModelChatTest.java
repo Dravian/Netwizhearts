@@ -2,13 +2,20 @@ package Client;
 
 import static org.junit.Assert.assertTrue;
 
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
 import org.junit.Test;
 import org.junit.After;
 import org.junit.Before;
 
+import Server.GameServerRepresentation;
 import test.TestMessageListenerThread;
 import test.TestObserver;
 import ComObjects.ComChatMessage;
+import ComObjects.ComInitLobby;
 
 public class ClientModelChatTest {
 
@@ -24,12 +31,21 @@ public class ClientModelChatTest {
 
 	@Before
     public void setUp() throws Exception {
+		testMessage = new ComChatMessage("Hello Test!");
 		testNetIO = new TestMessageListenerThread();
 		testObserver = new TestObserver();
-		testMessage = new ComChatMessage("Hello Test!");
 		testModel = new ClientModel((MessageListenerThread) testNetIO);
 		testNetIO.setModel(testModel);
 		testModel.addObserver(testObserver);
+		testModel.createConnection("TestPlayer1", "localhost");
+		List<String> players = new LinkedList<String>();
+		players.add("Player1");
+		Set<GameServerRepresentation> games =
+				new HashSet<GameServerRepresentation>();
+		ComInitLobby testInitLobby = new ComInitLobby(players, games);
+		testNetIO.injectComObject(testInitLobby);
+		testNetIO.getModelInput().clear();
+		testObserver.getNotification().clear();
     }
  
     @After

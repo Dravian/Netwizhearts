@@ -23,6 +23,8 @@ import ComObjects.ComInitGameLobby;
 import ComObjects.ComInitLobby;
 import ComObjects.ComJoinRequest;
 import ComObjects.ComLobbyUpdateGamelist;
+import ComObjects.ComRuleset;
+import ComObjects.ComStartGame;
 import ComObjects.ComUpdatePlayerlist;
 
 public class ClientInServerLobbyTest {
@@ -158,7 +160,7 @@ public class ClientInServerLobbyTest {
 	}
 
 	@Test (expected=IllegalArgumentException.class)
-	public void listUpdateArgumentNullTest() {
+	public void playerlistUpdateArgumentNullTest() {
 		testModel.receiveMessage((ComUpdatePlayerlist) null);
 	}
 
@@ -224,6 +226,8 @@ public class ClientInServerLobbyTest {
 		ComInitLobby testInitLobby = new ComInitLobby(players, null);
 		testNetIO.injectComObject(testInitLobby);
 	}
+
+	
 
 	@Test
 	public void hostGameTest() {
@@ -328,5 +332,15 @@ public class ClientInServerLobbyTest {
 	@Test (expected=IllegalArgumentException.class)
 	public void joinGameNameNullTest() {
 		testModel.joinGame(null, null);
+	}
+
+	@Test (expected=IllegalStateException.class)
+	public void wrongClientStateExceptionsTest3() {
+		testModel.receiveMessage((ComRuleset) null);
+	}
+
+	@Test (expected=IllegalStateException.class)
+	public void wrongClientStateExceptionsTest4() {
+		testModel.receiveMessage((ComStartGame) null);
 	}
 }
