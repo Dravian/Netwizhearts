@@ -233,6 +233,8 @@ public class ClientModel extends Observable {
 				if (playerList.isEmpty()) {
 					throw new IllegalArgumentException("Leere Spielerliste");
 				}
+			} else {
+				throw new IllegalArgumentException("Spielerliste Argument Null");
 			}
 			if (msg.getGameList() != null) {
 				gameList = Collections.synchronizedList(
@@ -381,12 +383,16 @@ public class ClientModel extends Observable {
 	 *
 	 * @param update die ankommende ComLobbyUpdatePlayerlist Nachricht
 	 */
-	public final void receiveMessage(final ComUpdatePlayerlist update) {
+	public final void receiveMessage(ComUpdatePlayerlist update) {
 		if (state == ClientState.SERVERLOBBY
 				|| state == ClientState.ENTERGAMELOBBY
 				|| state == ClientState.GAMELOBBY) {
 			if (update != null) {
 				if (update.getPlayerName() != null) {
+					if (update.getPlayerName().isEmpty()) {
+						throw new IllegalArgumentException("Leerstring"
+								+ " in Spielerupdate");
+					}
 					synchronized (playerList) {
 						if (update.isRemoveFlag()) {
 							if (!playerList.remove(update.getPlayerName())) {
@@ -433,7 +439,7 @@ public class ClientModel extends Observable {
 				String key;
 				if (gameUpdate != null) {
 					synchronized (gameList) {
-						for (GameServerRepresentation gameInList : gameList ) {
+						for (GameServerRepresentation gameInList : gameList) {
 							key = gameInList.getGameMasterName();
 							if (key.equals(gameUpdate.getGameMasterName())) {
 								gameList.remove(gameInList);

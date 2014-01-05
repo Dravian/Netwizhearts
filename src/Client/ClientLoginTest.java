@@ -1,6 +1,8 @@
 package Client;
 
 import static org.junit.Assert.assertEquals;
+
+import java.net.URISyntaxException;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -44,14 +46,14 @@ public class ClientLoginTest {
 	@Test
 	public void loginTest() {
 		ComLoginRequest testLoginRequest;
-		testModel.createConnection("Player2", "localhost");
+		testModel.createConnection("Player1", "localhost");
 		testLoginRequest =
 				(ComLoginRequest) testNetIO.getModelInput().remove(0);
-		assertEquals("Versende Login Request", "Player2",
+		assertEquals("Versende Login Request", "Player1",
 				testLoginRequest.getPlayerName());
 
 		List<String> players = new LinkedList<String>();
-		players.add("Player2");
+		players.add("Player1");
 		Set<GameServerRepresentation> games =
 				new HashSet<GameServerRepresentation>();
 		GameServerRepresentation game = new GameServerRepresentation("Peter",
@@ -69,54 +71,59 @@ public class ClientLoginTest {
 				testModel.getLobbyGamelist().contains(game));
 	}
 
-	@Test (expected=IllegalArgumentException.class)
-	public void loginTestNegativ1() {
-		testModel.createConnection("", "localhost");
+	@Test
+	public void loginTestPortScope() {
+		testModel.createConnection("Player1", "localhost:-");
 		assertEquals("Leerer Name", ViewNotification.openWarning,
 				testObserver.getNotification().remove(0));
 
+		testModel.createConnection("Player1", "localhost:-4567");
+		assertEquals("Leerer Name", ViewNotification.openWarning,
+				testObserver.getNotification().remove(0));
+
+		testModel.createConnection("Player1", "localhost:0");
+		assertEquals("Leerer Name", ViewNotification.openWarning,
+				testObserver.getNotification().remove(0));
+
+		testModel.createConnection("Player1", "localhost:99999");
+		assertEquals("Leerer Name", ViewNotification.openWarning,
+				testObserver.getNotification().remove(0));
+	}
+
+	@Test
+	public void loginTestEmptyName() {
+		testModel.createConnection("", "localhost");
+		assertEquals("Leerer Name", ViewNotification.openWarning,
+				testObserver.getNotification().remove(0));
+	}
+
+	@Test
+	public void loginTestEmptyServer() {
 		testModel.createConnection("Player1", "");
 		assertEquals("Leere Addresse", ViewNotification.openWarning,
 				testObserver.getNotification().remove(0));
+	}
 
+	@Test
+	public void loginTestEmptyArguments() {
+		testModel.createConnection("", "");
 		testModel.createConnection("", "");
 		assertEquals("Name und Addresse leer", ViewNotification.openWarning,
 				testObserver.getNotification().remove(0));
+	}
 
+	@Test (expected=IllegalArgumentException.class)
+	public void loginTestPlayerNull() {
 		testModel.createConnection(null, "localhost");
 	}
-	
+
 	@Test (expected=IllegalArgumentException.class)
-	public void loginTestNegativ2() {
-		testModel.createConnection("", "localhost");
-		assertEquals("Leerer Name", ViewNotification.openWarning,
-				testObserver.getNotification().remove(0));
-
-		testModel.createConnection("Player1", "");
-		assertEquals("Leere Addresse", ViewNotification.openWarning,
-				testObserver.getNotification().remove(0));
-
-		testModel.createConnection("", "");
-		assertEquals("Name und Addresse leer", ViewNotification.openWarning,
-				testObserver.getNotification().remove(0));
-
+	public void loginTestServerNull() {
 		testModel.createConnection("Player1", null);
 	}
-	
+
 	@Test (expected=IllegalArgumentException.class)
-	public void loginTestNegativ3() {
-		testModel.createConnection("", "localhost");
-		assertEquals("Leerer Name", ViewNotification.openWarning,
-				testObserver.getNotification().remove(0));
-
-		testModel.createConnection("Player1", "");
-		assertEquals("Leere Addresse", ViewNotification.openWarning,
-				testObserver.getNotification().remove(0));
-
-		testModel.createConnection("", "");
-		assertEquals("Name und Addresse leer", ViewNotification.openWarning,
-				testObserver.getNotification().remove(0));
-
+	public void loginTestArgumentsNull() {
 		testModel.createConnection(null, null);
 	}
 }
