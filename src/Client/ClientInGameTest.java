@@ -40,7 +40,7 @@ public class ClientInGameTest {
 		testModel = new ClientModel((MessageListenerThread) testNetIO);
 		testNetIO.setModel(testModel);
 		testModel.addObserver(testObserver);
-		testModel.createConnection("TestPlayer1", "localhost");
+		testModel.createConnection("Player1", "localhost");
 		players = new LinkedList<String>();
 		players.add("Player2");
 		Set<GameServerRepresentation> games =
@@ -49,25 +49,19 @@ public class ClientInGameTest {
 		testNetIO.injectComObject(testInitLobby);
 		testModel.hostGame("My <3", false, "", RulesetType.Wizard);
 		players = new LinkedList<String>();
-		players.add("TestPlayer1");
+		players.add("Player1");
 		ComInitGameLobby gameLobbyInit = new ComInitGameLobby(players);
 		testNetIO.injectComObject(gameLobbyInit);
-		testNetIO.getModelInput().remove(0);
-		testNetIO.getModelInput().remove(0);
-		testObserver.getNotification().remove(0);
-		testObserver.getNotification().remove(0);
 		ComUpdatePlayerlist updatePlayerList =
 				new ComUpdatePlayerlist("Player2", false);
 		testNetIO.injectComObject(updatePlayerList);
-		testObserver.getNotification().remove(0);
 		testModel.getPlayerlist().contains("Player2");
 		updatePlayerList = new ComUpdatePlayerlist("Player3", false);
 		testNetIO.injectComObject(updatePlayerList);
-		testObserver.getNotification().remove(0);
 		testModel.startGame();
-		testNetIO.getModelInput().remove(0);
 		testNetIO.injectComObject(new ComStartGame());
-		testObserver.getNotification().remove(0);
+		testNetIO.getModelInput().clear();
+		testObserver.getNotification().clear();
 	}
 
 	@After
