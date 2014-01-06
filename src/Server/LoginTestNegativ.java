@@ -23,7 +23,7 @@ public class LoginTestNegativ {
 	@Before
 	public void setUp() throws Exception {
 		lobby = new LobbyServer();
-		login = new LoginServer(lobby, 4567);
+		login = new LoginServer(lobby, 1234);
 		player = new TestPlayer(login);
 		player.setServer(login);
 		player2 = new TestPlayer(login);
