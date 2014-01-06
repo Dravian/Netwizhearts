@@ -449,8 +449,13 @@ public abstract class ClientRuleset {
 				getModel().openWarning(WarningMsg.RulesetError);
 				throw new RulesetException("Der Ablagestapel ist bereits voll.");
 
+			} else if (!gameState.getOwnHand().contains(card)) {
+				getModel().openWarning(WarningMsg.WrongCard);
+				getModel().announceTurn(UserMessages.PlayCard);		
+		
 			} else if (isValidMove(card)) {
 				send(new MsgCard(card));
+			
 			} else {
 				getModel().openWarning(WarningMsg.UnvalidMove);
 				getModel().announceTurn(UserMessages.PlayCard);
@@ -489,45 +494,51 @@ public abstract class ClientRuleset {
 					"Wird in diesem Ruleset nicht verwendet");
 		}
 	}
-	
+
 	/**
 	 * Wird vom Model aufgerufen um eine Nummer auszuwählen
-	 * @param number Die ausgewählte Nummer
+	 * 
+	 * @param number
+	 *            Die ausgewählte Nummer
 	 */
 	public void chooseTrickNumber(int number) {
-		if(RULESET == RulesetType.Wizard) {
+		if (RULESET == RulesetType.Wizard) {
 			if (getGamePhase() == GamePhase.TrickRequest) {
-			
-				if(isValidTrickNumber(number)) {
+
+				if (isValidTrickNumber(number)) {
 					send(new MsgNumber(number));
 				} else {
 					setGamePhase(GamePhase.TrickRequest);
 					getModel().openWarning(WarningMsg.WrongNumber);
 					getModel().openNumberInputWindow(UserMessages.ChooseNumber);
 				}
-				
+
 			} else {
 				getModel().openWarning(WarningMsg.WrongPhase);
 				throw new IllegalStateException(
 						"Jetzt darf keine Zahl angesagt werden.");
 			}
 		} else {
-			throw new UnsupportedOperationException("Wird in diesem Spiel nicht verwendet");
+			throw new UnsupportedOperationException(
+					"Wird in diesem Spiel nicht verwendet");
 		}
 	}
 
 	/**
 	 * Wird vom Model aufgerufen um eine Farbe auszuwählen
-	 * @param colour Die zu wählende Farbe
+	 * 
+	 * @param colour
+	 *            Die zu wählende Farbe
 	 */
 	public void chooseColour(Colour colour) {
-		if(RULESET == RulesetType.Wizard) {
+		if (RULESET == RulesetType.Wizard) {
 			if (getGamePhase() == GamePhase.SelectionRequest) {
-				if(isValidColour(colour)) {
+				if (isValidColour(colour)) {
 					send(new MsgSelection(colour));
 				} else {
 					getModel().openWarning(WarningMsg.WrongColour);
-					getModel().openChooseColourWindow(UserMessages.ChooseColour);
+					getModel()
+							.openChooseColourWindow(UserMessages.ChooseColour);
 				}
 			} else {
 				getModel().openWarning(WarningMsg.WrongPhase);
