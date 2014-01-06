@@ -48,7 +48,7 @@ public class ViewCard extends JPanel{
 	 * @param c Karte
 	 */
 	public ViewCard(Card c) {
-		//TODO
+		this.setBackground(Color.WHITE);
 		clicked = false;
 		card = c;
 		try {
@@ -127,9 +127,9 @@ public class ViewCard extends JPanel{
 									UNDEFINED_CONDITION);
 
 				} catch (IOException ex) {
-					face = null;
-					g.drawString("Card", 5, 10);
-					g.drawString("Missing", 5, 30);
+					face = null;					
+					g.drawString("" + card.getValue(), 5, 15);
+					g.drawString("" + card.getColour(), 5, 30);					
 				}
 			}
 			g.drawImage(face, 0, 0, null);
