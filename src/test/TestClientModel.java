@@ -30,7 +30,7 @@ public class TestClientModel extends ClientModel {
 	public ClientRuleset getRuleset() {
 		return ruleset;
 	}
-
+/*
 	public void receiveMessage(final ComRuleset msg) {
 
 		if (msg != null) {
@@ -49,5 +49,5 @@ public class TestClientModel extends ClientModel {
 		
 	}
 	
-	
+	*/
 }
