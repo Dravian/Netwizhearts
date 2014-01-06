@@ -16,6 +16,7 @@ import test.TestObserver;
 import ComObjects.ComChatMessage;
 import ComObjects.ComInitGameLobby;
 import ComObjects.ComInitLobby;
+import ComObjects.ComRuleset;
 import ComObjects.ComStartGame;
 import ComObjects.ComUpdatePlayerlist;
 import Ruleset.RulesetType;
@@ -88,5 +89,15 @@ public class ClientInGameTest {
 		testNetIO.injectComObject(testMessage);
 		assertTrue("Vergleich der empfangenen Chatnachrichten", 
 		   testObserver.getChatMessage().equals(testMessage.getChatMessage()));
+	}
+
+	@Test (expected=IllegalArgumentException.class)
+	public void receiveComRulesetArgumentNullMessageTest1() {
+		testModel.receiveMessage((ComRuleset) null);
+	}
+
+	@Test (expected=IllegalArgumentException.class)
+	public void receiveComRulesetArgumentNullMessageTest2() {
+		testModel.receiveMessage(new ComRuleset(null));
 	}
 }

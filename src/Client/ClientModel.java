@@ -152,6 +152,7 @@ public class ClientModel extends Observable {
 		this.language = Language.English;
 		screenOut = new LanguageInterpreter(language);
 		playerName = new String();
+		gameMaster = new String();
 		warningText = new StringBuffer();
 		playerList = Collections.synchronizedList(new LinkedList<String>());
 		gameList = Collections.synchronizedList(
@@ -164,7 +165,7 @@ public class ClientModel extends Observable {
 	 * Wird aufgerufen,
 	 * wenn der User in die ServerLobby zurückkehren möchte.
 	 */
-	public void returnToLobby() {
+	public final void returnToLobby() {
 		if (state != ClientState.LOGIN
 				&& state != ClientState.SERVERLOBBY) {
 			netIO.send(new ComClientLeave());
@@ -177,7 +178,7 @@ public class ClientModel extends Observable {
 	 * Wird aufgerufen um die View zu beenden, wenn
 	 * ein Netzwerkfehler auftritt.
 	 */
-	protected void closeView() {
+	protected final void closeView() {
 		warningText.append(screenOut.resolveWarning(
 				WarningMsg.ConnectionLost));
 		informView(ViewNotification.openWarning);
@@ -188,7 +189,7 @@ public class ClientModel extends Observable {
 	 * Wird aufgerufen, wenn der Spieler das Programm beendet.
 	 * Leitet den Verbindungsabbau zum Server ein.
 	 */
-	public void closeProgram() {
+	public final void closeProgram() {
 		netIO.send(new ComClientQuit());
 		netIO.closeConnection();
 		netIO = null;
@@ -202,7 +203,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @param msg die ankommende ComChatMessage Nachricht
 	 */
-	public void receiveMessage(final ComChatMessage msg) {
+	public final void receiveMessage(final ComChatMessage msg) {
 		if (state != ClientState.LOGIN) {
 			if (msg != null) {
 				if (!msg.getChatMessage().isEmpty()) {
@@ -227,7 +228,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @param msg die ankommende ComInitLobby Nachricht
 	 */
-	public void receiveMessage(final ComInitLobby msg) {
+	public final void receiveMessage(final ComInitLobby msg) {
 		if (msg != null) {
 			state = ClientState.SERVERLOBBY;
 			gameMaster = new String();
@@ -262,7 +263,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @param msg die ankommende ComInitGameLobby Nachricht
 	 */
-	public void receiveMessage(final ComInitGameLobby msg) {
+	public final void receiveMessage(final ComInitGameLobby msg) {
 		if (state == ClientState.ENTERGAMELOBBY) {
 			if (msg != null) {
 				state = ClientState.GAMELOBBY;
@@ -295,7 +296,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @param msg Die ankommende ComRuleset Nachricht
 	 */
-	public void receiveMessage(final ComRuleset msg) {
+	public final void receiveMessage(final ComRuleset msg) {
 		if (state == ClientState.GAME) {
 		   if (msg != null) {
 			   if (msg.getRulesetMessage() != null) {
@@ -319,7 +320,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @param warning Die Warnung vom Server.
 	 */
-	public void receiveMessage(final ComWarning warning) {
+	public final void receiveMessage(final ComWarning warning) {
 		if (warning != null) {
 			if (state == ClientState.LOGIN) {
 				playerName = new String();
@@ -350,7 +351,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @param msg Die Servernachricht.
 	 */
-	public void receiveMessage(final ComStartGame msg) {
+	public final void receiveMessage(final ComStartGame msg) {
 		if (state == ClientState.GAMELOBBY) {
 			if (msg != null) {
 				switch (gameType) {
@@ -387,7 +388,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @param update die ankommende ComLobbyUpdatePlayerlist Nachricht
 	 */
-	public void receiveMessage(ComUpdatePlayerlist update) {
+	public final void receiveMessage(final ComUpdatePlayerlist update) {
 		if (state == ClientState.SERVERLOBBY
 				|| state == ClientState.ENTERGAMELOBBY
 				|| state == ClientState.GAMELOBBY) {
@@ -435,7 +436,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @param update die ankommende ComLobbyUpdateGamelist Nachricht
 	 */
-	public void receiveMessage(final ComLobbyUpdateGamelist update) {
+	public final void receiveMessage(final ComLobbyUpdateGamelist update) {
 		if (state == ClientState.SERVERLOBBY
 				|| state == ClientState.ENTERGAMELOBBY) {
 			if (update != null) {
@@ -471,7 +472,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @param quit Die Nachricht zum beenden der Verbindung.
 	 */
-	public void receiveMessage(final ComClientQuit quit) {
+	public final void receiveMessage(final ComClientQuit quit) {
 		if (quit != null) {
 			if (state == ClientState.LOGIN) {
 				netIO.closeConnection();
@@ -489,7 +490,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @return Liste von Spielernamen oder die leere Liste.
 	 */
-	public List<String> getPlayerlist() {
+	public final List<String> getPlayerlist() {
 		return playerList;
 	}
 
@@ -499,7 +500,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @return Liste aller Spiele der Lobby oder null wenn leer.
 	 */
-	public List<GameServerRepresentation> getLobbyGamelist() {
+	public final List<GameServerRepresentation> getLobbyGamelist() {
 		return gameList;
 	}
 
@@ -509,7 +510,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @return gameMaster String des Spielleiters.
 	 */
-	public String getGameMaster() {
+	public final String getGameMaster() {
 		return gameMaster;
 	}
 
@@ -519,7 +520,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @return playerName Der Spielername.
 	 */
-	public String getPlayerName() {
+	public final String getPlayerName() {
 		return playerName;
 	}
 
@@ -528,7 +529,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @param lang Enumerator der die Spielsprache anzeigt.
 	 */
-	public void setLanguage(final Language lang) {
+	public final void setLanguage(final Language lang) {
 		if (lang != null) {
 		   this.language = lang;
 		   this.screenOut = new LanguageInterpreter(language);
@@ -542,7 +543,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @return language Enumerator der die Spielsprache anzeigt.
 	 */
-	public Language getLanguage() {
+	public final Language getLanguage() {
 		return language;
 	}
 
@@ -551,7 +552,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @param name des Spielers, der enfernt werden soll
 	 */
-	public void kickPlayer(final String name) {
+	public final void kickPlayer(final String name) {
 		if (state == ClientState.GAMELOBBY) {
 			if (name == null) {
 				throw new IllegalArgumentException("Argument ist null");
@@ -577,7 +578,7 @@ public class ClientModel extends Observable {
 	 * @param password String Passwort zum sichern des Spieles.
 	 * @param game das zu verwendende Regelwerk
 	 */
-	public void hostGame(String gameName,
+	public final void hostGame(String gameName,
 						 boolean hasPassword, String password,
 						 RulesetType game) {
 		if (state == ClientState.SERVERLOBBY) {
@@ -614,7 +615,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @param msg die RulesetMessage, die an den Server geschickt werden soll.
 	 */
-	public void send(final RulesetMessage msg) {
+	public final void send(final RulesetMessage msg) {
 		if (state == ClientState.GAME) {
 			if (msg != null) {
 				netIO.send(new ComRuleset(msg));
@@ -632,7 +633,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @return String Text der Bildschirmmeldung.
 	 */
-	public String getWindowText() {
+	public final String getWindowText() {
 		return windowText;
 	}
 
@@ -641,7 +642,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @return List<Card> Karten, aus denen gewaehlt werden kann.
 	 */
-	public List<Card> getCardsToChooseFrom() {
+	public final List<Card> getCardsToChooseFrom() {
 		if (state == ClientState.GAME) {
 			if (ruleset != null) {
 				return ruleset.getOwnHand();
@@ -661,7 +662,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @param cards Karten, die der User gewaehlt hat
 	 */
-	public void giveChosenCards(final List<Card> cards) {
+	public final void giveChosenCards(final List<Card> cards) {
 		if (state == ClientState.GAME) {
 			if (cards != null) {
 				if (!cards.isEmpty()) {
@@ -688,7 +689,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @param msg Enumerator der Spielnachricht.
 	 */
-	public void openChooseCardsWindow(final UserMessages msg) {
+	public final void openChooseCardsWindow(final UserMessages msg) {
 		if (state == ClientState.GAME) {
 			if (msg != null) {
 				windowText = screenOut.resolveWarning(msg);
@@ -709,7 +710,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @param colour Die Farbe, die der User gewaehlt hat
 	 */
-	public void giveColourSelection(final Colour colour) {
+	public final void giveColourSelection(final Colour colour) {
 		if (state == ClientState.GAME) {
 			if (colour != null) {
 				if (ruleset != null) {
@@ -732,7 +733,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @param msg Der Enumerator von Spielnachrichten.
 	 */
-	public void openChooseColourWindow(final UserMessages msg) {
+	public final void openChooseColourWindow(final UserMessages msg) {
 		if (state == ClientState.GAME) {
 			if (ruleset != null) {
 				  windowText = screenOut.resolveWarning(msg);
@@ -751,7 +752,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @return List<Colour> Eine Liste mit Farben eines Spiels.
 	 */
-	public List<Colour> getColoursToChooseFrom() {
+	public final List<Colour> getColoursToChooseFrom() {
 		if (state == ClientState.GAME) {
 			if (ruleset != null) {
 				return ruleset.getColours();
@@ -772,7 +773,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @param number Zahl, die vom User gewahlt wurde
 	 */
-	public void giveInputNumber(final int number) {
+	public final void giveInputNumber(final int number) {
 		if (state == ClientState.GAME) {
 			if (ruleset != null) {
 				ruleset.chooseTrickNumber(number);
@@ -791,7 +792,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @param msg Enumerator fuer den Fenstertext.
 	 */
-	public void openNumberInputWindow(final UserMessages msg) {
+	public final void openNumberInputWindow(final UserMessages msg) {
 		if (state == ClientState.GAME) {
 			if (ruleset != null) {
 				  windowText = screenOut.resolveWarning(msg);
@@ -810,7 +811,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @param msg Enumerator fuer den Fenstertext
 	 */
-	public void updateTrumpColour(final UserMessages msg) {
+	public final void updateTrumpColour(final UserMessages msg) {
 		if (state == ClientState.GAME) {
 			if (msg != null) {
 				windowText = screenOut.resolveWarning(msg);
@@ -828,7 +829,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @return Colour Die aktuelle Trumpffarbe.
 	 */
-	public Colour getTrumpColour() {
+	public final Colour getTrumpColour() {
 		if (state == ClientState.GAME) {
 			if (ruleset != null) {
 				return ruleset.getTrumpColour();
@@ -846,7 +847,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @param msg Enum fuer den Fenstertext.
 	 */
-	public void announceTurn(final UserMessages msg) {
+	public final void announceTurn(final UserMessages msg) {
 		if (state == ClientState.GAME) {
 			if (msg != null) {
 				windowText = screenOut.resolveWarning(msg);
@@ -865,7 +866,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @param msg die Chatnachricht, die an den Server geschickt werden soll
 	 */
-	public void sendChatMessage(final String msg) {
+	public final void sendChatMessage(final String msg) {
 		if (state != ClientState.LOGIN) {
 			if (msg != null) {
 				if (!msg.isEmpty()) {
@@ -891,7 +892,7 @@ public class ClientModel extends Observable {
 	 * @param name String Der Name des Spielleiters.
 	 * @param password String Passwort eines Spieles.
 	 */
-	public void joinGame(final String name, String password) {
+	public final void joinGame(String name, String password) {
 		if (state == ClientState.SERVERLOBBY) {
 			if (password == null) {
 				password = new String();
@@ -924,23 +925,17 @@ public class ClientModel extends Observable {
 	 * er ins Spiel. Wenn der Client nicht der Spielleiter des Spiels ist,
 	 * wird eine Fehlermeldung ausgegeben.
 	 */
-	public void startGame() {
+	public final void startGame() {
 		if (state == ClientState.GAMELOBBY) {
-	      if (gameMaster != null) {
-	         if (!gameMaster.isEmpty()) {
-			   if (gameMaster.equals(playerName)) {
-			      int playerCount = playerList.size();
-				  if (playerCount >= gameType.getMinPlayer()
-						  && playerCount <= gameType.getMaxPlayer()) {
-					  netIO.send(new ComStartGame());
-				  }
-			   }
-	         } else {
-				throw new IllegalStateException("Spielleiter ist leer");
-	         }
-		  } else {
-				throw new IllegalStateException("Spielleiter ist null");
-		  }
+	        if (!gameMaster.isEmpty()) {
+			  if (gameMaster.equals(playerName)) {
+			     int playerCount = playerList.size();
+			  if (playerCount >= gameType.getMinPlayer()
+					  && playerCount <= gameType.getMaxPlayer()) {
+				  netIO.send(new ComStartGame());
+			  }
+			  }
+	       }
 		} else {
 			throw new IllegalStateException("Falscher Zustand des Clients");
 		}
@@ -955,7 +950,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @param card Die gespielte Karte.
 	 */
-	public void makeMove(final Card card) {
+	public final void makeMove(final Card card) {
 		if (state == ClientState.GAME) {
 			if (card != null) {
 				if (ruleset != null) {
@@ -977,7 +972,7 @@ public class ClientModel extends Observable {
 	 * dass ein neues Spielupdate vorhanden ist.
 	 *
 	 */
-	public void updateGame() {
+	public final void updateGame() {
 		if (state == ClientState.GAME) {
 			informView(ViewNotification.gameUpdate);
 		} else {
@@ -990,7 +985,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @return GameClientUpdate Die Daten der laufenden Sitzung.
 	 */
-	public GameClientUpdate getGameUpdate() {
+	public final GameClientUpdate getGameUpdate() {
 		if (state == ClientState.GAME
 				|| state == ClientState.SERVERLOBBY
 				|| state == ClientState.ENDING) {
@@ -1010,7 +1005,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @param msg Enum der Warnungen.
 	 */
-	public void openWarning(final WarningMsg msg) {
+	public final void openWarning(final WarningMsg msg) {
 		if (msg != null) {
 			warningText.append(screenOut.resolveWarning(msg));
 			informView(ViewNotification.openWarning);
@@ -1024,7 +1019,7 @@ public class ClientModel extends Observable {
 	 * Spielstand ausgegeben werden muss.
 	 *
 	 */
-	public void showScoreWindow() {
+	public final void showScoreWindow() {
 		if (state == ClientState.GAME) {
 			if (ruleset != null) {
 				informView(ViewNotification.showScore);
@@ -1041,7 +1036,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @param msg Enum der Spielnachrichten.
 	 */
-	public void announceWinner(final UserMessages msg) {
+	public final void announceWinner(final UserMessages msg) {
 		if (state == ClientState.GAME) {
 			state = ClientState.ENDING;
 			if (msg != null) {
@@ -1060,7 +1055,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @return List<String> der/die Gewinner.
 	 */
-	public List<String> getWinner() {
+	public final List<String> getWinner() {
 		if (state == ClientState.ENDING) {
 			return ruleset.getWinners();
 		}
@@ -1084,7 +1079,7 @@ public class ClientModel extends Observable {
 	 * der für den Login verwendet wird.
 	 * @param host String die Adresse des spielservers.
 	 */
-	public void createConnection(String username,
+	public final void createConnection(String username,
 								 String host) {
 		state = ClientState.LOGIN;
 		URI uri = null;
@@ -1174,7 +1169,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @return String Text der Warnung.
 	 */
-	public String getWarningText() {
+	public final String getWarningText() {
 		String text = warningText.toString();
 		warningText.delete(0, warningText.length());
 		return text;
@@ -1194,7 +1189,7 @@ public class ClientModel extends Observable {
 	 *
 	 * @return List<RulesetType> Liste von unterstuetzten Regelwerken.
 	 */
-	public List<RulesetType> getRulesets() {
+	public final List<RulesetType> getRulesets() {
 		return supportetGames;
 	}
 }

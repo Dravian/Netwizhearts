@@ -44,7 +44,7 @@ public class ClientInServerLobbyTest {
 		testModel = new ClientModel((MessageListenerThread) testNetIO);
 		testNetIO.setModel(testModel);
 		testModel.addObserver(testObserver);
-		testModel.createConnection("TestPlayer1", "localhost");
+		testModel.createConnection("Player1", "localhost");
 		List<String> players = new LinkedList<String>();
 		players.add("Player1");
 		Set<GameServerRepresentation> games =
@@ -61,6 +61,18 @@ public class ClientInServerLobbyTest {
     	testModel = null;
     	testObserver = null;
     	testText = null;
+	}
+
+	@Test
+	public void getPlayerNameTest() {
+		assertEquals("Spielername nach Login", "Player1",
+				testModel.getPlayerName());
+	}
+
+	@Test
+	public void getGameMasterTest() {
+		assertEquals("Gamemaster nach Login", "",
+				testModel.getGameMaster());
 	}
 
 	@Test
