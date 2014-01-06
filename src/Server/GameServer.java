@@ -73,6 +73,10 @@ public class GameServer extends Server {
 	 */
 	private boolean hasStarted;
 
+	private int reqPlayers;
+	
+	private boolean newRound;
+	
 	/**
 	 * Konstruktor des GameServers. Setzt die Attribute lobbyServer, name,
 	 * password, hasPassword und rulesetType auf die uebergebenen Werte. Setzt
@@ -104,6 +108,8 @@ public class GameServer extends Server {
 		this.password = password;
 		this.hasPassword = hasPassword;
 		currentPlayers = 0;
+		newRound = true;
+		reqPlayers = 0;
 		if (rulesetType == RulesetType.Hearts) {
 			this.ruleset = new ServerHearts(this);
 			maxPlayers = 4;
@@ -163,7 +169,7 @@ public class GameServer extends Server {
 	}
 
 	/**
-	 * Diese Methode verschickt ComWarning mit der übergebenen Warnung 
+	 * Diese Methode verschickt ComWarning mit der ï¿½bergebenen Warnung 
 	 * mit broadcast() an alle Spieler.
 	 * @param message
 	 *            ist die Ruleset Nachricht, die in ein ComObject verpackt wird
@@ -278,12 +284,12 @@ public class GameServer extends Server {
 			} else {
 				System.err.println("PlayerSet empty!");
 				player.send(new ComClientQuit());
-				player.closeConnection();
+				disconnectPlayer(player);
 			}
 		} else {
 			System.err.println("Not the GameMaster!");
 			player.send(new ComClientQuit());
-			player.closeConnection();
+			disconnectPlayer(player);
 		}		
 	}
 
@@ -347,7 +353,7 @@ public class GameServer extends Server {
 			} else {
 				System.err.println("PlayerSet empty!");
 				player.send(new ComClientQuit());
-				player.closeConnection();
+				disconnectPlayer(player);
 			}
 		} else {
 			if (!playerSet.isEmpty()) {
@@ -366,12 +372,12 @@ public class GameServer extends Server {
 				} else {
 					System.err.println("Player not in Game!");
 					player.send(new ComClientQuit());
-					player.closeConnection();
+					disconnectPlayer(player);
 				}
 			} else {
 				System.err.println("PlayerSet empty!");
 				player.send(new ComClientQuit());
-				player.closeConnection();
+				disconnectPlayer(player);
 			}
 			lobbyServer.broadcast(new ComLobbyUpdateGamelist(true,
 					getRepresentation()));
@@ -409,18 +415,18 @@ public class GameServer extends Server {
 				} catch (IllegalNumberOfPlayersException e) {
 					ComWarning warning = new ComWarning(WarningMsg.CouldntStart);
 					broadcast(warning);
-					quitGame();
+					endGame();
 					e.printStackTrace();
 				}
 			} else{
 				System.err.println("Game has already started!");
 				player.send(new ComClientQuit());
-				player.closeConnection();
+				disconnectPlayer(player);
 			}
 		} else {
 			System.err.println("Not the GameMaster!");
 			player.send(new ComClientQuit());
-			player.closeConnection();
+			disconnectPlayer(player);
 		}	
 	}
 
@@ -463,11 +469,62 @@ public class GameServer extends Server {
 	 * Spieler in der Lobby erhalten ein Gamelist Update.
 	 */
 	public void quitGame() {
+		hasStarted = false;
+		if (rulesetType == RulesetType.Hearts) {
+			this.ruleset = new ServerHearts(this);
+			maxPlayers = 4;
+		} else {
+			if (rulesetType == RulesetType.Wizard) {
+				this.ruleset = new ServerWizard(this);
+				maxPlayers = 6;
+			} 
+		}
+	}
+	
+	public void receiveMessage(Player player, ComNewRound request) {
+		++reqPlayers;
+		if(!request.getResult()){
+			newRound = false;
+		}
+		if(reqPlayers == currentPlayers){
+			if(newRound){
+				reqPlayers = 0;
+				newRound = true;
+				if(!isHasStarted()){
+					try {
+						synchronized (playerSet) {
+							for (Player back : playerSet) {
+								ruleset.addPlayerToGame(back.getPlayerName());
+							}	
+						}		
+						setHasStarted(true);
+						lobbyServer.broadcast(new ComLobbyUpdateGamelist(false,
+								getRepresentation()));
+						broadcast(new ComStartGame());
+						ruleset.runGame();
+					} catch (IllegalNumberOfPlayersException e) {
+						ComWarning warning = new ComWarning(WarningMsg.CouldntStart);
+						broadcast(warning);
+						endGame();
+						e.printStackTrace();
+					}
+				} else{
+					System.err.println("Game has already started!");
+					player.send(new ComClientQuit());
+					disconnectPlayer(player);
+				}
+			} else {
+				endGame();
+			}
+		}
+	}
+
+	private void endGame() {
 		synchronized(playerSet){
-			for (Player player : playerSet) {
-				player.changeServer(lobbyServer);
+			for (Player players : playerSet) {
+				players.changeServer(lobbyServer);
 				ComInitLobby comInit = lobbyServer.initLobby();
-				player.send(comInit);
+				players.send(comInit);
 			}	
 		}	
 		playerSet.clear();
@@ -475,7 +532,7 @@ public class GameServer extends Server {
 		lobbyServer.broadcast(new ComLobbyUpdateGamelist(true,
 				getRepresentation()));
 	}
-
+	
 	/**
 	 * Diese Methode schliesst die Verbindung zu einem Client. Der uebergebene
 	 * Player wird aus dem playerSet im GameServer, sowie dem names Set im
@@ -553,15 +610,15 @@ public class GameServer extends Server {
 	}
 
 	/**
-	 * Gibt zurück, ob das Spiel bereits gestartet ist
+	 * Gibt zurï¿½ck, ob das Spiel bereits gestartet ist
 	 * @return den Wert von hasStarted
 	 */
 	public boolean isHasStarted() {
 		return hasStarted;
 	}
 	/**
-	 * Setter für has started
-	 * @param hasStarted wird auf den übergebenen Wert gesetzt
+	 * Setter fï¿½r has started
+	 * @param hasStarted wird auf den ï¿½bergebenen Wert gesetzt
 	 */
 	public void setHasStarted(boolean hasStarted) {
 		this.hasStarted = hasStarted;

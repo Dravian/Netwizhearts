@@ -120,7 +120,7 @@ public class LobbyServer extends Server {
 	@Override
 	public void receiveMessage(Player player,
 			ComCreateGameRequest create) {
-		if (create.getGameName() != null && create.getPassword() != null) {
+		if (create.getGameName() != null) {
 			String name = create.getGameName();
 			if (create.getRuleset() == RulesetType.Hearts
 					|| create.getRuleset() == RulesetType.Wizard) {
@@ -177,8 +177,8 @@ public class LobbyServer extends Server {
 	/**
 	 * Hilfsmethode, die einen Spieler zu einem Spiel hinzufuegt
 	 * 
-	 * @param player ist der Spieler, der hinzugefügt wird
-	 * @param game ist das Spiel zu dem der Spieler hinzugefügt wird
+	 * @param player ist der Spieler, der hinzugefï¿½gt wird
+	 * @param game ist das Spiel zu dem der Spieler hinzugefï¿½gt wird
 	 */
 	private void addPlayerToGame(Player player, GameServer game) {
 		removePlayer(player);
@@ -223,9 +223,25 @@ public class LobbyServer extends Server {
 				ComWarning warning = new ComWarning(WarningMsg.GameNotExistent);
 				player.send(warning);
 			}
-			if(!joinGame.isHasStarted()){
-				if (joinGame.getRepresentation().hasPassword()) {
-					if (joinGame.getPassword().equals(join.getPassword())) {
+			if (joinGame == null){
+				ComWarning warning = new ComWarning(WarningMsg.GameNotExistent);
+				player.send(warning);
+			} else {
+				if(!joinGame.isHasStarted()){
+					if (joinGame.getRepresentation().hasPassword()) {
+						if (joinGame.getPassword().equals(join.getPassword())) {
+							if (joinGame.getRepresentation().getCurrentPlayers() < joinGame
+									.getRepresentation().getMaxPlayers()) {
+								addPlayerToGame(player, joinGame);
+							} else {
+								ComWarning warning = new ComWarning(WarningMsg.GameFull);
+								player.send(warning);
+							}
+						} else {
+							ComWarning warning = new ComWarning(WarningMsg.WrongPassword);
+							player.send(warning);
+						}
+					} else {
 						if (joinGame.getRepresentation().getCurrentPlayers() < joinGame
 								.getRepresentation().getMaxPlayers()) {
 							addPlayerToGame(player, joinGame);
@@ -233,22 +249,11 @@ public class LobbyServer extends Server {
 							ComWarning warning = new ComWarning(WarningMsg.GameFull);
 							player.send(warning);
 						}
-					} else {
-						ComWarning warning = new ComWarning(WarningMsg.WrongPassword);
-						player.send(warning);
 					}
 				} else {
-					if (joinGame.getRepresentation().getCurrentPlayers() < joinGame
-							.getRepresentation().getMaxPlayers()) {
-						addPlayerToGame(player, joinGame);
-					} else {
-						ComWarning warning = new ComWarning(WarningMsg.GameFull);
-						player.send(warning);
-					}
-				}
-			} else {
-				ComWarning warning = new ComWarning(WarningMsg.CouldntJoin);
-				player.send(warning);
+					ComWarning warning = new ComWarning(WarningMsg.CouldntJoin);
+					player.send(warning);
+				}	
 			}	
 		} else {
 			System.err.println("Kein GameMaster!");
@@ -302,9 +307,9 @@ public class LobbyServer extends Server {
 	}
 
 	/**
-	 * Getter für das Set der Spielernamen
+	 * Getter fï¿½r das Set der Spielernamen
 	 * 
-	 * @return Gibt das names Set zurück
+	 * @return Gibt das names Set zurï¿½ck
 	 */
 	public Set<String> getNames() {
 		return names;
