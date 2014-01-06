@@ -365,13 +365,13 @@ public class LanguageInterpreter {
 		String ret;
 		switch (message) {
 		case ChooseColour:
-			ret = "Wähle eine Farbe.";
+			ret = "Wähle die Trumpffarbe aus.";
 			break;
 		case ChooseCards:
-			ret = "Wähle drei Karten.";
+			ret = "Wähle drei Karten, die einem anderen Spieler gegeben werden.";
 			break;
 		case ChooseNumber:
-			ret = "Gib eine Zahl ein.";
+			ret = "Gib ein wie viele Stiche du machen willst..";
 			break;
 		case GameEnd:
 			ret = "Das Spiel ist vorbei.";
@@ -403,13 +403,13 @@ public class LanguageInterpreter {
 		String ret;
 		switch (message) {
 		case ChooseColour:
-			ret = "Choose a colour.";
+			ret = "Choose the trump colour";
 			break;
 		case ChooseCards:
-			ret = "Choose three cards.";
+			ret = "Choose three cards to give to another player.";
 			break;
 		case ChooseNumber:
-			ret = "Input a number.";
+			ret = "Enter how many tricks you think you will make.";
 			break;
 		case GameEnd:
 			ret = "The game has ended.";
@@ -441,10 +441,10 @@ public class LanguageInterpreter {
 		String ret;
 		switch (message) {
 		case ChooseColour:
-			ret = "Suach da oane vo de Farbn aus.";
+			ret = "Suach da d'Trumpffarb aus.";
 			break;
 		case ChooseCards:
-			ret = "Suach da drei Kartn aus.";
+			ret = "Suach da drei Kartn aus, de am andan zuagschom wern.";
 			break;
 		case ChooseNumber:
 			ret = "Gib ei wiavui Stich dassd moansd, dassd machsd.";
