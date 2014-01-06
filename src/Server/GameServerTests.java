@@ -2,6 +2,8 @@ package Server;
 
 import static org.junit.Assert.*;
 
+import javax.naming.CompositeName;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,6 +15,7 @@ import ComObjects.ComInitLobby;
 import ComObjects.ComJoinRequest;
 import ComObjects.ComKickPlayerRequest;
 import ComObjects.ComLobbyUpdateGamelist;
+import ComObjects.ComNewRound;
 import ComObjects.ComRuleset;
 import ComObjects.ComStartGame;
 import ComObjects.ComWarning;
@@ -54,7 +57,7 @@ public class GameServerTests {
 		player4.setServer(lobby);
 
 		player5 = new TestPlayer(lobby);
-		player5.setPlayerName("Günther");
+		player5.setPlayerName("Gï¿½nther");
 		player5.setServer(lobby);
 
 		player6 = new TestPlayer(lobby);
@@ -513,5 +516,82 @@ public class GameServerTests {
 
 		ComWarning toPlayer6 = (ComWarning) player6.getServerInput().get(10);
 		assertTrue(toPlayer6.getWarning().equals(WarningMsg.GameDisbanded));
+	}
+	
+	@Test
+	public void testNewRound() {
+		ComNewRound fromPlayer1 = new ComNewRound(true);
+		player1.injectComObject(fromPlayer1);
+		ComNewRound fromPlayer2 = new ComNewRound(true);
+		player2.injectComObject(fromPlayer2);
+		ComNewRound fromPlayer3 = new ComNewRound(true);
+		player3.injectComObject(fromPlayer3);
+		ComNewRound fromPlayer4 = new ComNewRound(true);
+		player4.injectComObject(fromPlayer4);
+		ComNewRound fromPlayer5 = new ComNewRound(true);
+		player5.injectComObject(fromPlayer5);
+		ComNewRound fromPlayer6 = new ComNewRound(true);
+		player6.injectComObject(fromPlayer6);
+		
+		ComRuleset ruleset = new ComRuleset(null);
+		assertTrue(player1.getServerInput().get(6).getClass()
+				.equals(ruleset.getClass()));
+		assertTrue(player2.getServerInput().get(6).getClass()
+				.equals(ruleset.getClass()));
+		assertTrue(player3.getServerInput().get(7).getClass()
+				.equals(ruleset.getClass()));
+		assertTrue(player4.getServerInput().get(8).getClass()
+				.equals(ruleset.getClass()));
+		assertTrue(player5.getServerInput().get(9).getClass()
+				.equals(ruleset.getClass()));
+		assertTrue(player6.getServerInput().get(10).getClass()
+				.equals(ruleset.getClass()));
+		
+		ComLobbyUpdateGamelist to7game = (ComLobbyUpdateGamelist) player7
+				.getServerInput().get(10);
+		assertTrue(to7game.getGameServer().getGameMasterName()
+				.equals(player1.getPlayerName()));
+		assertTrue(to7game.getGameServer().getName().equals("Markus' Spiel"));
+		assertTrue(to7game.getGameServer().isHasStarted());
+		assertFalse(to7game.isRemoveFlag());
+	}
+	
+	@Test
+	public void testNoNewRound() {
+		ComNewRound fromPlayer1 = new ComNewRound(true);
+		player1.injectComObject(fromPlayer1);
+		ComNewRound fromPlayer2 = new ComNewRound(true);
+		player2.injectComObject(fromPlayer2);
+		ComNewRound fromPlayer3 = new ComNewRound(true);
+		player3.injectComObject(fromPlayer3);
+		ComNewRound fromPlayer4 = new ComNewRound(true);
+		player4.injectComObject(fromPlayer4);
+		ComNewRound fromPlayer5 = new ComNewRound(true);
+		player5.injectComObject(fromPlayer5);
+		ComNewRound fromPlayer6 = new ComNewRound(false);
+		player6.injectComObject(fromPlayer6);
+		
+		assertTrue(lobby.playerSet.contains(player1));
+		assertTrue(lobby.playerSet.contains(player2));
+		assertTrue(lobby.playerSet.contains(player3));
+		assertTrue(lobby.playerSet.contains(player4));
+		assertTrue(lobby.playerSet.contains(player5));
+		assertTrue(lobby.playerSet.contains(player6));
+		assertTrue(lobby.playerSet.contains(player7));
+		assertTrue(lobby.initLobby().getGameList().size() == 0);
+
+		ComInitLobby init = new ComInitLobby(null, null);
+		assertTrue(player1.getServerInput().get(5).getClass()
+				.equals(init.getClass()));
+		assertTrue(player2.getServerInput().get(5).getClass()
+				.equals(init.getClass()));
+		assertTrue(player3.getServerInput().get(6).getClass()
+				.equals(init.getClass()));
+		assertTrue(player4.getServerInput().get(7).getClass()
+				.equals(init.getClass()));
+		assertTrue(player5.getServerInput().get(8).getClass()
+				.equals(init.getClass()));
+		assertTrue(player6.getServerInput().get(9).getClass()
+				.equals(init.getClass()));
 	}
 }

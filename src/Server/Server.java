@@ -58,7 +58,7 @@ public abstract class Server {
 
 	/**
 	 * Diese Methode schliesst die Verbindung, indem disconnectPlayer mit dem
-	 * entsprechenden Player übergeben, aufgerufen wird.
+	 * entsprechenden Player ï¿½bergeben, aufgerufen wird.
 	 * 
 	 * @param player
 	 *            ist der Thread von dem die Nachricht kommt
@@ -152,6 +152,10 @@ public abstract class Server {
 		disconnectPlayer(player);
 	}
 
+	public void receiveMessage(Player player, ComNewRound request) {
+		System.err.println("Das ist die falsche ruleset Methode");
+		disconnectPlayer(player);
+	}
 	/**
 	 * Diese Methode wird genutzt, um ein ComObject an einen einzigen Client zu
 	 * verschicken. Der Player der die Nachricht verschicken soll wird Anhand

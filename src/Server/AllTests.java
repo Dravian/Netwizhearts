@@ -5,8 +5,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ GameServerTests.class, LobbyTest.class, LoginTest.class,
-		LoginTestNegativ.class })
+@SuiteClasses({ GameServerTests.class, LobbyTest.class, LoginTest.class, LoginTestNegativ.class, LobbyCheatTest.class, GameServerCheatTest.class })
 public class AllTests {
 
 }
