@@ -41,7 +41,7 @@ public class OtherPlayer extends JPanel{
 	public OtherPlayer() {
 		name = "";
 		info = "";
-		this.setOpaque(true);
+		this.setBackground(Color.BLACK);
 		try {
 			image = ImageIO.read(new File(Game.IMAGEPATH + "hand.png"))
 					.getScaledInstance(OtherPlayer.WIDTH, OtherPlayer.HEIGHT, UNDEFINED_CONDITION);
