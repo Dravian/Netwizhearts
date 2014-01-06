@@ -26,9 +26,12 @@ import javax.swing.SwingUtilities;
 public class ScoreWindow extends JFrame implements Observer{
 
 	private JTextArea textArea;
-	private JButton btnOK;
+	private JButton btnPlayAgain;
+	private JButton btnLeave;
+	private Language lang;
 	
 	public ScoreWindow() {
+		lang = Language.English;
 		setBounds(100, 100, 450, 290);
 		setAlwaysOnTop(true);
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -40,19 +43,62 @@ public class ScoreWindow extends JFrame implements Observer{
 		textArea.setBounds(10, 11, 414, 202);
 		getContentPane().add(textArea);
 		
-		btnOK = new JButton("OK");
-		btnOK.setBounds(172, 224, 89, 23);
-		getContentPane().add(btnOK);
+		btnPlayAgain = new JButton("Play again");
+		btnPlayAgain.setBounds(272, 224, 152, 23);
+		getContentPane().add(btnPlayAgain);
+		
+		btnLeave = new JButton("Leave");
+		btnLeave.setBounds(10, 224, 115, 23);
+		getContentPane().add(btnLeave);
 		
 	}
 	
 	/**
-	 * Fuegt dem OK-Button einen ActionListener hinzu
+	 * Fuegt dem Play-Again-Button einen ActionListener hinzu
 	 * 
 	 * @param l ein ActionListener
 	 */
-	public void addOKButtonListener(ActionListener l) {
-		btnOK.addActionListener(l);
+	public void addPlayAgainButtonListener(ActionListener l) {
+		btnPlayAgain.addActionListener(l);
+	}
+	
+	/**
+	 * Fuegt dem Leave-Button einen ActionListener hinzu
+	 * 
+	 * @param l ein ActionListener
+	 */
+	public void addLeaveButtonListener(ActionListener l) {
+		btnLeave.addActionListener(l);
+	}
+	
+	/**
+	 * Aendert die Sprache des Fensters
+	 * 
+	 * @param l Sprache in Form des Language-Enums
+	 */
+	public void setLanguage(Language l) {
+		lang = l;
+		updateLanguage();
+	}
+		
+	private void updateLanguage() {
+		switch (lang) {
+		case German:
+			this.setTitle("Sieger und Punkte");
+			btnLeave.setText("Verlassen");
+			btnPlayAgain.setText("Nochmal spielen");
+			break;
+		case English:
+			this.setTitle("Winners and Score");
+			btnLeave.setText("Leave");
+			btnPlayAgain.setText("Play again");
+			break;
+		case Bavarian:
+			this.setTitle("Wer gwunga hod und d'Aung vo am jedn");
+			btnLeave.setText("Wegadgeh");
+			btnPlayAgain.setText("Numoi spuin");
+			break;
+		}		
 	}
 
 	/**

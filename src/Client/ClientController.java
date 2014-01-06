@@ -145,7 +145,8 @@ public class ClientController {
 		clientModel.addObserver(chooseCards);
 		
 		scoreWindow = new ScoreWindow();
-		scoreWindow.addOKButtonListener(new OKButtonListenerScoreWindow());
+		scoreWindow.addPlayAgainButtonListener(new PlayAgainButtonListenerScoreWindow());
+		scoreWindow.addLeaveButtonListener(new LeaveButtonListenerScoreWindow());
 		clientModel.addObserver(scoreWindow);
 	}
 	
@@ -298,6 +299,7 @@ public class ClientController {
 			createGame.setLanguage(language);
 			gameLobby.setLanguage(language);
 			game.setLanguage(language);
+			scoreWindow.setLanguage(language);
 		}
 		
 	}
@@ -627,17 +629,31 @@ public class ClientController {
 		
 	}
 	
-	class OKButtonListenerScoreWindow implements ActionListener {
+	class PlayAgainButtonListenerScoreWindow implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			try {
+			//clientModel.votePlayAgain(true);? 
 			scoreWindow.setVisible(false);
 			} catch (ClassCastException e) {
 				//TODO
 			}
 		}
 		
+	}
+	
+	class LeaveButtonListenerScoreWindow implements ActionListener {
+		
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			try {
+			//clientModel.votePlayAgain(false);? 
+			scoreWindow.setVisible(false);
+			} catch (ClassCastException e) {
+				//TODO
+			}
+		}
 	}
 	
 	
