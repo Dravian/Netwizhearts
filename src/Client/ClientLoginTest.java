@@ -205,4 +205,29 @@ public class ClientLoginTest {
 	public void wrongClientStateExceptionKickPlayerTest() {
 		testModel.kickPlayer("Player1");
 	}
+
+	@Test (expected=IllegalStateException.class)
+	public void wrongClientStateExceptionAnnounceTurnTest() {
+		testModel.announceTurn(null);
+	}
+
+	@Test (expected=IllegalStateException.class)
+	public void wrongClientStateExceptionAnnounceWinnerTest() {
+		testModel.announceWinner(null);
+	}
+
+	@Test (expected=IllegalStateException.class)
+	public void wrongClientStateExceptionGetCardsToChooseFromTest() {
+		testModel.getCardsToChooseFrom();
+	}
+
+	@Test (expected=IllegalStateException.class)
+	public void wrongClientStateExceptionGetColoursToChooseFromTest() {
+		testModel.getColoursToChooseFrom();
+	}
+
+	@Test (expected=IllegalStateException.class)
+	public void wrongClientStateExceptionGetTrumpColourTest() {
+		testModel.getTrumpColour();
+	}
 }
