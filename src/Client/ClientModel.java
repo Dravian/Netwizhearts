@@ -179,6 +179,7 @@ public class ClientModel extends Observable {
 	 * ein Netzwerkfehler auftritt.
 	 */
 	protected final void closeView() {
+		warningText.delete(0, warningText.length());
 		warningText.append(screenOut.resolveWarning(
 				WarningMsg.ConnectionLost));
 		informView(ViewNotification.openWarning);
@@ -326,6 +327,7 @@ public class ClientModel extends Observable {
 				playerName = new String();
 				netIO.closeConnection();
 				netIOThread = null;
+				warningText.delete(0, warningText.length());
 				warningText.append(screenOut.resolveWarning(
 						WarningMsg.LoginError));
 				informView(ViewNotification.openWarning);
@@ -333,10 +335,12 @@ public class ClientModel extends Observable {
 				state = ClientState.SERVERLOBBY;
 				gameMaster = new String();
 				gameType = null;
+				warningText.delete(0, warningText.length());
 				warningText.append(screenOut.resolveWarning(
 						warning.getWarning()));
 				informView(ViewNotification.openWarning);
 			} else {
+				warningText.delete(0, warningText.length());
 				warningText.append(screenOut.resolveWarning(
 						warning.getWarning()));
 				informView(ViewNotification.openWarning);
@@ -954,7 +958,7 @@ public class ClientModel extends Observable {
 		if (state == ClientState.GAME) {
 			if (card != null) {
 				if (ruleset != null) {
-					ruleset.playCard(card);;
+					ruleset.playCard(card);
 				} else {
 					throw new IllegalStateException("Kein"
 							+ " Regelwerk instanziert");
@@ -1007,6 +1011,7 @@ public class ClientModel extends Observable {
 	 */
 	public final void openWarning(final WarningMsg msg) {
 		if (msg != null) {
+			warningText.delete(0, warningText.length());
 			warningText.append(screenOut.resolveWarning(msg));
 			informView(ViewNotification.openWarning);
 		} else {
@@ -1051,6 +1056,16 @@ public class ClientModel extends Observable {
 	}
 
 	/**
+	 * Wird aufgerufen um am Ende einer Partie
+	 * das Spiel neu zu starten.
+	 * 
+	 * @param start Boolean Zeigt den Neustart an.
+	 */
+	public final void votePlayAgain(boolean start) {
+
+	}
+
+	/**
 	 * Liefert den Gewinner einer Partie.
 	 *
 	 * @return List<String> der/die Gewinner.
@@ -1085,6 +1100,7 @@ public class ClientModel extends Observable {
 		URI uri = null;
 		int port = PORT;
 		boolean fault = false;
+		warningText.delete(0, warningText.length());
 		if (username == null) {
 			throw new IllegalArgumentException();
 		}
@@ -1147,6 +1163,7 @@ public class ClientModel extends Observable {
 			netIOThread.start();
 			netIO.send(new ComLoginRequest(username));
 		} catch (ConnectException e) {
+			warningText.delete(0, warningText.length());
 			warningText.append(screenOut.resolveWarning(
 					WarningMsg.UnknownHost));
 			informView(ViewNotification.openWarning);
@@ -1154,6 +1171,7 @@ public class ClientModel extends Observable {
 			System.err.println("ERROR: Network IO");
 			e.printStackTrace();
 		} catch (UnknownHostException e) {
+			warningText.delete(0, warningText.length());
 			warningText.append(screenOut.resolveWarning(
 					WarningMsg.UnknownHost));
 			informView(ViewNotification.openWarning);
@@ -1170,9 +1188,7 @@ public class ClientModel extends Observable {
 	 * @return String Text der Warnung.
 	 */
 	public final String getWarningText() {
-		String text = warningText.toString();
-		warningText.delete(0, warningText.length());
-		return text;
+		return warningText.toString();
 	}
 
 	/**
