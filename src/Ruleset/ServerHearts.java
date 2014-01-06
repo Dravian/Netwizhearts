@@ -77,10 +77,10 @@ public class ServerHearts extends ServerRuleset {
 			setGamePhase(GamePhase.CardRequest);
 			send(WarningMsg.UnvalidMove, name);
 			send(new MsgCardRequest(), name);
-			/*throw new IllegalArgumentException("Der Spieler" + name
+			throw new IllegalArgumentException("Der Spieler" + name
 					+ "hat die Karte " + card.getValue() + card.getColour()
 					+ " gespielt, obwohl sie kein gültiger "
-					+ "Zug ist. Es muss ein Fehler bei ClientWizard sein.");*/
+					+ "Zug ist.");
 
 		} else if(!playCard(card)) {
 			setGamePhase(GamePhase.CardRequest);
