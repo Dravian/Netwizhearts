@@ -74,35 +74,38 @@ public class Game extends JFrame implements Observer{
 		menuBar = new JMenuBar();
 		menuBar.setBounds(0, 0, 133, 21);
 		contentPane.add(menuBar);
-		
+		try {
 		mnBackground = new JMenu("Background");
 		File backgroundFolder = new File(IMAGEPATH + "backgrounds/");
 		File[] backgrounds = backgroundFolder.listFiles();
+		if (backgrounds != null) {
 		for (int i = 0; i < backgrounds.length; i++) {
-			try {
 				Image icon = ImageIO.read(backgrounds[i]);
 				JMenuItem item = new JMenuItem(new bgMenuAction(backgrounds[i].getName()));
 				item.setIcon(new ImageIcon(icon.getScaledInstance(80, 45, -1)));
 				mnBackground.add(item);
-			} catch (IOException e) {
+			} 
+		}
+		}catch (IOException e) {
 				// TODO
-			}
-		    
 		}
 		menuBar.add(mnBackground);
 		
+		try {
 		mnCards = new JMenu("Cards");
 		File cardsFolder = new File(IMAGEPATH + "cards/");
 		File[] cards = cardsFolder.listFiles();
+		if (cards != null) {
 		for (int i = 0; i < cards.length; i++) {
-			try {
+			
 				Image icon = ImageIO.read(cards[i]);
 				JMenuItem item = new JMenuItem(new cardsMenuAction(cards[i].getName()));
 				item.setIcon(new ImageIcon(icon.getScaledInstance(35, 50, -1)));
 				mnCards.add(item);
-			} catch (IOException e) {
+			} 
+		}
+		}catch (IOException e) {
 				// TODO 
-			}
 		}
 		menuBar.add(mnCards);
 		

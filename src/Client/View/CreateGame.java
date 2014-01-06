@@ -299,10 +299,10 @@ public class CreateGame extends JFrame implements Observer{
 			
 			@Override
 			public void run() {
+				RulesetType t = (RulesetType)(rulesetBox.getSelectedItem());
+				tooltipArea.setText(getTooltip(t));
 				try {
-					RulesetType t = (RulesetType)(rulesetBox.getSelectedItem());
 				    image = ImageIO.read(new File(Game.IMAGEPATH + t.toString().toLowerCase() + ".jpg"));
-				    tooltipArea.setText(getTooltip(t));
 				    imagePanel.repaint();
 					} catch (IOException e) {
 						//TODO
