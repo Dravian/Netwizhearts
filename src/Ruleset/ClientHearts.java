@@ -186,8 +186,6 @@ public class ClientHearts extends ClientRuleset {
 
 			return true;
 		}
-		getModel().openWarning(WarningMsg.WrongTradeCards);
-		getModel().openChooseCardsWindow(UserMessages.ChooseCards);
 		return false;
 
 	}
