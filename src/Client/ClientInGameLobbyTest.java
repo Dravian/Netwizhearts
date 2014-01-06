@@ -19,6 +19,7 @@ import ComObjects.ComChatMessage;
 import ComObjects.ComInitGameLobby;
 import ComObjects.ComInitLobby;
 import ComObjects.ComKickPlayerRequest;
+import ComObjects.ComRuleset;
 import ComObjects.ComStartGame;
 import ComObjects.ComUpdatePlayerlist;
 import Ruleset.RulesetType;
@@ -158,8 +159,18 @@ public class ClientInGameLobbyTest {
 				testModel.getPlayerlist().contains("Hans"));
 	}
 
+	@Test (expected=IllegalArgumentException.class)
+	public void kickPlayerArgumentNullTest() {
+		testModel.kickPlayer(null);
+	}
+
+	@Test (expected=IllegalArgumentException.class)
+	public void kickPlayerArgumentEmptyTest() {
+		testModel.kickPlayer("");
+	}
+
 	@Test
-	public void startGameTest() {
+	public void startGameWizardTest() {
 		ComUpdatePlayerlist updatePlayerList =
 				new ComUpdatePlayerlist("Player2", false);
 		testNetIO.injectComObject(updatePlayerList);
@@ -174,6 +185,66 @@ public class ClientInGameLobbyTest {
 				testObserver.getNotification().remove(0));
 		assertTrue("Player3 in Liste",
 				testModel.getPlayerlist().contains("Player3"));
+
+		testModel.startGame();
+		ComStartGame start = (ComStartGame)
+				testNetIO.getModelInput().remove(0);
+		assertEquals("StartGameNachricht", ComStartGame.class,
+				start.getClass());
+
+		testNetIO.injectComObject(new ComStartGame());
+		assertEquals("wechsel zu Spielfenster", ViewNotification.gameStarted,
+				testObserver.getNotification().remove(0));
+	}
+
+	@Test (expected=IllegalArgumentException.class)
+	public void startGameReceiveMessageArgumentNullTest() {
+		testModel.receiveMessage((ComStartGame) null);
+	}
+
+	@Test
+	public void startGameHeartsTest() {
+		testNetIO = new TestMessageListenerThread();
+		testObserver = new TestObserver();
+		testModel = new ClientModel((MessageListenerThread) testNetIO);
+		testNetIO.setModel(testModel);
+		testModel.addObserver(testObserver);
+		testModel.createConnection("TestPlayer1", "localhost");
+		players = new LinkedList<String>();
+		players.add("Player2");
+		Set<GameServerRepresentation> games =
+				new HashSet<GameServerRepresentation>();
+		ComInitLobby testInitLobby = new ComInitLobby(players, games);
+		testNetIO.injectComObject(testInitLobby);
+		testModel.hostGame("My <3", false, "", RulesetType.Hearts);
+		players = new LinkedList<String>();
+		players.add("TestPlayer1");
+		ComInitGameLobby gameLobbyInit = new ComInitGameLobby(players);
+		testNetIO.injectComObject(gameLobbyInit);
+		testNetIO.getModelInput().clear();
+		testObserver.getNotification().clear();
+
+		ComUpdatePlayerlist updatePlayerList =
+				new ComUpdatePlayerlist("Player2", false);
+		testNetIO.injectComObject(updatePlayerList);
+		assertEquals("Observer Update", ViewNotification.playerListUpdate,
+				testObserver.getNotification().remove(0));
+		assertTrue("Player2 in Liste",
+				testModel.getPlayerlist().contains("Player2"));
+
+		updatePlayerList = new ComUpdatePlayerlist("Player3", false);
+		testNetIO.injectComObject(updatePlayerList);
+		assertEquals("Observer Update", ViewNotification.playerListUpdate,
+				testObserver.getNotification().remove(0));
+		assertTrue("Player3 in Liste",
+				testModel.getPlayerlist().contains("Player3"));
+
+		updatePlayerList = new ComUpdatePlayerlist("Player4", false);
+		testNetIO.injectComObject(updatePlayerList);
+		assertEquals("Observer Update", ViewNotification.playerListUpdate,
+				testObserver.getNotification().remove(0));
+		assertTrue("Player4 in Liste",
+				testModel.getPlayerlist().contains("Player4"));
 
 		testModel.startGame();
 		ComStartGame start = (ComStartGame)

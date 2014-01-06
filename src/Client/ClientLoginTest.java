@@ -17,6 +17,7 @@ import Ruleset.RulesetType;
 import Server.GameServerRepresentation;
 import test.TestMessageListenerThread;
 import test.TestObserver;
+import Client.View.Language;
 import ComObjects.ComChatMessage;
 import ComObjects.ComInitGameLobby;
 import ComObjects.ComInitLobby;
@@ -114,9 +115,25 @@ public class ClientLoginTest {
 	@Test
 	public void loginTestEmptyArguments() {
 		testModel.createConnection("", "");
-		testModel.createConnection("", "");
 		assertEquals("Name und Addresse leer", ViewNotification.openWarning,
 				testObserver.getNotification().remove(0));
+	}
+
+	@Test
+	public void changeLanguageTest() {
+		assertEquals("Sprache Englisch", Language.English,
+				testModel.getLanguage());
+		testModel.setLanguage(Language.German);
+		assertEquals("Sprache Deutsch", Language.German,
+				testModel.getLanguage());
+		testModel.setLanguage(Language.Bavarian);
+		assertEquals("Sprache Bayerisch", Language.Bavarian,
+				testModel.getLanguage());
+	}
+
+	@Test (expected=IllegalArgumentException.class)
+	public void setLanguageArgumentNullTest() {
+		testModel.setLanguage(null);
 	}
 
 	@Test (expected=IllegalArgumentException.class)
@@ -145,13 +162,18 @@ public class ClientLoginTest {
 	}
 
 	@Test (expected=IllegalStateException.class)
-	public void wrongClientStateExceptionreceiveRulesetMessageTest() {
+	public void wrongClientStateExceptionReceiveRulesetMessageTest() {
 		testModel.receiveMessage((ComRuleset) null);
 	}
 
 	@Test (expected=IllegalStateException.class)
-	public void wrongClientStateExceptionStartGameTest() {
+	public void wrongClientStateExceptionStartGameTest1() {
 		testModel.receiveMessage((ComStartGame) null);
+	}
+
+	@Test (expected=IllegalStateException.class)
+	public void wrongClientStateExceptionStartGameTest2() {
+		testModel.startGame();
 	}
 
 	@Test (expected=IllegalStateException.class)
