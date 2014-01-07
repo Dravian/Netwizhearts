@@ -1,6 +1,7 @@
 package Client;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.net.URISyntaxException;
 import java.util.HashSet;
@@ -12,6 +13,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import Ruleset.Card;
 import Ruleset.GamePhase;
 import Ruleset.RulesetType;
 import Server.GameServerRepresentation;
@@ -19,6 +21,7 @@ import test.TestMessageListenerThread;
 import test.TestObserver;
 import Client.View.Language;
 import ComObjects.ComChatMessage;
+import ComObjects.ComClientQuit;
 import ComObjects.ComInitGameLobby;
 import ComObjects.ComInitLobby;
 import ComObjects.ComLobbyUpdateGamelist;
@@ -26,6 +29,8 @@ import ComObjects.ComLoginRequest;
 import ComObjects.ComRuleset;
 import ComObjects.ComStartGame;
 import ComObjects.ComUpdatePlayerlist;
+import ComObjects.ComWarning;
+import ComObjects.WarningMsg;
 
 public class ClientLoginTest {
 
@@ -96,6 +101,10 @@ public class ClientLoginTest {
 		testModel.createConnection("Player1", "localhost:99999");
 		assertEquals("Leerer Name", ViewNotification.openWarning,
 				testObserver.getNotification().remove(0));
+
+		testModel.createConnection("Player1", "localhost:49152");
+		assertEquals("Leerer Name", ViewNotification.openWarning,
+				testObserver.getNotification().remove(0));
 	}
 
 	@Test
@@ -129,6 +138,29 @@ public class ClientLoginTest {
 		testModel.setLanguage(Language.Bavarian);
 		assertEquals("Sprache Bayerisch", Language.Bavarian,
 				testModel.getLanguage());
+	}
+
+	@Test
+	public void loginWarningTest() {
+		String warning = "Login failed. Name is already in use.";
+		testNetIO.injectComObject(new ComWarning(WarningMsg.LoginError));
+		assertEquals("Login Warnung", ViewNotification.openWarning,
+				testObserver.getNotification().get(0));
+		assertTrue("Login Warnung Text",
+				testModel.getWarningText().contains(warning));
+	}
+
+	@Test
+	public void getAvailableRulesetsTest() {
+		assertTrue("Wizard Regelwerk verfügbar",
+				testModel.getRulesets().contains(RulesetType.Wizard));
+		assertTrue("Hearts Regelwerk verfügbar",
+				testModel.getRulesets().contains(RulesetType.Hearts));
+	}
+
+	@Test
+	public void clientQuitTest() {
+		testModel.receiveMessage(new ComClientQuit());
 	}
 
 	@Test (expected=IllegalArgumentException.class)
@@ -229,5 +261,76 @@ public class ClientLoginTest {
 	@Test (expected=IllegalStateException.class)
 	public void wrongClientStateExceptionGetTrumpColourTest() {
 		testModel.getTrumpColour();
+	}
+
+	@Test (expected=IllegalStateException.class)
+	public void wrongClientStateExceptionMakeMoveTest() {
+		testModel.makeMove(null);
+	}
+
+	@Test (expected=IllegalStateException.class)
+	public void wrongClientStateExceptionUpdateGameTest() {
+		testModel.updateGame();
+	}
+
+	@Test (expected=IllegalStateException.class)
+	public void wrongClientStateExceptionGetGameUpdateTest() {
+		testModel.getGameUpdate();
+	}
+
+	@Test (expected=IllegalStateException.class)
+	public void wrongClientStateExceptionVotePlayAgainTest() {
+		testModel.votePlayAgain(true);
+	}
+
+	@Test (expected=IllegalStateException.class)
+	public void wrongClientStateExceptionReturnToLobbyTest() {
+		testModel.returnToLobby();
+	}
+
+	@Test (expected=IllegalArgumentException.class)
+	public void openWarningArgumentNull() {
+		testModel.openWarning(null);
+	}
+
+	@Test (expected=IllegalStateException.class)
+	public void openNumberInputIllegalStateTest() {
+		testModel.openNumberInputWindow(null);
+	}
+
+	@Test (expected=IllegalStateException.class)
+	public void openChooseCardsIllegalStateTest() {
+		testModel.openChooseCardsWindow(null);
+	}
+
+	@Test (expected=IllegalStateException.class)
+	public void openChooseColourIllegalStateTest() {
+		testModel.openChooseColourWindow(null);
+	}
+
+	@Test (expected=IllegalStateException.class)
+	public void giveInputNumberIllegalStateTest() {
+		testModel.giveInputNumber(0);
+	}
+
+	@Test
+	public void getWinnerEmptyTest() {
+		assertTrue("LeerString bei Gewinner", testModel.getWinner().isEmpty());
+	}
+
+	@Test
+	public void closeProgramTest() {
+		testModel.closeProgram();
+	}
+
+	@Test
+	public void closeViewTest() {
+		testModel.closeView();
+		assertEquals("Warnung Ausgeben",
+				ViewNotification.openWarning,
+				testObserver.getNotification().remove(0));
+		assertEquals("Fenster schliessen",
+				ViewNotification.quitGame,
+				testObserver.getNotification().remove(0));
 	}
 }

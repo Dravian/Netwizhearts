@@ -20,6 +20,7 @@ import ComObjects.ComJoinRequest;
 import ComObjects.ComKickPlayerRequest;
 import ComObjects.ComLobbyUpdateGamelist;
 import ComObjects.ComLoginRequest;
+import ComObjects.ComNewRound;
 import ComObjects.ComRuleset;
 import ComObjects.ComStartGame;
 import ComObjects.ComUpdatePlayerlist;
@@ -179,10 +180,7 @@ public class ClientModel extends Observable {
 	 * ein Netzwerkfehler auftritt.
 	 */
 	protected final void closeView() {
-		warningText.delete(0, warningText.length());
-		warningText.append(screenOut.resolveWarning(
-				WarningMsg.ConnectionLost));
-		informView(ViewNotification.openWarning);
+		openWarning(WarningMsg.ConnectionLost);
 		informView(ViewNotification.quitGame);
 	}
 
@@ -327,23 +325,14 @@ public class ClientModel extends Observable {
 				playerName = new String();
 				netIO.closeConnection();
 				netIOThread = null;
-				warningText.delete(0, warningText.length());
-				warningText.append(screenOut.resolveWarning(
-						WarningMsg.LoginError));
-				informView(ViewNotification.openWarning);
+				openWarning(warning.getWarning());
 			} else if (state == ClientState.ENTERGAMELOBBY) {
 				state = ClientState.SERVERLOBBY;
 				gameMaster = new String();
 				gameType = null;
-				warningText.delete(0, warningText.length());
-				warningText.append(screenOut.resolveWarning(
-						warning.getWarning()));
-				informView(ViewNotification.openWarning);
+				openWarning(warning.getWarning());
 			} else {
-				warningText.delete(0, warningText.length());
-				warningText.append(screenOut.resolveWarning(
-						warning.getWarning()));
-				informView(ViewNotification.openWarning);
+				openWarning(warning.getWarning());
 			}
 		} else {
 			throw new IllegalArgumentException("Argument ist null");
@@ -1020,23 +1009,6 @@ public class ClientModel extends Observable {
 	}
 
 	/**
-	 * Informiert die Oberserver, dass der aktuelle
-	 * Spielstand ausgegeben werden muss.
-	 *
-	 */
-	public final void showScoreWindow() {
-		if (state == ClientState.GAME) {
-			if (ruleset != null) {
-				informView(ViewNotification.showScore);
-			} else {
-				throw new IllegalStateException("Kein Regelwerk instanziert");
-			}
-		} else {
-			throw new IllegalStateException("Falscher Zustand des Clients");
-		}
-	}
-
-	/**
 	 * Wird aufgerufen wenn das Ende einer Partie erreicht ist.
 	 *
 	 * @param msg Enum der Spielnachrichten.
@@ -1058,11 +1030,17 @@ public class ClientModel extends Observable {
 	/**
 	 * Wird aufgerufen um am Ende einer Partie
 	 * das Spiel neu zu starten.
-	 * 
+	 *
 	 * @param start Boolean Zeigt den Neustart an.
 	 */
-	public final void votePlayAgain(boolean start) {
-
+	public final void votePlayAgain(boolean vote) {
+       if (state == ClientState.ENDING) {
+    	   if (vote) {
+    		   netIO.send(new ComNewRound(vote));
+    	   }
+       } else {
+			throw new IllegalStateException("Falscher Zustand des Clients");
+		}
 	}
 
 	/**
@@ -1163,18 +1141,12 @@ public class ClientModel extends Observable {
 			netIOThread.start();
 			netIO.send(new ComLoginRequest(username));
 		} catch (ConnectException e) {
-			warningText.delete(0, warningText.length());
-			warningText.append(screenOut.resolveWarning(
-					WarningMsg.UnknownHost));
-			informView(ViewNotification.openWarning);
+			openWarning(WarningMsg.UnknownHost);
 		} catch (SocketException e) {
 			System.err.println("ERROR: Network IO");
 			e.printStackTrace();
 		} catch (UnknownHostException e) {
-			warningText.delete(0, warningText.length());
-			warningText.append(screenOut.resolveWarning(
-					WarningMsg.UnknownHost));
-			informView(ViewNotification.openWarning);
+			openWarning(WarningMsg.UnknownHost);
 		} catch (IOException e) {
 			System.err.println("ERROR: Network IO");
 			e.printStackTrace();

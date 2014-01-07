@@ -355,4 +355,9 @@ public class ClientInServerLobbyTest {
 	public void wrongClientStateExceptionsTest4() {
 		testModel.receiveMessage((ComStartGame) null);
 	}
+
+	@Test (expected=IllegalStateException.class)
+	public void wrongClientStateExceptionReturnToLobbyTest() {
+		testModel.returnToLobby();
+	}
 }
