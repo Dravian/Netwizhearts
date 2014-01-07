@@ -1032,7 +1032,7 @@ public class ClientModel extends Observable {
 	 * Wird aufgerufen um am Ende einer Partie
 	 * das Spiel neu zu starten.
 	 *
-	 * @param start Boolean Zeigt den Neustart an.
+	 * @param vote Boolean Zeigt den Neustart an.
 	 */
 	public final void votePlayAgain(boolean vote) {
        if (state == ClientState.ENDING) {
