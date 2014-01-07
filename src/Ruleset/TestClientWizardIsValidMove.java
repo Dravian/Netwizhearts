@@ -12,7 +12,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import test.TestClientModel;
 import test.TestMessageListenerThread;
 import test.TestObserver;
 import Client.ClientModel;
@@ -48,7 +47,6 @@ public class TestClientWizardIsValidMove {
 	public void setUp() throws Exception {
 		testNetIO = new TestMessageListenerThread();
 		testModel = new ClientModel(testNetIO);
-		//ruleset = testModel.getRuleset();
 		testObserver = new TestObserver();
 		testNetIO.setModel(testModel);
 		testModel.addObserver(testObserver);
@@ -106,7 +104,7 @@ public class TestClientWizardIsValidMove {
 		enemyData.add(otherData2);
 		
 		String currentPlayer = blue;
-		int roundNumber = 1;
+		int roundNumber = 4;
 		Card trumpCard = EmptyCard.Empty;
 		
 		gameState = new GameClientUpdate(player, discardPile,
@@ -148,6 +146,8 @@ public class TestClientWizardIsValidMove {
 		testModel.makeMove(WizardCard.NarrBlau);			
 	}
 	
+	
+	
 	@Test
 	public void testNoColour() {
 		List<DiscardedCard> discardPile = new ArrayList<DiscardedCard>();
@@ -165,8 +165,8 @@ public class TestClientWizardIsValidMove {
 		enemyData.add(otherData2);
 		
 		String currentPlayer = blue;
-		int roundNumber = 1;
-		Card trumpCard = EmptyCard.Empty;
+		int roundNumber = 4;
+		Card trumpCard = WizardCard.DreizehnGruen;
 		
 		gameState = new GameClientUpdate(player, discardPile,
 				enemyData, currentPlayer, roundNumber, trumpCard);
@@ -216,8 +216,8 @@ public class TestClientWizardIsValidMove {
 		enemyData.add(otherData2);
 		
 		String currentPlayer = blue;
-		int roundNumber = 1;
-		Card trumpCard = EmptyCard.Empty;
+		int roundNumber = 4;
+		Card trumpCard = WizardCard.DreizehnGruen;
 		
 		gameState = new GameClientUpdate(player, discardPile,
 				enemyData, currentPlayer, roundNumber, trumpCard);
@@ -268,8 +268,8 @@ public class TestClientWizardIsValidMove {
 		enemyData.add(otherData2);
 		
 		String currentPlayer = blue;
-		int roundNumber = 1;
-		Card trumpCard = EmptyCard.Empty;
+		int roundNumber = 4;
+		Card trumpCard = WizardCard.DreizehnGruen;
 		
 		gameState = new GameClientUpdate(player, discardPile,
 				enemyData, currentPlayer, roundNumber, trumpCard);
@@ -318,8 +318,8 @@ public class TestClientWizardIsValidMove {
 		enemyData.add(otherData2);
 		
 		String currentPlayer = blue;
-		int roundNumber = 1;
-		Card trumpCard = EmptyCard.Empty;
+		int roundNumber = 4;
+		Card trumpCard = WizardCard.DreizehnGruen;
 		
 		gameState = new GameClientUpdate(player, discardPile,
 				enemyData, currentPlayer, roundNumber, trumpCard);
@@ -368,8 +368,8 @@ public class TestClientWizardIsValidMove {
 		enemyData.add(otherData2);
 		
 		String currentPlayer = blue;
-		int roundNumber = 1;
-		Card trumpCard = EmptyCard.Empty;
+		int roundNumber = 4;
+		Card trumpCard = WizardCard.DreizehnGruen;
 		
 		gameState = new GameClientUpdate(player, discardPile,
 				enemyData, currentPlayer, roundNumber, trumpCard);
@@ -420,8 +420,8 @@ public class TestClientWizardIsValidMove {
 		enemyData.add(otherData2);
 		
 		String currentPlayer = blue;
-		int roundNumber = 1;
-		Card trumpCard = EmptyCard.Empty;
+		int roundNumber = 4;
+		Card trumpCard = WizardCard.DreizehnGruen;
 		
 		gameState = new GameClientUpdate(player, discardPile,
 				enemyData, currentPlayer, roundNumber, trumpCard);

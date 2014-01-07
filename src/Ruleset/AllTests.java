@@ -6,6 +6,7 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({ TestClientHeartsIsValidMove.class, TestClientWizardIsValidMove.class,
+		TestClientWizardIsValidColour.class, TestClientWizardIsValidNumber.class,
         TestHeartsCalculateTricks.class, TestHeartsIsValidMove.class,
         TestHeartsIsValidMoveOnly.class, TestHeartsResolveMsgCard.class, TestHeartsRoundEnd.class,
         TestHeartsSwap.class, TestHeartsWinner.class, TestisValidMoveHearts.class,
