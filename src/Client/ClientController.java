@@ -81,14 +81,17 @@ public class ClientController {
 	/** 
 	 */
 	private Language language;
-	/** 
+	/**
 	 */
 	private Warning warning;
-	
-	public ClientController() {
-		language = Language.English;
+
+	public ClientController(final ClientModel model) {
+		if (model == null) {
+			throw new IllegalArgumentException("Kein Model");
+		}
 		
-		clientModel = new ClientModel(new MessageListenerThread());
+		language = Language.English;
+		clientModel = model;
 		
 		login = new Login();
 		login.addConnectButtonListener(new ConnectButtonListener());
