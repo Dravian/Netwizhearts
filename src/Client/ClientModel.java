@@ -1037,7 +1037,9 @@ public class ClientModel extends Observable {
 	public final void votePlayAgain(boolean vote) {
        if (state == ClientState.ENDING) {
     	   if (vote) {
-    		   netIO.send(new ComNewRound(vote));
+    		   netIO.send(new ComNewRound(true));
+    	   } else {
+    		   netIO.send(new ComNewRound(false));
     	   }
        } else {
 			throw new IllegalStateException("Falscher Zustand des Clients");

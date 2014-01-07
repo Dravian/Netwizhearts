@@ -37,7 +37,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-/** 
+/**
  * ClientController. Der ClientController enthaelt alle ActionListener der View und 
  * leitet durch diese Benutzereingaben an das ClientModel weiter. Sobald der 
  * ClientController von der ClientMain-Klasse erzeugt wird, erzeugt er wiederum
@@ -45,40 +45,40 @@ import javax.swing.event.ListSelectionListener;
  * Fenster sichtbar ist.
  */
 public class ClientController {
-	/** 
+	/**
 	 */
 	private ClientModel clientModel;
-	/** 
+	/**
 	 */
 	private ChooseCards chooseCards;
-	/** 
+	/**
 	 */
 	private ScoreWindow scoreWindow;
-	/** 
+	/**
 	 */
 	private InputNumber inputNumber;
-	/** 
+	/**
 	 */
 	private ChooseItem chooseColour;
-	/** 
+	/**
 	 */
 	private Lobby lobby;
-	/** 
+	/**
 	 */
 	private Login login;
-	/** 
+	/**
 	 */
 	private CreateGame createGame;
-	/** 
+	/**
 	 */
 	private GameLobby gameLobby;
-	/** 
+	/**
 	 */
 	private Game game;
-	/** 
+	/**
 	 */
 	private Password password;
-	/** 
+	/**
 	 */
 	private Language language;
 	/**
@@ -89,16 +89,16 @@ public class ClientController {
 		if (model == null) {
 			throw new IllegalArgumentException("Kein Model");
 		}
-		
+
 		language = Language.English;
 		clientModel = model;
-		
+
 		login = new Login();
 		login.addConnectButtonListener(new ConnectButtonListener());
 		login.addLanguageSelectionListener(new LanguageSelectionListener());
 		login.setVisible(true);
 		clientModel.addObserver(login);
-		
+
 		lobby = new Lobby();
 		lobby.addWindowListener(new LobbyCloseListener());
 		lobby.addJoinButtonListener(new JoinButtonListenerLobby());
@@ -106,21 +106,21 @@ public class ClientController {
 		lobby.addHostButtonListener(new HostButtonListener());
 		lobby.addChatMessageListener(new ChatListenerLobby());
 		clientModel.addObserver(lobby);
-		
+
 		password = new Password();
 		password.addJoinButtonListener(new JoinButtonListenerPassword());
 		password.addLeaveButtonListener(new LeaveButtonListenerPassword());
 		clientModel.addObserver(password);
-		
+
 		warning = new Warning();
 		warning.addOKButtonListener(new OKButtonListenerWarning());
 		clientModel.addObserver(warning);
-		
+
 		createGame = new CreateGame();
 		createGame.setRulesetTypes(clientModel.getRulesets());
 		createGame.addCreateButtonListener(new CreateButtonListener());
 		clientModel.addObserver(createGame);
-		
+
 		gameLobby = new GameLobby();
 		gameLobby.addWindowListener(new GameLobbyCloseListener());
 		gameLobby.addLeaveButtonListener(new LeaveButtonListenerGameLobby());
@@ -128,89 +128,79 @@ public class ClientController {
 		gameLobby.addRemoveButtonListener(new KickPlayerButtonListener());
 		gameLobby.addChatMessageListener(new ChatListenerGameLobby());
 		clientModel.addObserver(gameLobby);
-		
+
 		game = new Game();
 		game.addChatMessageListener(new ChatListenerGame());
 		game.addCardMouseListener(new CardMouseListener());
 		game.addWindowListener(new GameCloseListener());
 		clientModel.addObserver(game);
-		
+
 		inputNumber = new InputNumber();
 		inputNumber.addOKButtonListener(new OKButtonListenerInputNumber());
 		clientModel.addObserver(inputNumber);
-		
+
 		chooseColour = new ChooseItem();
 		chooseColour.addOKButtonListener(new OKButtonListenerChooseColour());
 		clientModel.addObserver(chooseColour);
-		
+
 		chooseCards = new ChooseCards();
 		chooseCards.addOKButtonListener(new OKButtonListenerChooseCards());
 		clientModel.addObserver(chooseCards);
-		
+
 		scoreWindow = new ScoreWindow();
 		scoreWindow.addPlayAgainButtonListener(new PlayAgainButtonListenerScoreWindow());
 		scoreWindow.addLeaveButtonListener(new LeaveButtonListenerScoreWindow());
 		clientModel.addObserver(scoreWindow);
 	}
-	
+
 	class LobbyCloseListener implements WindowListener {
 
 		@Override
 		public void windowActivated(WindowEvent arg0) {
 			// not needed
-			
 		}
 
 		@Override
 		public void windowClosed(WindowEvent arg0) {
 			// not needed
-			
 		}
 
 		@Override
 		public void windowClosing(WindowEvent arg0) {
 			clientModel.closeProgram();	
-			
 		}
 
 		@Override
 		public void windowDeactivated(WindowEvent arg0) {
 			// not needed
-			
 		}
 
 		@Override
 		public void windowDeiconified(WindowEvent arg0) {
 			// not needed
-			
 		}
 
 		@Override
 		public void windowIconified(WindowEvent arg0) {
 			// not needed
-			
 		}
 
 		@Override
 		public void windowOpened(WindowEvent arg0) {
 			// not needed
-			
 		}
-		
 	}
-	
+
 	class GameLobbyCloseListener implements WindowListener {
 
 		@Override
 		public void windowActivated(WindowEvent arg0) {
 			// not needed
-			
 		}
 
 		@Override
 		public void windowClosed(WindowEvent arg0) {
 			// not needed
-			
 		}
 
 		@Override
@@ -221,41 +211,34 @@ public class ClientController {
 		@Override
 		public void windowDeactivated(WindowEvent arg0) {
 			// not needed
-			
 		}
 
 		@Override
 		public void windowDeiconified(WindowEvent arg0) {
 			// not needed
-			
 		}
 
 		@Override
 		public void windowIconified(WindowEvent arg0) {
 			// not needed
-			
 		}
 
 		@Override
 		public void windowOpened(WindowEvent arg0) {
 			// not needed
-			
 		}
-		
 	}
-	
+
 	class GameCloseListener implements WindowListener {
 
 		@Override
 		public void windowActivated(WindowEvent arg0) {
 			// not needed
-			
 		}
 
 		@Override
 		public void windowClosed(WindowEvent arg0) {
 			// not needed
-			
 		}
 
 		@Override
@@ -266,30 +249,24 @@ public class ClientController {
 		@Override
 		public void windowDeactivated(WindowEvent arg0) {
 			// not needed
-			
 		}
 
 		@Override
 		public void windowDeiconified(WindowEvent arg0) {
 			// not needed
-			
 		}
 
 		@Override
 		public void windowIconified(WindowEvent arg0) {
 			// not needed
-			
 		}
 
 		@Override
 		public void windowOpened(WindowEvent arg0) {
 			// not needed
-			
 		}
-		
 	}
-	
-	
+
 	class LanguageSelectionListener implements ItemListener {
 
 		@Override
@@ -304,9 +281,8 @@ public class ClientController {
 			game.setLanguage(language);
 			scoreWindow.setLanguage(language);
 		}
-		
 	}
-	
+
 	class ConnectButtonListener implements ActionListener {
 
 		@Override
@@ -317,9 +293,8 @@ public class ClientController {
 				//TODO
 			}
 		}
-		
 	}
-	
+
 	class JoinButtonListenerLobby implements ActionListener {
 
 		@Override
@@ -339,9 +314,8 @@ public class ClientController {
 				//TODO
 			}
 		}
-		
 	}
-	
+
 	class JoinButtonListenerPassword implements ActionListener {
 
 		@Override
@@ -354,18 +328,16 @@ public class ClientController {
 				//TODO
 			}
 		}
-		
 	}
-	
+
 	class LeaveButtonListenerLobby implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			lobby.dispatchEvent(new WindowEvent(lobby, WindowEvent.WINDOW_CLOSING));
 		}
-		
 	}
-	
+
 	class LeaveButtonListenerPassword implements ActionListener {
 
 		@Override
@@ -373,18 +345,16 @@ public class ClientController {
 			password.clearField();
 			password.setVisible(false);
 		}
-		
 	}
-	
+
 	class HostButtonListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			createGame.setVisible(true);			
 		}
-		
 	}
-	
+
 	class OKButtonListenerWarning implements ActionListener {
 
 		@Override
@@ -394,9 +364,8 @@ public class ClientController {
 				warning.dispose();
 			}
 		}
-		
 	}
-	
+
 	class CreateButtonListener implements ActionListener {
 
 		@Override
@@ -425,11 +394,11 @@ public class ClientController {
 				createGame.setVisible(false);
 			} catch (IllegalArgumentException i) {
 				//TODO
-			}			
+			}
 		}
-		
+
 	}
-	
+
 	class ChatListenerLobby implements KeyListener {
 
 		@Override
@@ -441,23 +410,19 @@ public class ClientController {
 			default:
 				break;
 			}
-			
 		}
 
 		@Override
 		public void keyReleased(KeyEvent e) {
 			// not needed
-			
 		}
 
 		@Override
 		public void keyTyped(KeyEvent e) {
 			// not needed
-			
 		}
-		
 	}
-	
+
 	class ChatListenerGameLobby implements KeyListener {
 
 		@Override
@@ -469,23 +434,19 @@ public class ClientController {
 			default:
 				break;
 			}
-			
 		}
 
 		@Override
 		public void keyReleased(KeyEvent e) {
 			// not needed
-			
 		}
 
 		@Override
 		public void keyTyped(KeyEvent e) {
 			// not needed
-			
 		}
-		
 	}
-	
+
 	class ChatListenerGame implements KeyListener {
 
 		@Override
@@ -497,23 +458,19 @@ public class ClientController {
 			default:
 				break;
 			}
-			
 		}
 
 		@Override
 		public void keyReleased(KeyEvent e) {
 			// not needed
-			
 		}
 
 		@Override
 		public void keyTyped(KeyEvent e) {
 			// not needed
-			
 		}
-		
 	}
-	
+
 	class LeaveButtonListenerGameLobby implements ActionListener {
 
 		@Override
@@ -521,18 +478,16 @@ public class ClientController {
 			clientModel.returnToLobby();
 			gameLobby.setVisible(false);
 		}
-		
 	}
-	
+
 	class StartGameButtonListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			clientModel.startGame();			
+			clientModel.startGame();
 		}
-		
 	}
-	
+
 	class KickPlayerButtonListener implements ActionListener {
 
 		@Override
@@ -545,31 +500,27 @@ public class ClientController {
 		}
 
 	}
-	
+
 	class CardMouseListener implements MouseListener {
 
 		@Override
 		public void mouseClicked(MouseEvent arg0) {
 			//not needed
-			
 		}
 
 		@Override
 		public void mouseEntered(MouseEvent arg0) {
 			//not needed
-			
 		}
 
 		@Override
 		public void mouseExited(MouseEvent arg0) {
 			//not needed
-			
 		}
 
 		@Override
 		public void mousePressed(MouseEvent arg0) {
 			//not needed
-			
 		}
 
 		@Override
@@ -584,11 +535,9 @@ public class ClientController {
 				vc.setClicked(true);
 				game.repaint();
 			}
-			
 		}
-		
 	}
-	
+
 	class OKButtonListenerInputNumber implements ActionListener {
 
 		@Override
@@ -598,11 +547,9 @@ public class ClientController {
 				clientModel.giveInputNumber(n); 
 				inputNumber.setVisible(false);
 			}
-			
 		}
-		
 	}
-	
+
 	class OKButtonListenerChooseColour implements ActionListener {
 
 		@Override
@@ -614,9 +561,8 @@ public class ClientController {
 				//TODO
 			}
 		}
-		
 	}
-	
+
 	class OKButtonListenerChooseCards implements ActionListener {
 
 		@Override
@@ -629,35 +575,31 @@ public class ClientController {
 				//TODO
 			}
 		}
-		
 	}
-	
+
 	class PlayAgainButtonListenerScoreWindow implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			try {
-			//clientModel.votePlayAgain(true);? 
+			clientModel.votePlayAgain(true);
 			scoreWindow.setVisible(false);
 			} catch (ClassCastException e) {
 				//TODO
 			}
 		}
-		
 	}
-	
+
 	class LeaveButtonListenerScoreWindow implements ActionListener {
 		
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			try {
-			//clientModel.votePlayAgain(false);? 
+			clientModel.votePlayAgain(false);
 			scoreWindow.setVisible(false);
 			} catch (ClassCastException e) {
 				//TODO
 			}
 		}
 	}
-	
-	
 }
