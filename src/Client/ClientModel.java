@@ -345,7 +345,8 @@ public class ClientModel extends Observable {
 	 * @param msg Die Servernachricht.
 	 */
 	public final void receiveMessage(final ComStartGame msg) {
-		if (state == ClientState.GAMELOBBY) {
+		if (state == ClientState.GAMELOBBY
+				|| state == ClientState.ENDING) {
 			if (msg != null) {
 				switch (gameType) {
 					case Hearts:
