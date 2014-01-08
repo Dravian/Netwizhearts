@@ -1,5 +1,6 @@
 package Client.View;
 
+import java.awt.ItemSelectable;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.util.LinkedList;
@@ -10,6 +11,8 @@ import java.util.Observer;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JList;
@@ -64,7 +67,6 @@ public class Lobby extends JFrame implements Observer{
 		playerList = new JList<String>();
 		playerList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		playerList.setBounds(10, 11, 246, 191);
-		//contentPane.add(playerList);
 		
 		scrollPanePlayers = new JScrollPane(playerList);
 		scrollPanePlayers.setBounds(10, 11, 246, 191);
@@ -73,7 +75,7 @@ public class Lobby extends JFrame implements Observer{
 		
 		gameList = new JList<String>();
 		gameList.setBounds(266, 11, 308, 191);
-		//contentPane.add(gameList);
+		gameList.addListSelectionListener(new GameSelectedListener());
 		
 		scrollPaneGames = new JScrollPane(gameList);
 		scrollPaneGames.setBounds(266, 11, 308, 191);
@@ -101,6 +103,7 @@ public class Lobby extends JFrame implements Observer{
 		
 		btnJoinGame = new JButton("Join Game");
 		btnJoinGame.setBounds(457, 363, 117, 25);
+		btnJoinGame.setEnabled(false);
 		contentPane.add(btnJoinGame);
 		
 		btnLeave = new JButton("Leave");
@@ -352,5 +355,19 @@ public class Lobby extends JFrame implements Observer{
 				
 			});
 		}
+	}
+		
+	class GameSelectedListener implements ListSelectionListener {
+
+		@Override
+		public void valueChanged(ListSelectionEvent e) {
+			if (gameList.isSelectionEmpty()) {
+				btnJoinGame.setEnabled(false);
+			} else {
+				btnJoinGame.setEnabled(true);
+			}
+			
+		}
+		
 	}
 }

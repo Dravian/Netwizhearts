@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import Ruleset.Card;
 import Ruleset.Colour;
 import Ruleset.DiscardedCard;
+import Ruleset.EmptyCard;
 import Ruleset.GameClientUpdate;
 import Ruleset.OtherData;
 
@@ -53,8 +54,7 @@ public class GamePanel extends JPanel{
 	 * 
 	 * @param playerCount Anzahl der Mitspieler
 	 */
-	public GamePanel(int playerCount) {
-		
+	public GamePanel(int playerCount) {	
 		try {
 			background = ImageIO.read(new File(IMAGEPATH + "backgrounds/" + Game.BACKGROUND))
 					.getScaledInstance(BGWIDTH, BGHEIGHT, UNDEFINED_CONDITION);

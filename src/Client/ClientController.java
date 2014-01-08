@@ -9,7 +9,6 @@ import Client.View.InputNumber;
 import Client.View.ChooseItem;
 import Client.View.Lobby;
 
-import java.util.Set;
 
 import Client.View.Login;
 import Client.View.CreateGame;
@@ -19,9 +18,7 @@ import Client.View.Password;
 import Client.View.Language;
 import Client.View.ViewCard;
 import Client.View.Warning;
-import Ruleset.Colour;
 
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -32,10 +29,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-
-import javax.swing.SwingUtilities;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 /**
  * ClientController. Der ClientController enthaelt alle ActionListener der View und 

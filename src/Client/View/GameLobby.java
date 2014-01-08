@@ -9,6 +9,8 @@ import java.util.Observer;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -52,10 +54,10 @@ public class GameLobby extends JFrame implements Observer{
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		
 		playerList = new JList<String>();
 		playerList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		playerList.setBounds(12, 12, 211, 130);
+		playerList.addListSelectionListener(new PlayerSelectedListener());
 		
 		scrollPanePlayers = new JScrollPane(playerList);
 		scrollPanePlayers.setBounds(12, 12, 211, 130);
@@ -78,6 +80,7 @@ public class GameLobby extends JFrame implements Observer{
 		
 		btnRemovePlayer = new JButton("Kick Player");
 		btnRemovePlayer.setBounds(235, 117, 177, 25);
+		btnRemovePlayer.setEnabled(false);
 		contentPane.add(btnRemovePlayer);
 		
 		btnLeave = new JButton("Leave");
@@ -282,5 +285,19 @@ public class GameLobby extends JFrame implements Observer{
 				
 			});
 		}
+	}
+	
+	class PlayerSelectedListener implements ListSelectionListener {
+
+		@Override
+		public void valueChanged(ListSelectionEvent e) {
+			if (playerList.isSelectionEmpty()) {
+				btnRemovePlayer.setEnabled(false);
+			} else {
+				btnRemovePlayer.setEnabled(true);
+			}
+			
+		}
+		
 	}
 }

@@ -13,6 +13,8 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 import Client.ViewNotification;
 import Ruleset.RulesetType;
@@ -101,9 +103,10 @@ public class CreateGame extends JFrame implements Observer{
 		passwordField = new JTextField();
 		passwordField.setBounds(12, 171, 188, 32);
 		passwordField.setEditable(false);
-		getContentPane().add(passwordField);
 		passwordField.setColumns(10);
-
+		passwordField.getDocument().addDocumentListener(new PWEmptyListener());
+		getContentPane().add(passwordField);
+		
 		tooltipArea = new JTextArea();
 		tooltipArea.setBounds(210, 12, 177, 192);
 		getContentPane().add(tooltipArea);
@@ -335,9 +338,46 @@ public class CreateGame extends JFrame implements Observer{
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			passwordField.setEditable(chboxPassword.isSelected());
+			boolean b = chboxPassword.isSelected();
+			passwordField.setEditable(b);
+			btnCreate.setEnabled(!b);
+			passwordField.setText("");
+		}
+		
+	}
+	
+	class PWEmptyListener implements DocumentListener {
+
+		@Override
+		public void changedUpdate(DocumentEvent arg0) {
+			if (passwordField.getText().compareTo("") != 0) {
+				btnCreate.setEnabled(true);
+			} else {
+				btnCreate.setEnabled(false);
+			}
+		}
+
+		@Override
+		public void insertUpdate(DocumentEvent arg0) {
+			if (passwordField.getText().compareTo("") != 0) {
+				btnCreate.setEnabled(true);
+			} else {
+				btnCreate.setEnabled(false);
+			}
 			
 		}
+
+		@Override
+		public void removeUpdate(DocumentEvent arg0) {
+			if (passwordField.getText().compareTo("") != 0) {
+				btnCreate.setEnabled(true);
+			} else {
+				btnCreate.setEnabled(false);
+			}
+			
+		}
+
+		
 		
 	}
 	
