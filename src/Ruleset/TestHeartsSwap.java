@@ -132,6 +132,7 @@ public class TestHeartsSwap {
 		assertTrue(playerState4.getHand().containsAll(player3Cards));
 	}
 	
+	@Test
 	public void swapAcross() {
 		ruleset.getGameState().nextRound();
 		
@@ -152,6 +153,7 @@ public class TestHeartsSwap {
 		assertTrue(playerState4.getHand().containsAll(player2Cards));
 	}
 	
+	@Test
 	public void swapRight() {
 		ruleset.getGameState().nextRound();
 		ruleset.getGameState().nextRound();
