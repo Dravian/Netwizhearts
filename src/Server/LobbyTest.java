@@ -53,7 +53,7 @@ public class LobbyTest {
 		player4.setServer(lobby);
 
 		player5 = new TestPlayer(lobby);
-		player5.setPlayerName("Günther");
+		player5.setPlayerName("GÃ¼nther");
 		player5.setServer(lobby);
 
 		player6 = new TestPlayer(lobby);
