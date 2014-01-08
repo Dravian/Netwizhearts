@@ -9,9 +9,7 @@ import org.junit.runners.Suite;
 		TestClientWizardIsValidColour.class, TestClientWizardIsValidNumber.class,
         TestHeartsCalculateTricks.class, TestHeartsIsValidMove.class,
         TestHeartsIsValidMoveOnly.class, TestHeartsResolveMsgCard.class, TestHeartsRoundEnd.class,
-        TestHeartsSwap.class, TestHeartsWinner.class, TestisValidMoveHearts.class,
-        TestisValidMoveOnlyHearts.class, TestisValidMoveWizard.class,
-        TestRoundEndHearts.class, TestRoundEndWizard.class, TestStartWizard.class,
+        TestHeartsSwap.class, TestHeartsWinner.class, TestClientHeartsAreValidChoosenCards.class,
         TestWizardCalculateTricks.class, TestWizardIsValidMove.class,
         TestWizardResolveColour.class, TestWizardResolveMsgCard.class,
         TestWizardResolveMsgNumber.class, TestWizardRoundEnd.class, TestWizardStart.class})

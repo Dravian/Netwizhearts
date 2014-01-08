@@ -477,6 +477,7 @@ public abstract class ClientRuleset {
 		if (RULESET == RulesetType.Hearts) {
 			if (getGamePhase() == GamePhase.MultipleCardRequest) {
 				Set chooseCards = new HashSet(cards);
+				
 				if (areValidChoosenCards(new HashSet(cards))) {
 					send(new MsgMultiCards(chooseCards));
 				} else {

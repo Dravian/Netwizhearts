@@ -68,31 +68,30 @@ public class ServerHearts extends ServerRuleset {
 			throw new IllegalArgumentException("Die Karte " + card.getValue()
 					+ card.getColour() + " gehört nicht zum Spiel");
 
-		} else if(getPlayedCards().size() >= getPlayers().size()) {
-    		broadcast(WarningMsg.RulesetError);
-        	quitGame();
-    		throw new RulesetException(" Der Ablagestapel ist bereits voll.");
-    	
-    	} else if (!isValidMove(card)) {
+		} else if (getPlayedCards().size() >= getPlayers().size()) {
+			broadcast(WarningMsg.RulesetError);
+			quitGame();
+			throw new RulesetException(" Der Ablagestapel ist bereits voll.");
+
+		} else if (!isValidMove(card)) {
 			setGamePhase(GamePhase.CardRequest);
 			send(WarningMsg.UnvalidMove, name);
 			send(new MsgCardRequest(), name);
 			throw new IllegalArgumentException("Der Spieler" + name
 					+ "hat die Karte " + card.getValue() + card.getColour()
-					+ " gespielt, obwohl sie kein gültiger "
-					+ "Zug ist.");
+					+ " gespielt, obwohl sie kein gültiger " + "Zug ist.");
 
-		} else if(!playCard(card)) {
+		} else if (!playCard(card)) {
 			setGamePhase(GamePhase.CardRequest);
 			send(WarningMsg.WrongCard, name);
 			send(new MsgCardRequest(), name);
 			throw new IllegalArgumentException("Der Spieler" + name
 					+ "hat die Karte " + card.getValue() + card.getColour()
 					+ " gespielt, obwohl er sie nicht hat.");
-			
+
 		} else {
 			setGamePhase(GamePhase.Playing);
-			
+
 			if (getGameState().getPlayedCards().size() == getPlayers().size()) {
 				updatePlayers();
 				calculateTricks();
@@ -106,9 +105,9 @@ public class ServerHearts extends ServerRuleset {
 		}
 	}
 
-
 	@Override
-	public synchronized void resolveMessage(MsgMultiCards msgMultiCard, String name) {
+	public synchronized void resolveMessage(MsgMultiCards msgMultiCard,
+			String name) {
 		Set<Card> cards = msgMultiCard.getCardList();
 
 		if (getGamePhase() != GamePhase.MultipleCardRequest) {
@@ -116,11 +115,12 @@ public class ServerHearts extends ServerRuleset {
 			throw new IllegalStateException(
 					"Es werden in dieser Phase werden keine Tauschkarten erwartet.");
 
-		} else if(getPlayedCards().size() < 0 || getPlayedCards().size() >= getPlayers().size()) {
+		} else if (getPlayedCards().size() < 0
+				|| getPlayedCards().size() >= getPlayers().size()) {
 			broadcast(WarningMsg.RulesetError);
-	    	quitGame();
-	    	throw new RulesetException("Der Ablagestapel ist bereits voll.");
-	    	
+			quitGame();
+			throw new RulesetException("Der Ablagestapel ist bereits voll.");
+
 		} else if (!areValidChoosenCards(cards, name)) {
 			setGamePhase(GamePhase.MultipleCardRequest);
 			send(WarningMsg.WrongTradeCards, name);
@@ -149,7 +149,7 @@ public class ServerHearts extends ServerRuleset {
 				}
 
 				getGameState().sortHands(Colour.NONE);
-				
+
 				for (PlayerState player : getPlayers()) {
 					if (player.getHand().contains(HeartsCard.Kreuz2)) {
 						setCurrentPlayer(player);
@@ -171,91 +171,101 @@ public class ServerHearts extends ServerRuleset {
 
 	@Override
 	protected boolean isValidMove(Card card) {
-	    setGamePhase(GamePhase.Playing);
-	
-	    if (getCurrentPlayer().getHand().size() == 13) {
-	        // Noch kein Spieler hat eine Karte gespielt
-	        if (getPlayedCards().size() == 0) {
-	            // Die erste Karte jeder Runde muss die Kreu2 sein.
-	            if (card != HeartsCard.Kreuz2) {
-	                return false;
-	            } else {
-	                return true;
-	            }
-	            // Es wurden bereits Karten gespielt
-	        } else {
-	            // In der ersten Runde darf kein Herz und nicht die PikDame gespielt werden
-	            if (card.getColour() == Colour.HEART || card == HeartsCard.PikDame) {
-	                // Wenn der Spieler nur Herz auf der Hand hat, oder nur Herz und die PikDame
-	                List<Card> hand = getCurrentPlayer().getHand();
-	                
-	                for (Card handCard : hand) {
-	                    // Wenn in der Spielerhand eine Karte weder Herz noch PikDame ist
-	                    if (handCard != HeartsCard.PikDame && handCard.getColour() != Colour.HEART){
-	                        return false;
-	                    }
-	                }
-	                heartBroken = true;
-	                return true;
-	            } else {
-	                return testOtherHandCards(card);
-	            }
-	        }
-	        // Die Spieler befinden sich nicht mehr im ersten Umlauf
-	    } else {
-	        // In diesem Umlauf wurde noch keine Karte gespielt
-	        if (getPlayedCards().size() == 0) {
-	            // Die Karte, die gespielt werden soll, hat die Farbe Herz
-	            if (card.getColour() == Colour.HEART) {
-	                // Wurde Herz schon einmal gespielt
-	                if (heartBroken == true) {
-	                    return true;
-	                } else {
-	                	for(Card handCard : getCurrentPlayer().getHand()) {
-	                		if(handCard.getColour() != Colour.HEART); {
-	                			return false;
-	                		}
-	                	}
-	                	heartBroken = true;
-	                    return true;
-	                }
-	                // Die Karte hat nicht die Farbe Herz
-	            } else {
-	                return true;
-	            }
-	            // Es wurden schon Karten gespielt
-	        } else {
-	            return testOtherHandCards(card);
-	        }
-	    }
+		setGamePhase(GamePhase.Playing);
+
+		if (getCurrentPlayer().getHand().size() == 13) {
+			// Noch kein Spieler hat eine Karte gespielt
+			if (getPlayedCards().size() == 0) {
+				// Die erste Karte jeder Runde muss die Kreuz2 sein.
+				if (card != HeartsCard.Kreuz2) {
+					return false;
+				} else {
+					return true;
+				}
+				// Es wurden bereits Karten gespielt
+			} else {
+				// In der ersten Runde darf kein Herz und nicht die PikDame
+				// gespielt werden
+				if (card.getColour() == Colour.HEART
+						|| card == HeartsCard.PikDame) {
+					// Wenn der Spieler nur Herz auf der Hand hat, oder nur Herz
+					// und die PikDame
+					List<Card> hand = getCurrentPlayer().getHand();
+
+					for (Card handCard : hand) {
+						// Wenn in der Spielerhand eine Karte weder Herz noch
+						// PikDame ist
+						if (handCard != HeartsCard.PikDame
+								&& handCard.getColour() != Colour.HEART) {
+							return false;
+						}
+					}
+					heartBroken = true;
+					return true;
+				} else {
+					return testOtherHandCards(card);
+				}
+			}
+			// Die Spieler befinden sich nicht mehr im ersten Umlauf
+		} else {
+			// In diesem Umlauf wurde noch keine Karte gespielt
+			if (getPlayedCards().size() == 0) {
+				// Die Karte, die gespielt werden soll, hat die Farbe Herz
+				if (card.getColour() == Colour.HEART) {
+					// Wurde Herz schon einmal gespielt
+					if (heartBroken == true) {
+						return true;
+					} else {
+						for (Card handCard : getCurrentPlayer().getHand()) {
+							if (handCard.getColour() != Colour.HEART) {
+								return false;
+							}
+						}
+						heartBroken = true;
+						return true;
+					}
+					// Die Karte hat nicht die Farbe Herz
+				} else {
+					return true;
+				}
+				// Es wurden schon Karten gespielt
+			} else {
+				return testOtherHandCards(card);
+			}
+		}
 	}
 
 	/**
 	 * Überprüft ob man eine Kartenfarbe zugeben muss
-	 * @param card Die zu spielende Karte
+	 * 
+	 * @param card
+	 *            Die zu spielende Karte
 	 * @return true falls Karte gültig, false wenn nicht
 	 */
 	private boolean testOtherHandCards(Card card) {
-	    Card firstCard = getPlayedCards().get(0).getCard();
-	    // Die Karte hat eine andere Farbe als die erste gespielte Karte der Runde
-	    if (card.getColour() != firstCard.getColour()) {
-	
-	        List<Card> hand = getCurrentPlayer().getHand();
-	        for (Card handCard : hand) {
-	            // Es gibt eine Karte auf der Hand, die die Farbe der erstgepielten Karte hat
-	            if (handCard.getColour() == firstCard.getColour()) {
-	                return false;	             
-	            } 
-	        }
-	
-	        // Die zu spielende Karte hat die Farbe Herz
-	        if (card.getColour() == Colour.HEART) {
-	            heartBroken = true;
-	        } 
-	        return true;
-	    }
-	    // Die Karte hat die selbe Farbe, wie die erste ausgespielte Karte der Runde
-	    return true;
+		Card firstCard = getPlayedCards().get(0).getCard();
+		// Die Karte hat eine andere Farbe als die erste gespielte Karte der
+		// Runde
+		if (card.getColour() != firstCard.getColour()) {
+
+			List<Card> hand = getCurrentPlayer().getHand();
+			for (Card handCard : hand) {
+				// Es gibt eine Karte auf der Hand, die die Farbe der
+				// erstgepielten Karte hat
+				if (handCard.getColour() == firstCard.getColour()) {
+					return false;
+				}
+			}
+
+			// Die zu spielende Karte hat die Farbe Herz
+			if (card.getColour() == Colour.HEART) {
+				heartBroken = true;
+			}
+			return true;
+		}
+		// Die Karte hat die selbe Farbe, wie die erste ausgespielte Karte der
+		// Runde
+		return true;
 	}
 
 	/**
@@ -348,42 +358,49 @@ public class ServerHearts extends ServerRuleset {
 
 	@Override
 	protected void calculateTricks() {
-		DiscardedCard strongestCard = getPlayedCards().get(0);
+		if (getPlayedCards().size() == getPlayers().size()) {
+			DiscardedCard strongestCard = getPlayedCards().get(0);
 
-		for (int i = 1; i < getPlayedCards().size(); i++) {
-			DiscardedCard nextCard = getPlayedCards().get(i);
-			
-			if (nextCard.getCard().getColour() == strongestCard.getCard()
-					.getColour()
-					&& nextCard.getCard().getValue() > strongestCard.getCard()
-							.getValue()) {
-				strongestCard = nextCard;
+			for (int i = 1; i < getPlayedCards().size(); i++) {
+				DiscardedCard nextCard = getPlayedCards().get(i);
+
+				if (nextCard.getCard().getColour() == strongestCard.getCard()
+						.getColour()
+						&& nextCard.getCard().getValue() > strongestCard
+								.getCard().getValue()) {
+					strongestCard = nextCard;
+				}
+
 			}
-			
-		}
 
-		PlayerState trickWinner = getPlayerState(strongestCard.getOwnerName());
-		getGameState().madeTrick(trickWinner);
-		trickWinner.getOtherData().setCurrentPoints();
+			PlayerState trickWinner = getPlayerState(strongestCard
+					.getOwnerName());
+			getGameState().madeTrick(trickWinner);
+			trickWinner.getOtherData().setCurrentPoints();
 
-		boolean noOneHasACard = true;
+			boolean noOneHasACard = true;
 
-		for (PlayerState player : getPlayers()) {
-			if (!player.getHand().isEmpty()) {
-				noOneHasACard = false;
+			for (PlayerState player : getPlayers()) {
+				if (!player.getHand().isEmpty()) {
+					noOneHasACard = false;
+				}
 			}
-		}
-		
-		broadcast(new MsgBoolean(heartBroken));
-		
-		if (noOneHasACard) {
-			setGamePhase(GamePhase.RoundEnd);
-			calculateRoundOutcome();
+
+			broadcast(new MsgBoolean(heartBroken));
+
+			if (noOneHasACard) {
+				setGamePhase(GamePhase.RoundEnd);
+				calculateRoundOutcome();
+			} else {
+				setGamePhase(GamePhase.CardRequest);
+				setCurrentPlayer(trickWinner);
+				updatePlayers();
+				send(new MsgCardRequest(), trickWinner.getPlayerStateName());
+			}
+
 		} else {
-			setGamePhase(GamePhase.CardRequest);
-			setCurrentPlayer(trickWinner);
-			updatePlayers();
-			send(new MsgCardRequest(), trickWinner.getPlayerStateName());
+			throw new RulesetException("Es sind nicht alle Karten von "
+					+ "jedem Spieler auf dem Ablagestapel");
 		}
 	}
 
@@ -394,14 +411,16 @@ public class ServerHearts extends ServerRuleset {
 
 			for (PlayerState player : getPlayers()) {
 				int points = player.getOtherData().getPoints();
-				int currentPoints = ((HeartsData)player.getOtherData()).getCurrentPoints();
-				
+				int currentPoints = ((HeartsData) player.getOtherData())
+						.getCurrentPoints();
+
 				if (currentPoints == 26) {
 					for (PlayerState playerGetsPoints : getPlayers()) {
 
 						if (!playerGetsPoints.getPlayerStateName().equals(
 								player.getPlayerStateName())) {
-							playerGetsPoints.getOtherData().setPoints(points + currentPoints);
+							playerGetsPoints.getOtherData().setPoints(
+									points + currentPoints);
 						}
 
 					}
@@ -426,8 +445,8 @@ public class ServerHearts extends ServerRuleset {
 
 			} else {
 				getGameState().restartDeck(createDeck());
-				
-				for(PlayerState player : getPlayers()) {
+
+				for (PlayerState player : getPlayers()) {
 					player.getOtherData().setCurrentPoints();
 				}
 
@@ -478,7 +497,7 @@ public class ServerHearts extends ServerRuleset {
 		if (getGamePhase() == GamePhase.RoundStart) {
 			getGameState().shuffleDeck();
 			heartBroken = false;
-			
+
 			/*
 			 * Verteilt die Karten an Spieler. Wenn false zurück kommt wird ein
 			 * neues Deck erstellt und alle Karten im Spiel gelöscht. Wenn
@@ -490,11 +509,11 @@ public class ServerHearts extends ServerRuleset {
 				throw new RulesetException(
 						"Probleme beim Verteilen der Karten!");
 			}
-			
+
 			getGameState().sortHands(Colour.NONE);
-			
+
 			if (getRoundNumber() % 4 == 0) {
-				
+
 				for (PlayerState player : getPlayers()) {
 					if (player.getHand().contains(HeartsCard.Kreuz2)) {
 						setCurrentPlayer(player);
@@ -510,7 +529,7 @@ public class ServerHearts extends ServerRuleset {
 				setGamePhase(GamePhase.MultipleCardRequest);
 				broadcast(new MsgMultiCardsRequest(3));
 			}
-			
+
 		} else {
 			throw new RulesetException("Das Spiel ist noch nicht am "
 					+ "Rundenanfang");
@@ -519,6 +538,7 @@ public class ServerHearts extends ServerRuleset {
 
 	/**
 	 * Setzt ob Herz gebrochen wurde
+	 * 
 	 * @param heartBroken
 	 */
 	protected void setHeartBroken(boolean heartBroken) {
