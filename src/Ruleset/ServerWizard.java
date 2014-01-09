@@ -372,7 +372,23 @@ public class ServerWizard extends ServerRuleset {
 			throw new IllegalStateException("Das Spiel läuft bereits!");
 
 		} else {
-			int numberOfRounds = deckSize / players.size();
+			int numberOfRounds = 0;
+			
+			if(players.size() == 3) {
+				numberOfRounds = 20;
+			} else if(players.size() == 4) {
+				numberOfRounds = 15;
+			} else if(players.size() == 5) {
+				numberOfRounds = 12;
+			} else if(players.size() == 6) {
+				numberOfRounds = 10;
+			} else {
+				broadcast(WarningMsg.RulesetError);
+				quitGame();
+				throw new RulesetException(
+						"Anzahl der Spieler falsch!");
+			}
+			
 			setPlayingRounds(numberOfRounds);
 			setFirstPlayer(players.get(0));
 
@@ -387,7 +403,6 @@ public class ServerWizard extends ServerRuleset {
 		if (getGamePhase() == GamePhase.RoundStart) {
 			int valueOfSorcerer = 14;
 			int valueOfFool = 0;
-
 			getGameState().shuffleDeck();
 
 			/*
@@ -397,6 +412,7 @@ public class ServerWizard extends ServerRuleset {
 			if (!getGameState().dealCards(getGameState().getRoundNumber())) {
 				broadcast(WarningMsg.RulesetError);
 				quitGame();
+				System.out.println(getGameState().getRoundNumber());
 				throw new RulesetException(
 						"Probleme beim Verteilen der Karten!");
 
@@ -445,7 +461,8 @@ public class ServerWizard extends ServerRuleset {
 		if (getGamePhase() != GamePhase.RoundEnd
 				|| getGamePhase() != GamePhase.Ending) {
 			List<PlayerState> players = getPlayers();
-
+			
+			
 			/*
 			 * Verrechnet die Punkte für jeden Spieler
 			 */

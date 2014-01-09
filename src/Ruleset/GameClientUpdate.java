@@ -43,6 +43,11 @@ public class GameClientUpdate implements Serializable{
 	private Card uncoveredCard;
 	
 	/**
+	 * Ob der Ablagestapel schon voll ist
+	 */
+	private boolean fullDiscardPile;
+	
+	/**
 	 * Erstellt ein GameClientUpdate
 	 * @param playerState Der Spielerzustand des Client
 	 * @param discardPile Der Ablagestapel
@@ -52,7 +57,7 @@ public class GameClientUpdate implements Serializable{
 	 */
 	protected GameClientUpdate(PlayerState playerState, List<DiscardedCard> discardPile,
 			List<OtherData> otherPlayerData,  String currentPlayer,
-			int roundNumber, Card trumpCard) {
+			int roundNumber, Card trumpCard, boolean fullDiscardPile) {
 		this.playerState = playerState;
 		this.discardPile = discardPile;
 		Collections.unmodifiableList(this.discardPile);
@@ -61,6 +66,7 @@ public class GameClientUpdate implements Serializable{
 		this.currentPlayer = currentPlayer;
 		this.roundNumber = roundNumber;
 		this.uncoveredCard = trumpCard;
+		this.fullDiscardPile = fullDiscardPile;
 	}
 
 	/** 
@@ -120,6 +126,14 @@ public class GameClientUpdate implements Serializable{
 	 */
 	public Card getUncoveredCard() {
 		return uncoveredCard;
+	}
+	
+	/**
+	 * Gibt zurück ob der Ablagestapel voll ist
+	 * @return true wenn er voll ist, false wenn nicht
+	 */
+	public boolean getFullDiscardPile() {
+		return fullDiscardPile;
 	}
 
 }

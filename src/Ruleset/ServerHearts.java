@@ -497,7 +497,6 @@ public class ServerHearts extends ServerRuleset {
 		if (getGamePhase() == GamePhase.RoundStart) {
 			getGameState().shuffleDeck();
 			heartBroken = false;
-
 			/*
 			 * Verteilt die Karten an Spieler. Wenn false zurück kommt wird ein
 			 * neues Deck erstellt und alle Karten im Spiel gelöscht. Wenn

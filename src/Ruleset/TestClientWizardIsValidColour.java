@@ -99,7 +99,7 @@ public class TestClientWizardIsValidColour {
 		Card trumpCard = WizardCard.ZaubererBlau;
 		
 		gameState = new GameClientUpdate(player, discardPile,
-				enemyData, currentPlayer, roundNumber, trumpCard);
+				enemyData, currentPlayer, roundNumber, trumpCard, false);
 		MsgUser game = new MsgUser(gameState);
 		testModel.receiveMessage(new ComRuleset(game));
 		
