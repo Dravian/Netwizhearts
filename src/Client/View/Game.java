@@ -20,6 +20,7 @@ import javax.swing.SwingUtilities;
 
 import Client.ClientModel;
 import Client.ViewNotification;
+import Ruleset.RulesetType;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -166,9 +167,11 @@ public class Game extends JFrame implements Observer{
 	 * Ablagestapel vor sich.
 	 * 
 	 * @param playerCount Anzahl der Mitspieler
+	 * @param hasTrump
+	 * @param hasDeck
 	 */
-	public void makeTrickGameBoard(final int playerCount) {
-		gamePanel = new GamePanel(playerCount);
+	public void makeTrickGameBoard(final int playerCount, boolean hasTrump, boolean hasDeck) {
+		gamePanel = new GamePanel(playerCount, hasTrump, hasDeck);
 		gamePanel.setBounds(10, 0, 998, 547);
 		gamePanel.addCardMouseListener(cardMouseListener);
 		contentPane.add(gamePanel);
@@ -223,7 +226,13 @@ public class Game extends JFrame implements Observer{
 		case gameStarted:
 			SwingUtilities.invokeLater(new Runnable() {
 				public void run() {
-					makeTrickGameBoard(observed.getPlayerlist().size()-1);
+					boolean hasTrump = true;
+					boolean hasDeck = true;
+					if (observed.getCurrentRuleset() == RulesetType.Hearts) {
+						hasTrump = false;
+						hasDeck = false;
+					}
+					makeTrickGameBoard(observed.getPlayerlist().size()-1, hasTrump, hasDeck);
 					chatlog.setText("");
 					setVisible(true);
 				}

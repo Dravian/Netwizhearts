@@ -1183,4 +1183,13 @@ public class ClientModel extends Observable {
 	public final List<RulesetType> getRulesets() {
 		return supportetGames;
 	}
+	
+	/**
+	 * Liefert das aktuell verwendete Regelwerk
+	 * 
+	 * @return aktuell verwendets Regelwerk
+	 */
+	public final RulesetType getCurrentRuleset() {
+		return gameType;
+	}
 }
