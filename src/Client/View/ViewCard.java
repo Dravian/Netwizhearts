@@ -137,6 +137,5 @@ public class ViewCard extends JPanel{
 				g.drawImage(ViewCard.BACKSIDEIMAGE, 0, 0, null);
 			}
         
-        
     }
 }
