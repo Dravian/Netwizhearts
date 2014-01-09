@@ -3,6 +3,7 @@
  */
 package Client.View;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.MouseListener;
 import java.util.LinkedList;
@@ -25,6 +26,7 @@ public class OwnHand extends JPanel{
 	 * Erstellt ein neues OwnHand-Panel
 	 */
 	public OwnHand() {
+		this.setBackground(Color.BLACK);
 		hand = new LinkedList<ViewCard>();
 		for (int i = 0; i < 20; i++) {
 			hand.add(new ViewCard(null));
@@ -75,6 +77,6 @@ public class OwnHand extends JPanel{
 	
 	@Override
 	public void paintComponent(Graphics g) {
-        super.paintComponent(g);
+        super.paintComponent(g);        
     }
 }

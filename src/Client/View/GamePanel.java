@@ -53,8 +53,10 @@ public class GamePanel extends JPanel{
 	 * Erstellt ein GamePanel
 	 * 
 	 * @param playerCount Anzahl der Mitspieler
+	 * @param hasTrump true, wenn die TrumpColour angezeigt werden soll
+	 * @param hasDeck, true, wenn das DrawDeck angezeigt werden soll
 	 */
-	public GamePanel(int playerCount) {	
+	public GamePanel(int playerCount, boolean hasTrump, boolean hasDeck) {	
 		try {
 			background = ImageIO.read(new File(IMAGEPATH + "backgrounds/" + Game.BACKGROUND))
 					.getScaledInstance(BGWIDTH, BGHEIGHT, UNDEFINED_CONDITION);
@@ -72,13 +74,17 @@ public class GamePanel extends JPanel{
 		ownScore.setBounds(850, 360, 90, 45);
 		this.add(ownScore);
 		
-		deck = new DrawDeck();
-		deck.setBounds(945, 330, ViewCard.WIDTH, ViewCard.HEIGHT);
-		this.add(deck);
+		if (hasDeck) {
+			deck = new DrawDeck();
+			deck.setBounds(945, 330, ViewCard.WIDTH, ViewCard.HEIGHT);
+			this.add(deck);
+		}
 		
-		trumpColour = new TrumpColour();
-		trumpColour.setBounds(915, 330, 25, 25);
-		this.add(trumpColour);
+		if (hasTrump) {
+			trumpColour = new TrumpColour();
+			trumpColour.setBounds(915, 330, 25, 25);
+			this.add(trumpColour);
+		}
 		
 		otherHands = new LinkedList<OtherPlayer>();		
 		discardPiles = new LinkedList<DiscardPile>();

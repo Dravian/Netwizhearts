@@ -21,6 +21,7 @@ import javax.swing.SwingUtilities;
 
 import Client.ClientModel;
 import Client.ViewNotification;
+import Ruleset.RulesetType;
 
 /**
  * GameLobby. Die GameLobby modelliert das Wartefenster, in dem beigetretene Spieler auf den Start 
@@ -40,6 +41,7 @@ public class GameLobby extends JFrame implements Observer{
 	private JTextArea chatlog;
 	private JButton btnStartGame;
 	private JList<String> playerList;
+	private RulesetType ruleset;
 
 	/**
 	 * Erstellt das GameLobby Fenster
@@ -90,6 +92,7 @@ public class GameLobby extends JFrame implements Observer{
 		
 		btnStartGame = new JButton("Start Game");
 		btnStartGame.setBounds(295, 293, 117, 25);
+		btnStartGame.setEnabled(false);
 		contentPane.add(btnStartGame);
 	}
 	
@@ -193,6 +196,11 @@ public class GameLobby extends JFrame implements Observer{
 						players[i] = list.get(i);
 					}
 					playerList.setListData(players);
+					if (ruleset.getMinPlayer() <= length) {
+						btnStartGame.setEnabled(true);
+					} else {
+						btnStartGame.setEnabled(false);
+					}
 				}
 			}
 		});
@@ -247,6 +255,7 @@ public class GameLobby extends JFrame implements Observer{
 		case joinGameSuccessful:
 			updateUI(observed.getGameMaster(), observed.getPlayerName());
 			updatePlayerList(observed.getPlayerlist());
+			ruleset = observed.getCurrentRuleset();
 			chatlog.setText("");
 			this.setVisible(true);
 			break;
@@ -297,8 +306,8 @@ public class GameLobby extends JFrame implements Observer{
 			} else {
 				btnRemovePlayer.setEnabled(true);
 			}
-			
 		}
 		
 	}
+	
 }
