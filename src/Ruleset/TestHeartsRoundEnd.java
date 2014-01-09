@@ -127,6 +127,45 @@ public class TestHeartsRoundEnd {
 				.getOtherData().getPoints() == 0);
 	}
 	
+	
+	public void roundEndAllPoints() {
+		Set<Card> blueCards = new HashSet<Card>();
+		Set<Card> whiteCards = new HashSet<Card>();
+		
+		blueCards.add(HeartsCard.Herz2);
+		blueCards.add(HeartsCard.Herz3);
+		blueCards.add(HeartsCard.Herz4);
+		blueCards.add(HeartsCard.Herz5);
+		blueCards.add(HeartsCard.Herz6);
+		blueCards.add(HeartsCard.Herz7);
+		blueCards.add(HeartsCard.Herz8);
+		blueCards.add(HeartsCard.Herz9);
+		blueCards.add(HeartsCard.Herz10);
+		blueCards.add(HeartsCard.HerzBube);
+		blueCards.add(HeartsCard.HerzDame);
+		blueCards.add(HeartsCard.HerzKoenig);
+		blueCards.add(HeartsCard.HerzAss);
+		blueCards.add(HeartsCard.PikDame);
+		
+		
+		heartsServerRuleset.getGameState().getPlayerState(Blue).
+			getOtherData().madeTrick(blueCards);
+		heartsServerRuleset.getGameState().getPlayerState(White).
+			getOtherData().madeTrick(whiteCards);
+		
+		heartsServerRuleset.calculateRoundOutcome();
+		
+		assertTrue(heartsServerRuleset.getGameState().getPlayerState(Blue)
+				.getOtherData().getPoints() == 0);
+		assertTrue(heartsServerRuleset.getGameState().getPlayerState(White)
+				.getOtherData().getPoints() == 26);
+		assertTrue(heartsServerRuleset.getGameState().getPlayerState(Orange)
+				.getOtherData().getPoints() == 26);
+		assertTrue(heartsServerRuleset.getGameState().getPlayerState(Brown)
+				.getOtherData().getPoints() == 26);
+	}
+	
+	
 	@Test
 	public void testGetWinner() {
 		

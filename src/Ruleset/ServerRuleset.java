@@ -402,7 +402,7 @@ public abstract class ServerRuleset {
 			try {
 				Thread.sleep(1500);
 			} catch (InterruptedException e) {
-				e.printStackTrace();
+				broadcast(WarningMsg.RulesetError);
 				throw new RulesetException("Sleep Error");
 			}
 		} 
