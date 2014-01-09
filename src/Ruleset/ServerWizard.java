@@ -77,8 +77,12 @@ public class ServerWizard extends ServerRuleset {
 	@Override
 	public void resolveMessage(MsgCard msgCard, String name) {
 		Card card = msgCard.getCard();
-
-		if (getGamePhase() != GamePhase.CardRequest) {
+	
+		if(!getPlayers().contains(getGameState().getPlayerState(name))) {		
+			send(WarningMsg.WrongGame, name);
+			throw new IllegalArgumentException("Spieler gehört nicht zum Spiel");
+		
+		} else if (getGamePhase() != GamePhase.CardRequest) {
 			send(WarningMsg.WrongPhase, name);
 			throw new IllegalStateException(
 					"Es wird in dieser Phase keine Karte erwartet "
@@ -131,7 +135,12 @@ public class ServerWizard extends ServerRuleset {
 
 	@Override
 	public void resolveMessage(MsgNumber msgNumber, String name) {
-		if (getGamePhase() != GamePhase.TrickRequest) {
+		
+		if(!getPlayers().contains(getGameState().getPlayerState(name))) {		
+			send(WarningMsg.WrongGame, name);
+			throw new IllegalArgumentException("Spieler gehört nicht zum Spiel");
+		
+		} else if (getGamePhase() != GamePhase.TrickRequest) {
 			send(WarningMsg.WrongPhase, name);
 			throw new IllegalStateException("Es wird keine Zahl erwartet.");
 
@@ -168,8 +177,12 @@ public class ServerWizard extends ServerRuleset {
 	}
 
 	@Override
-	public void resolveMessage(MsgSelection msgSelection, String name) {
-		if (getGamePhase() != GamePhase.SelectionRequest) {
+	public synchronized void resolveMessage(MsgSelection msgSelection, String name) {
+		if(!getPlayers().contains(getGameState().getPlayerState(name))) {		
+			send(WarningMsg.WrongGame, name);
+			throw new IllegalArgumentException("Spieler gehört nicht zum Spiel");
+		
+		} else if (getGamePhase() != GamePhase.SelectionRequest) {
 			send(WarningMsg.WrongPhase, name);
 			throw new IllegalStateException(
 					"Es wird keine Trumpffarbe erwartet vom" + "Spieler "

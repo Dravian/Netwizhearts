@@ -455,7 +455,7 @@ public abstract class ClientRuleset {
 		
 			} else if (isValidMove(card)) {
 				send(new MsgCard(card));
-			
+				
 			} else {
 				getModel().openWarning(WarningMsg.UnvalidMove);
 				getModel().announceTurn(UserMessages.PlayCard);
