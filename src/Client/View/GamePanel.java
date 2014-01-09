@@ -49,6 +49,10 @@ public class GamePanel extends JPanel{
 	
 	private TrumpColour trumpColour;
 	
+	private boolean showTrump;
+	
+	private boolean showDeck;
+	
 	/**
 	 * Erstellt ein GamePanel
 	 * 
@@ -57,6 +61,10 @@ public class GamePanel extends JPanel{
 	 * @param hasDeck, true, wenn das DrawDeck angezeigt werden soll
 	 */
 	public GamePanel(int playerCount, boolean hasTrump, boolean hasDeck) {	
+		
+		showTrump = hasTrump;
+		showDeck = hasDeck;
+		
 		try {
 			background = ImageIO.read(new File(IMAGEPATH + "backgrounds/" + Game.BACKGROUND))
 					.getScaledInstance(BGWIDTH, BGHEIGHT, UNDEFINED_CONDITION);
@@ -144,11 +152,15 @@ public class GamePanel extends JPanel{
 	 * @param col Farbe
 	 */
 	public void updateTrumpColour(final Colour col) {
-		trumpColour.setTrumpColour(col);
+		if (showTrump) {
+			trumpColour.setTrumpColour(col);
+		}
 	}
 	
 	private void setUncoveredCard(Card c) {
-		deck.setShownCard(c);
+		if (showDeck) {
+			deck.setShownCard(c);
+		}
 	}
 	
 	private void updateOwnOtherData(OtherData ownData, String currentPlayer) {
