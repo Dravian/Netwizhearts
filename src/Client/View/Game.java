@@ -171,6 +171,9 @@ public class Game extends JFrame implements Observer{
 	 * @param hasDeck
 	 */
 	public void makeTrickGameBoard(final int playerCount, boolean hasTrump, boolean hasDeck) {
+		if (gamePanel != null) {
+		contentPane.remove(gamePanel);
+		}
 		gamePanel = new GamePanel(playerCount, hasTrump, hasDeck);
 		gamePanel.setBounds(10, 0, 998, 547);
 		gamePanel.addCardMouseListener(cardMouseListener);
