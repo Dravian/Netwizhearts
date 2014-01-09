@@ -26,6 +26,8 @@ import ComObjects.ComLobbyUpdateGamelist;
 import ComObjects.ComRuleset;
 import ComObjects.ComStartGame;
 import ComObjects.ComUpdatePlayerlist;
+import ComObjects.ComWarning;
+import ComObjects.WarningMsg;
 
 public class ClientInServerLobbyTest {
 
@@ -334,6 +336,33 @@ public class ClientInServerLobbyTest {
 		assertEquals("ObserverUpdate", ViewNotification.joinGameSuccessful,
 				testObserver.getNotification().remove(1));
 		assertEquals("Spielerliste", players, testModel.getPlayerlist());
+	}
+
+	@Test
+	public void joinGameNegativTest() {
+		ComJoinRequest testJoinRequest;
+		GameServerRepresentation game = new GameServerRepresentation("Peter",
+				"Mein Spiel", 6, 1, RulesetType.Wizard, false, false);
+		ComLobbyUpdateGamelist updateGameList =
+				new ComLobbyUpdateGamelist(false, game);
+		testNetIO.injectComObject(updateGameList);
+		testModel.joinGame("Peter", "");
+		testJoinRequest = (ComJoinRequest) testNetIO.getModelInput().remove(0);
+		assertEquals("Game Master", "Peter",
+				testJoinRequest.getGameMasterName());
+		assertEquals("Passwort", "", testJoinRequest.getPassword());
+	
+		testNetIO.injectComObject(new ComWarning(WarningMsg.CouldntJoin));
+		assertEquals("Observer Nachricht", ViewNotification.openWarning,
+				testObserver.getNotification().remove(1));
+		assertEquals("Leerer GameMaster", "", testModel.getGameMaster());
+	}
+
+	@Test
+	public void getWarningInLobby() {
+		testNetIO.injectComObject(new ComWarning(WarningMsg.GameDisbanded));
+		assertEquals("Observer Nachricht", ViewNotification.openWarning,
+				testObserver.getNotification().remove(0));
 	}
 
 	@Test (expected=IllegalArgumentException.class)

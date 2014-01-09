@@ -16,6 +16,7 @@ import org.junit.Test;
 import test.TestMessageListenerThread;
 import test.TestObserver;
 import ComObjects.ComChatMessage;
+import ComObjects.ComClientLeave;
 import ComObjects.ComInitGameLobby;
 import ComObjects.ComInitLobby;
 import ComObjects.ComKickPlayerRequest;
@@ -255,5 +256,17 @@ public class ClientInGameLobbyTest {
 		testNetIO.injectComObject(new ComStartGame());
 		assertEquals("wechsel zu Spielfenster", ViewNotification.gameStarted,
 				testObserver.getNotification().remove(0));
+	}
+
+	@Test
+	public void returnToLobbyTest() {
+		testModel.returnToLobby();
+		assertEquals("ClientLeave", ComClientLeave.class,
+				testNetIO.getModelInput().remove(0).getClass());
+	}
+
+	@Test (expected=IllegalArgumentException.class)
+	public void receiveComStartGameArgumentNullTest() {
+		testModel.receiveMessage((ComStartGame) null);
 	}
 }
