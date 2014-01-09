@@ -428,7 +428,7 @@ public class ServerHearts extends ServerRuleset {
 						if (!playerGetsPoints.getPlayerStateName().equals(
 								player.getPlayerStateName())) {
 							playerGetsPoints.getOtherData().setPoints(
-									points + currentPoints);
+									playerGetsPoints.getOtherData().getPoints() + currentPoints);
 						}
 
 					}

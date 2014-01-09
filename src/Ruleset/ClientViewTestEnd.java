@@ -100,7 +100,7 @@ public class ClientViewTestEnd {
 		Card trumpCard = WizardCard.DreizehnGruen;
 
 		gameState = new GameClientUpdate(player, discardPile,
-				enemyData, currentPlayer, roundNumber, trumpCard, false);
+				enemyData, currentPlayer, roundNumber, trumpCard);
 		MsgUser game = new MsgUser(gameState);
 		testModel.receiveMessage(new ComRuleset(game));
 
@@ -114,7 +114,7 @@ public class ClientViewTestEnd {
 				testNetIO.injectComObject(new ComStartGame());
 				player.getHand().add(WizardCard.DreiGruen);
 				gameState = new GameClientUpdate(player, discardPile,
-						enemyData, currentPlayer, roundNumber, trumpCard, false);
+						enemyData, currentPlayer, roundNumber, trumpCard);
 				game = new MsgUser(gameState);
 				testModel.receiveMessage(new ComRuleset(game));
 				Thread.sleep(10000);
