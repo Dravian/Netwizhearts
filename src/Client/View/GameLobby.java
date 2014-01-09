@@ -196,10 +196,12 @@ public class GameLobby extends JFrame implements Observer{
 						players[i] = list.get(i);
 					}
 					playerList.setListData(players);
-					if (ruleset.getMinPlayer() <= length) {
+					if (ruleset != null) {
+						if (ruleset.getMinPlayer() <= length) {
 						btnStartGame.setEnabled(true);
-					} else {
-						btnStartGame.setEnabled(false);
+						} else {
+							btnStartGame.setEnabled(false);
+						}
 					}
 				}
 			}

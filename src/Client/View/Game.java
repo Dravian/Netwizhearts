@@ -229,11 +229,21 @@ public class Game extends JFrame implements Observer{
 		case gameStarted:
 			SwingUtilities.invokeLater(new Runnable() {
 				public void run() {
-					boolean hasTrump = true;
-					boolean hasDeck = true;
-					if (observed.getCurrentRuleset() == RulesetType.Hearts) {
+					boolean hasTrump;
+					boolean hasDeck;
+					switch (observed.getCurrentRuleset()) {
+					case Hearts:
 						hasTrump = false;
 						hasDeck = false;
+						break;
+					case Wizard:
+						hasTrump = true;
+						hasDeck = true;
+						break;
+					default:
+						hasTrump = true;
+						hasDeck = true;
+						break;
 					}
 					makeTrickGameBoard(observed.getPlayerlist().size()-1, hasTrump, hasDeck);
 					chatlog.setText("");
