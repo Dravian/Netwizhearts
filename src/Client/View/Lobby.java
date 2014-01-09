@@ -49,6 +49,8 @@ public class Lobby extends JFrame implements Observer{
 	private JButton btnLeave;
 	private JTextArea chatlog;
 	private Language lang;
+	private String gameMasterName;
+	private boolean gamePassword;
 	
 	/**
 	 * Erstellt das Lobby-Fenster
@@ -56,8 +58,11 @@ public class Lobby extends JFrame implements Observer{
 	public Lobby() {		
 		setTitle("Server Lobby");
 		lang = Language.English;
+		gameMasterName = null;
+		gamePassword = false;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 596, 433);
+		setLocationRelativeTo(null);
 		setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -117,7 +122,8 @@ public class Lobby extends JFrame implements Observer{
 	 * @return Name des Spielleiters
 	 */
 	public String getChosenGameName() {
-		return gameRepList.get(gameList.getSelectedIndex()).getGameMasterName();
+
+		return gameMasterName;
 	}
 	
 	/**
@@ -126,7 +132,7 @@ public class Lobby extends JFrame implements Observer{
 	 * @return true, wenn es passwortgeschuetzt ist, false sonst
 	 */
 	public boolean hasPWChosenGame() {
-		return gameRepList.get(gameList.getSelectedIndex()).hasPassword();
+		return gamePassword;
 	}
 	
 	/**
@@ -362,8 +368,12 @@ public class Lobby extends JFrame implements Observer{
 		@Override
 		public void valueChanged(ListSelectionEvent e) {
 			if (gameList.isSelectionEmpty()) {
+				gameMasterName = null;
+				gamePassword = false;
 				btnJoinGame.setEnabled(false);
 			} else {
+				gameMasterName = gameRepList.get(gameList.getSelectedIndex()).getGameMasterName();
+				gamePassword = gameRepList.get(gameList.getSelectedIndex()).hasPassword();
 				btnJoinGame.setEnabled(true);
 			}
 			

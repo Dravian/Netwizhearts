@@ -42,6 +42,7 @@ public class ChooseCards extends JFrame implements Observer{
 	public ChooseCards() {
 		shownCardsCount = 20;
 		setBounds(100, 100, 1004, 330);
+		setLocationRelativeTo(null);
 		setResizable(false);
 		setAlwaysOnTop(true);
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);

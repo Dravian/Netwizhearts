@@ -35,7 +35,7 @@ public class ClientViewTestEnd {
 	ClientController controller;
 
 	List<String> players;
-	
+
 	String blue = "Blue";
 	String white = "White";
 	String red = "Red";
@@ -108,6 +108,7 @@ public class ClientViewTestEnd {
 		winners.add(red);
 		testNetIO.injectComObject(new ComRuleset(new MsgGameEnd(winners)));
 		testNetIO.getModelInput().clear();
+<<<<<<< HEAD
 		Thread.sleep(10000);
 		if (!testNetIO.getModelInput().isEmpty()) {
 			if (((ComNewRound) testNetIO.getModelInput().remove(0)).getResult()) {
@@ -124,11 +125,54 @@ public class ClientViewTestEnd {
 				players.add("player2");
 				players.add("Player3");
 				Set<GameServerRepresentation> games =
+=======
+
+		List<String> players = new LinkedList<String>();
+		players.add("Player1");
+		players.add("player2");
+		players.add("Player3");
+		Set<GameServerRepresentation> games =
+>>>>>>> 87e1081d93db5a5dba5eb7924cea197b39fe1dab
 						new HashSet<GameServerRepresentation>();
-				ComInitLobby testInitLobby = new ComInitLobby(players, games);
-				testNetIO.injectComObject(testInitLobby);
-				Thread.sleep(10000);
-			}
-		}
+		ComInitLobby testInitLobby = new ComInitLobby(players, games);
+		testNetIO.injectComObject(testInitLobby);
+	}
+
+	@Test
+	public void openScoreWindowTest1() throws InterruptedException {
+
+		List<DiscardedCard> discardPile = new ArrayList<DiscardedCard>();
+
+		PlayerState player2 = new PlayerState(white, RulesetType.Wizard);
+		OtherData otherData1 = player2.getOtherData();		
+
+		PlayerState player3 = new PlayerState(red, RulesetType.Wizard);
+		player3.getOtherData().setPoints(20);
+		OtherData otherData2 = player3.getOtherData();
+
+		List<OtherData> enemyData = new ArrayList<OtherData>();
+
+		enemyData.add(otherData1);
+		enemyData.add(otherData2);
+
+		String currentPlayer = blue;
+		int roundNumber = 4;
+		Card trumpCard = WizardCard.DreizehnGruen;
+
+		gameState = new GameClientUpdate(player, discardPile,
+				enemyData, currentPlayer, roundNumber, trumpCard);
+		MsgUser game = new MsgUser(gameState);
+		testModel.receiveMessage(new ComRuleset(game));
+
+		List<String> winners = new ArrayList<String>();
+		winners.add(red);
+		testNetIO.injectComObject(new ComRuleset(new MsgGameEnd(winners)));
+
+		testNetIO.injectComObject(new ComStartGame());
+		player.getHand().add(WizardCard.DreiGruen);
+		gameState = new GameClientUpdate(player, discardPile,
+						enemyData, currentPlayer, roundNumber, trumpCard);
+		game = new MsgUser(gameState);
+		testModel.receiveMessage(new ComRuleset(game));
 	}
 }
