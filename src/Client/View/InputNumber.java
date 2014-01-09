@@ -30,6 +30,7 @@ public class InputNumber extends JFrame implements Observer{
 	 */
 	public InputNumber() {
 		setBounds(100, 100, 345, 154);
+		setLocationRelativeTo(null);
 		setResizable(false);
 		setAlwaysOnTop(true);
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);

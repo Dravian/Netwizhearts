@@ -33,6 +33,7 @@ public class ScoreWindow extends JFrame implements Observer{
 	public ScoreWindow() {
 		lang = Language.English;
 		setBounds(100, 100, 450, 290);
+		setLocationRelativeTo(null);
 		setAlwaysOnTop(true);
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		getContentPane().setLayout(null);
@@ -120,10 +121,26 @@ public class ScoreWindow extends JFrame implements Observer{
 
 					@Override
 					public void run() {
+						String win = "";
+						switch (lang) {
+						case German:
+							win = "Gewinner: ";
+							break;
+						case English:
+							win = "Winner: ";
+							break;
+						case Bavarian:
+							win = "Gwinna: ";
+							break;
+						default:
+							break;
+						}
+						textArea.append(win + "\n");
 						List<String> winners = observed.getWinner();
 						for (int i = 0; i < winners.size(); i++) {
 							textArea.append(winners.get(i) + "\n");
 						}
+						textArea.append("\n");
 						OtherData myself = observed.getGameUpdate()
 								.getOwnData();
 						List<OtherData> players = observed.getGameUpdate()

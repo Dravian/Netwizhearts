@@ -35,6 +35,7 @@ public class Warning extends JFrame implements Observer{
 		dispose = false;
 		setTitle("Warning");
 		setBounds(50, 50, 433, 204);
+		setLocationRelativeTo(null);
 		setAlwaysOnTop(true);
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		getContentPane().setLayout(null);
