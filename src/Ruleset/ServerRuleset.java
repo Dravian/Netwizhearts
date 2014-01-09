@@ -410,12 +410,21 @@ public abstract class ServerRuleset {
 			discardPile.add(getPlayedCards().get(i).clone());
 		}
 		
+		boolean fullDiscardPile;
+		
+		if(discardPile.size() == getPlayers().size()) {
+			fullDiscardPile = true;
+		} else {
+			fullDiscardPile = false;
+		}
+		
 		return new GameClientUpdate(player.clone(),
 				discardPile,
 				viewOfOtherPlayers(player),
 				getCurrentPlayer().getPlayerStateName(),
 				getRoundNumber(),
-				gameState.getUncoveredCard());
+				gameState.getUncoveredCard(),
+				fullDiscardPile);
 		
 	}
 	

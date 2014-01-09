@@ -160,7 +160,7 @@ public class TestClientHeartsAreValidChoosenCards {
         int roundNumber = 1;
 
         gameState = new GameClientUpdate(player1, discardPile,
-                enemyData, currentPlayer, roundNumber, null);
+                enemyData, currentPlayer, roundNumber, null, false);
         MsgUser game = new MsgUser(gameState);
         testModel.receiveMessage(new ComRuleset(game));
         
@@ -188,7 +188,19 @@ public class TestClientHeartsAreValidChoosenCards {
         testModel.giveChosenCards(cards);
         assertTrue(testNetIO.getModelInput().size() == 0);
         testNetIO.getModelInput().clear();
-      
+        
+        cards.remove(HeartsCard.PikDame);
+        testModel.receiveMessage(new ComRuleset(new MsgMultiCardsRequest(3)));
+        testModel.giveChosenCards(cards);
+        assertTrue(testNetIO.getModelInput().size() == 0);
+        testNetIO.getModelInput().clear();
+        
+        cards.add(WizardCard.AchtBlau);
+        testModel.receiveMessage(new ComRuleset(new MsgMultiCardsRequest(3)));
+        testModel.giveChosenCards(cards);
+        assertTrue(testNetIO.getModelInput().size() == 0);
+        testNetIO.getModelInput().clear();
+ 
 	}
 
 }

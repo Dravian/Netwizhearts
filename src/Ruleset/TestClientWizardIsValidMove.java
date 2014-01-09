@@ -108,7 +108,7 @@ public class TestClientWizardIsValidMove {
 		Card trumpCard = EmptyCard.Empty;
 		
 		gameState = new GameClientUpdate(player, discardPile,
-				enemyData, currentPlayer, roundNumber, trumpCard);
+				enemyData, currentPlayer, roundNumber, trumpCard, false);
 		MsgUser game = new MsgUser(gameState);
 		testModel.receiveMessage(new ComRuleset(game));
 
@@ -169,7 +169,7 @@ public class TestClientWizardIsValidMove {
 		Card trumpCard = WizardCard.DreizehnGruen;
 		
 		gameState = new GameClientUpdate(player, discardPile,
-				enemyData, currentPlayer, roundNumber, trumpCard);
+				enemyData, currentPlayer, roundNumber, trumpCard, false);
 		MsgUser game = new MsgUser(gameState);
 		testModel.receiveMessage(new ComRuleset(game));
 
@@ -220,7 +220,7 @@ public class TestClientWizardIsValidMove {
 		Card trumpCard = WizardCard.DreizehnGruen;
 		
 		gameState = new GameClientUpdate(player, discardPile,
-				enemyData, currentPlayer, roundNumber, trumpCard);
+				enemyData, currentPlayer, roundNumber, trumpCard, false);
 		MsgUser game = new MsgUser(gameState);
 		testModel.receiveMessage(new ComRuleset(game));
 
@@ -272,7 +272,7 @@ public class TestClientWizardIsValidMove {
 		Card trumpCard = WizardCard.DreizehnGruen;
 		
 		gameState = new GameClientUpdate(player, discardPile,
-				enemyData, currentPlayer, roundNumber, trumpCard);
+				enemyData, currentPlayer, roundNumber, trumpCard, false);
 		MsgUser game = new MsgUser(gameState);
 		testModel.receiveMessage(new ComRuleset(game));
 
@@ -322,7 +322,7 @@ public class TestClientWizardIsValidMove {
 		Card trumpCard = WizardCard.DreizehnGruen;
 		
 		gameState = new GameClientUpdate(player, discardPile,
-				enemyData, currentPlayer, roundNumber, trumpCard);
+				enemyData, currentPlayer, roundNumber, trumpCard, false);
 		MsgUser game = new MsgUser(gameState);
 		testModel.receiveMessage(new ComRuleset(game));
 
@@ -372,7 +372,7 @@ public class TestClientWizardIsValidMove {
 		Card trumpCard = WizardCard.DreizehnGruen;
 		
 		gameState = new GameClientUpdate(player, discardPile,
-				enemyData, currentPlayer, roundNumber, trumpCard);
+				enemyData, currentPlayer, roundNumber, trumpCard, false);
 		MsgUser game = new MsgUser(gameState);
 		testModel.receiveMessage(new ComRuleset(game));
 
@@ -424,7 +424,7 @@ public class TestClientWizardIsValidMove {
 		Card trumpCard = WizardCard.DreizehnGruen;
 		
 		gameState = new GameClientUpdate(player, discardPile,
-				enemyData, currentPlayer, roundNumber, trumpCard);
+				enemyData, currentPlayer, roundNumber, trumpCard, false);
 		MsgUser game = new MsgUser(gameState);
 		testModel.receiveMessage(new ComRuleset(game));
 
