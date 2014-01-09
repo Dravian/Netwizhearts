@@ -34,6 +34,7 @@ public class ChooseItem extends JFrame implements Observer{
 	 */
 	public ChooseItem() {
 		setBounds(100, 100, 370, 190);
+		setLocationRelativeTo(null);
 		setResizable(false);
 		setAlwaysOnTop(true);
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);

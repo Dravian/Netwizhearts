@@ -63,6 +63,7 @@ public class CreateGame extends JFrame implements Observer{
 		lang = Language.English;
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 403, 279);
+		setLocationRelativeTo(null);
 		setResizable(false);
 		getContentPane().setLayout(null);
 		

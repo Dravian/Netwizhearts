@@ -60,6 +60,7 @@ public class Game extends JFrame implements Observer{
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 1024, 695);
+		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
@@ -247,6 +248,7 @@ public class Game extends JFrame implements Observer{
 			SwingUtilities.invokeLater(new Runnable() {
 				public void run() {
 					//TODO Anzeigen, dass man an der Reihe ist
+					//FIXME Neither used or needed
 				}
 			});
 			break;
