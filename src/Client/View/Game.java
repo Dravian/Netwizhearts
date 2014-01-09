@@ -1,11 +1,9 @@
 package Client.View;
 
-import java.awt.EventQueue;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
-import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -22,7 +20,6 @@ import javax.swing.SwingUtilities;
 
 import Client.ClientModel;
 import Client.ViewNotification;
-import Ruleset.Colour;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -53,7 +50,6 @@ public class Game extends JFrame implements Observer{
 	private JMenu mnBackground;
 	private JMenu mnCards;
 	private Language lang;
-	private boolean sleep;
 	
 	/**
 	 * Erstellt das Game Fenster
@@ -61,7 +57,6 @@ public class Game extends JFrame implements Observer{
 	 */
 	public Game() {
 		lang = Language.English;
-		sleep = false;
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 1024, 695);
@@ -236,17 +231,7 @@ public class Game extends JFrame implements Observer{
 		case gameUpdate:
 			SwingUtilities.invokeLater(new Runnable() {
 				public void run() {
-					if (sleep) {
-						try {
-							Thread.sleep(1800);
-						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-						sleep = false;
-					}
 					gamePanel.updateGame(observed.getGameUpdate());
-					sleep = observed.getGameUpdate().getFullDiscardPile();
 					
 				}
 			});
