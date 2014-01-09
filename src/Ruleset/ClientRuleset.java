@@ -462,8 +462,6 @@ public abstract class ClientRuleset {
 			}
 		} else {
 			getModel().openWarning(WarningMsg.WrongPhase);
-			throw new IllegalStateException(
-					"Jetzt darf keine Karte gespielt werden.");
 		}
 	}
 
@@ -487,8 +485,6 @@ public abstract class ClientRuleset {
 
 			} else {
 				getModel().openWarning(WarningMsg.WrongPhase);
-				throw new IllegalStateException(
-						"Jetzt werden keine Karten getauscht");
 			}
 		} else {
 			throw new UnsupportedOperationException(
@@ -516,8 +512,6 @@ public abstract class ClientRuleset {
 
 			} else {
 				getModel().openWarning(WarningMsg.WrongPhase);
-				throw new IllegalStateException(
-						"Jetzt darf keine Zahl angesagt werden.");
 			}
 		} else {
 			throw new UnsupportedOperationException(
@@ -543,8 +537,6 @@ public abstract class ClientRuleset {
 				}
 			} else {
 				getModel().openWarning(WarningMsg.WrongPhase);
-				throw new IllegalStateException(
-						"Jetzt darf keine Farbe ausgewählt werden.");
 			}
 		} else {
 			throw new UnsupportedOperationException(
