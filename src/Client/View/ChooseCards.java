@@ -63,7 +63,7 @@ public class ChooseCards extends JFrame implements Observer{
 		contentPane.add(btnOK);
 		
 		playerHand = new OwnHand();
-		playerHand.setBounds(10, 137, (ViewCard.WIDTH+1)*shownCardsCount, 105);
+		playerHand.setBounds(10, 137, (ViewCard.WIDTH+1)*shownCardsCount, ViewCard.HEIGHT+1);
 		playerHand.addCardMouseListener(new CardMouseListener());
 		contentPane.add(playerHand);
 		

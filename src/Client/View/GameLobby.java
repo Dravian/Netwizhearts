@@ -250,7 +250,9 @@ public class GameLobby extends JFrame implements Observer{
 			this.setVisible(false);
 			break;
 		case playerListUpdate:
-			updatePlayerList(observed.getPlayerlist());
+			if (this.isVisible()) {
+				updatePlayerList(observed.getPlayerlist());
+			}
 			break;
 		case joinGameSuccessful:
 			updateUI(observed.getGameMaster(), observed.getPlayerName());
