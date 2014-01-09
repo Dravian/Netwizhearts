@@ -160,7 +160,7 @@ public class TestClientHeartsAreValidChoosenCards {
         int roundNumber = 1;
 
         gameState = new GameClientUpdate(player1, discardPile,
-                enemyData, currentPlayer, roundNumber, null, false);
+                enemyData, currentPlayer, roundNumber, null);
         MsgUser game = new MsgUser(gameState);
         testModel.receiveMessage(new ComRuleset(game));
         

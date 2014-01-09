@@ -397,6 +397,15 @@ public abstract class ServerRuleset {
 			send(new MsgUser(generateGameClientUpdate(player)),
 					player.getPlayerStateName());
 		}
+		
+		if(getPlayedCards().size() == getPlayers().size()) {
+			try {
+				Thread.sleep(1500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+				throw new RulesetException("Sleep Error");
+			}
+		} 
 	}
 
 	/**
@@ -410,21 +419,12 @@ public abstract class ServerRuleset {
 			discardPile.add(getPlayedCards().get(i).clone());
 		}
 		
-		boolean fullDiscardPile;
-		
-		if(discardPile.size() == getPlayers().size()) {
-			fullDiscardPile = true;
-		} else {
-			fullDiscardPile = false;
-		}
-		
 		return new GameClientUpdate(player.clone(),
 				discardPile,
 				viewOfOtherPlayers(player),
 				getCurrentPlayer().getPlayerStateName(),
 				getRoundNumber(),
-				gameState.getUncoveredCard(),
-				fullDiscardPile);
+				gameState.getUncoveredCard());
 		
 	}
 	

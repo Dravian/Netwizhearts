@@ -49,8 +49,12 @@ public class ServerHearts extends ServerRuleset {
 	@Override
 	public void resolveMessage(MsgCard msgCard, String name) {
 		Card card = msgCard.getCard();
-
-		if (getGamePhase() != GamePhase.CardRequest) {
+		
+		if(!getPlayers().contains(getGameState().getPlayerState(name))) {		
+			send(WarningMsg.WrongGame, name);
+			throw new IllegalArgumentException("Spieler gehört nicht zum Spiel");
+		
+		} else if (getGamePhase() != GamePhase.CardRequest) {
 			send(WarningMsg.WrongPhase, name);
 			throw new IllegalStateException(
 					"Es wird in dieser Phase keine Karte erwartet "
@@ -110,7 +114,11 @@ public class ServerHearts extends ServerRuleset {
 			String name) {
 		Set<Card> cards = msgMultiCard.getCardList();
 
-		if (getGamePhase() != GamePhase.MultipleCardRequest) {
+		if(!getPlayers().contains(getGameState().getPlayerState(name))) {		
+			send(WarningMsg.WrongGame, name);
+			throw new IllegalArgumentException("Spieler gehört nicht zum Spiel");
+		
+		} else if (getGamePhase() != GamePhase.MultipleCardRequest) {
 			send(WarningMsg.WrongPhase, name);
 			throw new IllegalStateException(
 					"Es werden in dieser Phase werden keine Tauschkarten erwartet.");

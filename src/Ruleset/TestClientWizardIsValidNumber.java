@@ -101,7 +101,7 @@ public class TestClientWizardIsValidNumber {
 		Card trumpCard = EmptyCard.Empty;
 		
 		gameState = new GameClientUpdate(player, discardPile,
-				enemyData, currentPlayer, roundNumber, trumpCard, false);
+				enemyData, currentPlayer, roundNumber, trumpCard);
 		MsgUser game = new MsgUser(gameState);
 		testModel.receiveMessage(new ComRuleset(game));
 		
