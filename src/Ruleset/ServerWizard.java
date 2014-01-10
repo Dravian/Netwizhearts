@@ -260,7 +260,9 @@ public class ServerWizard extends ServerRuleset {
 		List<Card> hand = getCurrentPlayer().getHand();
 
 		for (Card handCard : hand) {
-			if (handCard.getColour() == firstCard.getColour()
+			if (firstCard.getValue() != 0
+					&& firstCard.getValue() != 14 
+					&& handCard.getColour() == firstCard.getColour()
 					&& handCard.getValue() != valueOfFool
 					&& handCard.getValue() != valueOfSorcerer) {
 				return false;
