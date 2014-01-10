@@ -114,16 +114,16 @@ public class TestHeartsStart {
 						.getRulesetMessage() instanceof MsgMultiCardsRequest);
 			} else {
 				
-				if(hearts.getGameState().getCurrentPlayer().equals("Blue")) {
+				if(hearts.getGameState().getCurrentPlayer().getPlayerStateName().equals("Blue")) {
 					assertTrue(((ComRuleset) blue.getServerInput().get(2))
 							.getRulesetMessage() instanceof MsgCardRequest);
-				} else if(hearts.getGameState().getCurrentPlayer().equals("Red")) {
+				} else if(hearts.getGameState().getCurrentPlayer().getPlayerStateName().equals("Red")) {
 					assertTrue(((ComRuleset) red.getServerInput().get(2))
 							.getRulesetMessage() instanceof MsgCardRequest);
-				} else if(hearts.getGameState().getCurrentPlayer().equals("Green")) {
+				} else if(hearts.getGameState().getCurrentPlayer().getPlayerStateName().equals("Green")) {
 					assertTrue(((ComRuleset) green.getServerInput().get(2))
 							.getRulesetMessage() instanceof MsgCardRequest);
-				} else if(hearts.getGameState().getCurrentPlayer().equals("Black")) {
+				} else if(hearts.getGameState().getCurrentPlayer().getPlayerStateName().equals("Black")) {
 					assertTrue(((ComRuleset) black.getServerInput().get(2))
 							.getRulesetMessage() instanceof MsgCardRequest);
 				}
