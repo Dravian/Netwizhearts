@@ -519,14 +519,16 @@ public class ClientController {
 		@Override
 		public void mouseReleased(MouseEvent arg0) {
 			final ViewCard vc = (ViewCard)arg0.getSource();
-			if (vc.isClicked()) {
-				clientModel.makeMove(vc.getCard());
-				vc.setClicked(false);
-				game.repaint();
-			} else {
-				game.unclickAll();
-				vc.setClicked(true);
-				game.repaint();
+			if (vc != null) {
+				if (vc.isClicked()) {
+					clientModel.makeMove(vc.getCard());
+					vc.setClicked(false);
+					game.repaint();
+				} else {
+					game.unclickAll();
+					vc.setClicked(true);
+					game.repaint();
+				}
 			}
 		}
 	}

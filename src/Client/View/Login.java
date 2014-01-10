@@ -57,7 +57,6 @@ public class Login extends JFrame implements Observer{
 		nameField = new JTextField();
 		nameField.setBounds(133, 44, 155, 20);
 		nameField.setColumns(10);
-		nameField.setText("TestSpieler");//FIXME Nur fuer Testzwecke
 		contentPane.add(nameField);
 		
 		lblNickname = new JLabel("Nickname:");
@@ -67,7 +66,6 @@ public class Login extends JFrame implements Observer{
 		serverField = new JTextField();
 		serverField.setBounds(133, 72, 155, 20); 
 		serverField.setColumns(10);
-		serverField.setText("localhost");//FIXME Nur fuer Testzwecke
 		contentPane.add(serverField);
 		
 		btnConnect = new JButton("Connect");
