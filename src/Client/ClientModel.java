@@ -1085,6 +1085,7 @@ public class ClientModel extends Observable {
 		if (username == null) {
 			throw new IllegalArgumentException();
 		}
+		username = username.trim();
 		if (host == null) {
 			throw new IllegalArgumentException();
 		}
