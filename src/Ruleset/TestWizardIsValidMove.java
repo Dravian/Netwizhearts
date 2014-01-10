@@ -171,5 +171,19 @@ public class TestWizardIsValidMove {
 		assertTrue(ruleset.isValidMove(WizardCard.ZaubererGelb));
 		
 	}
+	
+	@Test 
+	public void testBlueOnSorcererRedOnFoolBlue() {
+		ruleset.playCard(WizardCard.NarrBlau);
+		ruleset.playCard(WizardCard.ZaubererRot);
+		
+		ruleset.setCurrentPlayer(playerState2);
+		
+		assertTrue(ruleset.isValidMove(WizardCard.ZweiGruen));
+		assertTrue(ruleset.isValidMove(WizardCard.DreiRot));
+		assertTrue(ruleset.isValidMove(WizardCard.ZweiGelb));
+		assertTrue(ruleset.isValidMove(WizardCard.NarrGelb));
+		
+	}
 
 }
