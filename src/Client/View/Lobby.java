@@ -367,9 +367,12 @@ public class Lobby extends JFrame implements Observer{
 
 		@Override
 		public void valueChanged(ListSelectionEvent e) {
-			gameMasterName = gameRepList.get(gameList.getSelectedIndex()).getGameMasterName();
-			gamePassword = gameRepList.get(gameList.getSelectedIndex()).hasPassword();
-			btnJoinGame.setEnabled(true);
+			if (!gameList.isSelectionEmpty()) {
+				gameMasterName = gameRepList.get(gameList.getSelectedIndex()).getGameMasterName();
+				gamePassword = gameRepList.get(gameList.getSelectedIndex()).hasPassword();
+				btnJoinGame.setEnabled(true);
+			}
+			
 		}
 		
 	}
