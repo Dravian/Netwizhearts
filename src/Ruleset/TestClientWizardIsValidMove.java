@@ -88,7 +88,6 @@ public class TestClientWizardIsValidMove {
 		testObserver = null;
 	}
 	
-	@Test(expected = IllegalStateException.class) 
 	public void testFirstCard() {
 		List<DiscardedCard> discardPile = new ArrayList<DiscardedCard>();
 		
