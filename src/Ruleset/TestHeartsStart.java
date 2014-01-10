@@ -100,7 +100,7 @@ public class TestHeartsStart {
 
 		hearts.setFirstPlayer(hearts.getPlayers().get(0));
 
-		for (int test = 0; test < 1000; test++) {
+		for (int test = 1; test < 1000; test++) {
 			hearts.startRound();
 			
 			if (hearts.getGameState().getRoundNumber() % 4 != 0) {
@@ -115,16 +115,16 @@ public class TestHeartsStart {
 			} else {
 				
 				if(hearts.getGameState().getCurrentPlayer().getPlayerStateName().equals("Blue")) {
-					assertTrue(((ComRuleset) blue.getServerInput().get(2))
+					assertTrue(((ComRuleset) blue.getServerInput().get(1))
 							.getRulesetMessage() instanceof MsgCardRequest);
 				} else if(hearts.getGameState().getCurrentPlayer().getPlayerStateName().equals("Red")) {
-					assertTrue(((ComRuleset) red.getServerInput().get(2))
+					assertTrue(((ComRuleset) red.getServerInput().get(1))
 							.getRulesetMessage() instanceof MsgCardRequest);
 				} else if(hearts.getGameState().getCurrentPlayer().getPlayerStateName().equals("Green")) {
-					assertTrue(((ComRuleset) green.getServerInput().get(2))
+					assertTrue(((ComRuleset) green.getServerInput().get(1))
 							.getRulesetMessage() instanceof MsgCardRequest);
 				} else if(hearts.getGameState().getCurrentPlayer().getPlayerStateName().equals("Black")) {
-					assertTrue(((ComRuleset) black.getServerInput().get(2))
+					assertTrue(((ComRuleset) black.getServerInput().get(1))
 							.getRulesetMessage() instanceof MsgCardRequest);
 				}
 			}
@@ -142,6 +142,7 @@ public class TestHeartsStart {
 			hearts.setCurrentPlayer(hearts.getFirstPlayer());
 			hearts.nextPlayer();
 			hearts.setFirstPlayer(hearts.getCurrentPlayer());
+			hearts.getGameState().nextRound();
 
 			hearts.getGameState().restartDeck(hearts.createDeck());
 

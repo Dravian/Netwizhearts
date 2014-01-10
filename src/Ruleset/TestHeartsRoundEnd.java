@@ -127,7 +127,7 @@ public class TestHeartsRoundEnd {
 				.getOtherData().getPoints() == 0);
 	}
 	
-	
+	@Test
 	public void roundEndAllPoints() {
 		Set<Card> blueCards = new HashSet<Card>();
 		Set<Card> whiteCards = new HashSet<Card>();

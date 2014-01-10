@@ -20,6 +20,7 @@ import Ruleset.TestHeartsCalculateTricks;
 import Ruleset.TestHeartsIsValidMove;
 import Ruleset.TestHeartsIsValidMoveOnly;
 import Ruleset.TestHeartsResolveMsgCard;
+import Ruleset.TestHeartsResolveMultiCard;
 import Ruleset.TestHeartsRoundEnd;
 import Ruleset.TestHeartsStart;
 import Ruleset.TestHeartsSwap;
@@ -62,7 +63,8 @@ import Server.LoginTestNegativ;
 	LobbyTest.class, LobbyDurabilityTest1000.class,
 	LobbyDurabilityTest2000.class , LobbyDurabilityTest500.class, 
 	GameServerDurabilityTest100.class, GameServerDurabilityTest250.class,
-	GameServerDurabilityTest500.class, ClientViewTestEnd.class})
+	GameServerDurabilityTest500.class, ClientViewTestEnd.class, 
+	TestHeartsResolveMultiCard.class, TestClientRulesetIllegalArguments.class})
 public class AllTests {
 
 }
