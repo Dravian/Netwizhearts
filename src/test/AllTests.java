@@ -32,17 +32,17 @@ import Ruleset.TestWizardResolveMsgNumber;
 import Ruleset.TestWizardRoundEnd;
 import Ruleset.TestWizardStart;
 import Server.GameServerCheatTest;
-import Server.GameServerDurability100Test;
-import Server.GameServerDurability250Test;
-import Server.GameServerDurability500Test;
-import Server.GameServerTest;
+import Server.GameServerDurabilityTest100;
+import Server.GameServerDurabilityTest250;
+import Server.GameServerDurabilityTest500;
+import Server.GameServerTests;
 import Server.LobbyCheatTest;
-import Server.LobbyDurability1000Test;
-import Server.LobbyDurability2000Test;
-import Server.LobbyDurability500Test;
+import Server.LobbyDurabilityTest1000;
+import Server.LobbyDurabilityTest2000;
+import Server.LobbyDurabilityTest500;
 import Server.LobbyTest;
 import Server.LoginTest;
-import Server.LoginNegativTest;
+import Server.LoginTestNegativ;
 
 @RunWith(Suite.class)
 @SuiteClasses({ClientInGameHeartsTest.class, ClientInGameLobbyTest.class,
@@ -58,11 +58,11 @@ import Server.LoginNegativTest;
 	TestWizardResolveColour.class, TestWizardResolveMsgCard.class,
 	TestWizardResolveMsgNumber.class, TestWizardRoundEnd.class, 
 	TestWizardStart.class, GameServerCheatTest.class, LobbyCheatTest.class,
-	LoginTest.class, LoginNegativTest.class, GameServerTest.class, 
-	LobbyTest.class, LobbyDurability1000Test.class,
-	LobbyDurability2000Test.class , LobbyDurability500Test.class, 
-	GameServerDurability100Test.class, GameServerDurability250Test.class,
-	GameServerDurability500Test.class, ClientViewTestEnd.class})
+	LoginTest.class, LoginTestNegativ.class, GameServerTests.class, 
+	LobbyTest.class, LobbyDurabilityTest1000.class,
+	LobbyDurabilityTest2000.class , LobbyDurabilityTest500.class, 
+	GameServerDurabilityTest100.class, GameServerDurabilityTest250.class,
+	GameServerDurabilityTest500.class, ClientViewTestEnd.class})
 public class AllTests {
 
 }
