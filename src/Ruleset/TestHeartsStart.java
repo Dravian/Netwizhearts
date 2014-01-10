@@ -47,6 +47,12 @@ public class TestHeartsStart {
 		gameServer = new TestGameServer(lobbyServer, blue, "Mein Spiel",
 				RulesetType.Hearts, "", false);
 		hearts = gameServer.getRuleset();
+		
+		gameServer.addPlayer(blue);
+		gameServer.addPlayer(red);
+		gameServer.addPlayer(green);
+		gameServer.addPlayer(black);
+		
 		hearts.addPlayerToGame("Blue");
 		hearts.addPlayerToGame("Red");
 		hearts.addPlayerToGame("Green");
@@ -96,11 +102,6 @@ public class TestHeartsStart {
 
 		for (int test = 0; test < 1000; test++) {
 			hearts.startRound();
-			
-			System.out.println(blue.getServerInput().size());
-			System.out.println(red.getServerInput().size());
-			System.out.println(green.getServerInput().size());
-			System.out.println(black.getServerInput().size());
 			
 			if (hearts.getGameState().getRoundNumber() % 4 != 0) {
 				assertTrue(((ComRuleset) blue.getServerInput().get(1))
