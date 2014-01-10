@@ -50,7 +50,6 @@ public class TestHeartsResolveMultiCard {
 		gameServer.addPlayer(player2);
 		gameServer.addPlayer(player3);
 		gameServer.addPlayer(player4);
-		gameServer.addPlayer(player5);
 		
 		ruleset.addPlayerToGame(player1.getPlayerName());
 		ruleset.addPlayerToGame(player2.getPlayerName());
@@ -196,6 +195,6 @@ public class TestHeartsResolveMultiCard {
 		player1.injectComObject(rules);
 	}
 	
-	
+
 	
 }
