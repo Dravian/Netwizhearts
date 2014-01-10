@@ -5,7 +5,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({TestClientHeartsAreValidChoosenCards.class,
+@Suite.SuiteClasses({TestClientHeartsAreValidChoosenCards.class, TestClientHeartsIsValidMove.class,
 	
 		TestClientWizardIsValidMove.class,
 		TestClientWizardIsValidColour.class, TestClientWizardIsValidNumber.class,
@@ -14,7 +14,7 @@ import org.junit.runners.Suite;
         
         TestHeartsCalculateTricks.class, TestHeartsIsValidMove.class,
         TestHeartsIsValidMoveOnly.class, TestHeartsResolveMsgCard.class, TestHeartsRoundEnd.class,
-        TestHeartsSwap.class, TestHeartsWinner.class,
+        TestHeartsSwap.class, TestHeartsWinner.class, TestHeartsResolveMultiCard.class, 
      
         TestWizardCalculateTricks.class, TestWizardIsValidMove.class, 
         TestWizardResolveColour.class, TestWizardResolveMsgCard.class,
