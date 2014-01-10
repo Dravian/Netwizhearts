@@ -519,7 +519,7 @@ public class ClientController {
 		@Override
 		public void mouseReleased(MouseEvent arg0) {
 			final ViewCard vc = (ViewCard)arg0.getSource();
-			if (vc != null) {
+			if (vc.getCard() != null) {
 				if (vc.isClicked()) {
 					clientModel.makeMove(vc.getCard());
 					vc.setClicked(false);
