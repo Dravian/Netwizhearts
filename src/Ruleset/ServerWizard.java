@@ -205,13 +205,13 @@ public class ServerWizard extends ServerRuleset {
 			} else {
 				trumpColour = colour;
 				getGameState().sortHands(trumpColour);
-				updatePlayers();
 				broadcast(new MsgSelection(colour));
-
 				setGamePhase(GamePhase.TrickRequest);
 				nextPlayer();
+				updatePlayers();
 				send(new MsgNumberRequest(), getCurrentPlayer()
 						.getPlayerStateName());
+
 			}
 		}
 	}
@@ -432,9 +432,14 @@ public class ServerWizard extends ServerRuleset {
 						"Probleme beim Verteilen der Karten!");
 
 			}
-
+			
 			Card uncoveredCard = getGameState().getTopCard();
-			getGameState().setUncoveredCard(uncoveredCard);
+					
+			if(playingRounds != getGameState().getRoundNumber()) {
+				getGameState().setUncoveredCard(uncoveredCard);
+			} else {
+				getGameState().setUncoveredCard(EmptyCard.Empty);
+			}
 
 			/*
 			 * Falls ein Zauberer aufgedeckt wird, darf der Spieler vor dem
@@ -448,7 +453,7 @@ public class ServerWizard extends ServerRuleset {
 						.getPlayerStateName());
 
 			} else {
-
+				
 				if (uncoveredCard.getValue() != valueOfFool) {
 					trumpColour = uncoveredCard.getColour();
 				} else {
