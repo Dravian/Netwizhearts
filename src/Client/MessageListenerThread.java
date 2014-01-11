@@ -72,6 +72,7 @@ public class MessageListenerThread implements Runnable {
 		}
 		this.model = model;
 		this.connection = new Socket(host, port);
+		connection.setSoTimeout(0);
 		out = new ObjectOutputStream(connection.getOutputStream());
 		out.flush();
 		in = new ObjectInputStream(connection.getInputStream());
