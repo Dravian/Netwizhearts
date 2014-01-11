@@ -40,7 +40,7 @@ public class Player extends Thread {
 	private ObjectInputStream comIn;
 
 	/**
-	 * Zeigt an, ob der Thread läuft
+	 * Zeigt an, ob der Thread lï¿½uft
 	 */
 	private boolean run = false;
 
@@ -65,8 +65,9 @@ public class Player extends Thread {
 	public Player(Server loginServer, Socket socket) {
 		super("Player");
 		server = loginServer;
-		connection = socket;
+		connection = socket;	
 		try {
+			connection.setSoTimeout(0);
 			comOut = new ObjectOutputStream(connection.getOutputStream());
 			comOut.flush();
 		} catch (IOException e) {
@@ -125,7 +126,7 @@ public class Player extends Thread {
 	}
 
 	/**
-	 * Diese Methode schließt den Socket, sowie comIn und comOut
+	 * Diese Methode schlieï¿½t den Socket, sowie comIn und comOut
 	 */
 	public void closeConnection() {
 		try {
