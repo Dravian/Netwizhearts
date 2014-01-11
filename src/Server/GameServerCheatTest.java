@@ -78,7 +78,7 @@ public class GameServerCheatTest {
 		ComLoginRequest login = new ComLoginRequest("Markus");
 		cheater.injectComObject(login);
 		assertFalse(game.playerSet.contains(cheater));
-		assertFalse(lobby.getNames().contains(cheater));
+		assertFalse(lobby.getNames().contains(cheater.getPlayerName()));
 	}
 	
 	@Test
@@ -86,7 +86,7 @@ public class GameServerCheatTest {
 		ComCreateGameRequest create = new ComCreateGameRequest("Markus game", null, false, null);
 		cheater.injectComObject(create);
 		assertFalse(game.playerSet.contains(cheater));
-		assertFalse(lobby.getNames().contains(cheater));
+		assertFalse(lobby.getNames().contains(cheater.getPlayerName()));
 	}
 	
 	@Test
@@ -94,7 +94,7 @@ public class GameServerCheatTest {
 		ComJoinRequest login = new ComJoinRequest("Markus game", new String());
 		cheater.injectComObject(login);
 		assertFalse(game.playerSet.contains(cheater));
-		assertFalse(lobby.getNames().contains(cheater));
+		assertFalse(lobby.getNames().contains(cheater.getPlayerName()));
 	}
 	
 	@Test
@@ -102,7 +102,7 @@ public class GameServerCheatTest {
 		ComKickPlayerRequest kick = new ComKickPlayerRequest("Hans");
 		cheater.injectComObject(kick);
 		assertFalse(game.playerSet.contains(cheater));
-		assertFalse(lobby.getNames().contains(cheater));
+		assertFalse(lobby.getNames().contains(cheater.getPlayerName()));
 	}
 	
 	@Test
@@ -110,7 +110,7 @@ public class GameServerCheatTest {
 		ComStartGame start = new ComStartGame();
 		cheater.injectComObject(start);
 		assertFalse(game.playerSet.contains(cheater));
-		assertFalse(lobby.getNames().contains(cheater));
+		assertFalse(lobby.getNames().contains(cheater.getPlayerName()));
 	}
 	
 	@Test
@@ -118,7 +118,7 @@ public class GameServerCheatTest {
 		ComStartGame start = new ComStartGame();
 		player1.injectComObject(start);
 		player1.injectComObject(start);
-		assertFalse(game.playerSet.contains(player1));
-		assertFalse(lobby.getNames().contains(player1));
+		assertFalse(lobby.playerSet.contains(player1));
+		assertFalse(lobby.getNames().contains(player1.getPlayerName()));
 	}
 }

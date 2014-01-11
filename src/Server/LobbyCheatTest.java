@@ -77,7 +77,7 @@ public class LobbyCheatTest {
 		ComRuleset message = new ComRuleset(null);
 		cheater.injectComObject(message);
 		assertFalse(lobby.playerSet.contains(cheater));
-		assertFalse(lobby.getNames().contains(cheater));
+		assertFalse(lobby.getNames().contains(cheater.getPlayerName()));
 	}
 	
 	@Test
@@ -85,7 +85,7 @@ public class LobbyCheatTest {
 		ComKickPlayerRequest message = new ComKickPlayerRequest("Markus");
 		cheater.injectComObject(message);
 		assertFalse(lobby.playerSet.contains(cheater));
-		assertFalse(lobby.getNames().contains(cheater));
+		assertFalse(lobby.getNames().contains(cheater.getPlayerName()));
 	}
 	
 	@Test
@@ -93,7 +93,7 @@ public class LobbyCheatTest {
 		ComLoginRequest login = new ComLoginRequest("Markus");
 		cheater.injectComObject(login);
 		assertFalse(lobby.playerSet.contains(cheater));
-		assertFalse(lobby.getNames().contains(cheater));
+		assertFalse(lobby.getNames().contains(cheater.getPlayerName()));
 	}
 	
 	@Test
@@ -101,7 +101,7 @@ public class LobbyCheatTest {
 		ComClientLeave leave = new ComClientLeave();
 		cheater.injectComObject(leave);
 		assertFalse(lobby.playerSet.contains(cheater));
-		assertFalse(lobby.getNames().contains(cheater));
+		assertFalse(lobby.getNames().contains(cheater.getPlayerName()));
 	}
 	
 	@Test
@@ -109,7 +109,7 @@ public class LobbyCheatTest {
 		ComStartGame start = new ComStartGame();		
 		cheater.injectComObject(start);
 		assertFalse(lobby.playerSet.contains(cheater));
-		assertFalse(lobby.getNames().contains(cheater));
+		assertFalse(lobby.getNames().contains(cheater.getPlayerName()));
 	}
 	
 	@Test
@@ -117,7 +117,7 @@ public class LobbyCheatTest {
 		ComNewRound start = new ComNewRound(true);		
 		cheater.injectComObject(start);
 		assertFalse(lobby.playerSet.contains(cheater));
-		assertFalse(lobby.getNames().contains(cheater));
+		assertFalse(lobby.getNames().contains(cheater.getPlayerName()));
 	}
 	
 	@Test
@@ -133,7 +133,7 @@ public class LobbyCheatTest {
 		ComCreateGameRequest message = new ComCreateGameRequest("Markus Game", null, false, null);
 		cheater.injectComObject(message);
 		assertFalse(lobby.playerSet.contains(cheater));
-		assertFalse(lobby.getNames().contains(cheater));
+		assertFalse(lobby.getNames().contains(cheater.getPlayerName()));
 	}
 	
 	@Test
@@ -141,7 +141,7 @@ public class LobbyCheatTest {
 		ComCreateGameRequest message = new ComCreateGameRequest("Markus Game", RulesetType.Hearts, false, null);
 		cheater.injectComObject(message);
 		assertFalse(lobby.playerSet.contains(cheater));
-		assertFalse(lobby.getNames().contains(cheater));
+		assertFalse(lobby.getNames().contains(cheater.getPlayerName()));
 	}
 	
 	@Test
@@ -149,7 +149,7 @@ public class LobbyCheatTest {
 		ComCreateGameRequest message = new ComCreateGameRequest(null, RulesetType.Hearts, false, new String());
 		cheater.injectComObject(message);
 		assertFalse(lobby.playerSet.contains(cheater));
-		assertFalse(lobby.getNames().contains(cheater));
+		assertFalse(lobby.getNames().contains(cheater.getPlayerName()));
 	}
 	
 	@Test
@@ -157,6 +157,6 @@ public class LobbyCheatTest {
 		ComCreateGameRequest message = new ComCreateGameRequest("Markus Game", RulesetType.Hearts, true, new String());
 		cheater.injectComObject(message);
 		assertFalse(lobby.playerSet.contains(cheater));
-		assertFalse(lobby.getNames().contains(cheater));
+		assertFalse(lobby.getNames().contains(cheater.getPlayerName()));
 	}
 }
