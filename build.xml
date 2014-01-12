@@ -45,7 +45,7 @@
 				<exclude name="**/test/*.class" />
 				<exclude name="**/*Test.class" />
 				<exclude name="**/*Test*.class" />
-				<exclude name="/test/*.class" />
+				<exclude name="**/test/*.class" />
 				<exclude name="**/*ClientController*.class" />
 				<exclude name="**/*MessageListenerThread*.class" />
 				<exclude name="**/*ClientListenerThread*.class" />
