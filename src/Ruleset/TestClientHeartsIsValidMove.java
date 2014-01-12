@@ -300,6 +300,63 @@ public class TestClientHeartsIsValidMove {
         assertTrue(((MsgCard) ((ComRuleset) testNetIO.getModelInput().get(0))
                 .getRulesetMessage()).getCard() == HeartsCard.Herz6);
         testNetIO.getModelInput().clear();
+        
+        testModel.receiveMessage(new ComRuleset(new MsgCardRequest()));
+        testModel.makeMove(HeartsCard.Caro4);
+        assertTrue(((MsgCard) ((ComRuleset) testNetIO.getModelInput().get(0))
+                .getRulesetMessage()).getCard() == HeartsCard.Caro4);
+        testNetIO.getModelInput().clear();
+        
+        
+        player1.getHand().remove(HeartsCard.Kreuz3);
+        player1.getHand().remove(HeartsCard.Kreuz4);
+        player1.getHand().remove(HeartsCard.Caro4);
+        player1.getHand().remove(HeartsCard.Caro10);
+        player1.getHand().remove(HeartsCard.CaroBube);
+        player1.getHand().remove(HeartsCard.CaroAss);
+        player1.getHand().remove(HeartsCard.Pik3);
+        player1.getHand().remove(HeartsCard.Pik10);
+        player1.getHand().remove(HeartsCard.PikBube);
+        player1.getHand().remove(HeartsCard.Herz2);
+        player1.getHand().remove(HeartsCard.Herz6);
+        player1.getHand().remove(HeartsCard.HerzKoenig);
+        
+        player1.getHand().add(HeartsCard.Herz2);
+        player1.getHand().add(HeartsCard.Herz3);
+        player1.getHand().add(HeartsCard.Herz4);
+        player1.getHand().add(HeartsCard.Herz5);
+        player1.getHand().add(HeartsCard.Herz6);
+        player1.getHand().add(HeartsCard.Herz7);
+        player1.getHand().add(HeartsCard.Herz8);
+        player1.getHand().add(HeartsCard.Herz9);
+        player1.getHand().add(HeartsCard.HerzAss);
+        player1.getHand().add(HeartsCard.HerzBube);
+        player1.getHand().add(HeartsCard.HerzDame);
+        player1.getHand().add(HeartsCard.HerzKoenig);
+        
+        discardPile = new ArrayList<DiscardedCard>();    
+
+        enemyData = new ArrayList<OtherData>();
+
+        enemyData.add(otherData2);
+        enemyData.add(otherData3);
+        enemyData.add(otherData4);
+
+        currentPlayer = one;
+        roundNumber = 1;
+
+        gameState = new GameClientUpdate(player1, discardPile,
+                enemyData, currentPlayer, roundNumber, null);
+        game = new MsgUser(gameState);
+        testModel.receiveMessage(new ComRuleset(game));
+        
+        testNetIO.injectComObject(new ComRuleset(new MsgBoolean(false)));
+        
+        testModel.receiveMessage(new ComRuleset(new MsgCardRequest()));
+        testModel.makeMove(HeartsCard.Herz6);
+        assertTrue(((MsgCard) ((ComRuleset) testNetIO.getModelInput().get(0))
+                .getRulesetMessage()).getCard() == HeartsCard.Herz6);
+        testNetIO.getModelInput().clear();
     }
     
     @Test
@@ -352,15 +409,52 @@ public class TestClientHeartsIsValidMove {
 
         testModel.receiveMessage(new ComRuleset(new MsgCardRequest()));
         testModel.makeMove(HeartsCard.Herz6);
-        assertTrue(testNetIO.getModelInput().isEmpty());
-        testNetIO.getModelInput().clear();
-
-        testNetIO.injectComObject(new ComRuleset(new MsgBoolean(true)));
-
-        testModel.receiveMessage(new ComRuleset(new MsgCardRequest()));
-        testModel.makeMove(HeartsCard.Herz6);
         assertTrue(((MsgCard) ((ComRuleset) testNetIO.getModelInput().get(0))
                 .getRulesetMessage()).getCard() == HeartsCard.Herz6);
+        testNetIO.getModelInput().clear();
+        
+        testModel.receiveMessage(new ComRuleset(new MsgCardRequest()));
+        testModel.makeMove(HeartsCard.PikDame);
+        assertTrue(((MsgCard) ((ComRuleset) testNetIO.getModelInput().get(0))
+                .getRulesetMessage()).getCard() == HeartsCard.PikDame);
+        testNetIO.getModelInput().clear();
+        
+        
+        
+        player1.getHand().remove(HeartsCard.Herz2);
+        player1.getHand().add(HeartsCard.CaroBube);
+        
+        discardPile = new ArrayList<DiscardedCard>();
+        discardPile.add(new DiscardedCard("two",HeartsCard.Kreuz2));
+
+        enemyData = new ArrayList<OtherData>();
+
+        enemyData.add(otherData2);
+        enemyData.add(otherData3);
+        enemyData.add(otherData4);
+
+        currentPlayer = one;
+        roundNumber = 1;
+
+        gameState = new GameClientUpdate(player1, discardPile,
+                enemyData, currentPlayer, roundNumber, null);
+        game = new MsgUser(gameState);
+        testModel.receiveMessage(new ComRuleset(game));
+
+        testModel.receiveMessage(new ComRuleset(new MsgCardRequest()));
+        testModel.makeMove(HeartsCard.CaroBube);
+        assertTrue(((MsgCard) ((ComRuleset) testNetIO.getModelInput().get(0))
+                .getRulesetMessage()).getCard() == HeartsCard.CaroBube);
+        testNetIO.getModelInput().clear();
+        
+        testModel.receiveMessage(new ComRuleset(new MsgCardRequest()));
+        testModel.makeMove(HeartsCard.Herz10);
+        assertTrue(testNetIO.getModelInput().size() == 0);
+        testNetIO.getModelInput().clear();
+        
+        testModel.receiveMessage(new ComRuleset(new MsgCardRequest()));
+        testModel.makeMove(HeartsCard.PikDame);
+        assertTrue(testNetIO.getModelInput().size() == 0);
         testNetIO.getModelInput().clear();
     }
 }
