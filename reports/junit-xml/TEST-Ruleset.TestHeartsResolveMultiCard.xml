@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="desktop-pc" name="Ruleset.TestHeartsResolveMultiCard" skipped="0" tests="4" time="0.139" timestamp="2014-01-11T23:59:02">
+  <properties>
+    <property name="java.vendor" value="Oracle Corporation" />
+    <property name="coverage.summaryxml.dir" value="reports/cobertura-summary-xml" />
+    <property name="sun.java.launcher" value="SUN_STANDARD" />
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
+    <property name="os.name" value="Windows 8" />
+    <property name="sun.boot.class.path" value="C:\Program Files\Java\jdk1.7.0_45\jre\lib\resources.jar;C:\Program Files\Java\jdk1.7.0_45\jre\lib\rt.jar;C:\Program Files\Java\jdk1.7.0_45\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.7.0_45\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.7.0_45\jre\lib\jce.jar;C:\Program Files\Java\jdk1.7.0_45\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.7.0_45\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.7.0_45\jre\classes" />
+    <property name="reports.html.dir" value="reports/junit-html" />
+    <property name="user.country.format" value="DE" />
+    <property name="sun.desktop" value="windows" />
+    <property name="java.vm.specification.vendor" value="Oracle Corporation" />
+    <property name="net.sourceforge.cobertura.datafile" value="C:\Users\Patrick\workspace\sep13\cobertura.ser" />
+    <property name="ant.home" value="C:\Program Files\apache-ant-1.9.3" />
+    <property name="java.runtime.version" value="1.7.0_45-b18" />
+    <property name="cobertura.dir" value="C:\Users\Patrick\workspace\sep13/cobertura-2.0.3" />
+    <property name="user.name" value="Patrick" />
+    <property name="user.language.format" value="de" />
+    <property name="ant.file.type.sep13" value="file" />
+    <property name="user.language" value="en" />
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.7.0_45\jre\bin" />
+    <property name="ant.file.sep13" value="C:\Users\Patrick\workspace\sep13\build.xml" />
+    <property name="reports.dir" value="reports" />
+    <property name="ant.project.default-target" value="coverage" />
+    <property name="ant.project.name" value="sep13" />
+    <property name="java.version" value="1.7.0_45" />
+    <property name="coverage.html.dir" value="reports/cobertura-html" />
+    <property name="user.timezone" value="" />
+    <property name="sun.arch.data.model" value="64" />
+    <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.7.0_45\jre\lib\endorsed" />
+    <property name="sun.cpu.isalist" value="amd64" />
+    <property name="sun.jnu.encoding" value="Cp1252" />
+    <property name="file.encoding.pkg" value="sun.io" />
+    <property name="file.separator" value="\" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="classes.dir" value="bin" />
+    <property name="java.class.version" value="51.0" />
+    <property name="user.country" value="US" />
+    <property name="java.home" value="C:\Program Files\Java\jdk1.7.0_45\jre" />
+    <property name="java.vm.info" value="mixed mode" />
+    <property name="ant.file" value="C:\Users\Patrick\workspace\sep13\build.xml" />
+    <property name="os.version" value="6.2" />
+    <property name="path.separator" value=";" />
+    <property name="java.vm.version" value="24.45-b08" />
+    <property name="user.variant" value="" />
+    <property name="ant.library.dir" value="C:\Program Files\apache-ant-1.9.3\lib" />
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob" />
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
+    <property name="user.script" value="" />
+    <property name="reports.xml.dir" value="reports/junit-xml" />
+    <property name="user.home" value="C:\Users\Patrick" />
+    <property name="java.specification.vendor" value="Oracle Corporation" />
+    <property name="coverage.xml.dir" value="reports/cobertura-xml" />
+    <property name="java.library.path" value="C:\Program Files\Java\jdk1.7.0_45\jre\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\apache-ant-1.9.3\bin;C:\Program Files\Java\jdk1.7.0_45\bin;C:\Program Files\apache-ant-1.9.3\lib;." />
+    <property name="java.vendor.url" value="http://java.oracle.com/" />
+    <property name="java.vm.vendor" value="Oracle Corporation" />
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner Ruleset.TestHeartsResolveMultiCard skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=false outputtoformatters=true logfailedtests=true logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\Patrick\workspace\sep13\reports\junit-xml\TEST-Ruleset.TestHeartsResolveMultiCard.xml crashfile=C:\Users\Patrick\workspace\sep13\junitvmwatcher2994311874181573690.properties propsfile=C:\Users\Patrick\workspace\sep13\junit6612677864805808410.properties" />
+    <property name="java.class.path" value="C:\Users\Patrick\workspace\sep13\instrumented;C:\Users\Patrick\workspace\sep13\bin;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\cobertura-2.0.3-javadoc.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\cobertura-2.0.3-sources.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\cobertura-2.0.3.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\lib\asm-4.1.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\lib\asm-analysis-4.1.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\lib\asm-commons-4.1.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\lib\asm-tree-4.1.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\lib\asm-util-4.1.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\lib\dom4j-1.6.1.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\lib\icu4j-2.6.1.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\lib\jaxen-1.1-beta-8.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\lib\jdom-1.0.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\lib\jetty-6.1.14.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\lib\jetty-util-6.1.14.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\lib\log4j-1.2.9.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\lib\oro-2.0.8.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\lib\servlet-api-2.5-6.1.14.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\lib\tagsoup-0.9.7.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\lib\xmlParserAPIs-2.6.2.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\lib\xom-1.0b3.jar;C:\Users\Patrick\workspace\sep13\junit4\hamcrest-core-1.3.jar;C:\Users\Patrick\workspace\sep13\junit4\junit-4.11.jar;C:\Program Files\apache-ant-1.9.3\lib\junit-4.11.jar;C:\Program Files\apache-ant-1.9.3\lib\ant-launcher.jar;C:\Program Files\apache-ant-1.9.3\lib\ant.jar;C:\Program Files\apache-ant-1.9.3\lib\ant-junit.jar;C:\Program Files\apache-ant-1.9.3\lib\ant-junit4.jar" />
+    <property name="ant.version" value="Apache Ant(TM) version 1.9.3 compiled on December 23 2013" />
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="ant.file.type" value="file" />
+    <property name="java.vm.specification.version" value="1.7" />
+    <property name="sun.cpu.endian" value="little" />
+    <property name="sun.os.patch.level" value="" />
+    <property name="java.io.tmpdir" value="C:\Users\Patrick\AppData\Local\Temp\" />
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/" />
+    <property name="os.arch" value="amd64" />
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment" />
+    <property name="instrumented.dir" value="instrumented" />
+    <property name="java.ext.dirs" value="C:\Program Files\Java\jdk1.7.0_45\jre\lib\ext;C:\Windows\Sun\Java\lib\ext" />
+    <property name="user.dir" value="C:\Users\Patrick\workspace\sep13" />
+    <property name="line.separator" value="&#xd;&#xa;" />
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM" />
+    <property name="basedir" value="C:\Users\Patrick\workspace\sep13" />
+    <property name="ant.java.version" value="1.7" />
+    <property name="ant.core.lib" value="C:\Program Files\apache-ant-1.9.3\lib\ant.jar" />
+    <property name="file.encoding" value="Cp1252" />
+    <property name="java.specification.version" value="1.7" />
+    <property name="src.dir" value="src" />
+    <property name="ant.project.invoked-targets" value="coverage" />
+  </properties>
+  <testcase classname="Ruleset.TestHeartsResolveMultiCard" name="test" time="0.05" />
+  <testcase classname="Ruleset.TestHeartsResolveMultiCard" name="unValidCards1" time="0.002" />
+  <testcase classname="Ruleset.TestHeartsResolveMultiCard" name="unValidCards2" time="0.0" />
+  <testcase classname="Ruleset.TestHeartsResolveMultiCard" name="unValidCards3" time="0.001" />
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
