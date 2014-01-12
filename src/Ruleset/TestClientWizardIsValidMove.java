@@ -88,6 +88,7 @@ public class TestClientWizardIsValidMove {
 		testObserver = null;
 	}
 	
+	@Test
 	public void testFirstCard() {
 		List<DiscardedCard> discardPile = new ArrayList<DiscardedCard>();
 		
