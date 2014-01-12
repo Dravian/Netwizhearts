@@ -51,7 +51,7 @@
 				<exclude name="**/*ClientListenerThread*.class" />
 				<exclude name="**/*ClientMain*.class" />
 				<exclude name="**/*ServerMain*.class" />
-				<exclude name="**/*Player*.class />
+				<exclude name="**/*Player*.class" />
 			</fileset>
 
 		</cobertura-instrument>
