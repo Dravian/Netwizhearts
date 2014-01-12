@@ -16,12 +16,14 @@ import javax.swing.border.LineBorder;
 public class OwnOtherData extends JPanel {
 
 	private String ownData;
+	private int roundNumber;
 	
 	/**
 	 * Erstellt ein neues OwnScore-Panel
 	 */
 	public OwnOtherData() {
 		ownData = "";
+		roundNumber = 0;
 	}
 	
 	/**
@@ -33,6 +35,16 @@ public class OwnOtherData extends JPanel {
 		ownData = s;
 		repaint();
 	}	
+	
+	/**
+	 * Setzt die aktuelle Rundenzahl
+	 * 
+	 * @param round aktuelle Runde
+	 */
+	public void setRound(int round) {
+		roundNumber = round;
+		repaint();
+	}
 	
 	/**
 	 * Legt fest, ob der Spieler gerade an der Reihe ist und
@@ -53,7 +65,8 @@ public class OwnOtherData extends JPanel {
 		super.paintComponent(g);
 		Font font = new Font("Arial",Font.BOLD,15);
 		g.setFont(font);
-		g.drawString(ownData, 2, 30);
+		g.drawString(ownData, 5, 20);
+		g.drawString("R " + roundNumber, 5, 40);
 	}
 
 }

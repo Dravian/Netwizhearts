@@ -280,13 +280,22 @@ public class CreateGame extends JFrame implements Observer{
 		case Hearts:
 			switch (lang) {
 			case German:
-				ret = "Bei Hearts geht es darum möglichst wenige Stiche zu machen. %)";
+				ret = "Bei Hearts geht es darum möglichst wenige Punkte zu machen. Dabei "
+						+ "Bringt jedes Herz 1 Punkt und die Pik-Dame 13 Punkte. Sollte ein Spieler"
+						+ "alls 26 Punkte machen, kriegen stattdessen alle seiner Mitspieler 26 Punkte. "
+						+ "Das Spiel Endet wenn ein Spieler 100 Punkte hat.";
 				break;
 			case English:
-				ret = "In Hearts you try to get as few tricks as possible. %)";
+				ret = "In Hearts you try to get as few points as possible. Every Heart "
+						+ "is worth 1 Point and the Queen of Spades 13 Points. If one player "
+						+ "makes all 26 possible points, instead of him each of the other players get 26 points. "
+						+ "The game ends when a players has 100 points.";
 				break;
 			case Bavarian:
-				ret = "Ja, des is a bissal wia Ramsch beim Schofkopfa.";
+				ret = "Ja, des is a bissal wia Ramsch beim Schofkopfa. Aber es gibt koan Trumpf "
+						+ "und bloß Herzn bringan Aung. Jedes Herz is 1 Aung und de Pik Dame is 13 Aung. "
+						+ "Fois oana olle 26 Aung macht, griangd statt eam de andern Spieler jeder 26 Aung. "
+						+ "Wenn oana Hundert Aung hod is as Spui vorbei. ";
 				break;
 			default:
 				break;
@@ -341,8 +350,9 @@ public class CreateGame extends JFrame implements Observer{
 		public void actionPerformed(ActionEvent arg0) {
 			boolean b = chboxPassword.isSelected();
 			passwordField.setEditable(b);
-			btnCreate.setEnabled(!b);
 			passwordField.setText("");
+			btnCreate.setEnabled(!b);
+			
 		}
 		
 	}
