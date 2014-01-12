@@ -139,7 +139,7 @@ public class GamePanel extends JPanel{
 	 */
 	public void updateGame(final GameClientUpdate update) {
 		updateOtherData(update.getOtherPlayerData(), update.getCurrentPlayer());
-		updateOwnOtherData(update.getOwnData(), update.getCurrentPlayer());
+		updateOwnOtherData(update.getOwnData(), update.getRoundNumber(), update.getCurrentPlayer());
 		updateOwnCards(update.getOwnHand());
 		clearCardsPlayed();
 		updateCardsPlayed(update.getPlayedCards());
@@ -163,8 +163,9 @@ public class GamePanel extends JPanel{
 		}
 	}
 	
-	private void updateOwnOtherData(OtherData ownData, String currentPlayer) {
+	private void updateOwnOtherData(OtherData ownData, int round,  String currentPlayer) {
 		ownScore.setData(ownData.toString());
+		ownScore.setRound(round);
 		if (ownData.getOtherDataName().compareTo(currentPlayer) == 0) {
 			ownScore.setMyTurn(true);
 		} else {

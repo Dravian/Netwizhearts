@@ -221,81 +221,66 @@ public class Lobby extends JFrame implements Observer{
 	}
 	
 	private void updateGameList(final List<GameServerRepresentation> gameRepresentationList) {
-		SwingUtilities.invokeLater(new Runnable() {
-
-			@Override
-			public void run() {
-				synchronized (gameRepresentationList) {
-					int length = gameRepresentationList.size();
-					String[] games = new String[length];
-					for (int i = 0; i < length; i++) {
-						String s = "";
-						String p = "";
-						if (gameRepresentationList.get(i).hasPassword()) {
-							switch (lang) {
-							case English:
-								s = "(Password)";
-								break;
-							case German:
-								s = "(Passwort)";
-								break;
-							case Bavarian:
-								s = "(Passwort)";
-								break;
-							default:
-								break;
-							}
-						}
-						if (gameRepresentationList.get(i).isHasStarted()) {
-							switch (lang) {
-							case English:
-								p = "(started)";
-								break;
-							case German:
-								p = "(gestarted)";
-								break;
-							case Bavarian:
-								p = "(hod agfangd)";
-								break;
-							default:
-								break;
-							}
-						}
-						games[i] = gameRepresentationList.get(i).getName()
-								+ " ("
-								+ gameRepresentationList.get(i)
-										.getCurrentPlayers()
-								+ "/"
-								+ gameRepresentationList.get(i).getRuleset().getMaxPlayer() 
-								+ ") "
-								+ gameRepresentationList.get(i).getRuleset()
-								+ " " + s + " " + p;
+		synchronized (gameRepresentationList) {
+			int length = gameRepresentationList.size();
+			String[] games = new String[length];
+			for (int i = 0; i < length; i++) {
+				String s = "";
+				String p = "";
+				if (gameRepresentationList.get(i).hasPassword()) {
+					switch (lang) {
+					case English:
+						s = "(Password)";
+						break;
+					case German:
+						s = "(Passwort)";
+						break;
+					case Bavarian:
+						s = "(Passwort)";
+						break;
+					default:
+						break;
 					}
-					gameList.setListData(games);
-					gameRepList = new LinkedList<GameServerRepresentation>(
-							gameRepresentationList);
 				}
+				if (gameRepresentationList.get(i).isHasStarted()) {
+					switch (lang) {
+					case English:
+						p = "(started)";
+						break;
+					case German:
+						p = "(gestarted)";
+						break;
+					case Bavarian:
+						p = "(hod agfangd)";
+						break;
+					default:
+						break;
+					}
+				}
+				games[i] = gameRepresentationList.get(i).getName()
+						+ " ("
+						+ gameRepresentationList.get(i).getCurrentPlayers()
+						+ "/"
+						+ gameRepresentationList.get(i).getRuleset()
+								.getMaxPlayer() + ") "
+						+ gameRepresentationList.get(i).getRuleset() + " " + s
+						+ " " + p;
 			}
-		});
-
+			gameList.setListData(games);
+			gameRepList = new LinkedList<GameServerRepresentation>(
+					gameRepresentationList);
+		}
 	}
 	
 	private void updatePlayerList(final List<String> list) {
-		SwingUtilities.invokeLater(new Runnable() {
-
-			@Override
-			public void run() {
-				synchronized (list) {
-					int length = list.size();
-					String[] players = new String[length];
-					for (int i = 0; i < length; i++) {
-						players[i] = list.get(i);
-					}
-					playerList.setListData(players);
-				}
+		synchronized (list) {
+			int length = list.size();
+			String[] players = new String[length];
+			for (int i = 0; i < length; i++) {
+				players[i] = list.get(i);
 			}
-		});
-		
+			playerList.setListData(players);
+		}
 	}
 
 	/**
@@ -315,16 +300,41 @@ public class Lobby extends JFrame implements Observer{
 		switch (message) {
 		case loginSuccessful:
 		case windowChangeForced:
-			chatlog.setText("");
-			updatePlayerList(observed.getPlayerlist());
-			updateGameList(observed.getLobbyGamelist());
-			this.setVisible(true);
+			SwingUtilities.invokeLater(new Runnable() {
+
+				@Override
+				public void run() {
+					chatlog.setText("");
+					updatePlayerList(observed.getPlayerlist());
+					updateGameList(observed.getLobbyGamelist());
+					btnJoinGame.setEnabled(false);
+					setVisible(true);
+				}
+				
+			});
+			
 			break;
 		case gameListUpdate:
-			updateGameList(observed.getLobbyGamelist());
+			SwingUtilities.invokeLater(new Runnable() {
+
+				@Override
+				public void run() {
+					updateGameList(observed.getLobbyGamelist());
+				}
+				
+			});
+			
 			break;
 		case playerListUpdate:
-			updatePlayerList(observed.getPlayerlist());
+			SwingUtilities.invokeLater(new Runnable() {
+
+				@Override
+				public void run() {
+					updatePlayerList(observed.getPlayerlist());
+				}
+				
+			});
+			
 			break;
 		case joinGameSuccessful:
 			this.setVisible(false);
