@@ -115,22 +115,28 @@ public class TestWizardStart {
 					assertTrue(trumpColour == Colour.NONE);
 
 				} else if (uncoveredCard.getValue() == 14) {
-
+					
+					// Zweimal GameClientUpdate, einmal MsgSelectionRequest
 					if (wizard.getFirstPlayer().getPlayerStateName()
 							.equals("Blue")) {
-						assertTrue(((ComRuleset) blue.getServerInput().get(1))
+						assertTrue(((ComRuleset) blue.getServerInput().get(2))
 								.getRulesetMessage() instanceof MsgSelectionRequest);
-
+						
+						assertTrue(red.getServerInput().size() == 2);
+						assertTrue(green.getServerInput().size() == 2);
 					} else if (wizard.getFirstPlayer().getPlayerStateName()
 							.equals("Red")) {
-						assertTrue(((ComRuleset) red.getServerInput().get(1))
+						assertTrue(((ComRuleset) red.getServerInput().get(2))
 								.getRulesetMessage() instanceof MsgSelectionRequest);
-
+						
+						assertTrue(blue.getServerInput().size() == 2);
+						assertTrue(green.getServerInput().size() == 2);
 					} else if (wizard.getFirstPlayer().getPlayerStateName()
 							.equals("Green")) {
 						assertTrue(((ComRuleset) green.getServerInput().get(1))
 								.getRulesetMessage() instanceof MsgSelectionRequest);
-
+						assertTrue(blue.getServerInput().size() == 2);
+						assertTrue(red.getServerInput().size() == 2);
 					}
 
 				} else if (uncoveredCard.getValue() == 0) {
@@ -158,16 +164,23 @@ public class TestWizardStart {
 							.equals("Blue")) {
 						assertTrue(((ComRuleset) blue.getServerInput().get(2))
 								.getRulesetMessage() instanceof MsgNumberRequest);
-
+						
+						assertTrue(red.getServerInput().size() == 2);
+						assertTrue(green.getServerInput().size() == 2);
+						
 					} else if (wizard.getCurrentPlayer().getPlayerStateName()
 							.equals("Red")) {
 						assertTrue(((ComRuleset) red.getServerInput().get(2))
 								.getRulesetMessage() instanceof MsgNumberRequest);
 
+						assertTrue(blue.getServerInput().size() == 2);
+						assertTrue(green.getServerInput().size() == 2);
 					} else if (wizard.getCurrentPlayer().getPlayerStateName()
 							.equals("Green")) {
 						assertTrue(((ComRuleset) green.getServerInput().get(2))
 								.getRulesetMessage() instanceof MsgNumberRequest);
+						assertTrue(red.getServerInput().size() == 2);
+						assertTrue(blue.getServerInput().size() == 2);
 					}
 
 				} else {
@@ -196,16 +209,23 @@ public class TestWizardStart {
 							.equals("Blue")) {
 						assertTrue(((ComRuleset) blue.getServerInput().get(2))
 								.getRulesetMessage() instanceof MsgNumberRequest);
-
+						
+						assertTrue(red.getServerInput().size() == 2);
+						assertTrue(green.getServerInput().size() == 2);
 					} else if (wizard.getCurrentPlayer().getPlayerStateName()
 							.equals("Red")) {
 						assertTrue(((ComRuleset) red.getServerInput().get(2))
 								.getRulesetMessage() instanceof MsgNumberRequest);
-
+						
+						assertTrue(blue.getServerInput().size() == 2);
+						assertTrue(green.getServerInput().size() == 2);
 					} else if (wizard.getCurrentPlayer().getPlayerStateName()
 							.equals("Green")) {
 						assertTrue(((ComRuleset) green.getServerInput().get(2))
 								.getRulesetMessage() instanceof MsgNumberRequest);
+						
+						assertTrue(red.getServerInput().size() == 2);
+						assertTrue(blue.getServerInput().size() == 2);
 					}
 
 				}

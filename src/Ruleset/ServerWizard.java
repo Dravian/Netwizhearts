@@ -205,13 +205,13 @@ public class ServerWizard extends ServerRuleset {
 			} else {
 				trumpColour = colour;
 				getGameState().sortHands(trumpColour);
-				updatePlayers();
 				broadcast(new MsgSelection(colour));
-
 				setGamePhase(GamePhase.TrickRequest);
 				nextPlayer();
+				updatePlayers();
 				send(new MsgNumberRequest(), getCurrentPlayer()
 						.getPlayerStateName());
+
 			}
 		}
 	}
@@ -427,14 +427,18 @@ public class ServerWizard extends ServerRuleset {
 			if (!getGameState().dealCards(getGameState().getRoundNumber())) {
 				broadcast(WarningMsg.RulesetError);
 				quitGame();
-				System.out.println(getGameState().getRoundNumber());
 				throw new RulesetException(
 						"Probleme beim Verteilen der Karten!");
 
 			}
-
+			
 			Card uncoveredCard = getGameState().getTopCard();
-			getGameState().setUncoveredCard(uncoveredCard);
+					
+			if(playingRounds != getGameState().getRoundNumber()) {
+				getGameState().setUncoveredCard(uncoveredCard);
+			} else {
+				getGameState().setUncoveredCard(EmptyCard.Empty);
+			}
 
 			/*
 			 * Falls ein Zauberer aufgedeckt wird, darf der Spieler vor dem
@@ -442,14 +446,17 @@ public class ServerWizard extends ServerRuleset {
 			 */
 			if (uncoveredCard.getValue() == valueOfSorcerer) {
 				getGameState().sortHands(Colour.NONE);
+				trumpColour = Colour.NONE;
+				broadcast(new MsgSelection(Colour.NONE));
 				updatePlayers();
 				setGamePhase(GamePhase.SelectionRequest);
 				send(new MsgSelectionRequest(), getFirstPlayer()
 						.getPlayerStateName());
 
 			} else {
-
-				if (uncoveredCard.getValue() != valueOfFool) {
+				
+				if (uncoveredCard.getValue() != valueOfFool
+						&& uncoveredCard.getRuleset() == RulesetType.Wizard) {
 					trumpColour = uncoveredCard.getColour();
 				} else {
 					trumpColour = Colour.NONE;
