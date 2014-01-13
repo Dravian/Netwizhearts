@@ -38,7 +38,7 @@ import javax.swing.JMenu;
  */
 public class Game extends JFrame implements Observer{
 	protected static String IMAGEPATH = "Data/";
-	protected static String BACKSIDE = "backside.jpg.";
+	protected static String BACKSIDE = "backside.jpg";
 	protected static String BACKGROUND = "background.jpg";
 	
 	private JPanel contentPane;

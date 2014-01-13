@@ -49,7 +49,6 @@ public class OwnHand extends JPanel{
 			} else {
 				hand.get(i).setCard(null);
 			}
-			 //TODO 
 		}
 		repaint();
 	}
