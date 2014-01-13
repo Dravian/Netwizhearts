@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.10.9)  13 JAN 2014 21:44
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.10.9)  14 JAN 2014 00:28
 entering extended mode
 **Handbuch.tex
 (C:\Users\AlinaAdmin\Desktop\Validierungsbericht\Handbuch\Handbuch.tex
@@ -798,160 +798,170 @@ been already used, duplicate ignored
                    \relax 
 l.88 \newpage
               [1]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 100.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 101.
 
  ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 100.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 101.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 101.
 
-Overfull \hbox (22.11522pt too wide) in paragraph at lines 100--103
-\OT1/cmr/m/n/10 Da-tei ja-vaw.exe un-ter fol-gen-dem Pfad aus: C:/Programme (x8
-6)/Java/jre7/bin.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omlcmr.fd"
+File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 101.
+
+Overfull \hbox (15.83733pt too wide) in paragraph at lines 101--104
+\OT1/cmr/m/n/10 w[]ahlen Sie dann die Da-tei ja-vaw.exe un-ter fol-gen-dem Pfad
+ aus: C:/Programme
  []
 
 
-Overfull \hbox (22.11522pt too wide) in paragraph at lines 104--106
-\OT1/cmr/m/n/10 Da-tei ja-vaw.exe un-ter fol-gen-dem Pfad aus: C:/Programme (x8
-6)/Java/jre7/bin.
+Overfull \hbox (15.83733pt too wide) in paragraph at lines 105--107
+\OT1/cmr/m/n/10 w[]ahlen Sie dann die Da-tei ja-vaw.exe un-ter fol-gen-dem Pfad
+ aus: C:/Programme
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 118--121
-
+Overfull \hbox (12.08391pt too wide) in paragraph at lines 120--122
+\OT1/cmr/m/n/10 Die In-an-spruch-nah-me des an-ge-bo-te-nen Diens-tes ist oh-ne
+ An-ga-be pers[]onlicher
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 124--126
+Underfull \hbox (badness 10000) in paragraph at lines 126--128
 
  []
 
-<Login-Fenster.png, id=113, 355.3275pt x 170.13562pt>
+<Login-Fenster.png, id=114, 355.3275pt x 170.13562pt>
 File: Login-Fenster.png Graphic file (type png)
  <use Login-Fenster.png>
-Package pdftex.def Info: Login-Fenster.png used on input line 129.
+Package pdftex.def Info: Login-Fenster.png used on input line 131.
 (pdftex.def)             Requested size: 345.0pt x 165.19489pt.
 
-[3] <Lobby-Fenster.png, id=127, 560.8453pt x 426.09187pt>
+[3] <Lobby-Fenster.png, id=128, 560.8453pt x 426.09187pt>
 File: Lobby-Fenster.png Graphic file (type png)
 
 <use Lobby-Fenster.png>
-Package pdftex.def Info: Lobby-Fenster.png used on input line 139.
+Package pdftex.def Info: Lobby-Fenster.png used on input line 141.
 (pdftex.def)             Requested size: 345.0pt x 262.1067pt.
  [4 <C:/Users/AlinaAdmin/Desktop/Validierungsbericht/Handbuch/Login-Fenster.png
 >]
-<Passwort-Fenster.png, id=136, 389.20406pt x 192.72pt> [5 <C:/Users/AlinaAdmin/
+<Passwort-Fenster.png, id=137, 389.20406pt x 192.72pt> [5 <C:/Users/AlinaAdmin/
 Desktop/Validierungsbericht/Handbuch/Lobby-Fenster.png>]
 File: Passwort-Fenster.png Graphic file (type png)
 
 <use Passwort-Fenster.png>
-Package pdftex.def Info: Passwort-Fenster.png used on input line 156.
+Package pdftex.def Info: Passwort-Fenster.png used on input line 158.
 (pdftex.def)             Requested size: 345.0pt x 170.83801pt.
 
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 156--157
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 158--159
 [][] 
  []
 
 
-Overfull \hbox (1.63773pt too wide) in paragraph at lines 158--159
+Overfull \hbox (1.63773pt too wide) in paragraph at lines 160--161
 []\OT1/cmr/bx/sc/10 a) Pass-wor-tein-ga-be: \OT1/cmr/m/n/10 Hier ge-ben Sie das
  Pass-wort f[]ur das gesch[]utzte
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 164--165
+Underfull \hbox (badness 10000) in paragraph at lines 166--167
 
  []
 
-<Erstellungs-Fenster.png, id=145, 461.47406pt x 289.83281pt>
+<Erstellungs-Fenster.png, id=146, 461.47406pt x 289.83281pt>
 File: Erstellungs-Fenster.png Graphic file (type png)
 
 <use Erstellungs-Fenster.png>
-Package pdftex.def Info: Erstellungs-Fenster.png used on input line 167.
+Package pdftex.def Info: Erstellungs-Fenster.png used on input line 169.
 (pdftex.def)             Requested size: 345.0pt x 216.67973pt.
  [6 <C:/Users/AlinaAdmin/Desktop/Validierungsbericht/Handbuch/Passwort-Fenster.
 png>]
-Overfull \hbox (32.72691pt too wide) in paragraph at lines 169--170
+Overfull \hbox (32.72691pt too wide) in paragraph at lines 171--172
 []\OT1/cmr/bx/sc/10 1) Spie-l-aus-wahl: \OT1/cmr/m/n/10 Hier k[]onnen Sie in ei
 -nem Dropdown-Men[]u aus den[][]Regelwerk[]en
  []
 
 
-Overfull \hbox (6.09602pt too wide) in paragraph at lines 174--175
+Overfull \hbox (6.09602pt too wide) in paragraph at lines 176--177
 []\OT1/cmr/bx/sc/10 6) Erstellen-Knopf: \OT1/cmr/m/n/10 Wenn Sie mit Ih-ren Ein
 -stel-lun-gen fer-tig sind, dr[]ucken
  []
 
-<Warte-Fenster.png, id=156, 435.12563pt x 335.75438pt>
+<Warte-Fenster.png, id=157, 435.12563pt x 335.75438pt>
 File: Warte-Fenster.png Graphic file (type png)
  <use Warte-Fenster.png>
-Package pdftex.def Info: Warte-Fenster.png used on input line 178.
+Package pdftex.def Info: Warte-Fenster.png used on input line 180.
 (pdftex.def)             Requested size: 345.0pt x 266.2267pt.
 
 [7 <C:/Users/AlinaAdmin/Desktop/Validierungsbericht/Handbuch/Erstellungs-Fenste
-r.png>] <Spiel-Fenster.png, id=173, 939.51pt x 635.37375pt>
+r.png>] <Spiel-Fenster.png, id=174, 939.51pt x 635.37375pt>
 File: Spiel-Fenster.png Graphic file (type png)
 
 <use Spiel-Fenster.png>
-Package pdftex.def Info: Spiel-Fenster.png used on input line 191.
+Package pdftex.def Info: Spiel-Fenster.png used on input line 193.
 (pdftex.def)             Requested size: 345.0pt x 233.31041pt.
  [8 <C:/Users/AlinaAdmin/Desktop/Validierungsbericht/Handbuch/Warte-Fenster.png
 >] [9 <C:/Users/AlinaAdmin/Desktop/Validierungsbericht/Handbuch/Spiel-Fenster.p
 ng>]
-Overfull \hbox (0.55884pt too wide) in paragraph at lines 217--218
+Overfull \hbox (0.55884pt too wide) in paragraph at lines 219--220
 []\OT1/cmr/bx/sc/10 Spiel: \OT1/cmr/m/n/10 Im Uhr-zei-ger-sinn wer-den Kar-ten 
 ge-spielt. Da-bei herrscht [][]Farb-
  []
 
 [10] [11]
-Overfull \hbox (8.50827pt too wide) in paragraph at lines 261--268
+Overfull \hbox (8.50827pt too wide) in paragraph at lines 263--270
 \OT1/cmr/m/n/10 be-reits be-legt sein, be-kom-men Sie ei-ne Feh-ler-mel-dung, b
 it-te w[]ahlen
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 261--268
+Underfull \hbox (badness 10000) in paragraph at lines 263--270
 
  []
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\gls' on input line 272.
+(hyperref)                removing `\gls' on input line 274.
 
 [12] [13]
 (C:\Users\AlinaAdmin\Desktop\Validierungsbericht\Handbuch\Handbuch.gls)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 301.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 303.
 
 [14]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 301.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 303.
  (C:\Users\AlinaAdmin\Desktop\Validierungsbericht\Handbuch\Handbuch.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 301.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 301.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 303.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 303.
 Package rerunfilecheck Info: File `Handbuch.out' has not changed.
 (rerunfilecheck)             Checksum: FFB73DEECCBBD8FE4427CBCCCFECF70A;982.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 301.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 303.
  ) 
 Here is how much of TeX's memory you used:
- 12340 strings out of 493921
- 181580 string characters out of 3147267
+ 12357 strings out of 493921
+ 181865 string characters out of 3147267
  312581 words of memory out of 3000000
- 15379 multiletter control sequences out of 15000+200000
+ 15393 multiletter control sequences out of 15000+200000
  5919 words of font info for 22 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  46i,7n,40p,1459b,642s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
-les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Handbuch.pdf (15 pages, 2190727 bytes).
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmsy10.pfb>
+Output written on Handbuch.pdf (15 pages, 2159258 bytes).
 PDF statistics:
- 296 PDF objects out of 1000 (max. 8388607)
+ 300 PDF objects out of 1000 (max. 8388607)
  50 named destinations out of 1000 (max. 500000)
  164 words of extra memory for PDF output out of 10000 (max. 10000000)
 
