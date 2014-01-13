@@ -131,12 +131,6 @@ public class TestWizardStart {
 						
 						assertTrue(blue.getServerInput().size() == 2);
 						assertTrue(green.getServerInput().size() == 2);
-					} else if (wizard.getFirstPlayer().getPlayerStateName()
-							.equals("Green")) {
-						assertTrue(((ComRuleset) green.getServerInput().get(1))
-								.getRulesetMessage() instanceof MsgSelectionRequest);
-						assertTrue(blue.getServerInput().size() == 2);
-						assertTrue(red.getServerInput().size() == 2);
 					}
 
 				} else if (uncoveredCard.getValue() == 0) {
