@@ -128,7 +128,9 @@ public class ClientWizard extends ClientRuleset {
 		List<Card> hand = getGameState().getOwnHand();
 
 		for (Card handCard : hand) {
-			if (handCard.getColour() == firstCard.getColour()
+			if (firstCard.getValue() != 0
+					&& firstCard.getValue() != 14 
+					&& handCard.getColour() == firstCard.getColour()
 					&& handCard.getValue() != valueOfFool
 					&& handCard.getValue() != valueOfSorcerer) {
 				setGamePhase(GamePhase.CardRequest);

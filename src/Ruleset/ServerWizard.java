@@ -427,7 +427,6 @@ public class ServerWizard extends ServerRuleset {
 			if (!getGameState().dealCards(getGameState().getRoundNumber())) {
 				broadcast(WarningMsg.RulesetError);
 				quitGame();
-				System.out.println(getGameState().getRoundNumber());
 				throw new RulesetException(
 						"Probleme beim Verteilen der Karten!");
 
@@ -447,6 +446,8 @@ public class ServerWizard extends ServerRuleset {
 			 */
 			if (uncoveredCard.getValue() == valueOfSorcerer) {
 				getGameState().sortHands(Colour.NONE);
+				trumpColour = Colour.NONE;
+				broadcast(new MsgSelection(Colour.NONE));
 				updatePlayers();
 				setGamePhase(GamePhase.SelectionRequest);
 				send(new MsgSelectionRequest(), getFirstPlayer()
@@ -454,7 +455,8 @@ public class ServerWizard extends ServerRuleset {
 
 			} else {
 				
-				if (uncoveredCard.getValue() != valueOfFool) {
+				if (uncoveredCard.getValue() != valueOfFool
+						&& uncoveredCard.getRuleset() == RulesetType.Wizard) {
 					trumpColour = uncoveredCard.getColour();
 				} else {
 					trumpColour = Colour.NONE;
