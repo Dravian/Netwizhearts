@@ -9,7 +9,7 @@ import Client.ViewNotification;
 
 public class TestObserver implements Observer {
 
-	private String chatMsg = new String();
+	private String chatMsg = "";
 
 	private List<ViewNotification> notificationList = new LinkedList<ViewNotification>();
 

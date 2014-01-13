@@ -112,6 +112,7 @@ public abstract class ServerRuleset {
 			}
 			break;
 		default:
+			break;
 		}
 		return deck;
 	}

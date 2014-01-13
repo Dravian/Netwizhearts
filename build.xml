@@ -42,16 +42,9 @@
 			<fileset dir="${classes.dir}">
 				<include name="**/*.class" />
 				<exclude name="**/Mock*.class" />
-				<exclude name="**/test/*.class" />
-				<exclude name="**/*Test.class" />
 				<exclude name="**/*Test*.class" />
 				<exclude name="**/test/*.class" />
-				<exclude name="**/*ClientController*.class" />
-				<exclude name="**/*MessageListenerThread*.class" />
-				<exclude name="**/*ClientListenerThread*.class" />
-				<exclude name="**/*ClientMain*.class" />
-				<exclude name="**/*ServerMain*.class" />
-				<exclude name="**/*Player*.class" />
+				<exclude name="**/*AllTest*.class />
 			</fileset>
 
 		</cobertura-instrument>
