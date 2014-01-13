@@ -18,20 +18,20 @@ import ComObjects.ComJoinRequest;
 import ComObjects.ComKickPlayerRequest;
 import ComObjects.ComStartGame;
 
-import test.TestPlayer;
+import test.MockPlayer;
 
 public class GameServerDurabilityTest250 {
 
 	LobbyServer lobby;
-	List<TestPlayer> playersA = new ArrayList<TestPlayer>();
-	List<TestPlayer> playersB= new ArrayList<TestPlayer>();
-	List<TestPlayer> playersC = new ArrayList<TestPlayer>();
+	List<MockPlayer> playersA = new ArrayList<MockPlayer>();
+	List<MockPlayer> playersB= new ArrayList<MockPlayer>();
+	List<MockPlayer> playersC = new ArrayList<MockPlayer>();
 	
 	@Before
 	public void setUp() throws Exception {
 		lobby = new LobbyServer();
 		for (int i=0; i<250; i++){
-			TestPlayer player = new TestPlayer(lobby);
+			MockPlayer player = new MockPlayer(lobby);
 			player.setPlayerName(i +"a");
 			player.setServer(lobby);
 			playersA.add(player);
@@ -39,7 +39,7 @@ public class GameServerDurabilityTest250 {
 			lobby.addName(player.getPlayerName());
 		}
 		for (int i=0; i<250; i++){
-			TestPlayer player = new TestPlayer(lobby);
+			MockPlayer player = new MockPlayer(lobby);
 			player.setPlayerName(i +"b");
 			player.setServer(lobby);
 			playersB.add(player);
@@ -47,7 +47,7 @@ public class GameServerDurabilityTest250 {
 			lobby.addName(player.getPlayerName());
 		}
 		for (int i=0; i<250; i++){
-			TestPlayer player = new TestPlayer(lobby);
+			MockPlayer player = new MockPlayer(lobby);
 			player.setPlayerName(i +"c");
 			player.setServer(lobby);
 			playersC.add(player);
@@ -55,7 +55,7 @@ public class GameServerDurabilityTest250 {
 			lobby.addName(player.getPlayerName());
 		}
 		
-		for (TestPlayer player : playersC) {
+		for (MockPlayer player : playersC) {
 			player.injectComObject(new ComCreateGameRequest(player.getPlayerName(), RulesetType.Wizard, false, new String()));						
 		}
 		for (int i=0; i<250; i++){

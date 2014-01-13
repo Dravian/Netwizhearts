@@ -6,8 +6,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import test.TestGameServer;
-import test.TestPlayer;
+import test.MockGameServer;
+import test.MockPlayer;
 import ComObjects.ComRuleset;
 import ComObjects.MsgNumber;
 import ComObjects.MsgSelection;
@@ -15,12 +15,12 @@ import Server.LobbyServer;
 
 public class TestWizardResolveColour {
 	ServerRuleset ruleset;	
-	TestGameServer gameServer;	
+	MockGameServer gameServer;	
 	LobbyServer lobbyServer;
 	
-	TestPlayer player1;
-	TestPlayer player2;
-	TestPlayer player3;
+	MockPlayer player1;
+	MockPlayer player2;
+	MockPlayer player3;
 	PlayerState playerState1;
 	PlayerState playerState2;
 	PlayerState playerState3;
@@ -28,9 +28,9 @@ public class TestWizardResolveColour {
 	@Before
 	public void setUp() throws Exception {		
 		lobbyServer = new LobbyServer();
-		player1 = new TestPlayer(lobbyServer);
-		player2 = new TestPlayer(lobbyServer);
-		player3 = new TestPlayer(lobbyServer);
+		player1 = new MockPlayer(lobbyServer);
+		player2 = new MockPlayer(lobbyServer);
+		player3 = new MockPlayer(lobbyServer);
 		
 		player1.setName("Tick");
 		player2.setName("Trick");
@@ -39,7 +39,7 @@ public class TestWizardResolveColour {
 		player1.setPlayerName("Tick");
 		player2.setPlayerName("Trick");
 		player3.setPlayerName("Track");
-		gameServer = new TestGameServer(lobbyServer,player1,"Mein Spiel",RulesetType.Wizard, 
+		gameServer = new MockGameServer(lobbyServer,player1,"Mein Spiel",RulesetType.Wizard, 
 				"",false);
 		ruleset = gameServer.getRuleset();
 		gameServer.addPlayer(player1);

@@ -7,7 +7,7 @@ import java.util.Observer;
 
 import Client.ViewNotification;
 
-public class TestObserver implements Observer {
+public class MockObserver implements Observer {
 
 	private String chatMsg = "";
 

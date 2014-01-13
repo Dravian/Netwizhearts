@@ -13,33 +13,33 @@ import ComObjects.ComLoginRequest;
 import ComObjects.ComStartGame;
 import Ruleset.RulesetType;
 
-import test.TestPlayer;
+import test.MockPlayer;
 
 public class GameServerCheatTest {
 	LobbyServer lobby;
 	GameServer game;
-	TestPlayer player1;
-	TestPlayer player2;
-	TestPlayer player3;
-	TestPlayer cheater;
+	MockPlayer player1;
+	MockPlayer player2;
+	MockPlayer player3;
+	MockPlayer cheater;
 	
 	@Before
 	public void setUp() throws Exception {
 		lobby = new LobbyServer();
 
-		player1 = new TestPlayer(lobby);
+		player1 = new MockPlayer(lobby);
 		player1.setPlayerName("Markus");
 		player1.setServer(lobby);
 
-		player2 = new TestPlayer(lobby);
+		player2 = new MockPlayer(lobby);
 		player2.setPlayerName("Hans");
 		player2.setServer(lobby);
 
-		player3 = new TestPlayer(lobby);
+		player3 = new MockPlayer(lobby);
 		player3.setPlayerName("Klaus");
 		player3.setServer(lobby);
 
-		cheater = new TestPlayer(lobby);
+		cheater = new MockPlayer(lobby);
 		cheater.setPlayerName("cheater");
 		cheater.setServer(lobby);
 

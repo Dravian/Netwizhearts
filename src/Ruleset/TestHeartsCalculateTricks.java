@@ -6,7 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import test.TestPlayer;
+import test.MockPlayer;
 import Server.GameServer;
 import Server.LobbyServer;
 import Server.Player;
@@ -36,7 +36,7 @@ public class TestHeartsCalculateTricks {
 		player3 = "Track";
 		player4 = "Donald";
 		lobbyServer = new LobbyServer();
-		player = new TestPlayer(lobbyServer);
+		player = new MockPlayer(lobbyServer);
 		gameServer = new GameServer(lobbyServer,player,"Mein Spiel",RulesetType.Hearts, 
 				"",false);
 		ruleset = new ServerHearts(gameServer);

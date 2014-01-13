@@ -17,8 +17,8 @@ import Ruleset.Card;
 import Ruleset.GamePhase;
 import Ruleset.RulesetType;
 import Server.GameServerRepresentation;
-import test.TestMessageListenerThread;
-import test.TestObserver;
+import test.MockMessageListenerThread;
+import test.MockObserver;
 import Client.View.Language;
 import ComObjects.ComChatMessage;
 import ComObjects.ComClientQuit;
@@ -36,14 +36,14 @@ public class ClientLoginTest {
 
 	ClientModel testModel;
 
-	TestObserver testObserver;
+	MockObserver testObserver;
 
-	TestMessageListenerThread testNetIO;
+	MockMessageListenerThread testNetIO;
 
 	@Before
 	public void setUp() throws Exception {
-		testNetIO = new TestMessageListenerThread();
-		testObserver = new TestObserver();
+		testNetIO = new MockMessageListenerThread();
+		testObserver = new MockObserver();
 		testModel = new ClientModel((MessageListenerThread) testNetIO);
 		testNetIO.setModel(testModel);
 		testModel.addObserver(testObserver);

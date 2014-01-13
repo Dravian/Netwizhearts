@@ -15,8 +15,8 @@ import org.junit.Test;
 
 import Ruleset.RulesetType;
 import Server.GameServerRepresentation;
-import test.TestMessageListenerThread;
-import test.TestObserver;
+import test.MockMessageListenerThread;
+import test.MockObserver;
 import ComObjects.ComChatMessage;
 import ComObjects.ComCreateGameRequest;
 import ComObjects.ComInitGameLobby;
@@ -33,16 +33,16 @@ public class ClientInServerLobbyTest {
 
 	ClientModel testModel;
 
-	TestObserver testObserver;
+	MockObserver testObserver;
 
-	TestMessageListenerThread testNetIO;
+	MockMessageListenerThread testNetIO;
 
 	String testText;
 
 	@Before
 	public void setUp() throws Exception {
-		testNetIO = new TestMessageListenerThread();
-		testObserver = new TestObserver();
+		testNetIO = new MockMessageListenerThread();
+		testObserver = new MockObserver();
 		testModel = new ClientModel((MessageListenerThread) testNetIO);
 		testNetIO.setModel(testModel);
 		testModel.addObserver(testObserver);

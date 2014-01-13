@@ -7,9 +7,9 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import test.TestGameServer;
-import test.TestLobbyServer;
-import test.TestPlayer;
+import test.MockGameServer;
+import test.MockLobbyServer;
+import test.MockPlayer;
 
 import Server.GameServer;
 import Server.LobbyServer;
@@ -42,8 +42,8 @@ public class TestHeartsIsValidMove {
 		player3 = "Track";
 		player4 = "Duck";
 		lobbyServer = new LobbyServer();
-		player = new TestPlayer(lobbyServer);
-		gameServer = new TestGameServer(lobbyServer,player,"Mein Spiel",
+		player = new MockPlayer(lobbyServer);
+		gameServer = new MockGameServer(lobbyServer,player,"Mein Spiel",
 				RulesetType.Hearts, "",false);
 		ruleset = new ServerHearts(gameServer);
 

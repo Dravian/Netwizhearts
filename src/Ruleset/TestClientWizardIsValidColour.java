@@ -13,8 +13,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import Server.GameServerRepresentation;
-import test.TestMessageListenerThread;
-import test.TestObserver;
+import test.MockMessageListenerThread;
+import test.MockObserver;
 import Client.ClientModel;
 import ComObjects.ComInitGameLobby;
 import ComObjects.ComInitLobby;
@@ -28,9 +28,9 @@ import ComObjects.MsgUser;
 
 public class TestClientWizardIsValidColour {
 	ClientModel testModel;
-	TestObserver testObserver;
+	MockObserver testObserver;
 	ClientRuleset ruleset;
-	TestMessageListenerThread testNetIO;
+	MockMessageListenerThread testNetIO;
 	String blue = "Blue";
 	String white = "White";
 	String red = "Red";
@@ -42,9 +42,9 @@ public class TestClientWizardIsValidColour {
 	
 	@Before
 	public void setUp() throws Exception {
-		testNetIO = new TestMessageListenerThread();
+		testNetIO = new MockMessageListenerThread();
 		testModel = new ClientModel(testNetIO);
-		testObserver = new TestObserver();
+		testObserver = new MockObserver();
 		testNetIO.setModel(testModel);
 		testModel.addObserver(testObserver);
 		testModel.createConnection("Player1", "localhost");

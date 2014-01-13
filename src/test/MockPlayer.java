@@ -10,10 +10,10 @@ import ComObjects.RulesetMessage;
 import Server.Player;
 import Server.Server;
 
-public class TestPlayer extends Player {
+public class MockPlayer extends Player {
 	private List<ComObject> inputComObject;
 	
-	public TestPlayer(Server lobbyServer) {
+	public MockPlayer(Server lobbyServer) {
 		super(lobbyServer);
 		server = lobbyServer;
 		inputComObject = new ArrayList<ComObject>();

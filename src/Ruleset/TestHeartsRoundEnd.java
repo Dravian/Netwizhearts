@@ -10,9 +10,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import test.TestGameServer;
-import test.TestLobbyServer;
-import test.TestPlayer;
+import test.MockGameServer;
+import test.MockLobbyServer;
+import test.MockPlayer;
 import ComObjects.ComObject;
 import ComObjects.ComRuleset;
 import ComObjects.MsgGameEnd;
@@ -22,19 +22,19 @@ import Server.Player;
 
 public class TestHeartsRoundEnd {
 
-	TestLobbyServer lobbyServer;
+	MockLobbyServer lobbyServer;
 	
-	TestGameServer gameServer;
+	MockGameServer gameServer;
 	
 	ServerRuleset heartsServerRuleset;
 	
-	TestPlayer blue;
+	MockPlayer blue;
 	
-	TestPlayer white;
+	MockPlayer white;
 	
-	TestPlayer orange;
+	MockPlayer orange;
 	
-	TestPlayer brown;
+	MockPlayer brown;
 	
 	List<ComObject> inputList;
 	
@@ -52,18 +52,18 @@ public class TestHeartsRoundEnd {
 	
 	@Before
 	public void setUp() {
-		lobbyServer = new TestLobbyServer();
+		lobbyServer = new MockLobbyServer();
 		
-		blue = new TestPlayer(lobbyServer);
+		blue = new MockPlayer(lobbyServer);
 		blue.setPlayerName(Blue);
-		white = new TestPlayer(lobbyServer);
+		white = new MockPlayer(lobbyServer);
 		white.setPlayerName(White);
-		orange = new TestPlayer(lobbyServer);
+		orange = new MockPlayer(lobbyServer);
 		orange.setPlayerName(Orange);
-		brown = new TestPlayer(lobbyServer);
+		brown = new MockPlayer(lobbyServer);
 		brown.setPlayerName(Brown);
 		
-		gameServer = new TestGameServer(lobbyServer, blue, "Test Game", RulesetType.Hearts, "", false);
+		gameServer = new MockGameServer(lobbyServer, blue, "Test Game", RulesetType.Hearts, "", false);
 		gameServer.addPlayer(blue);
 		gameServer.addPlayer(white);
 		gameServer.addPlayer(orange);
@@ -169,7 +169,7 @@ public class TestHeartsRoundEnd {
 	@Test
 	public void testGetWinner() {
 		
-		gameServer = new TestGameServer(lobbyServer, blue, "Test Game", RulesetType.Hearts, "", false);
+		gameServer = new MockGameServer(lobbyServer, blue, "Test Game", RulesetType.Hearts, "", false);
 		gameServer.addPlayer(blue);
 		gameServer.addPlayer(white);
 		gameServer.addPlayer(orange);
@@ -229,7 +229,7 @@ public class TestHeartsRoundEnd {
 	@Test
 	public void testGetWinner2() {
 		
-		gameServer = new TestGameServer(lobbyServer, blue, "Test Game", RulesetType.Hearts, "", false);
+		gameServer = new MockGameServer(lobbyServer, blue, "Test Game", RulesetType.Hearts, "", false);
 		gameServer.addPlayer(blue);
 		gameServer.addPlayer(white);
 		gameServer.addPlayer(orange);

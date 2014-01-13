@@ -17,32 +17,32 @@ import ComObjects.MsgSelection;
 import ComObjects.MsgSelectionRequest;
 import ComObjects.MsgUser;
 import ComObjects.WarningMsg;
-import test.TestPlayer;
-import test.TestGameServer;
-import test.TestLobbyServer;
+import test.MockPlayer;
+import test.MockGameServer;
+import test.MockLobbyServer;
 
 public class TestWizardStart {
-	TestPlayer blue;
-	TestPlayer red;
-	TestPlayer green;
-	TestGameServer gameServer;
-	TestLobbyServer lobbyServer;
+	MockPlayer blue;
+	MockPlayer red;
+	MockPlayer green;
+	MockGameServer gameServer;
+	MockLobbyServer lobbyServer;
 	ServerRuleset wizard;
 
 	@Before
 	public void setUp() throws Exception {
-		lobbyServer = new TestLobbyServer();
+		lobbyServer = new MockLobbyServer();
 
-		blue = new TestPlayer(lobbyServer);
+		blue = new MockPlayer(lobbyServer);
 		blue.setPlayerName("Blue");
 
-		red = new TestPlayer(lobbyServer);
+		red = new MockPlayer(lobbyServer);
 		red.setPlayerName("Red");
 
-		green = new TestPlayer(lobbyServer);
+		green = new MockPlayer(lobbyServer);
 		green.setPlayerName("Green");
 
-		gameServer = new TestGameServer(lobbyServer, blue, "Mein Spiel",
+		gameServer = new MockGameServer(lobbyServer, blue, "Mein Spiel",
 				RulesetType.Wizard, "", false);
 		wizard = new ServerWizard(gameServer);
 
