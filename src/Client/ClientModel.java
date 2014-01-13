@@ -152,8 +152,8 @@ public class ClientModel extends Observable {
 		state = ClientState.LOGIN;
 		this.language = Language.English;
 		screenOut = new LanguageInterpreter(language);
-		playerName = new String();
-		gameMaster = new String();
+		playerName = "";
+		gameMaster = "";
 		warningText = new StringBuffer();
 		playerList = Collections.synchronizedList(new LinkedList<String>());
 		gameList = Collections.synchronizedList(
@@ -230,7 +230,7 @@ public class ClientModel extends Observable {
 	public final void receiveMessage(final ComInitLobby msg) {
 		if (msg != null) {
 			state = ClientState.SERVERLOBBY;
-			gameMaster = new String();
+			gameMaster = "";
 			ruleset = null;
 			if (msg.getPlayerList() != null) {
 				playerList = Collections.synchronizedList(msg.getPlayerList());
@@ -322,13 +322,13 @@ public class ClientModel extends Observable {
 	public final void receiveMessage(final ComWarning warning) {
 		if (warning != null) {
 			if (state == ClientState.LOGIN) {
-				playerName = new String();
+				playerName = "";
 				netIO.closeConnection();
 				netIOThread = null;
 				openWarning(warning.getWarning());
 			} else if (state == ClientState.ENTERGAMELOBBY) {
 				state = ClientState.SERVERLOBBY;
-				gameMaster = new String();
+				gameMaster = "";
 				gameType = null;
 				openWarning(warning.getWarning());
 			} else {
@@ -577,17 +577,17 @@ public class ClientModel extends Observable {
 						 RulesetType game) {
 		if (state == ClientState.SERVERLOBBY) {
 			if (gameName == null) {
-				gameName = new String();
+				gameName = "";
 			}
 			if (hasPassword) {
 				if (password == null) {
 					hasPassword = false;
-					password = new String();
+					password = "";
 				} else if (password.isEmpty()) {
 					hasPassword = false;
 				}
 			} else {
-				password = new String();
+				password = "";
 			}
 			if (game == null) {
 				throw new IllegalArgumentException("Argument ist null");
@@ -889,7 +889,7 @@ public class ClientModel extends Observable {
 	public final void joinGame(String name, String password) {
 		if (state == ClientState.SERVERLOBBY) {
 			if (password == null) {
-				password = new String();
+				password = "";
 			}
 			if (name == null) {
 				throw new IllegalArgumentException("Argument ist null");
@@ -1184,10 +1184,10 @@ public class ClientModel extends Observable {
 	public final List<RulesetType> getRulesets() {
 		return supportetGames;
 	}
-	
+
 	/**
-	 * Liefert das aktuell verwendete Regelwerk
-	 * 
+	 * Liefert das aktuell verwendete Regelwerk.
+	 *
 	 * @return aktuell verwendets Regelwerk
 	 */
 	public final RulesetType getCurrentRuleset() {

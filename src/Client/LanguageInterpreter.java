@@ -336,7 +336,7 @@ public class LanguageInterpreter {
 	 */
 	public String resolveWarning(UserMessages message)
 			throws IllegalArgumentException {
-		String ret = new String();
+		String ret = "";
 		switch (language) {
 		case German:
 			ret = germanMessage(message)+"\n";
