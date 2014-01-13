@@ -43,14 +43,14 @@
   <td class="src"><pre class="src">&nbsp;<span class="comment"> * -verarbeitung bereit, sowie zur Verwaltung von Playern</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;13</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;<span class="comment"> */</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;14</td>  <td class="nbHitsCovered">&nbsp;22976</td>  <td class="src"><pre class="src">&nbsp;<span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> Server {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;14</td>  <td class="nbHitsCovered">&nbsp;23012</td>  <td class="src"><pre class="src">&nbsp;<span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> Server {</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;15</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="comment">/**</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;16</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;<span class="comment">         * Ein Set an Spielern, welche momentan vom Server verwaltet werden</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;17</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;<span class="comment">         */</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;18</td>  <td class="nbHitsCovered">&nbsp;11488</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">protected</span> Set&lt;Player&gt; playerSet = Collections.synchronizedSet(<span class="keyword">new</span> HashSet&lt;Player&gt;());</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;18</td>  <td class="nbHitsCovered">&nbsp;11506</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">protected</span> Set&lt;Player&gt; playerSet = Collections.synchronizedSet(<span class="keyword">new</span> HashSet&lt;Player&gt;());</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;19</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;20</td>  <td class="nbHits">&nbsp;</td>
@@ -322,17 +322,17 @@
   <td class="src"><pre class="src">&nbsp;<span class="comment">         */</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;171</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> <span class="keyword">void</span> sendToPlayer(String name, ComObject com) {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;172</td>  <td class="nbHitsCovered">&nbsp;6934</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">synchronized</span>(playerSet){</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;173</td>  <td class="nbHitsCovered"><a title="Line 173: Conditional coverage 100% (2/2).">&nbsp;17257</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 173: Conditional coverage 100% (2/2).">                        <span class="keyword">for</span> (Player player : playerSet) {</a></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;174</td>  <td class="nbHitsCovered"><a title="Line 174: Conditional coverage 100% (2/2).">&nbsp;10323</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 174: Conditional coverage 100% (2/2).">                                <span class="keyword">if</span> (player.getPlayerName().equals(name)) {</a></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;175</td>  <td class="nbHitsCovered">&nbsp;3427</td>  <td class="src"><pre class="src">&nbsp;                                        player.send(com);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;172</td>  <td class="nbHitsCovered">&nbsp;6952</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">synchronized</span>(playerSet){</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;173</td>  <td class="nbHitsCovered"><a title="Line 173: Conditional coverage 100% (2/2).">&nbsp;17284</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 173: Conditional coverage 100% (2/2).">                        <span class="keyword">for</span> (Player player : playerSet) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;174</td>  <td class="nbHitsCovered"><a title="Line 174: Conditional coverage 100% (2/2).">&nbsp;10332</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 174: Conditional coverage 100% (2/2).">                                <span class="keyword">if</span> (player.getPlayerName().equals(name)) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;175</td>  <td class="nbHitsCovered">&nbsp;3429</td>  <td class="src"><pre class="src">&nbsp;                                        player.send(com);</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;176</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                                }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;177</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                        }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;178</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                }                </pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;179</td>  <td class="nbHitsCovered">&nbsp;3467</td>  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;179</td>  <td class="nbHitsCovered">&nbsp;3476</td>  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;180</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;181</td>  <td class="nbHits">&nbsp;</td>
@@ -403,17 +403,17 @@
   <td class="src"><pre class="src">&nbsp;<span class="comment">         */</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;217</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> <span class="keyword">void</span> broadcast(ComObject com) {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;218</td>  <td class="nbHitsUncovered"><a title="Line 218: Conditional coverage 50% (1/2).">&nbsp;101127</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 218: Conditional coverage 50% (1/2).">                <span class="keyword">if</span> (com != <span class="keyword">null</span>) {</a></span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;219</td>  <td class="nbHitsCovered">&nbsp;202254</td>  <td class="src"><pre class="src">&nbsp;                        <span class="keyword">synchronized</span>(playerSet){</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;220</td>  <td class="nbHitsCovered"><a title="Line 220: Conditional coverage 100% (2/2).">&nbsp;65796494</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 220: Conditional coverage 100% (2/2).">                                <span class="keyword">for</span> (Player player : playerSet) {</a></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;221</td>  <td class="nbHitsCovered">&nbsp;65594240</td>  <td class="src"><pre class="src">&nbsp;                                        player.send(com);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;218</td>  <td class="nbHitsUncovered"><a title="Line 218: Conditional coverage 50% (1/2).">&nbsp;101179</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 218: Conditional coverage 50% (1/2).">                <span class="keyword">if</span> (com != <span class="keyword">null</span>) {</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;219</td>  <td class="nbHitsCovered">&nbsp;202358</td>  <td class="src"><pre class="src">&nbsp;                        <span class="keyword">synchronized</span>(playerSet){</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;220</td>  <td class="nbHitsCovered"><a title="Line 220: Conditional coverage 100% (2/2).">&nbsp;65796754</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 220: Conditional coverage 100% (2/2).">                                <span class="keyword">for</span> (Player player : playerSet) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;221</td>  <td class="nbHitsCovered">&nbsp;65594396</td>  <td class="src"><pre class="src">&nbsp;                                        player.send(com);</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;222</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                                }        </pre></td></tr>
 <tr>  <td class="numLine">&nbsp;223</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                        }                </pre></td></tr>
 <tr>  <td class="numLine">&nbsp;224</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                }</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;225</td>  <td class="nbHitsCovered">&nbsp;101127</td>  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;225</td>  <td class="nbHitsCovered">&nbsp;101179</td>  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;226</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;227</td>  <td class="nbHits">&nbsp;</td>
@@ -438,6 +438,6 @@
   <td class="src"><pre class="src">&nbsp;}</pre></td></tr>
 </table>
 
-<div class="footer">Report generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a> 2.0.3 on 12.01.14 01:00.</div>
+<div class="footer">Report generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a> 2.0.3 on 13.01.14 22:46.</div>
 </body>
 </html>

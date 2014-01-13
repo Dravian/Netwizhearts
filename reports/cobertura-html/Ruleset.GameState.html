@@ -161,14 +161,14 @@
   <td class="src"><pre class="src">&nbsp;<span class="comment">         *            Das Kartendeck im Spiel</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;72</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;<span class="comment">         */</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;73</td>  <td class="nbHitsCovered">&nbsp;11433</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">protected</span> GameState(RulesetType ruleset, List&lt;Card&gt; deck) {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;74</td>  <td class="nbHitsCovered">&nbsp;11433</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">this</span>.ruleset = ruleset;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;75</td>  <td class="nbHitsCovered">&nbsp;11433</td>  <td class="src"><pre class="src">&nbsp;                players = <span class="keyword">new</span> LinkedList&lt;PlayerState&gt;();</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;76</td>  <td class="nbHitsCovered">&nbsp;11433</td>  <td class="src"><pre class="src">&nbsp;                discardPile = <span class="keyword">new</span> ArrayList&lt;DiscardedCard&gt;();</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;77</td>  <td class="nbHitsCovered">&nbsp;11433</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">this</span>.deck = deck;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;78</td>  <td class="nbHitsCovered">&nbsp;11433</td>  <td class="src"><pre class="src">&nbsp;                roundNumber = 1;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;79</td>  <td class="nbHitsCovered">&nbsp;11433</td>  <td class="src"><pre class="src">&nbsp;                uncoveredCard = EmptyCard.Empty;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;80</td>  <td class="nbHitsCovered">&nbsp;11433</td>  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;73</td>  <td class="nbHitsCovered">&nbsp;11451</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">protected</span> GameState(RulesetType ruleset, List&lt;Card&gt; deck) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;74</td>  <td class="nbHitsCovered">&nbsp;11451</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">this</span>.ruleset = ruleset;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;75</td>  <td class="nbHitsCovered">&nbsp;11451</td>  <td class="src"><pre class="src">&nbsp;                players = <span class="keyword">new</span> LinkedList&lt;PlayerState&gt;();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;76</td>  <td class="nbHitsCovered">&nbsp;11451</td>  <td class="src"><pre class="src">&nbsp;                discardPile = <span class="keyword">new</span> ArrayList&lt;DiscardedCard&gt;();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;77</td>  <td class="nbHitsCovered">&nbsp;11451</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">this</span>.deck = deck;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;78</td>  <td class="nbHitsCovered">&nbsp;11451</td>  <td class="src"><pre class="src">&nbsp;                roundNumber = 1;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;79</td>  <td class="nbHitsCovered">&nbsp;11451</td>  <td class="src"><pre class="src">&nbsp;                uncoveredCard = EmptyCard.Empty;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;80</td>  <td class="nbHitsCovered">&nbsp;11451</td>  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;81</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;82</td>  <td class="nbHits">&nbsp;</td>
@@ -217,8 +217,8 @@
   <td class="src"><pre class="src">&nbsp;<span class="comment">         */</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;108</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">protected</span> <span class="keyword">boolean</span> addPlayerToGame(String name) {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;109</td>  <td class="nbHitsCovered"><a title="Line 109: Conditional coverage 100% (2/2).">&nbsp;8533</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 109: Conditional coverage 100% (2/2).">                <span class="keyword">for</span> (PlayerState player : players) {</a></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;110</td>  <td class="nbHitsUncovered"><a title="Line 110: Conditional coverage 50% (1/2).">&nbsp;2903</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 110: Conditional coverage 50% (1/2).">                        <span class="keyword">if</span> (player.getPlayerStateName().equals(name)) {</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;109</td>  <td class="nbHitsCovered"><a title="Line 109: Conditional coverage 100% (2/2).">&nbsp;8659</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 109: Conditional coverage 100% (2/2).">                <span class="keyword">for</span> (PlayerState player : players) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;110</td>  <td class="nbHitsUncovered"><a title="Line 110: Conditional coverage 50% (1/2).">&nbsp;2957</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 110: Conditional coverage 50% (1/2).">                        <span class="keyword">if</span> (player.getPlayerStateName().equals(name)) {</a></span></pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;111</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                                <span class="keyword">return</span> <span class="keyword">false</span>;</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;112</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                        }</pre></td></tr>
@@ -226,9 +226,9 @@
   <td class="src"><pre class="src">&nbsp;                }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;114</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;115</td>  <td class="nbHitsCovered">&nbsp;2815</td>  <td class="src"><pre class="src">&nbsp;                PlayerState player = <span class="keyword">new</span> PlayerState(name, ruleset);</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;116</td>  <td class="nbHitsCovered">&nbsp;2815</td>  <td class="src"><pre class="src">&nbsp;                players.add(player);</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;117</td>  <td class="nbHitsCovered">&nbsp;2815</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> <span class="keyword">true</span>;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;115</td>  <td class="nbHitsCovered">&nbsp;2851</td>  <td class="src"><pre class="src">&nbsp;                PlayerState player = <span class="keyword">new</span> PlayerState(name, ruleset);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;116</td>  <td class="nbHitsCovered">&nbsp;2851</td>  <td class="src"><pre class="src">&nbsp;                players.add(player);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;117</td>  <td class="nbHitsCovered">&nbsp;2851</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> <span class="keyword">true</span>;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;118</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;119</td>  <td class="nbHits">&nbsp;</td>
@@ -301,11 +301,11 @@
   <td class="src"><pre class="src">&nbsp;<span class="comment">         */</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;154</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">protected</span> PlayerState getFirstPlayer() {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;155</td>  <td class="nbHitsUncovered"><a title="Line 155: Conditional coverage 50% (1/2).">&nbsp;1082</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 155: Conditional coverage 50% (1/2).">                <span class="keyword">if</span> (firstPlayer == <span class="keyword">null</span>) {</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;155</td>  <td class="nbHitsUncovered"><a title="Line 155: Conditional coverage 50% (1/2).">&nbsp;1081</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 155: Conditional coverage 50% (1/2).">                <span class="keyword">if</span> (firstPlayer == <span class="keyword">null</span>) {</a></span></pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;156</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                        <span class="keyword">throw</span> <span class="keyword">new</span> RulesetException(<span class="string">"Der firstPlayer existiert noch nicht"</span>);</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;157</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                }</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;158</td>  <td class="nbHitsCovered">&nbsp;1082</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> firstPlayer;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;158</td>  <td class="nbHitsCovered">&nbsp;1081</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> firstPlayer;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;159</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;160</td>  <td class="nbHits">&nbsp;</td>
@@ -342,11 +342,11 @@
   <td class="src"><pre class="src">&nbsp;<span class="comment">         */</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;176</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">protected</span> PlayerState getCurrentPlayer() {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;177</td>  <td class="nbHitsUncovered"><a title="Line 177: Conditional coverage 50% (1/2).">&nbsp;11478</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 177: Conditional coverage 50% (1/2).">                <span class="keyword">if</span> (currentPlayer == <span class="keyword">null</span>) {</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;177</td>  <td class="nbHitsUncovered"><a title="Line 177: Conditional coverage 50% (1/2).">&nbsp;11485</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 177: Conditional coverage 50% (1/2).">                <span class="keyword">if</span> (currentPlayer == <span class="keyword">null</span>) {</a></span></pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;178</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                        <span class="keyword">throw</span> <span class="keyword">new</span> RulesetException(<span class="string">"Der currentPlayer existiert noch nicht"</span>);</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;179</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                }</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;180</td>  <td class="nbHitsCovered">&nbsp;11478</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> currentPlayer;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;180</td>  <td class="nbHitsCovered">&nbsp;11485</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> currentPlayer;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;181</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;182</td>  <td class="nbHits">&nbsp;</td>
@@ -407,9 +407,9 @@
   <td class="src"><pre class="src">&nbsp;<span class="comment">         */</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;210</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">protected</span> PlayerState getPlayerState(String name){</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;211</td>  <td class="nbHitsUncovered"><a title="Line 211: Conditional coverage 50% (1/2).">&nbsp;1164</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 211: Conditional coverage 50% (1/2).">                <span class="keyword">for</span> (PlayerState p : players) {</a></span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;212</td>  <td class="nbHitsCovered"><a title="Line 212: Conditional coverage 100% (2/2).">&nbsp;777</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 212: Conditional coverage 100% (2/2).">                        <span class="keyword">if</span> (p.getPlayerStateName().equals(name)) {</a></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;213</td>  <td class="nbHitsCovered">&nbsp;387</td>  <td class="src"><pre class="src">&nbsp;                                <span class="keyword">return</span> p;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;211</td>  <td class="nbHitsUncovered"><a title="Line 211: Conditional coverage 50% (1/2).">&nbsp;1308</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 211: Conditional coverage 50% (1/2).">                <span class="keyword">for</span> (PlayerState p : players) {</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;212</td>  <td class="nbHitsCovered"><a title="Line 212: Conditional coverage 100% (2/2).">&nbsp;876</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 212: Conditional coverage 100% (2/2).">                        <span class="keyword">if</span> (p.getPlayerStateName().equals(name)) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;213</td>  <td class="nbHitsCovered">&nbsp;432</td>  <td class="src"><pre class="src">&nbsp;                                <span class="keyword">return</span> p;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;214</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                        }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;215</td>  <td class="nbHits">&nbsp;</td>
@@ -698,6 +698,6 @@
   <td class="src"><pre class="src">&nbsp;}</pre></td></tr>
 </table>
 
-<div class="footer">Report generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a> 2.0.3 on 12.01.14 01:00.</div>
+<div class="footer">Report generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a> 2.0.3 on 13.01.14 22:46.</div>
 </body>
 </html>

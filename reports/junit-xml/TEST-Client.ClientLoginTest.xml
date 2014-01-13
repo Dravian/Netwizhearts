@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="desktop-pc" name="Client.ClientLoginTest" skipped="0" tests="42" time="0.196" timestamp="2014-01-11T23:58:36">
+<testsuite errors="0" failures="0" hostname="desktop-pc" name="Client.ClientLoginTest" skipped="0" tests="42" time="0.203" timestamp="2014-01-13T21:44:37">
   <properties>
     <property name="java.vendor" value="Oracle Corporation" />
     <property name="coverage.summaryxml.dir" value="reports/cobertura-summary-xml" />
@@ -57,7 +57,7 @@
     <property name="java.vendor.url" value="http://java.oracle.com/" />
     <property name="java.vm.vendor" value="Oracle Corporation" />
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner Client.ClientLoginTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=false outputtoformatters=true logfailedtests=true logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\Patrick\workspace\sep13\reports\junit-xml\TEST-Client.ClientLoginTest.xml crashfile=C:\Users\Patrick\workspace\sep13\junitvmwatcher8645108807596316504.properties propsfile=C:\Users\Patrick\workspace\sep13\junit5685927024161160320.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner Client.ClientLoginTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=false outputtoformatters=true logfailedtests=true logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\Patrick\workspace\sep13\reports\junit-xml\TEST-Client.ClientLoginTest.xml crashfile=C:\Users\Patrick\workspace\sep13\junitvmwatcher2431980732939226518.properties propsfile=C:\Users\Patrick\workspace\sep13\junit6085829482882868763.properties" />
     <property name="java.class.path" value="C:\Users\Patrick\workspace\sep13\instrumented;C:\Users\Patrick\workspace\sep13\bin;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\cobertura-2.0.3-javadoc.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\cobertura-2.0.3-sources.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\cobertura-2.0.3.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\lib\asm-4.1.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\lib\asm-analysis-4.1.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\lib\asm-commons-4.1.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\lib\asm-tree-4.1.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\lib\asm-util-4.1.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\lib\dom4j-1.6.1.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\lib\icu4j-2.6.1.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\lib\jaxen-1.1-beta-8.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\lib\jdom-1.0.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\lib\jetty-6.1.14.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\lib\jetty-util-6.1.14.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\lib\log4j-1.2.9.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\lib\oro-2.0.8.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\lib\servlet-api-2.5-6.1.14.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\lib\tagsoup-0.9.7.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\lib\xmlParserAPIs-2.6.2.jar;C:\Users\Patrick\workspace\sep13\cobertura-2.0.3\lib\xom-1.0b3.jar;C:\Users\Patrick\workspace\sep13\junit4\hamcrest-core-1.3.jar;C:\Users\Patrick\workspace\sep13\junit4\junit-4.11.jar;C:\Program Files\apache-ant-1.9.3\lib\junit-4.11.jar;C:\Program Files\apache-ant-1.9.3\lib\ant-launcher.jar;C:\Program Files\apache-ant-1.9.3\lib\ant.jar;C:\Program Files\apache-ant-1.9.3\lib\ant-junit.jar;C:\Program Files\apache-ant-1.9.3\lib\ant-junit4.jar" />
     <property name="ant.version" value="Apache Ant(TM) version 1.9.3 compiled on December 23 2013" />
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
@@ -82,10 +82,10 @@
     <property name="src.dir" value="src" />
     <property name="ant.project.invoked-targets" value="coverage" />
   </properties>
-  <testcase classname="Client.ClientLoginTest" name="wrongClientStateExceptionAnnounceTurnTest" time="0.031" />
+  <testcase classname="Client.ClientLoginTest" name="wrongClientStateExceptionAnnounceTurnTest" time="0.032" />
   <testcase classname="Client.ClientLoginTest" name="wrongClientStateExceptionReturnToLobbyTest" time="0.0" />
   <testcase classname="Client.ClientLoginTest" name="closeViewTest" time="0.002" />
-  <testcase classname="Client.ClientLoginTest" name="loginTestEmptyName" time="0.001" />
+  <testcase classname="Client.ClientLoginTest" name="loginTestEmptyName" time="0.0" />
   <testcase classname="Client.ClientLoginTest" name="loginTestArgumentsNull" time="0.0" />
   <testcase classname="Client.ClientLoginTest" name="loginTest" time="0.004" />
   <testcase classname="Client.ClientLoginTest" name="openChooseColourIllegalStateTest" time="0.0" />
@@ -96,18 +96,18 @@
   <testcase classname="Client.ClientLoginTest" name="wrongClientStateExceptionJoinGameTest" time="0.0" />
   <testcase classname="Client.ClientLoginTest" name="openChooseCardsIllegalStateTest" time="0.0" />
   <testcase classname="Client.ClientLoginTest" name="wrongClientStateExceptionMakeMoveTest" time="0.0" />
-  <testcase classname="Client.ClientLoginTest" name="loginTestServerNull" time="0.001" />
-  <testcase classname="Client.ClientLoginTest" name="getWinnerEmptyTest" time="0.001" />
-  <testcase classname="Client.ClientLoginTest" name="openWarningArgumentNull" time="0.0" />
+  <testcase classname="Client.ClientLoginTest" name="loginTestServerNull" time="0.0" />
+  <testcase classname="Client.ClientLoginTest" name="getWinnerEmptyTest" time="0.002" />
+  <testcase classname="Client.ClientLoginTest" name="openWarningArgumentNull" time="0.001" />
   <testcase classname="Client.ClientLoginTest" name="clientQuitTest" time="0.0" />
   <testcase classname="Client.ClientLoginTest" name="setLanguageArgumentNullTest" time="0.0" />
   <testcase classname="Client.ClientLoginTest" name="getAvailableRulesetsTest" time="0.0" />
   <testcase classname="Client.ClientLoginTest" name="wrongClientStateExceptionSendChatTest" time="0.0" />
   <testcase classname="Client.ClientLoginTest" name="closeProgramTest" time="0.0" />
-  <testcase classname="Client.ClientLoginTest" name="loginTestEmptyServer" time="0.0" />
-  <testcase classname="Client.ClientLoginTest" name="wrongClientStateExceptionReceiveRulesetMessageTest" time="0.0" />
+  <testcase classname="Client.ClientLoginTest" name="loginTestEmptyServer" time="0.001" />
+  <testcase classname="Client.ClientLoginTest" name="wrongClientStateExceptionReceiveRulesetMessageTest" time="0.001" />
   <testcase classname="Client.ClientLoginTest" name="wrongClientStateExceptionKickPlayerTest" time="0.0" />
-  <testcase classname="Client.ClientLoginTest" name="wrongClientStateExceptionGetGameUpdateTest" time="0.0" />
+  <testcase classname="Client.ClientLoginTest" name="wrongClientStateExceptionGetGameUpdateTest" time="0.001" />
   <testcase classname="Client.ClientLoginTest" name="wrongClientStateExceptionsTest" time="0.001" />
   <testcase classname="Client.ClientLoginTest" name="openNumberInputIllegalStateTest" time="0.0" />
   <testcase classname="Client.ClientLoginTest" name="wrongClientStateExceptionUpdatePlayerlistTest" time="0.0" />
@@ -117,13 +117,13 @@
   <testcase classname="Client.ClientLoginTest" name="wrongClientStateExceptionGetTrumpColourTest" time="0.0" />
   <testcase classname="Client.ClientLoginTest" name="loginTestPortScope" time="0.001" />
   <testcase classname="Client.ClientLoginTest" name="loginTestEmptyArguments" time="0.001" />
-  <testcase classname="Client.ClientLoginTest" name="giveInputNumberIllegalStateTest" time="0.001" />
-  <testcase classname="Client.ClientLoginTest" name="wrongClientStateExceptionUpdateGameTest" time="0.001" />
+  <testcase classname="Client.ClientLoginTest" name="giveInputNumberIllegalStateTest" time="0.0" />
+  <testcase classname="Client.ClientLoginTest" name="wrongClientStateExceptionUpdateGameTest" time="0.0" />
   <testcase classname="Client.ClientLoginTest" name="wrongClientStateExceptionGetCardsToChooseFromTest" time="0.0" />
   <testcase classname="Client.ClientLoginTest" name="changeLanguageTest" time="0.0" />
-  <testcase classname="Client.ClientLoginTest" name="loginWarningTest" time="0.001" />
+  <testcase classname="Client.ClientLoginTest" name="loginWarningTest" time="0.0" />
   <testcase classname="Client.ClientLoginTest" name="wrongClientStateExceptionReceiveChatTest" time="0.0" />
-  <testcase classname="Client.ClientLoginTest" name="wrongClientStateExceptionInitGameLobbyTest" time="0.001" />
+  <testcase classname="Client.ClientLoginTest" name="wrongClientStateExceptionInitGameLobbyTest" time="0.0" />
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
