@@ -14,15 +14,15 @@ import Server.GameServer;
 import Server.LobbyServer;
 import Server.Player;
 
-public class TestGameServer extends GameServer{
-	Set<TestPlayer> players;
+public class MockGameServer extends GameServer{
+	Set<MockPlayer> players;
 	private ServerRuleset ruleset;
 	
-	public TestGameServer(LobbyServer server, Player gameMaster,
+	public MockGameServer(LobbyServer server, Player gameMaster,
 			String GameName, RulesetType rulesetType, String password,
 			boolean hasPassword) {
 		super(server, gameMaster, GameName, rulesetType, password, hasPassword);
-		players = new HashSet<TestPlayer>();
+		players = new HashSet<MockPlayer>();
 		
 		addPlayer(gameMaster);
 		if(rulesetType == RulesetType.Wizard) {
@@ -32,7 +32,7 @@ public class TestGameServer extends GameServer{
 		}
 	}
 
-	public void addPlayer(TestPlayer player) {
+	public void addPlayer(MockPlayer player) {
 		players.add(player);
 		player.setServer(this);
 	}

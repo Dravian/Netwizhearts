@@ -12,8 +12,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import test.TestMessageListenerThread;
-import test.TestObserver;
+import test.MockMessageListenerThread;
+import test.MockObserver;
 import Client.ClientModel;
 import Client.MessageListenerThread;
 import Client.ViewNotification;
@@ -31,9 +31,9 @@ import Server.GameServerRepresentation;
 
 public class TestClientWizardIsValidMove {
 	ClientModel testModel;
-	TestObserver testObserver;
+	MockObserver testObserver;
 	ClientRuleset ruleset;
-	TestMessageListenerThread testNetIO;
+	MockMessageListenerThread testNetIO;
 	String blue = "Blue";
 	String white = "White";
 	String red = "Red";
@@ -45,9 +45,9 @@ public class TestClientWizardIsValidMove {
 	
 	@Before
 	public void setUp() throws Exception {
-		testNetIO = new TestMessageListenerThread();
+		testNetIO = new MockMessageListenerThread();
 		testModel = new ClientModel(testNetIO);
-		testObserver = new TestObserver();
+		testObserver = new MockObserver();
 		testNetIO.setModel(testModel);
 		testModel.addObserver(testObserver);
 		testModel.createConnection("Player1", "localhost");

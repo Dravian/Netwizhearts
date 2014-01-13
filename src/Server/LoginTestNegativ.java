@@ -7,7 +7,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import test.TestPlayer;
+import test.MockPlayer;
 
 import ComObjects.ComLoginRequest;
 import ComObjects.ComWarning;
@@ -15,8 +15,8 @@ import ComObjects.WarningMsg;
 
 public class LoginTestNegativ {
 
-	TestPlayer player;
-	TestPlayer player2;
+	MockPlayer player;
+	MockPlayer player2;
 	LoginServer login;
 	LobbyServer lobby;
 
@@ -24,9 +24,9 @@ public class LoginTestNegativ {
 	public void setUp() throws Exception {
 		lobby = new LobbyServer();
 		login = new LoginServer(lobby, 1234);
-		player = new TestPlayer(login);
+		player = new MockPlayer(login);
 		player.setServer(login);
-		player2 = new TestPlayer(login);
+		player2 = new MockPlayer(login);
 		player2.setServer(login);
 		login.addPlayer(player);
 		login.addPlayer(player2);

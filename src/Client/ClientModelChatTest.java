@@ -12,8 +12,8 @@ import org.junit.After;
 import org.junit.Before;
 
 import Server.GameServerRepresentation;
-import test.TestMessageListenerThread;
-import test.TestObserver;
+import test.MockMessageListenerThread;
+import test.MockObserver;
 import ComObjects.ComChatMessage;
 import ComObjects.ComInitLobby;
 
@@ -23,17 +23,17 @@ public class ClientModelChatTest {
 
 	ClientModel testModel;
 
-	TestObserver testObserver;
+	MockObserver testObserver;
 
-	TestMessageListenerThread testNetIO;
+	MockMessageListenerThread testNetIO;
 
 	String testText;
 
 	@Before
     public void setUp() throws Exception {
 		testMessage = new ComChatMessage("Hello Test!");
-		testNetIO = new TestMessageListenerThread();
-		testObserver = new TestObserver();
+		testNetIO = new MockMessageListenerThread();
+		testObserver = new MockObserver();
 		testModel = new ClientModel((MessageListenerThread) testNetIO);
 		testNetIO.setModel(testModel);
 		testModel.addObserver(testObserver);

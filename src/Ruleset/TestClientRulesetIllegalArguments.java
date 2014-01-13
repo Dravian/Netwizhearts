@@ -13,8 +13,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import Server.GameServerRepresentation;
-import test.TestMessageListenerThread;
-import test.TestObserver;
+import test.MockMessageListenerThread;
+import test.MockObserver;
 import Client.ClientModel;
 import ComObjects.ComInitGameLobby;
 import ComObjects.ComInitLobby;
@@ -32,8 +32,8 @@ import ComObjects.MsgSelectionRequest;
 
 public class TestClientRulesetIllegalArguments {
 	ClientModel testModel;
-	TestObserver testObserver;
-	TestMessageListenerThread testNetIO;
+	MockObserver testObserver;
+	MockMessageListenerThread testNetIO;
 	String one = "one";
 	String two = "two";
 	String three = "three";
@@ -42,12 +42,12 @@ public class TestClientRulesetIllegalArguments {
 
 	@Before
 	public void setUp() throws Exception {
-		testNetIO = new TestMessageListenerThread();
+		testNetIO = new MockMessageListenerThread();
 		testModel = new ClientModel(testNetIO);
 
-		testNetIO = new TestMessageListenerThread();
+		testNetIO = new MockMessageListenerThread();
 		testModel = new ClientModel(testNetIO);
-		testObserver = new TestObserver();
+		testObserver = new MockObserver();
 		testNetIO.setModel(testModel);
 		testModel.addObserver(testObserver);
 		testModel.createConnection("Player1", "localhost");

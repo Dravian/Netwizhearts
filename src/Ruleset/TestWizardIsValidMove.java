@@ -8,9 +8,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import test.TestGameServer;
-import test.TestLobbyServer;
-import test.TestPlayer;
+import test.MockGameServer;
+import test.MockLobbyServer;
+import test.MockPlayer;
 
 import Server.GameServer;
 import Server.LobbyServer;
@@ -38,7 +38,7 @@ public class TestWizardIsValidMove {
 		player2 = "Trick";
 		player3 = "Track";
 		lobbyServer = new LobbyServer();
-		player = new TestPlayer(lobbyServer);
+		player = new MockPlayer(lobbyServer);
 		gameServer = new GameServer(lobbyServer,player,"Mein Spiel",RulesetType.Wizard, 
 				"",false);
 		ruleset = new ServerWizard(gameServer);

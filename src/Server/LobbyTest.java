@@ -19,48 +19,48 @@ import ComObjects.ComUpdatePlayerlist;
 import ComObjects.ComWarning;
 import ComObjects.WarningMsg;
 import Ruleset.RulesetType;
-import test.TestPlayer;
+import test.MockPlayer;
 
 public class LobbyTest {
 
 	LobbyServer lobby;
-	TestPlayer player1;
-	TestPlayer player2;
-	TestPlayer player3;
-	TestPlayer player4;
-	TestPlayer player5;
-	TestPlayer player6;
-	TestPlayer player7;
+	MockPlayer player1;
+	MockPlayer player2;
+	MockPlayer player3;
+	MockPlayer player4;
+	MockPlayer player5;
+	MockPlayer player6;
+	MockPlayer player7;
 
 	@Before
 	public void setUp() throws Exception {
 		lobby = new LobbyServer();
 
-		player1 = new TestPlayer(lobby);
+		player1 = new MockPlayer(lobby);
 		player1.setPlayerName("Markus");
 		player1.setServer(lobby);
 
-		player2 = new TestPlayer(lobby);
+		player2 = new MockPlayer(lobby);
 		player2.setPlayerName("Hans");
 		player2.setServer(lobby);
 
-		player3 = new TestPlayer(lobby);
+		player3 = new MockPlayer(lobby);
 		player3.setPlayerName("Klaus");
 		player3.setServer(lobby);
 
-		player4 = new TestPlayer(lobby);
+		player4 = new MockPlayer(lobby);
 		player4.setPlayerName("Fritz");
 		player4.setServer(lobby);
 
-		player5 = new TestPlayer(lobby);
+		player5 = new MockPlayer(lobby);
 		player5.setPlayerName("Günther");
 		player5.setServer(lobby);
 
-		player6 = new TestPlayer(lobby);
+		player6 = new MockPlayer(lobby);
 		player6.setPlayerName("Anna");
 		player6.setServer(lobby);
 
-		player7 = new TestPlayer(lobby);
+		player7 = new MockPlayer(lobby);
 		player7.setPlayerName("Peter");
 		player7.setServer(lobby);
 

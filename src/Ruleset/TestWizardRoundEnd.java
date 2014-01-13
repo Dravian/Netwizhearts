@@ -10,9 +10,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import test.TestGameServer;
-import test.TestPlayer;
-import test.TestLobbyServer;
+import test.MockGameServer;
+import test.MockPlayer;
+import test.MockLobbyServer;
 import ComObjects.ComObject;
 import ComObjects.ComRuleset;
 import ComObjects.MsgGameEnd;
@@ -23,19 +23,19 @@ import ComObjects.MsgGameEnd;
  */
 public class TestWizardRoundEnd {
 
-	TestLobbyServer lobbyServer;
+	MockLobbyServer lobbyServer;
 	
-	TestGameServer gameServer;
+	MockGameServer gameServer;
 	
 	ServerRuleset wizardServerRuleset;
 	
-	TestPlayer blue;
+	MockPlayer blue;
 	
-	TestPlayer white;
+	MockPlayer white;
 	
-	TestPlayer orange;
+	MockPlayer orange;
 	
-	TestPlayer brown;
+	MockPlayer brown;
 	
 	List<ComObject> inputList;
 	
@@ -53,18 +53,18 @@ public class TestWizardRoundEnd {
 	
 	@Before
 	public void setUp() {
-		lobbyServer = new TestLobbyServer();
+		lobbyServer = new MockLobbyServer();
 		
-		blue = new TestPlayer(lobbyServer);
+		blue = new MockPlayer(lobbyServer);
 		blue.setPlayerName(Blue);
-		white = new TestPlayer(lobbyServer);
+		white = new MockPlayer(lobbyServer);
 		white.setPlayerName(White);
-		orange = new TestPlayer(lobbyServer);
+		orange = new MockPlayer(lobbyServer);
 		orange.setPlayerName(Orange);
-		brown = new TestPlayer(lobbyServer);
+		brown = new MockPlayer(lobbyServer);
 		brown.setPlayerName(Brown);
 		
-		gameServer = new TestGameServer(lobbyServer, blue, "Test Game", RulesetType.Wizard, "", false);
+		gameServer = new MockGameServer(lobbyServer, blue, "Test Game", RulesetType.Wizard, "", false);
 		gameServer.addPlayer(blue);
 		gameServer.addPlayer(white);
 		gameServer.addPlayer(orange);

@@ -12,8 +12,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import test.TestMessageListenerThread;
-import test.TestObserver;
+import test.MockMessageListenerThread;
+import test.MockObserver;
 import ComObjects.ComChatMessage;
 import ComObjects.ComClientQuit;
 import ComObjects.ComInitGameLobby;
@@ -32,9 +32,9 @@ public class ClientInGameHeartsTest {
 
 	ClientModel testModel;
 
-	TestObserver testObserver;
+	MockObserver testObserver;
 
-	TestMessageListenerThread testNetIO;
+	MockMessageListenerThread testNetIO;
 
 	String testText;
 	
@@ -44,8 +44,8 @@ public class ClientInGameHeartsTest {
 
 	@Before
 	public void setUp() throws Exception {
-		testNetIO = new TestMessageListenerThread();
-		testObserver = new TestObserver();
+		testNetIO = new MockMessageListenerThread();
+		testObserver = new MockObserver();
 		testModel = new ClientModel((MessageListenerThread) testNetIO);
 		textGen = new LanguageInterpreter(testModel.getLanguage());
 		testNetIO.setModel(testModel);

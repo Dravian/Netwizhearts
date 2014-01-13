@@ -15,36 +15,36 @@ import ComObjects.MsgNumberRequest;
 import ComObjects.MsgSelection;
 import ComObjects.MsgSelectionRequest;
 import ComObjects.MsgUser;
-import test.TestGameServer;
-import test.TestLobbyServer;
-import test.TestPlayer;
+import test.MockGameServer;
+import test.MockLobbyServer;
+import test.MockPlayer;
 
 public class TestHeartsStart {
-	TestPlayer blue;
-	TestPlayer red;
-	TestPlayer green;
-	TestPlayer black;
-	TestGameServer gameServer;
-	TestLobbyServer lobbyServer;
+	MockPlayer blue;
+	MockPlayer red;
+	MockPlayer green;
+	MockPlayer black;
+	MockGameServer gameServer;
+	MockLobbyServer lobbyServer;
 	ServerRuleset hearts;
 
 	@Before
 	public void setUp() throws Exception {
-		lobbyServer = new TestLobbyServer();
+		lobbyServer = new MockLobbyServer();
 
-		blue = new TestPlayer(lobbyServer);
+		blue = new MockPlayer(lobbyServer);
 		blue.setPlayerName("Blue");
 
-		red = new TestPlayer(lobbyServer);
+		red = new MockPlayer(lobbyServer);
 		red.setPlayerName("Red");
 
-		green = new TestPlayer(lobbyServer);
+		green = new MockPlayer(lobbyServer);
 		green.setPlayerName("Green");
 
-		black = new TestPlayer(lobbyServer);
+		black = new MockPlayer(lobbyServer);
 		black.setPlayerName("Black");
 
-		gameServer = new TestGameServer(lobbyServer, blue, "Mein Spiel",
+		gameServer = new MockGameServer(lobbyServer, blue, "Mein Spiel",
 				RulesetType.Hearts, "", false);
 		hearts = gameServer.getRuleset();
 		

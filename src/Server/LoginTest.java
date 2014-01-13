@@ -7,11 +7,11 @@ import static org.junit.Assert.*;
 
 import ComObjects.ComLoginRequest;
 
-import test.TestPlayer;
+import test.MockPlayer;
 
 public class LoginTest {
 
-	TestPlayer player;
+	MockPlayer player;
 	LoginServer login;
 	LobbyServer lobby;
 
@@ -19,7 +19,7 @@ public class LoginTest {
 	public void setUp() throws Exception {
 		lobby = new LobbyServer();
 		login = new LoginServer(lobby, 2222);
-		player = new TestPlayer(login);
+		player = new MockPlayer(login);
 		player.setServer(login);
 		login.addPlayer(player);
 	}

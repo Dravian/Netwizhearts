@@ -6,8 +6,8 @@ import Server.LobbyServer;
 import Server.Player;
 import org.junit.Before;
 import org.junit.Test;
-import test.TestGameServer;
-import test.TestPlayer;
+import test.MockGameServer;
+import test.MockPlayer;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -37,8 +37,8 @@ public class TestHeartsIsValidMoveOnly {
 		player3 = "Track";
 		player4 = "Duck";
 		lobbyServer = new LobbyServer();
-		player = new TestPlayer(lobbyServer);
-		gameServer = new TestGameServer(lobbyServer,player,"Mein Spiel",
+		player = new MockPlayer(lobbyServer);
+		gameServer = new MockGameServer(lobbyServer,player,"Mein Spiel",
 				RulesetType.Hearts, "",false);
 		ruleset = new ServerHearts(gameServer);
 

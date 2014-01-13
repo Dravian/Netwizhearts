@@ -7,7 +7,7 @@ import Client.ClientModel;
 import Client.MessageListenerThread;
 import ComObjects.ComObject;
 
-public class TestMessageListenerThread extends MessageListenerThread{
+public class MockMessageListenerThread extends MessageListenerThread{
 
 	List<ComObject> inputComObjectList = new LinkedList<ComObject>();
 

@@ -10,7 +10,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import test.TestMessageListenerThread;
+import test.MockMessageListenerThread;
 import Client.ClientController;
 import Client.ClientModel;
 import Client.MessageListenerThread;
@@ -28,7 +28,7 @@ public class ClientViewTestEnd {
 
 	ClientModel testModel;
 
-	TestMessageListenerThread testNetIO;
+	MockMessageListenerThread testNetIO;
 
 	String testText;
 
@@ -44,7 +44,7 @@ public class ClientViewTestEnd {
 
 	@Before
 	public void setUp() throws Exception {
-		testNetIO = new TestMessageListenerThread();
+		testNetIO = new MockMessageListenerThread();
 		testModel = new ClientModel((MessageListenerThread) testNetIO);
 		testNetIO.setModel(testModel);
 		controller = new ClientController(testModel);
