@@ -44,7 +44,7 @@
 				<exclude name="**/Mock*.class" />
 				<exclude name="**/*Test*.class" />
 				<exclude name="**/test/*.class" />
-				<exclude name="**/*AllTest*.class />
+				<exclude name="**/*AllTest*.class" />
 			</fileset>
 
 		</cobertura-instrument>
