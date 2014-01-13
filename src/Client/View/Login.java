@@ -11,6 +11,8 @@ import java.util.Observer;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -25,6 +27,7 @@ import Client.ViewNotification;
  * ueber den Login-Button wird die Verbindung zum Server hergestellt.
  */
 public class Login extends JFrame implements Observer{
+	private final static int NAMELIMIT = 12;
 	
 	private JPanel contentPane;
 	private JTextField serverField;
@@ -57,6 +60,7 @@ public class Login extends JFrame implements Observer{
 		nameField = new JTextField();
 		nameField.setBounds(133, 44, 155, 20);
 		nameField.setColumns(10);
+		nameField.getDocument().addDocumentListener(new NameLengthListener());
 		contentPane.add(nameField);
 		
 		lblNickname = new JLabel("Nickname:");
@@ -194,4 +198,36 @@ public class Login extends JFrame implements Observer{
 		}
 		
 	}
+	
+	
+	class NameLengthListener implements DocumentListener {
+
+		@Override
+		public void changedUpdate(DocumentEvent arg0) {
+			//NOT NEEDED
+		}
+
+		@Override
+		public void insertUpdate(DocumentEvent arg0) {
+			final String input = nameField.getText();
+			if (input.length() >= NAMELIMIT) {
+				SwingUtilities.invokeLater(new Runnable() {
+
+					@Override
+					public void run() {
+						nameField.setText(input.subSequence(0, NAMELIMIT-1).toString());
+					}
+					
+				});
+				
+			}
+			
+		}
+
+		@Override
+		public void removeUpdate(DocumentEvent arg0) {
+			//NOT NEEDED
+		}
+	}
+
 }
