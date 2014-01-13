@@ -43,8 +43,6 @@
 				<include name="**/*.class" />
 				<exclude name="**/Mock*.class" />
 				<exclude name="**/*Test*.class" />
-				<exclude name="**/test/*.class" />
-				<exclude name="**/*AllTest*.class" />
 			</fileset>
 
 		</cobertura-instrument>
@@ -64,9 +62,7 @@
 			<test name="${testcase}" todir="${reports.xml.dir}" if="testcase" />
 			<batchtest todir="${reports.xml.dir}" unless="testcase">
 				<fileset dir="${src.dir}">
-					<include name="**/*Test.java" />
-					<include name="**/*Test*.java" />
-					<include name="**/Test*.java" />
+					<include name="**/*Test*" />
 				</fileset>
 			</batchtest>
 		</junit>
