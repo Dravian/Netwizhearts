@@ -92,7 +92,7 @@ public class OtherPlayer extends JPanel{
 		Font font = new Font("Arial",Font.BOLD,16);
 		g.setColor(Color.WHITE);
 		g.setFont(font);
-		g.drawString(name, 35, 50);
+		g.drawString(name, 20, 50);
         g.drawString(info, 35, 70);
     }
 }
