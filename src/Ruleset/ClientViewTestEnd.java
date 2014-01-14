@@ -16,6 +16,7 @@ import test.MockMessageListenerThread;
 import Client.ClientController;
 import Client.ClientModel;
 import Client.MessageListenerThread;
+import ComObjects.ComClientQuit;
 import ComObjects.ComInitGameLobby;
 import ComObjects.ComInitLobby;
 import ComObjects.ComNewRound;
@@ -123,6 +124,7 @@ public class ClientViewTestEnd {
 		assertEquals("Neue Runde", true,
 				((ComNewRound) testNetIO.getModelInput().get(0)).getResult());
 		//Thread.sleep(10000);
+		testNetIO.injectComObject(new ComClientQuit());
 	}
 
 	@Test
@@ -152,6 +154,9 @@ public class ClientViewTestEnd {
 		List<String> winners = new ArrayList<String>();
 		winners.add(red);
 		testNetIO.injectComObject(new ComRuleset(new MsgGameEnd(winners)));
+		/* im Rahmen des Tests eine Exception in der View,
+		   da der Test eine Auswahl trifft,
+		   noch bevor die View das Fenster gezeichnet hat. */
 		//Thread.sleep(10000);
 		testNetIO.getModelInput().clear();
 
@@ -168,5 +173,6 @@ public class ClientViewTestEnd {
 		ComInitLobby testInitLobby = new ComInitLobby(players, games);
 		testNetIO.injectComObject(testInitLobby);
 		//Thread.sleep(10000);
+		testNetIO.injectComObject(new ComClientQuit());
 	}
 }
