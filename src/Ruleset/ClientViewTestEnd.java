@@ -1,5 +1,7 @@
 package Ruleset;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -109,39 +111,22 @@ public class ClientViewTestEnd {
 		testNetIO.injectComObject(new ComRuleset(new MsgGameEnd(winners)));
 		testNetIO.getModelInput().clear();
 
+		//Thread.sleep(10000);
+		testModel.votePlayAgain(true);
+
 		testNetIO.injectComObject(new ComStartGame());
 		player.getHand().add(WizardCard.DreiGruen);
 		gameState = new GameClientUpdate(player, discardPile,
 				enemyData, currentPlayer, roundNumber, trumpCard);
 		game = new MsgUser(gameState);
 		testModel.receiveMessage(new ComRuleset(game));
-		
-	/*	Thread.sleep(10000);
-		if (!testNetIO.getModelInput().isEmpty()) {
-			if (((ComNewRound) testNetIO.getModelInput().remove(0)).getResult()) {
-				testNetIO.injectComObject(new ComStartGame());
-				player.getHand().add(WizardCard.DreiGruen);
-				gameState = new GameClientUpdate(player, discardPile,
-						enemyData, currentPlayer, roundNumber, trumpCard);
-				game = new MsgUser(gameState);
-				testModel.receiveMessage(new ComRuleset(game));
-				Thread.sleep(10000);
-			} else {
-				List<String> players = new LinkedList<String>();
-				players.add("Player1");
-				players.add("player2");
-				players.add("Player3");
-				Set<GameServerRepresentation> games =
-						new HashSet<GameServerRepresentation>();
-				ComInitLobby testInitLobby = new ComInitLobby(players, games);
-				testNetIO.injectComObject(testInitLobby);
-				Thread.sleep(10000);
-			}
-		} */
+		assertEquals("Neue Runde", true,
+				((ComNewRound) testNetIO.getModelInput().get(0)).getResult());
+		//Thread.sleep(10000);
 	}
 
 	@Test
-	public void returnToLobbyTest() {
+	public void returnToLobbyTest() throws InterruptedException {
 		List<DiscardedCard> discardPile = new ArrayList<DiscardedCard>();
 
 		PlayerState player2 = new PlayerState(white, RulesetType.Wizard);
@@ -164,11 +149,15 @@ public class ClientViewTestEnd {
 				enemyData, currentPlayer, roundNumber, trumpCard);
 		MsgUser game = new MsgUser(gameState);
 		testModel.receiveMessage(new ComRuleset(game));
-
 		List<String> winners = new ArrayList<String>();
 		winners.add(red);
 		testNetIO.injectComObject(new ComRuleset(new MsgGameEnd(winners)));
+		//Thread.sleep(10000);
 		testNetIO.getModelInput().clear();
+
+		testModel.votePlayAgain(false);
+		assertEquals("Neue Runde", false,
+				((ComNewRound) testNetIO.getModelInput().get(0)).getResult());
 
 		List<String> players = new LinkedList<String>();
 		players.add("Player1");
@@ -178,5 +167,6 @@ public class ClientViewTestEnd {
 				new HashSet<GameServerRepresentation>();
 		ComInitLobby testInitLobby = new ComInitLobby(players, games);
 		testNetIO.injectComObject(testInitLobby);
+		//Thread.sleep(10000);
 	}
 }
