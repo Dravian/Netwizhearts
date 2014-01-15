@@ -89,7 +89,7 @@ Es folgen aus der Implementierungsphase bekannte Bugs mit Ergebnis und Einstufun
 	\textbf{Ergebnis:} Der Fehler wurde behoben, die Anzeige ist jetzt richtig.
 
 	\item \textbf{GUI Hearts:} Im Spiel Hearts werden rechts unten im Spielfenster Komponenten angezeigt, die das Spiel 			nicht benötigt, beispielsweise die Anzeige einer Trumpfkarte. \\
-	\textbf{Einstufung:} wichtig, da ein Spieler womöglich durch funktionslose Felder auf dem Spielfeld verwirrt werden könnte.\\
+	\textbf{Einstufung:} wünschenswert, da ein Spieler womöglich durch funktionslose Felder auf dem Spielfeld verwirrt werden könnte.\\
 	\textbf{Ergebnis:} Der Fehler wurde behoben. Unnötige Komponenten sind jetzt nicht mehr sichtbar.\\
 	
 	\item \textbf{Fehlermeldungen:} Einige Fehlermeldungen können noch optimiert werden. So enthält beispielsweise die 			Fehlermeldung bei der Eingabe eines falschen Passwortes einen Rechtschreibfehler im Wort 'incorrect'. \\
@@ -97,7 +97,7 @@ Es folgen aus der Implementierungsphase bekannte Bugs mit Ergebnis und Einstufun
 	\textbf{Ergebnis:} Der Fehler wurde behoben. Die Fehlermeldungen sind optimiert.\\
 	
 	\item \textbf{Kartenrückseite unter Linux:} Bild der Kartenrückseite wird unter Linux nicht sofort initialisiert, wenn das 			Spielfenster geöffnet wird, sondern erst beim Spielstart. \\
-	\textbf{Einstufung:} wichtig, da es möglich war das Spiel fehlerfrei zu spielen, da die Kartenrückseiten nach der ersten Aktion erschienen, der Benutzer könnte jedoch von den zunächst leeren Feldern irritiert werden.\\
+	\textbf{Einstufung:} wünschenswert, da es möglich ist das Spiel fehlerfrei zu spielen, da nur die Kartenrückseiten betroffen sind und diese nach der ersten Aktion erschienen.\\
 	\textbf{Ergebnis:} Der Fehler wurde behoben.\\
 	
 	\item \textbf{Spielende und Scorefenster:}  Das Spiel wird am Ende beendet, ohne dass ein Scorefenster angezeigt wird.\\
@@ -105,14 +105,14 @@ Es folgen aus der Implementierungsphase bekannte Bugs mit Ergebnis und Einstufun
 	\textbf{Ergebnis:} Der Fehler wurde behoben. Es wird nun ein Scorefenster mit dem Gewinner und den Punkten aller Mitspieler angezeigt. Des weiteren wird eine Umfrage gestartet, ob die Spieler eine weitere Runde spielen möchten. Bestätigen alle Spieler diese positiv, so wird ein neues Spiel gestartet. Ansonsten wird das Spiel aufgelöst und alle Spieler werden in die 		Lobby zurückgeleitet.\\
 	
 	\item \textbf{GUI Wizard:} Befindet man sich beim Spiel Wizard in der letzten Spielrunde, so gibt es keine Trumpfkarte oder 	Trumpffarbe mehr. Das Feld für diese beiden Anzeigen sollte also leer sein. Dies ist jedoch nicht der Fall, denn es wird 			immernoch die Trumpfkarte der vorherigen Runde angezeigt.\\
-	\textbf{Einstufung:} wichtig, da das Spiel fehlerfrei gespielt werden konnte, jedoch die Karte sehr verwirrend für die Spieler ist und so falsche Vorhersagen getroffen werden.\\
+	\textbf{Einstufung:} wichtig, da das Spiel fehlerfrei gespielt werden konnte, jedoch die Karte sehr verwirrend für die Spieler ist und so eventuell falsche Vorhersagen getroffen werden.\\
 	\textbf{Ergebnis:} Der Fehler wurde behoben. Das Kartenfeld ist in der letzten Runde leer.\\
 	\end{itemize}
 	
 \subsection{Während der Validierung gefundene Bugs}
 	Bugs, die während der Validierung gefunden wurden, werden an der entsprechenden Stelle detailliert ausgeführt.
 	\begin{itemize}
-	\item Gefunden durch Interaktive Spiel-Tests im Team
+	\item Gefunden durch interaktive Spiel-Tests im Team
 	\begin{itemize}
 	\item{\textbf{Farbzwang-Bug Wizard:}} Wenn als erste Karte der Runde ein Narr gelegt wird und anschließend ein Zauberer, muss man die Farbe des Zauberers zugeben, obwohl man jede beliebiege Karte spielen können sollte.\\
 	\textbf{Einstufung:} kritisch, da das Regelwerk falsche Aktionen fordert. Das Spiel funktioniert dadurch nicht mehr einwandfrei.\\
@@ -133,7 +133,7 @@ Der Fehler wurde durch die GameServerCheatTests gefunden.\\
  
 	
 \section{Plichtenheft Tests}
-Die im Pflichtenheft beschriebenen Tests wurde alle ausgeführt und bestanden. Mit Ausnahme von Test /T240/. Hier wurde eine größere Änderung vorgenommen. Statt über eine Spieleinstellung und eine Pfadangabe ein neues Hintergrundbild einzufügen, muss des Benutzer das Bild nun in den Ordner 'Data' einfügen, es wird dann automatisch zur Auswahl hinzugefügt.\\
+Die im Pflichtenheft beschriebenen Tests wurden alle ausgeführt und bestanden. Mit Ausnahme von Test /T240/, denn hier wurde eine größere Änderung vorgenommen. Statt über eine Spieleinstellung und eine Pfadangabe ein neues Hintergrundbild einzufügen, muss der Benutzer das Bild nun in den Ordner 'Data' einfügen, es wird dann automatisch zur Auswahl hinzugefügt.\\
 In folgenden Tests wurde der Text der Fehlermeldung verändert: /T025/, /T027/, /T029/, /T097/, /T280/, /T245/.  \\
 In folgenden Tests wurde eine falsche Aktion durch die GUI unterbunden, statt eine Fehlermeldung auszugeben: /T092/, /T117/, /T182/, /T185/.  \\
 In folgenden Tests wurde eine unnötige Nachricht vom Server im Chat weggelassen: /T170/, /T180/, /T228/, /T230/.\\
@@ -319,10 +319,20 @@ Der Interaktive Test ist somit der aussagekräftigere Test und wird im Anschluss
 	\end{itemize}
 	\end{itemize}
 	
+	
+\noindent
+\begin{tabular}{|l|r|r|r|}
+\hline
+Paket & Klassen & Line Coverage in \% & Branch Coverage in \% \\ \hline \hline
+Client.View & \multicolumn{1}{r|}{20} & \multicolumn{1}{r|}{90,6} & \multicolumn{1}{r|}{72,5} \\ \hline
+\end{tabular}
+
+\ \\
+		
 	\noindent
 \begin{tabular}{|l|r|r|}
 \hline
-Classes in this Package & \multicolumn{1}{l|}{Line Coverage in \%} & \multicolumn{1}{l|}{Branch Coverage in \%} \\ \hline
+Klassen in diesem Paket & Line Coverage in \% & Branch Coverage in \% \\ \hline \hline
 GamePanel & 96,5 & 93,5 \\ \hline
 ScoreWindow & 64,1 & 31,2 \\ \hline
 ChooseItem & 65,1 & 33,3 \\ \hline
@@ -343,262 +353,351 @@ Login & 92,9 & 66,7 \\ \hline
 Password & 97 & 71,4 \\ \hline
 OwnHand & 100 & 100 \\ \hline
 OwnOtherData & 100 & 100 \\ \hline
- & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
-View Gesamt & 90,6 & 72,5 \\ \hline
 \end{tabular}
-
+ \ \\ \ \\ \ \\
  	Resultate vom interaktiven Test bei restlichen Paketen: \\\\
  	\noindent
- 	\begin{tabular}{|l|r|l|}\hline
+ 	\begin{tabular}{|l|r|r|}\hline
  	Klasse & Line Coverage in \% & Branch Coverage in \% \\ \hline \hline
-Ruleset & 5,4 & 3.7 \\ \hline
-Server & \multicolumn{1}{l|}{-} & - \\ \hline
-Client & 34,1 & \multicolumn{1}{r|}{37,9} \\ \hline
+Ruleset & 5,4 & 3,7 \\ \hline
+Server & - & - \\ \hline
+Client & 34,1 & 37,9 \\ \hline
 ComObjects & 36,8 &  \\ \hline
- & \multicolumn{1}{l|}{} &  \\ \hline
-Gesamt & 22,2 & \multicolumn{1}{r|}{17,2} \\ \hline
+ &  &  \\ \hline
+Gesamt & 22,2 & 17,2 \\ \hline
 \end{tabular}
 
 \subsubsection{JUnitTest-Ergebnisse}
-Die Ergebnisse ergeben sich aus wenigen Tests, die eien View öffnen. Sie können nicht als aussagegräftige Ergebnisse gezählt werden. Der Interaktive Test beschreibt die Ergebnisse genauer.
+Die Ergebnisse ergeben sich aus wenigen Tests, die eine View öffnen. Sie können nicht als aussagekräftige Ergebnisse gezählt werden, da in den JUnit-Tests für dieses Paket keine möglichst größe Abdeckung angestrebt wurde. Diese soll durch einen interaktiven Test erreicht werden (siehe 4.1.1).
+\ \\ \ \\
 
 \noindent
-\begin{tabular}{|l|l|l|l|}
+\begin{tabular}{|l|r|r|r|}
 \hline
-Package & \# Classes & Line Coverage & Branch Coverage \\ \hline
-Client.View & \multicolumn{1}{r|}{63} & \multicolumn{1}{r|}{59,00\%} & \multicolumn{1}{r|}{42,00\%} \\ \hline
+Paket & Klassen & Line Coverage in \% & Branch Coverage in \% \\ \hline \hline
+Client.View & 63 & 59,00 & 42,00 \\ \hline
 \end{tabular}
 
 \ \\
 
 \noindent
-\begin{tabular}{|l|r|l|}
+\begin{tabular}{|l|r|r|}
 \hline
-Classes in this Package & \multicolumn{1}{l|}{Line Coverage} & Branch Coverage \\ \hline
-ChooseCards & 78,00\% & \multicolumn{1}{r|}{66,00\%} \\ \hline
-ChooseCards\$1 & 0,00\% & N/A \\ \hline
-ChooseCards\$2 & 0,00\% & N/A \\ \hline
-ChooseCards\$3 & 0,00\% & N/A \\ \hline
-ChooseCards\$4 & 100,00\% & N/A \\ \hline
-ChooseCards\$CardMouseListener & 0,00\% & \multicolumn{1}{r|}{0,00\%} \\ \hline
-ChooseItem & 69,00\% & \multicolumn{1}{r|}{50,00\%} \\ \hline
-ChooseItem\$1 & 0,00\% & N/A \\ \hline
-CreateGame & 60,00\% & \multicolumn{1}{r|}{44,00\%} \\ \hline
-CreateGame\$1 & 0,00\% & \multicolumn{1}{r|}{0,00\%} \\ \hline
-CreateGame\$2 & 0,00\% & N/A \\ \hline
-CreateGame\$3 & 100,00\% & N/A \\ \hline
-CreateGame\$LeaveButtonListener & 0,00\% & N/A \\ \hline
-CreateGame\$MouseOverListener & 0,00\% & N/A \\ \hline
-CreateGame\$PWCheckedListener & 0,00\% & \multicolumn{1}{r|}{0,00\%} \\ \hline
-CreateGame\$PWEmptyListener & 0,00\% & \multicolumn{1}{r|}{0,00\%} \\ \hline
-CreateGame\$RulesetSelectionListener & 100,00\% & N/A \\ \hline
-DiscardPile & 70,00\% & N/A \\ \hline
-DrawDeck & 83,00\% & N/A \\ \hline
-Game & 70,00\% & \multicolumn{1}{r|}{51,00\%} \\ \hline
-Game\$1 & 64,00\% & \multicolumn{1}{r|}{60,00\%} \\ \hline
-Game\$2 & 100,00\% & N/A \\ \hline
-Game\$3 & 0,00\% & N/A \\ \hline
-Game\$4 & 0,00\% & N/A \\ \hline
-Game\$5 & 40,00\% & \multicolumn{1}{r|}{50,00\%} \\ \hline
-Game\$6 & 0,00\% & N/A \\ \hline
-Game\$bgMenuAction & 0,00\% & N/A \\ \hline
-Game\$cardsMenuAction & 0,00\% & N/A \\ \hline
-GameLobby & 71,00\% & \multicolumn{1}{r|}{44,00\%} \\ \hline
-GameLobby\$1 & 91,00\% & \multicolumn{1}{r|}{66,00\%} \\ \hline
-GameLobby\$2 & 71,00\% & \multicolumn{1}{r|}{50,00\%} \\ \hline
-GameLobby\$3 & 0,00\% & N/A \\ \hline
-GameLobby\$PlayerSelectedListener & 0,00\% & \multicolumn{1}{r|}{0,00\%} \\ \hline
-GamePanel & 55,00\% & \multicolumn{1}{r|}{41,00\%} \\ \hline
-InputNumber & 67,00\% & \multicolumn{1}{r|}{66,00\%} \\ \hline
-InputNumber\$1 & 0,00\% & N/A \\ \hline
-InputNumber\$2 & 0,00\% & N/A \\ \hline
-Language & 100,00\% & N/A \\ \hline
-Lobby & 59,00\% & \multicolumn{1}{r|}{28,00\%} \\ \hline
-Lobby\$1 & 0,00\% & N/A \\ \hline
-Lobby\$2 & 100,00\% & N/A \\ \hline
-Lobby\$3 & 0,00\% & N/A \\ \hline
-Lobby\$4 & 100,00\% & N/A \\ \hline
-Lobby\$5 & 0,00\% & N/A \\ \hline
-Lobby\$GameSelectedListener & 0,00\% & \multicolumn{1}{r|}{0,00\%} \\ \hline
-\end{tabular}
-
-\noindent
-\begin{tabular}{|l|r|l|}
-\hline
-Classes in this Package & \multicolumn{1}{l|}{Line Coverage} & Branch Coverage \\ \hline
-Login & 73,00\% & \multicolumn{1}{r|}{63,00\%} \\ \hline
-Login\$1 & 0,00\% & N/A \\ \hline
-Login\$NameLengthListener & 0,00\% & \multicolumn{1}{r|}{0,00\%} \\ \hline
-Login\$NameLengthListener\$1 & 0,00\% & N/A \\ \hline
-OtherPlayer & 62,00\% & \multicolumn{1}{r|}{50,00\%} \\ \hline
-OwnHand & 92,00\% & \multicolumn{1}{r|}{100,00\%} \\ \hline
-OwnOtherData & 66,00\% & \multicolumn{1}{r|}{50,00\%} \\ \hline
-Password & 58,00\% & \multicolumn{1}{r|}{36,00\%} \\ \hline
-Password\$1 & 0,00\% & N/A \\ \hline
-Password\$LeaveButtonListener & 0,00\% & N/A \\ \hline
-ScoreWindow & 66,00\% & \multicolumn{1}{r|}{41,00\%} \\ \hline
-ScoreWindow\$1 & 80,00\% & \multicolumn{1}{r|}{50,00\%} \\ \hline
-ScoreWindow\$2 & 100,00\% & N/A \\ \hline
-TrumpColour & 16,00\% & \multicolumn{1}{r|}{0,00\%} \\ \hline
-ViewCard & 43,00\% & \multicolumn{1}{r|}{16,00\%} \\ \hline
-Warning & 79,00\% & \multicolumn{1}{r|}{60,00\%} \\ \hline
-Warning\$1 & 0,00\% & N/A \\ \hline
-Warning\$CloseListener & 0,00\% & \multicolumn{1}{r|}{0,00\%} \\ \hline
-\end{tabular}
-
-	
-	\subsection{Client}
-	
-	\noindent
-	\begin{tabular}{|l|l|l|l|} \hline
-	Package & \ Classes & Line Coverage & Branch Coverage \\ \hline \hline
-	Client & \multicolumn{1}{r|}{32} & \multicolumn{1}{r|}{56,00\%} & \multicolumn{1}{r|}{56,00\%} \\ \hline
-	\end{tabular}
-
-	\noindent	
-\begin{tabular}{|l|r|l|}
-\hline
-Classes in this Package & \multicolumn{1}{l|}{Line Coverage} & Branch Coverage \\ \hline \hline
-ClientController & 79,00\% & \multicolumn{1}{r|}{50,00\%} \\ \hline
-ClientController\$CardMouseListener & 0,00\% & \multicolumn{1}{r|}{0,00\%} \\ \hline
-ClientController\$ChatListenerGame & 0,00\% & \multicolumn{1}{r|}{0,00\%} \\ \hline
-ClientController\$ChatListenerGameLobby & 0,00\% & \multicolumn{1}{r|}{0,00\%} \\ \hline
-ClientController\$ChatListenerLobby & 0,00\% & \multicolumn{1}{r|}{0,00\%} \\ \hline
-ClientController\$ConnectButtonListener & 0,00\% & N/A \\ \hline
-ClientController\$CreateButtonListener & 0,00\% & \multicolumn{1}{r|}{0,00\%} \\ \hline
-ClientController\$GameCloseListener & 0,00\% & N/A \\ \hline
-ClientController\$GameLobbyCloseListener & 12,00\% & N/A \\ \hline
-ClientController\$HostButtonListener & 0,00\% & N/A \\ \hline
-ClientController\$JoinButtonListenerLobby & 0,00\% & \multicolumn{1}{r|}{0,00\%} \\ \hline
-ClientController\$JoinButtonListenerPassword & 0,00\% & N/A \\ \hline
-ClientController\$KickPlayerButtonListener & 0,00\% & N/A \\ \hline
-ClientController\$LanguageSelectionListener & 0,00\% & N/A \\ \hline
-ClientController\$LeaveButtonListenerGameLobby & 0,00\% & N/A \\ \hline
-ClientController\$LeaveButtonListenerLobby & 0,00\% & N/A \\ \hline
-ClientController\$LeaveButtonListenerPassword & 0,00\% & N/A \\ \hline
-ClientController\$LeaveButtonListenerScoreWindow & 0,00\% & N/A \\ \hline
-ClientController\$LobbyCloseListener & 12,00\% & N/A \\ \hline
-ClientController\$OKButtonListenerChooseCards & 0,00\% & N/A \\ \hline
-ClientController\$OKButtonListenerChooseColour & 0,00\% & N/A \\ \hline
-ClientController\$OKButtonListenerInputNumber & 0,00\% & \multicolumn{1}{r|}{0,00\%} \\ \hline
-ClientController\$OKButtonListenerWarning & 0,00\% & \multicolumn{1}{r|}{0,00\%} \\ \hline
-ClientController\$PlayAgainButtonListenerScoreWindow & 0,00\% & N/A \\ \hline
-ClientController\$StartGameButtonListener & 0,00\% & N/A \\ \hline
-ClientMain & 0,00\% & N/A \\ \hline
-ClientMain\$1 & 0,00\% & N/A \\ \hline
-ClientModel & 89,00\% & \multicolumn{1}{r|}{81,00\%} \\ \hline
-ClientState & 93,00\% & N/A \\ \hline
-LanguageInterpreter & 25,00\% & \multicolumn{1}{r|}{26,00\%} \\ \hline
-MessageListenerThread & 0,00\% & \multicolumn{1}{r|}{0,00\%} \\ \hline
-ViewNotification & 100,00\% & N/A \\ \hline
-\end{tabular}
-
-
-	\subsection{Server}
-
-	\noindent	
-\begin{tabular}{|l|l|l|l|}
-\hline
-Package & \# Classes & Line Coverage & Branch Coverage \\ \hline \hline
-Server & \multicolumn{1}{r|}{8} & \multicolumn{1}{r|}{76,00\%} & \multicolumn{1}{r|}{75,00\%} \\ \hline
+Klassen in diesem Paket & \multicolumn{1}{l|}{Line Coverage in \%} & Branch Coverage in \% \\ \hline \hline
+ChooseCards & 78,00 & \multicolumn{1}{r|}{66,00} \\ \hline
+ChooseCards\$1 & 0,00 & - \\ \hline
+ChooseCards\$2 & 0,00 & - \\ \hline
+ChooseCards\$3 & 0,00 & - \\ \hline
+ChooseCards\$4 & 100,00 & - \\ \hline
+ChooseCards\$CardMouseListener & 0,00 & \multicolumn{1}{r|}{0,00} \\ \hline
+ChooseItem & 69,00 & \multicolumn{1}{r|}{50,00} \\ \hline
+ChooseItem\$1 & 0,00 & - \\ \hline
+CreateGame & 60,00 & \multicolumn{1}{r|}{44,00} \\ \hline
+CreateGame\$1 & 0,00 & \multicolumn{1}{r|}{0,00} \\ \hline
+CreateGame\$2 & 0,00 & - \\ \hline
+CreateGame\$3 & 100,00 & - \\ \hline
+CreateGame\$LeaveButtonListener & 0,00 & - \\ \hline
+CreateGame\$MouseOverListener & 0,00 & - \\ \hline
+CreateGame\$PWCheckedListener & 0,00 & \multicolumn{1}{r|}{0,00} \\ \hline
+CreateGame\$PWEmptyListener & 0,00 & \multicolumn{1}{r|}{0,00} \\ \hline
+CreateGame\$RulesetSelectionListener & 100,00 & - \\ \hline
+DiscardPile & 70,00 & - \\ \hline
+DrawDeck & 83,00 & - \\ \hline
+Game & 70,00 & \multicolumn{1}{r|}{51,00} \\ \hline
+Game\$1 & 64,00 & \multicolumn{1}{r|}{60,00} \\ \hline
+Game\$2 & 100,00 & - \\ \hline
+Game\$3 & 0,00 & - \\ \hline
+Game\$4 & 0,00 & - \\ \hline
+Game\$5 & 40,00 & \multicolumn{1}{r|}{50,00} \\ \hline
+Game\$6 & 0,00 & - \\ \hline
+Game\$bgMenuAction & 0,00 & - \\ \hline
+Game\$cardsMenuAction & 0,00 & - \\ \hline
+GameLobby & 71,00 & \multicolumn{1}{r|}{44,00} \\ \hline
+GameLobby\$1 & 91,00 & \multicolumn{1}{r|}{66,00} \\ \hline
+GameLobby\$2 & 71,00 & \multicolumn{1}{r|}{50,00} \\ \hline
+GameLobby\$3 & 0,00 & - \\ \hline
+GameLobby\$PlayerSelectedListener & 0,00 & \multicolumn{1}{r|}{0,00} \\ \hline
+GamePanel & 55,00 & \multicolumn{1}{r|}{41,00} \\ \hline
+InputNumber & 67,00 & \multicolumn{1}{r|}{66,00} \\ \hline
+InputNumber\$1 & 0,00 & - \\ \hline
+InputNumber\$2 & 0,00 & - \\ \hline
+Language & 100,00 & - \\ \hline
+Lobby & 59,00 & \multicolumn{1}{r|}{28,00} \\ \hline
+Lobby\$1 & 0,00 & - \\ \hline
+Lobby\$2 & 100,00 & - \\ \hline
+Lobby\$3 & 0,00 & - \\ \hline
+Lobby\$4 & 100,00 & - \\ \hline
+Lobby\$5 & 0,00 & - \\ \hline
+Lobby\$GameSelectedListener & 0,00 & \multicolumn{1}{r|}{0,00} \\ \hline
+Login & 73,00 & \multicolumn{1}{r|}{63,00} \\ \hline
+Login\$1 & 0,00 & - \\ \hline
+Login\$NameLengthListener & 0,00 & \multicolumn{1}{r|}{0,00} \\ \hline
+Login\$NameLengthListener\$1 & 0,00 & - \\ \hline
+OtherPlayer & 62,00 & \multicolumn{1}{r|}{50,00} \\ \hline
+OwnHand & 92,00 & \multicolumn{1}{r|}{100,00} \\ \hline
+OwnOtherData & 66,00 & \multicolumn{1}{r|}{50,00} \\ \hline
 \end{tabular}
 
 \noindent
 \begin{tabular}{|l|r|r|}
 \hline
-Classes in this Package & \multicolumn{1}{l|}{Line Coverage} & \multicolumn{1}{l|}{Branch Coverage} \\ \hline
-GameServer & 86,00\% & 79,00\% \\ \hline
-GameServerRepresentation & N/A & \multicolumn{1}{l|}{N/A} \\ \hline
-LobbyServer & 90,00\% & 84,00\% \\ \hline
-LoginServer & 91,00\% & 75,00\% \\ \hline
-LoginServer\$ClientListenerThread & 50,00\% & 50,00\% \\ \hline
-Player & 13,00\% & 0,00\% \\ \hline
-Server & 83,00\% & 80,00\% \\ \hline
-ServerMain & 0,00\% & 0,00\% \\ \hline
+Klassen in diesem Paket & \multicolumn{1}{l|}{Line Coverage in \%} & Branch Coverage in \% \\ \hline \hline
+
+Password & 58,00 & \multicolumn{1}{r|}{36,00} \\ \hline
+Password\$1 & 0,00 & - \\ \hline
+Password\$LeaveButtonListener & 0,00 & - \\ \hline
+ScoreWindow & 66,00 & \multicolumn{1}{r|}{41,00} \\ \hline
+ScoreWindow\$1 & 80,00 & \multicolumn{1}{r|}{50,00} \\ \hline
+ScoreWindow\$2 & 100,00 & - \\ \hline
+TrumpColour & 16,00 & \multicolumn{1}{r|}{0,00} \\ \hline
+ViewCard & 43,00 & \multicolumn{1}{r|}{16,00} \\ \hline
+Warning & 79,00 & \multicolumn{1}{r|}{60,00} \\ \hline
+Warning\$1 & 0,00 & - \\ \hline
+Warning\$CloseListener & 0,00 & \multicolumn{1}{r|}{0,00} \\ \hline
+\end{tabular}
+
+	
+	\subsection{Client}
+	Die Werte wurden durch JUnit-Testing erreicht.
+ \ \\ \ \\ 	
+	\noindent
+	\begin{tabular}{|l|r|r|r|} \hline
+	Paket & Klassen & Line Coverage in \% & Branch Coverage in \% \\ \hline \hline
+	Client & \multicolumn{1}{r|}{32} & \multicolumn{1}{r|}{56,00} & \multicolumn{1}{r|}{56,00} \\ \hline
+	\end{tabular}
+ \ \\ \ \\ \ \\
+ Der Grund, warum die Gesamt-Coverage-Werte nur bei etwas über 50\% liegen, ist, dass in diesem Packet sehr viele Standard API-Klassen zu finden sind, die nicht explizit getestet wurden. Vernachlässigt man sämtliche Client.Controller-Klassen und die Main-Klassen, sowie die Thread-Klasse MessagListenerThread, werden sehr hohe Werte erzielt. Der Wert des LanguageInterpreters ist deshalb so niedrig, weil es sich dabei um eine Klasse handelt, die fast ausschließlich swich-case-Abfragen enthält, die nicht explizit getestet wurden.\\
+ \ \\
+	\noindent	
+\begin{tabular}{|l|r|r|}
+\hline
+Klassen in diesem Paket & \multicolumn{1}{l|}{Line Coverage in \%} & Branch Coverage in \% \\ \hline \hline
+ClientController & 79,00 & \multicolumn{1}{r|}{50,00} \\ \hline
+ClientController\$CardMouseListener & 0,00 & \multicolumn{1}{r|}{0,00} \\ \hline
+ClientController\$ChatListenerGame & 0,00 & \multicolumn{1}{r|}{0,00} \\ \hline
+ClientController\$ChatListenerGameLobby & 0,00 & \multicolumn{1}{r|}{0,00} \\ \hline
+ClientController\$ChatListenerLobby & 0,00 & \multicolumn{1}{r|}{0,00} \\ \hline
+ClientController\$ConnectButtonListener & 0,00 & - \\ \hline
+ClientController\$CreateButtonListener & 0,00 & \multicolumn{1}{r|}{0,00} \\ \hline
+ClientController\$GameCloseListener & 0,00 & - \\ \hline
+ClientController\$GameLobbyCloseListener & 12,00 & - \\ \hline
+ClientController\$HostButtonListener & 0,00 & - \\ \hline
+ClientController\$JoinButtonListenerLobby & 0,00 & \multicolumn{1}{r|}{0,00} \\ \hline
+ClientController\$JoinButtonListenerPassword & 0,00 & - \\ \hline
+ClientController\$KickPlayerButtonListener & 0,00 & - \\ \hline
+ClientController\$LanguageSelectionListener & 0,00 & - \\ \hline
+ClientController\$LeaveButtonListenerGameLobby & 0,00 & - \\ \hline
+ClientController\$LeaveButtonListenerLobby & 0,00 & - \\ \hline
+ClientController\$LeaveButtonListenerPassword & 0,00 & - \\ \hline
+ClientController\$LeaveButtonListenerScoreWindow & 0,00 & - \\ \hline
+ClientController\$LobbyCloseListener & 12,00 & - \\ \hline
+ClientController\$OKButtonListenerChooseCards & 0,00 & - \\ \hline
+ClientController\$OKButtonListenerChooseColour & 0,00 & - \\ \hline
+ClientController\$OKButtonListenerInputNumber & 0,00 & \multicolumn{1}{r|}{0,00} \\ \hline
+ClientController\$OKButtonListenerWarning & 0,00 & \multicolumn{1}{r|}{0,00} \\ \hline
+ClientController\$PlayAgainButtonListenerScoreWindow & 0,00 & - \\ \hline
+ClientController\$StartGameButtonListener & 0,00 & - \\ \hline
+ClientMain & 0,00 & - \\ \hline
+ClientMain\$1 & 0,00 & - \\ \hline \hline
+ClientModel & 89,00 & \multicolumn{1}{r|}{81,00} \\ \hline
+ClientState & 93,00 & - \\ \hline
+LanguageInterpreter & 25,00 & \multicolumn{1}{r|}{26,00} \\ \hline
+MessageListenerThread & 0,00 & \multicolumn{1}{r|}{0,00} \\ \hline
+ViewNotification & 100,00 & - \\ \hline
+\end{tabular}
+
+
+	\subsection{Server}
+Die Werte wurden durch JUnit-Testing erreicht.
+ \ \\ \ \\ 	
+	\noindent	
+\begin{tabular}{|l|r|r|r|}
+\hline
+Paket & Klassen & Line Coverage in \% & Branch Coverage in \% \\ \hline \hline
+Server & \multicolumn{1}{r|}{8} & \multicolumn{1}{r|}{76,00} & \multicolumn{1}{r|}{75,00} \\ \hline
+\end{tabular}
+ \ \\ \ \\ \ \\
+Der Grund, warum die Gesamt-Coverage-Werte nur bei etwa 75\% liegen, ist, dass in diesem Packet die Player-Klasse, vorhanden ist, welche durch die JUnit-Tests kaum abgedeckt wurde, da diese Klasse für die Test durch eine Mockklasse TestPlayer ersetzt wurde. Des weiteren existiert eine Main-Klasse, die ebenfalls nicht zu testen war.\\
+\ \\
+\noindent
+\begin{tabular}{|l|r|r|}
+\hline
+Klassen in diesem Paket & \multicolumn{1}{l|}{Line Coverage in \%} & \multicolumn{1}{l|}{Branch Coverage in \%} \\ \hline \hline
+GameServer & 86,00 & 79,00 \\ \hline
+GameServerRepresentation & - & - \\ \hline
+LobbyServer & 90,00 & 84,00 \\ \hline
+LoginServer & 91,00 & 75,00 \\ \hline
+LoginServer\$ClientListenerThread & 50,00 & 50,00 \\ \hline
+Player & 13,00 & 0,00 \\ \hline
+Server & 83,00 & 80,00 \\ \hline
+ServerMain & 0,00 & 0,00 \\ \hline
 \end{tabular}
 
 
  	
 	\subsection{Ruleset}
 	
-\noindent	
-\begin{tabular}{|l|l|l|l|}
+Die Werte wurden durch JUnit-Testing erreicht.
+ \ \\ \ \\ 	
+	\noindent
+	\begin{tabular}{|l|r|r|r|} \hline
+	Paket & Klassen & Line Coverage in \% & Branch Coverage in \% \\ \hline \hline
+Ruleset & \multicolumn{1}{r|}{24} & \multicolumn{1}{r|}{89,00} & \multicolumn{1}{r|}{84,00} \\ \hline
+\end{tabular}
+ \ \\ \ \\ \ \\
+Der Grund, warum die Gesamt-Coverage-Werte nur bei etwas über 85\% liegen, ist, dass in diesem Packet mehrere Enum- und Exception-Klassen vorhanden sind, die nicht explizit getestet wurden. Des weiteren gibt es viele Klassen, z.B. GameClientUpdate,   die nahezu ausschließlich getter und setter Methoden enthalten, für die sich kein Branch-Coverage Wert ergibt. \\
+\ \\
+\noindent
+\begin{tabular}{|l|r|r|}
 \hline
-Package & \# Classes & Line Coverage & Branch Coverage \\ \hline \hline
-Ruleset & \multicolumn{1}{r|}{24} & \multicolumn{1}{r|}{89,00\%} & \multicolumn{1}{r|}{84,00\%} \\ \hline
+Klassen in diesem Paket & \multicolumn{1}{l|}{Line Coverage in \%} & \multicolumn{1}{l|}{Branch Coverage in \%} \\ \hline \hline
+Card & - & - \\ \hline 
+CardComparator & 99,00 & \multicolumn{1}{r|}{87,00} \\ \hline
+ClientHearts & 100,00 & \multicolumn{1}{r|}{100,00} \\ \hline
+ClientRuleset & 65,00 & \multicolumn{1}{r|}{54,00} \\ \hline
+ClientWizard & 100,00 & \multicolumn{1}{r|}{90,00} \\ \hline
+Colour & 66,00 & - \\ \hline
+DiscardedCard & 66,00 & - \\ \hline
+EmptyCard & 87,00 & - \\ \hline
+GameClientUpdate & 100,00 & - \\ \hline
+GamePhase & 95,00 & - \\ \hline
+GameState & 82,00 & \multicolumn{1}{r|}{76,00} \\ \hline
+HeartsCard & 100,00 & - \\ \hline
+HeartsData & 78,00 & \multicolumn{1}{r|}{87,00} \\ \hline
+IllegalNumberOfPlayersException & - & - \\ \hline
+OtherData & 80,00 & \multicolumn{1}{r|}{100,00} \\ \hline
+PlayerState & 84,00 & \multicolumn{1}{r|}{75,00} \\ \hline
+RulesetException & - & - \\ \hline
+RulesetType & 100,00 & - \\ \hline
+ServerHearts & 92,00 & \multicolumn{1}{r|}{86,00} \\ \hline
+ServerRuleset & 87,00 & \multicolumn{1}{r|}{92,00} \\ \hline
+ServerWizard & 90,00 & \multicolumn{1}{r|}{83,00} \\ \hline
+UserMessages & 100,00 & - \\ \hline
+WizData & 100,00 & - \\ \hline
+WizardCard & 100,00 & - \\ \hline
 \end{tabular}
 
-\noindent
-\begin{tabular}{|l|r|l|}
-\hline
-Classes in this Package & \multicolumn{1}{l|}{Line Coverage} & Branch Coverage \\ \hline \hline
-Card & N/A & N/A \\ \hline 
-CardComparator & 99,00\% & \multicolumn{1}{r|}{87,00\%} \\ \hline
-ClientHearts & 100,00\% & \multicolumn{1}{r|}{100,00\%} \\ \hline
-ClientRuleset & 65,00\% & \multicolumn{1}{r|}{54,00\%} \\ \hline
-ClientWizard & 100,00\% & \multicolumn{1}{r|}{90,00\%} \\ \hline
-Colour & 66,00\% & N/A \\ \hline
-DiscardedCard & 66,00\% & N/A \\ \hline
-EmptyCard & 87,00\% & N/A \\ \hline
-GameClientUpdate & 100,00\% & N/A \\ \hline
-GamePhase & 95,00\% & N/A \\ \hline
-GameState & 82,00\% & \multicolumn{1}{r|}{76,00\%} \\ \hline
-HeartsCard & 100,00\% & N/A \\ \hline
-HeartsData & 78,00\% & \multicolumn{1}{r|}{87,00\%} \\ \hline
-IllegalNumberOfPlayersException & N/A & N/A \\ \hline
-OtherData & 80,00\% & \multicolumn{1}{r|}{100,00\%} \\ \hline
-PlayerState & 84,00\% & \multicolumn{1}{r|}{75,00\%} \\ \hline
-RulesetException & N/A & N/A \\ \hline
-RulesetType & 100,00\% & N/A \\ \hline
-ServerHearts & 92,00\% & \multicolumn{1}{r|}{86,00\%} \\ \hline
-ServerRuleset & 87,00\% & \multicolumn{1}{r|}{92,00\%} \\ \hline
-ServerWizard & 90,00\% & \multicolumn{1}{r|}{83,00\%} \\ \hline
-UserMessages & 100,00\% & N/A \\ \hline
-WizData & 100,00\% & N/A \\ \hline
-WizardCard & 100,00\% & N/A \\ \hline
+\subsection{ComObjects}
+Die Werte wurden durch JUnit-Testing erreicht.
+ \ \\ \ \\ 	
+	\noindent
+	\begin{tabular}{|l|r|r|r|} \hline
+	Paket & Klassen & Line Coverage in \% & Branch Coverage in \% \\ \hline \hline
+	ComObjects & 31 & 62 & -\\ \hline
 \end{tabular}
+ \ \\ \ \\ 
+Der Grund, warum die Gesamt-Coverage-Werte nur bei etwas über 60\% liegen und es keine Branch-Coverage-Werte gibt, ist, dass die ComObjects nur zum Weiterreichen von Information gedacht sind und demnach nahezu ausschließlich aus getter- und setter-Methoden bestehen, für die es keine Branch-Coverage Werte gibt. Je nach dem, welche Objects in einem Tests benötigt wurden, ist die Line-Coverage mal höher, mal niedriger. \\
+\ \\
+\begin{tabular}{|l|r|r|}
+\hline
+Klassen in diesem Paket & Line Coverage in \% & Branch Coverage in \% \\ \hline \hline
+ComBeenKicked & 0,00 & - \\ \hline
+ComChatMessage & 100,00 & - \\ \hline
+ComClientLeave & 66,00 & - \\ \hline
+ComClientQuit & 50,00& - \\ \hline
+ComCreateGameRequest & 66,00 &  -\\ \hline
+ComInitGameLobby & 50,00 & - \\ \hline
+ComInitLobby & 50,00 & - \\ \hline
+ComJoinRequest & 66,00 &  -\\ \hline
+ComKickPlayerRequest & 66,00 & - \\ \hline
+ComLobbyUpdateGamelist & 50,00 &  -\\ \hline
+ComLoginRequest & 66,00 & - \\ \hline
+ComNewRound & 66,00 &  -\\ \hline
+ComObject &- &-  \\ \hline
+ComRuleset & 100,00 &  -\\ \hline
+ComServerAcknowledgement & 0,00 & - \\ \hline
+ComStartGame & 100,00 &-  \\ \hline
+ComUpdatePlayerlist & 50,00 &  -\\ \hline
+ComWarning & 50,00 &  -\\ \hline
+MsgBoolean & 50,00 &- \\ \hline
+MsgCard & 75,00 & - \\ \hline
+MsgCardRequest & 50,00 &- \\ \hline
+MsgGameEnd & 50,00 & - \\ \hline
+MsgMultiCards & 100,00 & - \\ \hline
+MsgMultiCardsRequest & 50,00 &-  \\ \hline
+MsgNumber & 100,00 & - \\ \hline
+MsgNumberRequest & 33,00 &  -\\ \hline
+MsgSelection & 100,00 &-  \\ \hline
+MsgSelectionRequest & 50,00 &  -\\ \hline
+MsgUser & 50,00 &  -\\ \hline
+RulesetMessage & -& -\\ \hline
+\end{tabular}
+
 
 
 	
 	\subsection{Alle Pakete und Klassen}
 
-	\noindent	
-\begin{tabular}{|l|r|r|r|}
-\hline
-Package & \multicolumn{1}{l|}{Classes} & \multicolumn{1}{l|}{Line Coverage} & \multicolumn{1}{l|}{Branch Coverage} \\ \hline \hline
-\textbf{All Packages} & 158 & 70,00\% & 68,00\% \\ \hline 
-Client & 32 & 56,00\% & 56,00\% \\ \hline
-Client.View & 63 & 59,00\% & 42,00\% \\ \hline
-ComObjects & 31 & 62,00\% & \multicolumn{1}{l|}{N/A} \\ \hline
-Ruleset & 24 & 89,00\% & 84,00\% \\ \hline
-Server & 8 & 76,00\% & 75,00\% \\ \hline
-\end{tabular}
+	Die Werte wurden durch JUnit-Testing erreicht.
+ \ \\ \ \\ 	
+	\noindent
+	\begin{tabular}{|l|r|r|r|} \hline
+	Paket & Klassen & Line Coverage in \% & Branch Coverage in \% \\ \hline \hline
 
+Client & 32 & 56,00 & 56,00 \\ \hline
+Client.View & 63 & 59,00 & 42,00 \\ \hline
+Client.View interaktiv & 20 & 90,6 & 72,5 \\ \hline
+ComObjects & 31 & 62,00 & - \\ \hline
+Ruleset & 24 & 89,00 & 84,00 \\ \hline
+Server & 8 & 76,00 & 75,00 \\ \hline \hline
+\textbf{Alle Pakete*} & 158 & 70,00 & 68,00 \\ \hline 
+\textbf{Alle Pakete**} & 158 & 80,06 & 73,80 \\ \hline 
+\end{tabular}
+ \ \\ \ \\ 
+\noindent
+* mit dem Paket Client.View \\
+** mit dem Paket Client.View interaktiv
 	
 	
 \section{Korrektheitstests}
 Zur Suche von Fehlern, wurde das Eclipse-Plugin 'FindBugs' verwendet. Es konnte damit ein Fehler gefunden werden.
-Fehler: Eine If-Abfrage im Regelwerk wurde fälschlicherweise mit einem ';' beendet, sodass der Body leer war und der Code nicht durch die Abfrage ausgeführt wurde. Da dies ein Sonderfall im Regelwerk war, wurde der Fehler nicht anders entdeckt.
+Fehler: Eine If-Abfrage im Regelwerk wurde fälschlicherweise mit einem ';' beendet, sodass der Body leer war und der Code nicht durch die Abfrage ausgeführt wurde, sondern immer. Da dies ein Sonderfall im Regelwerk war, wurde der Fehler nicht anders entdeckt.
 
 
 \section{Skalierungs- und Belastungs-Tests}
-\subsection{Lobby}
-\subsubsection{Werte}
-LobbyXSpieler: X Spieler sind in der Lobby.
-ChatOne: Eine Person sendet eine Nachricht an alle anderen. \\
-ChatX: X Personen senden eine Nachricht an alle anderen. \\
-Create Game: Alle Spieler in der Lobby erstellen ein Spiel. \\
-Join GameX: X Spieler erstellen ein Spiel und X Spieler treten einem bei. \\ 
-QuitGame: Alle Spieler in der Lobby verlassen dass Spiel. \\
 
-Bei ChatOne, ChatX und QuitGame gibt es kein Ruleset, da kein Spiel erstellt wird \\
-Der Speicherplatz für MockPlayer ist immer gleich, außer bei joinGame, da es noch einmal soviele Gamemaster für die Spiele gibt \\
-Der Server Speicher ist bei Create und Join Game höher da viele GameServerRepräsentations an die Spieler verschickt werden \\
+In diesem Test ging es darum, das Programm auf seine Belastbarkeit zu testen, dazu wurden JUnit-Tests mit Mockklassen erstellt. Des weiteren wurden interessante Werte bzgl. Speicherverbrauch, CPU-Auslastung und Rechenzeit ausgelesen.\\
+Die Tests wurden auf einem Rechner mit folgenden Daten ausgeführt: Prozessor Intel(R) Core(TM) i5-2410M 2.30 GHz mit 64-Bit Betriebssystem, Windows 7.
+\subsection{Lobby}
+In der Lobby wurde eine Belastung von zunächst 500 Spielern, dann 1000 Spielern und zuletzt 2000 Spielern getestet. Das Programm hielt allen Tests stand.
+\ \\ \ \\
+\noindent
+CPU-Auslastung (beim Test maximal erreichte Werte):\\
+\noindent
+\begin{tabular}{|l|r|}
+\hline 
+500 Spieler & ca. 43\% \\ \hline
+1000 Spieler & ca. 45\% \\ \hline
+2000 Spieler & ca. 49\%\\ \hline
+\end{tabular}
+\ \\
+
+\subsubsection{Werte}
+Erläuterungen zu den Tabellen: \\
+\noindent
+\begin{tabular}{|l|l|}
+\hline 
+LobbyXSpieler & X Spieler sind in der Lobby\\ \hline
+ChatOne & Eine Person sendet eine Nachricht an alle anderen \\ \hline
+ChatX & X Personen senden eine Nachricht an alle anderen \\ \hline
+Create Game & Alle Spieler in der Lobby erstellen ein Spiel \\ \hline
+Join GameX & X Spieler erstellen ein Spiel und X Spieler treten einem bei \\ \hline
+QuitGame & Alle Spieler in der Lobby verlassen dass Spiel \\ \hline
+\end{tabular}
+
+\ \\ \ \\
+\noindent
+\textbf{Auffälligkeiten bei den Werten:}\\
+\begin{itemize}
+\item Bei ChatOne, ChatX und QuitGame gibt es kein Ruleset, da kein Spiel erstellt wird, deswegen sind die Werte 0. 
+\item Der Speicherplatz für MockPlayer ist immer gleich, außer bei JoinGame, da es noch einmal soviele Gamemaster für die Spiele gibt. 
+\item Der Server Speicher ist bei CreateGame und JoinGame höher, da viele GameServerRepräsentations an die Spieler verschickt werden.
+\end{itemize}
 
 \noindent
 \begin{tabular}{|l|r|r|r|r|r|r|}
 \hline
-Lobby500Spieler & \multicolumn{1}{l|}{ChatOne} & \multicolumn{1}{l|}{Chat500} & \multicolumn{1}{l|}{CreateGame} & \multicolumn{1}{l|}{JoinGame500} & \multicolumn{1}{l|}{QuitGame} & \multicolumn{1}{l|}{Summe} \\ \hline
+Lobby500Spieler & \multicolumn{1}{l|}{ChatOne} & \multicolumn{1}{l|}{Chat500} & \multicolumn{1}{l|}{CreateGame} & \multicolumn{1}{l|}{JoinGame500} & \multicolumn{1}{l|}{QuitGame} & \multicolumn{1}{l|}{Summe} \\ \hline \hline
 Durchschnittszeit in s & 0,028 & 0,101 & 0,098 & 0,185 & 0,051 & 0,463 \\ \hline
 Gesamtspeicher in kB & 17.846,333 & 22.053,000 & 25.199,000 & 37.967,000 & 19.599,667 & 122.665,000 \\ \hline
 Summe S, R, M, C in kB & 68,080 & 84,048 & 382,048 & 574,000 & 88,048 & 1.196,224 \\ \hline
@@ -607,20 +706,15 @@ Ruleset in kB & 0,000 & 0,000 & 174,000 & 174,000 & 0,000 & 348,000 \\ \hline
 MockPlayer in kB & 68,000 & 68,000 & 68,000 & 136,000 & 68,000 & 408,000 \\ \hline
 ComObjects in kB & 0,032 & 16,000 & 72,000 & 116,000 & 20,000 & 224,032 \\ \hline
 \end{tabular}
-\ \\
+
 \begin{center}
-\includegraphics[scale=0.75]{1}
+\includegraphics[scale=0.7]{1}
 \end{center}
-Bei ChatOne, ChatX und QuitGame gibt es kein Ruleset, da kein Spiel erstellt wird. \\
-Der Speicherplatz für MockPlayer ist immer gleich, außer bei joinGame, da es noch einmal soviele Gamemaster für die Spiele gibt. \\
-Der Server Speicher ist bei Create und Join Game höher da viele GameServerRepräsentations an die Spieler verschickt werden. \\
-\ \\
-\ \\
 
 \noindent
 \begin{tabular}{|l|r|r|r|r|r|r|}
 \hline
-Lobby1000Spieler & \multicolumn{1}{l|}{ChatOne} & \multicolumn{1}{l|}{Chat1000} & \multicolumn{1}{l|}{CreateGame} & \multicolumn{1}{l|}{JoinGame1000} & \multicolumn{1}{l|}{QuitGame} & \multicolumn{1}{l|}{Summe} \\ \hline
+Lobby1000Spieler & \multicolumn{1}{l|}{ChatOne} & \multicolumn{1}{l|}{Chat1000} & \multicolumn{1}{l|}{CreateGame} & \multicolumn{1}{l|}{JoinGame1000} & \multicolumn{1}{l|}{QuitGame} & \multicolumn{1}{l|}{Summe} \\ \hline \hline
 Durchschnittszeit in s & 0,052 & 0,226 & 0,191 & 0,601 & 0,104 & 1,173 \\ \hline
 Gesamtspeicher in kB & 18.279,667 & 34.865,000 & 40.458,667 & 59.965,333 & 26.502,000 & 180.070,667 \\ \hline
 Summe S, R, M, C in kB & 136,080 & 168,048 & 762,000 & 1.076,000 & 176,048 & 2.318,176 \\ \hline
@@ -630,19 +724,15 @@ MockPlayer in kB & 136,000 & 136,000 & 136,000 & 272,000 & 136,000 & 816,000 \\ 
 ComObjects in kB & 0,032 & 32,000 & 144,000 & 232,000 & 40,000 & 448,032 \\ \hline
 \end{tabular}
 \ \\
+
 \begin{center}
-\includegraphics[scale=0.75]{2}
+\includegraphics[scale=0.7]{2}
 \end{center}
-Bei ChatOne, ChatX und QuitGame gibt es kein Ruleset, da kein Spiel erstellt wird. \\
-Der Speicherplatz für MockPlayer ist immer gleich, außer bei joinGame, da es noch einmal soviele Gamemaster für die Spiele gibt. \\
-Der Server Speicher ist bei Create und Join Game höher da viele GameServerRepräsentations an die Spieler verschickt werden. \\
-\ \\
-\ \\
 
 \noindent
 \begin{tabular}{|l|r|r|r|r|r|r|}
 \hline
-Lobby2000Spieler & \multicolumn{1}{l|}{ChatOne} & \multicolumn{1}{l|}{Chat2000} & \multicolumn{1}{l|}{CreateGame} & \multicolumn{1}{l|}{JoinGame2000} & \multicolumn{1}{l|}{QuitGame} & \multicolumn{1}{l|}{Summe} \\ \hline
+Lobby2000Spieler & \multicolumn{1}{l|}{ChatOne} & \multicolumn{1}{l|}{Chat2000} & \multicolumn{1}{l|}{CreateGame} & \multicolumn{1}{l|}{JoinGame2000} & \multicolumn{1}{l|}{QuitGame} & \multicolumn{1}{l|}{Summe} \\ \hline \hline
 Durchschnittszeit in s & 0,038 & 0,610 & 0,577 & 2,520 & 0,117 & 3,861 \\ \hline
 Gesamtspeicher in kB & 18.932,000 & 46.328,667 & 77.498,333 & 131.333,333 & 32.925,333 & 307.017,667 \\ \hline
 Summe S, R, M, C in kB & 272,080 & 336,048 & 1.520,000 & 2.273,000 & 352,048 & 4.753,176 \\ \hline
@@ -653,31 +743,65 @@ ComObjects in kB & 0,032 & 64,000 & 288,000 & 464,000 & 80,000 & 896,032 \\ \hli
 \end{tabular}
 \ \\
 \begin{center}
-\includegraphics[scale=0.75]{3}
+\includegraphics[scale=0.7]{3}
 \end{center}
-Bei ChatOne, ChatX und QuitGame gibt es kein Ruleset, da kein Spiel erstellt wird. \\
-Der Speicherplatz für MockPlayer ist immer gleich, außer bei joinGame, da es noch einmal soviele Gamemaster für die Spiele gibt. \\
-Der Server Speicher ist bei Create und Join Game höher da viele GameServerRepräsentations an die Spieler verschickt werden. \\
 
 \subsubsection{Zusammenfassung}
 
 \begin{center}
-\includegraphics[scale=0.75]{7}
+\includegraphics[scale=0.7]{4}
 \end{center}
 
 \begin{center}
-\includegraphics[scale=0.75]{8}
+\includegraphics[scale=0.7]{5}
 \end{center}
 
+\noindent
 JoinGame braucht die meiste Zeit und Gesamtspeicher, da vorher noch die entsprechende Zahl an Spielen erstellt werden muss.
 
 
 \subsection{Server}
+Im Server wurde eine Belastung von zunächst 100 Spielen, dann 250 Spielen und zuletzt 500 Spielen mit je 3 Spielern pro Spiel getestet. Das Programm hielt allen Tests stand.
+\ \\ \ \\
+\noindent
+CPU-Auslastung (beim Test maximal erreichte Werte):\\
+\noindent
+\begin{tabular}{|l|r|}
+\hline 
+100 Spiele & ca. 40\% \\ \hline
+250 Spiele & ca. 45\% \\ \hline
+500 Spieler & ca. 54\%\\ \hline
+\end{tabular}
+\subsubsection{Werte}
+
+Erläuterungen zu den Tabellen: \\
+\noindent
+\begin{tabular}{|l|l|}
+\hline 
+GameServerX & X Spiele mit je 3 Spielern darin\\ \hline
+ChatOne & Eine Person in jedem Spiel sendet eine Nachricht an seine Mitspieler\\ \hline
+ChatX & Alle Spieler in einem Spiel senden eine Nachricht an alle anderen Spieler im Spiel\\ \hline
+KickPlayer & Der GameMaster jedes Spieles wirft einen Spieler raus\\ \hline
+GameMasterLeav & Der GameMaster in jedem Spiel verlässt dieses\\ \hline
+StartGame & Alle Spiele werden gestartet\\ \hline
+\end{tabular}
+
+\ \\ \ \\
+\noindent
+\textbf{Auffälligkeiten bei den Werten:}\\
+\begin{itemize}
+\item Der Server Speicher ist bei KickPlayer und GameMasterLeave sehr viel höher, da viele GameServerRepräsentations an die Spieler verschickt werden.
+\item Das Ruleset ist bei StartGame am höchsten, da es das Spiel startet und Karten etc. verschickt.
+\item Bei vielen Spielern verbraucht der Server exponentiell viel mehr Speicher, da sehr viele GameServerUpdates an alle Spieler verschickt verden und diese viel Speicher benötigen.
+
+\end{itemize}
+ 
+ \ \\ \ \\
 
 \noindent
 \begin{tabular}{|l|r|r|r|r|r|r|}
 \hline
-GameServer100 & \multicolumn{1}{l|}{ChatOne} & \multicolumn{1}{l|}{Chat300} & \multicolumn{1}{l|}{KickPlayer} & \multicolumn{1}{l|}{GameMasterLeave} & \multicolumn{1}{l|}{StartGame} & \multicolumn{1}{l|}{Summe} \\ \hline
+GameServer100 & \multicolumn{1}{l|}{ChatOne} & \multicolumn{1}{l|}{Chat300} & \multicolumn{1}{l|}{KickPlayer} & \multicolumn{1}{l|}{GameMasterLeave} & \multicolumn{1}{l|}{StartGame} & \multicolumn{1}{l|}{Summe} \\ \hline \hline
 Durchschnittszeit in s & 0,126 & 0,158 & 0,169 & 0,191 & 0,169 & 0,812 \\ \hline
 Gesamtspeicher in kB & 20.341,000 & 21.002,333 & 21.290,000 & 23.180,667 & 20.965,000 & 106.779,000 \\ \hline
 Summe S, R, M, C in kB & 163,792 & 170,192 & 586,256 & 794,656 & 304,576 & 2.019,472 \\ \hline
@@ -688,10 +812,8 @@ ComObjects in kB & 40,000 & 46,400 & 55,120 & 61,520 & 59,120 & 262,160 \\ \hlin
 \end{tabular}
 \ \\
 \begin{center}
-\includegraphics[scale=0.75]{4}
+\includegraphics[scale=0.7]{6}
 \end{center}
-Der Server Speicher ist bei KickPlayer und GameMasterLeave sehr viel höher, da viele GameServerRepräsentations an die Spieler verschickt werden. \\
-Das Ruleset ist bei StartGame am höchsten, da es das Spiel startet und Karten etc. verschickt.
 
 \ \\
 \ \\
@@ -699,7 +821,7 @@ Das Ruleset ist bei StartGame am höchsten, da es das Spiel startet und Karten e
 \noindent
 \begin{tabular}{|l|r|r|r|r|r|r|}
 \hline
-GameServer250 & \multicolumn{1}{l|}{ChatOne} & \multicolumn{1}{l|}{Chat750} & \multicolumn{1}{l|}{KickPlayer} & \multicolumn{1}{l|}{GameMasterLeave} & \multicolumn{1}{l|}{StartGame} & \multicolumn{1}{l|}{Summe} \\ \hline
+GameServer250 & \multicolumn{1}{l|}{ChatOne} & \multicolumn{1}{l|}{Chat750} & \multicolumn{1}{l|}{KickPlayer} & \multicolumn{1}{l|}{GameMasterLeave} & \multicolumn{1}{l|}{StartGame} & \multicolumn{1}{l|}{Summe} \\ \hline \hline
 Durchschnittszeit in s & 0,225 & 0,291 & 0,315 & 0,419 & 0,252 & 1,503 \\ \hline
 Gesamtspeicher in kB & 31.476,333 & 34.668,000 & 42.475,333 & 53.536,667 & 31.783,667 & 193.940,000 \\ \hline
 Summe S, R, M, C in kB & 404,936 & 420,936 & 2.962,936 & 4.148,936 & 755,000 & 8.692,744 \\ \hline
@@ -710,17 +832,15 @@ ComObjects in kB & 100,000 & 116,000 & 138,000 & 138,000 & 145,000 & 637,000 \\ 
 \end{tabular}
 \ \\
 \begin{center}
-\includegraphics[scale=0.75]{5}
+\includegraphics[scale=0.7]{7}
 \end{center}
-Der Server Speicher ist bei KickPlayer und GameMasterLeave sehr viel höher, da viele GameServerRepräsentations an die Spieler verschickt werden. \\
-Das Ruleset ist bei StartGame am höchsten, da es das Spiel startet und Karten etc. verschickt.
 \ \\
 \ \\
 
 \noindent
 \begin{tabular}{|l|r|r|r|r|r|r|}
 \hline
-GameServer500 & \multicolumn{1}{l|}{ChatOne} & \multicolumn{1}{l|}{Chat1500} & \multicolumn{1}{l|}{KickPlayer} & \multicolumn{1}{l|}{GameMasterLeave} & \multicolumn{1}{l|}{StartGame} & \multicolumn{1}{l|}{Summe} \\ \hline
+GameServer500 & \multicolumn{1}{l|}{ChatOne} & \multicolumn{1}{l|}{Chat1500} & \multicolumn{1}{l|}{KickPlayer} & \multicolumn{1}{l|}{GameMasterLeave} & \multicolumn{1}{l|}{StartGame} & \multicolumn{1}{l|}{Summe} \\ \hline \hline
 Durchschnittszeit in s & 0,485 & 0,583 & 0,620 & 1,011 & 0,501 & 3,199 \\ \hline
 Gesamtspeicher in kB & 42.339,000 & 45.215,667 & 74.373,333 & 91.421,667 & 45.612,333 & 298.962,000 \\ \hline
 Summe S, R, M, C in kB & 806,000 & 838,000 & 10.801,000 & 15.844,000 & 1.590,000 & 29.879,000 \\ \hline
@@ -731,22 +851,20 @@ ComObjects in kB & 200,000 & 232,000 & 276,000 & 308,000 & 292,000 & 1.308,000 \
 \end{tabular}
 \ \\
 \begin{center}
-\includegraphics[scale=0.75]{6}
+\includegraphics[scale=0.7]{8}
 \end{center}
-Der Server Speicher ist bei KickPlayer und GameMasterLeave sehr viel höher, da viele GameServerRepräsentations an die Spieler verschickt werden. \\
-Das Ruleset ist bei StartGame am höchsten, da es das Spiel startet und Karten etc. verschickt.
 
 \subsubsection{Zusammenfassung}
 
 \begin{center}
-\includegraphics[scale=0.75]{9}
+\includegraphics[scale=0.7]{9}
 \end{center}
-Bei vielen Spielern verbraucht der Server exponentiell viel mehr Speicher, da sehr viele GameServerUpdates an alle Spieler verschickt verden und diese viel Speicher brauchen.
+\noindent
+GameMasterLeave braucht die meiste Zeit und Gesamtspeicher, da alle Spieler die GameLobby verlassen und entsprechende Updates verschickt werden müssen.
 
 \begin{center}
-\includegraphics[scale=0.75]{10}
+\includegraphics[scale=0.7]{10}
 \end{center}
-GameMasterLeave braucht die meiste Zeit und Gesamtspeicher, da alle Spieler die GameLobby verlassen und entsprechende Updates verschickt werden müssen
 
 
 \section{Weitere Tests}
@@ -759,5 +877,27 @@ GameMasterLeave braucht die meiste Zeit und Gesamtspeicher, da alle Spieler die 
 	\item Rundenanzahl: Es wurde angemerkt, dass die Anzeige einer Rundenzahl sinnvoll wäre, sodass man sehen kann in 			welcher man sich befindet, ohne mitzuzählen. Die Rundenzahl wird nun zusätzlich im Infofenster angezeigt, in dem der			Spieler auch seine anderen Informationen sehen kann.
 	\item Beschränkte Länge des Namens: Da die Länge des Spielernamens zuvor nicht eingeschränkt war, und deshalb nicht 		der ganze Name im Spielfenster dargestellt werden konnte, wurde eine Begrenzung der Länge eingeführt.
 	\end{itemize}
+	
+\section{Fakten zum Programm NETWizHearts}
+	\begin{itemize}
+\item 229 Klassen insgesamt
+\begin{itemize}
+\item 114 Kernklassen
+\item 68 anonyme Klassen
+\item 42 Testklassen
+\item 5 MockObjekte
+\end{itemize}
+\item 18611 Zeilen gesamt
+\begin{itemize}
+\item 14936 Zeilen Code
+\begin{itemize}
+\item 7811 Zeilen Production Code
+\item 7125 Zeilen Testcode in 295 Testfällen
+\end{itemize}
+\item 3675 Zeilen JavaDoc
+\end{itemize}
+
+\item Code-Testcode Verhältnis ca. 1:1,1 
+\end{itemize}
 
 \end{document}
