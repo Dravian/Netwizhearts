@@ -55,78 +55,78 @@ Im folgenden Dokument werden alle Tests und ihre Ergebnisse aufgeführt, die im 
 \section{Änderungen am Spiel}
 \subsection{Änderungen zu vorherigen Phasen}
 	\begin{itemize}
-	\item{Kartenanzeige/Timer:} Um das Spiel benutzerfreundlicher zu gestalten wurde ein Timer eingefügt, der dafür sorgt, 		dass, wenn der letzte Spieler eines Umlaufes seine Karte ablegt, diese noch etwa eine Sekunde angezeigt werden, damit 		auch andere Mitspieler die zuletzt gelegte Karte erkennen können. 
-	\item{Sortierung:} Die Karten der beiden Spiele werden nun sortiert um das Spiel übersichtlicher zu gestalten.
-	\item{Spielende:} Es wurde eine Umfrage hinzugefügt, die es den Spielern erlaubt, nach dem Spielende direkt ein neues 		Spiel zu starten in der selben Zusammensetzung, wir zuvor, sofern jeder Spieler zustimmt.
-	\item{Buttons:} Buttons, die nicht gedrückt werden können sind nun ausgegraut, statt einfach nur keine Reaktion 			hervorzurufen.
-	\item{Rundenanzeige:} In dem Bereich, in welchem zuletzt die eigenen Informationen des Spieler angezeigt wurden, wird 		nun auch noch die Rundenzahl angezeigt.
+	\item \textbf{Kartenanzeige/Timer:} Um das Spiel benutzerfreundlicher zu gestalten, wurde ein Timer eingefügt, der dafür sorgt, dass, wenn der letzte Spieler eines Umlaufes seine Karte ablegt, alle ausgespielten Karten noch etwa eine Sekunde angezeigt werden, damit auch andere Mitspieler die zuletzt gelegte Karte erkennen können und sehen, wer den Stich gemacht hat.
+	\item \textbf{Sortierung:} Die Karten der beiden Spiele werden nun sortiert, um das Spiel übersichtlicher zu gestalten.
+	\item \textbf{Spielende:} Es wurde eine Umfrage hinzugefügt, die es den Spielern erlaubt, nach dem Spielende direkt ein neues 		Spiel zu starten, in der selben Zusammensetzung wir zuvor, sofern jeder Spieler zustimmt.
+	\item \textbf{Buttons:} Buttons, die nicht gedrückt werden können sollen, sind nun ausgegraut, statt keine Reaktion 			hervorzurufen.
+	\item \textbf{Rundenanzeige:} In dem Bereich, in welchem zuletzt die eigenen Informationen des Spieler angezeigt wurden, wird 		nun auch noch die Rundenzahl angezeigt.
 	\end{itemize}
 	
 \subsection{Bereits bekannte und korrigierte Bugs}
-Die Einstufung der Bugs erfolgt nach drei Kriterien:
+Die Einstufung der Bugs erfolgt nach folgenden drei Kriterien:
 \begin{itemize}
-\item kritisch: \\
+\item \textbf{kritisch:} \\
 Der Fehler muss dringend behoben werden, da die Funktionen durch den Fehler stark beeinträchtigt werden.
-\item wichtig: \\
+\item \textbf{wichtig:} \\
 Der Fehler sollte behoben werden, da Funktionen nicht einwandfrei genutzt werden können oder Verwirrungen für den Benutzer entstehen.
-\item wünschenswert: \\
+\item \textbf{wünschenswert:} \\
 Es wäre gut, wenn der Fehler behoben würde. Da es sich jedoch um einen Schönheitsfehler handelt, ist dies nicht zwingend nötig, da die Funktionen des Programms nicht weiter eingeschränkt werden.
 \end{itemize}
 \ \\
 \noindent
-Es folgen aus der Implementierungsphase bekannte Bugs mit Ergebnis und Einstufung:
+Es folgen aus der Implementierungsphase bekannte Bugs mit Einstufung und Ergebnis:
 	\begin{itemize}
-	\item \textbf{Hearts - Spielen der Karten:} Momentan wird beim Spielen von Hearts vom ServerRuleset keine Nachricht an 		alle ClientRulesets gesendet, wenn Herz gebrochen wird. Dadurch entsteht der Fehler, dass nur derjenige, der Herz 			gebrochen hat davon weiß und deshalb die anderen Mitspieler dennoch kein Herz spielen können. \\
-	\textbf{Einstufung:} kritisch, da das Regelwerk nicht Fehlerfrei funktioniert hat. Dies macht Spielen unmöglich.\\
+	\item \textbf{Hearts - Spielen der Karten:} Es wird beim Spielen von Hearts vom ServerRuleset keine Nachricht an 		alle ClientRulesets gesendet, wenn Herz gebrochen wird. Dadurch entsteht der Fehler, dass nur derjenige, der Herz 			gebrochen hat, davon weiß und deshalb die anderen Mitspieler dennoch kein Herz spielen können. \\
+	\textbf{Einstufung:} kritisch, da das Regelwerk nicht Fehlerfrei funktioniert. Dies macht Spielen unmöglich.\\
 	\textbf{Ergebnis:} Der Fehler wurde behoben, die benötigte Nachricht wird jetzt gesendet. Dazu wurde eine neue RulesetMessage 'MsgBoolean' angelegt.\\
 	
-	\item \textbf{Abgelegte Karten:} Wir bei einem Umlauf im Spiel die letzte Karte gespielt, verschwinden alle Karten in 			diesem Moment. Die anderen Spieler haben so keine Möglichkeit, die zuletzt gespielte Karte zu erkennen. Dadurch ist es 			kaum möglich den Spielverlauf nachzuvollziehen. Deshalb sollen die Karten noch einige Sekunden angezeigt werden, bevor 		ein neuer Umlauf beginnt. \\
-	\textbf{Einstufung:} wichtig, da es unter Umständen nötig ist, die gespielten gegnerischen Karten sehen zu können, um eine Strategie zu entwickeln. 
+	\item \textbf{Abgelegte Karten:} Wird bei einem Umlauf im Spiel die letzte Karte gespielt, verschwinden alle abgelegten Karten in diesem Moment. Die anderen Spieler haben so keine Möglichkeit, die zuletzt gespielte Karte zu erkennen. Dadurch ist es 			kaum möglich den Spielverlauf nachzuvollziehen. Deshalb sollen die Karten noch einige Sekunden angezeigt werden, bevor ein neuer Umlauf beginnt. \\
+	\textbf{Einstufung:} wichtig, da es unter Umständen nötig ist, die gespielten gegnerischen Karten sehen zu können, um eine Strategie zu entwickeln. \\
 	\textbf{Ergebnis:} Der Fehler wurde behoben. Die Karten werden nun 1,2 Sekunden angezeigt.\\
 	
 	\item \textbf{Heartspunkte:} Beim Spiel Hearts wird bei den Informationen von jedem Spieler die Anzahl der gemachten 			Stiche statt der Punkte angezeigt. \\
 	\textbf{Einstufung:} wichtig, da Informationen über die Punkte der gegnerischen Spieler ein strategisches Spielen ermöglichen, außerdem ist die Anzeige der eigenen Punkte von Nöten, um einen Spielüberblick zu behalten.\\
-	\textbf{Ergebnis:} Der Fehler wurde behoben, die Anzeige ist jetzt richtig.
+	\textbf{Ergebnis:} Der Fehler wurde behoben, die Anzeige enthält jetzt die richtigen Informationen.
 
 	\item \textbf{GUI Hearts:} Im Spiel Hearts werden rechts unten im Spielfenster Komponenten angezeigt, die das Spiel 			nicht benötigt, beispielsweise die Anzeige einer Trumpfkarte. \\
-	\textbf{Einstufung:} wünschenswert, da ein Spieler womöglich durch funktionslose Felder auf dem Spielfeld verwirrt werden könnte.\\
+	\textbf{Einstufung:} wünschenswert, da ein Spieler womöglich durch funktionslose Felder auf dem Spielfeld verwirrt werden könnte, der Spielablauf wird dadurch allerdings zu keinem Zeitpunkt eingeschränkt.\\
 	\textbf{Ergebnis:} Der Fehler wurde behoben. Unnötige Komponenten sind jetzt nicht mehr sichtbar.\\
 	
-	\item \textbf{Fehlermeldungen:} Einige Fehlermeldungen können noch optimiert werden. So enthält beispielsweise die 			Fehlermeldung bei der Eingabe eines falschen Passwortes einen Rechtschreibfehler im Wort 'incorrect'. \\
+	\item \textbf{Fehlermeldungen:} Einige Fehlermeldungen können noch optimiert werden. So enthält beispielsweise die englische Fehlermeldung bei der Eingabe eines falschen Passwortes einen Rechtschreibfehler im Wort 'incorrect'. \\
 	\textbf{Einstufung:} wünschenswert, da alle Fehlermeldungen korrekt sind, jedoch Ausdrucks- und Rechtschreibfehler enthalten.\\
 	\textbf{Ergebnis:} Der Fehler wurde behoben. Die Fehlermeldungen sind optimiert.\\
 	
-	\item \textbf{Kartenrückseite unter Linux:} Bild der Kartenrückseite wird unter Linux nicht sofort initialisiert, wenn das 			Spielfenster geöffnet wird, sondern erst beim Spielstart. \\
+	\item \textbf{Kartenrückseite unter Linux:} Die Bilder der Kartenrückseiten werden unter Linux nicht sofort initialisiert, wenn das Spielfenster geöffnet wird, sondern erst beim Spielstart. \\
 	\textbf{Einstufung:} wünschenswert, da es möglich ist das Spiel fehlerfrei zu spielen, da nur die Kartenrückseiten betroffen sind und diese nach der ersten Aktion erschienen.\\
 	\textbf{Ergebnis:} Der Fehler wurde behoben.\\
 	
 	\item \textbf{Spielende und Scorefenster:}  Das Spiel wird am Ende beendet, ohne dass ein Scorefenster angezeigt wird.\\
-	\textbf{Einstufung:} kritisch, da keine Scores eingesehen werden können und auch kein Spiel neu gestartet werden kann. Es kann so kein Gewinner ermittelt werden. Es fehlt demnach eine vollständige Funktion des Spiels.\\
+	\textbf{Einstufung:} kritisch, da keine Scores eingesehen werden können und auch kein Spiel neu gestartet werden kann. Es kann so kein Gewinner ermittelt werden und es fehlt demnach eine vollständige Funktion des Spiels.\\
 	\textbf{Ergebnis:} Der Fehler wurde behoben. Es wird nun ein Scorefenster mit dem Gewinner und den Punkten aller Mitspieler angezeigt. Des weiteren wird eine Umfrage gestartet, ob die Spieler eine weitere Runde spielen möchten. Bestätigen alle Spieler diese positiv, so wird ein neues Spiel gestartet. Ansonsten wird das Spiel aufgelöst und alle Spieler werden in die 		Lobby zurückgeleitet.\\
 	
 	\item \textbf{GUI Wizard:} Befindet man sich beim Spiel Wizard in der letzten Spielrunde, so gibt es keine Trumpfkarte oder 	Trumpffarbe mehr. Das Feld für diese beiden Anzeigen sollte also leer sein. Dies ist jedoch nicht der Fall, denn es wird 			immernoch die Trumpfkarte der vorherigen Runde angezeigt.\\
-	\textbf{Einstufung:} wichtig, da das Spiel fehlerfrei gespielt werden konnte, jedoch die Karte sehr verwirrend für die Spieler ist und so eventuell falsche Vorhersagen getroffen werden.\\
+	\textbf{Einstufung:} wichtig, da das Spiel fehlerfrei gespielt werden kann, jedoch die Karte sehr verwirrend für die Spieler ist und so eventuell falsche Vorhersagen getroffen werden.\\
 	\textbf{Ergebnis:} Der Fehler wurde behoben. Das Kartenfeld ist in der letzten Runde leer.\\
 	\end{itemize}
 	
 \subsection{Während der Validierung gefundene Bugs}
-	Bugs, die während der Validierung gefunden wurden, werden an der entsprechenden Stelle detailliert ausgeführt.
+	Bugs, die während der Validierung durch interaktives Testen des Spiels vom Team oder durch JUnit-Tests gefunden wurden, werden im Folgenden ausgeführt.
 	\begin{itemize}
 	\item Gefunden durch interaktive Spiel-Tests im Team
 	\begin{itemize}
 	\item{\textbf{Farbzwang-Bug Wizard:}} Wenn als erste Karte der Runde ein Narr gelegt wird und anschließend ein Zauberer, muss man die Farbe des Zauberers zugeben, obwohl man jede beliebiege Karte spielen können sollte.\\
 	\textbf{Einstufung:} kritisch, da das Regelwerk falsche Aktionen fordert. Das Spiel funktioniert dadurch nicht mehr einwandfrei.\\
-	\textbf{Ergebnis:} Der Fehler wurde behoben, indem kleine Änderungen in der isVaildMove-Methode der Klasse ClientWizard und ServerWizard vorgenommen wurden.
+	\textbf{Ergebnis:} Der Fehler wurde behoben, indem kleine Änderungen an der isVaildMove-Methode der Klasse ClientWizard und ServerWizard vorgenommen wurden.
 	\end{itemize}
 	\item Gefunden durch JUnit-Testing
 	\begin{itemize}
-	\item{\textbf{Scorefenster-Bug:}} Wenn nach einem Spiel das Scorefenster geöffnet wird und der Spieler bei der Umfrage, ob ein neues Spiel gestartet werden soll auf 'nein' klickt, wird keine Aktion ausgeführt, da im Model kein ComObject für diesen Fall versendet wird. Gefunden wurde dieser Bug durch den ClientViewGamendTest.
-	\textbf{Einstufung:} wichtig, da das Spiel auch auf das Klicken auf 'X' im Spielfeld beendet werden kann, jedoch die Umfrageoption nicht einwandfrei funktioniert.
+	\item{\textbf{Scorefenster-Bug:}} Wenn nach einem Spiel das Scorefenster geöffnet wird und der Spieler bei der Umfrage, ob ein neues Spiel gestartet werden soll, auf 'nein' klickt, wird keine Aktion ausgeführt, da im Model kein ComObject für diesen Fall versendet wird. Gefunden wurde dieser Bug durch den ClientViewGamendTest.\\
+	\textbf{Einstufung:} wichtig, da das Spiel auch auf das Klicken auf 'X' im Spielfeld beendet werden kann, jedoch die Umfrageoption nicht einwandfrei funktioniert.\\
 	\textbf{Ergebnis:} Der Fehler wurde behoben. Das entsprechende ComObject wird versendet und das Spiel geschlossen. 
 	
-	\item{\textbf{Disconnect-Bug im Server:}} Im GameServer in den Methoden stand statt disconnectPlayer(player) nur player.closeConnection. Die Namen der Spieler, die das Spiel verließen, wurden deshalb nicht mehr frei gegeben.
+	\item{\textbf{Disconnect-Bug im Server:}} Im GameServer stand in den Methoden statt disconnectPlayer(player) nur player.closeConnection. Die Namen der Spieler, die das Spiel verließen, wurden deshalb nicht mehr frei gegeben.
 Der Fehler wurde durch die GameServerCheatTests gefunden.\\
-	\textbf{Einstufung:} kritisch, da ein Spieler nach dem Logout seinen Namen wieder benutzen können muss. Des weiteren würde die Liste mit den Spielernamen im Server immer länger werden und nie wieder weniger.\\
+	\textbf{Einstufung:} kritisch, da ein Spieler nach dem Logout seinen Namen wieder benutzen können muss. Des weiteren würde die Liste mit den Spielernamen im Server immer länger werden, was unnötigen Speicherplatz verbraucht.\\
 	\textbf{Ergebnis:} Der Fehler wurde behoben, die Namen werden wieder frei gegeben.
 	\end{itemize}
 \end{itemize}
@@ -137,7 +137,7 @@ Die im Pflichtenheft beschriebenen Tests wurden alle ausgeführt und bestanden. 
 In folgenden Tests wurde der Text der Fehlermeldung verändert: /T025/, /T027/, /T029/, /T097/, /T280/, /T245/.  \\
 In folgenden Tests wurde eine falsche Aktion durch die GUI unterbunden, statt eine Fehlermeldung auszugeben: /T092/, /T117/, /T182/, /T185/.  \\
 In folgenden Tests wurde eine unnötige Nachricht vom Server im Chat weggelassen: /T170/, /T180/, /T228/, /T230/.\\
-Es folgt eine genaue Beschreibung der Testfälle aus dem Pflichtenheft mit Testergebnis.
+Es folgt eine genaue Beschreibung der Testfälle aus dem Pflichtenheft mit Testergebnis. Die Angabe der Fehlermeldungen erfolgt in deutsch, jedoch enthalten sie in anderen Sprachen den selben Textinhalt.
 \begin{itemize}
 	\item Login (keine Vorraussetzungen)
 	\begin{itemize}
@@ -148,10 +148,10 @@ Es folgt eine genaue Beschreibung der Testfälle aus dem Pflichtenheft mit Teste
 		\item /T025/ \textit{Falsche Eingabe (Name):} Mr. Blue gibt keinen Namen ein, es kommt zu einer Fehlermeldung 				(/L290/ 'Kein Name angegeben'). \\
 		Ergebnis: Der Test wurde bestanden. Die Fehlermeldung lautet 'Bitte gib einen Benutzernamen ein.'.
 		
-		\item /T027/ \textit{Falsche Eingabe (Name):} Nachdem Mr. Blue schon auf dem Server eingeloggt ist, 				versucht nun Mr. Bleau sich mit dem Nickname 'MrBlue' einzuloggen. Es wird eine Fehlermeldung angezeigt (/L290/ 			'Name wird bereits verwendet'). \\
+		\item /T027/ \textit{Falsche Eingabe (Name):} Nachdem Mr. Blue schon mit dem Name 'MrBlue' auf dem Server eingeloggt ist, versucht nun Mr. White sich mit dem Nickname 'MrBlue' einzuloggen. Es wird eine Fehlermeldung angezeigt (/L290/ 			'Name wird bereits verwendet'). \\
 		Ergebnis: Der Test wurde bestanden. Die Fehlermeldung lautet 'Login fehlgeschlagen. Der Benutzername ist bereits 			vergeben.'
 		
-		\item /T029/ \textit{Falsche Eingabe (IP):} Mr. Blue vertippt sich beim Eingeben der Serveradresse. Beim 				Loginversuch wird ein Fehler ausgegeben (/L290/  'Server konnte nicht gefunden werden'). \\
+		\item /T029/ \textit{Falsche Eingabe (IP):} Mr. Blue gibt eine falsche Serveradresse ein. Beim 			Loginversuch wird ein Fehler ausgegeben (/L290/  'Server konnte nicht gefunden werden'). \\
 		Ergebnis: Der Test wurde bestanden. Die Fehlermeldung lautet 'Diese Adresse ist unbekannt.'
 		
 		\item /T030/ \textit{Auswahl der Sprache:} Mr. Blue wählt im Dropdown-Menü die Sprache 'English' aus (/F050W/), 			das Login-Fenster wird neu erstellt und es und alle folgenden Fenster sind nun in englischer Sprache. \\
@@ -164,10 +164,10 @@ Es folgt eine genaue Beschreibung der Testfälle aus dem Pflichtenheft mit Teste
 	\item Lobby (Vorraussetzungen: /T020/) :
 	\begin{itemize}
 	
-		\item /T040/ \textit{Spielerliste:} Der eigene Benutzername 'MrBlue' und die Benutzernamen aller anderen 					verbundenen Clients werden sofort in der Spielerliste angezeigt (/L100/). \\
+		\item /T040/ \textit{Spielerliste:} Der eigene Benutzername 'MrBlue' und die Benutzernamen aller anderen 					verbundenen Clients werden sofort nach dem Login in der Spielerliste angezeigt (/L100/). \\
 		Ergebnis: Der Test wurde bestanden.
 		
-		\item /T050/ \textit{Serverliste:} Alle von Nutzern erstellten Spiele werden in der Spielliste angezeigt (/L110/). 			\\
+		\item /T050/ \textit{Serverliste:} Alle von Nutzern erstellten Spiele werden direkt nach deren Erstellung in der Spielliste angezeigt (/L110/). 			\\
 		Ergebnis: Der Test wurde bestanden.
 		
 		\item /T060/ \textit{Chatnachricht senden:} Mr. Blue gibt die Nachricht 'Hallo Kartenwelt!' in das untere Textfeld ein 			und drückt die Entertaste (/F060/). Im oberen Textfeld wird die aktuellste Nachricht und alle bisher gesendeten 				Nachrichten angezeigt (/L115/). Mr. Pink ist auch in der Lobby, sieht die Nachricht von Mr. Blue (/L115/) und 				sendet die Nachricht 'Hallo MrBlue' (/F060/). Diese erscheint ebenfalls im Chat aller Spieler(/L115/). \\
@@ -207,7 +207,7 @@ Es folgt eine genaue Beschreibung der Testfälle aus dem Pflichtenheft mit Teste
 		\item /T115/ \textit{Spiel erstellen:} Mr. White gibt keinen Spielnamen an. Bei drücken des 'Create'-Knopfes wird ein 			Spiel mit dem Namen 'MrWhite`s Spiel' erstellt. \\
 		Ergebnis: Der Test wurde bestanden.
 		
-		\item /T117/ \textit{Fehler bei Spiel erstellen:} Mr. White gibt 'NewHeist' als Spielname ein (/F122/). Er setzt einen 			Haken bei 'Passwort', aber vergisst ein Passwort einzugeben. Bei drücken des 'Create'-Knopfes wird eine 					Fehlermeldung angezeigt (/L290/ 'Kein Passwort gewählt'). \\
+		\item /T117/ \textit{Fehler bei Spiel erstellen:} Mr. White gibt 'NewHeist' als Spielname ein (/F122/). Er setzt einen 			Haken bei 'Passwort', aber vergisst ein Passwort einzugeben. Beim drücken des 'Create'-Knopfes wird eine 					Fehlermeldung angezeigt (/L290/ 'Kein Passwort gewählt'). \\
 		Ergebnis: Der Test wurde bestanden. Solange kein Passwort in das Feld eingegeben wurde, obwohl der Haken 				gesetzt ist, kann der Erstellen-Button nicht gedrückt werden.
 		
 		\item /T120/ \textit{Erstellung abbrechen:} Mr. White erfährt, dass Mr. Pink schon in einem anderen Spiel ist und 				entschließt sich die Erstellung abzubrechen. Er drückt den 'Cancel'-Knopf und gelangt zurück in die Lobby		(/F124/). \\
@@ -238,7 +238,7 @@ Es folgt eine genaue Beschreibung der Testfälle aus dem Pflichtenheft mit Teste
 		
 		\item /T200/ \textit{Spiel auflösen:} Es dauert Mr. Pink zu lange, bis genug Spieler zusammenkommen, also verlässt 			er das Wartefenster. Da er der Spielleiter war, wird das Spiel aufgelöst und alle Spieler gelangen zurück 			zur Lobby (/F190/). \\
 		Ergebnis: Der Test wurde bestanden.
-		
+	\newpage	
 	\end{itemize}
 	\item Spielfenster Allgemein (Voraussetzung: /T190/)
 	\begin{itemize}
@@ -313,7 +313,7 @@ Der Interaktive Test ist somit der aussagekräftigere Test und wird im Anschluss
 	\item Nicht betrachtete Testfälle: \\
 	\begin{itemize}
 	\item Fehlermeldung durch ausgegrauten Button ersetzt: /T092/, /T117/, /T182/, /T185/. \\
-	\item Testfall, der das Programm beenden würden und somit die Coverage-Aufzeichnung unterbrechen würde: /T035/. \\
+	\item Testfall, der das Programm beenden und somit die Coverage-Aufzeichnung unterbrechen würde: /T035/. \\
 	\item Vom Zufall abhängig (eigentlich deswegen auch kein Testfall): /T230/. \\
 	\item Setzen Ende des Spiels vorraus, Zeitaufwand zu hoch: /T270/, /T320/, /T260/. \\
 	\end{itemize}
@@ -333,38 +333,38 @@ Client.View & \multicolumn{1}{r|}{20} & \multicolumn{1}{r|}{90,6} & \multicolumn
 \begin{tabular}{|l|r|r|}
 \hline
 Klassen in diesem Paket & Line Coverage in \% & Branch Coverage in \% \\ \hline \hline
-GamePanel & 96,5 & 93,5 \\ \hline
-ScoreWindow & 64,1 & 31,2 \\ \hline
-ChooseItem & 65,1 & 33,3 \\ \hline
-Game & 96,6 & 78,6 \\ \hline
-ViewCard & 89,6 & 83,3 \\ \hline
-CreateGame & 86,2 & 58,6 \\ \hline
-Lobby & 93,9 & 73,3 \\ \hline
-ChooseCards & 91,9 & 66,7 \\ \hline
-Warning & 82,2 & 40 \\ \hline
-DiscardPile & 70,6 & \multicolumn{1}{l|}{} \\ \hline
-TrumpColour & 78,3 & 57,1 \\ \hline
-GameLobby & 98,5 & 87,5 \\ \hline
-InputNumber & 93,5 & 75 \\ \hline
-Language & 100 & \multicolumn{1}{l|}{} \\ \hline
-DrawDeck & 83,3 & \multicolumn{1}{l|}{} \\ \hline
-OtherPlayer & 96,9 & 100 \\ \hline
-Login & 92,9 & 66,7 \\ \hline
-Password & 97 & 71,4 \\ \hline
-OwnHand & 100 & 100 \\ \hline
-OwnOtherData & 100 & 100 \\ \hline
+GamePanel & 96,50 & 93,50 \\ \hline
+ScoreWindow & 64,10 & 31,20 \\ \hline
+ChooseItem & 65,10 & 33,30 \\ \hline
+Game & 96,60 & 78,60 \\ \hline
+ViewCard & 89,60 & 83,30 \\ \hline
+CreateGame & 86,20 & 58,60 \\ \hline
+Lobby & 93,90 & 73,30 \\ \hline
+ChooseCards & 91,90 & 66,70 \\ \hline
+Warning & 82,20 & 400 \\ \hline
+DiscardPile & 70,60 & - \\ \hline
+TrumpColour & 78,30 & 57,10 \\ \hline
+GameLobby & 98,50 & 87,50 \\ \hline
+InputNumber & 93,50 & 75,00 \\ \hline
+Language & 100,00 & - \\ \hline
+DrawDeck & 83,30 & - \\ \hline
+OtherPlayer & 96,90 & 100,00 \\ \hline
+Login & 92,90 & 66,70 \\ \hline
+Password & 97,00 & 71,40 \\ \hline
+OwnHand & 100,00 & 100,00 \\ \hline
+OwnOtherData & 100,00 & 100,00 \\ \hline
 \end{tabular}
  \ \\ \ \\ \ \\
  	Resultate vom interaktiven Test bei restlichen Paketen: \\\\
  	\noindent
  	\begin{tabular}{|l|r|r|}\hline
  	Klasse & Line Coverage in \% & Branch Coverage in \% \\ \hline \hline
-Ruleset & 5,4 & 3,7 \\ \hline
+Ruleset & 5,40 & 3,70 \\ \hline
 Server & - & - \\ \hline
-Client & 34,1 & 37,9 \\ \hline
-ComObjects & 36,8 &  \\ \hline
+Client & 34,10 & 37,90 \\ \hline
+ComObjects & 36,80 & - \\ \hline
  &  &  \\ \hline
-Gesamt & 22,2 & 17,2 \\ \hline
+Gesamt & 22,20 & 17,20 \\ \hline
 \end{tabular}
 
 \subsubsection{JUnitTest-Ergebnisse}
@@ -377,8 +377,6 @@ Die Ergebnisse ergeben sich aus wenigen Tests, die eine View öffnen. Sie könne
 Paket & Klassen & Line Coverage in \% & Branch Coverage in \% \\ \hline \hline
 Client.View & 63 & 59,00 & 42,00 \\ \hline
 \end{tabular}
-
-\ \\
 
 \noindent
 \begin{tabular}{|l|r|r|}
@@ -586,7 +584,7 @@ Die Werte wurden durch JUnit-Testing erreicht.
 	ComObjects & 31 & 62 & -\\ \hline
 \end{tabular}
  \ \\ \ \\ 
-Der Grund, warum die Gesamt-Coverage-Werte nur bei etwas über 60\% liegen und es keine Branch-Coverage-Werte gibt, ist, dass die ComObjects nur zum Weiterreichen von Information gedacht sind und demnach nahezu ausschließlich aus getter- und setter-Methoden bestehen, für die es keine Branch-Coverage Werte gibt. Je nach dem, welche Objects in einem Tests benötigt wurden, ist die Line-Coverage mal höher, mal niedriger. \\
+Der Grund, warum die Gesamt-Coverage-Werte nur bei etwas über 60\% liegen und es keine Branch-Coverage-Werte gibt, ist, dass die ComObjects nur zum Weiterreichen von Information gedacht sind und demnach nahezu ausschließlich aus getter- und setter-Methoden bestehen, für die es keine Branch-Coverage Werte gibt. Je nach dem, welche Objects in einem Test benötigt wurden, ist die Line-Coverage mal höher, mal niedriger. \\
 \ \\
 \begin{tabular}{|l|r|r|}
 \hline
@@ -872,10 +870,10 @@ GameMasterLeave braucht die meiste Zeit und Gesamtspeicher, da alle Spieler die 
 	Es wurde ein BETA-Test über ein Wochenende gestartet. Es nahmen 15 unabhängige Personen daran teil.
 	Jede Anmerkung wurde ausgewertet und nach Möglichkeit verbessert oder umgesetzt.
 	\begin{itemize}
-	\item Doppelter Name: Es bestand die Möglichkeit sich mit dem Namen 'TestSpieler' einzuloggen und zusätzlich nocheinmal 		mit dem Namen 'Testspieler '. Die doppelte Nutzung eines Namens durch Anfügen von Leerzeichen wurde unterbunden.
-	\item Handbuch: Die Erklärung zum Serverstart ist nicht ausreichend genug. Das Kapitel Installation wurde deshalb 			überarbeitet.
-	\item Rundenanzahl: Es wurde angemerkt, dass die Anzeige einer Rundenzahl sinnvoll wäre, sodass man sehen kann in 			welcher man sich befindet, ohne mitzuzählen. Die Rundenzahl wird nun zusätzlich im Infofenster angezeigt, in dem der			Spieler auch seine anderen Informationen sehen kann.
-	\item Beschränkte Länge des Namens: Da die Länge des Spielernamens zuvor nicht eingeschränkt war, und deshalb nicht 		der ganze Name im Spielfenster dargestellt werden konnte, wurde eine Begrenzung der Länge eingeführt.
+	\item \textbf{Doppelter Name durch Ausnutzen von Leerzeichen:} Es bestand die Möglichkeit sich mit dem Namen 'TestSpieler' einzuloggen und zusätzlich nocheinmal mit dem Namen 'Testspieler ', also mit einem Leerzeichen zu Beginn oder am Ende des Namens. Die beiden Spieler können so im Spiel nicht direkt voneinander unterschieden werden, da sie auf den ersten Blick, den selben Nicknamen haben. Die doppelte Nutzung eines Namens durch Anfügen von Leerzeichen wurde unterbunden.
+	\item \textbf{Handbuch:} Die Erklärung zum Serverstart ist nicht ausreichend genug. Das Kapitel Installation wurde deshalb 			überarbeitet.
+	\item \textbf{Rundenanzahl:} Es wurde angemerkt, dass die Anzeige einer Rundenzahl sinnvoll wäre, sodass man sehen kann in 			welcher man sich befindet, ohne mitzuzählen. Die Rundenzahl wird nun zusätzlich im Infofenster angezeigt, in dem der			Spieler auch seine anderen Informationen sehen kann (siehe 2.1).
+	\item \textbf{Beschränkte Länge des Namens:} Da die Länge des Spielernamens zuvor nicht eingeschränkt war, und deshalb nicht 		der ganze Name im Spielfenster dargestellt werden konnte, wurde eine Begrenzung der Länge eingeführt.
 	\end{itemize}
 	
 \section{Fakten zum Programm NETWizHearts}
@@ -897,7 +895,7 @@ GameMasterLeave braucht die meiste Zeit und Gesamtspeicher, da alle Spieler die 
 \item 3675 Zeilen JavaDoc
 \end{itemize}
 
-\item Code-Testcode Verhältnis ca. 1:1,1 
+\item Code-Testcode Verhältnis ca. 1,1:1 
 \end{itemize}
 
 \end{document}
