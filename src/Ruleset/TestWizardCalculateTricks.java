@@ -188,5 +188,27 @@ public class TestWizardCalculateTricks {
 		assertTrue(playerState2.getOtherData().getNumberOfTricks() == 0);
 		assertTrue(playerState3.getOtherData().getNumberOfTricks() == 0);
 	}
+	
+	@Test
+	public void testCalculateTricksFools() {
+		ruleset.setFirstPlayer(playerState1);	
+		assertTrue(ruleset.playCard(WizardCard.NarrGruen));
+		
+		ruleset.nextPlayer();
+		assertTrue(ruleset.playCard(WizardCard.NarrRot));
+	
+		ruleset.nextPlayer();	
+		assertTrue(ruleset.playCard(WizardCard.NarrBlau));
+		
+		
+		assertTrue(ruleset.getPlayedCards().size() == 3);
+		
+		ruleset.calculateTricks();
+		
+		assertTrue(ruleset.getPlayedCards().size() == 0);
+		assertTrue(playerState1.getOtherData().getNumberOfTricks() == 1);
+		assertTrue(playerState2.getOtherData().getNumberOfTricks() == 0);
+		assertTrue(playerState3.getOtherData().getNumberOfTricks() == 0);
+	}
 
 }
