@@ -1,7 +1,5 @@
 package Ruleset;
 
-import java.io.Serializable;
-
 /**
  * WizardCard. Modelliert eine Wizardkarte
  */
