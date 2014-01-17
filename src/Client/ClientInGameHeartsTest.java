@@ -22,7 +22,6 @@ import ComObjects.ComRuleset;
 import ComObjects.ComStartGame;
 import ComObjects.ComUpdatePlayerlist;
 import ComObjects.MsgMultiCardsRequest;
-import ComObjects.MsgNumberRequest;
 import Ruleset.Card;
 import Ruleset.RulesetType;
 import Ruleset.UserMessages;
@@ -37,7 +36,7 @@ public class ClientInGameHeartsTest {
 	MockMessageListenerThread testNetIO;
 
 	String testText;
-	
+
 	LanguageInterpreter textGen;
 
 	List<String> players;
