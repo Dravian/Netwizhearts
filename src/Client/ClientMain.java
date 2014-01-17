@@ -7,10 +7,6 @@ import javax.swing.SwingUtilities;
  * und initialisiert dessen Komponenten.
  */
 public class ClientMain {
-	/**
-	 * Haelt eine Referenz auf die Controller Klasse der View.
-	 */
-	private static ClientController clientController;
 
 	/**
 	 * Diese Mainmethode wird beim Start des Programmes wie
@@ -25,10 +21,9 @@ public class ClientMain {
 
 			@Override
 			public void run() {
-				clientController = new ClientController(
-						new ClientModel(new MessageListenerThread()));
+				new ClientController(new ClientModel(
+						new MessageListenerThread()));
 			}
 		});
-
 	}
 }
