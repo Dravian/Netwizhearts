@@ -1,6 +1,3 @@
-/**
- * 
- */
 package Client;
 
 /** 
@@ -10,9 +7,9 @@ package Client;
  */
 public enum ViewNotification {
 	gameUpdate,
-	
+
 	trumpUpdate,
-	
+
 	turnUpdate,
 
 	playerListUpdate,
@@ -24,20 +21,20 @@ public enum ViewNotification {
 	loginSuccessful,
 
 	joinGameSuccessful,
-	
+
 	gameStarted,
-	
+
     windowChangeForced,
-	
+
 	openChooseCards,
-	
+
 	openChooseItem,
-	
+
 	openInputNumber,
-	
+
 	openWarning,
-	
+
 	showScore,
-	
+
 	quitGame
 }

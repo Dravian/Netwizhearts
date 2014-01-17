@@ -20,7 +20,6 @@ import ComObjects.ComClientLeave;
 import ComObjects.ComInitGameLobby;
 import ComObjects.ComInitLobby;
 import ComObjects.ComKickPlayerRequest;
-import ComObjects.ComRuleset;
 import ComObjects.ComStartGame;
 import ComObjects.ComUpdatePlayerlist;
 import Ruleset.RulesetType;
