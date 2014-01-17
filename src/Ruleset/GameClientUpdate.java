@@ -3,7 +3,6 @@ package Ruleset;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 /** 
  * GameClientUpdate. Das GameClientUpdate wird vom RuleSet ueber den GameServer an den Client geschickt 
