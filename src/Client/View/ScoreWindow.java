@@ -35,6 +35,7 @@ public class ScoreWindow extends JFrame implements Observer{
 		setBounds(100, 100, 450, 290);
 		setLocationRelativeTo(null);
 		setAlwaysOnTop(true);
+		setResizable(false);
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		getContentPane().setLayout(null);
 		
