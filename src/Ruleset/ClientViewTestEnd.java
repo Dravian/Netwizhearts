@@ -107,36 +107,36 @@ public class ClientViewTestEnd {
 		MsgUser game = new MsgUser(gameState);
 		testModel.receiveMessage(new ComRuleset(game));
 
-		Thread.sleep(7000);
+		//Thread.sleep(7000);
 		player.getHand().add(WizardCard.EinsRot);
 		gameState = new GameClientUpdate(player, discardPile,
 				enemyData, currentPlayer, roundNumber, trumpCard);
 		game = new MsgUser(gameState);
 		testModel.receiveMessage(new ComRuleset(game));
 
-		Thread.sleep(7000);
+		//Thread.sleep(7000);
 
 		player.getHand().add(WizardCard.AchtBlau);
 		gameState = new GameClientUpdate(player, discardPile,
 				enemyData, currentPlayer, roundNumber, EmptyCard.Empty);
 		game = new MsgUser(gameState);
 		testModel.receiveMessage(new ComRuleset(game));
-		Thread.sleep(7000); 
-		
+		//Thread.sleep(7000); 
+
 		player.getHand().add(WizardCard.AchtBlau);
 		gameState = new GameClientUpdate(player, discardPile,
 				enemyData, currentPlayer, roundNumber, WizardCard.AchtGelb);
 		game = new MsgUser(gameState);
 		testModel.receiveMessage(new ComRuleset(game));
-		Thread.sleep(7000); 
-		
+		//Thread.sleep(7000); 
+
 		player.getHand().remove(WizardCard.AchtBlau);
 		gameState = new GameClientUpdate(player, discardPile,
 				enemyData, currentPlayer, roundNumber, EmptyCard.Empty);
 		game = new MsgUser(gameState);
 		testModel.receiveMessage(new ComRuleset(game));
-		Thread.sleep(7000); 
-		
+		//Thread.sleep(7000); 
+
 		List<String> winners = new ArrayList<String>();
 		winners.add(red);
 		testNetIO.injectComObject(new ComRuleset(new MsgGameEnd(winners)));
@@ -204,6 +204,6 @@ public class ClientViewTestEnd {
 		ComInitLobby testInitLobby = new ComInitLobby(players, games);
 		testNetIO.injectComObject(testInitLobby);
 		//Thread.sleep(10000);
-		testNetIO.injectComObject(new ComClientQuit());
+		//testNetIO.injectComObject(new ComClientQuit());
 	}
 }
