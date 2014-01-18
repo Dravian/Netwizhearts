@@ -2,20 +2,16 @@ package Ruleset;
 
 
 import static org.junit.Assert.*;
-import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import test.MockGameServer;
-import test.MockLobbyServer;
 import test.MockPlayer;
 
 import Server.GameServer;
 import Server.LobbyServer;
 import Server.Player;
-
-import java.util.List;
 
 public class TestHeartsIsValidMove {
 	ServerRuleset ruleset;

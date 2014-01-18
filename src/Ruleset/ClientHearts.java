@@ -14,10 +14,6 @@ import ComObjects.*;
  * Partie Hearts
  */
 public class ClientHearts extends ClientRuleset {
-	/**
-	 * Der RulesetTyp des Spiels
-	 */
-	private static final RulesetType RULESET = RulesetType.Hearts;
 
 	/**
 	 * Gibt an, ob Herz schon ausgespielt werden darf.

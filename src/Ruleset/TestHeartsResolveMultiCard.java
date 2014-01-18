@@ -13,7 +13,6 @@ import test.MockGameServer;
 import test.MockPlayer;
 import ComObjects.ComRuleset;
 import ComObjects.MsgMultiCards;
-import ComObjects.MsgUser;
 import Server.LobbyServer;
 
 public class TestHeartsResolveMultiCard {

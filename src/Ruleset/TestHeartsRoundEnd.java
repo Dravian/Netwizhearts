@@ -16,9 +16,6 @@ import test.MockPlayer;
 import ComObjects.ComObject;
 import ComObjects.ComRuleset;
 import ComObjects.MsgGameEnd;
-import Server.GameServer;
-import Server.LobbyServer;
-import Server.Player;
 
 public class TestHeartsRoundEnd {
 

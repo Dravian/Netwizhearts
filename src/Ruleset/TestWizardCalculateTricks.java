@@ -6,12 +6,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import test.MockGameServer;
-import test.MockLobbyServer;
 import test.MockPlayer;
 
-import ComObjects.MsgCard;
-import ComObjects.RulesetMessage;
 import Server.GameServer;
 import Server.LobbyServer;
 import Server.Player;
@@ -177,6 +173,28 @@ public class TestWizardCalculateTricks {
 	
 		ruleset.nextPlayer();	
 		assertTrue(ruleset.playCard(WizardCard.ZehnGruen));
+		
+		
+		assertTrue(ruleset.getPlayedCards().size() == 3);
+		
+		ruleset.calculateTricks();
+		
+		assertTrue(ruleset.getPlayedCards().size() == 0);
+		assertTrue(playerState1.getOtherData().getNumberOfTricks() == 1);
+		assertTrue(playerState2.getOtherData().getNumberOfTricks() == 0);
+		assertTrue(playerState3.getOtherData().getNumberOfTricks() == 0);
+	}
+	
+	@Test
+	public void testCalculateTricksFools() {
+		ruleset.setFirstPlayer(playerState1);	
+		assertTrue(ruleset.playCard(WizardCard.NarrGruen));
+		
+		ruleset.nextPlayer();
+		assertTrue(ruleset.playCard(WizardCard.NarrRot));
+	
+		ruleset.nextPlayer();	
+		assertTrue(ruleset.playCard(WizardCard.NarrBlau));
 		
 		
 		assertTrue(ruleset.getPlayedCards().size() == 3);
