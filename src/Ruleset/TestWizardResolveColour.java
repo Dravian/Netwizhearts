@@ -9,7 +9,6 @@ import org.junit.Test;
 import test.MockGameServer;
 import test.MockPlayer;
 import ComObjects.ComRuleset;
-import ComObjects.MsgNumber;
 import ComObjects.MsgSelection;
 import Server.LobbyServer;
 

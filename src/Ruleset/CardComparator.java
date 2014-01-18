@@ -1,12 +1,11 @@
 package Ruleset;
 
-import java.io.Serializable;
 import java.util.Comparator;
 
 /**
  * Sortiert die Spielkarten in einer angenehmen Reihenfolge
  */
-public class CardComparator implements Comparator<Card>, Serializable {
+public class CardComparator implements Comparator<Card> {
 	private Colour trumpColour;
 
 	public CardComparator(Colour trumpColour) {

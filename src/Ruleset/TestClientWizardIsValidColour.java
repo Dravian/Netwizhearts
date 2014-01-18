@@ -21,7 +21,6 @@ import ComObjects.ComInitLobby;
 import ComObjects.ComRuleset;
 import ComObjects.ComStartGame;
 import ComObjects.ComUpdatePlayerlist;
-import ComObjects.MsgNumber;
 import ComObjects.MsgSelection;
 import ComObjects.MsgSelectionRequest;
 import ComObjects.MsgUser;

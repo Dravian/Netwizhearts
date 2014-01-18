@@ -103,10 +103,40 @@ public class ClientViewTestEnd {
 		Card trumpCard = WizardCard.DreizehnGruen;
 
 		gameState = new GameClientUpdate(player, discardPile,
-				enemyData, currentPlayer, roundNumber, trumpCard);
+				enemyData, currentPlayer, roundNumber, EmptyCard.Empty);
 		MsgUser game = new MsgUser(gameState);
 		testModel.receiveMessage(new ComRuleset(game));
 
+		Thread.sleep(7000);
+		player.getHand().add(WizardCard.EinsRot);
+		gameState = new GameClientUpdate(player, discardPile,
+				enemyData, currentPlayer, roundNumber, trumpCard);
+		game = new MsgUser(gameState);
+		testModel.receiveMessage(new ComRuleset(game));
+
+		Thread.sleep(7000);
+
+		player.getHand().add(WizardCard.AchtBlau);
+		gameState = new GameClientUpdate(player, discardPile,
+				enemyData, currentPlayer, roundNumber, EmptyCard.Empty);
+		game = new MsgUser(gameState);
+		testModel.receiveMessage(new ComRuleset(game));
+		Thread.sleep(7000); 
+		
+		player.getHand().add(WizardCard.AchtBlau);
+		gameState = new GameClientUpdate(player, discardPile,
+				enemyData, currentPlayer, roundNumber, WizardCard.AchtGelb);
+		game = new MsgUser(gameState);
+		testModel.receiveMessage(new ComRuleset(game));
+		Thread.sleep(7000); 
+		
+		player.getHand().remove(WizardCard.AchtBlau);
+		gameState = new GameClientUpdate(player, discardPile,
+				enemyData, currentPlayer, roundNumber, EmptyCard.Empty);
+		game = new MsgUser(gameState);
+		testModel.receiveMessage(new ComRuleset(game));
+		Thread.sleep(7000); 
+		
 		List<String> winners = new ArrayList<String>();
 		winners.add(red);
 		testNetIO.injectComObject(new ComRuleset(new MsgGameEnd(winners)));
@@ -118,13 +148,13 @@ public class ClientViewTestEnd {
 		testNetIO.injectComObject(new ComStartGame());
 		player.getHand().add(WizardCard.DreiGruen);
 		gameState = new GameClientUpdate(player, discardPile,
-				enemyData, currentPlayer, roundNumber, trumpCard);
+				enemyData, currentPlayer, roundNumber, EmptyCard.Empty);
 		game = new MsgUser(gameState);
 		testModel.receiveMessage(new ComRuleset(game));
 		assertEquals("Neue Runde", true,
 				((ComNewRound) testNetIO.getModelInput().get(0)).getResult());
 		//Thread.sleep(10000);
-		testNetIO.injectComObject(new ComClientQuit());
+		//testNetIO.injectComObject(new ComClientQuit());
 	}
 
 	@Test
@@ -151,6 +181,7 @@ public class ClientViewTestEnd {
 				enemyData, currentPlayer, roundNumber, trumpCard);
 		MsgUser game = new MsgUser(gameState);
 		testModel.receiveMessage(new ComRuleset(game));
+		
 		List<String> winners = new ArrayList<String>();
 		winners.add(red);
 		testNetIO.injectComObject(new ComRuleset(new MsgGameEnd(winners)));

@@ -20,10 +20,8 @@ import ComObjects.ComInitLobby;
 import ComObjects.ComRuleset;
 import ComObjects.ComStartGame;
 import ComObjects.ComUpdatePlayerlist;
-import ComObjects.MsgCardRequest;
 import ComObjects.MsgMultiCards;
 import ComObjects.MsgMultiCardsRequest;
-import ComObjects.MsgSelection;
 import ComObjects.MsgUser;
 import Server.GameServerRepresentation;
 

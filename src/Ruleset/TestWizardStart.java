@@ -2,10 +2,7 @@ package Ruleset;
 
 import static org.junit.Assert.*;
 
-import java.net.Socket;
 import java.util.List;
-
-import javax.net.SocketFactory;
 
 import org.junit.After;
 import org.junit.Before;
@@ -16,7 +13,6 @@ import ComObjects.MsgNumberRequest;
 import ComObjects.MsgSelection;
 import ComObjects.MsgSelectionRequest;
 import ComObjects.MsgUser;
-import ComObjects.WarningMsg;
 import test.MockPlayer;
 import test.MockGameServer;
 import test.MockLobbyServer;

@@ -14,7 +14,6 @@ import test.MockLobbyServer;
 import test.MockPlayer;
 import ComObjects.ComRuleset;
 import ComObjects.MsgMultiCards;
-import Server.GameServer;
 import Server.LobbyServer;
 
 public class TestHeartsSwap {

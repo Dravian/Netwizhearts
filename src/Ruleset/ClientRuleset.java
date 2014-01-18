@@ -472,9 +472,10 @@ public abstract class ClientRuleset {
 	public void chooseCards(List<Card> cards) {
 		if (RULESET == RulesetType.Hearts) {
 			if (getGamePhase() == GamePhase.MultipleCardRequest) {
-				Set chooseCards = new HashSet(cards);
+				Set<Card> chooseCards = new HashSet<Card>();
+				chooseCards.addAll(cards);
 				
-				if (areValidChoosenCards(new HashSet(cards))) {
+				if (areValidChoosenCards(chooseCards)) {
 					send(new MsgMultiCards(chooseCards));
 				} else {
 					getModel().openWarning(WarningMsg.WrongTradeCards);

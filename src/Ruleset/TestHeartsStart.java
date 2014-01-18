@@ -2,7 +2,6 @@ package Ruleset;
 
 import static org.junit.Assert.*;
 
-import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
@@ -11,10 +10,6 @@ import org.junit.Test;
 import ComObjects.ComRuleset;
 import ComObjects.MsgCardRequest;
 import ComObjects.MsgMultiCardsRequest;
-import ComObjects.MsgNumberRequest;
-import ComObjects.MsgSelection;
-import ComObjects.MsgSelectionRequest;
-import ComObjects.MsgUser;
 import test.MockGameServer;
 import test.MockLobbyServer;
 import test.MockPlayer;
@@ -96,7 +91,6 @@ public class TestHeartsStart {
 		hearts.addPlayerToGame("Black");
 
 		hearts.setGamePhase(GamePhase.RoundStart);
-		List<PlayerState> players = hearts.getPlayers();
 
 		hearts.setFirstPlayer(hearts.getPlayers().get(0));
 
