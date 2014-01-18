@@ -131,8 +131,8 @@ public class ViewCard extends JPanel{
 					g.drawString("" + card.getValue(), 5, 15);
 					g.drawString("" + card.getColour(), 5, 30);					
 				}
+				g.drawImage(face, 0, 0, null);
 			}
-			g.drawImage(face, 0, 0, null);
 			} else {
 				g.drawImage(ViewCard.BACKSIDEIMAGE, 0, 0, null);
 			}

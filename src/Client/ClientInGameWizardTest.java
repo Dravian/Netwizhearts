@@ -3,7 +3,6 @@ package Client;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -24,17 +23,9 @@ import ComObjects.ComUpdatePlayerlist;
 import ComObjects.MsgNumberRequest;
 import ComObjects.MsgSelection;
 import ComObjects.MsgSelectionRequest;
-import ComObjects.MsgUser;
-import Ruleset.Card;
 import Ruleset.Colour;
-import Ruleset.DiscardedCard;
-import Ruleset.EmptyCard;
-import Ruleset.GameClientUpdate;
-import Ruleset.OtherData;
-import Ruleset.PlayerState;
 import Ruleset.RulesetType;
 import Ruleset.UserMessages;
-import Ruleset.WizardCard;
 import Server.GameServerRepresentation;
 
 public class ClientInGameWizardTest {

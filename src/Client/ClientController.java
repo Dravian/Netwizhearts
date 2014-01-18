@@ -1,6 +1,3 @@
-/**
- * 
- */
 package Client;
 
 import Client.View.ChooseCards;
