@@ -375,7 +375,6 @@ public class ServerWizard extends ServerRuleset {
 	@Override
 	public void runGame() throws IllegalNumberOfPlayersException {
 		List<PlayerState> players = getPlayers();
-		int deckSize = WizardCard.values().length;
 
 		if ((players.size() < RULESET.getMinPlayer())
 				|| (players.size() > RULESET.getMaxPlayer())

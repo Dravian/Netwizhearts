@@ -1,7 +1,5 @@
 package Ruleset;
 
-import static org.junit.Assert.*;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -21,9 +19,7 @@ import ComObjects.MsgNumber;
 import ComObjects.MsgSelection;
 import ComObjects.MsgSelectionRequest;
 import ComObjects.MsgUser;
-import Server.GameServer;
 import Server.LobbyServer;
-import Server.Player;
 
 public class TestServerRulesetIllegalArgument {
 	ServerRuleset ruleset;	

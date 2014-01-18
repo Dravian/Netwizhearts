@@ -7,17 +7,13 @@ import org.junit.Before;
 import org.junit.Test;
 
 import test.MockGameServer;
-import test.MockLobbyServer;
 import test.MockPlayer;
 
 import ComObjects.ComRuleset;
 import ComObjects.MsgCard;
 import ComObjects.MsgCardRequest;
 import ComObjects.MsgUser;
-import ComObjects.RulesetMessage;
-import Server.GameServer;
 import Server.LobbyServer;
-import Server.Player;
 
 public class TestWizardResolveMsgCard {
 	ServerRuleset ruleset;	

@@ -15,8 +15,6 @@ import org.junit.Test;
 import test.MockMessageListenerThread;
 import test.MockObserver;
 import Client.ClientModel;
-import Client.MessageListenerThread;
-import Client.ViewNotification;
 import ComObjects.ComInitGameLobby;
 import ComObjects.ComInitLobby;
 import ComObjects.ComRuleset;
