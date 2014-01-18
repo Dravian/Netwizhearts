@@ -863,8 +863,9 @@ public class ClientModel extends Observable {
 	public final void sendChatMessage(final String msg) {
 		if (state != ClientState.LOGIN) {
 			if (msg != null) {
+				String chatMsg = msg.trim();
 				if (!msg.isEmpty()) {
-					netIO.send(new ComChatMessage(msg));
+					netIO.send(new ComChatMessage(chatMsg));
 				} else {
 					throw new IllegalArgumentException("Leerer String");
 				}
